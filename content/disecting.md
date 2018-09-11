@@ -27,17 +27,27 @@ Thankfully Go has a fantastic standard toolchain that lets you play with this pr
 We could end this post right here but I think it'd be a lot more interesting to build a disassembler ourselves. Let's do that.
 
 <!-- Capstone -->
-
 First of all, in order to build a disassembler we need to know what all of the binary machine code translates to in assembly instructions. To do this we must have a reference for all assembly instructions for the architecture of the compiled binary. If you're not familiar with this task you wouldn't think it'd be so difficult. However, there are multiple micro-architectures, assembly syntaxes, sparsley-documented instructions, and encoding schemes that change over time. If you want more analysis on why this is difficult I enjoy [this article](https://stefanheule.com/blog/how-many-x86-64-instructions-are-there-anyway/). Thankfully all of the heavy lifting has been done for us by the authors and maintainers of [Capstone](http://www.capstone-engine.org/), a disassembly framework. Capstone is widely accepted as the standard to use for writing disassembly tools and there's not much to be gained by reimplementing it.
 
-By using Capstone and it's accompanying Go bindings, [gapstone](https://github.com/bnagy/gapstone), our only real task is to extract the relevant information from the binary file and feed it through Capstone's engine. Let's dive into how that works.
+For example, you can plug the the following raw bytes (displayed in hex) through Capstone and it will translate it into the corresponding x86_64 instruction:
+
+<center>
+<b> `0x64 0x48 0x8B 0xC 0x25 0xF8 0xFF 0xFF 0xFF`</b>
+
+![arrow](/arrow.png)
+
+<b> `mov rcx, qword ptr fs:[0xfffffffffffffff8]`</b>
+</center>
+
+
+By using Capstone and it's accompanying Go bindings, [gapstone](https://github.com/bnagy/gapstone), our only real task is to extract the relevant raw bytes from the binary file and feed it through Capstone's engine.
 
 <!-- ELF's -->
-When you compile a Go program on your laptop the outputted binary is probably a 64-bit ELF (`Executable Linkable Format`). There are many parts of the [ELF format specification](http://man7.org/linux/man-pages/man5/elf.5.html) but for the sake of disassembly we really only care about two of them. We care about the symbol table and the text section. 
+When you compile a Go program on your laptop the outputted binary is probably a 64-bit ELF (or `Executable Linkable Format`). The ELF is organized into various sections that each have a unique purpose such as version information, program metadata, or executable code. The ELF is a widely accepted standard for binary files and as such Go has a `debug/elf` package for easily interacting with them. There are many intricacies to the [ELF format specification](http://man7.org/linux/man-pages/man5/elf.5.html) but for the sake of disassembly we really only care about two sections. We care about the symbol table section and the text section. Let's take a look:
 
 <center>![ELF64](/ELF_64.png)</center>
 
-First we need to define the term **symbol**. This is any name identifiable object in our code. Variables, functions, types, and constants are all symbols. The Go compiler compiles each symbol and stores reference information about in the **symbol table**. We can see in the gapstone definition of `Symbol` that each entry in the symbol table contains the symbol's name, size, memory offset, and type:
+First we need to define the term **symbol**. This is any name identifiable object in our code. Variables, functions, types, and constants are all symbols. The Go compiler compiles each symbol and stores reference information about it in the **symbol table**. We can see in the `debug/elf` package's definition of `Symbol` that each entry in the symbol table contains the symbol's name, size, memory offset, and type:
 
 ```go
 // A Symbol represents an entry in an ELF symbol table section.
@@ -49,9 +59,7 @@ type Symbol struct {
 }
 ```
 
-_Note: Although it's not clear by naming convention, the memory offset is stored in `Value`._
-
-Now, that seems clear, but how do we find the actual symbol? 
+Although it's not clear by naming convention, the memory offset is stored in `Value`. By memory offset, I mean the number of addresses from the begining of the **.text** section. This is the section where executable instructions defined in the actual program is stored.
 
 ## Further reading
 
