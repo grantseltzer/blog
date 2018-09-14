@@ -31,15 +31,7 @@ First of all, in order to build a disassembler we need to know what all of the b
 
 Thankfully all of the heavy lifting has been done for us by the authors and maintainers of [Capstone](http://www.capstone-engine.org/), a disassembly framework. Capstone is widely accepted as the standard to use for writing disassembly tools and there's not much to be gained by reimplementing it. Using Capstone in Go is as simple as importing its cleverly named Go bindings, [gapstone](https://github.com/bnagy/gapstone):
 
-```go
-engine, err := gapstone.New(
-	gapstone.CS_ARCH_X86,
-	gapstone.CS_MODE_64,
-)
-if err != nil {
-	log.Fatal(err)
-}
-```
+<script src="https://gist.github.com/grantseltzer/85452bdb369315a79beb619c5544e2a9.js"></script>
 
 For example, you can plug the the following raw bytes (displayed in hex) through Capstone and it will translate them into the corresponding x86_64 instruction:
 
