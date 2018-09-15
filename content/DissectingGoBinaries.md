@@ -74,11 +74,13 @@ So, with this knowledge it becomes clear that we want to extract the symbol tabl
 
 Let's calculate the starting and ending indicies of the symbol within the `.text` section's array of bytes. For each symbol we want to subtract its `Value` from the text section's starting address; this will give us the starting index. To calculate the ending index we just add the symbol's size to the starting index. From there we can collect the bytes and feed them through Capstone.
 
+<center>![SymTableToTextSection](/SymbolTableToTextSection.png)</center>
+
 We're essentially finished now. We're going to open up the `.text` section to get the starting address and raw data, do the address calculation for each symbol, run the data through Capstone, and print out the resulting instructions:
 
 <script src="https://gist.github.com/grantseltzer/6dfd8ed453e6836ad8dfb4b63cf1dbe6.js"></script>
 
-And that's it! The full program can be found [here](https://gist.github.com/grantseltzer/3efa8ecc5de1fb566e8091533050d608). By leveraging some very powerful tools in the Go ecosystem we were able to build a fully function disassembler in under 75 lines of code! Thank you for reading and feel free to reach out via email for any questions or comments!
+And that's it! The full program can be found [here](https://gist.github.com/grantseltzer/3efa8ecc5de1fb566e8091533050d608). By leveraging some very powerful tools in the Go ecosystem we were able to build a fully functioning disassembler in under 75 lines of code! Thank you for reading and feel free to reach out via email for any questions or comments!
 
 Recording of our disassembler in action:
 
