@@ -11,8 +11,9 @@
 <link rel="stylesheet" href="/css/custom.css">
 <title>{{ .Title }}</title>
 </head>
-<body>
 
+<body>
+<a href="/"><img src="/name-text.png" alt="full" class="name-text"></a>
 <div class="container"> 
   <header role="banner">
   <h1 id="title">{{ .Title }}</h1>
@@ -53,19 +54,13 @@
 
 
 	<footer role="contentinfo">
-		<div class="hr"></div>
-		<div class="footer-link">
-      <a href="/">Home</a> 
-      -
-      {{if ne .Section "about" }}
-      <a href="/about/about">About</a>
-      -
-      {{ end }}
-      <a href="mailto:grantseltzer -AT- gmail" target="_blank">Email</a>
-			- 
-			<a href="https://github.com/grantseltzer" target="_blank">Github</a> 
-			-
-			<a href="https://www.linkedin.com/in/grantseltzerrichman/" target="_blank">LinkedIn</a>
+    <div class="hr"></div>
+    
+		<div>
+			<a class="sociallink" href="http://www.github.com/grantseltzer"><img class="socialimg" src="/github.png"/></a>
+			<a class="sociallink" href="http://www.twitter.com/grantseltzer"><img class="socialimg" src="/twitter.png"/></a>
+			<a class="sociallink" href="http://www.linkedin.com/grantseltzerrichman"><img class="socialimg" src="/linkedin.png"/></a>
+
 		</div>
 		<div class="copyright">Copyright &copy; 2018</div>
 	</footer>
