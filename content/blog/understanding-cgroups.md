@@ -7,7 +7,7 @@ Date = 2018-11-20T03:32:37+00:00
 +++
 
 <span style="color:grey;font-style: italic;font-size: 14px">
-This post will introduce you to cgroups. The goal is to give a comprehensive enough explanation of cgroups and subsystems to broadly understand what they accomplish and how. The major focus will be on the CPU and memory cgroups. The second section
+This post will introduce you to cgroups. The goal is to give a comprehensive enough explanation of cgroups and subsystems to broadly understand what they accomplish and how. The major focus will be on the CPU cgroup. The [second section]({{<relref "#using-cgroups">}}) and [third section]({{<relref "#practically-using-cgroups">}}) will explore using cgroups from the command line.
 </span>
 
 Control groups (or cgroups) are a feature of the Linux kernel by which groups of processes can be monitored and have their resources limited. For example, if you don't want a google chrome process (or it's many child processes) to exceed a gigabyte of RAM or 30% total CPU usage, cgroups would let you do that. They are an extremely powerful tool by which you can guarentee limits on performance, but understanding how they work and how to use them can be a little daunting.
@@ -71,7 +71,7 @@ Here's a really dorky graphic:
 
 The purpose of explaining how the CPU cgroup works is to show the nature of what cgroups are. They are not the mechanism by which resources are limited but rather just a glorified way of collecting arguments for those resource limits. It's up to the individual subsystems to read those arguments and take them into consideration. The same goes for every other cgroup implementation.
 
-<h1><b>Using cgroups</b></h1>
+# Using cgroups
 
 All cgroup functionality is accessed through the cgroup filesystem. This is a virtual filesystem with special files that act as the interface for creating, removing, or altering cgroups. You can find where the various cgroupfs' (one for each cgroup type) on your system is mounted using <span style="color:red">mount | grep cgroup</span>. They're typically in <span style="color:red">/sys/fs/cgroup</span>.
 
@@ -108,7 +108,7 @@ Setting the above constraint files are also as easy as writing values to the fil
 <i>Setting the period and quota of a cgroup by writing to the period and quota files</i>
 </center>
 
-<h1><b><i>Practically</i> using cgroups</b></h1>
+# Practically using cgroups
 
 So up until this point you be wondering how people <i>actually</i> set cgroup limits, or why they would in the first place. Those are very valid questions! In truth, I don't think anyone is manually creating cgroups for anything besides educational purposes.
 
