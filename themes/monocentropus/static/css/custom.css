@@ -58,24 +58,25 @@ div.topbar {
 div.topbar #homebutton {
 	text-decoration: none;
 	letter-spacing: 3px;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: bold;
+	font-family: 'Black Han Sans', sans-serif;
 	font-size: 25px;
 	color: #000000;
+	margin-left: 15px;
 }
 
 div.topbar #homebutton:hover {
 	color: #383838;
-}
+} 
 
 div.topbar #about {
 	text-decoration: none;
 	letter-spacing: 3px;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: bold;
+	font-family: 'Black Han Sans', sans-serif;
 	font-size: 25px;
 	color: #000000;
 	float: right;
+	margin-right: 15px;
+
 }
 
 div.topbar #about:hover {
