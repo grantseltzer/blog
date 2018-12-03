@@ -4,16 +4,20 @@
 <meta charset="utf-8">
 {{ .Hugo.Generator }}
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
 <link rel="stylesheet" href="/css/normalize.css">
 <link rel="stylesheet" href="/css/skeleton.css">
 <link rel="stylesheet" href="/css/custom.css">
-
+ 
 <title>Grant Seltzer Richman</title>
 </head>
-<a href="/"><img src="/name-text.png" alt="full" class="name-text"></a>
 <body>
+	<div class="topbar">
+			<a id="homebutton" href="/">GSR</a>
+			<a id="about" href="/about/about">about</a>
+	</div>
 
 	<div class="container">
 
@@ -23,22 +27,21 @@
 	
 	<main role="main">
 {{ range (where .Data.Pages ".Params.hidefromhome" "!=" "true") }}
-
-			<h2 class="entry-title" itemprop="headline"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-			<span class="entry-meta"><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time></span>
-
+	<h2 class="entry-title" itemprop="headline"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+	<span class="entry-meta"><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time></span>
 {{ end }}
 	</main>
 
 	<footer role="contentinfo">
 		<div class="hr"></div>
-		
+		 
 		<div>
-			<a class="sociallink" href="http://www.github.com/grantseltzer"><img class="socialimg" src="/github.png"/></a>
-			
-			<a class="sociallink" href="http://www.twitter.com/grantseltzer"><img class="socialimg" src="/twitter.png"/></a>
-			
-			<a class="sociallink" href="http://www.linkedin.com/grantseltzerrichman"><img class="socialimg" src="/linkedin.png"/></a>
+			<a class="sociallink" href="mailto:grantseltzer-AT-gmail.com"><img class="socialimg" src="/social/email.png"/></a>
+			<a class="sociallink" href="http://www.github.com/grantseltzer"><img class="socialimg" src="/social/github.png"/></a>
+			<a class="sociallink" href="http://www.twitter.com/grantseltzer"><img class="socialimg" src="/social/twitter.png"/></a>
+			<a class="sociallink" href="http://www.linkedin.com/grantseltzerrichman"><img class="socialimg" src="/social/linkedin.png"/></a>
+			<a class="sociallink" href="https://www.goodreads.com/user/show/50650128-grant-seltzer"><img class="socialimg" src="/social/book.png"></a>
+			<a class="sociallink" href="/photos/photos"><img class="socialimg" src="/social/camera.png"></a>
 
 		</div>
 

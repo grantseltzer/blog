@@ -20,11 +20,11 @@ So, what is disassembly?
 
 Disassembly is the process of converting a compiled binary file back into assembly code. To clarify let’s first go in the direction we’re used to, from source code to a compiled binary:
 
-<center>![Compilation](/CompilerDiagram.png)</center>
+<center>![Compilation](/dissecting/CompilerDiagram.png)</center>
 
 The assembly code is an intermediate form. The compiler will first turn the source code into OS/architecture specific assembly code before 'assembling' it into the binary file. As the name alludes to, disassembly is doing this process in reverse:
 
-<center>![Disassembly](/DisassemblerDiagram.png)</center>
+<center>![Disassembly](/dissecting/DisassemblerDiagram.png)</center>
 
 Thankfully Go has a fantastic standard toolchain that lets you play with this process. You can see the assembly code before it gets turned into 1’s and 0’s by compiling your program with the following command: <span style="color:red">`go build -gcflags -S program.go`.</span> If you already have a compiled program and want to see the assembly code you can disassemble it with <span style="color:red">`go tool objdump binaryFile`</span>.
 
@@ -44,7 +44,7 @@ For example, you can plug the the following raw bytes (displayed in hex) through
  `0x64 0x48 0x8B 0xC 0x25 0xF8 0xFF 0xFF 0xFF`
 </span>
 
-![arrow](/arrow.png)
+![arrow](/dissecting/arrow.png)
 
 <span style="color:blue">
 `mov rcx, qword ptr fs:[0xfffffffffffffff8]`
@@ -64,7 +64,7 @@ With these tools our only real task is to extract the relevant raw bytes from th
 <!-- ELF's -->
 When you compile a Go program on your laptop the outputted binary will default to a 64-bit ELF (or `Executable Linkable Format`). The ELF is organized into various sections that each have a unique purpose such as storing version information, program metadata, or executable code. The ELF is a widely accepted standard for binary files and as such Go has a `debug/elf` package for easily interacting with them. There are many intricacies to the [ELF format specification](http://man7.org/linux/man-pages/man5/elf.5.html) but for the sake of disassembly we really only care about two sections. We care about the symbol table section and the text section. Let's take a look:
 
-<center>![ELF64](/ELF_64.png)</center>
+<center>![ELF64](/dissecting/ELF_64.png)</center>
 
 First let's define the term **symbol**. This is any name identifiable object in our code. Variables, functions, types, and constants are all symbols. The Go compiler compiles each symbol and stores reference information about it in the **symbol table**. We can see in the `debug/elf` package's definition of `Symbol` that each entry in the symbol table contains the symbol's name, size, memory offset, and type:
 
@@ -78,7 +78,7 @@ So, with this knowledge it becomes clear that we want to extract the symbol tabl
 
 Let's calculate the starting and ending indices of the symbol within the `.text` section's array of bytes. For each symbol we want to subtract its `Value` from the text section's starting address; this will give us the starting index. To calculate the ending index we just add the symbol's size to the starting index. From there we can collect the bytes and feed them through Capstone.
 
-<center>![SymTableToTextSection](/SymbolTableToTextSection.png)</center>
+<center>![SymTableToTextSection](/dissecting/SymbolTableToTextSection.png)</center>
 
 We're essentially finished now. We're going to open up the `.text` section to get the starting address and raw data, do the address calculation for each symbol, run the data through Capstone, and print out the resulting instructions:
 
