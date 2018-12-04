@@ -1,6 +1,6 @@
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: #eee;
+  background-color:  rgb(255, 255, 255);;
 }
 
 h1 { font-size: 3rem; }
@@ -109,7 +109,7 @@ div.topbar #about:hover {
 ul {
 	list-style: square outside none;
 	font-size:14px;
-	background:#eeeeee;
+	background: rgb(255, 255, 255);
 	padding: 8px 0px 9px 45px;
 	margin: 0px 0px 1.25em 30px;
 	line-height:1.25;
@@ -127,7 +127,7 @@ hr {
 .hr {
   height: 1px;
   margin: 2rem 0;
-  background: #ddd;
+  background: rgb(255, 255, 255);
 }
 
 h2 {
