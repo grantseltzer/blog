@@ -24,7 +24,18 @@
 	<div class="container">
 
 	<header role="banner">
-		<img src="/balfouri.png" alt="full" class="tarantula">
+	<script>
+		var random_images_array = [
+			"<img style=\"width: 65%;height:auto;\" src=\"/balfouri.png\">",
+			"<img style=\"width: 100%;height:auto;\" src=\"/blue.png\">",
+			"<img style=\"width: 90%;height:auto;\" src=\"/maculata.png\">",
+			"<img style=\"width: 90%;height:auto;\" src=\"/red.png\">",
+			"<img style=\"width: 80%;height:auto;\" src=\"/irminia.png\">"
+		];
+		var num = Math.floor(Math.random() * random_images_array.length);
+		var imgStr = random_images_array[num]
+		document.write(imgStr)
+	</script>
 	</header>
 	
 	<main role="main">
@@ -51,7 +62,7 @@
 			Copyright &copy; 2018
 		</div>
 		<div>	
-			Image courtesy of <a id="copyrightlink" href="https://mygale.de/en/">Julian Kamzol</a>
+			Tarantula images courtesy of <a id="copyrightlink" href="https://mygale.de/en/">Julian Kamzol</a>
 		</div>
 	</footer>
 
