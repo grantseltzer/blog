@@ -34,21 +34,10 @@
 	<div class="container">
 
 	<header role="banner">
-	<script>
-		var random_images_array = [
-			"<img style=\"width: 65%;height:auto;\" src=\"/balfouri.png\">",
-			"<img style=\"width: 100%;height:auto;\" src=\"/blue.png\">",
-			"<img style=\"width: 90%;height:auto;\" src=\"/maculata.png\">",
-			"<img style=\"width: 90%;height:auto;\" src=\"/red.png\">",
-			"<img style=\"width: 80%;height:auto;\" src=\"/irminia.png\">"
-		];
-		var num = Math.floor(Math.random() * random_images_array.length);
-		var imgStr = random_images_array[num]
-		document.write(imgStr)
-	</script>
 	</header>
 	
 	<main role="main">
+	<img class="tarantula" src="/blue.png">
 {{ range (where .Data.Pages ".Params.hidefromhome" "!=" "true") }}
 	<h2 class="entry-title" itemprop="headline"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
 	<span class="entry-meta"><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time></span>
@@ -69,10 +58,10 @@
 		</div>
 
 		<div>
-			Copyright &copy; 2018
+			Copyright &copy; 2018 - 2019
 		</div>
 		<div>	
-			Tarantula images courtesy of <a id="copyrightlink" href="https://mygale.de/en/">Julian Kamzol</a>
+			Image courtesy of <a id="copyrightlink" href="https://mygale.de/en/">Julian Kamzol</a>
 		</div>
 	</footer>
 
