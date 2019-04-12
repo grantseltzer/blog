@@ -20,4 +20,4 @@ The solution to this issue is to give developers the best of both worlds. To use
 
 <h2><b>//go:cgo_import_dynamic</b></h2>
 
-Go has a bunch of little known features that allow you to give instructions to the compiler, linker, and other related piecesusing special comments. Dave Cheney wrote an excellent post on them [here](https://dave.cheney.net/2018/01/08/gos-hidden-pragmas). One such directive, or 'pragmas' as Cheney puts them, is `//go:cgo_import_dynamic`. This is a linker directive. It tells the linker to pull in a specific function from a dynamic library such as libc. 
+Go has a bunch of little known features that allow you to give instructions to the compiler, linker, and other parts of the toolchain using special comments. Dave Cheney wrote an excellent post on them [here](https://dave.cheney.net/2018/01/08/gos-hidden-pragmas). One such directive, or 'pragmas' as Cheney puts them, is `//go:cgo_import_dynamic`. This is a linker directive. It tells the linker to pull in a specific function from a dynamic library such as libc. 
