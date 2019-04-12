@@ -18,9 +18,9 @@ type Writer interface {
 }
 ```
 
-It is short, simple, and powerful. The `Write` method takes a very generic slice of bytes and write's it to <i>something</i>.
+It is short, simple, and powerful. The `Write` method takes a very generic slice of bytes and writes it to <i>something</i>.
 
-In Rob Pike's [Go Proverbs talk](https://youtu.be/PAAkCSZUG1c?t=317) he talks about how in Go, interfaces are not declared to be satisfied, they're satisfied implicitly. An interface should be a way of classifying types, not as a blueprint for declaring them. In practical terms, an interface should not at all care about how it's  implemented.
+In Rob Pike's [Go Proverbs talk](https://youtu.be/PAAkCSZUG1c?t=317) he talks about how in Go, interfaces are not declared to be satisfied, they're satisfied implicitly. An interface should be a way of classifying types, not a blueprint for declaring them. In practical terms, an interface should not at all care about how it's  implemented.
 
 Let's think about how `io.Writer` embodies this ideal. The `Write` method takes the most generic form of data, a slice of bytes. Any other data type, no matter how complex, can become a slice of bytes. In this way the method does not care about what's it's passed. It leaves so much up to the implementation's discretion. 
 
