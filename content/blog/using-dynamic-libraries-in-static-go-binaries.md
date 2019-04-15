@@ -7,27 +7,33 @@ Date = 2019-04-09T03:32:37+00:00
 +++
 
 <span style="color:grey;font-style: italic;font-size: 14px">
-In this post we look at a recent change to Go's net and runtime packages.
+This post highlights a linker directive in Go. It allows us to import functions from a dynamic library even when CGO is disable. I use the example of a contribution I recently made to the net and runtime packages to demonstrate its use case.
 </span>
 
-I recently got my very first contribution into Go! The change involves using [res_search](https://www.freebsd.org/cgi/man.cgi?query=res_search&apropos=0&sektion=3&manpath=FreeBSD+9-current&format=html), a function for executing a DNS query when CGO is disabled on macos. 
+Go has many little known features that allow you to give instructions to the compiler, linker, and other parts of the toolchain using special comments. Dave Cheney wrote an excellent post on them [here](https://dave.cheney.net/2018/01/08/gos-hidden-pragmas). One such 'pragma' as Cheney calls them, is  `//go:cgo_import_dynamic`. This is a linker directive. It tells the linker to pull in a specific function from a dynamic library such as libc.
 
-Prior to this change when a Go program would run a DNS query, such as with `net.LookupHost` there were two possible paths that the Go runtime can take to handle that query. If the program was compiled with CGO <i>enabled</i> it will dynamically call `getaddrinfo`, a libc function for hostname/address translation. If the program was compiled with CGO <i>disabled</i>, it will call [code](https://github.com/golang/go/blob/master/src/net/dnsclient_unix.go) written in Go which builds out the request and manually sends it out. 
+Let's check out an example from my [recent contribution](https://go-review.googlesource.com/c/go/+/166297) to the runtime package.
 
-This was an issue in particular on darwin. If an engineer downloads a binary written in Go <i>(hashicorp tools come to mind)</i> to run on their macbook pro it was surely statically built without CGO. Darwin has features to configure your DNS nameservers which the Go native code does not take into account. [This](https://github.com/golang/go/issues/12524) github issue details the problem.
-
-The solution to this issue is to give developers the best of both worlds. To use libc code for dns resolution (which would be aware of darwin's features), regardless of if CGO is enabled.
-
-
-
-<h1 style="color:red">XXX: Make this the full post?</h1>
-<h2><b>//go:cgo_import_dynamic</b></h2>
-
-Go has a bunch of little known features that allow you to give instructions to the compiler, linker, and other parts of the toolchain using special comments. Dave Cheney wrote an excellent post on them [here](https://dave.cheney.net/2018/01/08/gos-hidden-pragmas). One such directive, or 'pragmas' as Cheney puts them, is  `//go:cgo_import_dynamic`. This is a linker directive. It tells the linker to pull in a specific function from a dynamic library such as libc. Let's check out an example from my recent change to the runtime package.
-
-First, in lookup_darwin.go we use the cgo_import_dynamic directive for both `res_search` and `res_init`:
+First, in lookup_darwin.go we use the cgo_import_dynamic directive for `res_search`
 
 <script src="https://gist.github.com/grantseltzer/1d6fdd3ba81a18ea5fbb48d62b2f91c5.js"></script>
 
-When this is placed in a Go file the linker will pull in the `res_search` and `res_init` routines from libSystem (located at the specified path) and make it referenceable in Go's assembly code by the names `libc_res_search` and `libc_res_init`.
+When the linker is run after compilation it executes this directive. The linker pulls in the `res_search` routine from the libSystem dynamic library (found at the given path). It then makes the routine referenceable in Go's assembly code by the name `libc_res_search`.
 
+Now in order to link assembly code to Go we have a couple of pieces of glue to put in place. Let's take a look first, and then analyze:
+
+<script src="https://gist.github.com/grantseltzer/38c76591c532f3bc40e1367c19502167.js"></script>
+
+The first thing to look at is the symbol definition of `res_search_trampoline()` <i>(line 13)</i>. This is a function which will be defined in assembly. Defining the symbol in Go code allows the linker to make it referenceable. 
+
+We also need a helper function which takes the arguments to pass to the assembly routine, and makes a call to `libcCall()`. This is a helper function defined inside the runtime package. It takes both the trampoline symbol address, and address of the arguments. It uses these to orchestrate the actual call.
+
+Finally we define the assembly routine for `res_search_trampoline` which is linked by the Go symbol above.
+
+<script src="https://gist.github.com/grantseltzer/0327af2124ddab0f50682f158e23863c.js"></script>
+
+All this routine does is load the arguments by their offset (calculated by size) and call `libc_res_search`. It also checks a possible error and calls `libc_error` (another statically linked function!) accordingly.
+
+From these definitions we can now call the res_search helper function as if it's the res_search function in libSystem. This is all of course regardless of if CGO is enabled! 
+
+Do keep in mind, this directive is purposely not part of the language specification. It should probably only be done in Go's runtime package. 
