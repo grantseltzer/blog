@@ -18,6 +18,16 @@ This was an issue in particular on darwin. If an engineer downloads a binary wri
 
 The solution to this issue is to give developers the best of both worlds. To use libc code for dns resolution (which would be aware of darwin's features), regardless of if CGO is enabled.
 
+
+
+<h1 style="color:red">XXX: Make this the full post?</h1>
 <h2><b>//go:cgo_import_dynamic</b></h2>
 
-Go has a bunch of little known features that allow you to give instructions to the toolchain, compiler, linker, and other related pieces using special comments. Dave Cheney wrote an excellent post on them [here](https://dave.cheney.net/2018/01/08/gos-hidden-pragmas). One such directive, or 'pragmas' as Cheney puts them, is `//go:cgo_import_dynamic ...`. This is a linker directive which tells the linker where to find libc functions to pull into the outputted binary.
+Go has a bunch of little known features that allow you to give instructions to the compiler, linker, and other parts of the toolchain using special comments. Dave Cheney wrote an excellent post on them [here](https://dave.cheney.net/2018/01/08/gos-hidden-pragmas). One such directive, or 'pragmas' as Cheney puts them, is  `//go:cgo_import_dynamic`. This is a linker directive. It tells the linker to pull in a specific function from a dynamic library such as libc. Let's check out an example from my recent change to the runtime package.
+
+First, in lookup_darwin.go we use the cgo_import_dynamic directive for both `res_search` and `res_init`:
+
+<script src="https://gist.github.com/grantseltzer/1d6fdd3ba81a18ea5fbb48d62b2f91c5.js"></script>
+
+When this is placed in a Go file the linker will pull in the `res_search` and `res_init` routines from libSystem (located at the specified path) and make it referenceable in Go's assembly code by the names `libc_res_search` and `libc_res_init`.
+
