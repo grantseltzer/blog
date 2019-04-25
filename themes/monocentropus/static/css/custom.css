@@ -17,6 +17,14 @@ img {
   border: 0;
 }
 
+img.photo {
+
+	margin-left: auto;
+	display: block;
+	margin-right: auto;
+	padding-bottom: 15px;
+}
+
 header,
 footer {
   margin: 4rem 0;

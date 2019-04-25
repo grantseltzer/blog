@@ -10,7 +10,7 @@ Date = 2019-04-09T03:32:37+00:00
 This post highlights a linker directive in Go. It allows us to import functions from a dynamic library even when CGO is disabled. I use the example of a contribution I recently made to the net and runtime packages to demonstrate its use case.
 </span>
 
-Go has many little known features that allow you to give instructions to the compiler, linker, and other parts of the toolchain using special comments. Dave Cheney wrote an excellent post on them [here](https://dave.cheney.net/2018/01/08/gos-hidden-pragmas). One such 'pragma' as Cheney calls them, is  `//go:cgo_import_dynamic`. This is a linker directive. It tells the linker to pull in a specific function from a dynamic library such as libc.
+Go has many little known features that allow you to give instructions to the compiler, linker, and other parts of the toolchain using special comments. Dave Cheney wrote an excellent post on them [here](https://dave.cheney.net/2018/01/08/gos-hidden-pragmas). One such 'pragma' as Cheney calls them is  `//go:cgo_import_dynamic`. This is a linker directive. It tells the linker to pull in a specific function from a dynamic library such as libc.
 
 Let's check out an example from my [recent contribution](https://go-review.googlesource.com/c/go/+/166297) to the runtime package.
 
