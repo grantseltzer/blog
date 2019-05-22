@@ -3,11 +3,11 @@ title = "Standardized Streams and Shells"
 Description = ""
 Tags = []
 Categories = []
-Date = 2019-05-15T03:32:37+00:00
+Date = 2019-05-21T03:32:37+00:00
 +++
 
 <span style="color:grey;font-style: italic;font-size: 14px">
-In this post we discuss how standardized streams (`stdin`/`stdout`/`stderr`) work on Linux and how to interact with them in Go
+In this post we discuss how standardized streams (`stdin`/`stdout`/`stderr`) work on Linux, especially related to shells.
 </span>
 
 Every well known operating system has a concept of standardized streams. These consist of standard input, output, and error. As their name purports, they are the standard places to read input, and send output. They're a crucial concept that allows various running procceses to easily communicate.
@@ -38,14 +38,10 @@ You can actually access the standard streams of other proccesses. Try taking the
 
 1) Open up two terminal sessions
 
-2) From the first terminal run the command `ls -l /proc/$PPID/fd`. This will tell you what pseudo-terminal you can write to.
+2) From the first terminal run the command `ls -l /proc/$PPID/fd`. This will tell you what pseudo-terminal your shell is using to read from and write to.
 
-```
-TODO:
+3) In the second terminal write to the first pseudo-terminal device file with `echo "testing" > /dev/pts/<pts_number>`.
 
-- Open a container w/ Bash
-- Exec into it from another terminal
-- write to each others stdout (/dev/pty0, /dev/pty1)
--
+4) Take a look at the first terminal for a special surprise!
 
-```
+<i>If you're interested to see how to play with standardized streams in Go, take a look at [this example](https://github.com/grantseltzer/cmo/blob/022621ec394edbbd41af1cc8e370d7f28a2a0340/main.go#L47)</i>
