@@ -10,7 +10,7 @@ Date = 2019-05-21T03:32:37+00:00
 In this post we discuss how standardized streams (`stdin`/`stdout`/`stderr`) work on Linux, especially related to shells.
 </span>
 
-Every well known operating system has a concept of standardized streams. These consist of standard input, output, and error. As their name purports, they are the standard places for proccesses to read input, and send output. They're a crucial concept that allows various running procceses to easily communicate.
+Every well known operating system has a concept of standardized streams. These consist of standard input, output, and error. As their name purports, they are the standard places for proccesses to read input, and send output. They're a crucial concept that allows various running processes to easily communicate.
 
 Standardized streams enable you to string together multiple commands with a pipe (`|`) in your shell like this:
 
@@ -27,14 +27,14 @@ lrwx------ 1 root root 64 May 20 16:58 1 -> /dev/pts/0
 lrwx------ 1 root root 64 May 20 16:58 2 -> /dev/pts/0
 ```
 
-In the above output you can see that the process has file descriptors `0`, `1`, and `2`. By convention these correspond to `stdin`, `stdout`, and `stderr` respecitvely. These all point to the pseudo-terminal `/dev/pts/0`.  
+In the above output you can see that the process has file descriptors `0`, `1`, and `2`. By convention these correspond to `stdin`, `stdout`, and `stderr` respectively. These all point to the pseudo-terminal `/dev/pts/0`.  
 
 Your terminal application runs a shell (such as bash or zsh) and provides for it a GUI to display input and output. When you open a terminal it has its own set of standard streams. As mentioned above, it also creates a special device file like `/dev/pts/0` which other processes can read from and write to. In addition to running the commands that you enter, it listens for their input and output from the pseudo-terminal device file. In the case of input, it passes it to the running command. In the case of output, it displays it to the terminal GUI.
 
 
 ## Play along at home
 
-You can actually access the standard streams of other proccesses. Try taking the following steps:
+You can actually access the standard streams of other processes. Try taking the following steps:
 
 1) Open up two terminal sessions.
 
