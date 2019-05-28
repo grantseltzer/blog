@@ -10,7 +10,12 @@
 
   gtag('config', 'UA-131587033-1');
 </script>
-
+<script>
+	function emailfunc() {
+	  document.getElementById("email").innerHTML = "grantseltzer AT gmail DOT com";
+	}
+  </script>
+  
 <meta charset="utf-8">
 {{ .Hugo.Generator }}
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,22 +49,20 @@
 {{ end }}
 	</main>
 
+
 	<footer role="contentinfo">
 		<div class="hr"></div>
-		 
-		<div>
-			<a class="sociallink" href="mailto:grantseltzer-AT-gmail.com"><img class="socialimg" src="/social/email.png"/></a>
+		
+			<div>
+			<img onclick="emailfunc()" class="socialimg" src="/social/email.png"/>
 			<a class="sociallink" href="http://www.github.com/grantseltzer"><img class="socialimg" src="/social/github.png"/></a>
 			<a class="sociallink" href="http://www.twitter.com/grantseltzer"><img class="socialimg" src="/social/twitter.png"/></a>
 			<a class="sociallink" href="https://www.linkedin.com/in/grantseltzerrichman/"><img class="socialimg" src="/social/linkedin.png"/></a>
 			<a class="sociallink" href="https://www.goodreads.com/user/show/50650128-grant-seltzer"><img class="socialimg" src="/social/book.png"></a>
 			<a class="sociallink" href="/photos/photos"><img class="socialimg" src="/social/camera.png"></a>
-
 		</div>
-
-		<div>
-			Copyright &copy; 2018 - 2019
-		</div>
+		<p id="email" ></p>
+		<div class="copyright">Copyright &copy; 2018 - 2019</div>
 		<div>	
 			Image courtesy of <a id="copyrightlink" href="https://mygale.de/en/">Julian Kamzol</a>
 		</div>
