@@ -10,7 +10,7 @@ Date = 2019-08-15T03:32:37+00:00
 This post discusses building go test binaries and walking through them with delve
 </span>
 
-I recently was working on debugging a unit test I wrote in Go. I couldn't figure out why one of my test cases was causing a runtime error that never happened when running my actual program. I was using a runtime directive so I suspected there may be some difference between doing a `go test` and a `go run`. I was looking through Go build mode [documentation](https://golang.org/cmd/go/#hdr-Build_modes) while wondering if I could step through it with a debugger. Lo and behold you can compile your tests into an ELF executable! As a result I was able to step through my unit tests using a debugger.
+I recently was working on debugging a unit test I wrote in Go. I couldn't figure out why one of my test cases was causing a runtime error that never happened when running my actual program. I was using a runtime directive so I suspected there may be some difference between doing a `go test` and a `go run`. I was looking through Go build mode [documentation](https://golang.org/cmd/go/#hdr-Build_modes) while wondering if I could step through it with a debugger. Lo and behold you can compile your tests into an ELF executable! 
 
 Let's take a look at this esoteric example <i>(inspired by [Dave Cheney](https://twitter.com/davecheney/status/1133172785440624640))</i>:
 
