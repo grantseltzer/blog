@@ -52,14 +52,10 @@ func TestSwitch(t *testing.T) {
 
 We can compile a test binary with `go test -c`. As it turns out, the go `test` command is completely configurable with all linker, loader, and runtime flags. For example, you can change your `GOOS` and `GOARCH` environment variables to compile different test files.
 
-`dlv exec switchers.test`
+You can then go ahead and run that binary through a debugger, such as [delve](https://github.com/go-delve/delve) with `dlv exec switchers.test`
 
-`break switchers.TestSwitch`
+You're going to want to set a breakpoint for the unit test you're trying to debug and continue to it:
 
-`continue`
+![breakcontinue](/test-build-modes/breakcontinue.png)
 
-`step`
-
-`stepi`
-
-`regs`
+From there you can step through your test one line (`step`) or instruction (`stepi`) at a time. Try out this example and see if you can figure out what's going on! Find the [example code](here).
