@@ -3,7 +3,7 @@ title = "Debugging Go tests"
 Description = ""
 Tags = []
 Categories = []
-Date = 2019-08-05T03:32:37+00:00
+Date = 2019-08-15T03:32:37+00:00
 +++
 
 <span style="color:grey;font-style: italic;font-size: 14px">
@@ -58,4 +58,4 @@ You're going to want to set a breakpoint for the unit test you're trying to debu
 
 ![breakcontinue](/test-build-modes/breakcontinue.png)
 
-From there you can step through your test one line (`step`) or instruction (`stepi`) at a time. Try out this example and see if you can figure out what's going on! Find the [example code](here).
+From there you can step through your test one line (`step`) or instruction (`stepi`) at a time. Try out this example and see if you can figure out what's going on! Find the example code [here](https://github.com/grantseltzer/switchers-blog-example).
