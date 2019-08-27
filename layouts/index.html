@@ -30,45 +30,43 @@
 </style>
 <title>Grant Seltzer Richman</title>
 </head>
-<body>
+	<body>
 
-	<div class="topbar">
-		<a id="homebutton" href="/">GSR</a>
-		<a id="about" href="/about/about">about</a>
-	</div>
-	<div class="container">
-
-	<header role="banner">
-	</header>
-	
-	<main role="main">
-	<img class="tarantula" src="/blue.png">
-{{ range (where .Data.Pages ".Params.hidefromhome" "!=" "true") }}
-	<h2 class="entry-title" itemprop="headline"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-	<span class="entry-meta"><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time></span>
-{{ end }}
-	</main>
-
-
-	<footer role="contentinfo">
-		<div class="hr"></div>
+		<div class="topbar">
+			<a id="homebutton" href="/">GSR</a>
+			<a id="about" href="/about/about">about</a>
+		</div>
 		
-			<div>
-			<img onclick="emailfunc()" class="socialimg" src="/social/email.png"/>
-			<a class="sociallink" href="http://www.github.com/grantseltzer"><img class="socialimg" src="/social/github.png"/></a>
-			<a class="sociallink" href="http://www.twitter.com/grantseltzer"><img class="socialimg" src="/social/twitter.png"/></a>
-			<a class="sociallink" href="https://www.linkedin.com/in/grantseltzerrichman/"><img class="socialimg" src="/social/linkedin.png"/></a>
-			<a class="sociallink" href="https://www.goodreads.com/user/show/50650128-grant-seltzer"><img class="socialimg" src="/social/book.png"></a>
-			<a class="sociallink" href="/photos/photos"><img class="socialimg" src="/social/camera.png"></a>
-		</div>
-		<p id="email" ></p>
-		<div class="copyright">Copyright &copy; 2018 - 2019</div>
-		<div>	
-			Image courtesy of <a id="copyrightlink" href="https://mygale.de/en/">Julian Kamzol</a>
-		</div>
-	</footer>
+		<div class="container">
 
-</div>
+			<header role="banner"></header>
+			<main role="main">
+				<img class="tarantula" src="/blue.png">
 
-</body>
+				
+
+				{{ range (where .Data.Pages ".Params.hidefromhome" "!=" "true") }}
+					<h2 class="entry-title" itemprop="headline"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+					<span class="entry-meta"><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time></span>
+				{{ end }}
+
+			</main>
+
+
+			<footer role="contentinfo">
+				<div class="hr"></div>
+					<div>
+					<img onclick="emailfunc()" class="socialimg" src="/social/email.png"/>
+					<a class="sociallink" href="http://www.github.com/grantseltzer"><img class="socialimg" src="/social/github.png"/></a>
+					<a class="sociallink" href="http://www.twitter.com/grantseltzer"><img class="socialimg" src="/social/twitter.png"/></a>
+					<a class="sociallink" href="https://www.linkedin.com/in/grantseltzerrichman/"><img class="socialimg" src="/social/linkedin.png"/></a>
+					<a class="sociallink" href="https://www.goodreads.com/user/show/50650128-grant-seltzer"><img class="socialimg" src="/social/book.png"></a>
+					<a class="sociallink" href="/photos/photos"><img class="socialimg" src="/social/camera.png"></a>
+				</div>
+				<p id="email" ></p>
+				<div class="copyright">Copyright &copy; 2018 - 2019</div>
+				<div>Image courtesy of <a id="copyrightlink" href="https://mygale.de/en/">Julian Kamzol</a></div>
+			</footer>
+		</div>
+	</body>
 </html>
