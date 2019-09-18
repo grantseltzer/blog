@@ -41,9 +41,9 @@ In the case of `c.txt` here, the instance of the file that's in the highest most
 
 All of the layers except the top one are read-only. This means changes made to files from the unfified overlay directory will not change the actual files. Changes would be written to a new file in the top most layer and displayed over the original. If you don't want any changes to files in your bottom layers you can just create an empty directory to use as your top layer.
 
-Here's what this all looks like in terminal:
+Here's an asciicast of what this all looks like in terminal:
 
-//TODO:
+[![asciicast](https://asciinema.org/a/Udyq2RJnihFGbJjJjHLzsaVjT.svg)](https://asciinema.org/a/Udyq2RJnihFGbJjJjHLzsaVjT)
 
 # Why?
 
