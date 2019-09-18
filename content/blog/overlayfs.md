@@ -18,7 +18,16 @@ Here we have three seperate directories. They each contain various files. You ma
 
 Let's say I want to create an overlayfs with these three directories. You can do it from the command like this:
 
-`mount -t overlay....` //TODO:
+```
+mount \
+    -t overlay \
+    -o \
+    lowerdir=/home/grant:/tmp/middle, \
+    upperdir=/tmp/upper,\
+    workdir=/tmp/workdir \
+    none \
+    /tmp/overlay
+```
 
 The order here is important. You can create an overlay with any amount of directories. The order in which you specify them is the order that they're effectively stacked on top of one another.
 
