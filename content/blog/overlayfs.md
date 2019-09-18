@@ -36,7 +36,8 @@ Here's what this all looks like in terminal:
 
 //TODO:
 
-
 # Why?
 
-//TODO:
+Overlayfs is used so that multiple containers can share the same base image. The root file system of the image is stored somewhere on disk. An overlayfs is created for each running container where the bottom layer is the image rootfs and the top layer is mounted into the container.
+
+You can also use it in other ways. I like to create an overlay mount of my home directory and mount it into containers so that I have an environment that looks like my home but any changes won't persist once I close the container. This is useful for installing programs that I think may break my dependencies. 
