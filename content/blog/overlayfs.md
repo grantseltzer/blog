@@ -14,7 +14,7 @@ Let's look at an example:
 
 <center>![seperate](/overlay/seperate.png)</center>
 
-Here we have three seperate directories. They each contain various files. You may also notice that both `/tmp/middle` and `/tmp/upper` contain files with the same name (`c.txt`).
+Here we have three separate directories. They each contain various files. You may also notice that both `/tmp/middle` and `/tmp/upper` contain files with the same name (`c.txt`).
 
 Let's say I want to create an overlayfs with these three directories. You can do it from the command like this:
 
@@ -39,11 +39,11 @@ Here's what creating the overlayfs mount is effectively doing. The 'overlay' is 
 
 In the case of `c.txt` here, the instance of the file that's in the highest most layer is what's displayed.
 
-All of the layers except the top one are read-only. This means changes made to files from the unfified overlay directory will not change the actual files. Changes would be written to a new file in the top most layer and displayed over the original. If you don't want any changes to files in your bottom layers you can just create an empty directory to use as your top layer.
+All of the layers except the top one are read-only. This means changes made to files from the unified overlay directory will not change the actual files. Changes would be written to a new file in the top most layer and displayed over the original. If you don't want any changes to files in your bottom layers you can just create an empty directory to use as your top layer.
 
-Here's what this all looks like in terminal:
+Here's an asciicast of what this all looks like in terminal:
 
-//TODO:
+[![asciicast](https://asciinema.org/a/Udyq2RJnihFGbJjJjHLzsaVjT.svg)](https://asciinema.org/a/Udyq2RJnihFGbJjJjHLzsaVjT)
 
 # Why?
 
