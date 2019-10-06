@@ -39,8 +39,11 @@ The `stat` and `status` files contain resource usage information about the proce
 Here's a really cool one. This contains every symbol (function or variable) in your kernels code. If you `cat` it as root it'll also give you their static memory addresses. This is used for setting [kprobes](https://lwn.net/Articles/132196/) or for use in kernel modules.
 
 ## - `/proc/self`
-//TODO:
 
+This is a symlink to the <i>currently running</i> process. Meaning this will be the `/proc/[pid]` directory of whatever process requests access to it.
+
+<center>![self](/procfs/self.png)</center>
 
 The directories and files in `/proc` don't actually exist on disk. The procfs is the kernel representing the procceses on your system <i>as if</i> they were files. Whenever a process requests files in the procfs, the kernel responds with the contents of the theoretical file. 
 
+//TODO: conclusion
