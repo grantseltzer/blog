@@ -6,11 +6,9 @@ Categories = []
 Date = 2019-10-02T03:32:37+00:00
 +++
 
-The very worst part of macos is its lack of a procfs. 
+I love the procfs because it provides an intuative and easy to use interface for interacting with the kernel. In the same way you'd normally use the command line for exploring files, you can control and find out information about currently running processes. All without the need for system calls.
 
-The proc filesystem provides a convenient way of interacting with the running proccess' on your machine by simply reading and writing to files. A procfs is mounted at `/proc` by default. 
-
-If you go into `/proc` you'll see something like this:
+A procfs is mounted at `/proc` by default. If you go into `/proc` you'll see something like this:
 
 <center>![toplevel](/procfs/toplevel.png)</center>
 
@@ -24,7 +22,7 @@ Among these files you can find out information such as performance of the proces
 
 ## <b> - `/proc/[pid]/fd` </b>
 
-A file descriptor is a proccess' handle on an open file. This directory contains symbolic links to open file descriptors that the process has. Most importantly you can find the file descriptors for [standardized streams](/blog/standardized-streams-and-shells). One usecase for this is using `tail` to follow logs printed to standard error of a particular process (`tail -f /proc/[pid]/fd/2`)
+A file descriptor is a process' handle on an open file. This directory contains symbolic links to open file descriptors that the process has. Most importantly you can find the file descriptors for [standardized streams](/blog/standardized-streams-and-shells). One use case for this is using `tail` to follow logs printed to standard error of a particular process (`tail -f /proc/[pid]/fd/2`)
 
 ## <b> - `/proc/[pid]/exe` and `/proc/[pid]/cmdline` </b>
 
@@ -44,4 +42,6 @@ This is a symlink to the <i>currently running</i> process. Meaning this will be 
 
 <center>![self](/procfs/self.png)</center>
 
-The directories and files in `/proc` don't actually exist on disk. The procfs is the kernel representing the procceses on your system <i>as if</i> they were files. Whenever a process requests files in the procfs, the kernel responds with the contents of the theoretical file. In this sense the procfs is a uniquely powerful method of communicatoin between kernel and user space without the need for system calls.
+The directories and files in `/proc` don't actually exist on disk. The procfs is the kernel representing the proceses on your system <i>as if</i> they were files. Whenever a process requests files in the procfs, the kernel responds with the contents of the theoretical file.
+
+Now if only Apple would enable procfs on Macos...
