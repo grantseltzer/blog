@@ -1,11 +1,12 @@
 +++
 title = "Using Karn for Seccomp Enforcement"
+Description = ""
+Tags = []
+Categories = []
 Date = 2019-12-11T03:32:37+00:00
 +++
-
-<center>![karn](/karn/karn_art.jpeg)</center>
+<center>![karn](/karn-blog/karn_art.jpeg)</center>
 <center><i>me when someone turns off seccomp</i></center>
-
 
 [Karn](https://github.com/grantseltzer/karn) aims to provide for Linux what [entitlements](https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/EntitlementKeyReference/Chapters/AboutEntitlements.html) provide for iOS, or what [pledge](https://man.openbsd.org/pledge.2) provides for OpenBSD. It does this by translating a high level set of intuitive 'entitlements' into complex seccomp profiles. 
 
@@ -19,12 +20,12 @@ Most container runtimes use seccomp as a way of limiting privilege by default. I
 
 Here's an example of a seccomp configuration that you can use to block the `getcwd` system call and allow all others: 
 
-<center>![no-getcwd](/karn/no_getcwd.png)</center>
+<center>![no-getcwd](/karn-blog/no_getcwd.png)</center>
 <center><i>an example seccomp profile</i></center>
 
 You can run a container with the above profile. When a process tries to use the `getcwd` syscall a seccomp filter will be run that prevents it:
 
-<center>![no-getcwd](/karn/running_getcwd.png)</center>
+<center>![no-getcwd](/karn-blog/running_getcwd.png)</center>
 
 
 Although containers have [default profiles](https://docs.docker.com/engine/security/seccomp/) which grant all the permissions most applications will need, there are plenty of potential applications which will not be allowed. In those cases most people will instantly go for running their container with the `privileged` flag, disabling seccomp, apparmor, SELinux, and granting full device access. This opens applications up to a whole slew of risks. It's also an example of my most strongly held beliefs in security:
