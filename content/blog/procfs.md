@@ -6,13 +6,13 @@ Categories = []
 Date = 2019-10-02T03:32:37+00:00
 +++
 
-I love the procfs because it provides an intuative and easy to use interface for interacting with the kernel. In the same way you'd normally use the command line for exploring files, you can control and find out information about currently running processes. All without the need for system calls.
+I love the procfs because it provides an intuitive and easy to use interface for interacting with the kernel. In the same way you'd normally use the command line for exploring files, you can control and find out information about currently running processes. All without the need for system calls.
 
 A procfs is mounted at `/proc` by default. If you go into `/proc` you'll see something like this:
 
 <center>![toplevel](/procfs/toplevel.png)</center>
 
-You'll notice a lot of the directories that are just named by numbers. There is one for each individual procces. The directory names correspond to the process ID. One directory for each process.
+You'll notice a lot of the directories that are just named by numbers. There is one for each individual process. The directory names correspond to the process ID. One directory for each process.
 
 They all have the same layout:
 
