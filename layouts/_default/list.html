@@ -35,10 +35,13 @@
   <h1>Tag: {{ .Title }}</h1>
   {{ .Content }}
   <ul class="list-pages">
-    {{ range .Data.Pages }}
+    {{ range .Site.RegularPages }}
       <li class="lh-copy"><a href="{{ .Permalink | relURL }}" class="link f5">{{ .Title }}</a> - <time>{{ .Date.Format "January 02, 2006" }}</time></li>
     {{ end }}
   </ul>
+
+  {{ $paginator := .Paginate ( where .Site.RegularPages "Type" "blog" ) 10 }}
+
 </main>
 
     	<footer role="contentinfo">
