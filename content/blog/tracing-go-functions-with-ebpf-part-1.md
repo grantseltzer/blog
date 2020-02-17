@@ -1,5 +1,5 @@
 +++
-title = "Tracing Go Functions with eBPF"
+title = "Tracing Go Functions with eBPF: Part 1"
 Description = ""
 Tags = []
 Categories = []
@@ -137,6 +137,16 @@ for {
 }
 ```
 
-And that's it. The above code just prints output as it comes in. Here's a recording of it in action:
+The above code just prints output as it comes in, and that's it. 
+
+Now if we run our webserver, then run our tracing eBPF/Go program (or in reverse order, doesn't matter), the tracing program will let us know everytime someone hits the webserver.
+
+Code for the: [webserver](https://gist.github.com/grantseltzer/43154e656b5df1d4fe2f3d9a62cb3eeb) and [tracer](https://gist.github.com/grantseltzer/f82d5e2471e563f6aaf800ad9cdcf8a1)
+
+Here's a demo recording:
 
 ![animation](/weaver/demo.gif)
+
+## Next steps
+
+In the next part of this series we're going to learn about how we can extract a lot more information using eBPF. Things like function arguments, calling process information, and more!
