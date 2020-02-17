@@ -9,13 +9,12 @@ Date = 2020-02-14T03:32:37+00:00
 <center>![manhattangopher](/weaver/DrManhattanGopher.png)</center>
 <center><i>eBPF makes you an omniscient gopher</i></center>
 
-eBPF is a virtual machine, similar in concept to the JVM, except inside the Linux kernel. It lets you write 'C-like' or 'eBPF' code, compile it, and load the byte code into the kernel. You can then attach hooks to your loaded eBPF program to trigger it to run. Those hooks could be things like system calls, [kprobes](https://lwn.net/Articles/132196/), or  [uprobes](https://www.kernel.org/doc/ols/2007/ols2007v1-pages-215-224.pdf).
+eBPF is a virtual machine, similar in concept to the JVM, except it's inside the Linux kernel. It lets you write C-like code, compile it, and load the byte code into the kernel. You can then attach hooks to your loaded eBPF program to trigger it to run. Those hooks could be things like system calls, [kprobes](https://lwn.net/Articles/132196/), or  [uprobes](https://www.kernel.org/doc/ols/2007/ols2007v1-pages-215-224.pdf).
 
-There's many usecases for eBPF. Considering eBPF programs have full sysem visibility there are very few limits on what you can do. You can write an eBPF program which logs everytime certain files are modified. You use eBPF to profile performance of your other programs. You can implement host-based networking rules, or for [writing malware](https://www.youtube.com/watch?v=yrrxFZfyEsw).
+There's many use cases for eBPF. Considering eBPF programs have full system visibility there are very few limits on what you can do. You can write an eBPF program which logs every time certain files are modified. You use eBPF to profile performance of your other programs. You can implement host-based networking rules, or use it for [writing malware](https://www.youtube.com/watch?v=yrrxFZfyEsw).
 
-I have become obssesed with eBPF. In particular the most interesting functionality to me is the ability to attach eBPF programs to uprobes. These are a seperate technology from eBPF but they play very well together. Uprobes let you create a hook at a memory address anywhere in userspace. That means after you compile a program, lets say one written in Go, you can attach a hook to a specified function inside that program. Let's look at an example:
+I have become obsessed with eBPF. In particular the most interesting functionality to me is the ability to attach eBPF programs to uprobes. These are a seperate technology from eBPF but they play very well together. Uprobes let you create a hook at a memory address anywhere in userspace. That means after you compile a program, let's say one written in Go, you can attach a hook to a specified function inside that program. Let's look at an example:
 
-<b>main.go</b>
 ```
 package main
 
@@ -28,14 +27,14 @@ func main() {
 }
 ```
 
-When you `go buld` it, `functionA()` is created as a symbol in the created binary. We can see it here with this command:
+When you `go build` it, `functionA()` is created as a symbol in the created binary. We can see it here with this command:
 
 ```
 [*] objdump --syms ./test | grep functionA
 0000000000452330 g     F .text	0000000000000001 main.functionA
 ```
 
-`objdump` is used to list all the symbols in the binary. In the above output just worry about the memory offset all the way to the left, and the fact that it corresponds to our funciton `main.functionA`. (<i>Check out my other post, '[Dissecting Go Binaries](/blog/dissecting-go-binaries)' for more info on this.</i>)
+`objdump` is used to list all the symbols in the binary. In the above output just worry about the memory offset all the way to the left, and the fact that it corresponds to our function `main.functionA`. (<i>Check out my other post, '[Dissecting Go Binaries](/blog/dissecting-go-binaries)' for more info on this.</i>)
 
 So in this case, you can attach a uprobe to the `functionA` symbol, which you can have trigger an eBPF program. The uprobe is copied into memory anytime the binary is executed, meaning it will trigger anytime any process runs that function. Here's a diagram to help better visualize this:
 
@@ -69,11 +68,11 @@ func main() {
 
 This is just a simple webserver that serves a polite greeting. Doing a `curl localhost:8080` or going to `localhost:8080` in your browser will hit the endpoint.
 
-We're going to use eBPF and uprobes to tell us everytime the function `handlerFunction` is called, and therefore everytime someone connects to our webserver.
+We're going to use eBPF and uprobes to tell us every time the function `handlerFunction` is called, and therefore every time someone connects to our webserver.
 
-The eBPF program is going to be triggered everytime `handlerFunction` is called. We're going to keep things simple, so the only thing it's actually going to do is send a message to our Go program saying "Hey, the handler was called!". Let's look and then break it down:
+The eBPF program is going to be triggered every time `handlerFunction` is called. We're going to keep things simple, so the only thing it's actually going to do is send a message to our Go program saying "Hey, the handler was called!". Let's look and then break it down:
 
- ```c
+ ```
 #include <uapi/linux/ptrace.h>
 #include <linux/string.h>
 
@@ -87,11 +86,11 @@ inline int function_was_called(struct pt_regs *ctx) {
 }
 ```
 
-Just a couple things to note here. First off, we need a way for the eBPF program to tell us that it was triggered (meaning the handler was called in the Go program that we're tracing). To accomplish this, we use a BPF table. We can send arbitrary data over it from eBPF, and read it in the Go program which loaded it. We create this table using the helper function `BPF_PERF_OUTPUT`, which takes one parameter, the name of the table we want to create. You can see it then being used with the call: `events.perf_submit(...)`. That call just sends the string we have hardcoded about it. 
+Just a couple things to note here. First off, we need a way for the eBPF program to tell us that it was triggered (meaning the handler was called in the Go program that we're tracing). To accomplish this, we use a perf output buffer. We can send arbitrary data over it from eBPF, and read it in the Go program which loaded it. We create this table using the helper function `BPF_PERF_OUTPUT`, which takes one parameter, the name of the table we want to create. You can see it then being used with the call: `events.perf_submit(...)`. That call just sends the string that we have hardcoded through it. 
 
-For now you can ignore the `pt_regs ctx` parameter, more on that later.
+For now you can ignore the `pt_regs ctx` parameter, more on that in part two.
 
-Now let's write some go code. We're going to use bcc to compile the above eBPF code, load it, and then listen for output.
+Now let's write some Go code. We're going to use bcc to compile the above eBPF code, load it, and then listen for output.
 
 ```
 bpfModule := bcc.NewModule(eBPF_Text, []string{}) // We're going to store the eBPF program above in a string, named eBPF_Text
@@ -124,7 +123,7 @@ if err != nil {
 }
 ```
 
-Next we set up the BPF table on the Go userspace side. We'll interact with it in a idiomatic Go way, through a simple channel.
+Next we set up the perf output buffer on the Go userspace side. We'll interact with it in an idiomatic Go way, through a simple channel.
 
 ```
 
@@ -139,13 +138,13 @@ for {
 
 The above code just prints output as it comes in, and that's it. 
 
-Now if we run our webserver, then run our tracing eBPF/Go program (or in reverse order, doesn't matter), the tracing program will let us know everytime someone hits the webserver.
-
-Code for the: [webserver](https://gist.github.com/grantseltzer/43154e656b5df1d4fe2f3d9a62cb3eeb) and [tracer](https://gist.github.com/grantseltzer/f82d5e2471e563f6aaf800ad9cdcf8a1)
+Now if we run our webserver, then run our tracing eBPF/Go program (or in reverse order, doesn't matter), the tracing program will let us know every time someone hits the webserver!
 
 Here's a demo recording:
 
 ![animation](/weaver/demo.gif)
+
+Code for the: [webserver](https://gist.github.com/grantseltzer/43154e656b5df1d4fe2f3d9a62cb3eeb) and [tracer](https://gist.github.com/grantseltzer/f82d5e2471e563f6aaf800ad9cdcf8a1)
 
 ## Next steps
 
