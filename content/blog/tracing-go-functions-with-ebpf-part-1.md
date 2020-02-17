@@ -1,5 +1,5 @@
 +++
-title = "Tracing Go Functions with eBPF: Part 1"
+title = "Tracing Go Functions with eBPF Part 1"
 Description = ""
 Tags = []
 Categories = []
