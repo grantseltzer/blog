@@ -69,6 +69,74 @@ func main() {
 
 This is just a simple webserver that serves a polite greeting. Doing a `curl localhost:8080` or going to `localhost:8080` in your browser will hit the endpoint.
 
- We're going to use eBPF and uprobes to tell us everytime the function `handlerFunction` is called, and therefore everytime someone connects to our webserver.
+We're going to use eBPF and uprobes to tell us everytime the function `handlerFunction` is called, and therefore everytime someone connects to our webserver.
 
+The eBPF program is going to be triggered everytime `handlerFunction` is called. We're going to keep things simple, so the only thing it's actually going to do is send a message to our Go program saying "Hey, the handler was called!". Let's look and then break it down:
 
+ ```c
+#include <uapi/linux/ptrace.h>
+#include <linux/string.h>
+
+BPF_PERF_OUTPUT(events);
+
+inline int function_was_called(struct pt_regs *ctx) {
+
+	char x[29] = "Hey, the handler was called!";
+	events.perf_submit(ctx, &x, sizeof(x));
+	return 0;
+}
+```
+
+Just a couple things to note here. First off, we need a way for the eBPF program to tell us that it was triggered (meaning the handler was called in the Go program that we're tracing). To accomplish this, we use a BPF table. We can send arbitrary data over it from eBPF, and read it in the Go program which loaded it. We create this table using the helper function `BPF_PERF_OUTPUT`, which takes one parameter, the name of the table we want to create. You can see it then being used with the call: `events.perf_submit(...)`. That call just sends the string we have hardcoded about it. 
+
+For now you can ignore the `pt_regs ctx` parameter, more on that later.
+
+Now let's write some go code. We're going to use bcc to compile the above eBPF code, load it, and then listen for output.
+
+```
+bpfModule := bcc.NewModule(eBPF_Text, []string{}) // We're going to store the eBPF program above in a string, named eBPF_Text
+
+uprobeFd, err := bpfModule.LoadUprobe("function_was_called")
+if err != nil {
+	log.Fatal(err)
+}
+```
+
+All we're doing above is creating a new module (<i>not a kernel module</i>) by passing in the text of our eBPF program which is kept in a string. We're then creating a new uprobe which we're going to attach the eBPF function `function_was_called`.
+
+```
+err = bpfModule.AttachUprobe(pathToBinaryToTrace, "main.handlerFunction", uprobeFd, -1)
+if err != nil {
+	log.Fatal(err)
+}
+```
+
+Uprobes attach to userspace memory locations. In order to do this we give `AttachUprobe` a path to the binary that contains the symbol `"main.handlerFunction"`. This helper function will figure out the exact memory address within the binary for us. Whenever the binaries executable code section is mapped into memory, so will the uprobe.
+
+```
+table := bcc.NewTable(bpfModule.TableId("events"), bpfModule)
+
+outputChannel := make(chan []byte)
+
+perfMap, err := bcc.InitPerfMap(table, outputChannel)
+if err != nil {
+	log.Fatal(err)
+}
+```
+
+Next we set up the BPF table on the Go userspace side. We'll interact with it in a idiomatic Go way, through a simple channel.
+
+```
+
+perfMap.Start()
+defer perfMap.Stop()
+
+for {
+	value := <-channel
+	fmt.Println(string(value))
+}
+```
+
+And that's it. The above code just prints output as it comes in. Here's a recording of it in action:
+
+![animation](/weaver/demo.gif)
