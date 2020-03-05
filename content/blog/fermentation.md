@@ -3,12 +3,12 @@ title = "Fermentation Experimentation"
 Description = ""
 Tags = []
 Categories = []
-Date = 2023-08-05T03:32:37+00:00
+Date = 2013-08-05T03:32:37+00:00
 +++
 
-In recent months I've decided that I haven't perpetuated enough hipster Brooklyn stereotypes and have taken up fermentation as a hobby. This post goes through a few of the experiments that I've run with varying success. My research mostly involved reading [The Art Of Fermentation](INSERTLINK), an amazing tome of knowledge by Sandor Katz. In it, he goes into fascinating detail about almost every fermentation technique that's been used through centuries of human history. It offered me great cultural, scientific, and practical context. 
+In the past year I've decided that I haven't perpetuated enough Brooklyn stereotypes and have taken up fermentation as a hobby. This post goes through a few of the experiments that I've run with varying success.
 
-My set up is pretty basic. I have a little cabinet/closet in the corner of my kitchen that i've designated as the <i>'fermentation station'</i>. I have a thermometer but it mostly stays at room temperature. I also affixed a curtain to avoid direct sunlight.
+My set up is pretty basic. I have a small cabinet/closet in the corner of my kitchen that i've designated as the <i>'fermentation station'</i>. I have a thermometer but it mostly stays at room temperature. In the winter it gets warmer as it sits directly in front of a radiator which is always on. I also affixed a curtain to avoid direct sunlight as the setup is next to a window.
 
 ![pretty picture of fermentation station](/fermentation/pretty.jpg)
 
@@ -20,9 +20,7 @@ For example, you do not want to eat clostridium botulinum which causes botulism.
 
 Kombucha is a fermented tea. The process works by taking tea mixed with a lot of sugar and introducing [acetic acid bacteria](https://en.wikipedia.org/wiki/Acetic_acid_bacteria) (or AAB), and some strains of yeast. 
 
-The yeast eats the sugar and produces alcohol (with CO2 as a biproduct). The AAB eats the alcohol and produces acetic acid which gives kombucha it's signature vinegar-y taste. The biproduct of the AAB doing it's thing is cellulose which forms a 'raft', floating the bacteria and yeast to the top. This raft is called a <i>'SCOBY'</i> (symbiotic culture of bacteria and yeast) or in hipper circles, <i>the mother</i>. This serves the purpose of providing the yeast with oxygen. It also looks gross and leads to some great photo ops:
-
-![gross picture of scoby](/fermentation/scoby_gross.jpg)
+The yeast eats the sugar and produces alcohol (with CO2 as a biproduct). The AAB eats the alcohol and produces acetic acid which gives kombucha it's signature vinegar-y taste. The biproduct of the AAB doing it's thing is cellulose which forms a 'raft', floating the bacteria and yeast to the top. This raft is called a <i>'SCOBY'</i> (symbiotic culture of bacteria and yeast) or in hipper circles, <i>the mother</i>. This serves the purpose of providing the yeast with oxygen. 
 
 The recipe I follow is simple:
 
@@ -59,4 +57,14 @@ Lacto-fermentaiton is where you use the naturally present lactic-acid bacteria (
 
 ## <b>Miso</b>
 
-Miso is fermented bean paste. Traditionally it's made with soy beans but i'm using chickpeas.
+Miso is fermented bean paste. The first step is cooking beans until soft. Traditionally soy beans are used, but my current batch is made with chickpeas. After they're cooked, you mash them up and mix them with something called koji. This is available at some specialty grocery stores or you can find it online. Koji is a type of mold, formally known as aspergillus oryzae. It's a good kind of a mold. Typically it's grown on rice, which is how it's typically sold. You can find it online or in specialty stores.
+
+After you mix the mashed beans with koji you place it in a crock.
+
+
+ mashing them up, mixing it with koji and letting it sit for a very long time. I used chickpeas in my current batch
+
+
+// 
+
+ My research mostly involved reading [The Art Of Fermentation](INSERTLINK), an amazing tome of knowledge by Sandor Katz. In it, he goes into fascinating detail about almost every fermentation technique that's been used through centuries of human history. It offered me great cultural, scientific, and practical context. 
