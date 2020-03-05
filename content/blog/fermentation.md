@@ -3,7 +3,7 @@ title = "Fermentation Experimentation"
 Description = ""
 Tags = []
 Categories = []
-Date = 2013-08-05T03:32:37+00:00
+Date = 2020-03-05T03:32:37+00:00
 +++
 
 In the past year I've decided that I haven't perpetuated enough Brooklyn stereotypes and have taken up fermentation as a hobby. This post goes through a few of the experiments that I've run with varying success.
@@ -59,12 +59,16 @@ Lacto-fermentaiton is where you use the naturally present lactic-acid bacteria (
 
 Miso is fermented bean paste. The first step is cooking beans until soft. Traditionally soy beans are used, but my current batch is made with chickpeas. After they're cooked, you mash them up and mix them with something called koji. This is available at some specialty grocery stores or you can find it online. Koji is a type of mold, formally known as aspergillus oryzae. It's a good kind of a mold. Typically it's grown on rice, which is how it's typically sold. You can find it online or in specialty stores.
 
-After you mix the mashed beans with koji you place it in a crock.
+After you mix the mashed beans with koji you place it in a crock. On top of the miso you place weights (I use soup cans in a ziploc bag). The weight squeezes moisture out called tamari, which can be used as a soy sauce substitute. After letting it sit for a year or two, you have miso paste! I'll update this post when I can finally make miso soup.
 
+![miso-paste](/fermentation/misopaste.jpg)
 
- mashing them up, mixing it with koji and letting it sit for a very long time. I used chickpeas in my current batch
+## Sources
 
+ My research mostly involved reading [The Art Of Fermentation](https://www.wildfermentation.com/the-art-of-fermentation/), an amazing tome of knowledge by Sandor Katz. In it, he goes into fascinating detail about almost every fermentation technique that's been used through centuries of human history. It offered me great cultural, scientific, and practical context. 
 
-// 
+Also i'd be remiss if I didn't credit Brad Leone from Bon Apetit for making fermentation entertaining on his youtube series [It's Alive](https://www.youtube.com/watch?v=Ng2zOFADe0s&list=PLKtIunYVkv_SUyXj_6Fe53okfzM9yVq1F&index=63)
 
- My research mostly involved reading [The Art Of Fermentation](INSERTLINK), an amazing tome of knowledge by Sandor Katz. In it, he goes into fascinating detail about almost every fermentation technique that's been used through centuries of human history. It offered me great cultural, scientific, and practical context. 
+## Future projects
+
+[Kvass](https://en.wikipedia.org/wiki/Kvass), sourdough bread, apple cider vinegar, variations of miso, more kombucha, [gravlax](https://en.wikipedia.org/wiki/Gravlax), ...
