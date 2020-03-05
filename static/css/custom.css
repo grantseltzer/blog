@@ -51,8 +51,9 @@ img.tarantula {
 	width: 60%;
 	height: auto;
 	display: block;
-  margin-left: auto;
-  margin-right: auto;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 75px;
 }
 
 div.topbar {
