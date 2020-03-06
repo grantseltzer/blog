@@ -26,8 +26,8 @@ The recipe I follow is simple:
 
 - 2 cups of sugar
 - 15 tea bags (various flavors, mostly black orange pekoe)
-- X water
-- X kombucha from the previous batch
+- 28 cups of water
+- 4 cups of kombucha from the previous batch
 
 I combine the above at room temperature in a large jug (pictured at the top) where my SCOBY lives. I give it access to oxygen and let it sit for 7-10 days. After that it goes into fermentation bottles for a second round of fermentation. I introduce flavoring via juice, crushed fruit, or herbs. This also introduces more sugar to continue the fermentation. The airtight bottles also allow CO2 to build up, giving it carbonation.
 
