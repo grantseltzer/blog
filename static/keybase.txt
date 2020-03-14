@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/grantseltzer
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://grant.pizza
+  * I am grantseltzer (https://keybase.io/grantseltzer) on keybase.
+  * I have a public key ASAHcxmnVSLzcZ4MWTGettrpMzUkzvHSzC52uuB3xS_Pggo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120077319a75522f3719e0c59319eb6dae9333524cef1d2cc2e76bae077c52fcf820a",
+      "host": "keybase.io",
+      "kid": "0120077319a75522f3719e0c59319eb6dae9333524cef1d2cc2e76bae077c52fcf820a",
+      "uid": "7a9de41d4637e51112e31313ac10cc19",
+      "username": "grantseltzer"
+    },
+    "merkle_root": {
+      "ctime": 1584145977,
+      "hash": "167eca1441c4e4bad894f81cd0357bdbb0521f1b8eb76418a76ee519e8b9d82841be58b9ab916b6563de554f95356a5cca865b091372ce9219430a7e23b52e11",
+      "hash_meta": "9a4cf5b18ffad6d39b931f06c174acca5b3733355ad18e5b7c173af5452d61ff",
+      "seqno": 15364263
+    },
+    "service": {
+      "entropy": "6Ad6XgVChWbUkZN8bPjtmwko",
+      "hostname": "grant.pizza",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.3.0"
+  },
+  "ctime": 1584145987,
+  "expire_in": 504576000,
+  "prev": "c361c864f0b110299cd9cfdd0070257eb4a09343b6956701e65e6179f41a0f16",
+  "seqno": 15,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgB3MZp1Ui83GeDFkxnrba6TM1JM7x0swudrrgd8Uvz4IKp3BheWxvYWTESpcCD8Qgw2HIZPCxECmc2c/dAHAlfrSgk0O2lWcB5l5hefQaDxbEIBiCwNdE2QeLx03a7mB5dkVB++bZjpcG7a72/UgNvjqDAgHCo3NpZ8RAcnca+G7Y006uMU9gokr9hnNTK0uD8pT5NYfgPve7OQhch4PYhePTf+1z+Mn1/ZXOeJ1rWd3G3sV0O8E+9tApA6hzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIO9KlnyOScyrUO5mBIUN/xpZ0VXprbuQq/54owuTCn7No3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/grantseltzer
+
+==================================================================
