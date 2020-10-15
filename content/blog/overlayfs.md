@@ -12,7 +12,7 @@ Overlay filesystems allow you to take multiple directory trees and view them as 
 
 Let's look at an example:
 
-<center>![seperate](/overlay/seperate.png)</center>
+![seperate](/overlay/seperate.png)
 
 Here we have three separate directories. They each contain various files. You may also notice that both `/tmp/middle` and `/tmp/upper` contain files with the same name (`c.txt`).
 
@@ -31,11 +31,11 @@ mount \
 
 The order here is important. You can create an overlay with any amount of directories. The order in which you specify them is the order that they're effectively stacked on top of one another.
 
-<center>![stacked](/overlay/stacked.png)</center>
+![stacked](/overlay/stacked.png)
 
 Here's what creating the overlayfs mount is effectively doing. The 'overlay' is what you see if you were to look through all these layers like sheets of clear plastic on an overhead projector:
 
-<center>![overlayview](/overlay/overlayview.png)</center>
+![overlayview](/overlay/overlayview.png)
 
 In the case of `c.txt` here, the instance of the file that's in the highest most layer is what's displayed.
 
@@ -43,7 +43,7 @@ All of the layers except the top one are read-only. This means changes made to f
 
 Here's an animation of what this all looks like in terminal:
 
-<center>![gif](/overlay/overlayfs.gif)</center>
+![gif](/overlay/overlayfs.gif)
 
 # Why?
 

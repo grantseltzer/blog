@@ -18,10 +18,8 @@ Before we actually dive into cgroups, there's a few bases we should cover. Cgrou
 
 You can see all the processes running on your system and some of their resource statistics with the <span style="color:red">top</span> command (I prefer [htop](https://hisham.hm/htop/)).
 
-<center>
 ![htop](/cgroups/htop.png)
 <i>an htop screenshot</i>
-</center>
 
 So what do I actually mean that a process needs resources? To give some examples: In order to store and use data, a process needs to have access to memory. In order to execute it's instructions, a process needs to have available time to run on the CPU. A process may also need access to devices, such as saving files to disk or taking in keyboard input. Each of these resources are abstracted by the Linux kernel. Those abstractions are called 'subsystems'.
 
@@ -43,19 +41,15 @@ As the name cgroup implies, we're controlling <i>groups</i> of processes. Every 
 
 Try taking a look at <span style="color:red">/proc/[pid]/cgroup</span> file for any process to see what cgroups it's in. For example I wanted to see what cgroups my running shell (pid <span style="color:red">6115</span>) belongs to, so I read <span style="color:red">/proc/6115/cgroup</span>:
 
-<center>
 ![cat_for_cgroup](/cgroups/cat_for_cgroup.png)
 <i>example of listing what cgroups a process belongs to</i>
-</center>
 
 Each line refers to a different cgroup that the process belongs to. Just looking at <span style="color:red">cpu,cpuacct</span> (combined as just <span style="color:red">cpu</span>) we can see that it's in the <span style="color:red">/</span> or "root" cgroup. This just means that it's in the system wide cgroup that all processes belong to. Cgroups are organized in a hierarchy, so cgroups can have child cgroups. For this reason cgroups are named by their parent to child hierarchical path. For example, <span style="color:red">/cgroupA/cgroupB</span> means there's a cgroup called <span style="color:red">cgroupB</span> which is a child of <span style="color:red">cgroupA</span> which is a child of the root cgroup. The limits of parent cgroup's apply to their children all the way down.
 
 The semantics for setting these limits is pretty intuitive. There are two values that must be set: A period and a quota. Each of these values are in units of microseconds. The period defines an amount of time before the pool of available CPU ticks refreshes. The quota refers to the number of CPU ticks available in that pool. This is best explained by example:
 
-<center>
 ![cgroup_example](/cgroups/cgroup_example.png)
 <i>A CPU cgroup "FOOBAR", a child of the root CPU cgroup </i>
-</center>
 
 In the diagram above we see that there are three processes in a cgroup called <span style="color:red">/Foobar</span>. There are also many processes in the <span style="color:red">/</span> cgroup. As we see in that root cgroup, a quota of -1 is a special value to indicate there is an unlimited quota. In other words, no limit.
 
@@ -64,10 +58,8 @@ Now let's think about the  <span style="color:red">/Foobar</span> cgroup. A peri
 The analogy I use to explain this is to picture the CPU as if it's an amusement park carousel. A group of processes have pooled their tickets together so they can ride on it together. They each get a daily allowance for tickets in the morning so once they run out for the day they have to wait until tomorrow. The scheduler is the person collecting tickets and cgroup is the person giving them the ticket allowance in the morning.
 
 Here's a really dorky graphic:
-<center>
 ![tasks_sched](/cgroups/tasks_sched.png)
 <i>a really dorky graphic</i>
-</center>
 
 The purpose of explaining how the CPU cgroup works is to show the nature of what cgroups are. They are not the mechanism by which resources are limited but rather just a glorified way of collecting arguments for those resource limits. It's up to the individual subsystems to read those arguments and take them into consideration. The same goes for every other cgroup implementation.
 
@@ -75,24 +67,18 @@ The purpose of explaining how the CPU cgroup works is to show the nature of what
 
 All cgroup functionality is accessed through the cgroup filesystem. This is a virtual filesystem with special files that act as the interface for creating, removing, or altering cgroups. You can find where the various cgroupfs' (one for each cgroup type) on your system is mounted using <span style="color:red">mount | grep cgroup</span>. They're typically in <span style="color:red">/sys/fs/cgroup</span>.
 
-<center>
 ![ls-cgroup](/cgroups/ls-cgroup.png)
 <i>A cgroupfs directory for each cgroup type</i>
-</center>
 
 
 Continuing to use the CPU cgroup as an example, let's take a look at the hierarchy and constraints for the CPU cgroup. Within the CPU directory there are a bunch of files that are used for configuring the constraints of processes in the cgroup. Since cgroups exist in hierarchies, you can also find directories that correspond to child cgroups. Making a new child cgroup is as simple as using <span style="color:red">mkdir</span>. All the constraint files will be created for you!
 
-<center>
 ![make-cgroup](/cgroups/make-cgroup.gif)
 <i>Creating a child cpu cgroup using mkdir and writing a process to the tasks file</i>
-</center>
 
 When you're in a child CPU cgroup there's three main files that are of interest: <span style="color:red">tasks</span>, <span style="color:red">cpu.cfs_period_us</span>, and <span style="color:red">cpu.cfs_quota_us</span>.
 
-<center>
 ![ls-cgroup-cpu](/cgroups/ls-cgroup-cpu.png)
-</center>
 
 
 <span style="color:red">tasks</span> - list of PID's that are part of the cgroup. Appending a PID to this file will add that process (all threads in the process) to the cgroup. When you start a process it will automatically be added to the root CPU cgroup.
@@ -103,10 +89,8 @@ When you're in a child CPU cgroup there's three main files that are of interest:
 
 Setting the above constraint files are also as easy as writing values to the files:
 
-<center>
 ![setting-period-and-quota](/cgroups/setting-period-and-quota.gif)
 <i>Setting the period and quota of a cgroup by writing to the period and quota files</i>
-</center>
 
 # Practically using cgroups
 
@@ -116,10 +100,8 @@ Engineers at Google made and have been using cgroups since around 2007 to run al
 
 If you use docker you can set cgroup constraints as flags when running containers. For example <span style="color:red">docker run --cpu-period=100000 --cpu-quota=12345 -it fedora bash</span>. This will handle setting up the cgroup, but interestingly all it's doing is writing to the files for you.
 
-<center>
 ![docker-constraints](/cgroups/docker-constraints.gif)
 <i>Setting the period and quota of a cgroup by passing flags for a docker container</i>
-</center>
 
 While I didn't cover every different kind of cgroup, or even go deep into how the CPU cgroup is implemented, I hope this gives any necessary understanding about one of my favorite features of the kernel! Thanks so much for reading, please feel free to reach out for question or comment!
 

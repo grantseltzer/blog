@@ -12,7 +12,7 @@ In this post we explore best practices of defining interfaces in Go. We use `io.
 
 A perfect example of a properly designed Go interface is `io.Writer`:
 
-```go
+```
 type Writer interface {
     Write(p []byte) (n int, err error)
 }
@@ -30,7 +30,24 @@ This flexibility is subtle but very intentional.
 
 Let's say you create a package that produces some kind of data, ASCII art for example. It is not your job to worry about what other programmers are using that art for. If you are exporting API that creates the art, and writes it to a file specified by a path, you are reinventing the wheel. You would have to then create an function for every possible output location. You would also be denying your users a ton of flexibility to use any of the unlimited `io.Writer`'s they may want to use. 
 
-<script src="https://gist.github.com/grantseltzer/6180cb497c183db219303223252aadff.js"></script>
+```
+// This defeats the purpose of io.Writer
+func WriteAsciiArtToFile(path string) error { 
+    f, err := os.Open(path)
+    if err != nil {
+        return err
+    }
+    artBytes := makeSomeArt()
+    _, err = f.Write(artBytes)
+    return err
+}
+
+// Not an anti-pattern, idgaf what you do with my ascii art
+func WriteAsciiArt(w io.Writer) (n int, error) {
+    artBytes := makeSomeArt()
+    return w.Write(artBytes)
+}
+```
 
 The more methods a type has to define to conform to an interface, the less abstraction the interface provides. It's better to break up the functionality into multiple interfaces, or none at all. For the former, consider [bytes.Buffer](https://golang.org/pkg/bytes/#Buffer). It implements both `io.Reader` and `io.Writer` interfaces, meaning it has `Read` and `Write` methods. The same is true of `os.File`. 
 

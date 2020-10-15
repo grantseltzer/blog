@@ -6,9 +6,7 @@ Categories = []
 Date = 2020-05-10T03:32:37+00:00
 +++
 
-<center>
-<img src="/weaver/glitch-gopher.png" width="400">
-</center>
+![gopher](/weaver/glitch-gopher.png)
 
 In [part 1](/blog/tracing-go-functions-with-ebpf-part-1) of this series we learned about how to attach uprobes and eBPF programs to specific functions in Go programs. We went through an example where we attached our probe to the handler of a webserver. Everytime the probe was triggered we simply printed out a log saying that the handler was called. This could be adapted to record metrics, perhaps using counters instead of log lines.
 

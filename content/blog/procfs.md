@@ -10,13 +10,13 @@ I love the procfs because it provides an intuitive and easy to use interface for
 
 A procfs is mounted at `/proc` by default. If you go into `/proc` you'll see something like this:
 
-<center>![toplevel](/procfs/toplevel.png)</center>
+![toplevel](/procfs/toplevel.png)
 
 You'll notice a lot of the directories that are just named by numbers. There is one for each individual process. The directory names correspond to the process ID. One directory for each process.
 
 They all have the same layout:
 
-<center>![process_dir](/procfs/process_dir.png)</center>
+![process_dir](/procfs/process_dir.png)
 
 Among these files you can find out information such as performance of the process, where the executable is located, resource limits, or namespace information. There's a lot to explore but here's some highlights:
 
@@ -40,7 +40,7 @@ Here's a really cool one. This contains every symbol (function or variable) in y
 
 This is a symlink to the <i>currently running</i> process. Meaning this will be the `/proc/[pid]` directory of whatever process requests access to it.
 
-<center>![self](/procfs/self.png)</center>
+![self](/procfs/self.png)
 
 The directories and files in `/proc` don't actually exist on disk. The procfs is the kernel representing the proceses on your system <i>as if</i> they were files. Whenever a process requests files in the procfs, the kernel responds with the contents of the theoretical file.
 

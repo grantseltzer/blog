@@ -16,13 +16,29 @@ Let's check out an example from my [recent contribution](https://go-review.googl
 
 First, in lookup_darwin.go we use the cgo_import_dynamic directive for `res_search`
 
-<script src="https://gist.github.com/grantseltzer/1d6fdd3ba81a18ea5fbb48d62b2f91c5.js"></script>
+```
+//go:cgo_import_dynamic libc_res_search res_search "/usr/lib/libSystem.B.dylib"
+```
 
 When the linker is run after compilation it executes this directive. The linker pulls in the `res_search` routine from the libSystem dynamic library (found at the given path). It then makes the routine referenceable in Go's assembly code by the name `libc_res_search`.
 
 Now in order to link assembly code to Go we have a couple of pieces of glue to put in place. Let's take a look first, and then analyze:
 
-<script src="https://gist.github.com/grantseltzer/38c76591c532f3bc40e1367c19502167.js"></script>
+```
+//go:nosplit
+//go:cgo_unsafe_args
+func res_search(dname *byte, class int32, rtype int32, answer *byte, anslen int32) (int32, int32) {
+	args := struct {
+		dname                   *byte
+		class, rtype            int32
+		answer                  *byte
+		anslen, retSize, retErr int32
+	}{dname, class, rtype, answer, anslen, 0, 0}
+	libcCall(unsafe.Pointer(funcPC(res_search_trampoline)), unsafe.Pointer(&args))
+	return args.retSize, args.retErr
+}
+func res_search_trampoline()
+```
 
 The first thing to look at is the symbol definition of `res_search_trampoline()` <i>(line 13)</i>. This is a function which will be defined in assembly. Defining the symbol in Go code allows the linker to make it referenceable. 
 
@@ -30,7 +46,29 @@ We also need a helper function which takes the arguments to pass to the assembly
 
 Finally we define the assembly routine for `res_search_trampoline` which is linked by the Go symbol above.
 
-<script src="https://gist.github.com/grantseltzer/0327af2124ddab0f50682f158e23863c.js"></script>
+```
+TEXT runtime·res_search_trampoline(SB),NOSPLIT,$0
+    PUSHQ    BP
+    MOVQ     SP, BP
+    MOVQ     DI, BX   // move DI into BX to preserve struct addr
+    MOVL     24(BX), R8  // arg 5 anslen
+    MOVQ     16(BX), CX  // arg 4 answer
+    MOVL     12(BX), DX  // arg 3 type
+    MOVL     8(BX), SI   // arg 2 class
+    MOVQ     0(BX), DI   // arg 1 name
+    CALL     libc_res_search(SB)
+    XORL     DX, DX
+    CMPQ     AX, $-1
+    JNE ok
+    CALL     libc_error(SB)
+    MOVLQSX  (AX), DX             // move return from libc_error into DX
+    XORL     AX, AX               // size on error is 0
+ok:
+    MOVQ    AX, 28(BX) // size
+    MOVQ    DX, 32(BX) // error code
+    POPQ    BP
+    RET
+```
 
 All this routine does is load the arguments by their offset (calculated by size) and call `libc_res_search`. It also checks a possible error and calls `libc_error` (another statically linked function!) accordingly.
 
