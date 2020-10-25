@@ -4,6 +4,7 @@ Description = ""
 Tags = []
 Categories = []
 Date = 2019-12-11T03:32:37+00:00
+column = "left"
 +++
 ![karn](/karn-blog/karn_art.jpeg)
 

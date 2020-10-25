@@ -1,106 +1,31 @@
 <!DOCTYPE html>
-<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
-<head>
- <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131587033-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-131587033-1');
-</script>
-<script>
-  function emailfunc() {
-    document.getElementById("email").innerHTML = "grantseltzer AT gmail DOT com";
-  }
-</script>
+    <head>
 
-<meta charset="utf-8">
-{{ .Hugo.Generator }}
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
-<link href="//fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
-<link rel="stylesheet" href="/css/normalize.css">
-<link rel="stylesheet" href="/css/skeleton.css">
-<link rel="stylesheet" href="/css/custom.css">
-<title>{{ .Title }}</title>
-</head>
+        <meta charset="utf-8">
+        {{ .Hugo.Generator }}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<body> 
+        <style>
+        #text-content {
+            float: left;
+            width: 35%;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            padding:100px;
+        }
 
- 	<div class="topbar">
-			<a id="homebutton" href="/">GSR</a>
-			<a id="about" href="/about/about">about</a>
-	</div>
+        </style>
 
-  <div class="container"> 
-  <header role="banner">
-  <h1 id="title">{{ .Title }}</h1>
-  </header>
-  <section>
-  
-  {{ if eq .Section "blog"}} 
-  <i><span class="entry-meta"><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }} </time></span></section></i>
-  {{ end }}
+    </head>
 
-  {{ if eq .Section "talks"}}
-  <center>
-  <b>Presented at {{ .Params.conference }}.</b>
-    <iframe src={{ .Params.presentation }} frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-  </center>
-  {{end}}
+    <body>
+        <b><a href="/">GSR</a></b>
 
-  </section>
-  <main role="main">
-  <div>
-        <article id="content">
-           {{ .Content }}
-        </article>
-  </div>
+        <h1>{{ .Title }}</h1>
+            <div id="text-content">
+            {{ .Content }}
+            </div>
+    </body>
 
-  <center>
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </center>
-
-<aside id="meta">
-    <div>
-    {{ with .Params.topics }}
-    <ul id="topics">
-      {{ range . }}
-        <li><a href="{{ "topics" | absURL}}/{{ . | urlize }}">{{ . }}</a> </li>
-      {{ end }}
-    </ul>
-    {{ end }}
-    {{ with .Params.tags }}
-    <ul id="tags">
-      {{ range . }}
-        <li> <a href="{{ "tags" | absURL }}/{{ . | urlize }}">{{ . }}</a> </li>
-      {{ end }}
-    </ul>
-    {{ end }} 
-    </div>
-
-</aside>
-</main>
-
-
-	<footer role="contentinfo">
-    <div class="hr"></div>
-    
-		<div>
-        <img onclick="emailfunc()" class="socialimg" src="/social/email.png"/>
-        <a class="sociallink" href="http://www.github.com/grantseltzer"><img class="socialimg" src="/social/github.png"/></a>
-        <a class="sociallink" href="http://www.twitter.com/grantseltzer"><img class="socialimg" src="/social/twitter.png"/></a>
-        <a class="sociallink" href="https://www.linkedin.com/in/grantseltzerrichman/"><img class="socialimg" src="/social/linkedin.png"/></a>
-        <a class="sociallink" href="https://www.goodreads.com/user/show/50650128-grant-seltzer"><img class="socialimg" src="/social/book.png"></a>
-    </div>
-    <p id="email"></p>
-		<div class="copyright">Copyright &copy; 2018 - 2021</div>
-	</footer>
-
-  </div>
-
-</body>
 </html>

@@ -4,6 +4,7 @@ Description = ""
 Tags = []
 Categories = []
 Date = 2020-02-14T03:32:37+00:00
+column = "left"
 +++
 
 ![manhattangopher](/weaver/DrManhattanGopher.png)

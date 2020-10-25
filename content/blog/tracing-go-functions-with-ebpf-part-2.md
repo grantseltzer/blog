@@ -4,6 +4,7 @@ Description = ""
 Tags = []
 Categories = []
 Date = 2020-05-10T03:32:37+00:00
+column = "left"
 +++
 
 ![gopher](/weaver/glitch-gopher.png)
