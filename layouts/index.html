@@ -27,19 +27,21 @@
             }
   
             #header {width: 100%; float: left; padding: 10px 0; text-align: center; border-bottom: 2px solid black}
-                #header h1#page-name {  padding-top: 100px; font-size: 50px; font-style: italic; font-weight: bold; text-shadow: 3px 3px gray;}
-                #header img {padding-top: 80px; float: none; margin: 0 8px 8px 0; max-width: 400px}
+                #header h1#page-name {  padding-top: 25px; font-size: 50px; font-style: italic; font-weight: bold; text-shadow: 3px 3px gray;}
+                #header img {padding-top: 20px; float: none; margin: 0 0px 0px 0; max-width: 400px}
                 #header span {max-width: 1000px; font-size: 1.2em; margin: 0 auto; padding: 10px 0 0 0; display: block; border-top: 2px solid black; font-weight: bold; text-align: center; clear: both}
 
-            h2#column-name { padding-top: 15px; padding-bottom: 15px; font-size: 25px; font-style: italic; font-weight: bold; text-shadow: 1px 1px gray;}
+            #full-container { width: 85%; margin: auto; }
 
+            h2#column-name { padding-left: 45px; padding-top: 15px; padding-bottom: 15px; font-size: 25px; font-style: italic; font-weight: bold; text-shadow: 1px 1px gray;}
+            .column-container { position: absolute; padding-left: 85px;}
             .description { color: black; font-size:15px;}
 
-            #left-column, #middle-column, #right-column {font-size:18px; height: 1000px; float: left;}	
-            #left-column {width: 33%;border-right:2px solid black;}
-            #middle-column {width: 33%;border-right:2px solid black;} 
-            #right-column {width: 33%} 
-            #footer {width: 100%; float: left; padding: 20px 0; text-align: center; font-size: 0.9em;}
+            #left-column, #middle-column, #right-column {font-size:18px; float: left;}	
+            #left-column { width: 33%; }
+            #middle-column { width: 33%; } 
+            #right-column { width: 33%} 
+            .footer { position: relative; text-align: center; }
 
         </style>
         
@@ -47,48 +49,57 @@
     </head>
     
     <body>
-            <h1>software engineer working in security</h1>
+            <h1>go, linux, security</h1>
         	<div id="header">                
                 <img src="/crab.png" alt="AAAAA" >
                 <p>eye wittness drawing of what grant may look like</p>
-         
                 <h1 id="page-name">GRANT SELTZER</h1>
             </div>
                 
-            <div id="left-column">
-                <h2 id="column-name">Blog Posts</h2>
+            <div id="full-container">
+                <div id="left-column">
+                    <h2 id="column-name">Blog Posts</h2>
+                    <div class="column-container">
+                        <ul>
+                            {{ range (where .Site.RegularPages ".Params.column" "==" "left") }}
+                                <li>
+                                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                                    <p>{{ .Description }}</p>
+                                </li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                    </ul>
+                </div>
+
+                <div id="middle-column">
+                    <h2 id="column-name">Presentations</h2>
+                    <div class="column-container">
                     <ul>
-                        {{ range (where .Site.RegularPages ".Params.column" "==" "left") }}
+                        {{ range (where .Site.RegularPages ".Params.column" "==" "middle") }}
+                            <li>
+                                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                                <p class="description">{{ .Description }}</p>
+                            </li>
+                        {{ end }}
+                    </ul>
+                    </div>
+                </div>
+
+                <div id="right-column">
+                    <h2 id="column-name">Other</h2>
+                    <div class="column-container">
+
+                    <ul>
+                        {{ range (where .Site.RegularPages ".Params.column" "==" "right") }}
                             <li>
                                 <a href="{{ .RelPermalink }}">{{ .Title }}</a>
                                 <p>{{ .Description }}</p>
                             </li>
                         {{ end }}
-                </ul>
-            </div>
-
-            <div id="middle-column">
-                <h2 id="column-name">Resources</h2>
-                <ul>
-                    {{ range (where .Site.RegularPages ".Params.column" "==" "middle") }}
-                        <li>
-                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                            <p class="description">{{ .Description }}</p>
-                        </li>
-                    {{ end }}
-                </ul>
-            </div>
-
-            <div id="right-column">
-                <h2 id="column-name">Other</h2>
-                <ul>
-                    {{ range (where .Site.RegularPages ".Params.column" "==" "right") }}
-                        <li>
-                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                            <p>{{ .Description }}</p>
-                        </li>
-                    {{ end }}
-                </ul>
+                    </ul>
+                    </div>
+                </div>
             </div>
     </body>
 </html>
