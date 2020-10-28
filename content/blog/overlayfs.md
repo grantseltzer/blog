@@ -4,6 +4,7 @@ Description = ""
 Tags = []
 Categories = []
 Date = 2019-09-18T03:32:37+00:00
+column = "left"
 +++
 
 Remember back to when your teacher in grade school would write on sheets of clear plastic, stack them, and display them with an overhead projector? That is exactly how `overlayfs` works... except with filesystems.

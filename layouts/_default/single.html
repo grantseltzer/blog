@@ -1,106 +1,117 @@
 <!DOCTYPE html>
-<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
-<head>
- <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131587033-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-131587033-1');
-</script>
-<script>
-  function emailfunc() {
-    document.getElementById("email").innerHTML = "grantseltzer AT gmail DOT com";
-  }
-</script>
+    <head>
 
-<meta charset="utf-8">
-{{ .Hugo.Generator }}
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
-<link href="//fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
-<link rel="stylesheet" href="/css/normalize.css">
-<link rel="stylesheet" href="/css/skeleton.css">
-<link rel="stylesheet" href="/css/custom.css">
-<title>{{ .Title }}</title>
-</head>
+        <meta charset="utf-8">
+        {{ .Hugo.Generator }}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<body> 
+        <style>
 
- 	<div class="topbar">
-			<a id="homebutton" href="/">GSR</a>
-			<a id="about" href="/about/about">about</a>
-	</div>
+        body { margin: 0; }
 
-  <div class="container"> 
-  <header role="banner">
-  <h1 id="title">{{ .Title }}</h1>
-  </header>
-  <section>
-  
-  {{ if eq .Section "blog"}} 
-  <i><span class="entry-meta"><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }} </time></span></section></i>
-  {{ end }}
+        #title {
+            font-family: "Open Sans", sans-serif;
+            padding-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 50px;
+            border-top: solid;
+        }
 
-  {{ if eq .Section "talks"}}
-  <center>
-  <b>Presented at {{ .Params.conference }}.</b>
-    <iframe src={{ .Params.presentation }} frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-  </center>
-  {{end}}
+        #text-content {
+            padding-left: 30px;
+            float: center;
+            width: 75%;
+            font-family: "Open Sans", sans-serif;
+            font-size: 20px;
+            line-height: 40px;
+        }
 
-  </section>
-  <main role="main">
-  <div>
-        <article id="content">
-           {{ .Content }}
-        </article>
-  </div>
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+            height: auto;
+        }
 
-  <center>
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </center>
+        pre code {
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            display: block;
+            white-space: pre-wrap;
+            border: 1px solid #000000;
+            line-height: 25px;
+        }
+        
+        code {
+            font-family: monospace;
+            margin: 0 .2rem;
+            font-size: 100%;
+            background: #F1F1F1;
+            border: 1px solid #d1d1d1;
+            white-space: pre;
+        }
 
-<aside id="meta">
-    <div>
-    {{ with .Params.topics }}
-    <ul id="topics">
-      {{ range . }}
-        <li><a href="{{ "topics" | absURL}}/{{ . | urlize }}">{{ . }}</a> </li>
-      {{ end }}
-    </ul>
-    {{ end }}
-    {{ with .Params.tags }}
-    <ul id="tags">
-      {{ range . }}
-        <li> <a href="{{ "tags" | absURL }}/{{ . | urlize }}">{{ . }}</a> </li>
-      {{ end }}
-    </ul>
-    {{ end }} 
-    </div>
+        #topbar {
+            position: fixed;
+            border-top: solid;
+            border-bottom: solid;
+            border-bottom-width: 2px;
+            border-bottom-style: ridge;
+            width: 100%;
+            opacity: 0.9;
+            background-color: rgb(255, 255, 255);
+        }
 
-</aside>
-</main>
+        #homelink {
+            padding-top: 25px;
+            font-size: 30px;
+            font-style: italic;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px grey;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
+        @media (min-width: 1000px){
+            #talk-content {
+                display: block;
+                text-align: center;
+                font-family: "Open Sans", sans-serif;
+                font-size: 20px;
+            }
+        }
+        a { text-decoration: none; color: black; font-weight: bold; line-height: 1.3em; }
+        a:hover { font-style: italic; border-bottom: 5px solid yellow }
+        .copyright { padding-top: 50px; display: block; text-align: center; }
 
-	<footer role="contentinfo">
-    <div class="hr"></div>
+        </style>
+
+    </head>
+
+    <body>
+        <div id="topbar">
+            <a id="homelink" href="/">GSR</a>
+        </div>
+
+        <h1 id="title">{{ .Title }}</h1>
+
+        <div id="text-content">
+        {{ .Content }}
+        
+        {{ if eq .Section "talks" }}
+            <div id="presentation">
+                <p>Presented at {{ .Params.conference }}.</p>
+                <iframe src={{ .Params.presentation }} frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            </div>
+        {{ end }}
+        </div>
+
+        <span class="copyright">copyright 2018 - 2021</p>
+
+    </body>
     
-		<div>
-        <img onclick="emailfunc()" class="socialimg" src="/social/email.png"/>
-        <a class="sociallink" href="http://www.github.com/grantseltzer"><img class="socialimg" src="/social/github.png"/></a>
-        <a class="sociallink" href="http://www.twitter.com/grantseltzer"><img class="socialimg" src="/social/twitter.png"/></a>
-        <a class="sociallink" href="https://www.linkedin.com/in/grantseltzerrichman/"><img class="socialimg" src="/social/linkedin.png"/></a>
-        <a class="sociallink" href="https://www.goodreads.com/user/show/50650128-grant-seltzer"><img class="socialimg" src="/social/book.png"></a>
-    </div>
-    <p id="email"></p>
-		<div class="copyright">Copyright &copy; 2018 - 2021</div>
-	</footer>
-
-  </div>
-
-</body>
 </html>

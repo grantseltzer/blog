@@ -4,6 +4,7 @@ Description = ""
 Tags = []
 Categories = []
 Date = 2019-10-02T03:32:37+00:00
+column = "left"
 +++
 
 I love the procfs because it provides an intuitive and easy to use interface for interacting with the kernel. In the same way you'd normally use the command line for exploring files, you can control and find out information about currently running processes. All without the need for system calls.

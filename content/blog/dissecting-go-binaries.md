@@ -4,6 +4,7 @@ Description = ""
 Tags = []
 Categories = []
 Date = 2018-09-14T03:32:37+00:00
+column = "left"
 +++
 
 <span style="color:grey;font-style: italic;font-size: 14px">

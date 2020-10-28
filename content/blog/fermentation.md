@@ -4,6 +4,7 @@ Description = ""
 Tags = []
 Categories = []
 Date = 2020-03-05T03:32:37+00:00
+column = "left"
 +++
 
 In the past year I've decided that I haven't perpetuated enough Brooklyn stereotypes and have taken up fermentation as a hobby. This post goes through a few of the experiments that I've run with varying success.
