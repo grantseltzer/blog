@@ -11,8 +11,8 @@
 
             img {border: 0;}
 
-            a {color: black; font-weight: bold; line-height: 1.3em}
-
+            a { text-decoration: none; color: black; font-weight: bold; line-height: 1.3em; }
+			a:hover { font-style: italic; border-bottom: 5px solid yellow}
             p {line-height: 1.3em}
                 
             ul, ol {margin: 0 40px 0 20px; list-style-type: none}
@@ -22,26 +22,34 @@
             h3 {margin: 20px 40px 10px 20px; padding: 20px 0 0 0; border-top: 2px solid black; font-size: 1.6em}
 
             body {
-                font-size: 85%;
+                font-size:18px;
                 font-family: Arial, Helvetica, sans-serif;
             }
   
             #header {width: 100%; float: left; padding: 10px 0; text-align: center; border-bottom: 2px solid black}
-                #header h1#page-name {  padding-top: 25px; font-size: 50px; font-style: italic; font-weight: bold; text-shadow: 3px 3px gray;}
+                #header h1#page-name { padding-top: 25px; font-size: 50px; font-style: italic; font-weight: bold; text-shadow: 3px 3px 1px gray;}
                 #header img {padding-top: 20px; float: none; margin: 0 0px 0px 0; max-width: 400px}
                 #header span {max-width: 1000px; font-size: 1.2em; margin: 0 auto; padding: 10px 0 0 0; display: block; border-top: 2px solid black; font-weight: bold; text-align: center; clear: both}
+				
+			h2#column-name {padding-top: 15px; padding-bottom: 15px; font-size: 25px; font-style: italic; font-weight: bold; text-shadow: 1px 1px gray;}
 
-            #full-container { width: 85%; margin: auto; }
+			@media (min-width: 1000px){
+				#full-container { width: 85%; margin: auto; }
 
-            h2#column-name { padding-left: 45px; padding-top: 15px; padding-bottom: 15px; font-size: 25px; font-style: italic; font-weight: bold; text-shadow: 1px 1px gray;}
-            .column-container { position: absolute; padding-left: 85px;}
-            .description { color: black; font-size:15px;}
+				h2#column-name { padding-left: 45px;}
+				.column-container { padding-left: 85px;}
+				.description { color: black; font-size:15px;}
 
-            #left-column, #middle-column, #right-column {font-size:18px; float: left;}	
-            #left-column { width: 33%; }
-            #middle-column { width: 33%; } 
-            #right-column { width: 33%} 
-            .footer { position: relative; text-align: center; }
+				#left-column, #middle-column, #right-column { height: 500px; float: left;}	
+				#left-column {width: 33%;}
+				#middle-column {width: 33%} 
+				#right-column {width: 33%} 
+			}
+
+            .sub {
+                color: grey;
+            }
+
 
         </style>
         
@@ -51,7 +59,7 @@
     <body>
             <h1>go, linux, security</h1>
         	<div id="header">                
-                <img src="/crab.png" alt="AAAAA" >
+                <img src="/crab.png" alt="AAAAAAAAAAAAAAAAAAAAAAAAAAAAA" >
                 <p>eye wittness drawing of what grant may look like</p>
                 <h1 id="page-name">GRANT SELTZER</h1>
             </div>
@@ -64,7 +72,10 @@
                             {{ range (where .Site.RegularPages ".Params.column" "==" "left") }}
                                 <li>
                                     <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                                    <p>{{ .Description }}</p>
+
+                                    <p class="sub">{{ .Date.Format "January 02, 2006" }}</p>
+
+                                    <p class="sub">{{ .Description }}</p>
                                 </li>
                             {{ end }}
                         </ul>
@@ -79,8 +90,8 @@
                         {{ range (where .Site.RegularPages ".Params.column" "==" "middle") }}
                             <li>
                                 <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                                <p class="description">{{ .Description }}</p>
-                            </li>
+                                    <p class="sub">{{ .Description }}, {{ .Date.Format "January 02, 2006" }}</p>
+                                </li>
                         {{ end }}
                     </ul>
                     </div>
@@ -89,15 +100,14 @@
                 <div id="right-column">
                     <h2 id="column-name">Other</h2>
                     <div class="column-container">
-
-                    <ul>
-                        {{ range (where .Site.RegularPages ".Params.column" "==" "right") }}
-                            <li>
-                                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                                <p>{{ .Description }}</p>
-                            </li>
-                        {{ end }}
-                    </ul>
+                        <ul>
+                            {{ range (where .Site.RegularPages ".Params.column" "==" "right") }}
+                                <li>
+                                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                                    <p>{{ .Description }}</p>
+                                </li>
+                            {{ end }}
+                        </ul>
                     </div>
                 </div>
             </div>

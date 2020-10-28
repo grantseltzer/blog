@@ -7,10 +7,6 @@ Date = 2020-02-14T03:32:37+00:00
 column = "left"
 +++
 
-![manhattangopher](/weaver/DrManhattanGopher.png)
-
-<i>eBPF makes you an omniscient gopher</i>
-
 eBPF is a virtual machine, similar in concept to the JVM, except it's inside the Linux kernel. It lets you write C-like code, compile it, and load the byte code into the kernel. You can then attach hooks to your loaded eBPF program to trigger it to run. Those hooks could be things like system calls, [kprobes](https://lwn.net/Articles/132196/), or  [uprobes](https://www.kernel.org/doc/ols/2007/ols2007v1-pages-215-224.pdf).
 
 There's many use cases for eBPF. Considering eBPF programs have full system visibility there are very few limits on what you can do. You can write an eBPF program which logs every time certain files are modified. You use eBPF to profile performance of your other programs. You can implement host-based networking rules, or use it for [writing malware](https://www.youtube.com/watch?v=yrrxFZfyEsw).

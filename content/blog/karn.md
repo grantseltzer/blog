@@ -6,9 +6,6 @@ Categories = []
 Date = 2019-12-11T03:32:37+00:00
 column = "left"
 +++
-![karn](/karn-blog/karn_art.jpeg)
-
-<i>me when someone turns off seccomp</i>
 
 [Karn](https://github.com/grantseltzer/karn) aims to provide for Linux what [entitlements](https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/EntitlementKeyReference/Chapters/AboutEntitlements.html) provide for iOS, or what [pledge](https://man.openbsd.org/pledge.2) provides for OpenBSD. It does this by translating a high level set of intuitive 'entitlements' into complex seccomp profiles. 
 

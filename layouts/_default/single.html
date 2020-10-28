@@ -7,32 +7,95 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <style>
-        #text-content {
-            float: left;
-            width: 35%;
-            font-family: Arial, sans-serif;
-            font-size: 20px;
-            padding:100px;
+
+        body { margin: 0; }
+
+        #title {
+            font-family: "Open Sans", sans-serif;
+            padding-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 50px;
+            border-top: solid;
         }
+
+        #text-content {
+            padding-left: 30px;
+            float: center;
+            width: 75%;
+            font-family: "Open Sans", sans-serif;
+            font-size: 20px;
+            line-height: 40px;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+            height: auto;
+        }
+
+        pre code {
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            display: block;
+            white-space: pre-wrap;
+            border: 1px solid #000000;
+        }
+        
+        code {
+            font-family: monospace;
+            margin: 0 .2rem;
+            font-size: 100%;
+            background: #F1F1F1;
+            border: 1px solid #d1d1d1;
+            white-space: pre;
+        }
+
+        #topbar {
+            position: fixed;
+            border-top: solid;
+            border-bottom: solid;
+            border-bottom-width: 2px;
+            border-bottom-style: ridge;
+            width: 100%;
+            opacity: 0.9;
+            background-color: rgb(255, 255, 255);
+        }
+
+        #homelink {
+            padding-top: 25px;
+            font-size: 30px;
+            font-style: italic;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px grey;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a { text-decoration: none; color: black; font-weight: bold; line-height: 1.3em; }
+        a:hover { font-style: italic; border-bottom: 5px solid yellow }
+        .copyright { padding-top: 50px; display: block; text-align: center; }
 
         </style>
 
     </head>
 
     <body>
-        <b><a href="/">GSR</a></b>
+        <div id="topbar">
+            <a id="homelink" href="/">GSR</a>
+        </div>
 
-            <h1>{{ .Title }}</h1>
+        <h1 id="title">{{ .Title }}</h1>
 
-            <div id="text-content">
+        <div id="text-content">
             {{ .Content }}
-            </div>
+        </div>
 
-            <div id="footer">
-                <p class="copyright">copyright 2018 - 2021</p>
-            </div>
+        <span class="copyright">copyright 2018 - 2021</p>
 
     </body>
     
-
 </html>
