@@ -44,6 +44,7 @@
             display: block;
             white-space: pre-wrap;
             border: 1px solid #000000;
+            line-height: 25px;
         }
         
         code {
@@ -75,6 +76,14 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
+        @media (min-width: 1000px){
+            #talk-content {
+                display: block;
+                text-align: center;
+                font-family: "Open Sans", sans-serif;
+                font-size: 20px;
+            }
+        }
         a { text-decoration: none; color: black; font-weight: bold; line-height: 1.3em; }
         a:hover { font-style: italic; border-bottom: 5px solid yellow }
         .copyright { padding-top: 50px; display: block; text-align: center; }
@@ -91,7 +100,14 @@
         <h1 id="title">{{ .Title }}</h1>
 
         <div id="text-content">
-            {{ .Content }}
+        {{ .Content }}
+        
+        {{ if eq .Section "talks" }}
+            <div id="presentation">
+                <p>Presented at {{ .Params.conference }}.</p>
+                <iframe src={{ .Params.presentation }} frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            </div>
+        {{ end }}
         </div>
 
         <span class="copyright">copyright 2018 - 2021</p>

@@ -1,9 +1,9 @@
 +++
-title = "About"
+title = "About Me"
 Description = ""
 Tags = []
 Categories = []
-HideFromHome = "true"
+column = "right"
 ShowDate = "false"
 +++
 
