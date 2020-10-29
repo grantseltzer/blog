@@ -41,16 +41,15 @@ Thankfully all of the heavy lifting has been done for us by the authors and main
 For example, you can plug the the following raw bytes (displayed in hex) through Capstone and it will translate them into the corresponding x86_64 instruction:
 
 
-<span style="color:blue">
- `0x64 0x48 0x8B 0xC 0x25 0xF8 0xFF 0xFF 0xFF`
-</span>
+```
+0x64 0x48 0x8B 0xC 0x25 0xF8 0xFF 0xFF 0xFF
+```
 
-![arrow](/dissecting/arrow.png)
+Translates to:
 
-<span style="color:blue">
-`mov rcx, qword ptr fs:[0xfffffffffffffff8]`
-</span>
-
+```
+mov rcx, qword ptr fs:[0xfffffffffffffff8]
+```
 
 In code and then running it looks like this:
 

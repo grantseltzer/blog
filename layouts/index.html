@@ -32,8 +32,9 @@
                 #header span {max-width: 1000px; font-size: 1.2em; margin: 0 auto; padding: 10px 0 0 0; display: block; border-top: 2px solid black; font-weight: bold; text-align: center; clear: both}
 				
 			h2#column-name {padding-top: 15px; padding-bottom: 15px; font-size: 25px; font-style: italic; font-weight: bold; text-shadow: 1px 1px gray;}
+         
 
-			@media (min-width: 1000px){
+			@media (min-width: 1000px) {
 				#full-container { width: 85%; margin: auto; }
 
 				h2#column-name { padding-left: 45px;}
@@ -50,7 +51,9 @@
                 color: grey;
             }
 
-            .copyright { padding-top: 50px; display: block; text-align: center; }
+            .cpw {
+                width: 100%;
+            }
 
         </style>
         
@@ -58,70 +61,64 @@
     </head>
     
     <body>
-            <h1>go, linux, security</h1>
-        	<div id="header">                
-                <img src="/crab.png" alt="AAAAAAAAAAAAAAAAAAAAAAAAAAAAA" >
-                <p>eye wittness drawing of what grant may look like</p>
-                <h1 id="page-name">GRANT SELTZER</h1>
-            </div>
-                
-            <div id="full-container">
-                <div id="left-column">
-                    <h2 id="column-name">Blog Posts</h2>
-                    <div class="column-container">
-                        <ul>
-                            {{ range (where .Site.RegularPages ".Params.column" "==" "left") }}
-                                <li>
-                                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-
-                                    <p class="sub">{{ .Date.Format "January 02, 2006" }}</p>
-
-                                    <p class="sub">{{ .Description }}</p>
-                                </li>
-                            {{ end }}
-                        </ul>
-                    </div>
-                    </ul>
-                </div>
-
-                <div id="middle-column">
-                    <h2 id="column-name">Presentations</h2>
-                    <div class="column-container">
+        <h1>go, linux, ebpf, security</h1>
+        <div id="header">                
+            <img src="/crab.png" alt="AAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+            <p>eye wittness drawing of what grant may look like</p>
+            <h1 id="page-name">GRANT SELTZER</h1>
+        </div>
+        
+        <div id="full-container">
+            <div id="left-column">
+                <h2 id="column-name">Blog Posts</h2>
+                <div class="column-container">
                     <ul>
-                        {{ range (where .Site.RegularPages ".Params.column" "==" "middle") }}
+                        {{ range (where .Site.RegularPages ".Params.column" "==" "left") }}
                             <li>
                                 <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                                    <p class="sub">{{ .Description }}, {{ .Date.Format "January 02, 2006" }}</p>
-                                </li>
+
+                                <p class="sub">{{ .Date.Format "January 02, 2006" }}</p>
+
+                                <p class="sub">{{ .Description }}</p>
+                            </li>
                         {{ end }}
                     </ul>
-                    </div>
-                </div>
-
-                <div id="right-column">
-                    <h2 id="column-name">Contact</h2>
-                    <div class="column-container">
-                        <ul>
-                            {{ range (where .Site.RegularPages ".Params.column" "==" "right") }}
-                                <li>
-                                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                                    <p>{{ .Description }}</p>
-                                </li>
-                            {{ end }}
-
-                            <li><a href="https://www.github.com/grantseltzer">github</a></li>
-                            <li><a href="https://www.twitter.com/grantseltzer">twitter</a></li>
-                            <li><a href="https://www.goodreads.com/user/show/50650128-grant-seltzer">goodreads</a></li>
-                            <li><a href="https://www.linkedin.com/in/grantseltzerrichman/">linkedin</a></li>
-                            <li>grantseltzer @ gmail . com</li>
-
-
-                        </ul>
-                    </div>
                 </div>
             </div>
 
-            <span class="copyright">copyright 2018 - 2021</p>
+            <div id="middle-column">
+                <h2 id="column-name">Presentations</h2>
+                <div class="column-container">
+                    <ul>
+                        {{ range (where .Site.RegularPages ".Params.column" "==" "middle") }}
+                        <li>
+                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                            <p class="sub">{{ .Description }}, {{ .Date.Format "January 02, 2006" }}</p>
+                        </li>
+                        {{ end }}
+                    </ul>
+                </div>
+            </div>
 
+            <div id="right-column">
+                <h2 id="column-name">Contact</h2>
+                <div class="column-container">
+                    <ul>
+                        {{ range (where .Site.RegularPages ".Params.column" "==" "right") }}
+                        <li>
+                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                            <p>{{ .Description }}</p>
+                        </li>
+                        {{ end }}
+
+                        <li><a href="https://www.github.com/grantseltzer">github</a></li>
+                        <li><a href="https://www.twitter.com/grantseltzer">twitter</a></li>
+                        <li><a href="https://www.goodreads.com/user/show/50650128-grant-seltzer">goodreads</a></li>
+                        <li><a href="https://www.linkedin.com/in/grantseltzerrichman/">linkedin</a></li>
+                        <li>grantseltzer @ gmail . com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

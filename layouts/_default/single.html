@@ -30,14 +30,6 @@
             line-height: 40px;
         }
 
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 90%;
-            height: auto;
-        }
-
         pre code {
             padding: 1rem 1.5rem;
             border-radius: 4px;
@@ -83,6 +75,23 @@
                 font-family: "Open Sans", sans-serif;
                 font-size: 20px;
             }
+            img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 70%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 999px) {
+            img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 90%;
+                height: auto;
+            }
         }
         a { text-decoration: none; color: black; font-weight: bold; line-height: 1.3em; }
         a:hover { font-style: italic; border-bottom: 5px solid yellow }
@@ -110,7 +119,7 @@
         {{ end }}
         </div>
 
-        <span class="copyright">copyright 2018 - 2021</p>
+        <span class="copyright">copyright 2018 - 2021</span>
 
     </body>
     
