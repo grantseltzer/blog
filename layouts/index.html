@@ -101,7 +101,7 @@
             </div>
 
             <div id="right-column">
-                <h2 id="column-name">Contact</h2>
+                <h2 id="column-name">Other</h2>
                 <div class="column-container">
                     <ul>
                         {{ range (where .Site.RegularPages ".Params.column" "==" "right") }}
@@ -110,7 +110,7 @@
                             <p>{{ .Description }}</p>
                         </li>
                         {{ end }}
-
+                        <li><a href="/recipes/recipes">recipes</a></li>
                         <li><a href="https://www.github.com/grantseltzer">github</a></li>
                         <li><a href="https://www.twitter.com/grantseltzer">twitter</a></li>
                         <li><a href="https://www.goodreads.com/user/show/50650128-grant-seltzer">goodreads</a></li>
