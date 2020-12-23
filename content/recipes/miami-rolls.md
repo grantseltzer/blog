@@ -12,14 +12,16 @@ See picture at bottom of page.
 20g Active Dry Yeast
  
 1/4c Vegetable Oil
+
+3/4c Water
  
-60g Sugar (+ pinch for yeast)
+60g Sugar (+ 15g for yeast activation)
  
 15g Salt
  
 2g Annatto powder
  
-3 eggs (one is for egg wash)
+2 eggs
  
 2 egg yolk
  
@@ -29,13 +31,15 @@ Dried onion flakes
 ```
  
 ```
-- In a large bowl, stir to combine yeast with 15g of sugar and 3/4 cup of warm water. Let sit for ~5 minutes until bubbly and active.
+- In a large bowl, stir to combine yeast with 15g of sugar and 3/4 cup of warm water. Let sit until bubbly and active.
+
+- While yeast is activating, measure out the rest of your ingredients.
  
 - Whisk oil into yeast.
  
-- Whisk 2 large eggs + 2 yolk into mixture, one at a time.
+- Whisk 2 large eggs + 2 yolk into mixture, one at a time. Reserve egg whites for washing the top.
  
-- Whisk sugar, salt, and Annatto powder into mixture a little a time.
+- Whisk sugar, salt, and Annatto powder into mixture a little a time until fully combined.
  
 - Gradually add flour a little at time until the dough holds together well enough to knead with hands.
  
@@ -45,15 +49,15 @@ Dried onion flakes
  
 - While it rises to double in size, caramelize a large yellow onion:
 
-    - Chop onion into tiny strips and cook low and slow in olive oil until transluecent. 
+    - Dice onions and cook low and slow in a tablespoon of olive oil until transluecent. 
 
-    - Allow to cool
+    - Allow to cool.
  
-- Break up the dough into individual balls that are 80g each.
+- Break up the dough into individual balls that are 60g each.
  
 - Individually flatten each piece to an oblong shape, about eighth of an inch thick. Place a spoonful of caramelized onions across the center. Fold the long ends into one another so they just overlap. Fold up the other individual sides to seal the onions in. The assembled miami roll should be a small rectangle a little smaller than your closed fist.
  
-- Arrange the miami rolls so they have about a half an inch of space between them on a parchment paper lined cookie sheet. It is desirable for them to fuse together a little bit when rising/baking.
+- Arrange the miami rolls so they have about a half an inch of space between them on a parchment paper lined cookie sheet. It is desirable for them to fuse together a bit when rising/baking.
  
 - Egg wash the top and sides of all of the rolls.
  
@@ -63,7 +67,9 @@ Dried onion flakes
  
 - Egg wash again and sprinkle dried onion flakes on top.
  
-- Bake for 21 minutes or until nice and brown on top.
+- Bake for 20 minutes, placing a sheet of tin foil on top half way through to reduce browning while the roll bakes.
+
+- Let cool for 5 minutes before eating.
 ```
 
 ![miamis](/miami_rolls.jpg)

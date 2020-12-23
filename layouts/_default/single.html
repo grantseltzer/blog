@@ -113,10 +113,12 @@
         {{ .Content }}
         
         {{ if eq .Section "talks" }}
-            <div id="presentation">
-                <p>Presented at {{ .Params.conference }}.</p>
-                <iframe src={{ .Params.presentation }} frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-            </div>
+            {{ if ne .Params.presentation "" }}
+                <div id="presentation">
+                    <p>Presented at {{ .Params.conference }}.</p>
+                    <iframe src={{ .Params.presentation }} frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                </div>
+            {{end}}
         {{ end }}
         </div>
 
