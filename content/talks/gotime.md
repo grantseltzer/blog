@@ -5,7 +5,7 @@ Tags = []
 Categories = []
 presentation = ""
 conference = "Go Time Podcast"
-Date = 2020-12-10T00:00:00+00:00
+Date = 2020-11-10T00:00:00+00:00
 column = "middle"
 +++
 
