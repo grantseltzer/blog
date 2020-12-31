@@ -62,7 +62,7 @@ $~ go run main.go
 With these tools our only real task is to extract the relevant raw bytes from the binary file and feed it through Capstone's engine.
 
 <!-- ELF's -->
-When you compile a Go program on your laptop the outputted binary will default to a 64-bit ELF (or `Executable Linkable Format`). The ELF is organized into various sections that each have a unique purpose such as storing version information, program metadata, or executable code. The ELF is a widely accepted standard for binary files and as such Go has a `debug/elf` package for easily interacting with them. There are many intricacies to the [ELF format specification](http://man7.org/linux/man-pages/man5/elf.5.html) but for the sake of disassembly we really only care about two sections. We care about the symbol table section and the text section. Let's take a look:
+When you compile a Go program on your laptop the outputted binary will likely default to a 64-bit ELF (or `Executable Linkable Format`). The ELF is organized into various sections that each have a unique purpose such as storing version information, program metadata, or executable code. The ELF is a widely accepted standard for binary files and as such Go has a `debug/elf` package for easily interacting with them. There are many intricacies to the [ELF format specification](http://man7.org/linux/man-pages/man5/elf.5.html) but for the sake of disassembly we really only care about two sections. We care about the symbol table section and the text section. Let's take a look:
 
 ![ELF64](/dissecting/ELF_64.png)
 
