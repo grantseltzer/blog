@@ -1,5 +1,5 @@
 +++
-title = "Parsing Go Binary Type Information"
+title = "Parsing Go Binary DWARF Info"
 Description = ""
 Tags = []
 Categories = []
