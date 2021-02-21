@@ -36,7 +36,7 @@ First of all, in order to build a disassembler we need to know what all of the b
 
 Thankfully all of the heavy lifting has been done for us by the authors and maintainers of [Capstone](http://www.capstone-engine.org/), a disassembly framework. Capstone is widely accepted as the standard to use for writing disassembly tools. Reimplementing it would be quite a daunting, albeit educational, task so we won't be doing that as part of this post. Using Capstone in Go is as simple as importing its cleverly named Go bindings, [gapstone](https://github.com/bnagy/gapstone):
 
-<script src="https://gist.github.com/grantseltzer/85452bdb369315a79beb619c5544e2a9.js"></script>
+{{< gist grantseltzer 85452bdb369315a79beb619c5544e2a9 >}}
 
 For example, you can plug the the following raw bytes (displayed in hex) through Capstone and it will translate them into the corresponding x86_64 instruction:
 
@@ -53,7 +53,7 @@ mov rcx, qword ptr fs:[0xfffffffffffffff8]
 
 In code and then running it looks like this:
 
-<script src="https://gist.github.com/grantseltzer/c44ac782ef271b141fa1ac88c0e5fcd4.js"></script>
+{{< gist grantseltzer c44ac782ef271b141fa1ac88c0e5fcd4 >}}
 
 ```
 $~ go run main.go
@@ -68,13 +68,13 @@ When you compile a Go program on your laptop the outputted binary will likely de
 
 First let's define the term **symbol**. This is any name identifiable object in our code. Variables, functions, types, and constants are all symbols. The Go compiler compiles each symbol and stores reference information about it in the **symbol table**. We can see in the `debug/elf` package's definition of `Symbol` that each entry in the symbol table contains the symbol's name, size, memory offset, and type:
 
-<script src="https://gist.github.com/grantseltzer/3634c10d8c2fa4c2ce38c9c83855ac78.js"></script>
+{{< gist grantseltzer 3634c10d8c2fa4c2ce38c9c83855ac78 >}}
 
 Although it's not clear by naming convention, the memory offset is stored in `Value`. By memory offset, I mean the number of addresses from the beginning of the **.text** section. This is the section where executable instructions (function symbols) defined in the actual program are stored.  Also unclear by naming convention is the `Info` byte. This is a special value that conveys the type of the symbol. For the sake of our disassembler we only want to look at functions, so after doing some digging I discovered that Go uses the values '2' and '18' for its function symbols. This appears to be for arbitrary reasons.
 
 So, with this knowledge it becomes clear that we want to extract the symbol table from the ELF binary and traverse through each symbol to find out where we can find the bytes to disassemble:
 
-<script src="https://gist.github.com/grantseltzer/1ccd6cf37dd98c012a089b0f0f00babd.js"></script>
+{{< gist grantseltzer 1ccd6cf37dd98c012a089b0f0f00babd >}}
 
 Let's calculate the starting and ending indices of the symbol within the `.text` section's array of bytes. For each symbol we want to subtract its `Value` from the text section's starting address; this will give us the starting index. To calculate the ending index we just add the symbol's size to the starting index. From there we can collect the bytes and feed them through Capstone.
 
@@ -82,7 +82,7 @@ Let's calculate the starting and ending indices of the symbol within the `.text`
 
 We're essentially finished now. We're going to open up the `.text` section to get the starting address and raw data, do the address calculation for each symbol, run the data through Capstone, and print out the resulting instructions:
 
-<script src="https://gist.github.com/grantseltzer/6dfd8ed453e6836ad8dfb4b63cf1dbe6.js"></script>
+{{< gist grantseltzer 6dfd8ed453e6836ad8dfb4b63cf1dbe6 >}}
 
 And that's it! The full program can be found [here](https://gist.github.com/grantseltzer/3efa8ecc5de1fb566e8091533050d608). By leveraging some very powerful tools in the Go ecosystem we were able to build a fully functioning disassembler in under 75 lines of code! Thank you for reading and feel free to reach out via email for any questions or comments!
 
