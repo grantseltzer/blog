@@ -15,7 +15,11 @@ In order to illustrate the nature of libbpf and how to use it, we're going to wr
 
 ![simple](/libbpf/simple_diagram.png)
 
-*We're going to build on this diagram*
+{{< subtext >}}
+
+We're going to build on this diagram
+
+{{< /subtext >}}
 
 ### bpf code
 
@@ -124,7 +128,7 @@ The first step is to compile the bpf code into an object file:
 
 `clang -g -O2 -c -target bpf -o mybpfobject.o mybpfcode.bpf.c`
 
-Now we can use _[libbpfgo](https://github.com/aquasecurity/tracee/blob/main/libbpfgo)_, a thin wrapper around libbpf itself. The goal is to implement all of the public API of libbpf so you can use it from Go. We've started with the features that [tracee](https://github.com/aquasecurity/tracee) needs, but everything else will be coming soon!
+Now we can use _[libbpfgo](https://github.com/aquasecurity/tracee/blob/main/libbpfgo)_, a thin wrapper around libbpf itself. The goal of libbpfgo is to implement all of the public API of libbpf so you can easily use it from Go. We've started with the features that [tracee](https://github.com/aquasecurity/tracee) needs, but everything else will be coming soon!
 
 Before we implement it in code, let's look at a highlevel what we're going to be doing:
 
@@ -182,12 +186,12 @@ Building looks like this:
 
 `CC=gcc CGO_CFLAGS="-I /usr/include/bpf" CGO_LDFLAGS="/usr/lib64/libbpf.a" go build -o libbpfgo-prog`
 
-So we have a couple dependencies here that we need to have, but luckily are provided by most package managers. `/usr/include/bpf` is the path to the libbpf source code. If it's not provided by your distribution (something like 'libbpf-dev') you can just use the libbpf source code in your project repository. Same goes with the static `libbpf.a` file (something like libbpf-dev-static). The resulting binary will be named `libbpfgo-prog`!
+So we have a couple dependencies here that we need to have, but luckily are provided by most package managers. `/usr/include/bpf` is the path to the libbpf source code on my system. If it's not provided by your distribution (something like 'libbpf-dev') you can just commit the libbpf source code in your project repository. `libbpf.a` can either be built manually or provided by a package (something like libbpf-dev-static). The resulting binary will be named `libbpfgo-prog`.
 
 Finally you can either run this as root or with CAP_BPF/CAP_TRACING (linux 5.8+):
 
 ```
-//TODO: Running, and show output
+
 ```
 
 ### Wrapup roundup 
