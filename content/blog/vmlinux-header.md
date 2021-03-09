@@ -29,4 +29,4 @@ For example, linux represents the concept of a process with a type called [`task
 
 A powerful concept that libbpf enables is something called "CO:RE" or "Compile once, run everywhere". There are macros defined in libbpf (such as `BPF_CORE_READ`) that will analyze what fields you're trying to access in the types that are defined in your `vmlinux.h`. If the field you want to access has been moved within the struct definition that the running kernel uses, the macro/helpers will find it for you. Therefore, it doesn't matter if you compile your bpf program with the `vmlinux.h` file you generated from your own kernel and then ran on a different one. 
 
-I am not yet an expert on this so please refer to Andrii Nakryiko's blog post [here](https://nakryiko.com/posts/bpf-portability-and-co-re/) until better documentation exists. 
+Refer to Andrii Nakryiko's blog post [here](https://nakryiko.com/posts/bpf-portability-and-co-re/) on the subject.
