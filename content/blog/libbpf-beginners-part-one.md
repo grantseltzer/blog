@@ -17,7 +17,7 @@ In order to illustrate the nature of libbpf and how to use it, we're going to wr
 
 {{< subtext >}}
 
-We're going to build on this diagram
+The basic nature of libbpf
 
 {{< /subtext >}}
 
