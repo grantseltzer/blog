@@ -21,7 +21,7 @@ We're going to build on this diagram
 
 {{< /subtext >}}
 
-### bpf code
+### Kernel side
 
 Let's start with the imports:
 
@@ -31,16 +31,9 @@ Let's start with the imports:
 #include "simple.h"
 ```
 
-The `bpf_helpers.h` header file is part of libbpf. As you might assume, it contains a lot of useful functions for you to use in your bpf programs. As for `vmlinux.h`, I wrote a complementary blog post on the subject, you can find it [here](/blog/vmlinux-header). `simple.h` contains a struct definition that we want to include in bpf and userspace code. That simply looks like:
+The `bpf_helpers.h` header file is part of libbpf. As you might assume, it contains a lot of useful functions for you to use in your bpf programs. As for `vmlinux.h`, I wrote a complementary blog post on the subject, you can find it [here](/blog/vmlinux-header).
 
-```
-// simple.h
 
-struct process_info {
-    int pid;
-    char comm[100];
-};
-```
 
 Now we're going to need a way to transmit output to userspace everytime the bpf program is called. For this we're going to set up a [ringbuffer](https://nakryiko.com/posts/bpf-ringbuf/):
 
@@ -53,18 +46,27 @@ struct {
 
 There are many [types of maps](https://elixir.bootlin.com/linux/v5.11.2/source/include/uapi/linux/bpf.h#L130) you can use in bpf programs. Ringbuffers are a reliable way to transport data from kernel space to user space. If this isn't the first bpf program you've written, you've likely also seen perfbuffers. In the blog post I linked above you can read about the benefits of using ringbuffers instead of perf.
 
+We're going to transmit an 'event' over the ringbuffer whenever our bpf program is called, so we'll just define that as a struct like this:
+
+```
+typedef struct process_info {
+    int pid;
+    char comm[100];
+} proc_info;
+```
+
 Finally, let's look at the actual bpf program:
 
 ```
-SEC("kprobe/sys_mmap")
-int kprobe__sys_mmap(struct pt_regs *ctx)
+SEC("kprobe/sys_execve")
+int kprobe__sys_execve(struct pt_regs *ctx)
 {
     __u64 id = bpf_get_current_pid_tgid();
     __u32 tgid = id >> 32;
-    struct process_info *process;
+    proc_info *process;
 
     // Reserve space on the ringbuffer for the sample
-    process = bpf_ringbuf_reserve(&events, sizeof(struct process_info), ringbuffer_flags);
+    process = bpf_ringbuf_reserve(&events, sizeof(proc_info), ringbuffer_flags);
     if (!process) {
         return 0;
     }
@@ -82,38 +84,37 @@ The bpf program itself is just this function, it's essentially `main()`. We can 
 So, let's break this down.
 
 ```
-SEC("kprobe/sys_mmap")
+SEC("kprobe/sys_execve")
 ```
 
 This is the section macro (defined in [bpf_helpers.h](https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/tree/tools/lib/bpf/bpf_helpers.h#n25)). All programs must have one to tell libbpf what part of the compiled binary to place the program. This is essentially a qualified name for your program. There isn't a strict rule for what it should be but you should follow the conventions defined in libbpf. You can also see the `SEC` label above in the ringbuffer definition.
 
 ```
-int kprobe__sys_mmap(struct pt_regs *ctx)
+int kprobe__sys_execve(struct pt_regs *ctx)
 ```
 
-Here we can see that the program name is `kprobe__sys_mmap`. You can name it whatever you like and use this name as an identifier from the userspace side. Every [different type of bpf program](https://elixir.bootlin.com/linux/v5.11.2/source/include/uapi/linux/bpf.h#L171) has its own 'context' that you get access to for use in your bpf program. A good breakdown on the different things you can attach bpf programs to and what context is available for them can be found [here](https://blogs.oracle.com/linux/notes-on-bpf-1). 
+Here we can see that the program name is `kprobe__sys_execve`. You can name it whatever you like and use this name as an identifier from the userspace side. Every [different type of bpf program](https://elixir.bootlin.com/linux/v5.11.2/source/include/uapi/linux/bpf.h#L171) has its own 'context' that you get access to for use in your bpf program. A good breakdown on the different things you can attach bpf programs to and what context is available for them can be found [here](https://blogs.oracle.com/linux/notes-on-bpf-1). 
 
 In the case of this kprobe bpf program we have a [`struct pt_regs`](https://elixir.bootlin.com/linux/v5.11.2/source/arch/x86/include/asm/ptrace.h#L12) which gives us access to the virtual registers of the calling process.
-
 
 After this, it's mostly self explanatory:
 
 ```
-    struct process_info *process;
+    __u64 id = bpf_get_current_pid_tgid();
+    __u32 tgid = id >> 32;
+    proc_info *process;
 
     // Reserve space on the ringbuffer for the sample
-    process = bpf_ringbuf_reserve(&events, sizeof(struct process_info), ringbuffer_flags);
+    process = bpf_ringbuf_reserve(&events, sizeof(proc_info), ringbuffer_flags);
     if (!process) {
         return 0;
     }
 
-    __u64 id = bpf_get_current_pid_tgid();
-    __u32 tgid = id >> 32;
-    
     process->pid = tgid;
     bpf_get_current_comm(&process->comm, 100);
 
     bpf_ringbuf_submit(process, ringbuffer_flags);
+    return 0;
 ```
 
 We're reserving space for a `struct process_info` on the ringbuffer, reading in the process ID, and the process name for it, and submitting it on the ringbuffer, that's it! 
@@ -171,13 +172,14 @@ And finally we set up a go channel to use for listening to output from the ringb
 
     rb.Start()
 
-    numberOfEventsReceived := 0
-
-recvLoop:
     for {
-        ev := <-eventsChannel //TODO: CAST EV BYTES TO THE STRUCT DEFINITION
-        fmt.Printf("%+v\n", ev)
-    }
+        eventBytes := <-eventsChannel
+
+        pid := int(binary.LittleEndian.Uint32(eventBytes[0:4])) // Treat first 4 bytes as LittleEndian Uint32
+        comm := string(bytes.TrimRight(eventBytes[4:], "\x00")) // Remove excess 0's from comm, treat as string
+        
+        fmt.Printf("%d %v\n", pid, comm)
+	}
 ```
 
 The only other thing to note is that we have to import "C" at the top of this file.
@@ -191,9 +193,18 @@ So we have a couple dependencies here that we need to have, but luckily are prov
 Finally you can either run this as root or with CAP_BPF/CAP_TRACING (linux 5.8+):
 
 ```
-
+[*] sudo ./libbpfgo-prog
+6400 sh
+6399 sh
+6401 node
+6403 sh
+6402 sh
+6404 node
+...
 ```
 
-### Wrapup roundup 
+### Wrapup roundup
 
-Check out documentation for libbpfgo [here](https://pkg.go.dev/github.com/aquasecurity/tracee/libbpfgo), a good place to look for examples of usage would be in the tests [here](https://github.com/aquasecurity/tracee/tree/main/libbpfgo/selftest). All of the code written for this blog post can be found [here]()
+To review, we first wrote a bpf program using helpers defined in libbpf. The bpf program read information like the process ID and command then wrote it to a shared ringbuffer. We compiled it with clang, then used libbpfgo to load it into the kernel and listen for output from the ringbuffer.
+
+Check out documentation for libbpfgo [here](https://pkg.go.dev/github.com/aquasecurity/tracee/libbpfgo), a good place to look for examples of usage would be in the tests [here](https://github.com/aquasecurity/tracee/tree/main/libbpfgo/selftest). All of the code written for this blog post can be found [here](https://github.com/grantseltzer/libbpfgo-example).
