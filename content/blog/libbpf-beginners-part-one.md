@@ -33,8 +33,6 @@ Let's start with the imports:
 
 The `bpf_helpers.h` header file is part of libbpf. As you might assume, it contains a lot of useful functions for you to use in your bpf programs. As for `vmlinux.h`, I wrote a complementary blog post on the subject, you can find it [here](/blog/vmlinux-header).
 
-
-
 Now we're going to need a way to transmit output to userspace everytime the bpf program is called. For this we're going to set up a [ringbuffer](https://nakryiko.com/posts/bpf-ringbuf/):
 
 ```
@@ -190,7 +188,7 @@ Building looks like this:
 
 So we have a couple dependencies here that we need to have, but luckily are provided by most package managers. `/usr/include/bpf` is the path to the libbpf source code on my system. If it's not provided by your distribution (something like 'libbpf-dev') you can just commit the libbpf source code in your project repository. `libbpf.a` can either be built manually or provided by a package (something like libbpf-dev-static). The resulting binary will be named `libbpfgo-prog`.
 
-Finally you can either run this as root or with CAP_BPF/CAP_TRACING (linux 5.8+):
+Finally, you can either run this as root or with CAP_BPF/CAP_TRACING (linux 5.8+):
 
 ```
 [*] sudo ./libbpfgo-prog
