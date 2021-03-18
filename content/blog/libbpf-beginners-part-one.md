@@ -3,15 +3,15 @@ title = "Getting started with bpf and libbpfgo"
 Description = ""
 Tags = []
 Categories = []
-Date = 2022-03-08T00:00:00+00:00
+Date = 2021-03-18T00:00:00+00:00
 column = "left"
 +++
 
 In my [previous posts](/blog/tracing-go-functions-with-ebpf-part-1) on the subject of bpf I used a project called BCC to compile, load, and interact with my bpf programs. I, and many other developers, have recently heard about a better way to build ebpf projects called [libbpf](https://github.com/libbpf/libbpf). There are a few good resources to use when developing libbpf based programs but getting started can still be a quite overwhelming. The goal of this post is to provide a simple and effective explanation of what libbpf is and how to start using it.
 
-libbpf is library that you can import in both your userspace and bpf programs. It provides developers with an API for loading and interacting with bpf programs. It is maintained in the linux kernel [source tree](https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/tree/tools/lib/bpf) which makes it a very promising package to rely on.
+libbpf is library that you can import in your userspace code. It also contains helpers that you can use in your bpf programs. In userspace, It provides developers with an API for loading and reading output from bpf programs. It is maintained in the linux kernel [source tree](https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/tree/tools/lib/bpf) which makes it a very promising package to rely on.
 
-In order to illustrate the nature of libbpf and how to use it, we're going to write a simple bpf program that tells us everytime a process uses the `mmap` system call. We're then going to write a userspace program, in C, which loads the compiled bpf program and listens for output from it. 
+In order to illustrate the nature of libbpf and how to use it, we're going to write a simple bpf program that tells us everytime a process uses the `execve` system call (via the `__x64_sys_execve` kernel function). We're then going to write a userspace program, in Go, which loads the compiled bpf program and listens for output from it. 
 
 ![simple](/libbpf/simple_diagram.png)
 
@@ -31,7 +31,7 @@ Let's start with the imports:
 #include "simple.h"
 ```
 
-The `bpf_helpers.h` header file is part of libbpf. As you might assume, it contains a lot of useful functions for you to use in your bpf programs. As for `vmlinux.h`, I wrote a complementary blog post on the subject, you can find it [here](/blog/vmlinux-header).
+As you might assume, [`bpf_helpers.h`](https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/tree/tools/lib/bpf/bpf_helpers.h) contains a lot of useful functions for you to use in your bpf programs. As for `vmlinux.h`, I wrote a complementary blog post on the subject, you can find it [here](/blog/vmlinux-header).
 
 Now we're going to need a way to transmit output to userspace everytime the bpf program is called. For this we're going to set up a [ringbuffer](https://nakryiko.com/posts/bpf-ringbuf/):
 
@@ -93,7 +93,7 @@ int kprobe__sys_execve(struct pt_regs *ctx)
 
 Here we can see that the program name is `kprobe__sys_execve`. You can name it whatever you like and use this name as an identifier from the userspace side. Every [different type of bpf program](https://elixir.bootlin.com/linux/v5.11.2/source/include/uapi/linux/bpf.h#L171) has its own 'context' that you get access to for use in your bpf program. A good breakdown on the different things you can attach bpf programs to and what context is available for them can be found [here](https://blogs.oracle.com/linux/notes-on-bpf-1). 
 
-In the case of this kprobe bpf program we have a [`struct pt_regs`](https://elixir.bootlin.com/linux/v5.11.2/source/arch/x86/include/asm/ptrace.h#L12) which gives us access to the virtual registers of the calling process.
+In the case of this kprobe bpf program we have a [`struct pt_regs`](https://elixir.bootlin.com/linux/v5.11.2/source/arch/x86/include/asm/ptrace.h#L12) which gives us access to the virtual registers of the calling process. Alternatively you can use the [BPF_KPROBE](https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/tree/tools/lib/bpf/bpf_tracing.h#n368) macro which will extract arguments for you so you don't have to parse the `struct pt_regs` manually!
 
 After this, it's mostly self explanatory:
 
@@ -117,7 +117,7 @@ After this, it's mostly self explanatory:
 
 We're reserving space for a `struct process_info` on the ringbuffer, reading in the process ID, and the process name for it, and submitting it on the ringbuffer, that's it! 
 
-### Userspace side (libbpfgo)
+### Userspace side ([libbpfgo](https://github.com/aquasecurity/tracee/blob/main/libbpfgo))
 
 Our goal for the userspace program is to load the compiled bpf program, attach it to the appropriate kprobe, listen for the output from the ringbuffer, and clean things up when we're done.
 
@@ -145,15 +145,15 @@ We can load in the object file like so:
     bpfModule.BPFLoadObject()
 ```
 
-Next we can find the bpf program that we want to use (you can put multiple into a single object file), and attach it to the hook we want to, in this case the `__x64_sys_mmap` kernel function.
+Next we can find the bpf program that we want to use (you can put multiple into a single object file), and attach it to the hook we want to, in this case the `__x64_sys_execve` kernel function.
 
 ```
-    prog, err := bpfModule.GetProgram("kprobe__sys_mmap")
+    prog, err := bpfModule.GetProgram("kprobe__sys_execve")
     if err != nil {
         panic()
     }
 
-    _, err = prog.AttachKprobe("__x64_sys_mmap")
+    _, err = prog.AttachKprobe("__x64_sys_execve")
     if err != nil {
         panic()
     }
