@@ -49,7 +49,7 @@ We're going to transmit an 'event' over the ringbuffer whenever our bpf program 
 ```
 typedef struct process_info {
     int pid;
-    char comm[100];
+    char comm[TASK_COMM_LEN];
 } proc_info;
 ```
 
