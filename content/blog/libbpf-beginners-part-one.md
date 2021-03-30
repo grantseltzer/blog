@@ -70,7 +70,7 @@ int kprobe__sys_execve(struct pt_regs *ctx)
     }
 
     process->pid = tgid;
-    bpf_get_current_comm(&process->comm, 100);
+    bpf_get_current_comm(&process->comm, TASK_COMM_LEN);
 
     bpf_ringbuf_submit(process, ringbuffer_flags);
     return 0;
@@ -109,7 +109,7 @@ After this, it's mostly self explanatory:
     }
 
     process->pid = tgid;
-    bpf_get_current_comm(&process->comm, 100);
+    bpf_get_current_comm(&process->comm, TASK_COMM_LEN);
 
     bpf_ringbuf_submit(process, ringbuffer_flags);
     return 0;
