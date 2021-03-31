@@ -7,6 +7,13 @@ Date = 2021-03-11T00:00:00+00:00
 column = "left"
 +++
 
+{{< intro >}}
+
+A version of this post was also uploaded to Aqua's blog <a href="https://blog.aquasec.com/vmlinux.h-ebpf-programs">here</a>
+
+{{< /intro >}}
+
+
 If you've been reading much bpf code recently, you've probably seen this:
 
 ```
