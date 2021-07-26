@@ -40,6 +40,22 @@ Since the vmlinux.h file is generated from your installed kernel, your bpf progr
 
 However, by using libbpf, you can enable something called "CO:RE" or "Compile once, run everywhere". There are macros defined in libbpf (such as `BPF_CORE_READ`) that will analyze what fields you're trying to access in the types that are defined in your `vmlinux.h`. If the field you want to access has been moved within the struct definition that the running kernel uses, the macro/helpers will find it for you. Therefore, it doesn't matter if you compile your bpf program with the `vmlinux.h` file you generated from your own kernel and then ran on a different one. 
 
+You'll also notice an interesting set of lines at the top of vmlinux.h
+
+```
+#ifndef BPF_NO_PRESERVE_ACCESS_INDEX
+#pragma clang attribute push (__attribute__((preserve_access_index)), apply_to = record)
+#endif
+```
+
+This applies the 'preserve_access_index' attribute to all of the data structures defined in this massive header file. It enables preserving the type's debug information indices which the CO:RE helpers make use of. The attribute is then turned off at the bottom of the header:
+
+```
+#ifndef BPF_NO_PRESERVE_ACCESS_INDEX
+#pragma clang attribute pop
+#endif
+```
+
 It also feels important to point out that macros defined in Linux will not be defined in DWARF/BTF, and therefore not be part of the generated vmlinux.h file.
 
 Refer to Andrii Nakryiko's blog post [here](https://nakryiko.com/posts/bpf-portability-and-co-re/) on the subject of BPF + CO:RE.

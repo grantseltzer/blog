@@ -109,7 +109,4 @@ static __always_inline u32 get_mnt_ns_id(struct nsproxy *ns)
 #### Missing Macros
 
 
-
-2) Missing macros/functions
-
-3) Verifier/performance turmoil
+#### Performance Trouble
