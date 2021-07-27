@@ -48,7 +48,7 @@ You'll also notice an interesting set of lines at the top of vmlinux.h
 #endif
 ```
 
-This applies the 'preserve_access_index' attribute to all of the data structures defined in this massive header file. It enables preserving the type's debug information indices which the CO:RE helpers make use of. The attribute is then turned off at the bottom of the header:
+This applies the 'preserve_access_index' attribute to all of the data structures defined in this massive header file. It enables preserving the type's debug information indices which the CO:RE helpers make use of. You could apply this attribute to structs in the various normal header files you'd import and skip vmlinux.h altogether though there's some challenge to that which we ran into. The attribute is then turned off at the bottom of the header:
 
 ```
 #ifndef BPF_NO_PRESERVE_ACCESS_INDEX
