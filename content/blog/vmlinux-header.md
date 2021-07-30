@@ -38,7 +38,7 @@ For example, Linux represents the concept of a process with a type called [`task
 
 Since the vmlinux.h file is generated from your installed kernel, your bpf program could break if you try to run it on another machine without recompiling if it’s running a different kernel version. This is because, from version to version, definitions of internal structs change within the linux source code.
 
-However, by using libbpf, you can enable something called "CO:RE" or "Compile once, run everywhere". There are macros defined in libbpf (such as `BPF_CORE_READ`) that will analyze what fields you're trying to access in the types that are defined in your `vmlinux.h`. If the field you want to access has been moved within the struct definition that the running kernel uses, the macro/helpers will find it for you. Therefore, it doesn't matter if you compile your bpf program with the `vmlinux.h` file you generated from your own kernel and then ran on a different one. 
+However, by using libbpf, you can enable something called "CO:RE" or "Compile once, run everywhere". There are macros defined in libbpf (such as `BPF_CORE_READ`) that will analyze what fields you're trying to access in the types that are defined in your `vmlinux.h`. If the field you want to access has been moved within the struct definition that the running kernel uses, the macro/helpers will find it for you. It doesn't matter if you compile your bpf program with the `vmlinux.h` file you generated from your own kernel and then ran on a different one. 
 
 You'll also notice an interesting set of lines at the top of vmlinux.h
 
@@ -56,6 +56,6 @@ This applies the 'preserve_access_index' attribute to all of the data structures
 #endif
 ```
 
-It also feels important to point out that macros defined in Linux will not be defined in DWARF/BTF, and therefore not be part of the generated vmlinux.h file.
+Macros defined in Linux are not defined in DWARF/BTF, and will not be part of the generated vmlinux.h file.
 
 Refer to Andrii Nakryiko's blog post [here](https://nakryiko.com/posts/bpf-portability-and-co-re/) on the subject of BPF + CO:RE.
