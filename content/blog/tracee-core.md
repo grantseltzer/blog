@@ -139,3 +139,10 @@ Note that this same performance hit applies if using `BPF_CORE_READ`/`BPF_PROBE_
 
 The CO:RE version of tracee can be compiled in any environment, regardless of if BTF is enabled in it's kernel. This is because we version controlled the vmlinux.h file. As a result, the CO:RE enabled bpf object is always built with tracee. When the userspace Go code is compiled, we embed this bpf object using Go's embed directive. At runtime tracee detects if BTF (and therefore CO:RE) is supported, in which case it runs the CO:RE object. Otherwise it looks for a kernel specific bpf object, or attempts to build one.
 
+## It works!
+
+Here we can see the same CO:RE enabled BPF object file running perfectly on a 5.12 kernel, and a 4.18 one!
+
+![5.12](/tracee-core/5.12kernel.png)
+
+![4.18](/tracee-core/4.18kernel.png)
