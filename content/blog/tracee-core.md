@@ -44,7 +44,7 @@ Here we have a simple example where we use macro's we defined for checking kerne
 
 What if we could read from kernel data structures without having to worry about changes in their definitions? That is the promise of 'CO:RE' or 'Compile Once, Run Everywhere'.
 
-This works by replacing libbpf helper functions like `bpf_probe_read` which reads from kernel memory to the stack. Instead you can use `bpf_core_read`. This helper uses offset relocation for source address using clang's `__builtin_preserve_access_index()`. A simple explanation of how it works is that the helper uses kernel debug info (BTF) to find where kernel structure fields have been relocated to. For an actual in depth explanation of how this works, check out Andrii Nakriyko's [blog post](https://nakryiko.com/posts/bpf-portability-and-co-re/) on the subject.
+This works by replacing libbpf helper functions like `bpf_probe_read` which reads from kernel memory to the stack. Instead you can use `bpf_core_read`. This helper uses offset relocation for source address using clang's `__builtin_preserve_access_index()`. A simple explanation of how it works is that the helper uses kernel debug info (BTF) to find where kernel structure fields have been relocated to. For an actual in depth explanation of how this works, check out Andrii Nakryiko's [blog post](https://nakryiko.com/posts/bpf-portability-and-co-re/) on the subject.
 
 ## Adding this support to Tracee
 
