@@ -36,8 +36,11 @@ This way my inbox looks like this:
 
 ## Participating in conversation
 
-### 
+### Code of conduct 
 
+The linux kernel community has a bad reputation. I haven't experienced any toxicity but have seen evidence of it. There is a [code of conduct](https://github.com/torvalds/linux/blob/master/Documentation/process/code-of-conduct.rst) that absoultely should be followed and enforced. You should always feel safe to be part of the linux community and accept that you're allowed to make mistakes. 
+
+I was very intimidated making my first contribution but I had the help of some very kind people who patiently walked me through the very contents of this guide. If you're ever worried or intimidated about using the mailing list, I would be more than happy to help you with it, you can always reach out via email. 
 
 ### Plaintext
 
@@ -51,8 +54,37 @@ Conversation on the mailing list is formatted a little different from normal ema
 
 ![bottom-posting](/mailing-list/bottom-posting.png)
 
+## Formatting patches
+
+Patches can actually be submitted via git on the command line. There are a few workflows that you can use but this is how I like to do it.
+
+First, make your code changes.
+
+Next, make your commits with meaningful commit messages. You can find a good guide on how to properly format your commit message [here](https://chris.beams.io/posts/git-commit/#separate). You can do a `git log` to take a look at examples. Seperate each commit logically
+
+Next, you're going to format a patch or series of patches. A patch is a file which contains a plaintext representation of a commit, as well as headers to be interepreted for an email client, such as gmail. Here's what that looks like:
+
+![patch](/mailing-list/patch.png)
+
+The patch file is created using git, and sent to the mailing list using git.
+
+To create a patch, you use `git format-patch`. You can specify specific commits with this to generate patch files. If your changes span multiple commits, you would create one patch file for each commit. For example:
+
+```
+git format-patch HEAD~1
+```
+
+This would create a single patch file out of the most recent commit. If you made 3 commits that you want to submit as a single patch series, you would do `HEAD~3` instead. The file will be created in your current working directory named something like "0001-libbpf-Add-API-documentation-convention-guidelines.patch". The `0001` is just the number of the patch file in the order it was created. The rest of the name is the subject line of the commit message.
+
+Next, there's a script for checking to see if you made any simple mistakes in formatting your patch/commit message. You can run from the base of the linux repo like so:
+
+```
+[*] ./scripts/checkpatch.pl 0001-libbpf-Add-API-documentation-convention-guidelines.patch                                                                                               130 ↵
+total: 0 errors, 0 warnings, 46 lines checked
+
+0001-libbpf-Add-API-documentation-convention-guidelines.patch has no obvious style problems and is ready for submission.
+```
+
+Correct any problems that the script points out, and then you're ready to send it!
+
 ## Submitting patches
-
-Patches are actually submitted via git. There are a few workflows that you can use but the utility that command line git provides makes it easy enough.
-
-First, make your changes.
