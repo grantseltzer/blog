@@ -26,8 +26,8 @@ The basic nature of libbpf
 Let's start with the imports:
 
 ```
-#include <bpf/bpf_helpers.h>  
 #include "vmlinux.h"
+#include <bpf/bpf_helpers.h>  
 #include "simple.h"
 ```
 
