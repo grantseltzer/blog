@@ -7,7 +7,7 @@ Date = 2022-06-16T00:00:00+00:00
 column = "left"
 +++
 
-There are times when developing your BPF projects when you need to ensure safe access to shared memory. You may have a counter that you're updating from various different BPF programs and reading in userspace. You may also be updating map values from both userspace and from BPF. In this post i'll demonstrate a couple different techniques for handing this scenarios safely. 
+There are times when developing your BPF projects when you need to ensure safe access to shared memory. You may have a counter that you're updating from various different BPF programs and reading in userspace. You may also be updating map values from both userspace and from BPF. In this post i'll demonstrate a couple different techniques for handing these scenarios safely. 
 
 ## Per-cpu maps
 
