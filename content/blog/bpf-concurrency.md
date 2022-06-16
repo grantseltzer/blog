@@ -3,7 +3,7 @@ title = "BPF Map Concurrency Techniques"
 Description = ""
 Tags = []
 Categories = []
-Date = 2022-05-20T00:00:00+00:00
+Date = 2022-06-16T00:00:00+00:00
 column = "left"
 +++
 
@@ -11,7 +11,9 @@ There are times when developing your BPF projects when you need to ensure safe a
 
 ## Per-cpu maps
 
-Per-cpu maps are types of maps where each CPU has its own copy of underlying memory. Since BPF programs can't be preempted, when you access a value inside one of these maps from your BPF program, you know that it's the only program touching that value. The userspace program can _read_ these values at any time safely.
+Per-cpu maps are types of maps where each possible CPU has its own copy of underlying memory. Since BPF programs can't be preempted, when you access a value inside one of these maps from your BPF program, you know that it's the only program touching that value. The userspace program can _read_ these values at any time safely. 
+
+Note that this is only safe if the read can occur with a single operation. If the value in the map requires multiple reads (such as a large struct), it's possible that userspace only reads a partial update. The same is true of BPF programs that can sleep and are using large data types as values.
 
 The advantage of this approach is completely avoiding lock contention. It's therefore the most performant way of sharing a value that's only updated in BPF.
 
