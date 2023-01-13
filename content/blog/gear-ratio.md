@@ -3,7 +3,7 @@ title = "Bike gear ratio explained"
 Description = ""
 Tags = []
 Categories = []
-Date = 2029-03-18T00:00:00+00:00
+Date = 2029-01-13T00:00:00+00:00
 column = "left"
 +++
 
@@ -15,28 +15,23 @@ As you pedal, you pull your chain over a front chainring and around a back gear.
 
 Let's say your chain is on a front chainring with 42 teeth, and on a back gear with 11 teeth. This means your gear ratio is `42 / 11 = 3.82`. In other words, everytime you complete one full pedal stroke, the back wheel will turn just shy of 4 complete times. Conversely if your chain is on the 42 tooth chainring, and 42 tooth back gear, your gear ratio is `42 / 42 = 1.00`.
 
-<img of drivetrain on marigold>
+![4211](/bike-ratio-42-to-11.jpg)
+
+{{< subtext >}} My bike with a 42 front chainring, on the 11 tooth cog {{< /subtext >}}
 
 So what do these numbers mean in experience? At the most basic level, the higher the number, the harder you have to pedal to turn your wheel. If you're going downhill, you want a higher gear ratio so that you can comfortably pedal, the same goes for a lower gear ratio when going uphill. Additionally, if you want to sustain higher speeds and are pedaling with more power, you want that higher ratio.
 
-To make this feel less abstract, consider cadence. **Cycling cadence is how many times your pedals complete a revolution per minute**. In other words, how fast your pedaling. A comfortable cadence is between 85-100. **You should strive to gernally keep the same cadence regardless of speed, or gradient**.
-
-**Speed (mph) = Cadence * (Gear Ratio * Wheel Diameter) * (Pi/1056)**
-
-**Speed (kph) = Cadence * (Gear Ratio * Wheel Diameter) * (Pi/644)**
-
-//////////////
+To make this feel less abstract, consider cadence. **Cycling cadence is how many times your pedals complete a revolution per minute**. In other words, how fast your pedaling. A comfortable cadence is between 85-100. You should strive to gernally keep the same cadence regardless of speed, or gradient.
 
 
-This is a short explanation about how to reason about what cassette and chainring to choose when building a bike drivetrain. The same logic applies no matter if you're building a road, mountain, cyclocross, gravel, or any other kind of bike. Though your usecase for the bike will influence your decision. 
+**Speed (mph) = Cadence * (Gear Ratio * Wheel Diameter) * (π/1056)**
 
-Your cassette cogs and your chainring use the same size teeth. As such, you can think about your gear ratio in terms of fractions of teeth. 
+**Speed (kph) = Cadence * (Gear Ratio * Wheel Diameter) * (π/644)**
 
-Take a look at my bike drive train:
+Consider the table below showing all possible ratios in a drive train with a 53/39 double chainring and an 11 speed cassette ranging from 11 to 28 teeth:
 
-![drivetrain](/drivetrain.png)
-
-I only have one front chainring. It has 42 teeth. The smallest cog in my cassette has 11 teeth and the largest has 42 teeth. 
-
-_If my chain is on the smallest cog my gear ratio will be `42 / 11 = 3.82`. This means that every time I pedal one full revolution, my back wheel will make 3.82 full revolutions._ If my chain is on the largest cog, every time I pedal one revolution, the back wheel will also complete one revolution (`42 /42 = 1.0`).
+| Chainring(↓) / Cassette(→) | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 19 | 22 | 25 | 28 |
+| ---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **39** \| | 3.55 | 3.25 | 3.00 | 2.79 | 2.60 | 2.44 | 2.29 | 2.17 | 2.05 | 1.77 | 1.56 | 1.39 | 
+| **53** \| | 4.82 | 4.42 | 4.08 | 3.79 | 3.53 | 3.31 | 3.12 | 2.79 | 2.41 | 2.12 | 1.89
 
