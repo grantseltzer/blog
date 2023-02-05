@@ -1,8 +1,8 @@
 # Miami rolls + Challah
 
-Miami rolls are a challah based onion pocket roll. They're very soft, sweet, flavorful, and delicious. Pretty traditional to jewish bakeries in New York. I worked at a bakery all throughout high school and these were my favorite things there. When they closed down in 2020 I tried to get the recipe but the owner wouldn't share it with me. Through 10+ iterations I have engineered a recipe that is exactly how I remember them. This recipe is truly worth sharing to keep the tradition of them alive considering so many classic New York bakeries continue to go out of business. I have no clue why they're named Miami rolls.
+Miami rolls are a challah based onion pocket roll. They're very soft, sweet, flavorful, and delicious. Pretty traditional to jewish bakeries in New York. I worked at a bakery all throughout high school and these were my favorite things there. When they closed down in 2020 I tried to get the recipe but the owner wouldn't share it with me. Through 15+ iterations I have engineered a recipe that is exactly how I remember them. This recipe is truly worth sharing to keep the tradition of them alive considering so many classic New York bakeries continue to go out of business. I have no clue why they're named Miami rolls.
 
-This recipe can also be used to make a fantastic challah! Create the same dough and instead of forming it into individual rolls just braid it into a challah (or split it in half and form two). Bake time will take 5-10 minutes longer.
+This recipe can also be used to make a fantastic challah. Make the same dough and instead of forming it into individual rolls just braid it into a challah (or split it in half and form two). Bake time will take 5-10 minutes longer.
 
 ![miamis](/miamis.jpg)
 
@@ -61,9 +61,9 @@ Dried onion flakes
  
 1. Break up the dough into individual balls that are 60g each.
  
-1. Individually flatten each piece to an oblong shape, about eighth of an inch thick. Place a spoonful of caramelized onions across the center. Fold the long ends into one another so they just overlap. Fold up the other individual sides to seal the onions in. The assembled miami roll should be a small rectangle a little smaller than your closed fist.
+1. Individually flatten each piece to an oblong shape, about an eighth of an inch thick. Place a spoonful of caramelized onions across the center. Fold the long ends into one another so they just overlap. Fold up the other individual sides to seal the onions in. The assembled miami roll should be a small rectangle a little smaller than your closed fist.
  
-1. Arrange the miami rolls so they have about a half an inch of space between them on a parchment paper lined cookie sheet. It is desirable for them to fuse together a bit when rising/baking.
+1. Arrange the miami rolls so they have about a quarter of an inch of space between them on a parchment paper lined cookie sheet. You want for them to fuse together when rising/baking.
  
 1. Egg wash the top and sides of all of the rolls.
  
@@ -75,12 +75,12 @@ Dried onion flakes
  
 1. Bake for 20 minutes, placing a sheet of tin foil on top half way through to reduce browning while the roll bakes.
 
-1. Let cool for 5 minutes before eating.
+1. Let cool for 5 minutes before eating or storing.
 
 
 ### Storage / Reheating
 
-I typically store the rolls in a large ziploc bag once they're completely cooled. If you notice a lot of condensation forming you can just leave the bag open a little bit.
+I typically store the rolls in a large ziploc bag once they're mostly cooled. If you notice a lot of condensation forming you can just leave the bag open a little bit.
 
 Miamis freeze very well, you can keep them in the freezer for 3+ months. You can thaw them on the counter or in the microwave for 10 seconds before putting cutting them and popping them in the toaster. You can also keep them in the fridge for about a week. Overall they toast really nicely.
 
