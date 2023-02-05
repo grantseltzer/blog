@@ -4,7 +4,7 @@ Miami rolls are a challah based onion pocket roll. They're very soft, sweet, fla
 
 This recipe can also be used to make a fantastic challah! Create the same dough and instead of forming it into individual rolls just braid it into a challah (or split it in half and form two). Bake time will take 5-10 minutes longer.
 
-![miamis](/miamis_and_bw.jpeg)
+![miamis](/miamis.jpg)
 
 ![challah](/challah.png)
 
@@ -84,4 +84,4 @@ I typically store the rolls in a large ziploc bag once they're completely cooled
 
 Miamis freeze very well, you can keep them in the freezer for 3+ months. You can thaw them on the counter or in the microwave for 10 seconds before putting cutting them and popping them in the toaster. You can also keep them in the fridge for about a week. Overall they toast really nicely.
 
-![miamis](/miami_rolls.jpg)
+![miamis](/miamis2.jpg)
