@@ -1,5 +1,5 @@
 +++
-title = "Attaching BPF Cookies to Tracing Programs"
+title = "BPF Attach Cookies"
 Description = ""
 Tags = []
 Categories = []
@@ -63,7 +63,7 @@ for symName, symID := range symbolNamesToID {
 
 #### Retrieving the symbol ID cookie in bpf and writing it back to user space:
 
-```c
+```
 struct event {
     __u64 event_id;
     char stack_content[50];
@@ -158,7 +158,7 @@ We can place arbitrary data structures in bpf maps from user space, then set the
 
 #### 'Passing' a struct via cookie:
 
-```go
+```
 	var indexInFilterMap uint64 = 1
 	filters := bpfFilters{
 		Uid: 0,
