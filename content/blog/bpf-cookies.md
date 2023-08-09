@@ -3,7 +3,7 @@ title = "Attaching BPF Cookies to Tracing Programs"
 Description = ""
 Tags = []
 Categories = []
-Date = 2023-08-10T00:00:00+00:00
+Date = 2023-08-09T00:00:00+00:00
 column = "left"
 +++
 
@@ -221,4 +221,6 @@ int kprobe__do_unlinkat(struct pt_regs *ctx)
 }
 ```
 
-### Caching context between tail calls
+### Conclusion
+
+There is quite a bit that you can do with bpf cookies, far more complex than the examples in this post. In an upcoming blog post I'll be exploring how cookies can be useful across tail calls.
