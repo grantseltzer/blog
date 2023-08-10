@@ -93,11 +93,11 @@ With all this mind, let's look at how we can add to our above program the functi
 			// Check if this entry is a function
 			if entry.Tag == dwarf.TagSubprogram {
 				
-				// Go through fields 
+				// Go through DWARF entry fields 
 				for _, field := range entry.Field {
 
 					if field.Attr == dwarf.AttrName {
-						fmt.Println(field.Val.(string))
+						fmt.Println(field.Val.(string)) // Name of the function
 					}
 				}
 			}
@@ -111,14 +111,14 @@ All function parameters have their own entries and are placed in order right aft
 
 ```
 ...
-		if !(readingAStruct && entry.Tag == dwarf.TagFormalParameter) {
+		if !(readingAFunction && entry.Tag == dwarf.TagFormalParameter) {
 			continue
 		}
 
 		for _, field := range entry.Field {
 
 			if field.Attr == dwarf.AttrName {
-				name = field.Val.(string)
+				name = field.Val.(string) // Name of the parameter
 			}
 
 			if field.Attr == dwarf.AttrType {
@@ -130,7 +130,7 @@ All function parameters have their own entries and are placed in order right aft
 
 				for i := range typeEntry.Field {
 					if typeEntry.Field[i].Attr == dwarf.AttrName {
-						typeName = typeEntry.Field[i].Val.(string)
+						typeName = typeEntry.Field[i].Val.(string) // Name of the type of this parameter
 					}
 				}
 			}
