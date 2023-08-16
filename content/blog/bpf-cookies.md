@@ -35,6 +35,8 @@ Cookies are useful because they allow you to provide context to your bpf program
 
 # Example usage
 
+All code from this post can be found [here](https://github.com/grantseltzer/bpf-cookie-examples/tree/main/cmd)
+
 ## Event Context
 
 Let's say you're writing a program that attaches a single generic bpf program to multiple symbols via uprobes. The bpf program simply reads the first 50 bytes off the top of the stack on entry and sends them up to user space for analysis. In user space, we want to analyze those bytes for debugging/analysis. We can use a cookie when we attach the bpf program to each symbol, as to tell the bpf program what symbol it's attached to. We'll assign a u64 ID to each symbol's name.
@@ -120,8 +122,6 @@ for {
 	fmt.Printf("The symbol %s had the first 50 stack bytes: %w\n", symbolIDToName[event.event_id], event.stack_content))
 }
 ```
-
-_(Full code for this example can be found [here]())_
 
 ## Filtering
 
