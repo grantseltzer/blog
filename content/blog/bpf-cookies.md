@@ -95,7 +95,7 @@ int uprobe_instrument(struct pt_regs *ctx)
 
 #### Reading events off the ringbuffer in user space:
 
-```go
+```
 for {
 	// Blocking wait for events off ringbuffer
 	record, err := reader.Read()
