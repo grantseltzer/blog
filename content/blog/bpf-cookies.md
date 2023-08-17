@@ -7,7 +7,7 @@ Date = 2023-08-09T00:00:00+00:00
 column = "left"
 +++
 
-BPF has a helper function called `bpf_get_attach_cookie`. It's available in bpf programs like kprobes, uprobes, and tracepoints. It can be very useful for many use cases so i'll be explaining how to use it, and going over a few examples from real code i've written.
+BPF has a helper function called `bpf_get_attach_cookie`. It's available in bpf programs like kprobes, uprobes, and tracepoints. It can be very useful for many applications so i'll be exploring how to use it, and going over a few examples from real code i've written.
 
 A cookie is just an unsigned 64-bit integer. That's it. You can assign a cookie to a bpf program when you attach it. For example, here's code using the go `cilium/ebpf` library to assign a cookie to a uprobe:
 
@@ -39,7 +39,7 @@ All code from this post can be found [here](https://github.com/grantseltzer/bpf-
 
 ## Event Context
 
-Let's say you're writing a program that attaches a single generic bpf program to multiple symbols via uprobes. The bpf program simply reads the first 50 bytes off the top of the stack on entry and sends them up to user space for analysis. In user space, we want to analyze those bytes for debugging/analysis. We can use a cookie when we attach the bpf program to each symbol, as to tell the bpf program what symbol it's attached to. We'll assign a u64 ID to each symbol's name.
+Let's say you're writing a program that attaches a single generic bpf program to multiple symbols via uprobes. The bpf program simply reads the first 50 bytes off the top of the stack on entry and sends them up to user space for analysis. In user space, we want to analyze those bytes for debugging/analysis. We can use different a cookie when we attach the bpf program to each symbol, as to tell the bpf program what symbol it's attached to. We'll assign a unique u64 ID to each symbol's name.
 
 In the example code, we'll just communicate the symbol context back up to user space over the ringbuffer.
 
@@ -125,16 +125,16 @@ for {
 
 ## Filtering
 
-Many bpf-based projects will filter events in user space based on various parameters such as PID, UID, or GID. We can use cookies to pass these filter parameters, and therefore cut down on time spent handling it in user space.
+Many bpf-based projects filter events in user space based on various parameters such as PID, UID, or GID. We can use cookies to pass these filter parameters, and therefore cut down on time spent handling it in user space.
 
 ```
 SEC("kprobe/do_unlinkat")
 int kprobe__do_unlinkat(struct pt_regs *ctx)
 {
-    __u64 target_uid = bpf_get_attach_cookie(ctx);
+    __u64 target_uid_cookie = bpf_get_attach_cookie(ctx);
     __u64 uid = bpf_get_current_uid_gid();
 
-    if (target_uid != uid) {
+    if (target_uid_cookie != uid) {
         return 0;
     }
 
@@ -152,7 +152,7 @@ int kprobe__do_unlinkat(struct pt_regs *ctx)
 
 ## Map index for arbitrary context (more complex filtering)
 
-While the two examples above are interesting, there's really no limit to what you can do with cookies (except, of course, for the limitations of bpf itself; more on that in the next section).
+While the two examples above are interesting, there's really no limit to what you can do with cookies (except, of course, for the limitations of bpf itself).
 
 We can place arbitrary data structures in bpf maps from user space, then set the index of those structures as the bpf cookie, giving us way more context than a single u64 can provide. Here's an example similar to above, except with multiple specified filters:
 
@@ -178,6 +178,7 @@ We can place arbitrary data structures in bpf maps from user space, then set the
 ```
 
 And retrieving: 
+
 ```
 struct filters {
     int uid;
@@ -223,4 +224,4 @@ int kprobe__do_unlinkat(struct pt_regs *ctx)
 
 ### Conclusion
 
-There is quite a bit that you can do with bpf cookies, far more complex than the examples in this post. In an upcoming blog post I'll be exploring how cookies can be useful across tail calls.
+There is quite a bit that you can do with bpf cookies, far more complex than the examples in this post. In an upcoming blog post I'll be exploring how cookies can be useful for maintaining context across tail calls.
