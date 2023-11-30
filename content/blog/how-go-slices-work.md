@@ -1,5 +1,5 @@
 +++
-title = "What you need to know about how Go slices work"
+title = "How Go slices work"
 Description = ""
 Tags = []
 Categories = []
