@@ -87,10 +87,6 @@ func printSlice(x []int) {
 	fmt.Printf("%v\n", x)
 }
 
-func expandSlice(x []int) {
-	x = append(x, []int{9, 10, 11, 12)
-}
-
 func changeElement(x []int) {
 	x[0] = 99
 }
@@ -101,9 +97,6 @@ func main() {
 	doNothing(originalSlice)
 
 	changeElement(originalSlice)
-	printSlice(originalSlice)
-	
-	expandSlice(originalSlice)
 	printSlice(originalSlice)
 }
 ```
@@ -179,4 +172,80 @@ Running this program also confirms that the element in the original underlying a
 
 The advantage of slices (as opposed to arrays) is that you can seemingly infinitely grow them. You'd typically do this using `append`. The main thing you have to understand here is that if you append to a slice with a length equal to its capacity, Go will create a whole new array with double the capacity of the original one. Therefore the address field that points to the array will be overwriten. Further changes to the original array won't affect the new one (and the memory gets reclaimed).
 
-Be careful about passing slices into functions. Passing references to slices gets complicated very quickly, so it's best to not use them. If you're going to transform slices, it's probably best to pass slices into functions that return the resulting slice, and use that result from then on. Similar caution should be used when transforming slices in the seperate scopes of different goroutines. 
+So repeating the same experiment except with an append occuring instead of changing an element will confirm a new address:
+
+```
+func expandSlice(x []int) {
+	x = append(x, []int{9, 10, 11, 12}...)
+	doNothing(x)
+}
+```
+
+```
+{
+ "ProbeID": "main.expandSlice",
+ "PID": 812027,
+ "UID": 1000,
+ "StackTrace": [
+  "main.main (/home/vagrant/slice_demo/main.go:386)"
+ ],
+ "Argdata": [
+  {
+   "Kind": "slice",
+   "Size": 30,
+   "Fields": [
+    {
+     "ValueStr": "0x4000099BD0",
+     "Kind": "ptr",
+     "Size": 8
+    },
+    {
+     "ValueStr": "3",
+     "Kind": "int",
+     "Size": 8
+    },
+    {
+     "ValueStr": "3",
+     "Kind": "int",
+     "Size": 8
+    }
+   ]
+  }
+ ]
+}
+{
+ "ProbeID": "main.doNothing",
+ "PID": 812027,
+ "UID": 1000,
+ "StackTrace": [
+  "main.expandSlice (/home/vagrant/slice_demo/main.go:372)"
+ ],
+ "Argdata": [
+  {
+   "Kind": "slice",
+   "Size": 30,
+   "Fields": [
+    {
+     "ValueStr": "0x400001E0C0",
+     "Kind": "ptr",
+     "Size": 8
+    },
+    {
+     "ValueStr": "7",
+     "Kind": "int",
+     "Size": 8
+    },
+    {
+     "ValueStr": "8",
+     "Kind": "int",
+     "Size": 8
+    }
+   ]
+  }
+ ]
+}
+```
+
+### Conclusion
+
+Be careful about passing slices into functions. Passing references to slices can also get complicated very quickly. If you're going to transform slices, it's probably best to pass slices into functions that return the resulting slice, and use that result from then on. Similar caution should be used when transforming slices in the seperate scopes of different goroutines. 
