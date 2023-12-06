@@ -7,7 +7,7 @@ Date = 2023-11-30T00:00:00+00:00
 column = "left"
 +++
 
-I recently ran into a hard to find bug in my Go code when using slices. Since i've been using Go for over 8 years now, I figured this is something that others will run into and want to share what I had forgotten on how slices work.
+I recently ran into a hard to find bug in my Go code when using slices. Since I've been using Go for over 8 years now, I figured this is something that others will run into and want to share what I had forgotten about slices work.
 
 Take a look at the following Go code:
 
@@ -17,7 +17,7 @@ y := append([]int{}, x...)
 z := x
 ```
 
-We have three seperate slices. What I want to briefly explore is the difference between y, and z. The difference has to do with how slices are implemented by Go. This can sometimes make for hard to track down bugs, so it's important to know.
+We have three separate slices. What I want to briefly explore is the difference between y, and z. The difference has to do with how slices are implemented by Go. This can sometimes make it hard to track down bugs, so it's important to know.
 
 Try running the following code:
 
@@ -53,7 +53,7 @@ Y: [5 2 3]
 Z: [6 2 3]
 ```
 
-You may think to print the address of the slices but you would see that they are totatly unique slices:
+You may think to print the address of the slices but you would see that they are totally unique slices:
 
 ```
 ...
@@ -64,7 +64,7 @@ You may think to print the address of the slices but you would see that they are
 0xc0000a0000 0xc0000a0018
 ```
 
-What gives? In order to understand what's going on, let's take a look at the definition of a slice. There's a full description on the go dev blog [here](https://go.dev/blog/slices-intro) but this image sums it up:
+What gives? In order to understand what's going on, lets take a look at the definition of a slice. There's a full description on the go dev blog [here](https://go.dev/blog/slices-intro) but this image sums it up:
 
 ![slices](/slice-struct.png)
 
@@ -72,7 +72,7 @@ Slices are implemented as structs under the hood. They have three fields. A poin
 
 ### Demonstration 
 
-In order to demonstrate, i'm going to use a product i'm building at Datadog. It's the Dynamic Instrumentation product for Go. It let's me hook specific functions and print the values of their parameters any time they're called.
+In order to demonstrate, I'm going to use a product I'm building at Datadog. It's the [Dynamic Instrumentation](https://www.datadoghq.com/product/dynamic-instrumentation/) product for Go. It lets me hook specific functions and print the values of their parameters any time they're called.
 
 Take a look at this code:
 
@@ -170,7 +170,7 @@ Based on what we've gone over so far, we would expect the function `changeElemen
 
 Running this program also confirms that the element in the original underlying array was in fact changed after running `changeElement()`. The note here is that despite go being pass by value (meaning the parameter `x` in `changeElement()` is a newly allocated slice), the field for the address is the same, and therefore affects the original similar to if it were pass by reference.
 
-The advantage of slices (as opposed to arrays) is that you can seemingly infinitely grow them. You'd typically do this using `append`. The main thing you have to understand here is that if you append to a slice with a length equal to its capacity, Go will create a whole new array with double the capacity of the original one. Therefore the address field that points to the array will be overwriten. Further changes to the original array won't affect the new one (and the memory gets reclaimed).
+The advantage of slices (as opposed to arrays) is that you can seemingly infinitely grow them. You'd typically do this using `append`. The main thing you have to understand here is that if you append to a slice with a length equal to its capacity, Go will create a whole new array with double the capacity of the original one. Therefore the address field that points to the array will be overwritten. Further changes to the original array won't affect the new one (and the memory gets reclaimed).
 
 So repeating the same experiment except with an append occuring instead of changing an element will confirm a new address:
 

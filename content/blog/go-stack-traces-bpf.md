@@ -7,7 +7,7 @@ Date = 2023-12-06T00:00:00+00:00
 column = "left"
 +++
 
-In a few of my posts from a few years ago I explored the idea of attaching bpf programs to Go functions via uprobes. The second post dived into how to extract values of parameters. This can be seen as part 3 of the series as i'm going to demonstrate how to get a stack trace from bpf code. The work described in this post is in contribution to my work at Datadog on the [Dynamic Instrumentation](https://www.datadoghq.com/product/dynamic-instrumentation/) product, allowing users to hook specific functions and get snapshots of parameter values and stack traces.
+In a few of my posts from a few years ago I explored the idea of attaching bpf programs to Go functions via uprobes. The second post dived into how to extract values of parameters. This can be seen as part 3 of the series as I'm going to demonstrate how to get a stack trace from bpf code. The work described in this post is in contribution to my work at Datadog on the [Dynamic Instrumentation](https://www.datadoghq.com/product/dynamic-instrumentation/) product, allowing users to hook specific functions and get snapshots of parameter values and stack traces.
 
 The purpose of a stack trace is simple. When a function is called, we want to know the order of execution of every function/line that lead to the function invocation. You can see an example of a stack trace everytime a panic occurs in Go, which are helpful to find offending code.
 
