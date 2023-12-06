@@ -3,11 +3,11 @@ title = "Building Go Stack Traces from BPF"
 Description = ""
 Tags = []
 Categories = []
-Date = 2025-11-15T00:00:00+00:00
+Date = 2023-12-06T00:00:00+00:00
 column = "left"
 +++
 
-In my posts from a few years ago I explored the idea of attaching bpf programs to Go functions via uprobes. The second post dived into how to extract values of parameters. This can be seen as part 3 of the series as i'm going to demonstrate how to get a stack trace from bpf code. The work described in this post is in contribution to my work at Datadog on the dynamic instrumentation product, allowing users to hook specific functions and get snapshots of parameter values and stack traces.
+In a few of my posts from a few years ago I explored the idea of attaching bpf programs to Go functions via uprobes. The second post dived into how to extract values of parameters. This can be seen as part 3 of the series as i'm going to demonstrate how to get a stack trace from bpf code. The work described in this post is in contribution to my work at Datadog on the [Dynamic Instrumentation](https://www.datadoghq.com/product/dynamic-instrumentation/) product, allowing users to hook specific functions and get snapshots of parameter values and stack traces.
 
 The purpose of a stack trace is simple. When a function is called, we want to know the order of execution of every function/line that lead to the function invocation. You can see an example of a stack trace everytime a panic occurs in Go, which are helpful to find offending code.
 
@@ -15,15 +15,15 @@ Take the following code as an example,
 
 ```
 func stack_A() {
-	stack_B()
+    stack_B()
 }
 
 func stack_B() {
-	stack_C()
+    stack_C()
 }
 
 func stack_C() {
-	print("hello!")
+    print("hello!")
 }
 
 func main() {
@@ -41,13 +41,13 @@ If we want a stack trace on invocations of `stack_C()` it would look something l
  
 ### Stack Unwinding
 
-The proccess we'll use for getting a basic stack trace is a simple and well documented set of steps. The basic principle is that we're going to collect program counters (locations of machine code) as we traverse through pointers that the Go compiler saves throughout the flow of execution.
+The process we'll use for getting a basic stack trace is a simple and well documented set of steps. The basic principle is that we're going to collect program counters (locations of machine code) as we traverse through pointers that the Go compiler saves throughout the flow of execution.
 
-When a function is called, a new "stack frame" is allocated. This basically means that a section of the program's stack is allocated to accomodate local variables in the new function.
+When a function is called, a new "stack frame" is allocated. This basically means that a section of the program's stack is allocated to accommodate local variables in the new function.
 
-When a new frame is allocated, the stack address of the previous frame is pushed onto the stack. After that, the return address is pushed onto the stack. The return address is the program counter in which the function will 'return' to when the function exits.
+Before a new frame is created, the current program counter is written to the stack. This is the return address, meaning this is the program counter we will start executing once the next routine has been completed. The value of the frame pointer is then pushed to the stack. This allows the function to restore the calling function's frame when the next routine has completed.
 
-To unwind the stack from the entry point of a function we read the base pointer (on ARM this is in r29). This contains the stack address that stores the frame pointer. Below this on the stack is the return address of the previous frame. We save this return address! Next we dereference the frame pointer, which brings us to the previous frame pointer. The process starts again until we hit a frame pointer of 0 (meaning this is frame 0, or the begining of the program).
+To unwind the stack from the entry point of a function we read the base pointer (on ARM this is in r29). This is the stack address that stores the frame pointer. Below this on the stack is the return address of the previous frame. We save this return address! Next we dereference the frame pointer, which brings us to the previous frame pointer. The process starts again until we hit a frame pointer of 0 (meaning this is frame 0, or the beginning of the program).
 
 The only thing to note is that since uprobes trigger a bpf program right at the start of a routine, before the return address is written to the stack, the very first return address will be in r30. Here's what that collection looks like in bpf code:
 
@@ -61,7 +61,7 @@ struct event {
 
 __u64 bp = ctx->regs[29];
 bpf_probe_read(&bp, sizeof(__u64), (void*)bp); // dereference bp to get current stack frame
-__u64 ret_addr = ctx->regs[30]; // when bpf prog enters, the return address hasn't yet been written to the stack
+__u64 ret_addr = ctx->regs[30];                // when bpf prog enters, the return address hasn't yet been written to the stack
 
 int i;
 for (i = 0; i < STACK_DEPTH_LIMIT; i++)
@@ -69,9 +69,9 @@ for (i = 0; i < STACK_DEPTH_LIMIT; i++)
     if (bp == 0) {
         break;
     }
-    bpf_probe_read(&event->program_counters[i], sizeof(__u64), &ret_addr);
-    bpf_probe_read(&ret_addr, sizeof(__u64), (void*)(bp-8));
-    bpf_probe_read(&bp, sizeof(__u64), (void*)bp);
+    bpf_probe_read(&event->program_counters[i], sizeof(__u64), &ret_addr); // Read return address to saved program counters
+    bpf_probe_read(&ret_addr, sizeof(__u64), (void*)(bp-8));               // Get the next return address 
+    bpf_probe_read(&bp, sizeof(__u64), (void*)bp);                         // Dereference the base pointer (traverse to next frame)
 }
 ```
 
@@ -81,32 +81,35 @@ In short, on function entry a bpf program can collect all program counters that 
 
 Go provides a very simple API for translating program counters into symbols, including for line numbers of specific function calls. We open the same ELF file that we've collected program counters from, and use the `gosym` package to create a struct we can use for convenient PC to symbol resolution.
 
-```go
+```
 ...
     elfFile, err := elf.Open(fileName)
     if err != nil {
         return fmt.Errorf("couldn't open elf file: %w", err)
     }
 
-	var symbolTable *gosym.Table
+    var symbolTable *gosym.Table
 
-	addr := elfFile.Section(".text").Addr
+    addr := elfFile.Section(".text").Addr
 
-	lineTableData, err := elfFile.Section(".gopclntab").Data()
-	if err != nil {
-		return fmt.Errorf("couldn't read go line table: %w", err)
-	}
-	lineTable := gosym.NewLineTable(lineTableData, addr)
+    lineTableData, err := elfFile.Section(".gopclntab").Data()
+    if err != nil {
+        return fmt.Errorf("couldn't read go line table: %w", err)
+    }
+    
+    lineTable := gosym.NewLineTable(lineTableData, addr)
 
-	symtab := elfFile.Section(".gosymtab")
-	symTableData, err := symtab.Data()
-	if err != nil {
-		return fmt.Errorf("couldn't read go symbol table: %w", err)
-	}
-	symbolTable, err = gosym.NewTable(symTableData, lineTable)
-	if err != nil {
-		return fmt.Errorf("couldn't read go symbol and line tables: %w", err)
-	}
+    symtab := elfFile.Section(".gosymtab")
+
+    symTableData, err := symtab.Data()
+    if err != nil {
+        return fmt.Errorf("couldn't read go symbol table: %w", err)
+    }
+
+    symbolTable, err = gosym.NewTable(symTableData, lineTable)
+    if err != nil {
+        return fmt.Errorf("couldn't read go symbol and line tables: %w", err)
+    }
 ...
 ```
 
@@ -115,17 +118,17 @@ After this, we can use this new gosym.Table to resolve the program counters into
 ```
 //go:noinline
 func stack_A() {
-	stack_B()
+    stack_B()
 }
 
 //go:noinline
 func stack_B() {
-	stack_C()
+    stack_C()
 }
 
 //go:noinline
 func stack_C() {
-	print("hello!")
+    print("hello!")
 }
 
 func main() {
@@ -162,24 +165,24 @@ Take a look at this code and the corresponding DWARF entries:
 ```
 //go:noinline
 func call_inlined_func_chain() {
-	inline_me_1()
+    inline_me_1()
 }
 
 func inline_me_1() {
-	inline_me_2()
+    inline_me_2()
 }
 
 func inline_me_2() {
-	inline_me_3()
+    inline_me_3()
 }
 
 func inline_me_3() {
-	not_inlined()
+    not_inlined()
 }
 
 //go:noinline
 func not_inlined() {
-	print("hello!")
+    print("hello!")
 }
 
 func main() {
@@ -224,94 +227,94 @@ You'll notice that every high program counter (DW_AT_high_pc) of the inlined sub
 
 Here's how it works:
 
-Before instrumenting a binary with bpf, we create a map of all inlined subroutines. They keys will be the high program counters, and the values are a slice of all DWARF entries which have that high program counter.
+Before instrumenting a binary with bpf, we create a map of all inlined subroutines. The keys will be the high program counters, and the values are a slice of all DWARF entries which have that high program counter.
 
 ```
-	dwarfData, err := loadDWARF(binaryPath)
-	if err != nil {
-		return nil, err
-	}
+    dwarfData, err := loadDWARF(binaryPath)
+    if err != nil {
+        return nil, err
+    }
 
-	entryReader := dwarfData.Reader()
+    entryReader := dwarfData.Reader()
     InlinedFunctions := make(map[uint64][]*dwarf.Entry),
 
-    	for {
-            entry, err := entryReader.Next()
-            if err == io.EOF || entry == nil {
-                break
-            }
+    for {
+        entry, err := entryReader.Next()
+        if err == io.EOF || entry == nil {
+            break
+        }
 
-            if entry.Tag == dwarf.TagInlinedSubroutine {
-                for i := range entry.Field {
-                    // Find its high program counter (where it exits in the parent routine)
-                    if entry.Field[i].Attr == dwarf.AttrHighpc {
-                        InlinedFunctions[entry.Field[i].Val.(uint64)] = append([]*dwarf.Entry{entry}, InlinedFunctions[entry.Field[i].Val.(uint64)]...)
-                        // We put them in backwards to keep them in descending order
-                    } 
+        if entry.Tag == dwarf.TagInlinedSubroutine {
+            for i := range entry.Field {
+                // Find its high program counter (where it exits in the parent routine)
+                if entry.Field[i].Attr == dwarf.AttrHighpc {
+                    InlinedFunctions[entry.Field[i].Val.(uint64)] = append([]*dwarf.Entry{entry}, InlinedFunctions[entry.Field[i].Val.(uint64)]...)
+                    // We put them in backwards to keep them in descending order
                 }
             }
-            ...
         }
+        ...
+    }
 ```
 
 When we are translating program counters to symbols as before using the `gosym` package, we can first reference this map to see if there's any functions inlined.
 
 ```
 ...
-	stackTrace := []string{}
+    stackTrace := []string{}
 
-	for i := range rawProgramCounters {
-		if rawProgramCounters[i] == 0 {
-			break
-		}
+    for i := range rawProgramCounters {
+        if rawProgramCounters[i] == 0 {
+            break
+        }
 
-		entries, ok := InlinedFunctions[rawProgramCounters[i]]
-		if ok {
-			for n := range entries {
-				inlinedFileName, _, inlinedFunction := SymbolTable.PCToLine(rawProgramCounters[i])
+        entries, ok := InlinedFunctions[rawProgramCounters[i]]
+        if ok {
+            for n := range entries {
+                inlinedFileName, _, inlinedFunction := SymbolTable.PCToLine(rawProgramCounters[i])
 
-				symName, lineNumber, err := parseInlinedEntry(DwarfReader, rawProgramCounters[i], entries[n])
-				if err != nil {
-					return []string{}, fmt.Errorf("could not get inlined entries: %w", err)
-				}
-				stackTrace = append(stackTrace, fmt.Sprintf("%s (%s:%d) [inlined in %s]", symName, inlinedFileName, lineNumber, inlinedFunction.Name))
-			}
-		}
+                symName, lineNumber, err := parseInlinedEntry(DwarfReader, rawProgramCounters[i], entries[n])
+                if err != nil {
+                    return []string{}, fmt.Errorf("could not get inlined entries: %w", err)
+                }
+                stackTrace = append(stackTrace, fmt.Sprintf("%s (%s:%d) [inlined in %s]", symName, inlinedFileName, lineNumber, inlinedFunction.Name))
+            }
+        }
 
-		fileName, lineNumber, fn := SymbolTable.PCToLine(rawProgramCounters[i])
-		if fn == nil {
-			continue
-		}
-		stackTrace = append(stackTrace, fmt.Sprintf("%s (%s:%d)", fn.Name, fileName, lineNumber))
-	}
+        fileName, lineNumber, fn := SymbolTable.PCToLine(rawProgramCounters[i])
+        if fn == nil {
+            continue
+        }
+        stackTrace = append(stackTrace, fmt.Sprintf("%s (%s:%d)", fn.Name, fileName, lineNumber))
+    }
 ...
 
 // parseInlinedEntry gets the name and call line of a dwarf entry
 func parseInlinedEntry(reader *dwarf.Reader, pc uint64, e *dwarf.Entry) (name string, line int64, err error) {
 
-	var offset dwarf.Offset
+    var offset dwarf.Offset
 
-	for i := range e.Field {
-		if e.Field[i].Attr == dwarf.AttrAbstractOrigin {
-			offset = e.Field[i].Val.(dwarf.Offset)
-			reader.Seek(offset)
-			entry, err := reader.Next()
-			if err != nil {
-				return "", -1, fmt.Errorf("could not read inlined function origin: %w", err)
-			}
-			for j := range entry.Field {
-				if entry.Field[j].Attr == dwarf.AttrName {
-					name = entry.Field[j].Val.(string)
-				}
-			}
-		}
+    for i := range e.Field {
+        if e.Field[i].Attr == dwarf.AttrAbstractOrigin {
+            offset = e.Field[i].Val.(dwarf.Offset)
+            reader.Seek(offset)
+            entry, err := reader.Next()
+            if err != nil {
+                return "", -1, fmt.Errorf("could not read inlined function origin: %w", err)
+            }
+            for j := range entry.Field {
+                if entry.Field[j].Attr == dwarf.AttrName {
+                    name = entry.Field[j].Val.(string)
+                }
+            }
+        }
 
-		if e.Field[i].Attr == dwarf.AttrCallLine {
-			line = e.Field[i].Val.(int64)
-		}
-	}
+        if e.Field[i].Attr == dwarf.AttrCallLine {
+            line = e.Field[i].Val.(int64)
+        }
+    }
 
-	return name, line, nil
+    return name, line, nil
 }
 ```
 
@@ -333,3 +336,6 @@ Putting this all together, we can see a stack trace of the `main.not_inlined` fu
 }
 ```
 
+### Conclusion
+
+It's relatively straightforward to unwind the stack and populate a stack trace, including inlined functions with the help of DWARF. This all is just a small feature of Datadog's Dynamic Instrumentation product which just went into general availability. Currently it's available for Java, .Net, and Python code. I'm of course working on the Go implementation which should be available for beta in early 2024. I'll be sure to write more blog posts in the coming months about progress there!
