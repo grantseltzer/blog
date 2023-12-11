@@ -7,7 +7,7 @@ Date = 2023-11-30T00:00:00+00:00
 column = "left"
 +++
 
-I recently ran into a hard to find bug in my Go code when using slices. Since I've been using Go for over 8 years now, I figured this is something that others will run into and want to share what I had forgotten about slices work.
+I recently ran into a hard to find bug in my Go code when using slices. Since I've been using Go for over 8 years now, I figured this is something that others will run into and want to share what I had forgotten about how slices work.
 
 Take a look at the following Go code:
 
