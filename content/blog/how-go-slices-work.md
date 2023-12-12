@@ -44,13 +44,15 @@ func main() {
 You'll see that the change to z[1] also affected x[1], but the change to y[0] did not have any affect on x[0]:
 
 ```
+$~ go run main.go
+
 X: [1 2 3]
 Y: [1 2 3]
 Z: [1 2 3]
 
-X: [6 2 3]
+X: [1 15 3]
 Y: [5 2 3]
-Z: [6 2 3]
+Z: [1 15 3]
 ```
 
 You may think to print the address of the slices but you would see that they are totally unique slices:
@@ -172,78 +174,25 @@ Running this program also confirms that the element in the original underlying a
 
 The advantage of slices (as opposed to arrays) is that you can seemingly infinitely grow them. You'd typically do this using `append`. The main thing you have to understand here is that if you append to a slice with a length equal to its capacity, Go will create a whole new array with double the capacity of the original one. Therefore the address field that points to the array will be overwritten. Further changes to the original array won't affect the new one (and the memory gets reclaimed).
 
-So repeating the same experiment except with an append occuring instead of changing an element will confirm a new address:
+So repeating a similar experiment with an append occuring before changing an element will confirm a new address:
 
 ```
-func expandSlice(x []int) {
+func expandAndChangeSlice(x []int) {
 	x = append(x, []int{9, 10, 11, 12}...)
-	doNothing(x)
+	x[0] = 999
+}
+
+func main() {
+	a := []int{1, 2, 3}
+	expandAndChangeSlice(a)
+	fmt.Printf("%v\n", a)
 }
 ```
 
 ```
-{
- "ProbeID": "main.expandSlice",
- "PID": 812027,
- "UID": 1000,
- "StackTrace": [
-  "main.main (/home/vagrant/slice_demo/main.go:386)"
- ],
- "Argdata": [
-  {
-   "Kind": "slice",
-   "Size": 30,
-   "Fields": [
-    {
-     "ValueStr": "0x4000099BD0",
-     "Kind": "ptr",
-     "Size": 8
-    },
-    {
-     "ValueStr": "3",
-     "Kind": "int",
-     "Size": 8
-    },
-    {
-     "ValueStr": "3",
-     "Kind": "int",
-     "Size": 8
-    }
-   ]
-  }
- ]
-}
-{
- "ProbeID": "main.doNothing",
- "PID": 812027,
- "UID": 1000,
- "StackTrace": [
-  "main.expandSlice (/home/vagrant/slice_demo/main.go:372)"
- ],
- "Argdata": [
-  {
-   "Kind": "slice",
-   "Size": 30,
-   "Fields": [
-    {
-     "ValueStr": "0x400001E0C0",
-     "Kind": "ptr",
-     "Size": 8
-    },
-    {
-     "ValueStr": "7",
-     "Kind": "int",
-     "Size": 8
-    },
-    {
-     "ValueStr": "8",
-     "Kind": "int",
-     "Size": 8
-    }
-   ]
-  }
- ]
-}
+$~ go run main.go
+
+[1 2 3]
 ```
 
 ### Conclusion

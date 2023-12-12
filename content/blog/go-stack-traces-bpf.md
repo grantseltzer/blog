@@ -7,7 +7,7 @@ Date = 2023-12-06T00:00:00+00:00
 column = "left"
 +++
 
-In a few of my posts from a few years ago I explored the idea of attaching bpf programs to Go functions via uprobes. The second post dived into how to extract values of parameters. This can be seen as part 3 of the series as I'm going to demonstrate how to get a stack trace from bpf code. The work described in this post is in contribution to my work at Datadog on the [Dynamic Instrumentation](https://www.datadoghq.com/product/dynamic-instrumentation/) product, allowing users to hook specific functions and get snapshots of parameter values and stack traces.
+In a couple of my posts from a few years ago ([1](/blog/tracing-go-functions-with-ebpf-part-1), [2](/blog/tracing-go-functions-with-ebpf-part-2)) I explored the idea of attaching bpf programs to Go functions via uprobes. The second post dived into how to extract values of parameters. This can be seen as part 3 of the series as I'm going to demonstrate how to get a stack trace from bpf code. The work described in this post is in contribution to my work at Datadog on the [Dynamic Instrumentation](https://www.datadoghq.com/product/dynamic-instrumentation/) product, allowing users to hook specific functions and get snapshots of parameter values and stack traces.
 
 The purpose of a stack trace is simple. When a function is called, we want to know the order of execution of every function/line that lead to the function invocation. You can see an example of a stack trace everytime a panic occurs in Go, which are helpful to find offending code.
 
@@ -45,11 +45,11 @@ The process we'll use for getting a basic stack trace is a simple and well docum
 
 When a function is called, a new "stack frame" is allocated. This basically means that a section of the program's stack is allocated to accommodate local variables in the new function.
 
-Before a new frame is created, the current program counter is written to the stack. This is the return address, meaning this is the program counter we will start executing once the next routine has been completed. The value of the frame pointer is then pushed to the stack. This allows the function to restore the calling function's frame when the next routine has completed.
+On ARM, when a function is called a new frame is opened, the current program counter is written to the stack. This is the return address, meaning this is the program counter we will start executing once the next routine has been completed. The value of the frame pointer is then pushed to the stack. This allows the function to restore the calling function's frame when the next routine has completed. On intel this is a little different, see [internal ABI docs](https://github.com/golang/go/blob/go1.21.4/src/cmd/compile/abi-internal.md).
 
-To unwind the stack from the entry point of a function we read the base pointer (on ARM this is in r29). This is the stack address that stores the frame pointer. Below this on the stack is the return address of the previous frame. We save this return address! Next we dereference the frame pointer, which brings us to the previous frame pointer. The process starts again until we hit a frame pointer of 0 (meaning this is frame 0, or the beginning of the program).
+To unwind the stack from the entry point of a function we read the base pointer (on ARM this is in r29). This is the stack address that stores the frame pointer. Above this on the stack is the return address of the previous frame. We save this return address! Next we dereference the frame pointer, which brings us to the previous frame pointer. The process starts again until we hit a frame pointer of 0 (meaning this is frame 0, or the beginning of the program).
 
-The only thing to note is that since uprobes trigger a bpf program right at the start of a routine, before the return address is written to the stack, the very first return address will be in r30. Here's what that collection looks like in bpf code:
+The only thing to note is that uprobes trigger a bpf program right at the start of a routine. On ARM, this is before the return address is written to the stack, the very first return address will be in r30. On intel this wouldn't be the case as the return address is pushed by the call instruction. Here's what that collection looks like in bpf code:
 
 ```
 struct event {
@@ -227,7 +227,7 @@ You'll notice that every high program counter (DW_AT_high_pc) of the inlined sub
 
 Here's how it works:
 
-Before instrumenting a binary with bpf, we create a map of all inlined subroutines. The keys will be the high program counters, and the values are a slice of all DWARF entries which have that high program counter.
+Before instrumenting a binary with bpf, we create a Go map of all inlined subroutine entries. The keys will be the high program counters, and the values are a slice of all DWARF entries which have that high program counter.
 
 ```
     dwarfData, err := loadDWARF(binaryPath)
@@ -338,4 +338,4 @@ Putting this all together, we can see a stack trace of the `main.not_inlined` fu
 
 ### Conclusion
 
-It's relatively straightforward to unwind the stack and populate a stack trace, including inlined functions with the help of DWARF. This all is just a small feature of Datadog's Dynamic Instrumentation product which just went into general availability. Currently it's available for Java, .Net, and Python code. I'm of course working on the Go implementation which should be available for beta in early 2024. I'll be sure to write more blog posts in the coming months about progress there!
+It's relatively straightforward to unwind the stack and populate a stack trace, including inlined functions with the help of DWARF. This all is just a small feature of Datadog's Dynamic Instrumentation product which just went into general availability. Currently it's available for Java, .Net, and Python code. I'm of course working on the Go implementation which is not yet available. I'll be sure to write more blog posts in the coming months about progress there!
