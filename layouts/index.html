@@ -1,127 +1,247 @@
 <!DOCTYPE html>
 
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
-    <head>
-        <meta charset="utf-8">
-        {{ hugo.Generator }} 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-     
-        <script data-goatcounter="https://grantpizza.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
-        <style>
-            html, body, div, span, h1, h2, h3, p, a, img, strong, ol, ul, li { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%;	font-family: inherit; vertical-align: baseline; }
+<head>
+    <meta charset="utf-8">
+    {{ hugo.Generator }}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            img {border: 0;}
+    <script data-goatcounter="https://grantpizza.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
-            a { text-decoration: none; color: black; font-weight: bold; line-height: 1.3em; }
-			a:hover { font-style: italic; border-bottom: 5px solid yellow}
-            p {line-height: 1.3em}
-                
-            ul, ol {margin: 0 40px 0 20px; list-style-type: none}
-                ul li {margin: 0 0 0.8em; line-height: 1.3em}
+    <style>
+        html,
+        body,
+        div,
+        span,
+        h1,
+        h2,
+        h3,
+        p,
+        a,
+        img,
+        strong,
+        ol,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            font-weight: inherit;
+            font-style: inherit;
+            font-size: 100%;
+            font-family: inherit;
+            vertical-align: baseline;
+        }
 
-            h1 {margin: 10px auto; max-width: 1000px; font-size: 2.4em}
-            h3 {margin: 20px 40px 10px 20px; padding: 20px 0 0 0; border-top: 2px solid black; font-size: 1.6em}
+        img {
+            border: 0;
+        }
 
-            body {
-                font-size:18px;
-                font-family: Arial, Helvetica, sans-serif;
+        a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            line-height: 1.3em;
+        }
+
+        a:hover {
+            font-style: italic;
+            border-bottom: 5px solid yellow
+        }
+
+        p {
+            line-height: 1.3em
+        }
+
+        ul,
+        ol {
+            margin: 0 40px 0 20px;
+            list-style-type: none
+        }
+
+        ul li {
+            margin: 0 0 0.8em;
+            line-height: 1.3em
+        }
+
+        h1 {
+            margin: 10px auto;
+            max-width: 1000px;
+            font-size: 2.4em
+        }
+
+        h3 {
+            margin: 20px 40px 10px 20px;
+            padding: 20px 0 0 0;
+            border-top: 2px solid black;
+            font-size: 1.6em
+        }
+
+        body {
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+            padding-bottom: 100px;
+        }
+
+        #header {
+            width: 100%;
+            float: left;
+            padding: 10px 0;
+            text-align: center;
+            border-bottom: 2px solid black
+        }
+
+        #header h1#page-name {
+            padding-top: 25px;
+            font-size: 50px;
+            font-style: italic;
+            font-weight: bold;
+            text-shadow: 3px 3px 1px gray;
+        }
+
+        #header img {
+            padding-top: 20px;
+            float: none;
+            margin: 0 0px 0px 0;
+            max-width: 400px
+        }
+
+        #header span {
+            max-width: 1000px;
+            font-size: 1.2em;
+            margin: 0 auto;
+            padding: 10px 0 0 0;
+            display: block;
+            border-top: 2px solid black;
+            font-weight: bold;
+            text-align: center;
+            clear: both
+        }
+
+        h2#column-name {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            font-size: 25px;
+            font-style: italic;
+            font-weight: bold;
+            text-shadow: 1px 1px gray;
+        }
+
+
+        @media (min-width: 1000px) {
+            #full-container {
+                width: 85%;
+                margin: auto;
+            }
+
+            h2#column-name {
+                padding-left: 45px;
+            }
+
+            .column-container {
+                padding-left: 85px;
                 padding-bottom: 100px;
             }
-  
-            #header { width: 100%; float: left; padding: 10px 0; text-align: center; border-bottom: 2px solid black}
-                #header h1#page-name { padding-top: 25px; font-size: 50px; font-style: italic; font-weight: bold; text-shadow: 3px 3px 1px gray;}
-                #header img {padding-top: 20px; float: none; margin: 0 0px 0px 0; max-width: 400px}
-                #header span {max-width: 1000px; font-size: 1.2em; margin: 0 auto; padding: 10px 0 0 0; display: block; border-top: 2px solid black; font-weight: bold; text-align: center; clear: both}
-				
-			h2#column-name {padding-top: 15px; padding-bottom: 15px; font-size: 25px; font-style: italic; font-weight: bold; text-shadow: 1px 1px gray;}
-         
 
-			@media (min-width: 1000px) {
-				#full-container { width: 85%; margin: auto; }
-
-				h2#column-name { padding-left: 45px;}
-				.column-container { padding-left: 85px;  padding-bottom: 100px; }
-				.description { color: black; font-size:15px;}
-
-				#left-column, #middle-column, #right-column { height: 500px; float: left;}	
-				#left-column {width: 33%;}
-				#middle-column {width: 33%} 
-				#right-column {width: 33%} 
-			}
-
-            .sub {
-                color: grey;
+            .description {
+                color: black;
+                font-size: 15px;
             }
 
-        </style>
-        
-        <title>grant seltzer</title>
-    </head>
-    
-    <body>
-        <h1>linux, ebpf, go, security</h1>
-        <div id="header">                
-            <img id="crab" src="/crab.png" alt="AAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
-            <p>eye witness drawing of what grant may look like</p>
-            <h1 id="page-name">GRANT SELTZER</h1>
-        </div>
-        
-        <div id="full-container">
-            <div id="left-column">
-                <h2 id="column-name">Blog Posts</h2>
-                <div class="column-container">
-                    <ul>
-                        {{ range (where .Site.RegularPages ".Params.column" "==" "left") }}
-                            <li>
-                                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            #left-column,
+            #middle-column,
+            #right-column {
+                height: 500px;
+                float: left;
+            }
 
-                                <p class="sub">{{ .Date.Format "January 02, 2006" }}</p>
+            #left-column {
+                width: 33%;
+            }
 
-                                <p class="sub">{{ .Description }}</p>
-                            </li>
-                        {{ end }}
-                    </ul>
-                </div>
-            </div>
+            #middle-column {
+                width: 33%
+            }
 
-            <div id="middle-column">
-                <h2 id="column-name">Presentations</h2>
-                <div class="column-container">
-                    <ul>
-                        {{ range (where .Site.RegularPages ".Params.column" "==" "middle") }}
-                        <li>
-                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                            <p class="sub">{{ .Description }}, {{ .Date.Format "January 02, 2006" }}</p>
-                        </li>
-                        {{ end }}
-                    </ul>
-                </div>
-            </div>
+            #right-column {
+                width: 33%
+            }
+        }
 
-            <div id="right-column">
-                <h2 id="column-name">Other</h2>
-                <div class="column-container">
-                    <ul>
-                        {{ range (where .Site.RegularPages ".Params.column" "==" "right") }}
-                        <li>
-                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                            <p>{{ .Description }}</p>
-                        </li>
-                        {{ end }}
-                        <li><a href="https://github.com/grantseltzer/resume">Resume</a></li>
-                        <li><a href="/recipes/recipes/">recipes</a></li>
-                        <li><a href="https://www.github.com/grantseltzer">github</a></li>
-                        <li><a href="https://www.twitter.com/grantseltzer">twitter</a></li>
-                        <li><a href="http://ebpf.io/slack">ebpf slack</a></li>
-                        <li><a href="https://www.goodreads.com/user/show/50650128-grant-seltzer">goodreads</a></li>
-                        <li><a href="https://www.linkedin.com/in/grantseltzerrichman/">linkedin</a></li>
-                        <li>email: batman -AT- grant.pizza</li>
-                    </ul>
-                </div>
-                <img id="pixel_crab" src="/crab_pixel.png" alt="aaaaaaaaaaaaaaaaaaaaaaaaaaaaa">
+        .sub {
+            color: grey;
+        }
+    </style>
 
+    <title>grant seltzer</title>
+</head>
+
+<body>
+    <h1>linux, ebpf, go, security</h1>
+    <div id="header">
+        <img id="crab" src="/CrabWatercolor.png" alt="AAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+        <p>eye witness drawing of what grant may look like</p>
+        <h1 id="page-name">GRANT SELTZER</h1>
+    </div>
+
+    <div id="full-container">
+        <div id="left-column">
+            <h2 id="column-name">Blog Posts</h2>
+            <div class="column-container">
+                <ul>
+                    {{ range (where .Site.RegularPages ".Params.column" "==" "left") }}
+                    <li>
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+
+                        <p class="sub">{{ .Date.Format "January 02, 2006" }}</p>
+
+                        <p class="sub">{{ .Description }}</p>
+                    </li>
+                    {{ end }}
+                </ul>
             </div>
         </div>
-    </body>
+
+        <div id="middle-column">
+            <h2 id="column-name">Presentations</h2>
+            <div class="column-container">
+                <ul>
+                    {{ range (where .Site.RegularPages ".Params.column" "==" "middle") }}
+                    <li>
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                        <p class="sub">{{ .Description }}, {{ .Date.Format "January 02, 2006" }}</p>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+
+        <div id="right-column">
+            <h2 id="column-name">Other</h2>
+            <div class="column-container">
+                <ul>
+                    {{ range (where .Site.RegularPages ".Params.column" "==" "right") }}
+                    <li>
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                        <p>{{ .Description }}</p>
+                    </li>
+                    {{ end }}
+                    <li><a href="https://github.com/grantseltzer/resume">Resume</a></li>
+                    <li><a href="/recipes/recipes/">recipes</a></li>
+                    <li><a href="https://www.github.com/grantseltzer">github</a></li>
+                    <li><a href="https://www.twitter.com/grantseltzer">twitter</a></li>
+                    <li><a href="http://ebpf.io/slack">ebpf slack</a></li>
+                    <li><a href="https://www.goodreads.com/user/show/50650128-grant-seltzer">goodreads</a></li>
+                    <li><a href="https://www.linkedin.com/in/grantseltzerrichman/">linkedin</a></li>
+                    <li>email: batman -AT- grant.pizza</li>
+                </ul>
+            </div>
+            <img id="pixel_crab" src="/crab_pixel.png" alt="aaaaaaaaaaaaaaaaaaaaaaaaaaaaa">
+
+        </div>
+    </div>
+</body>
+
 </html>
