@@ -18,57 +18,13 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        /* Set a minimum width for the original select element */
-        #dropdown {
+        #dropdown,
+        #bird-dropdown {
             min-width: 300px;
-            /* Adjust as needed */
         }
 
-        /* Style for the Select2 container */
         .select2-container {
             min-width: 300px;
-            /* Adjust as needed */
-        }
-
-        /* Style the dropdown menu itself */
-        .select2-dropdown {
-            min-width: 300px;
-            /* Adjust as needed */
-        }
-
-        /* Mobile-first styles for form inputs */
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            padding: 10px;
-            margin: 0 auto;
-            max-width: 500px;
-            /* Ensures a centered layout for larger screens */
-            box-sizing: border-box;
-        }
-
-        /* Label styling for consistency */
-        form label {
-            font-weight: bold;
-            font-size: 1rem;
-            margin-bottom: 5px;
-        }
-
-        /* Input and select styling */
-        form input,
-        form select {
-            width: 100%;
-            padding: 10px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            background-color: #f9f9f9;
-        }
-
-        /* Styling for the select2 container */
-        .select2-container {
             width: 100% !important;
         }
 
@@ -83,7 +39,33 @@
             font-size: 1rem;
         }
 
-        /* Buttons styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 10px;
+            margin: 0 auto;
+            max-width: 500px;
+            box-sizing: border-box;
+        }
+
+        form label {
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        form input,
+        form select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+
         form button {
             background-color: #007bff;
             color: white;
@@ -99,20 +81,6 @@
             background-color: #0056b3;
         }
 
-        /* Adjust form container for mobile screens */
-        @media (max-width: 768px) {
-            form {
-                padding: 15px;
-            }
-
-            form input,
-            form select,
-            form button {
-                font-size: 1rem;
-            }
-        }
-
-        /* Results styling */
         #results {
             margin-top: 20px;
             padding: 10px;
@@ -160,53 +128,76 @@
 
         function formatDate(date) {
             const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+            const month = String(date.getMonth() + 1).padStart(2, '0');
             const day = String(date.getDate()).padStart(2, '0');
             return `${year}/${month}/${day}`;
         }
 
         document.addEventListener("DOMContentLoaded", async () => {
+            // Initialize Select2 for Region dropdown
             $('#dropdown').select2({
-                placeholder: "Select options",
+                placeholder: "Select regions",
                 allowClear: true
             });
 
-            const csvFilePath = '/combined_regions.csv';
-            let location_names_to_codes = null; // Initialize as null
+            // Initialize Select2 for Bird ID dropdown
+            $('#bird-dropdown').select2({
+                placeholder: "Select a bird",
+                allowClear: true
+            });
+
+            // Load Region data
+            const regionCsvFilePath = '/combined_regions.csv';
+            let location_names_to_codes = null;
 
             try {
-                location_names_to_codes = await loadCsvAsMap(csvFilePath); // Await the Promise resolution
+                location_names_to_codes = await loadCsvAsMap(regionCsvFilePath);
 
-                if (!(location_names_to_codes instanceof Map)) {
-                    throw new Error('Failed to load location_names_to_codes as a Map.');
-                }
-
-                const dropdown = document.getElementById('dropdown');
+                const regionDropdown = document.getElementById('dropdown');
                 location_names_to_codes.forEach((value, key) => {
                     const option = document.createElement('option');
                     option.value = key;
                     option.textContent = key;
-                    dropdown.appendChild(option);
+                    regionDropdown.appendChild(option);
                 });
             } catch (error) {
-                console.error(`Error loading CSV data: ${error.message}`);
-                return; // Exit early if there's an error loading the CSV
+                console.error(`Error loading Region CSV data: ${error.message}`);
+            }
+
+            // Load Bird ID data
+            const birdCsvFilePath = '/bird-codes-adjusted.csv';
+            let birdCodesMap = null;
+
+            try {
+                birdCodesMap = await loadCsvAsMap(birdCsvFilePath);
+
+                const birdDropdown = document.getElementById('bird-dropdown');
+                birdCodesMap.forEach((value, key) => {
+                    const option = document.createElement('option');
+                    option.value = key;
+                    option.textContent = `${key}`;
+                    birdDropdown.appendChild(option);
+                });
+            } catch (error) {
+                console.error(`Error loading Bird ID CSV data: ${error.message}`);
             }
 
             async function handleFormSubmit(event) {
                 event.preventDefault();
 
-                if (!location_names_to_codes) {
-                    console.error('location_names_to_codes is not initialized.');
+                if (!location_names_to_codes || !birdCodesMap) {
+                    console.error('Location or Bird data not initialized.');
                     return;
                 }
 
                 const api_key = document.getElementById('api-key').value;
-                const targetBird = document.getElementById('birdid').value;
+                const selectedBird = $('#bird-dropdown').val();
+                const selectedBirdID = birdCodesMap.get($('#bird-dropdown').val());
+                console.log(selectedBirdID);
                 const numberOfDays = parseInt(document.getElementById('daysnum').value, 10);
 
-                const selectedOptions = $('#dropdown').val();
-                const regions = selectedOptions.map(option => location_names_to_codes.get(option));
+                const selectedRegions = $('#dropdown').val();
+                const regions = selectedRegions.map(option => location_names_to_codes.get(option));
 
                 if (!regions.length) {
                     console.error('No valid regions selected.');
@@ -253,7 +244,6 @@
                     }
                 }
 
-                // Fetch species data for each checklist
                 for (const checklistId in checklistsById) {
                     const fullRequest = `${baseUrl}${viewChecklist.replace('{id}', checklistId)}`;
                     try {
@@ -261,7 +251,8 @@
                         if (response.ok) {
                             const checklist = await response.json();
                             for (const observation of checklist.obs) {
-                                if (observation.speciesCode === targetBird) {
+                                console.log(observation.speciesCode);
+                                if (observation.speciesCode === selectedBirdID) {
                                     checklistsWithTargetSpecies.push(checklistsById[checklistId]);
                                 }
                             }
@@ -307,8 +298,6 @@
     </div>
     <h1>Where has this species been seen?</h1>
 
-    {{.Content}}
-
     <form>
         <label for="api-key">API Key:</label>
         <input type="text" id="api-key" required>
@@ -316,8 +305,8 @@
         <label for="dropdown">Regions:</label>
         <select id="dropdown" multiple></select>
 
-        <label for="birdid">Bird ID:</label>
-        <input type="text" id="birdid" required>
+        <label for="bird-dropdown">Bird ID:</label>
+        <select id="bird-dropdown"></select>
 
         <label for="daysnum">Days to Search Back:</label>
         <input type="number" id="daysnum" required>
