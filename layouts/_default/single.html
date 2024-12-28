@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 
-    <head>
+<head>
 
-        <meta charset="utf-8">
-        {{ hugo.Generator }} 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script data-goatcounter="https://grantpizza.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <meta charset="utf-8">
+    {{ hugo.Generator }}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script data-goatcounter="https://grantpizza.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
-        <style>
-
-        body { margin: 0; }
+    <style>
+        body {
+            margin: 0;
+        }
 
         #title {
             font-family: "Open Sans", sans-serif;
@@ -40,7 +41,7 @@
             line-height: 25px;
             overflow: scroll;
         }
-        
+
         code {
             font-family: monospace;
             margin: 0 .2rem;
@@ -71,13 +72,14 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        @media (min-width: 1000px){
+        @media (min-width: 1000px) {
             #talk-content {
                 display: block;
                 text-align: center;
                 font-family: "Open Sans", sans-serif;
                 font-size: 20px;
             }
+
             img {
                 display: block;
                 margin-left: auto;
@@ -96,36 +98,51 @@
                 height: auto;
             }
         }
-        a { text-decoration: none; color: black; font-weight: bold; line-height: 1.3em; }
-        a:hover { font-style: italic; border-bottom: 5px solid yellow }
-        .copyright { padding-top: 50px; display: block; text-align: center; }
 
-        </style>
+        a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            line-height: 1.3em;
+        }
 
-    </head>
+        a:hover {
+            font-style: italic;
+            border-bottom: 5px solid yellow
+        }
 
-    <body>
-        <div id="topbar">
-            <a id="homelink" href="/">GSR</a>
-        </div>
+        .copyright {
+            padding-top: 50px;
+            display: block;
+            text-align: center;
+        }
+    </style>
 
-        <h1 id="title">{{ .Title }}</h1>
-        <h4>{{ .Date.Format "January 02, 2006" }}</h4>
-        <div id="text-content">
+</head>
+
+<body>
+    <div id="topbar">
+        <a id="homelink" href="/">GSR</a>
+    </div>
+
+    <h1 id="title">{{ .Title }}</h1>
+    <h4>{{ .Date.Format "January 02, 2006" }}</h4>
+    <div id="text-content">
         {{ .Content }}
-        
+
         {{ if eq .Section "talks" }}
-            {{ if ne .Params.presentation "" }}
-                <div id="presentation">
-                    <p>Presented at {{ .Params.conference }}.</p>
-                    <iframe src={{ .Params.presentation }} frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-                </div>
-            {{end}}
-        {{ end }}
+        {{ if ne .Params.presentation "" }}
+        <div id="presentation">
+            <p>Presented at {{ .Params.conference }}.</p>
+            <iframe src={{ .Params.presentation }} frameborder="0" width="960" height="569" allowfullscreen="true"
+                mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
         </div>
+        {{end}}
+        {{ end }}
+    </div>
 
-        <span class="copyright">copyright 2018 - 2023</span>
+    <span class="copyright">copyright 2018 - 2025</span>
 
-    </body>
-    
+</body>
+
 </html>
