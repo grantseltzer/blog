@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird Search</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <style>
+        #homelink {
+            padding-top: 25px;
+            font-size: 30px;
+            font-style: italic;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px grey;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Set a minimum width for the original select element */
+        #dropdown {
+            min-width: 300px;
+            /* Adjust as needed */
+        }
+
+        /* Style for the Select2 container */
+        .select2-container {
+            min-width: 300px;
+            /* Adjust as needed */
+        }
+
+        /* Style the dropdown menu itself */
+        .select2-dropdown {
+            min-width: 300px;
+            /* Adjust as needed */
+        }
+    </style>
+
+    <script>
+        async function loadCsvAsMap(csvFilePath) {
+            const response = await fetch(csvFilePath);
+            if (!response.ok) {
+                throw new Error(`Failed to load CSV file: ${response.statusText}`);
+            }
+            const csvText = await response.text();
+            const rows = csvText.split('\n').map(row => row.split(','));
+            const dataMap = new Map();
+            for (const [key, value] of rows) {
+                if (key && value) {
+                    dataMap.set(key.trim(), value.trim());
+                }
+            }
+            return dataMap;
+        }
+
+        function subtractDays(date, days) {
+            const result = new Date(date);
+            result.setDate(result.getDate() - days);
+            return result;
+        }
+
+        function formatDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}/${month}/${day}`;
+        }
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            $('#dropdown').select2({
+                placeholder: "Select options",
+                allowClear: true
+            });
+
+            const csvFilePath = '/combined_regions.csv';
+            let location_names_to_codes = null; // Initialize as null
+
+            try {
+                location_names_to_codes = await loadCsvAsMap(csvFilePath); // Await the Promise resolution
+
+                if (!(location_names_to_codes instanceof Map)) {
+                    throw new Error('Failed to load location_names_to_codes as a Map.');
+                }
+
+                const dropdown = document.getElementById('dropdown');
+                location_names_to_codes.forEach((value, key) => {
+                    const option = document.createElement('option');
+                    option.value = key;
+                    option.textContent = key;
+                    dropdown.appendChild(option);
+                });
+            } catch (error) {
+                console.error(`Error loading CSV data: ${error.message}`);
+                return; // Exit early if there's an error loading the CSV
+            }
+
+            async function handleFormSubmit(event) {
+                event.preventDefault();
+
+                if (!location_names_to_codes) {
+                    console.error('location_names_to_codes is not initialized.');
+                    return;
+                }
+
+                const api_key = document.getElementById('api-key').value;
+                const targetBird = document.getElementById('birdid').value;
+                const numberOfDays = parseInt(document.getElementById('daysnum').value, 10);
+
+                const selectedOptions = $('#dropdown').val();
+                const regions = selectedOptions.map(option => location_names_to_codes.get(option));
+
+                if (!regions.length) {
+                    console.error('No valid regions selected.');
+                    return;
+                }
+
+                const headers = {
+                    'X-eBirdApiToken': api_key
+                };
+
+                const baseUrl = 'https://api.ebird.org/v2';
+                const checklistsOnDate = '/product/lists/{region}/{date}';
+                const viewChecklist = '/product/checklist/view/{id}';
+
+                const today = new Date();
+                const lastXDays = Array.from({ length: numberOfDays }, (_, i) => subtractDays(today, i));
+                const formattedDates = lastXDays.map(day => formatDate(day));
+                const checklistForDateParams = new URLSearchParams({
+                    maxResults: '200',
+                    sortKey: 'obs_dt'
+                }).toString();
+
+                const checklistsById = {};
+                const checklistsWithTargetSpecies = [];
+
+                const resultsContainer = document.getElementById('results');
+                resultsContainer.innerHTML = '<h2>Loading Results...</h2>';
+
+                // Fetch checklists for each region and date
+                for (const region of regions) {
+                    for (const day of formattedDates) {
+                        const fullRequest = `${baseUrl}${checklistsOnDate.replace('{region}', region).replace('{date}', day)}?${checklistForDateParams}`;
+                        try {
+                            const response = await fetch(fullRequest, { headers });
+                            if (response.ok) {
+                                const checklistsMetadataOnDate = await response.json();
+                                for (const checklist of checklistsMetadataOnDate) {
+                                    checklistsById[checklist.subID] = checklist;
+                                }
+                            }
+                        } catch (error) {
+                            console.error(`Error fetching data: ${error.message}`);
+                        }
+                    }
+                }
+
+                // Fetch species data for each checklist
+                for (const checklistId in checklistsById) {
+                    const fullRequest = `${baseUrl}${viewChecklist.replace('{id}', checklistId)}`;
+                    try {
+                        const response = await fetch(fullRequest, { headers });
+                        if (response.ok) {
+                            const checklist = await response.json();
+                            for (const observation of checklist.obs) {
+                                if (observation.speciesCode === targetBird) {
+                                    checklistsWithTargetSpecies.push(checklistsById[checklistId]);
+                                }
+                            }
+                        }
+                    } catch (error) {
+                        console.error(`Error fetching checklist: ${error.message}`);
+                    }
+                }
+
+                // Display results
+                resultsContainer.innerHTML = '';
+                if (checklistsWithTargetSpecies.length === 0) {
+                    resultsContainer.innerHTML = '<h2>No results found for the given bird and date range.</h2>';
+                } else {
+                    resultsContainer.innerHTML = '<h2>Results:</h2>';
+                    checklistsWithTargetSpecies.forEach(c => {
+                        const checklistDiv = document.createElement('div');
+                        checklistDiv.className = 'result-item';
+                        checklistDiv.innerHTML = `
+                            <p><strong>Date:</strong> ${c.obsDt}</p>
+                            <p><strong>Location:</strong> ${c.loc.locName}</p>
+                            <p><strong>Coordinates:</strong> <a href="https://maps.google.com/?q=${c.loc.latitude},${c.loc.longitude}" target="_blank">${c.loc.latitude}, ${c.loc.longitude}</a></p>
+                            <p><strong>Checklist:</strong> <a href="https://ebird.org/checklist/${c.subID}" target="_blank">View Checklist</a></p>
+                            <p><strong>Observed by:</strong> ${c.userDisplayName}</p>
+                            <hr>
+                        `;
+                        resultsContainer.appendChild(checklistDiv);
+                    });
+                }
+            }
+
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', handleFormSubmit);
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div id="topbar">
+        <a id="homelink" href="/">GSR</a>
+    </div>
+    <h1>Where has this species been seen?</h1>
+
+    {{.Content}}
+
+    <form>
+        <label for="api-key">API Key:</label>
+        <input type="text" id="api-key" required>
+
+        <label for="dropdown">Regions:</label>
+        <select id="dropdown" multiple></select>
+
+        <label for="birdid">Bird ID:</label>
+        <input type="text" id="birdid" required>
+
+        <label for="daysnum">Days to Search Back:</label>
+        <input type="number" id="daysnum" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="results" style="margin-top: 20px;"></div>
+</body>
+
+</html>
