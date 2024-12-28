@@ -35,6 +35,104 @@
             min-width: 300px;
             /* Adjust as needed */
         }
+
+        /* Mobile-first styles for form inputs */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 10px;
+            margin: 0 auto;
+            max-width: 500px;
+            /* Ensures a centered layout for larger screens */
+            box-sizing: border-box;
+        }
+
+        /* Label styling for consistency */
+        form label {
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        /* Input and select styling */
+        form input,
+        form select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+
+        /* Styling for the select2 container */
+        .select2-container {
+            width: 100% !important;
+        }
+
+        .select2-selection {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 0 10px;
+            background-color: #f9f9f9;
+            font-size: 1rem;
+        }
+
+        /* Buttons styling */
+        form button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Adjust form container for mobile screens */
+        @media (max-width: 768px) {
+            form {
+                padding: 15px;
+            }
+
+            form input,
+            form select,
+            form button {
+                font-size: 1rem;
+            }
+        }
+
+        /* Results styling */
+        #results {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        #results h2 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .result-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+        }
     </style>
 
     <script>
