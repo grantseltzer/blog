@@ -15,7 +15,7 @@ Prior to kernel 4.16 (Release Apr 2018), all functions in a bpf program in fact 
 
 Let's take a look at a simple bpf program:
 
-```c
+```
 static __always_inline int print_map_value() {
     __u32 key = 0;
     __u64 *val = bpf_map_lookup_elem(&value_map, &key);
@@ -58,7 +58,7 @@ Total States: 4
 
 Now let's adapt our code to discourage inlining:
 
-```c
+```
 static __noinline int print_map_value() {
     ...
 }
@@ -99,7 +99,7 @@ Conversely, the challenge this presents is that global functions have to check t
 
 Let's take a look at the same example code, first with the static modifier:
 
-```c
+```
 static __noinline int print_dereferenced_value(__u32* foo_ptr) {
     __u32 foo;
     int i;
@@ -127,7 +127,7 @@ Since `print_dereferenced_value()` is static, the verifier knows that dereferenc
 
 By removing static, thus making print_dereferenced_value global would result in a verifier rejection for invalid memory access. As such we'll edit our function for safety and remove the check from the top level 'main' function:
 
-```c
+```
 __noinline int print_dereferenced_value(__u32* foo_ptr) {
     if (!foo_ptr) {
         bpf_printk("foo ptr is nil");
@@ -177,7 +177,7 @@ Global:
 
 Again, the instruction count got marginally worse! However, we knew this would happen as we had to add extra instructions for checking if pointer is nil. The complexity benefit to global functions can be seen over multiple invocations:
 
-```c
+```
     int i;
     for(i = 0; i < 100; i++) {
         print_dereferenced_value(b);
