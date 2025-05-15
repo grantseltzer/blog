@@ -11,7 +11,7 @@ The [bpf verifier](https://docs.ebpf.io/linux/concepts/verifier/) is tasked with
 
 If you've been writing bpf programs for a long time or have been looking at outdated examples then you're probably familiar with using the `static` modifier and `__always_inline` macro.
 
-Prior to kernel 4.16 (Release Apr 2018), all functions in a bpf program in fact needed to be inlined. Starting with this release you could do what's called [bpf to bpf function calls](https://docs.cilium.io/en/stable/reference-guides/bpf/architecture/#bpf-to-bpf-calls). However, I didn't realize this until recently (while developing for a 5.15 kernel...). As any bpf developer would know, documentation is sparse and it's hard to know when things change. Therefore, I'd like to explore what inlining does for your program and how preventing function inlining for it expands the capability of bpf programs.
+Prior to kernel 4.16 (Release Apr 2018), all functions in a bpf program in fact needed to be inlined. Starting with this release you could do what's called [bpf to bpf function calls](https://docs.cilium.io/en/stable/reference-guides/bpf/architecture/#bpf-to-bpf-calls). I'd like to start by exploring what inlining does for your program and how preventing function inlining expands the capability of bpf programs.
 
 Let's take a look at a simple bpf program:
 
@@ -87,13 +87,13 @@ Total States: 6
 
 The instruction count got worse! The verifier still has to count each instruction as a possible state. Forcing functions to not be inlined means that we're adding instructions for setting up and tearing down a stack for each frame.
 
-However, the stack usage improved! The stack gets cleared when each function call returns, so this is an important consideration.
+However, the stack usage improved! The stack gets cleared when each function call returns, so at least there's that.
 
 ### Static vs Global Functions
 
-As you see above we've modified our helper function `print_map_value()` with the `static` keyword. Static functions maintain the verifier context of the function which called them. If a variable that is known to be of a certain range is passed to a static function, that range is still known. Conversely, if a function is not static (therefore global), then this context is not kept and the range and validity of passed variables is not kept. This has both benefit and detriment. 
+As you see above we've modified our helper function `print_map_value()` with the `static` keyword. Static functions maintain the verifier context of the function which called them. If a variable that is known to be of a certain range is passed to a static function, that range is still known. This means the verifier can't trust that a static function will run the same way every time it's called, and therefore must be verified for each invocation.
 
-The benefit of a global function is that it is only verified once independently of its invocations. Meaning that even if a global function is called 100 times, it's only verified once (unless it's also inlined). This is hugely beneficial in many applications for the sake of staying under the verifier complexity threshold.
+Conversely, if a function is not static (therefore global), then this context is not kept and the range and validity of passed variables is not kept. The benefit of a global function is that it is only verified once independently of its invocations. Meaning that even if a global function is called 100 times, it's only verified once (unless it's also inlined).
 
 Conversely, the challenge this presents is that global functions have to check the values of their parameters. If a function isn't called many times this can therefore increases the counted complexity of a program. There are also limitations on the types of parameters or returns of global functions. See [documentation](https://docs.ebpf.io/linux/concepts/functions/#pointers-in-global-functions) for more detail.
 
