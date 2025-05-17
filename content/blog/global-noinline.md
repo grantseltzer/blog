@@ -1,5 +1,5 @@
 +++
-title = "Global bpf Functions"
+title = "Global No-Inline BPF Functions"
 Description = ""
 Tags = []
 Categories = []
