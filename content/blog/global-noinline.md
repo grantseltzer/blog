@@ -85,7 +85,7 @@ Peak States: 6
 Total States: 6
 ```
 
-The instruction count got worse! The verifier still has to count each instruction as a possible state. Forcing functions to not be inlined means that we're adding instructions for setting up and tearing down a stack for each frame.
+The instruction count got worse! The verifier still has to count each instruction as a possible state. Forcing functions to not be inlined also means that we're adding a call instruction to the outer calling function. Sometimes there will also be more instructions to spill caller registers.
 
 However, the stack usage improved! The stack gets cleared when each function call returns, so at least there's that.
 
@@ -211,3 +211,5 @@ Global:
 Now we see the improvement! In this case we're only using instructions towards the complexity limit for the sake of making a function call, no matter how big that function is. 
 
 The verifier really only cares that a program will halt, it doesn't set a complexity limit for the sake of setting a limit. As such, if it knows that a function independently will always halt, calling it a limited number of times will not affect its quality of doing so.
+
+While this helps us as bpf developers get through verifier restrictions, there is a notable trade off of global functions which is that it can lead to programs that are less efficient. This is because you need to re-check the properties of arguments for each function call. Even though they don't increase the instruction count from the verifier's perspective, they do still get run and therefore add runtime overhead every time the function is called. Use this knowledge to your advantage, and be aware of all the trade-offs.
