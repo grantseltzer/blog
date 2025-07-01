@@ -7,6 +7,8 @@ Date = 2025-06-21T00:00:00+00:00
 column = "left"
 +++
 
+_You can find all the code displayed in this post in my repo [here](https://github.com/grantseltzer/bpf-iter-test)._
+
 The [proc file system](https://man7.org/linux/man-pages/man5/proc.5.html) provides to users information about the processes on a running linux system via a file system interface. The directory structure is organized such that every process has its own directory. The files in the directory are useful for finding out permissions, state, open files, and more. I wrote a [small post](https://www.grant.pizza/blog/procfs/) about it in 2019.
 
 Commonly used utilities like `ps` and `top` work by iterating over every directory in the procfs and reading the files like `stat` and `status`. The files themselves [aren't real files](https://docs.kernel.org/filesystems/vfs.html), so reading each of these files doesn't involve reading from disk at all. However, performance wise, reading of each file _does_ pay the cost of the system calls used as if they were disk backed. A simple strace on my system shows that for each process ps calls 7 system calls (newfstatat x3, openat, read, close).
@@ -200,3 +202,5 @@ These above ideas are only from the task iterator, there's also already upstream
 Any kernel object can have an iterator implemented for it as well! 
 
 The future of system monitoring is increasingly moving toward bpf, and task iterators are just one example of how it can solve real performance problems in production systems. 
+
+_You can find all the code displayed in this post in my repo [here](https://github.com/grantseltzer/bpf-iter-test)._
