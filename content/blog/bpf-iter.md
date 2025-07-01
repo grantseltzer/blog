@@ -17,9 +17,7 @@ I bring up performance because there's another convenient way of gathering this 
 
 _From [kernel docs](https://docs.kernel.org/bpf/bpf_iterators.html):_
 
-```
-A BPF iterator is a type of BPF program that allows users to iterate over specific types of kernel objects. Unlike traditional BPF tracing programs that allow users to define callbacks that are invoked at particular points of execution in the kernel, BPF iterators allow users to define callbacks that should be executed for every entry in a variety of kernel data structures.
-```
+_A BPF iterator is a type of BPF program that allows users to iterate over specific types of kernel objects. Unlike traditional BPF tracing programs that allow users to define callbacks that are invoked at particular points of execution in the kernel, BPF iterators allow users to define callbacks that should be executed for every entry in a variety of kernel data structures._
 
 There's one such bpf iterator already implemented for the `task_struct`, the kernel's representation of a process. We can write a bpf program which, when manually activated, gets called on each `task_struct`. So instead of iterating over each directory in procfs, we can write a bpf program that iterates over each task. This means one activation of the iterator, and not switching between kernel/user contexts for every single process by using lots of system calls.
 
