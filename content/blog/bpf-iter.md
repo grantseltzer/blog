@@ -21,11 +21,11 @@ _From [kernel docs](https://docs.kernel.org/bpf/bpf_iterators.html):_
 A BPF iterator is a type of BPF program that allows users to iterate over specific types of kernel objects. Unlike traditional BPF tracing programs that allow users to define callbacks that are invoked at particular points of execution in the kernel, BPF iterators allow users to define callbacks that should be executed for every entry in a variety of kernel data structures.
 ```
 
-There's one such bpf iterator already implemented for the `task_struct`, the kernel's representation of a process. We can write a bpf program which, when manually activated, gets called on each `task_struct`. So instead of iterating over each directory in procfs, we can write a bpf program that iterates over each task. This means one activation of the iterator, and not switching between kerenl/user contexts for every single process by using lots of system calls.
+There's one such bpf iterator already implemented for the `task_struct`, the kernel's representation of a process. We can write a bpf program which, when manually activated, gets called on each `task_struct`. So instead of iterating over each directory in procfs, we can write a bpf program that iterates over each task. This means one activation of the iterator, and not switching between kernel/user contexts for every single process by using lots of system calls.
 
 Here's an example task bpf iterator program:
 
-```c
+```
 SEC("iter/task")
 int ps(struct bpf_iter__task *ctx)
 {
@@ -34,6 +34,7 @@ int ps(struct bpf_iter__task *ctx)
 	if (task == NULL) {
 		return 0;
 	}
+	// Only process thread group leaders (to dedepulicate threads)
 	if (task->group_leader != task) {
 		return 0;
 	}
@@ -69,7 +70,8 @@ A nice thing about the design of bpf iterators is that they're triggered on dema
 
 In the case of our bpf program above, the resulting output data will be the binary data of each populated `info_t`. Here's code in Go that loads, reads, and decodes this data:
 
-```go
+```
+...
     // Load the compiled bpf object
 	collection, err := ebpf.LoadCollection("task.bpf.o")
 	if err != nil {
@@ -141,9 +143,33 @@ PID: 85, PPID: 2, UID: 0, GID: 0, Comm: kworker/R-charg
 ...
 ```
 
+### Why BPF is Faster
+
+The performance difference comes from several key factors:
+
+**System Call Overhead**: Traditional procfs reading requires multiple system calls per process (stat, open, read, close). With 1000 processes, that's 4000+ system calls. BPF iterators use just one system call regardless of process count.
+
+**Context Switching**: Each system call involves expensive user-to-kernel context switches. BPF iterators eliminate this per-process overhead by running entirely in kernel space until completion.
+
+**Direct Data Access**: BPF programs access kernel data structures directly, avoiding the filesystem abstraction layer that procfs uses. This eliminates file system overhead and buffer copying.
+
+**Batch Processing**: Instead of processing one process at a time, the BPF iterator processes all tasks in a single kernel operation, improving CPU cache efficiency and reducing overall latency.
+
 ### pinning
 
-Another possible improvement is to pin the bpf iterator program to a file. Running `cat` on that file would trigger the iterator. This way you can expose this data to unprivledged processes.
+Another possible improvement is to pin the bpf iterator program to a file. This approach is particularly useful for monitoring systems that need to run as non-root users but still need access to process information.
+
+Here's how to pin the iterator:
+
+```go
+// After attaching the iterator
+err = iter.Pin("/sys/fs/bpf/my_task_iter")
+if err != nil {
+    log.Fatalf("Failed to pin iterator: %v", err)
+}
+```
+
+Once pinned, any user with permissions to read this file can read the data with `cat /sys/fs/bpf/my_task_iter`.
 
 # Comparison
 
@@ -174,3 +200,5 @@ These above ideas are only from the task iterator, there's also already upstream
 - Kernel symbols
 
 Any kernel object can have an iterator implemented for it as well! 
+
+The future of system monitoring is increasingly moving toward bpf, and task iterators are just one example of how it can solve real performance problems in production systems. 
