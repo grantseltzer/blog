@@ -143,25 +143,13 @@ PID: 85, PPID: 2, UID: 0, GID: 0, Comm: kworker/R-charg
 ...
 ```
 
-### Why BPF is Faster
-
-The performance difference comes from several key factors:
-
-**System Call Overhead**: Traditional procfs reading requires multiple system calls per process (stat, open, read, close). With 1000 processes, that's 4000+ system calls. BPF iterators use just one system call regardless of process count.
-
-**Context Switching**: Each system call involves expensive user-to-kernel context switches. BPF iterators eliminate this per-process overhead by running entirely in kernel space until completion.
-
-**Direct Data Access**: BPF programs access kernel data structures directly, avoiding the filesystem abstraction layer that procfs uses. This eliminates file system overhead and buffer copying.
-
-**Batch Processing**: Instead of processing one process at a time, the BPF iterator processes all tasks in a single kernel operation, improving CPU cache efficiency and reducing overall latency.
-
 ### pinning
 
 Another possible improvement is to pin the bpf iterator program to a file. This approach is particularly useful for monitoring systems that need to run as non-root users but still need access to process information.
 
 Here's how to pin the iterator:
 
-```go
+```
 // After attaching the iterator
 err = iter.Pin("/sys/fs/bpf/my_task_iter")
 if err != nil {
@@ -179,7 +167,9 @@ I ran benchmarks on current code in the datadog-agent which reads the relevant d
 
 On a linux system with around 250 Procs it took the procfs implemention 5.45 ms vs 75.6 us for bpf (__bpf is ~72x faster__). On a linux system with around 10,000 Procs it took the procfs implemention ~296ms ms vs 3ms us for bpf (__bpf is ~100x faster__).
 
-### More Info, More Iterators
+The performance difference comes from several key factors. Procfs reading requires multiple system calls per process. BPF iterators use just one system call regardless of process count. Each system call involves user/kernel context switches. BPF iterators eliminate this per-process overhead by running entirely in kernel space until completion. Also BPF programs access kernel data structures directly, this eliminates file system overhead and buffer copying. 
+
+### More Info, and More Iterators
 
 There is more information we can get from bpf iterator that we can't from procfs as well. For example:
 
