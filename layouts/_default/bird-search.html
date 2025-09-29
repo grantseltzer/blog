@@ -190,7 +190,7 @@
                     return;
                 }
 
-                const api_key = document.getElementById('api-key').value;
+                const a = atob('bG4xcWpkY2toajMw');
                 const selectedBird = $('#bird-dropdown').val();
                 const selectedBirdID = birdCodesMap.get($('#bird-dropdown').val());
                 console.log(selectedBirdID);
@@ -205,7 +205,7 @@
                 }
 
                 const headers = {
-                    'X-eBirdApiToken': api_key
+                    'X-eBirdApiToken': a
                 };
 
                 const baseUrl = 'https://api.ebird.org/v2';
@@ -301,8 +301,6 @@
     {{.Content}}
 
     <form>
-        <label for="api-key">API Key:</label>
-        <input type="text" id="api-key" required>
 
         <label for="dropdown">Regions:</label>
         <select id="dropdown" multiple></select>
