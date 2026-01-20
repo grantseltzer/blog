@@ -165,7 +165,7 @@ Once pinned, any user with permissions to read this file can read the data with 
 
 I ran benchmarks on current code in the datadog-agent which reads the relevant data from procfs as described at the beginning of this post. I then implemented benchmarks for capturing the same data with bpf. The performance results were a major improvement.
 
-On a linux system with around 250 Procs it took the procfs implemention 5.45 ms vs 75.6 us for bpf (__bpf is ~72x faster__). On a linux system with around 10,000 Procs it took the procfs implemention ~296ms ms vs 3ms us for bpf (__bpf is ~100x faster__).
+On a linux system with around 250 Procs it took the procfs implemention 5.45 us vs 75.6 us for bpf (__bpf is ~72x faster__). On a linux system with around 10,000 Procs it took the procfs implemention ~296ms ms vs 3ms us for bpf (__bpf is ~100x faster__).
 
 The performance difference comes from several key factors. Procfs reading requires multiple system calls per process. BPF iterators use just one system call regardless of process count. Each system call involves user/kernel context switches. BPF iterators eliminate this per-process overhead by running entirely in kernel space until completion. Also BPF programs access kernel data structures directly, this eliminates file system overhead and buffer copying. 
 
