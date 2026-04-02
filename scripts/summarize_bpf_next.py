@@ -9,13 +9,14 @@ import json
 import os
 import sys
 from datetime import datetime, timezone, timedelta
+from urllib.parse import urlencode
 from urllib.request import urlopen, Request
 from urllib.error import URLError
 
 import anthropic
 
 PATCHWORK_API = 'https://patchwork.kernel.org/api/patches/'
-LIST_ID = 'bpf@vger.kernel.org'
+PROJECT = 'netdevbpf'
 HEADERS = {
     'User-Agent': 'grant.pizza/bpf-summarizer (https://github.com/grantseltzer/blog)',
     'Accept': 'application/json',
@@ -40,7 +41,8 @@ def fetch_patches(days):
     since = cutoff.strftime('%Y-%m-%dT%H:%M:%SZ')
 
     patches = []
-    url = f'{PATCHWORK_API}?list_id={LIST_ID}&since={since}&order=-date&per_page=100'
+    params = urlencode({'project': PROJECT, 'since': since, 'order': '-date', 'per_page': 100})
+    url = f'{PATCHWORK_API}?{params}'
 
     while url:
         try:
