@@ -176,7 +176,8 @@ def main():
 
         summary = generate_summary(client, patches, period, period_start, period_end)
 
-        out_path = os.path.join('data', 'bpf_next', f'{period}.json')
+        out_path = os.path.join('data', 'bpf_next', period, f'{period_end}.json')
+        os.makedirs(os.path.dirname(out_path), exist_ok=True)
         with open(out_path, 'w') as f:
             json.dump(summary, f, indent=2)
         print(f'  Wrote {out_path}')

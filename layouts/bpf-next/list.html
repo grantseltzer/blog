@@ -67,12 +67,9 @@
             margin-bottom: 32px;
         }
 
-        /* Hide radio inputs */
-        input[type="radio"][name="tabs"] {
-            display: none;
-        }
+        /* Tabs */
+        input[type="radio"][name="tabs"] { display: none; }
 
-        /* Tab bar */
         #tab-nav {
             display: flex;
             border-bottom: 2px solid black;
@@ -89,39 +86,71 @@
             margin-bottom: -2px;
         }
 
-        #tab-nav label:hover {
-            font-style: italic;
-        }
+        #tab-nav label:hover { font-style: italic; }
 
-        #tab-daily:checked ~ #tab-nav label[for="tab-daily"],
-        #tab-weekly:checked ~ #tab-nav label[for="tab-weekly"],
+        #tab-daily:checked   ~ #tab-nav label[for="tab-daily"],
+        #tab-weekly:checked  ~ #tab-nav label[for="tab-weekly"],
         #tab-monthly:checked ~ #tab-nav label[for="tab-monthly"] {
             border-bottom-color: black;
         }
 
-        /* Tab content */
-        .tab-content {
-            display: none;
-        }
+        .tab-content { display: none; }
 
-        #tab-daily:checked ~ #content-daily,
-        #tab-weekly:checked ~ #content-weekly,
+        #tab-daily:checked   ~ #content-daily,
+        #tab-weekly:checked  ~ #content-weekly,
         #tab-monthly:checked ~ #content-monthly {
             display: block;
         }
 
-        /* Meta row */
-        .meta {
-            font-size: 0.85em;
-            color: grey;
-            margin-bottom: 6px;
+        /* Date accordion */
+        details {
+            border-bottom: 1px solid #eee;
         }
 
+        details summary {
+            padding: 14px 0;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.95em;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            user-select: none;
+        }
+
+        details summary::-webkit-details-marker { display: none; }
+
+        details summary::before {
+            content: '▶';
+            font-size: 0.65em;
+            color: #aaa;
+            display: inline-block;
+            transition: transform 0.15s;
+            flex-shrink: 0;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        details summary .summary-meta {
+            color: grey;
+            font-size: 0.78em;
+            font-weight: normal;
+            margin-left: 4px;
+        }
+
+        .entry-body {
+            padding: 4px 0 24px 20px;
+        }
+
+        /* Summary content */
         .topics {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin: 14px 0 22px;
+            margin-bottom: 20px;
         }
 
         .topic-tag {
@@ -132,17 +161,15 @@
             font-family: monospace;
         }
 
-        /* Overview paragraph */
         .overview {
             font-family: "Open Sans", Arial, sans-serif;
             font-size: 0.95em;
             line-height: 1.7em;
-            margin-bottom: 30px;
-            padding-bottom: 24px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
             border-bottom: 2px solid black;
         }
 
-        /* Patch list */
         .patch-list {
             list-style: none;
             margin: 0;
@@ -150,18 +177,14 @@
         }
 
         .patch-list li {
-            margin-bottom: 28px;
-            padding-bottom: 28px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
             border-bottom: 1px solid #eee;
         }
 
-        .patch-list li:last-child {
-            border-bottom: none;
-        }
+        .patch-list li:last-child { border-bottom: none; }
 
-        .patch-header {
-            margin-bottom: 8px;
-        }
+        .patch-header { margin-bottom: 8px; }
 
         .patch-header::before {
             content: "•  ";
@@ -194,15 +217,11 @@
             color: grey;
         }
 
-        .related-links span {
-            font-weight: bold;
-            color: #555;
-        }
+        .related-links span { font-weight: bold; color: #555; }
 
         .related-links a {
             font-weight: normal;
             color: #333;
-            font-size: 1em;
         }
 
         .related-links a:hover {
@@ -210,24 +229,21 @@
             border-bottom: 3px solid yellow;
         }
 
-        .related-sep {
-            margin: 0 6px;
-            color: #ccc;
-        }
+        .related-sep { margin: 0 6px; color: #ccc; }
 
-        /* Footer */
         .generated-at {
             color: #aaa;
             font-size: 0.75em;
             border-top: 1px solid #eee;
-            padding-top: 14px;
-            margin-top: 16px;
+            padding-top: 12px;
+            margin-top: 8px;
         }
 
         .no-data {
             color: grey;
             font-style: italic;
             font-size: 0.9em;
+            padding: 20px 0;
         }
 
         .copyright {
@@ -249,10 +265,9 @@
         <h1 id="title">bpf-next mailing list</h1>
         <p id="subtitle">linux kernel patch summaries, generated daily</p>
 
-        {{ $siteData := hugo.Data }}
-        {{ $daily   := $siteData.bpf_next.daily }}
-        {{ $weekly  := $siteData.bpf_next.weekly }}
-        {{ $monthly := $siteData.bpf_next.monthly }}
+        {{ $dailyAll   := index (hugo.Data).bpf_next "daily" }}
+        {{ $weeklyAll  := index (hugo.Data).bpf_next "weekly" }}
+        {{ $monthlyAll := index (hugo.Data).bpf_next "monthly" }}
 
         <input type="radio" name="tabs" id="tab-daily" checked>
         <input type="radio" name="tabs" id="tab-weekly">
@@ -264,111 +279,132 @@
             <label for="tab-monthly">MONTHLY</label>
         </nav>
 
+        {{/* ── Macro: render one summary entry ── */}}
+        {{/* Called via partial below */}}
+
         {{/* ── Daily ── */}}
         <section id="content-daily" class="tab-content">
-            {{ if $daily.overview }}
-            <p class="meta">{{ $daily.period_start }} – {{ $daily.period_end }} · {{ $daily.patch_count }} patches · {{ $daily.thread_count }} threads</p>
-
-            {{ with $daily.key_topics }}
-            <div class="topics">{{ range . }}<span class="topic-tag">{{ . }}</span>{{ end }}</div>
+            {{ if $dailyAll }}
+            {{ range $i, $date := sort (keys $dailyAll) "value" "desc" }}
+                {{ $s := index $dailyAll $date }}
+                <details{{ if eq $i 0 }} open{{ end }}>
+                    <summary>
+                        {{ $date }}
+                        <span class="summary-meta">{{ $s.patch_count }} patches</span>
+                    </summary>
+                    <div class="entry-body">
+                        {{ with $s.key_topics }}
+                        <div class="topics">{{ range . }}<span class="topic-tag">{{ . }}</span>{{ end }}</div>
+                        {{ end }}
+                        <p class="overview">{{ $s.overview }}</p>
+                        {{ with $s.patches }}
+                        <ul class="patch-list">
+                            {{ range . }}
+                            <li>
+                                <p class="patch-header">
+                                    <a class="patch-title" href="{{ .url }}">{{ .title }}</a><span class="patch-author">— {{ .author }}</span>
+                                </p>
+                                {{ with .summary }}<p class="patch-summary">{{ . }}</p>{{ end }}
+                                {{ with .related_links }}
+                                <p class="related-links">
+                                    <span>see also:</span>
+                                    {{ range $j, $l := . }}{{ if $j }}<span class="related-sep">·</span>{{ end }}<a href="{{ $l.url }}">{{ $l.title }}</a>{{ end }}
+                                </p>
+                                {{ end }}
+                            </li>
+                            {{ end }}
+                        </ul>
+                        {{ end }}
+                        <p class="generated-at">Generated {{ $s.generated_at }}</p>
+                    </div>
+                </details>
             {{ end }}
-
-            <p class="overview">{{ $daily.overview }}</p>
-
-            {{ with $daily.patches }}
-            <ul class="patch-list">
-                {{ range . }}
-                <li>
-                    <p class="patch-header">
-                        <a class="patch-title" href="{{ .url }}">{{ .title }}</a><span class="patch-author">— {{ .author }}</span>
-                    </p>
-                    {{ with .summary }}<p class="patch-summary">{{ . }}</p>{{ end }}
-                    {{ with .related_links }}
-                    <p class="related-links">
-                        <span>see also:</span>
-                        {{ range $i, $l := . }}{{ if $i }}<span class="related-sep">·</span>{{ end }}<a href="{{ $l.url }}">{{ $l.title }}</a>{{ end }}
-                    </p>
-                    {{ end }}
-                </li>
-                {{ end }}
-            </ul>
-            {{ end }}
-
-            <p class="generated-at">Generated {{ $daily.generated_at }}</p>
             {{ else }}
-            <p class="no-data">No daily summary available yet. Check back tomorrow.</p>
+            <p class="no-data">No daily summaries yet.</p>
             {{ end }}
         </section>
 
         {{/* ── Weekly ── */}}
         <section id="content-weekly" class="tab-content">
-            {{ if $weekly.overview }}
-            <p class="meta">{{ $weekly.period_start }} – {{ $weekly.period_end }} · {{ $weekly.patch_count }} patches · {{ $weekly.thread_count }} threads</p>
-
-            {{ with $weekly.key_topics }}
-            <div class="topics">{{ range . }}<span class="topic-tag">{{ . }}</span>{{ end }}</div>
+            {{ if $weeklyAll }}
+            {{ range $i, $date := sort (keys $weeklyAll) "value" "desc" }}
+                {{ $s := index $weeklyAll $date }}
+                <details{{ if eq $i 0 }} open{{ end }}>
+                    <summary>
+                        {{ $date }}
+                        <span class="summary-meta">{{ $s.patch_count }} patches</span>
+                    </summary>
+                    <div class="entry-body">
+                        {{ with $s.key_topics }}
+                        <div class="topics">{{ range . }}<span class="topic-tag">{{ . }}</span>{{ end }}</div>
+                        {{ end }}
+                        <p class="overview">{{ $s.overview }}</p>
+                        {{ with $s.patches }}
+                        <ul class="patch-list">
+                            {{ range . }}
+                            <li>
+                                <p class="patch-header">
+                                    <a class="patch-title" href="{{ .url }}">{{ .title }}</a><span class="patch-author">— {{ .author }}</span>
+                                </p>
+                                {{ with .summary }}<p class="patch-summary">{{ . }}</p>{{ end }}
+                                {{ with .related_links }}
+                                <p class="related-links">
+                                    <span>see also:</span>
+                                    {{ range $j, $l := . }}{{ if $j }}<span class="related-sep">·</span>{{ end }}<a href="{{ $l.url }}">{{ $l.title }}</a>{{ end }}
+                                </p>
+                                {{ end }}
+                            </li>
+                            {{ end }}
+                        </ul>
+                        {{ end }}
+                        <p class="generated-at">Generated {{ $s.generated_at }}</p>
+                    </div>
+                </details>
             {{ end }}
-
-            <p class="overview">{{ $weekly.overview }}</p>
-
-            {{ with $weekly.patches }}
-            <ul class="patch-list">
-                {{ range . }}
-                <li>
-                    <p class="patch-header">
-                        <a class="patch-title" href="{{ .url }}">{{ .title }}</a><span class="patch-author">— {{ .author }}</span>
-                    </p>
-                    {{ with .summary }}<p class="patch-summary">{{ . }}</p>{{ end }}
-                    {{ with .related_links }}
-                    <p class="related-links">
-                        <span>see also:</span>
-                        {{ range $i, $l := . }}{{ if $i }}<span class="related-sep">·</span>{{ end }}<a href="{{ $l.url }}">{{ $l.title }}</a>{{ end }}
-                    </p>
-                    {{ end }}
-                </li>
-                {{ end }}
-            </ul>
-            {{ end }}
-
-            <p class="generated-at">Generated {{ $weekly.generated_at }}</p>
             {{ else }}
-            <p class="no-data">No weekly summary available yet. Check back next Monday.</p>
+            <p class="no-data">No weekly summaries yet. Check back on Monday.</p>
             {{ end }}
         </section>
 
         {{/* ── Monthly ── */}}
         <section id="content-monthly" class="tab-content">
-            {{ if $monthly.overview }}
-            <p class="meta">{{ $monthly.period_start }} – {{ $monthly.period_end }} · {{ $monthly.patch_count }} patches · {{ $monthly.thread_count }} threads</p>
-
-            {{ with $monthly.key_topics }}
-            <div class="topics">{{ range . }}<span class="topic-tag">{{ . }}</span>{{ end }}</div>
+            {{ if $monthlyAll }}
+            {{ range $i, $date := sort (keys $monthlyAll) "value" "desc" }}
+                {{ $s := index $monthlyAll $date }}
+                <details{{ if eq $i 0 }} open{{ end }}>
+                    <summary>
+                        {{ $date }}
+                        <span class="summary-meta">{{ $s.patch_count }} patches</span>
+                    </summary>
+                    <div class="entry-body">
+                        {{ with $s.key_topics }}
+                        <div class="topics">{{ range . }}<span class="topic-tag">{{ . }}</span>{{ end }}</div>
+                        {{ end }}
+                        <p class="overview">{{ $s.overview }}</p>
+                        {{ with $s.patches }}
+                        <ul class="patch-list">
+                            {{ range . }}
+                            <li>
+                                <p class="patch-header">
+                                    <a class="patch-title" href="{{ .url }}">{{ .title }}</a><span class="patch-author">— {{ .author }}</span>
+                                </p>
+                                {{ with .summary }}<p class="patch-summary">{{ . }}</p>{{ end }}
+                                {{ with .related_links }}
+                                <p class="related-links">
+                                    <span>see also:</span>
+                                    {{ range $j, $l := . }}{{ if $j }}<span class="related-sep">·</span>{{ end }}<a href="{{ $l.url }}">{{ $l.title }}</a>{{ end }}
+                                </p>
+                                {{ end }}
+                            </li>
+                            {{ end }}
+                        </ul>
+                        {{ end }}
+                        <p class="generated-at">Generated {{ $s.generated_at }}</p>
+                    </div>
+                </details>
             {{ end }}
-
-            <p class="overview">{{ $monthly.overview }}</p>
-
-            {{ with $monthly.patches }}
-            <ul class="patch-list">
-                {{ range . }}
-                <li>
-                    <p class="patch-header">
-                        <a class="patch-title" href="{{ .url }}">{{ .title }}</a><span class="patch-author">— {{ .author }}</span>
-                    </p>
-                    {{ with .summary }}<p class="patch-summary">{{ . }}</p>{{ end }}
-                    {{ with .related_links }}
-                    <p class="related-links">
-                        <span>see also:</span>
-                        {{ range $i, $l := . }}{{ if $i }}<span class="related-sep">·</span>{{ end }}<a href="{{ $l.url }}">{{ $l.title }}</a>{{ end }}
-                    </p>
-                    {{ end }}
-                </li>
-                {{ end }}
-            </ul>
-            {{ end }}
-
-            <p class="generated-at">Generated {{ $monthly.generated_at }}</p>
             {{ else }}
-            <p class="no-data">No monthly summary available yet. Check back on the 1st.</p>
+            <p class="no-data">No monthly summaries yet. Check back on the 1st.</p>
             {{ end }}
         </section>
 
