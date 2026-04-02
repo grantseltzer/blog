@@ -1,0 +1,1028 @@
+{
+  "period": "daily",
+  "period_start": "2026-04-01",
+  "period_end": "2026-04-02",
+  "fetched_at": "2026-04-02T23:24:36Z",
+  "patches": [
+    {
+      "title": "[v3,bpf-next,6/6] bpf: Add helper and kfunc stack access size resolution",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260402212856.86606-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-02T21:28:56",
+      "series": [
+        {
+          "id": 1076661,
+          "url": "https://patchwork.kernel.org/api/series/1076661/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076661",
+          "date": "2026-04-02T21:28:50",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1076661/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,5/6] bpf: Move verifier helpers to header",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260402212856.86606-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-02T21:28:55",
+      "series": [
+        {
+          "id": 1076661,
+          "url": "https://patchwork.kernel.org/api/series/1076661/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076661",
+          "date": "2026-04-02T21:28:50",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1076661/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,4/6] bpf: Add bpf_compute_const_regs() and bpf_prune_dead_branches() passes",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260402212856.86606-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-02T21:28:54",
+      "series": [
+        {
+          "id": 1076661,
+          "url": "https://patchwork.kernel.org/api/series/1076661/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076661",
+          "date": "2026-04-02T21:28:50",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1076661/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,3/6] selftests/bpf: Add tests for subprog topological ordering",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260402212856.86606-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-02T21:28:53",
+      "series": [
+        {
+          "id": 1076661,
+          "url": "https://patchwork.kernel.org/api/series/1076661/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076661",
+          "date": "2026-04-02T21:28:50",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1076661/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,2/6] bpf: Sort subprogs in topological order after check_cfg()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260402212856.86606-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-02T21:28:52",
+      "series": [
+        {
+          "id": 1076661,
+          "url": "https://patchwork.kernel.org/api/series/1076661/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076661",
+          "date": "2026-04-02T21:28:50",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1076661/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,1/6] bpf: Do register range validation early",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260402212856.86606-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-02T21:28:51",
+      "series": [
+        {
+          "id": 1076661,
+          "url": "https://patchwork.kernel.org/api/series/1076661/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076661",
+          "date": "2026-04-02T21:28:50",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1076661/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,2/2] selftests/bpf: Add more tests for loading insn arrays with offsets",
+      "author": "Anton Protopopov",
+      "url": "https://lore.kernel.org/bpf/20260402184647.988132-3-a.s.protopopov@gmail.com/",
+      "date": "2026-04-02T18:46:47",
+      "series": [
+        {
+          "id": 1076623,
+          "url": "https://patchwork.kernel.org/api/series/1076623/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076623",
+          "date": "2026-04-02T18:46:45",
+          "name": "Properly load values from insn_arays with non-zero offsets",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1076623/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,1/2] bpf: Do not ignore offsets for loads from insn_arrays",
+      "author": "Anton Protopopov",
+      "url": "https://lore.kernel.org/bpf/20260402184647.988132-2-a.s.protopopov@gmail.com/",
+      "date": "2026-04-02T18:46:46",
+      "series": [
+        {
+          "id": 1076623,
+          "url": "https://patchwork.kernel.org/api/series/1076623/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076623",
+          "date": "2026-04-02T18:46:45",
+          "name": "Properly load values from insn_arays with non-zero offsets",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1076623/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3] bpf: reject short IPv4/IPv6 inputs in bpf_prog_test_run_skb",
+      "author": "Sun Jian",
+      "url": "https://lore.kernel.org/bpf/20260402160147.215499-1-sun.jian.kdev@gmail.com/",
+      "date": "2026-04-02T16:01:47",
+      "series": [
+        {
+          "id": 1076530,
+          "url": "https://patchwork.kernel.org/api/series/1076530/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076530",
+          "date": "2026-04-02T16:01:47",
+          "name": "[bpf-next,v3] bpf: reject short IPv4/IPv6 inputs in bpf_prog_test_run_skb",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1076530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,6/6] selftests/bpf: Remove invariant violation flags",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/9afce92510a7d44569dc3af63c9b8c608e69298a.1775142354.git.paul.chaignon@gmail.com/",
+      "date": "2026-04-02T15:12:48",
+      "series": [
+        {
+          "id": 1076512,
+          "url": "https://patchwork.kernel.org/api/series/1076512/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076512",
+          "date": "2026-04-02T15:07:25",
+          "name": "Fix invariant violations and improve branch detection",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1076512/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,5/6] selftests/bpf: Cover invariant violation case from syzbot",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/b1e22233a3206ead522f02eda27b9c5c991a0de9.1775142354.git.paul.chaignon@gmail.com/",
+      "date": "2026-04-02T15:11:41",
+      "series": [
+        {
+          "id": 1076512,
+          "url": "https://patchwork.kernel.org/api/series/1076512/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076512",
+          "date": "2026-04-02T15:07:25",
+          "name": "Fix invariant violations and improve branch detection",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1076512/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,4/6] bpf: Simulate branches to prune based on range violations",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/a166b54a3cbbbdbcdf8a87f53045f1097176218b.1775142354.git.paul.chaignon@gmail.com/",
+      "date": "2026-04-02T15:10:43",
+      "series": [
+        {
+          "id": 1076512,
+          "url": "https://patchwork.kernel.org/api/series/1076512/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076512",
+          "date": "2026-04-02T15:07:25",
+          "name": "Fix invariant violations and improve branch detection",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1076512/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/6] bpf: Exit early if reg_bounds_sync gets invalid inputs",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/73127d628841c59cb7423d6bdcd204bf90bcdc80.1775142354.git.paul.chaignon@gmail.com/",
+      "date": "2026-04-02T15:10:09",
+      "series": [
+        {
+          "id": 1076512,
+          "url": "https://patchwork.kernel.org/api/series/1076512/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076512",
+          "date": "2026-04-02T15:07:25",
+          "name": "Fix invariant violations and improve branch detection",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1076512/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/6] bpf: Use bpf_verifier_env buffers for reg_set_min_max",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/260b0270052944a420e1c56e6a92df4d43cadf03.1775142354.git.paul.chaignon@gmail.com/",
+      "date": "2026-04-02T15:09:15",
+      "series": [
+        {
+          "id": 1076512,
+          "url": "https://patchwork.kernel.org/api/series/1076512/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076512",
+          "date": "2026-04-02T15:07:25",
+          "name": "Fix invariant violations and improve branch detection",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1076512/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/6] bpf: Refactor reg_bounds_sanity_check",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/198ec3e69343e2c46dc9cbe2b1bc9be9ae2df5bd.1775142354.git.paul.chaignon@gmail.com/",
+      "date": "2026-04-02T15:08:19",
+      "series": [
+        {
+          "id": 1076512,
+          "url": "https://patchwork.kernel.org/api/series/1076512/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076512",
+          "date": "2026-04-02T15:07:25",
+          "name": "Fix invariant violations and improve branch detection",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1076512/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/1] bpf: Refactor dynptr mutability tracking",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260402065013.884228-2-ameryhung@gmail.com/",
+      "date": "2026-04-02T06:50:13",
+      "series": [
+        {
+          "id": 1076225,
+          "url": "https://patchwork.kernel.org/api/series/1076225/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076225",
+          "date": "2026-04-02T06:50:12",
+          "name": "Refactor dynptr mutability tracking",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1076225/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,6/6] bpf: Add helper and kfunc stack access size resolution",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260402061744.10885-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-02T06:17:44",
+      "series": [
+        {
+          "id": 1076212,
+          "url": "https://patchwork.kernel.org/api/series/1076212/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076212",
+          "date": "2026-04-02T06:17:38",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1076212/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,5/6] bpf: Move verifier helpers to header",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260402061744.10885-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-02T06:17:43",
+      "series": [
+        {
+          "id": 1076212,
+          "url": "https://patchwork.kernel.org/api/series/1076212/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076212",
+          "date": "2026-04-02T06:17:38",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1076212/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,4/6] bpf: Add bpf_compute_const_regs() and bpf_prune_dead_branches() passes",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260402061744.10885-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-02T06:17:42",
+      "series": [
+        {
+          "id": 1076212,
+          "url": "https://patchwork.kernel.org/api/series/1076212/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076212",
+          "date": "2026-04-02T06:17:38",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1076212/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,3/6] selftests/bpf: Add tests for subprog topological ordering",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260402061744.10885-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-02T06:17:41",
+      "series": [
+        {
+          "id": 1076212,
+          "url": "https://patchwork.kernel.org/api/series/1076212/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076212",
+          "date": "2026-04-02T06:17:38",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1076212/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,2/6] bpf: Sort subprogs in topological order after check_cfg()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260402061744.10885-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-02T06:17:40",
+      "series": [
+        {
+          "id": 1076212,
+          "url": "https://patchwork.kernel.org/api/series/1076212/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076212",
+          "date": "2026-04-02T06:17:38",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1076212/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,1/6] bpf: Do register range validation early",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260402061744.10885-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-02T06:17:39",
+      "series": [
+        {
+          "id": 1076212,
+          "url": "https://patchwork.kernel.org/api/series/1076212/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076212",
+          "date": "2026-04-02T06:17:38",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1076212/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,10/10] selftests/bpf: Add verifier tests for stack argument validation",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260402012818.3923396-1-yonghong.song@linux.dev/",
+      "date": "2026-04-02T01:28:18",
+      "series": [
+        {
+          "id": 1076112,
+          "url": "https://patchwork.kernel.org/api/series/1076112/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076112",
+          "date": "2026-04-02T01:27:27",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1076112/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,09/10] selftests/bpf: Add negative test for oversized kfunc stack argument",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260402012813.3922762-1-yonghong.song@linux.dev/",
+      "date": "2026-04-02T01:28:13",
+      "series": [
+        {
+          "id": 1076112,
+          "url": "https://patchwork.kernel.org/api/series/1076112/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076112",
+          "date": "2026-04-02T01:27:27",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1076112/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,08/10] selftests/bpf: Add tests for BPF function stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260402012808.3921472-1-yonghong.song@linux.dev/",
+      "date": "2026-04-02T01:28:08",
+      "series": [
+        {
+          "id": 1076112,
+          "url": "https://patchwork.kernel.org/api/series/1076112/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076112",
+          "date": "2026-04-02T01:27:27",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1076112/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,07/10] bpf,x86: Implement JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260402012803.3920450-1-yonghong.song@linux.dev/",
+      "date": "2026-04-02T01:28:03",
+      "series": [
+        {
+          "id": 1076112,
+          "url": "https://patchwork.kernel.org/api/series/1076112/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076112",
+          "date": "2026-04-02T01:27:27",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1076112/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,06/10] bpf: Enable stack argument support for x86_64",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260402012758.3920069-1-yonghong.song@linux.dev/",
+      "date": "2026-04-02T01:27:58",
+      "series": [
+        {
+          "id": 1076112,
+          "url": "https://patchwork.kernel.org/api/series/1076112/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076112",
+          "date": "2026-04-02T01:27:27",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1076112/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,05/10] bpf: Reject stack arguments in non-JITed programs",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260402012752.3919285-1-yonghong.song@linux.dev/",
+      "date": "2026-04-02T01:27:52",
+      "series": [
+        {
+          "id": 1076112,
+          "url": "https://patchwork.kernel.org/api/series/1076112/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076112",
+          "date": "2026-04-02T01:27:27",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1076112/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,04/10] bpf: Support stack arguments for kfunc calls",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260402012747.3918081-1-yonghong.song@linux.dev/",
+      "date": "2026-04-02T01:27:47",
+      "series": [
+        {
+          "id": 1076112,
+          "url": "https://patchwork.kernel.org/api/series/1076112/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076112",
+          "date": "2026-04-02T01:27:27",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1076112/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,03/10] bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260402012742.3917613-1-yonghong.song@linux.dev/",
+      "date": "2026-04-02T01:27:42",
+      "series": [
+        {
+          "id": 1076112,
+          "url": "https://patchwork.kernel.org/api/series/1076112/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076112",
+          "date": "2026-04-02T01:27:27",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1076112/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,02/10] bpf: Reuse MAX_BPF_FUNC_ARGS for maximum number of arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260402012737.3917194-1-yonghong.song@linux.dev/",
+      "date": "2026-04-02T01:27:37",
+      "series": [
+        {
+          "id": 1076112,
+          "url": "https://patchwork.kernel.org/api/series/1076112/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076112",
+          "date": "2026-04-02T01:27:27",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1076112/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,01/10] bpf: Introduce bpf register BPF_REG_STACK_ARG_BASE",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260402012732.3917048-1-yonghong.song@linux.dev/",
+      "date": "2026-04-02T01:27:32",
+      "series": [
+        {
+          "id": 1076112,
+          "url": "https://patchwork.kernel.org/api/series/1076112/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076112",
+          "date": "2026-04-02T01:27:27",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1076112/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "pull-request: bpf-next 2026-04-01",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260401233956.4133413-1-martin.lau@linux.dev/",
+      "date": "2026-04-01T23:39:56",
+      "series": [
+        {
+          "id": 1076089,
+          "url": "https://patchwork.kernel.org/api/series/1076089/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1076089",
+          "date": "2026-04-01T23:39:56",
+          "name": "pull-request: bpf-next 2026-04-01",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1076089/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Add BTF sanitize test covering BTF layout",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260401164302.3844142-3-alan.maguire@oracle.com/",
+      "date": "2026-04-01T16:43:02",
+      "series": [
+        {
+          "id": 1075959,
+          "url": "https://patchwork.kernel.org/api/series/1075959/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075959",
+          "date": "2026-04-01T16:43:02",
+          "name": "selftests/bpf: Test BTF sanitization",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1075959/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] libbpf: Allow use of feature cache for non-token cases",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260401164302.3844142-2-alan.maguire@oracle.com/",
+      "date": "2026-04-01T16:43:01",
+      "series": [
+        {
+          "id": 1075959,
+          "url": "https://patchwork.kernel.org/api/series/1075959/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075959",
+          "date": "2026-04-01T16:43:02",
+          "name": "selftests/bpf: Test BTF sanitization",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1075959/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Add more tests for loading insn arrays with offsets",
+      "author": "Anton Protopopov",
+      "url": "https://lore.kernel.org/bpf/20260401161529.681755-3-a.s.protopopov@gmail.com/",
+      "date": "2026-04-01T16:15:29",
+      "series": [
+        {
+          "id": 1075940,
+          "url": "https://patchwork.kernel.org/api/series/1075940/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075940",
+          "date": "2026-04-01T16:15:27",
+          "name": "Properly load values from insn_arays with non-zero offsets",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1075940/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Do not ignore offsets for loads from insn_arrays",
+      "author": "Anton Protopopov",
+      "url": "https://lore.kernel.org/bpf/20260401161529.681755-2-a.s.protopopov@gmail.com/",
+      "date": "2026-04-01T16:15:28",
+      "series": [
+        {
+          "id": 1075940,
+          "url": "https://patchwork.kernel.org/api/series/1075940/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075940",
+          "date": "2026-04-01T16:15:27",
+          "name": "Properly load values from insn_arays with non-zero offsets",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1075940/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] libbpf: Fix BTF handling in bpf_program__clone()",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260401151640.356419-1-mykyta.yatsenko5@gmail.com/",
+      "date": "2026-04-01T15:16:40",
+      "series": [
+        {
+          "id": 1075922,
+          "url": "https://patchwork.kernel.org/api/series/1075922/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075922",
+          "date": "2026-04-01T15:16:40",
+          "name": "[bpf-next,v2] libbpf: Fix BTF handling in bpf_program__clone()",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1075922/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,3/3] selftests/bpf: add test for raw-address single kprobe attach",
+      "author": "Hoyeon Lee",
+      "url": "https://lore.kernel.org/bpf/20260401143116.185049-4-hoyeon.lee@suse.com/",
+      "date": "2026-04-01T14:29:31",
+      "series": [
+        {
+          "id": 1075896,
+          "url": "https://patchwork.kernel.org/api/series/1075896/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075896",
+          "date": "2026-04-01T14:29:28",
+          "name": "libbpf: clarify raw-address single kprobe attach behavior",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1075896/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,2/3] libbpf: clarify raw-address single kprobe attach behavior",
+      "author": "Hoyeon Lee",
+      "url": "https://lore.kernel.org/bpf/20260401143116.185049-3-hoyeon.lee@suse.com/",
+      "date": "2026-04-01T14:29:30",
+      "series": [
+        {
+          "id": 1075896,
+          "url": "https://patchwork.kernel.org/api/series/1075896/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075896",
+          "date": "2026-04-01T14:29:28",
+          "name": "libbpf: clarify raw-address single kprobe attach behavior",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1075896/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,1/3] libbpf: use direct error codes for kprobe/uprobe attach",
+      "author": "Hoyeon Lee",
+      "url": "https://lore.kernel.org/bpf/20260401143116.185049-2-hoyeon.lee@suse.com/",
+      "date": "2026-04-01T14:29:29",
+      "series": [
+        {
+          "id": 1075896,
+          "url": "https://patchwork.kernel.org/api/series/1075896/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075896",
+          "date": "2026-04-01T14:29:28",
+          "name": "libbpf: clarify raw-address single kprobe attach behavior",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1075896/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "linux-next: manual merge of the bpf-next tree with the bpf tree",
+      "author": "Mark Brown",
+      "url": "https://lore.kernel.org/bpf/ac0Pr9K1Qbn1-Dn9@sirena.org.uk/",
+      "date": "2026-04-01T12:29:35",
+      "series": [
+        {
+          "id": 1075818,
+          "url": "https://patchwork.kernel.org/api/series/1075818/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075818",
+          "date": "2026-04-01T12:29:35",
+          "name": "linux-next: manual merge of the bpf-next tree with the bpf tree",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1075818/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,7/7] selftests/bpf: Add tests for syscall ctx accesses beyond U16_MAX",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260401122818.2240807-8-memxor@gmail.com/",
+      "date": "2026-04-01T12:28:16",
+      "series": [
+        {
+          "id": 1075817,
+          "url": "https://patchwork.kernel.org/api/series/1075817/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075817",
+          "date": "2026-04-01T12:28:09",
+          "name": "Allow variable offsets for syscall PTR_TO_CTX",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1075817/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,6/7] selftests/bpf: Add tests for unaligned syscall ctx accesses",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260401122818.2240807-7-memxor@gmail.com/",
+      "date": "2026-04-01T12:28:15",
+      "series": [
+        {
+          "id": 1075817,
+          "url": "https://patchwork.kernel.org/api/series/1075817/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075817",
+          "date": "2026-04-01T12:28:09",
+          "name": "Allow variable offsets for syscall PTR_TO_CTX",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1075817/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,5/7] selftests/bpf: Test modified syscall ctx for ARG_PTR_TO_CTX",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260401122818.2240807-6-memxor@gmail.com/",
+      "date": "2026-04-01T12:28:14",
+      "series": [
+        {
+          "id": 1075817,
+          "url": "https://patchwork.kernel.org/api/series/1075817/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075817",
+          "date": "2026-04-01T12:28:09",
+          "name": "Allow variable offsets for syscall PTR_TO_CTX",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1075817/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,4/7] selftests/bpf: Add syscall ctx variable offset tests",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260401122818.2240807-5-memxor@gmail.com/",
+      "date": "2026-04-01T12:28:13",
+      "series": [
+        {
+          "id": 1075817,
+          "url": "https://patchwork.kernel.org/api/series/1075817/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075817",
+          "date": "2026-04-01T12:28:09",
+          "name": "Allow variable offsets for syscall PTR_TO_CTX",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1075817/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,3/7] selftests/bpf: Convert ctx tests from ASM to C",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260401122818.2240807-4-memxor@gmail.com/",
+      "date": "2026-04-01T12:28:12",
+      "series": [
+        {
+          "id": 1075817,
+          "url": "https://patchwork.kernel.org/api/series/1075817/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075817",
+          "date": "2026-04-01T12:28:09",
+          "name": "Allow variable offsets for syscall PTR_TO_CTX",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1075817/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/7] bpf: Enable unaligned accesses for syscall ctx",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260401122818.2240807-3-memxor@gmail.com/",
+      "date": "2026-04-01T12:28:11",
+      "series": [
+        {
+          "id": 1075817,
+          "url": "https://patchwork.kernel.org/api/series/1075817/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075817",
+          "date": "2026-04-01T12:28:09",
+          "name": "Allow variable offsets for syscall PTR_TO_CTX",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1075817/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/7] bpf: Support variable offsets for syscall PTR_TO_CTX",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260401122818.2240807-2-memxor@gmail.com/",
+      "date": "2026-04-01T12:28:10",
+      "series": [
+        {
+          "id": 1075817,
+          "url": "https://patchwork.kernel.org/api/series/1075817/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075817",
+          "date": "2026-04-01T12:28:09",
+          "name": "Allow variable offsets for syscall PTR_TO_CTX",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1075817/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,3/3] selftests/bpf: add test for raw-address single kprobe attach",
+      "author": "Hoyeon Lee",
+      "url": "https://lore.kernel.org/bpf/20260401070738.122709-4-hoyeon.lee@suse.com/",
+      "date": "2026-04-01T07:05:04",
+      "series": [
+        {
+          "id": 1075618,
+          "url": "https://patchwork.kernel.org/api/series/1075618/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075618",
+          "date": "2026-04-01T07:05:01",
+          "name": "libbpf: clarify raw-address single kprobe attach behavior",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1075618/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,2/3] libbpf: clarify raw-address single kprobe attach behavior",
+      "author": "Hoyeon Lee",
+      "url": "https://lore.kernel.org/bpf/20260401070738.122709-3-hoyeon.lee@suse.com/",
+      "date": "2026-04-01T07:05:03",
+      "series": [
+        {
+          "id": 1075618,
+          "url": "https://patchwork.kernel.org/api/series/1075618/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075618",
+          "date": "2026-04-01T07:05:01",
+          "name": "libbpf: clarify raw-address single kprobe attach behavior",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1075618/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,1/3] libbpf: use direct error codes for kprobe/uprobe attach",
+      "author": "Hoyeon Lee",
+      "url": "https://lore.kernel.org/bpf/20260401070738.122709-2-hoyeon.lee@suse.com/",
+      "date": "2026-04-01T07:05:02",
+      "series": [
+        {
+          "id": 1075618,
+          "url": "https://patchwork.kernel.org/api/series/1075618/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075618",
+          "date": "2026-04-01T07:05:01",
+          "name": "libbpf: clarify raw-address single kprobe attach behavior",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1075618/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,2/2] selftests/bpf: add test for raw-address single kprobe attach",
+      "author": "Hoyeon Lee",
+      "url": "https://lore.kernel.org/bpf/20260401052544.100968-3-hoyeon.lee@suse.com/",
+      "date": "2026-04-01T05:25:11",
+      "series": [
+        {
+          "id": 1075582,
+          "url": "https://patchwork.kernel.org/api/series/1075582/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075582",
+          "date": "2026-04-01T05:25:09",
+          "name": "libbpf: clarify raw-address single kprobe attach behavior",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1075582/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,1/2] libbpf: clarify raw-address single kprobe attach behavior",
+      "author": "Hoyeon Lee",
+      "url": "https://lore.kernel.org/bpf/20260401052544.100968-2-hoyeon.lee@suse.com/",
+      "date": "2026-04-01T05:25:10",
+      "series": [
+        {
+          "id": 1075582,
+          "url": "https://patchwork.kernel.org/api/series/1075582/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075582",
+          "date": "2026-04-01T05:25:09",
+          "name": "libbpf: clarify raw-address single kprobe attach behavior",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1075582/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,6/6] bpf: Add helper and kfunc stack access size resolution",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260401021635.34636-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-01T02:16:35",
+      "series": [
+        {
+          "id": 1075518,
+          "url": "https://patchwork.kernel.org/api/series/1075518/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075518",
+          "date": "2026-04-01T02:16:29",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1075518/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,5/6] bpf: Move verifier helpers to header",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260401021635.34636-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-01T02:16:34",
+      "series": [
+        {
+          "id": 1075518,
+          "url": "https://patchwork.kernel.org/api/series/1075518/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075518",
+          "date": "2026-04-01T02:16:29",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1075518/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/6] bpf: Add compute_const_regs() and prune_dead_branches() passes",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260401021635.34636-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-01T02:16:33",
+      "series": [
+        {
+          "id": 1075518,
+          "url": "https://patchwork.kernel.org/api/series/1075518/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075518",
+          "date": "2026-04-01T02:16:29",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1075518/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/6] selftests/bpf: Add tests for subprog topological ordering",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260401021635.34636-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-01T02:16:32",
+      "series": [
+        {
+          "id": 1075518,
+          "url": "https://patchwork.kernel.org/api/series/1075518/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075518",
+          "date": "2026-04-01T02:16:29",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1075518/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/6] bpf: Sort subprogs in topological order after check_cfg()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260401021635.34636-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-01T02:16:31",
+      "series": [
+        {
+          "id": 1075518,
+          "url": "https://patchwork.kernel.org/api/series/1075518/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075518",
+          "date": "2026-04-01T02:16:29",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1075518/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/6] bpf: Do register range validation early",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260401021635.34636-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-01T02:16:30",
+      "series": [
+        {
+          "id": 1075518,
+          "url": "https://patchwork.kernel.org/api/series/1075518/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1075518",
+          "date": "2026-04-01T02:16:29",
+          "name": "bpf: Prep patches for static stack liveness.",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1075518/mbox/"
+        }
+      ]
+    }
+  ]
+}
