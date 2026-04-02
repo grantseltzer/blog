@@ -279,13 +279,12 @@
             <label for="tab-monthly">MONTHLY</label>
         </nav>
 
-        {{/* ── Macro: render one summary entry ── */}}
-        {{/* Called via partial below */}}
-
         {{/* ── Daily ── */}}
         <section id="content-daily" class="tab-content">
             {{ if $dailyAll }}
-            {{ range $i, $date := sort (keys $dailyAll) "value" "desc" }}
+            {{ $dailyKeys := slice }}
+            {{ range $k, $v := $dailyAll }}{{ $dailyKeys = $dailyKeys | append $k }}{{ end }}
+            {{ range $i, $date := sort $dailyKeys "value" "desc" }}
                 {{ $s := index $dailyAll $date }}
                 <details{{ if eq $i 0 }} open{{ end }}>
                     <summary>
@@ -327,7 +326,9 @@
         {{/* ── Weekly ── */}}
         <section id="content-weekly" class="tab-content">
             {{ if $weeklyAll }}
-            {{ range $i, $date := sort (keys $weeklyAll) "value" "desc" }}
+            {{ $weeklyKeys := slice }}
+            {{ range $k, $v := $weeklyAll }}{{ $weeklyKeys = $weeklyKeys | append $k }}{{ end }}
+            {{ range $i, $date := sort $weeklyKeys "value" "desc" }}
                 {{ $s := index $weeklyAll $date }}
                 <details{{ if eq $i 0 }} open{{ end }}>
                     <summary>
@@ -369,7 +370,9 @@
         {{/* ── Monthly ── */}}
         <section id="content-monthly" class="tab-content">
             {{ if $monthlyAll }}
-            {{ range $i, $date := sort (keys $monthlyAll) "value" "desc" }}
+            {{ $monthlyKeys := slice }}
+            {{ range $k, $v := $monthlyAll }}{{ $monthlyKeys = $monthlyKeys | append $k }}{{ end }}
+            {{ range $i, $date := sort $monthlyKeys "value" "desc" }}
                 {{ $s := index $monthlyAll $date }}
                 <details{{ if eq $i 0 }} open{{ end }}>
                     <summary>
