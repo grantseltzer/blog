@@ -41,7 +41,7 @@ def fetch_patches(days):
     since = cutoff.strftime('%Y-%m-%dT%H:%M:%SZ')
 
     patches = []
-    params = urlencode({'project': PROJECT, 'since': since, 'order': '-date', 'per_page': 100})
+    params = urlencode({'project': PROJECT, 'q': 'bpf-next', 'since': since, 'order': '-date', 'per_page': 100})
     url = f'{PATCHWORK_API}?{params}'
 
     while url:
