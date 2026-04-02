@@ -1,93 +1,68 @@
 #!/usr/bin/env python3
 """
-Fetches the bpf mailing list Atom feed and generates daily/weekly/monthly
-summaries using the Claude API, writing results to data/bpf_next/*.json.
+Fetches bpf mailing list patches via the patchwork.kernel.org REST API
+and generates daily/weekly/monthly summaries using the Claude API,
+writing results to data/bpf_next/{period}/YYYY-MM-DD.json.
 """
 
 import json
 import os
 import sys
-import xml.etree.ElementTree as ET
 from datetime import datetime, timezone, timedelta
 from urllib.request import urlopen, Request
 from urllib.error import URLError
 
 import anthropic
 
-ATOM_NS = {'atom': 'http://www.w3.org/2005/Atom'}
-LORE_BASE = 'https://lore.kernel.org/bpf'
+PATCHWORK_API = 'https://patchwork.kernel.org/api/patches/'
+LIST_ID = 'bpf@vger.kernel.org'
 HEADERS = {
-    'User-Agent': 'curl/8.0 (grant.pizza bpf-summarizer; https://github.com/grantseltzer/blog)',
-    'Accept': 'application/atom+xml,application/xml',
+    'User-Agent': 'grant.pizza/bpf-summarizer (https://github.com/grantseltzer/blog)',
+    'Accept': 'application/json',
 }
 
 
 def fetch_url(url):
     req = Request(url, headers=HEADERS)
     with urlopen(req, timeout=30) as resp:
-        return resp.read().decode('utf-8')
+        return json.loads(resp.read().decode('utf-8'))
+
+
+def lore_url(msgid):
+    """Convert a Message-ID to a lore.kernel.org permalink."""
+    msgid = msgid.strip('<>')
+    return f'https://lore.kernel.org/bpf/{msgid}/'
 
 
 def fetch_patches(days):
-    """Fetch [PATCH] entries from the last `days` days, paginating as needed."""
+    """Fetch patches from patchwork for the last `days` days."""
     cutoff = datetime.now(timezone.utc) - timedelta(days=days)
+    since = cutoff.strftime('%Y-%m-%dT%H:%M:%SZ')
+
     patches = []
-    offset = 0
+    url = f'{PATCHWORK_API}?list_id={LIST_ID}&since={since}&order=-date&per_page=100'
 
-    while True:
-        if offset == 0:
-            url = f'{LORE_BASE}/new.atom'
-        else:
-            url = f'{LORE_BASE}/?x=A&o={offset}'
-
+    while url:
         try:
-            xml_text = fetch_url(url)
+            data = fetch_url(url)
         except URLError as e:
             print(f'  Warning: failed to fetch {url}: {e}', file=sys.stderr)
             break
 
-        root = ET.fromstring(xml_text)
-        entries = root.findall('atom:entry', ATOM_NS)
+        items = data if isinstance(data, list) else data.get('results', [])
+        next_url = None if isinstance(data, list) else data.get('next')
 
-        if not entries:
-            break
-
-        oldest_on_page = None
-        for entry in entries:
-            updated_str = entry.find('atom:updated', ATOM_NS).text
-            updated = datetime.fromisoformat(updated_str.replace('Z', '+00:00'))
-            oldest_on_page = updated
-
-            if updated < cutoff:
-                continue
-
-            title = (entry.find('atom:title', ATOM_NS).text or '').strip()
-            if '[PATCH' not in title and '[RFC' not in title:
-                continue
-
-            author_el = entry.find('atom:author/atom:name', ATOM_NS)
-            author = author_el.text.strip() if author_el is not None else ''
-            link_el = entry.find('atom:link', ATOM_NS)
-            link = link_el.get('href', '') if link_el is not None else ''
-
+        for patch in items:
+            msgid = patch.get('msgid', '')
             patches.append({
-                'title': title,
-                'author': author,
-                'url': link,
-                'updated': updated_str,
+                'title': patch.get('name', '').strip(),
+                'author': patch.get('submitter', {}).get('name', '').strip(),
+                'url': lore_url(msgid) if msgid else patch.get('web_url', ''),
+                'date': patch.get('date', ''),
+                'series': patch.get('series', []),
             })
 
-        # Stop paginating if oldest entry on this page is before cutoff
-        if oldest_on_page and oldest_on_page < cutoff:
-            break
-
-        # Stop if page was short (last page)
-        if len(entries) < 200:
-            break
-
-        offset += 200
-        if len(patches) > 600:
-            break
+        url = next_url
 
     return patches
 
@@ -104,7 +79,7 @@ def generate_summary(client, patches, period, period_start, period_end):
             'thread_count': 0,
             'top_contributors': [],
             'key_topics': [],
-            'overview': f'No patches were submitted to the bpf mailing list during this period.',
+            'overview': 'No patches were submitted to the bpf mailing list during this period.',
             'patches': [],
         }
 
