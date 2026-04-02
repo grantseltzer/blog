@@ -1,12 +1,12 @@
-name: Generate bpf-next Summaries
+name: Fetch bpf-next Patches
 
 on:
   schedule:
-    - cron: '0 10 * * *'  # 6am ET (EDT), daily
+    - cron: '0 9 * * *'  # 5am ET (EDT), daily
   workflow_dispatch:
 
 jobs:
-  summarize:
+  fetch:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,38 +15,13 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install dependencies
-        run: pip install anthropic
-
-      - name: Generate summaries
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: Fetch patches
         run: python scripts/summarize_bpf_next.py
 
-      - name: Commit JSON to blog repo
+      - name: Commit raw patch data
         run: |
           git config user.email "bpf-summarizer@grant.pizza"
           git config user.name "bpf-summarizer"
-          git add data/bpf_next/
-          git diff --staged --quiet || git commit -m "bpf-next summaries $(date -u +%Y-%m-%d)"
+          git add data/bpf_next/staging/
+          git diff --staged --quiet || git commit -m "bpf-next raw patches $(date -u +%Y-%m-%d)"
           git push origin master
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: 'latest'
-
-      - name: Build
-        run: hugo --minify
-
-      - name: Deploy to grantseltzer.github.io
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
-          external_repository: grantseltzer/grantseltzer.github.io
-          publish_branch: master
-          publish_dir: ./public
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: 'deploy: bpf-next summaries $(date -u +%Y-%m-%d)'
-          cname: grant.pizza

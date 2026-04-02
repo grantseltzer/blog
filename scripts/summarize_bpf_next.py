@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 Fetches bpf mailing list patches via the patchwork.kernel.org REST API
-and generates daily/weekly/monthly summaries using the Claude API,
-writing results to data/bpf_next/{period}/YYYY-MM-DD.json.
+and writes raw patch data to data/bpf_next/staging/ for later summarization
+by a Claude Code scheduled agent.
 """
 
 import json
@@ -12,8 +12,6 @@ from datetime import datetime, timezone, timedelta
 from urllib.parse import urlencode
 from urllib.request import urlopen, Request
 from urllib.error import URLError
-
-import anthropic
 
 PATCHWORK_API = 'https://patchwork.kernel.org/api/patches/'
 PROJECT = 'netdevbpf'
@@ -70,74 +68,11 @@ def fetch_patches(days):
     return patches
 
 
-def generate_summary(client, patches, period, period_start, period_end):
-    now_str = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
-
-    if not patches:
-        return {
-            'generated_at': now_str,
-            'period_start': period_start,
-            'period_end': period_end,
-            'patch_count': 0,
-            'thread_count': 0,
-            'top_contributors': [],
-            'key_topics': [],
-            'overview': 'No patches were submitted to the bpf mailing list during this period.',
-            'patches': [],
-        }
-
-    patch_count_hint = {'daily': '5-10', 'weekly': '8-12', 'monthly': '10-15'}[period]
-    overview_hint = {'daily': '2-3', 'weekly': '3-4', 'monthly': '4-6'}[period]
-
-    prompt = f"""You are generating a {period} summary of the bpf Linux kernel mailing list for the blog at grant.pizza.
-
-Here are the patch submissions from this period ({period_start} to {period_end}):
-
-{json.dumps(patches[:150], indent=2)}
-
-Return ONLY a single valid JSON object — no markdown, no explanation, no code fences. The schema:
-
-{{
-  "generated_at": "{now_str}",
-  "period_start": "{period_start}",
-  "period_end": "{period_end}",
-  "patch_count": <total patches listed above>,
-  "thread_count": <number of distinct patch series>,
-  "top_contributors": ["First Last", ...],
-  "key_topics": ["lowercase-tag", ...],
-  "overview": "<{overview_hint} sentences summarizing the period's activity and themes>",
-  "patches": [
-    {{
-      "title": "<subject with [PATCH vN N/M] prefix stripped>",
-      "author": "<First Last>",
-      "url": "<lore.kernel.org URL from the data above>",
-      "summary": "<3-5 sentences: what it does, why it matters, relevant context>",
-      "related_links": []
-    }}
-  ]
-}}
-
-Select {patch_count_hint} of the most notable patches.
-- Prefer new features over minor fixes
-- Prioritize core areas: verifier, BTF, kfuncs, maps, helpers, XDP, tc, ringbuf
-- Prefer cover letters ([PATCH 0/N]) over individual patches in a series
-- Aim for variety across subsystems and contributors
-- key_topics: short lowercase tags only, e.g. ["verifier", "kfuncs", "XDP", "ringbuf"]
-"""
-
-    message = client.messages.create(
-        model='claude-sonnet-4-6',
-        max_tokens=4096,
-        messages=[{'role': 'user', 'content': prompt}],
-    )
-
-    return json.loads(message.content[0].text.strip())
-
-
 def main():
-    client = anthropic.Anthropic()
     now = datetime.now(timezone.utc)
     today = now.strftime('%Y-%m-%d')
+    staging_dir = os.path.join('data', 'bpf_next', 'staging')
+    os.makedirs(staging_dir, exist_ok=True)
 
     jobs = [('daily', 1, (now - timedelta(days=1)).strftime('%Y-%m-%d'), today)]
 
@@ -148,17 +83,21 @@ def main():
         jobs.append(('monthly', 30, (now - timedelta(days=30)).strftime('%Y-%m-%d'), today))
 
     for period, days, period_start, period_end in jobs:
-        print(f'Generating {period} summary ({period_start} to {period_end})...')
+        print(f'Fetching patches for {period} summary ({period_start} to {period_end})...')
         patches = fetch_patches(days)
         print(f'  Found {len(patches)} patches')
 
-        summary = generate_summary(client, patches, period, period_start, period_end)
-
-        out_path = os.path.join('data', 'bpf_next', period, f'{period_end}.json')
-        os.makedirs(os.path.dirname(out_path), exist_ok=True)
-        with open(out_path, 'w') as f:
-            json.dump(summary, f, indent=2)
-        print(f'  Wrote {out_path}')
+        staging_file = os.path.join(staging_dir, f'{period}_{period_end}.json')
+        staging_data = {
+            'period': period,
+            'period_start': period_start,
+            'period_end': period_end,
+            'fetched_at': now.strftime('%Y-%m-%dT%H:%M:%SZ'),
+            'patches': patches,
+        }
+        with open(staging_file, 'w') as f:
+            json.dump(staging_data, f, indent=2)
+        print(f'  Wrote {staging_file}')
 
 
 if __name__ == '__main__':
