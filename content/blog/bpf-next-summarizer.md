@@ -1,5 +1,5 @@
 +++
-title = "Automating bpf-next mailing list summaries"
+title = "bpf-next llm summaries"
 Description = ""
 Tags = []
 Categories = []
