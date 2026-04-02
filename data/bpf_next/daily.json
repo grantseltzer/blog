@@ -1,11 +1,107 @@
 {
-  "generated_at": "",
-  "period_start": "",
-  "period_end": "",
-  "patch_count": 0,
-  "thread_count": 0,
-  "top_contributors": [],
-  "key_topics": [],
-  "overview": "",
-  "patches": []
+  "generated_at": "2026-04-02T01:50:00Z",
+  "period_start": "2026-04-01",
+  "period_end": "2026-04-02",
+  "patch_count": 7,
+  "thread_count": 7,
+  "top_contributors": [
+    "Alan Maguire",
+    "Ihor Solodrai",
+    "Christian Brauner",
+    "Eyal Birger",
+    "Jiri Olsa",
+    "Alexei Starovoitov",
+    "Mykyta Yatsenko"
+  ],
+  "key_topics": [
+    "btf",
+    "kfuncs",
+    "verifier",
+    "ringbuf",
+    "lsm",
+    "xdp",
+    "selftests"
+  ],
+  "overview": "Activity on bpf-next was quiet on April 1\u20132, with no new merges landing in that window. The most recent batch of patches, all merged on March 31, reflects two theme areas: BTF extensibility and kfunc API ergonomics. The headline item from the last few days is the long-awaited BTF kind layout series (v15) finally merging, which allows older tools to parse BTF containing unknown kinds by embedding a layout descriptor in the binary format itself.",
+  "patches": [
+    {
+      "title": "Add BTF layout to BTF",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260324174450.1570809-1-alan.maguire@oracle.com/",
+      "summary": "A multi-patch series (v15, 9 patches) that adds a new 'layout' section to the BTF binary format. Each known BTF kind is described by its singular and vlen-specified object sizes, letting BTF consumers navigate kinds they do not recognize rather than failing outright. libbpf gains encoding support via btf__new_empty_opts() and a FEAT_BTF_LAYOUT feature check with sanitization fallback for older kernels. The kernel's BTF parser validates the layout if present but remains strict in what it accepts. This is particularly valuable for scenarios where pahole-generated BTF from a newer kernel is consumed by older tools or out-of-tree modules.",
+      "related_links": [
+        {
+          "title": "BTF documentation \u2014 The Linux Kernel",
+          "url": "https://docs.kernel.org/bpf/btf.html"
+        }
+      ]
+    },
+    {
+      "title": "Support struct btf_struct_meta via KF_IMPLICIT_ARGS",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260327203241.3365046-1-ihor.solodrai@linux.dev/",
+      "summary": "Introduces a cleaner public-facing API for kfuncs that currently require a hidden void *meta__ign argument (bpf_obj_new_impl, bpf_obj_drop_impl, bpf_rbtree_add_impl, etc.). New variants tagged KF_IMPLICIT_ARGS drop the __ign suffix and the requirement for BPF programs to pass an explicit NULL; the verifier detects the implicit argument via is_kfunc_arg_implicit() and fills it in during fixup_kfunc_call(). The existing _impl kfuncs remain available for backward compatibility. This reduces boilerplate in BPF programs that manage typed heap objects and rbtree nodes.",
+      "related_links": [
+        {
+          "title": "BPF Kernel Functions (kfuncs) \u2014 The Linux Kernel",
+          "url": "https://docs.kernel.org/bpf/kfuncs.html"
+        }
+      ]
+    },
+    {
+      "title": "Classify block device hooks appropriately and add selftests",
+      "author": "Christian Brauner",
+      "url": "https://lore.kernel.org/bpf/20260326-work-bpf-bdev-v2-0-5e3c58963987@kernel.org/",
+      "summary": "Block device management LSM hooks that were added to the BPF subsystem lacked proper classification, which could cause unexpected behavior and made it harder for the verifier to enforce access rules. This two-patch series (cover + selftest) fixes the classification and adds a test program using dm-verity/veritysetup to catch future regressions. A follow-up patch from Jiri Olsa (merged the same day) fixed a naming inconsistency in the hook identifiers discovered by Venkat Rao Bagalkote.",
+      "related_links": [
+        {
+          "title": "BPF LSM program type \u2014 eBPF Docs",
+          "url": "https://docs.ebpf.io/linux/program-type/BPF_PROG_TYPE_LSM/"
+        }
+      ]
+    },
+    {
+      "title": "Fix variable length stack write over spilled pointers",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260324215938.81733-1-alexei.starovoitov@gmail.com/",
+      "summary": "When a variable-offset stack write lands on slots that contain spilled register values, the verifier must scrub those slots to NOT_INIT. A missing scrub meant that is_spilled_reg() could return true while the spilled_ptr.type was NOT_INIT, causing check_stack_read_fixed_off() to reject a valid program with the opaque 'invalid size of register fill' error. The fix, a one-liner adding the scrub in the right place, resolves a regression introduced by commit 01f810ace9ed ('bpf: Allow variable-offset stack access').",
+      "related_links": [
+        {
+          "title": "BPF verifier \u2014 The Linux Kernel documentation",
+          "url": "https://docs.kernel.org/bpf/verifier.html"
+        }
+      ]
+    },
+    {
+      "title": "Clarify BPF_RB_NO_WAKEUP behavior for bpf_ringbuf_discard()",
+      "author": "Eyal Birger",
+      "url": "https://lore.kernel.org/bpf/20260331130612.3762433-1-eyal.birger@gmail.com/",
+      "summary": "Documents a subtle but important ring buffer behavior: discarded records are not removed from the ring buffer; they remain and must be skipped by user space on the next read. When BPF_RB_NO_WAKEUP is used on a subsequent bpf_ringbuf_submit(), the adaptive wakeup logic may skip notifying the consumer because the still-present discarded record means the ring buffer appears non-empty to the producer. This patch clarifies the documentation so developers do not inadvertently block their epoll consumers. Reported by Shmulik Ladkani.",
+      "related_links": [
+        {
+          "title": "BPF ring buffer \u2014 eBPF Docs",
+          "url": "https://docs.ebpf.io/linux/concepts/ringbuf/"
+        }
+      ]
+    },
+    {
+      "title": "Use RCU-safe iteration in dev_map_redirect_multi() SKB path",
+      "author": "David Carlier",
+      "url": "https://lore.kernel.org/bpf/20260320072645.16731-1-devnexen@gmail.com/",
+      "summary": "The DEVMAP_HASH branch in dev_map_redirect_multi() was using hlist_for_each_entry_safe() \u2014 which performs plain pointer dereferences \u2014 in a code path that runs under RCU read-side lock (softirq context). Concurrent writers use rcu_assign_pointer(), so on weakly-ordered architectures like ARM64 and POWER, the reader could observe a partially-constructed hash node. The fix replaces the unsafe iterator with hlist_for_each_entry_rcu() and corrects a second incorrect lockdep_is_held() condition in dev_map_enqueue_multi(). Also fixes commit e624d4ed4aa8.",
+      "related_links": [
+        {
+          "title": "BPF XDP program type \u2014 eBPF Docs",
+          "url": "https://docs.ebpf.io/linux/program-type/BPF_PROG_TYPE_XDP/"
+        }
+      ]
+    },
+    {
+      "title": "Suppress veristat error messages in non-verbose mode",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260331172634.57402-2-mykyta.yatsenko5@gmail.com/",
+      "summary": "When veristat is run against a large set of BPF objects \u2014 as is common in CI pipelines \u2014 expected load failures generate voluminous stderr noise that obscures real failures. This patch gates the diagnostic messages behind the --verbose flag, making veristat output much quieter and easier to triage in automated testing contexts.",
+      "related_links": []
+    }
+  ]
 }
