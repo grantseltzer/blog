@@ -1,11 +1,88 @@
 {
-  "generated_at": "2026-04-02T13:35:06Z",
+  "generated_at": "2026-04-02T23:24:36Z",
   "period_start": "2026-04-01",
   "period_end": "2026-04-02",
-  "patch_count": 0,
-  "thread_count": 0,
-  "top_contributors": [],
-  "key_topics": [],
-  "overview": "No patches were submitted to the bpf mailing list during this period.",
-  "patches": []
+  "patch_count": 60,
+  "thread_count": 17,
+  "top_contributors": [
+    "Alexei Starovoitov",
+    "Yonghong Song",
+    "Hoyeon Lee",
+    "Kumar Kartikeya Dwivedi",
+    "Paul Chaignon"
+  ],
+  "key_topics": [
+    "verifier",
+    "kfuncs",
+    "stack-args",
+    "dynptr",
+    "libbpf",
+    "kprobe"
+  ],
+  "overview": "April 1-2 saw heavy activity on the verifier and libbpf fronts. Yonghong Song posted a significant new feature series enabling stack-based argument passing for BPF functions and kfuncs with x86_64 JIT support, while Alexei Starovoitov iterated to v3 on preparatory verifier passes for static stack liveness analysis. Paul Chaignon and Kumar Kartikeya Dwivedi also landed verifier improvements addressing invariant violations and variable-offset syscall context access.",
+  "patches": [
+    {
+      "title": "bpf: Introduce bpf register BPF_REG_STACK_ARG_BASE",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260402012732.3917048-1-yonghong.song@linux.dev/",
+      "summary": "Introduces a new virtual BPF register BPF_REG_STACK_ARG_BASE to support stack-based argument passing for BPF subprograms and kfuncs. This is the first patch in a 10-part series that extends the BPF calling convention beyond the existing five register arguments. Subsequent patches add verifier support, x86_64 JIT code generation, and selftests. This enables BPF programs to call functions with more than five arguments by spilling extra arguments onto the stack, bringing BPF closer to native C calling conventions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add bpf_compute_const_regs() and bpf_prune_dead_branches() passes",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260402212856.86606-5-alexei.starovoitov@gmail.com/",
+      "summary": "Adds two new pre-verification passes to the BPF verifier: bpf_compute_const_regs() performs a lightweight constant propagation to identify registers holding compile-time constants, and bpf_prune_dead_branches() eliminates unreachable code paths before the main verification pass runs. These passes are groundwork for upcoming static stack liveness analysis, which will reduce the state space the verifier must explore. This is patch 4/6 in Alexei's v3 series \"bpf: Prep patches for static stack liveness.\"",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add helper and kfunc stack access size resolution",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260402212856.86606-7-alexei.starovoitov@gmail.com/",
+      "summary": "Adds logic to the verifier to resolve the access size for stack slots passed to helpers and kfuncs, completing the v3 preparatory series for static stack liveness analysis. When a helper or kfunc receives a pointer to a stack slot, the verifier now computes the precise byte range being accessed rather than conservatively marking the entire slot as live. This precision is necessary for the upcoming static liveness pass to correctly determine which stack slots need to be initialized before use.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Simulate branches to prune based on range violations",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/a166b54a3cbbbdbcdf8a87f53045f1097176218b.1775142354.git.paul.chaignon@gmail.com/",
+      "summary": "Fixes a class of verifier invariant violations where register range bounds became inconsistent after branch pruning. When the verifier detects that a register's tracked range is provably violated on a branch, it now simulates taking that branch and prunes the state rather than leaving the inconsistency unresolved. This addresses syzbot-reported crashes caused by invalid register states propagating through the verifier. This is patch 4/6 in Paul Chaignon's v3 series \"Fix invariant violations and improve branch detection.\"",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support variable offsets for syscall PTR_TO_CTX",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260401122818.2240807-2-memxor@gmail.com/",
+      "summary": "Extends the BPF verifier to allow variable (non-constant) offsets when accessing syscall program context pointers of type PTR_TO_CTX. Previously, the verifier rejected any non-zero variable offset into a syscall ctx, requiring programs to use only constant offsets. The patch teaches the verifier to track variable offsets and validate bounds at access time, enabling more flexible syscall BPF programs. This is the first patch in Kumar's v4 seven-patch series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Do not ignore offsets for loads from insn_arrays",
+      "author": "Anton Protopopov",
+      "url": "https://lore.kernel.org/bpf/20260402184647.988132-2-a.s.protopopov@gmail.com/",
+      "summary": "Fixes a bug in the BPF loader where non-zero offsets within instruction arrays were silently ignored when resolving map file descriptors and other relocations. The offset field was being discarded, causing incorrect values to be loaded when programs accessed elements beyond the base of an insn_array. This is a correctness fix affecting programs that use offset-based access patterns into instruction arrays, with accompanying selftests added in patch 2/2.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refactor dynptr mutability tracking",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260402065013.884228-2-ameryhung@gmail.com/",
+      "summary": "Refactors how the BPF verifier tracks whether a dynptr is mutable or read-only, consolidating scattered mutability checks into a cleaner abstraction. Previously, mutability was inferred from the dynptr type and call context at each check site; this patch centralizes the logic to reduce duplication and make the invariants easier to audit. The refactor prepares the codebase for future dynptr extensions without changing existing behavior.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: reject short IPv4/IPv6 inputs in bpf_prog_test_run_skb",
+      "author": "Sun Jian",
+      "url": "https://lore.kernel.org/bpf/20260402160147.215499-1-sun.jian.kdev@gmail.com/",
+      "summary": "Adds input length validation to bpf_prog_test_run_skb() to reject buffers shorter than a minimum IPv4 or IPv6 header when the data is marked as IP traffic. Without this check, a malformed short packet could cause the verifier test runner to access memory beyond the supplied buffer. This is a v3 single-patch fix addressing a potential out-of-bounds read in the BPF test infrastructure.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix BTF handling in bpf_program__clone()",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260401151640.356419-1-mykyta.yatsenko5@gmail.com/",
+      "summary": "Fixes a bug in libbpf's bpf_program__clone() where the cloned program did not correctly inherit or reference the parent's BTF object, leading to use-after-free or incorrect BTF type resolution when the cloned program was loaded. The fix ensures the BTF reference is properly managed across the clone operation. This is a v2 single-patch bug fix for an issue discovered in programs that use program cloning with BTF-dependent features.",
+      "related_links": []
+    }
+  ]
 }
