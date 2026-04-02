@@ -1,0 +1,32 @@
+name: Generate bpf-next Summaries
+
+on:
+  schedule:
+    - cron: '0 10 * * *'  # 6am ET (EDT), daily
+  workflow_dispatch:
+
+jobs:
+  summarize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Generate summaries
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/summarize_bpf_next.py
+
+      - name: Commit and push
+        run: |
+          git config user.email "bpf-summarizer@grant.pizza"
+          git config user.name "bpf-summarizer"
+          git add data/bpf_next/
+          git diff --staged --quiet || git commit -m "bpf-next summaries $(date -u +%Y-%m-%d)"
+          git push origin master
