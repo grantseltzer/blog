@@ -38,7 +38,7 @@ def lore_url(msgid):
 def fetch_patches(days):
     """Fetch patches from patchwork for the last `days` days."""
     cutoff = datetime.now(timezone.utc) - timedelta(days=days)
-    since = cutoff.strftime('%Y-%m-%dT%H:%M:%SZ')
+    since = cutoff.strftime('%Y-%m-%d')
 
     patches = []
     params = urlencode({'project': PROJECT, 'since': since, 'order': '-date', 'per_page': 100})
