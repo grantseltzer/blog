@@ -41,7 +41,7 @@ def fetch_patches(days):
     since = cutoff.strftime('%Y-%m-%d')
 
     patches = []
-    params = urlencode({'project': PROJECT, 'since': since, 'order': '-date', 'per_page': 100})
+    params = urlencode({'project': PROJECT, 'q': 'bpf-next', 'since': since, 'order': '-date', 'per_page': 100})
     url = f'{PATCHWORK_API}?{params}'
 
     while url:
@@ -56,8 +56,6 @@ def fetch_patches(days):
 
         for patch in items:
             title = patch.get('name', '').strip()
-            if 'bpf-next' not in title.lower():
-                continue
             msgid = patch.get('msgid', '')
             patches.append({
                 'title': title,
