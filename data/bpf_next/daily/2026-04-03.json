@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-04-03T10:00:00Z",
+  "period_start": "2026-04-02",
+  "period_end": "2026-04-03",
+  "patch_count": 59,
+  "thread_count": 12,
+  "top_contributors": [
+    "Alexei Starovoitov",
+    "Yonghong Song",
+    "Emil Tsalapatis",
+    "Paul Chaignon",
+    "Xu Kuohai"
+  ],
+  "key_topics": [
+    "verifier",
+    "kfuncs",
+    "arena",
+    "jit",
+    "stack-args",
+    "cfi",
+    "dynptr"
+  ],
+  "overview": "A busy day on bpf-next dominated by verifier and JIT work. Yonghong Song posted a major 10-patch series introducing stack-based argument passing for BPF functions and kfuncs, enabling larger structs to be passed by value. Alexei Starovoitov continued iterating—reaching v5—on preparatory verifier patches for static stack liveness analysis, while Emil Tsalapatis proposed a new arena library and runtime for BPF selftests.",
+  "patches": [
+    {
+      "title": "bpf: Introduce bpf register BPF_REG_STACK_ARG_BASE",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260402012732.3917048-1-yonghong.song@linux.dev/",
+      "summary": "First patch in a 10-part series adding stack-based argument passing to BPF functions and kfuncs. It introduces a new virtual register BPF_REG_STACK_ARG_BASE to represent the base of stack-passed arguments in the BPF calling convention. This enables passing large structs by value that exceed the available register count. Subsequent patches in the series add verifier enforcement, x86-64 JIT support, and selftests covering both positive and negative cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Do register range validation early",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260403024422.87231-2-alexei.starovoitov@gmail.com/",
+      "summary": "First patch (v5) in a 6-patch series preparing the verifier for static stack liveness analysis. This patch moves register range validation to an earlier point in the verification pipeline so that subsequent passes can rely on consistent range invariants. The series also adds topological subprogram ordering after check_cfg(), dead branch pruning, and constant register computation passes. A v5 respin was posted within hours of v4, indicating rapid iteration.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Upgrade scalar to PTR_TO_ARENA on arena pointer addition",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260403042720.18862-2-emil@etsalapatis.com/",
+      "summary": "First patch (v3) in a 9-part series introducing an arena library and runtime for BPF selftests. This verifier change teaches the BPF verifier to upgrade a scalar register to PTR_TO_ARENA when it is the result of adding a scalar to an arena pointer, improving type-safety for arena-allocated memory. The rest of the series builds libarena scaffolding, an ASAN runtime for detecting memory errors in arena programs, a buddy allocator, and comprehensive selftests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Move constants blinding out of arch-specific JITs",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/20260403090915.473493-2-xukuohai@huaweicloud.com/",
+      "summary": "First patch (v11) in a 5-patch series that emits ENDBR (x86) and BTI (arm64) instructions at indirect jump targets in BPF JIT-compiled programs to harden against control-flow hijacking attacks. This initial patch refactors constants blinding out of architecture-specific JITs and into shared BPF core code, passing the bpf_verifier_env to the JIT. Later patches add a verifier helper to detect indirect jump targets and the per-arch emission logic for ENDBR and BTI landing pads.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refactor reg_bounds_sanity_check",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/198ec3e69343e2c46dc9cbe2b1bc9be9ae2df5bd.1775142354.git.paul.chaignon@gmail.com/",
+      "summary": "First patch (v3) in a 6-patch series fixing verifier invariant violations surfaced by syzbot. The series refactors the register bounds sanity check, exits early when reg_bounds_sync receives invalid inputs, simulates branches to prune states based on range violations, and removes now-unnecessary invariant violation flags from selftests. These fixes improve the reliability of the verifier's range-tracking logic and address potential incorrect pruning decisions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Do not ignore offsets for loads from insn_arrays",
+      "author": "Anton Protopopov",
+      "url": "https://lore.kernel.org/bpf/20260402184647.988132-2-a.s.protopopov@gmail.com/",
+      "summary": "Bug fix (v2) correcting the BPF verifier's handling of loads from instruction arrays with non-zero offsets. Previously the offset was silently ignored, leading to incorrect values being read. The fix ensures the offset is properly applied, and a companion selftest patch adds coverage for the various offset scenarios to prevent regressions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refactor dynptr mutability tracking",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260402065013.884228-2-ameryhung@gmail.com/",
+      "summary": "A v2 verifier cleanup that refactors how dynptr mutability is tracked internally. Instead of scattering mutability checks across dynptr helper validation paths, this patch consolidates the tracking into a cleaner representation. This makes it easier to reason about read-only vs. read-write dynptr semantics and reduces the risk of future correctness bugs when new dynptr types or helpers are introduced.",
+      "related_links": []
+    }
+  ]
+}
