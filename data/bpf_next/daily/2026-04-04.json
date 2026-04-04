@@ -1,0 +1,74 @@
+{
+  "generated_at": "2026-04-04T09:42:10Z",
+  "period_start": "2026-04-03",
+  "period_end": "2026-04-04",
+  "patch_count": 38,
+  "thread_count": 8,
+  "top_contributors": [
+    "Alexei Starovoitov",
+    "Xu Kuohai",
+    "Emil Tsalapatis",
+    "Chengkaitao"
+  ],
+  "key_topics": [
+    "verifier",
+    "kfuncs",
+    "btf",
+    "jit",
+    "arena",
+    "libbpf",
+    "selftests"
+  ],
+  "overview": "The bpf-next mailing list saw active development on April 3-4, 2026, centered on BPF verifier improvements, JIT code generation, and libbpf usability enhancements. Alexei Starovoitov continued iterating on preparatory patches for static stack liveness analysis (reaching v5), while Xu Kuohai posted a 12th revision of the ENDBR/BTI CFI series for x86 and arm64. Emil Tsalapatis introduced a comprehensive arena library and runtime for BPF programs, and Chengkaitao proposed new infrastructure to simplify kfunc verifier registration.",
+  "patches": [
+    {
+      "title": "bpf: Do register range validation early",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260403024422.87231-2-alexei.starovoitov@gmail.com/",
+      "summary": "This patch moves register range validation to an earlier stage in the BPF verifier pipeline as a preparatory step for implementing static stack liveness analysis. By validating register ranges sooner, subsequent analysis passes can make more informed decisions about stack usage. This is the first of a 6-patch v5 series from Alexei Starovoitov that lays the groundwork for static stack liveness, a significant verifier enhancement aimed at improving precision in BPF program analysis.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add bpf_compute_const_regs() and bpf_prune_dead_branches() passes",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260403024422.87231-5-alexei.starovoitov@gmail.com/",
+      "summary": "Introduces two new compiler-style analysis passes to the BPF verifier: constant register computation and dead branch pruning. These passes allow the verifier to identify and eliminate unreachable code paths before the main verification pass runs, reducing the state space that must be explored. This is foundational infrastructure for static stack liveness analysis, which will allow the verifier to precisely track stack slot usage across subprograms and enable future optimizations.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add helper and kfunc stack access size resolution",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260403024422.87231-7-alexei.starovoitov@gmail.com/",
+      "summary": "The final patch in Alexei Starovoitov's v5 series adds logic for resolving the sizes of stack accesses made by helpers and kfuncs, a prerequisite for accurate static stack liveness computation. Understanding how much stack space each helper or kfunc call may touch is essential for the verifier to determine which stack slots are live at any given program point. Together with the earlier patches in the series, this completes the preparatory infrastructure for static stack liveness.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce BTF_SET/ID_SUB and BPF_VERIF_KFUNC_DEF",
+      "author": "Chengkaitao",
+      "url": "https://lore.kernel.org/bpf/20260403170900.58659-3-pilgrimtao@gmail.com/",
+      "summary": "Introduces new BTF infrastructure (BTF_SET/ID_SUB) and a BPF_VERIF_KFUNC_DEF macro to simplify how the BPF verifier registers and matches kfunc verification callbacks. Currently kfunc verification logic requires manual BTF set management and is scattered across the codebase; this refactoring provides a unified, declarative mechanism for associating kfuncs with their verifier hooks. The accompanying patch applies this new infrastructure to rbtree kfuncs as a concrete demonstration.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add helper to detect indirect jump targets",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/20260403132811.753894-4-xukuohai@huaweicloud.com/",
+      "summary": "Adds a helper function to the BPF JIT infrastructure for identifying indirect jump targets in BPF programs, enabling subsequent patches to emit control-flow integrity (CFI) landing pad instructions at those sites. On x86 this means emitting ENDBR instructions (for Intel IBT), and on arm64 BTI instructions. This is the 12th revision of a mature series by Xu Kuohai that improves BPF JIT compatibility with CPU-enforced CFI features, with both x86 and arm64 backends covered.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Upgrade scalar to PTR_TO_ARENA on arena pointer addition",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260403042720.18862-2-emil@etsalapatis.com/",
+      "summary": "Enhances the BPF verifier to recognize that a scalar value resulting from arithmetic on an arena pointer should itself be typed as PTR_TO_ARENA, improving the ergonomics and correctness of arena-based BPF programs. This is the core kernel-side change in a 9-patch v3 series that also introduces a libarena library and runtime for BPF, including a buddy allocator and ASAN integration. The series significantly lowers the barrier for BPF programs to perform dynamic memory management using arenas.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Auto-upgrade kprobes to multi-kprobes when supported",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260403124412.37449-4-varunrmallya@gmail.com/",
+      "summary": "This RFC proposes transparent automatic upgrading of single kprobe attachments to the more efficient multi-kprobe mechanism when the kernel supports it, mirroring a companion patch that does the same for uprobes. Multi-kprobes attach to multiple functions via a single file descriptor, reducing per-attach overhead considerably. The series (RFC v3) also adds a libbpf feature probe to detect kernel multi-kprobe link support, making the upgrade decision automatic and safe across kernel versions.",
+      "related_links": []
+    }
+  ]
+}
