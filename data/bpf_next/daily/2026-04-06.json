@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-04-06T10:13:03Z",
+  "period_start": "2026-04-05",
+  "period_end": "2026-04-06",
+  "patch_count": 22,
+  "thread_count": 2,
+  "top_contributors": ["Yonghong Song"],
+  "key_topics": ["verifier", "kfuncs", "jit", "stack-arguments"],
+  "overview": "Activity on April 5-6 was dominated by Yonghong Song's v2 and v3 iterations of the 'Support stack arguments for BPF functions and kfuncs' series, which introduces a new BPF_REG_STACK_ARG_BASE register and extends the BPF calling convention to allow structs larger than 8 bytes to be passed via the stack. The v3 revision refines the design with improved verifier validation, x86_64 JIT support, and comprehensive selftests for both BPF-to-BPF calls and kfunc calls.",
+  "patches": [
+    {
+      "title": "bpf: Introduce bpf register BPF_REG_STACK_ARG_BASE",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260405172510.1330263-1-yonghong.song@linux.dev/",
+      "summary": "Introduces BPF_REG_STACK_ARG_BASE, a new virtual BPF register used as a base pointer for stack-allocated function arguments. This is the foundational patch in the series enabling BPF functions and kfuncs to accept arguments too large to fit in the six general-purpose argument registers. The new register is handled specially by the verifier and JIT backends to track and validate stack argument slots. It allows BPF programs to pass structs larger than 8 bytes by value through a well-defined stack ABI.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260405172601.1331846-1-yonghong.song@linux.dev/",
+      "summary": "Extends the BPF verifier to recognize and validate stack-based argument passing for BPF-to-BPF function calls. The patch teaches the verifier to track argument slots relative to BPF_REG_STACK_ARG_BASE and verify their types, sizes, and liveness. This enables BPF subprograms to receive large struct arguments that cannot fit in registers, matching a common pattern in kernel C code.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support stack arguments for kfunc calls",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260405172611.1336162-1-yonghong.song@linux.dev/",
+      "summary": "Extends stack argument support to kfunc calls, allowing BPF programs to pass large structs by value to kernel functions exposed via kfuncs. The verifier is updated to check stack argument slots when validating kfunc call sites, ensuring type safety between the BPF caller and the kernel-side parameter declaration. Stack arguments for kfuncs are limited to 8 bytes per slot to match kernel ABI expectations.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject stack arguments in non-JITed programs",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260405172616.1336445-1-yonghong.song@linux.dev/",
+      "summary": "Adds a verifier check that rejects programs using stack arguments when running without a JIT compiler. Stack argument passing requires JIT support because the interpreter cannot implement the necessary stack manipulation semantics. This guard ensures the feature is only enabled on platforms and configurations where it is fully supported.",
+      "related_links": []
+    },
+    {
+      "title": "bpf,x86: Implement JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260405172626.1337674-1-yonghong.song@linux.dev/",
+      "summary": "Implements x86_64 JIT backend support for emitting code to set up and tear down stack argument frames for BPF function and kfunc calls. The JIT allocates space on the native stack, copies argument values into position relative to the stack pointer, and passes the base address in the appropriate register. This patch is the concrete implementation that makes the stack argument ABI functional on x86_64.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add verifier tests for stack argument validation",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260405172642.1338721-1-yonghong.song@linux.dev/",
+      "summary": "Adds verifier-level selftests that exercise both positive and negative cases for stack argument validation, including type mismatches, size violations, and use of uninitialized stack slots. These tests complement the functional selftests from earlier patches and ensure the verifier correctly rejects malformed programs using stack arguments. The negative tests cover the greater-than-8-byte kfunc stack argument restriction introduced in the series.",
+      "related_links": []
+    }
+  ]
+}

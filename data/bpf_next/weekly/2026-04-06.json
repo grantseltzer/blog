@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-04-06T10:13:03Z",
+  "period_start": "2026-03-30",
+  "period_end": "2026-04-06",
+  "patch_count": 100,
+  "thread_count": 22,
+  "top_contributors": ["Yonghong Song", "Alexei Starovoitov", "Xu Kuohai", "Emil Tsalapatis"],
+  "key_topics": ["verifier", "kfuncs", "jit", "stack-arguments", "arena", "cfi", "libbpf", "kprobes"],
+  "overview": "The week of March 30 - April 6 saw heavy activity around BPF verifier improvements and calling convention extensions. Yonghong Song iterated through three versions of stack argument support for BPF functions and kfuncs, culminating in v3 with a new BPF_REG_STACK_ARG_BASE register and x86_64 JIT implementation. Alexei Starovoitov continued refining prep patches for static stack liveness analysis, reaching v5 with subprogram topological ordering and constant-register computation passes that will enable smarter stack slot tracking. Additional highlights include Emil Tsalapatis introducing a full arena library and runtime, Xu Kuohai reaching v12 for emitting ENDBR/BTI instructions at indirect JIT jump targets, Chengkaitao refactoring how the verifier dispatches kfunc checks via a new BPF_VERIF_KFUNC_DEF mechanism, and Paul Chaignon fixing verifier invariant violations discovered by syzbot.",
+  "patches": [
+    {
+      "title": "bpf: Introduce bpf register BPF_REG_STACK_ARG_BASE",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260405172510.1330263-1-yonghong.song@linux.dev/",
+      "summary": "Introduces BPF_REG_STACK_ARG_BASE, a new virtual BPF register serving as the base pointer for stack-allocated function arguments. This is the foundation of the 11-patch v3 series enabling BPF functions and kfuncs to receive arguments too large for the six general-purpose argument registers. The register is handled specially by both the verifier and x86_64 JIT backend to allocate, track, and validate stack argument slots. The series also includes selftests for BPF-to-BPF calls, kfunc calls, and negative cases for oversized arguments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add helper and kfunc stack access size resolution",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260403024422.87231-7-alexei.starovoitov@gmail.com/",
+      "summary": "The final patch in Alexei Starovoitov's v5 'Prep patches for static stack liveness' series, which adds helper and kfunc stack access size resolution used by upcoming static liveness analysis. The series as a whole sorts subprograms in topological order after check_cfg(), adds bpf_compute_const_regs() and bpf_prune_dead_branches() verifier passes, and moves verifier helpers to a shared header. Together these changes lay the groundwork for tracking which stack slots are actually live, reducing unnecessary spill/fill overhead.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Upgrade scalar to PTR_TO_ARENA on arena pointer addition",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260403042720.18862-2-emil@etsalapatis.com/",
+      "summary": "The first patch in the v3 'Introduce arena library and runtime' series, which teaches the verifier to promote a scalar register to PTR_TO_ARENA when added to an arena pointer. The broader 9-patch series introduces a libarena scaffolding with an ASAN-compatible runtime, a buddy allocator implementation, and comprehensive selftests. This infrastructure enables BPF programs using memory arenas to benefit from proper pointer type tracking and arena-aware address sanitization during testing.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Emit ENDBR for indirect jump targets",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/20260403132811.753894-5-xukuohai@huaweicloud.com/",
+      "summary": "Part of Xu Kuohai's v12 series adding Intel CET ENDBR (x86) and ARM64 BTI instructions at indirect JIT jump targets to harden BPF programs against control-flow hijacking. A companion patch adds a helper to detect indirect jump targets during JIT compilation, and another passes bpf_verifier_env to the JIT so it has the information needed to insert these instructions. The series also moves constant blinding out of arch-specific JITs into a shared location to simplify future JIT backends.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce BTF_SET/ID_SUB and BPF_VERIF_KFUNC_DEF",
+      "author": "Chengkaitao",
+      "url": "https://lore.kernel.org/bpf/20260403170900.58659-3-pilgrimtao@gmail.com/",
+      "summary": "Introduces BTF_SET/ID_SUB and BPF_VERIF_KFUNC_DEF macros that allow kfunc sets to embed their own verifier check callbacks, replacing the existing flat dispatch table used by the verifier. This refactor makes it easier to add verifier logic for new kfuncs without touching central verifier files. A follow-on patch converts the rbtree kfuncs to use the new mechanism, demonstrating the pattern.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refactor reg_bounds_sanity_check",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/198ec3e69343e2c46dc9cbe2b1bc9be9ae2df5bd.1775142354.git.paul.chaignon@gmail.com/",
+      "summary": "The first patch in Paul Chaignon's v3 'Fix invariant violations and improve branch detection' series, which addresses syzbot-reported verifier invariant violations. The series refactors reg_bounds_sanity_check, adds early exit for invalid reg_bounds_sync inputs, simulates branches to prune paths with range violations, and removes incorrect invariant-violation flags from selftests. These fixes improve verifier correctness when dealing with edge cases in register range tracking.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Auto-upgrade kprobes to multi-kprobes when supported",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260403124412.37449-4-varunrmallya@gmail.com/",
+      "summary": "Part of an RFC v3 series that transparently upgrades single kprobe and uprobe attachments to their multi-kprobe/multi-uprobe equivalents when the kernel supports them. A new FEAT_KPROBE_MULTI_LINK feature probe is added to libbpf to detect kernel support at runtime. This allows BPF programs written against the single-attach API to silently benefit from the performance improvements of multi-attach without any code changes.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Do not ignore offsets for loads from insn_arrays",
+      "author": "Anton Protopopov",
+      "url": "https://lore.kernel.org/bpf/20260402184647.988132-2-a.s.protopopov@gmail.com/",
+      "summary": "Fixes a bug where the BPF verifier ignored non-zero offsets when loading values from instruction arrays, causing incorrect value reads. The fix ensures the offset is properly factored into the load address computation in the verifier's constant propagation path. A companion patch adds regression tests covering a variety of offset values to prevent recurrence.",
+      "related_links": []
+    },
+    {
+      "title": "pull-request: bpf-next 2026-04-01",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260401233956.4133413-1-martin.lau@linux.dev/",
+      "summary": "Martin KaFai Lau's bpf-next pull request for April 1, 2026, consolidating the accumulated bpf-next changes for submission to Linus's tree. Pull requests like this mark a significant milestone in the development cycle, bundling verifier improvements, new helpers, libbpf changes, and selftests accumulated since the previous pull.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refactor dynptr mutability tracking",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260402065013.884228-2-ameryhung@gmail.com/",
+      "summary": "Refactors how the BPF verifier tracks dynptr mutability, consolidating the immutability flag into the dynptr state representation for cleaner handling. This v2 patch simplifies the code paths that check whether a dynptr may be written through, reducing the risk of correctness issues when new dynptr types are added. The change is internal to the verifier with no user-visible behavior change.",
+      "related_links": []
+    }
+  ]
+}
