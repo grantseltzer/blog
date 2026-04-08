@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-04-08T12:00:00Z",
+  "period_start": "2026-04-07",
+  "period_end": "2026-04-08",
+  "patch_count": 39,
+  "thread_count": 12,
+  "top_contributors": [
+    "Emil Tsalapatis",
+    "Kumar Kartikeya Dwivedi",
+    "Nick Hudson",
+    "Menglong Dong",
+    "Daniel Borkmann"
+  ],
+  "key_topics": [
+    "verifier",
+    "kprobes",
+    "tracing",
+    "arena",
+    "decap",
+    "kfuncs",
+    "rcu"
+  ],
+  "overview": "April 7-8 saw broad activity across verifier correctness, networking, and tooling. Kumar Kartikeya Dwivedi submitted a series adding verifier warning message support for deprecated kfuncs, while Daniel Borkmann fixed linked register delta tracking bugs in the verifier. Nick Hudson's v3 series introduced new tunnel decapsulation flags for bpf_skb_adjust_room, and Andrey Grodzovsky's kprobe symbol disambiguation fix reached v7.",
+  "patches": [
+    {
+      "title": "bpf: Add support for verifier warning messages",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260408021359.3786905-2-memxor@gmail.com/",
+      "summary": "This v2 series introduces a new verifier warning infrastructure that allows the BPF verifier to emit non-fatal warning messages to users, separate from hard errors. The series leverages KF_DEPRECATED to trigger warnings for deprecated kfuncs and adds a __bpf_kfunc_replacement() annotation to point developers toward preferred replacements. libbpf is updated to flush these warnings by default, giving developers earlier visibility into deprecated API usage without causing program rejection.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix linked reg delta tracking when src_reg == dst_reg",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260407192421.508817-1-daniel@iogearbox.net/",
+      "summary": "This series fixes two related verifier bugs in linked register delta tracking. The first patch addresses a case where src_reg == dst_reg causes stale delta state to propagate incorrectly through register linking. The second patch ensures the delta field is cleared whenever a register's ID is reset for non-add/sub operations, preventing stale deltas from leaking through ID reassignment. Both fixes are accompanied by targeted selftests.",
+      "related_links": []
+    },
+    {
+      "title": "tracing: Prefer vmlinux symbols over module symbols for unqualified kprobes",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20260407203912.1787502-2-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "Now at v7 (with a concurrent v6 also posted on the same day), this patch stabilizes the fix for kprobe symbol disambiguation when a module symbol shadows a vmlinux symbol of the same name. Unqualified kprobe attachments now correctly prefer the vmlinux symbol, preventing inadvertent tracing of module code. A selftest covering duplicate symbol handling is included.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add BPF_F_ADJ_ROOM_DECAP_* flags for tunnel decapsulation",
+      "author": "Nick Hudson",
+      "url": "https://lore.kernel.org/bpf/20260407105005.1639815-4-nhudson@akamai.com/",
+      "summary": "Part of the v3 'bpf: decap flags and GSO state updates' series, this patch introduces new BPF_F_ADJ_ROOM_DECAP_* flags for the bpf_skb_adjust_room helper to handle tunnel decapsulation scenarios correctly. A companion patch clears tunnel GSO state in skb_adjust_room when decapping, addressing correctness issues for BPF programs performing software tunnel decap. The series also refactors ADJ_ROOM flag masks and adds guard rails for invalid flag combinations.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add missing fsession to the verifier log",
+      "author": "Menglong Dong",
+      "url": "https://lore.kernel.org/bpf/20260408062109.386083-2-dongml2@chinatelecom.cn/",
+      "summary": "This v2 series adds missing support for the fsession BPF attach type across the verifier log, BPF documentation, and bpftool. The fsession attach type was supported in the kernel but absent from these user-facing surfaces, making it invisible to developers using introspection tools. The three-patch series ensures fsession is consistently recognized and displayed alongside other attach types.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Retire rcu_trace_implies_rcu_gp()",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260407162234.785270-1-memxor@gmail.com/",
+      "summary": "This patch removes the rcu_trace_implies_rcu_gp() function from the BPF RCU machinery, which was a temporary workaround that treated RCU trace critical sections as implying a full RCU grace period. As the kernel RCU subsystem has matured, this workaround is no longer necessary and its removal simplifies the BPF memory model and reduces maintenance burden.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Upgrade scalar to PTR_TO_ARENA on arena pointer addition",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260407045730.13359-2-emil@etsalapatis.com/",
+      "summary": "The v4 arena library and runtime series continues to appear in this period, covering the core verifier change and an extensive libarena user-space test library. The kernel patch upgrades a scalar register to PTR_TO_ARENA when derived from arena pointer arithmetic, enabling safe arena pointer tracking in the BPF verifier. The selftest side introduces a complete arena library with buddy allocator and ASAN runtime support.",
+      "related_links": []
+    }
+  ]
+}

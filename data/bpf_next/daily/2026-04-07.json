@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-04-08T12:00:00Z",
+  "period_start": "2026-04-06",
+  "period_end": "2026-04-07",
+  "patch_count": 22,
+  "thread_count": 5,
+  "top_contributors": [
+    "Emil Tsalapatis",
+    "Kumar Kartikeya Dwivedi",
+    "Andrey Grodzovsky",
+    "Anton Protopopov",
+    "Amery Hung"
+  ],
+  "key_topics": [
+    "arena",
+    "verifier",
+    "kprobes",
+    "tracing",
+    "dynptr",
+    "selftests"
+  ],
+  "overview": "Activity on April 6-7 was dominated by two substantial series: Emil Tsalapatis's v4 arena library and runtime series, which introduces a BPF memory arena with buddy allocator and ASAN support, and Kumar Kartikeya Dwivedi's v5 series enabling variable offsets for syscall PTR_TO_CTX access. Additional notable work includes Andrey Grodzovsky's RFC for fixing kprobe attachment priority when module symbols shadow vmlinux symbols, and smaller fixes for dynptr reference handling and insn_array offset loads.",
+  "patches": [
+    {
+      "title": "bpf: Upgrade scalar to PTR_TO_ARENA on arena pointer addition",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260407045730.13359-2-emil@etsalapatis.com/",
+      "summary": "Part of the v4 'Introduce arena library and runtime' series, this patch updates the BPF verifier to upgrade a scalar register to PTR_TO_ARENA when it results from adding a scalar to an arena pointer. This is a key verifier change that enables safe tracking of pointers derived from BPF arena memory regions. The companion patches introduce a full arena user-space library for BPF selftests, including a buddy allocator and ASAN runtime integration.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support variable offsets for syscall PTR_TO_CTX",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260406194403.1649608-2-memxor@gmail.com/",
+      "summary": "This v5 patch extends the BPF verifier to allow variable (non-constant) offsets when accessing PTR_TO_CTX in BPF programs running in syscall context. Previously, only fixed offsets were permitted, which was overly restrictive for programs that compute offsets dynamically. Companion patches also enable unaligned accesses for syscall context and add comprehensive selftests including tests for accesses beyond U16_MAX.",
+      "related_links": []
+    },
+    {
+      "title": "tracing: Prefer vmlinux symbols over module symbols for unqualified kprobes",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20260406193158.754498-2-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "This RFC v5 patch addresses an ambiguity in kprobe symbol resolution: when a kernel module exports a symbol with the same name as a vmlinux symbol, an unqualified kprobe attachment would previously latch onto the module symbol. The fix ensures vmlinux symbols take precedence for unqualified probes, aligning behavior with user expectations and reducing inadvertent tracing of module code. A selftest covering the duplicate symbol scenario is included.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Do not ignore offsets for loads from insn_arrays",
+      "author": "Anton Protopopov",
+      "url": "https://lore.kernel.org/bpf/20260406160141.36943-2-a.s.protopopov@gmail.com/",
+      "summary": "This v3 fix corrects a bug in the BPF loader where non-zero offsets in insn_array map loads were silently ignored, resulting in incorrect instruction loading. The patch ensures the offset is correctly applied when reading BPF instructions from array maps, preventing subtle program errors that would otherwise be difficult to diagnose. A companion selftest verifies loading from various non-zero offsets.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow overwriting referenced dynptr when refcnt > 1",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260406150548.1354271-2-ameryhung@gmail.com/",
+      "summary": "The BPF verifier currently rejects programs that attempt to overwrite a referenced dynptr even when sibling states still hold a valid reference, causing overly conservative program rejections. This patch relaxes the restriction by tracking the reference count across sibling states and permitting the overwrite when refcnt > 1, ensuring the sibling state can still clean up the dynptr on exit. A selftest demonstrating the previously-rejected but safe pattern is included.",
+      "related_links": []
+    }
+  ]
+}
