@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-04-09T10:30:00Z",
+  "period_start": "2026-04-08",
+  "period_end": "2026-04-09",
+  "patch_count": 62,
+  "thread_count": 13,
+  "top_contributors": [
+    "Eduard Zingerman",
+    "Mykyta Yatsenko",
+    "Kumar Kartikeya Dwivedi",
+    "Daniel Borkmann",
+    "Menglong Dong"
+  ],
+  "key_topics": [
+    "verifier",
+    "liveness",
+    "maps",
+    "kfuncs",
+    "kprobe",
+    "struct-ops",
+    "btf",
+    "libbpf"
+  ],
+  "overview": "Today's bpf-next activity was dominated by two major series: Eduard Zingerman's 14-patch overhaul introducing static stack liveness data flow analysis in the verifier, and Mykyta Yatsenko's RFC for a new resizable BPF hash map backed by the kernel's rhashtable infrastructure. Additional notable work includes Kumar Kartikeya Dwivedi's verifier warning message framework, enabling non-fatal deprecation warnings during program load, and Daniel Borkmann's fix for ld_{abs,ind} failure path analysis in BPF subprograms.",
+  "patches": [
+    {
+      "title": "bpf: share several utility functions as internal API",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260408-patch-set-v1-1-1a666e860d42@gmail.com/",
+      "summary": "This is the opening patch in a 14-part series introducing static stack liveness data flow analysis into the BPF verifier. It refactors several internal utility functions into a shared API to be reused by the upcoming liveness analysis pass. The broader series upgrades stack-slot tracking to 4-byte granularity and introduces a forward arg-tracking dataflow analysis, culminating in dead stack slot poisoning — marking unused stack slots to catch uninitialized reads more reliably. The work also includes logging improvements and extensive selftests covering the new analysis behavior.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Register rhash map",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260408-rhash-v2-1-3b3675da1f6e@meta.com/",
+      "summary": "This RFC introduces a new BPF map type backed by the kernel's rhashtable infrastructure, enabling dynamically resizable hash maps without the fixed-capacity constraints of BPF_MAP_TYPE_HASH. The 18-patch series implements full lookup/update/delete operations, batch ops, BPF iterators, timer and workqueue support, and libbpf integration. This addresses long-standing performance cliffs when BPF hash maps approach their pre-allocated capacity, as resizing happens transparently at runtime. bpftool documentation and comprehensive selftests round out the RFC.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add support for verifier warning messages",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260408021359.3786905-2-memxor@gmail.com/",
+      "summary": "This patch introduces a new BPF verifier infrastructure for emitting non-fatal warning messages to userspace during program load, distinct from errors that reject programs outright. The six-patch series adds a KF_DEPRECATED flag for kfuncs, a __bpf_kfunc_replacement() annotation to guide migration, and libbpf support to surface warnings by default. Source location information is exposed by making find_linfo widely available within the verifier. This closes an important ergonomics gap where developers had no in-band signal for deprecated or suboptimal BPF patterns.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Propagate error from visit_tailcall_insn",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260408191242.526279-1-daniel@iogearbox.net/",
+      "summary": "This series fixes a verifier bug where errors returned by visit_tailcall_insn were silently discarded during subprogram analysis, potentially allowing malformed programs through verification. A second patch corrects the failure-path analysis for ld_abs and ld_ind instructions when used inside subprograms. A third patch removes an overly narrow static qualifier on a local subprog pointer to support the fix. Selftests are added to cover the previously undetected failure paths, and this is the second revision following initial review feedback.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject sleepable kprobe_multi programs at attach time",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260408190137.101418-2-varunrmallya@gmail.com/",
+      "summary": "kprobe_multi programs execute in a non-preemptible context where sleeping would cause a kernel crash, yet the BPF subsystem previously accepted programs with the sleepable flag for this attach type. This patch adds an explicit check at attach time to reject the sleepable flag in combination with BPF_TRACE_KPROBE_MULTI, returning a clear error rather than silently misbehaving. A selftest verifies the rejection behavior. This is the fifth revision of the series, refined through several rounds of review.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add BPF struct_ops + livepatch integration test",
+      "author": "Song Liu",
+      "url": "https://lore.kernel.org/bpf/20260408175217.1011024-1-song@kernel.org/",
+      "summary": "This selftest exercises the interaction between BPF struct_ops programs and the kernel livepatch infrastructure, which allows BPF programs to replace kernel functions in a structured, reversible way. The test verifies that struct_ops-based function replacement behaves correctly alongside livepatch semantics, covering both attachment and detachment paths. This is important validation for a relatively new capability that enables BPF programs to participate in live kernel patching workflows.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Allow use of feature cache for non-token cases",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260408165735.843763-2-alan.maguire@oracle.com/",
+      "summary": "libbpf's BTF feature detection previously bypassed the feature cache in code paths that did not involve a BPF token, leading to redundant kernel probes on repeated calls. This patch relaxes that requirement so the feature cache is consulted and populated regardless of token availability. The companion patch adds a BTF sanitization selftest validating BTF layout correctness under various configurations. This is the third revision of the two-patch series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add missing fsession to the verifier log",
+      "author": "Menglong Dong",
+      "url": "https://lore.kernel.org/bpf/20260408062109.386083-2-dongml2@chinatelecom.cn/",
+      "summary": "The BPF_ATTACH_TYPE_FSESSION attach type was missing from the verifier log output, bpftool's usage strings, and kernel documentation, leaving it as an undocumented attach type in all developer-facing surfaces. This three-patch series adds fsession to the verifier log, BPF documentation, and bpftool usage output, ensuring consistency across tooling. This is the second revision addressing minor style feedback from the initial submission.",
+      "related_links": []
+    }
+  ]
+}
