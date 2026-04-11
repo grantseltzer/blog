@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-04-11T10:00:00Z",
+  "period_start": "2026-04-10",
+  "period_end": "2026-04-11",
+  "patch_count": 70,
+  "thread_count": 11,
+  "top_contributors": ["Eduard Zingerman", "Emil Tsalapatis", "Mykyta Yatsenko", "Amery Hung"],
+  "key_topics": ["verifier", "liveness", "sleepable", "arena", "local-storage", "fmod-ret", "reuseport"],
+  "overview": "This period was dominated by Eduard Zingerman's ambitious static stack liveness data flow analysis series, which hit v4 with 14 patches and adds a forward arg-tracking pass to the verifier that enables poisoning of dead stack slots. Mykyta Yatsenko's sleepable tracepoint support reached v9, and Emil Tsalapatis posted a v5 of the arena library and runtime introducing buddy-allocator support and ASAN integration for BPF arena programs.",
+  "patches": [
+    {
+      "title": "bpf: poison dead stack slots",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260410-patch-set-v4-14-5d4eecb343db@gmail.com/",
+      "summary": "The final patch of the 14-part v4 static stack liveness series, this change poisons dead stack slots identified by the new dataflow analysis pass. By overwriting slots that the verifier proves are no longer live, it prevents inadvertent reuse of stale values and strengthens the safety guarantees of the BPF verifier. The series introduces 4-byte granularity liveness tracking, a forward arg-tracking pass, and function-instance keying by (callsite, depth) to correctly handle subprogram calls. Companion selftest patches validate the new behavior against both new and existing verifier test cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: introduce forward arg-tracking dataflow analysis",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260410-patch-set-v4-7-5d4eecb343db@gmail.com/",
+      "summary": "This patch is the algorithmic core of the static stack liveness series: it adds a forward dataflow analysis pass that tracks which stack slots are written before being read, enabling the verifier to identify dead writes. Unlike the existing backward liveness pass, this forward pass computes arg-tracking results stored in bpf_liveness masks so they can be queried during normal verification. The approach handles subprogram calls by keying func_instances on (callsite, depth) pairs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add sleepable support for raw tracepoint programs",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260410-sleepable_tracepoints-v9-1-e719e664e84c@meta.com/",
+      "summary": "The first patch of a 6-part v9 series enabling BPF tracepoint programs to be marked sleepable, allowing them to call kfuncs and helpers that may block. This patch extends raw tracepoint support by running programs via a new bpf_prog_run_array_sleepable() helper that takes an RCU read-side lock safe for sleeping contexts. Verifier changes in patch 4 enforce that only raw and classic tracepoint program types may carry the sleepable flag. libbpf gains matching SEC() handlers and the series ships with selftests covering both raw and classic tracepoint flavors.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Upgrade scalar to PTR_TO_ARENA on arena pointer addition",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260410163041.8063-2-emil@etsalapatis.com/",
+      "summary": "This verifier change allows a scalar value added to a PTR_TO_ARENA pointer to itself be upgraded to a PTR_TO_ARENA, enabling more ergonomic arena-relative pointer arithmetic in BPF programs without requiring a full re-cast. It is the foundation patch for a 9-part v5 series that also introduces a userspace libarena scaffolding, an arena ASAN runtime, a buddy allocator library, and integration tests with ASAN support. The arena memory model is increasingly important for BPF programs that manage their own heap.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Enforce regsafe base id consistency for BPF_ADD_CONST scalars",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260410232651.559778-1-daniel@iogearbox.net/",
+      "summary": "This verifier fix ensures that when two scalar registers are compared for equivalence via regsafe(), their base_id fields are treated consistently for scalars produced by BPF_ADD_CONST operations. Without this check, the verifier could incorrectly mark two states as equivalent even when their add_const chains differ, potentially allowing unsound pruning. The companion patch adds a selftest to exercise the base_id consistency requirement directly.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Use kmalloc_nolock() universally in local storage",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260411015419.114016-3-ameryhung@gmail.com/",
+      "summary": "This patch (2/3, v2) extends the use of kmalloc_nolock() throughout the BPF local storage implementation so that allocations in IRQ and NMI contexts no longer need to fall back to pre-allocated memory. The companion patch removes the now-unnecessary gfp_flags plumbing from bpf_local_storage_update(), simplifying the call chain. The first patch in the series drops kmalloc tracing from the local storage create benchmark since it is no longer representative.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix Null-Pointer Dereference in kernel_clone() via BPF fmod_ret on security_task_alloc",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20260410061037.149532-2-yangfeng59949@163.com/",
+      "summary": "This v2 fix addresses a null pointer dereference triggered when a BPF fmod_ret program attached to security_task_alloc returns a non-zero error code: kernel_clone() proceeds to call copy_process() which may dereference a task pointer that was never fully initialised. The fix adds an early return in the relevant path when the fmod_ret hook indicates failure, preventing the use-after-free or null dereference. A selftest validates the correct return value behavior of fmod_ret for this hook.",
+      "related_links": []
+    }
+  ]
+}
