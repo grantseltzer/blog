@@ -1,0 +1,89 @@
+{
+  "generated_at": "2026-04-12T09:52:00Z",
+  "period_start": "2026-04-11",
+  "period_end": "2026-04-12",
+  "patch_count": 63,
+  "thread_count": 14,
+  "top_contributors": [
+    "Yonghong Song",
+    "Alexei Starovoitov",
+    "Emil Tsalapatis",
+    "Amery Hung",
+    "Xu Kuohai"
+  ],
+  "key_topics": [
+    "verifier",
+    "kfuncs",
+    "arena",
+    "jit",
+    "local-storage",
+    "fsession",
+    "fmod_ret"
+  ],
+  "overview": "The April 11–12 bpf-next window was dominated by verifier refactoring and significant new feature work. Alexei Starovoitov continued the multi-part effort to split the monolithic verifier.c into focused modules (fixups.c, liveness.c, cfg.c, states.c, backtrack.c, check_btf.c) and posted follow-up cleanups to simplify the main instruction-dispatch loop and move reserved-field checks out of the hot path. Yonghong Song posted a v4 18-patch series enabling stack-passed arguments for BPF-to-BPF calls and kfunc calls on x86-64, while Emil Tsalapatis's v6 arena-library series introduced a buddy allocator and ASAN runtime for BPF arena programs.",
+  "patches": [
+    {
+      "title": "bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260412045955.257613-1-yonghong.song@linux.dev/",
+      "summary": "Part of an 18-patch v4 series that adds first-class support for passing arguments on the stack to BPF-to-BPF functions and kfuncs. This patch adds the core verifier logic to validate PTR_TO_STACK arguments in BPF function calls, teaching the verifier to track stack-passed memory regions across call boundaries. The feature is needed because BPF programs calling functions with more than five arguments (the current register limit) have no way to pass the extras without this infrastructure. Companion patches add x86-64 JIT emission, kfunc support, and restrictions against use with tail calls or non-JITed programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Split fixup/post-processing logic from verifier.c into fixups.c",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260412035945.46916-2-alexei.starovoitov@gmail.com/",
+      "summary": "First patch of a v2 six-part series that breaks up the notoriously large verifier.c by extracting distinct subsystems into their own files. This patch moves fixup and post-processing logic into a new fixups.c, while companion patches create liveness.c, cfg.c, states.c, backtrack.c, and check_btf.c. The goal is to reduce verifier.c to a manageable size and improve code navigation and maintainability for one of the most complex files in the kernel. The v2 revision addresses review feedback on include dependencies and symbol visibility.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Simplify do_check_insn()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260411230001.71664-1-alexei.starovoitov@gmail.com/",
+      "summary": "A standalone cleanup that refactors do_check_insn(), the core per-instruction dispatch function in the BPF verifier. The patch reorganizes the function to reduce nesting and improve readability without changing behavior. This is part of the broader ongoing effort to make verifier.c easier to split and maintain, complementing the multi-file decomposition series posted the same day.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Move checks for reserved fields out of the main pass",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260411200932.41797-1-alexei.starovoitov@gmail.com/",
+      "summary": "A v2 verifier cleanup that extracts reserved-field validation (zero-check of src_reg, imm, offset, etc.) from the main instruction-decode loop into a dedicated pre-pass. Moving these checks out of the hot verification path makes the main pass easier to read and avoids redundant branching on every instruction. This is a prerequisite refactoring for the broader verifier.c decomposition work.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Upgrade scalar to PTR_TO_ARENA on arena pointer addition",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260412011857.3387-2-emil@etsalapatis.com/",
+      "summary": "Lead patch of a v6 nine-patch series introducing an arena library and runtime for BPF programs. This specific patch teaches the verifier to upgrade a plain scalar register to PTR_TO_ARENA when it is the result of adding a scalar to an arena pointer, enabling safe arithmetic inside arena regions. Companion patches add basic libarena scaffolding, an ASAN runtime for memory error detection in arena programs, a buddy allocator, and a comprehensive selftest suite including ASAN-instrumented tests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Emit BTI for indirect jump target",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/20260411133847.1042658-6-xukuohai@huaweicloud.com/",
+      "summary": "Final patch of a v13 five-patch series that adds ENDBR (x86 CET) and BTI (arm64) instructions at indirect-jump targets in BPF JIT-compiled programs. The series introduces a verifier helper to identify indirect jump targets, refactors constants blinding out of per-arch JITs to share common logic, and passes bpf_verifier_env to the JIT so architecture back-ends can use the target information. Reaching v13 reflects the extensive review this security hardening feature has undergone.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix Null-Pointer Dereference in kernel_clone() via BPF fmod_ret on security_task_alloc",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20260411163556.8567-2-yangfeng59949@163.com/",
+      "summary": "A v3 fix for a null-pointer dereference triggered when a BPF fmod_ret program attaches to security_task_alloc and returns a non-zero value, causing kernel_clone() to proceed with an incompletely initialized task struct. The patch adds a check so that if fmod_ret short-circuits security_task_alloc with an error, the kernel correctly unwinds without dereferencing the null task pointer. A companion selftest verifies the return-value semantics of fmod_ret on this hook.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Use kmalloc_nolock() universally in local storage",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260411015419.114016-3-ameryhung@gmail.com/",
+      "summary": "Core patch of a v2 three-patch series that switches BPF local storage allocation to kmalloc_nolock() throughout, removing the need to plumb gfp_flags through the call chain. kmalloc_nolock() uses a per-CPU cache and avoids lock contention, which matters on fast paths like socket and task storage lookups. A companion patch removes the now-unnecessary kmalloc tracing from the local storage benchmark, and a final patch cleans up gfp_flags plumbing from bpf_local_storage_update().",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add missing fsession to the verifier log",
+      "author": "Menglong Dong",
+      "url": "https://lore.kernel.org/bpf/20260412060346.142007-2-dongml2@chinatelecom.cn/",
+      "summary": "Part of a v3 three-patch series that adds the missing fsession attach type to the BPF verifier log, documentation, and bpftool. The fsession attach type was introduced but not reflected in the verifier's textual output or in user-facing tools, making it harder to debug programs using that hook. This patch fixes the verifier log output; companion patches update the BPF documentation and bpftool's usage text and man page.",
+      "related_links": []
+    }
+  ]
+}
