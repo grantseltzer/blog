@@ -1,0 +1,569 @@
+{
+  "period": "daily",
+  "period_start": "2026-04-13",
+  "period_end": "2026-04-14",
+  "fetched_at": "2026-04-14T10:18:12Z",
+  "patches": [
+    {
+      "title": "[RFC,bpf-next,4/4] selftests/bpf: Implement exhaustive stack-based testcases for atomics",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260414071507.29804-5-yangtiezhu@loongson.cn/",
+      "date": "2026-04-14T07:15:07",
+      "series": [
+        {
+          "id": 1081012,
+          "url": "https://patchwork.kernel.org/api/series/1081012/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1081012",
+          "date": "2026-04-14T07:15:05",
+          "name": "selftests/bpf: Update atomics test",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1081012/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,3/4] selftests/bpf: Introduce all of non-fetch-based testcases for atomics",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260414071507.29804-4-yangtiezhu@loongson.cn/",
+      "date": "2026-04-14T07:15:06",
+      "series": [
+        {
+          "id": 1081012,
+          "url": "https://patchwork.kernel.org/api/series/1081012/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1081012",
+          "date": "2026-04-14T07:15:05",
+          "name": "selftests/bpf: Update atomics test",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1081012/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,2/4] selftests/bpf: Add 8-bit and 16-bit fetch-based testcases for atomics",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260414071507.29804-3-yangtiezhu@loongson.cn/",
+      "date": "2026-04-14T07:15:05",
+      "series": [
+        {
+          "id": 1081012,
+          "url": "https://patchwork.kernel.org/api/series/1081012/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1081012",
+          "date": "2026-04-14T07:15:05",
+          "name": "selftests/bpf: Update atomics test",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1081012/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,1/4] selftests/bpf: Only define ENABLE_ATOMICS_TESTS for cpuv4 runner",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260414071507.29804-2-yangtiezhu@loongson.cn/",
+      "date": "2026-04-14T07:15:04",
+      "series": [
+        {
+          "id": 1081012,
+          "url": "https://patchwork.kernel.org/api/series/1081012/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1081012",
+          "date": "2026-04-14T07:15:05",
+          "name": "selftests/bpf: Update atomics test",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1081012/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: arg tracking for imprecise/multi-offset BPF_ST/STX",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260413-stacklive-fixes-v2-2-398e126e5cf3@gmail.com/",
+      "date": "2026-04-13T23:30:53",
+      "series": [
+        {
+          "id": 1080911,
+          "url": "https://patchwork.kernel.org/api/series/1080911/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080911",
+          "date": "2026-04-13T23:30:51",
+          "name": "bpf: arg tracking for imprecise/multi-offset BPF_ST/STX",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1080911/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: fix arg tracking for imprecise/multi-offset BPF_ST/STX",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260413-stacklive-fixes-v2-1-398e126e5cf3@gmail.com/",
+      "date": "2026-04-13T23:30:52",
+      "series": [
+        {
+          "id": 1080911,
+          "url": "https://patchwork.kernel.org/api/series/1080911/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080911",
+          "date": "2026-04-13T23:30:51",
+          "name": "bpf: arg tracking for imprecise/multi-offset BPF_ST/STX",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1080911/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: arg tracking for imprecise/multi-offset BPF_ST/STX",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260413-stacklive-fixes-v2-2-ff91c4f8d273@gmail.com/",
+      "date": "2026-04-13T21:58:03",
+      "series": [
+        {
+          "id": 1080891,
+          "url": "https://patchwork.kernel.org/api/series/1080891/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080891",
+          "date": "2026-04-13T21:58:01",
+          "name": "bpf: arg tracking for imprecise/multi-offset BPF_ST/STX",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1080891/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: fix arg tracking for imprecise/multi-offset BPF_ST/STX",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260413-stacklive-fixes-v2-1-ff91c4f8d273@gmail.com/",
+      "date": "2026-04-13T21:58:02",
+      "series": [
+        {
+          "id": 1080891,
+          "url": "https://patchwork.kernel.org/api/series/1080891/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080891",
+          "date": "2026-04-13T21:58:01",
+          "name": "bpf: arg tracking for imprecise/multi-offset BPF_ST/STX",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1080891/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] selftests/bpf: arg tracking for imprecise/multi-offset BPF_ST/STX",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260413-stacklive-fixes-v1-3-9f48a9999d6e@gmail.com/",
+      "date": "2026-04-13T19:56:41",
+      "series": [
+        {
+          "id": 1080879,
+          "url": "https://patchwork.kernel.org/api/series/1080879/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080879",
+          "date": "2026-04-13T19:56:38",
+          "name": "bpf: arg tracking for imprecise/multi-offset BPF_ST/STX",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080879/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] bpf: fix arg tracking for BPF_ST through imprecise/multi-offset ptrs",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260413-stacklive-fixes-v1-2-9f48a9999d6e@gmail.com/",
+      "date": "2026-04-13T19:56:40",
+      "series": [
+        {
+          "id": 1080879,
+          "url": "https://patchwork.kernel.org/api/series/1080879/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080879",
+          "date": "2026-04-13T19:56:38",
+          "name": "bpf: arg tracking for imprecise/multi-offset BPF_ST/STX",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080879/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] bpf: fix arg tracking for BPF_STX through imprecise ptrs",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260413-stacklive-fixes-v1-1-9f48a9999d6e@gmail.com/",
+      "date": "2026-04-13T19:56:39",
+      "series": [
+        {
+          "id": 1080879,
+          "url": "https://patchwork.kernel.org/api/series/1080879/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080879",
+          "date": "2026-04-13T19:56:38",
+          "name": "bpf: arg tracking for imprecise/multi-offset BPF_ST/STX",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080879/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Fix use-after-free in arena_vm_close on fork",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260413194245.21449-1-alexei.starovoitov@gmail.com/",
+      "date": "2026-04-13T19:42:45",
+      "series": [
+        {
+          "id": 1080876,
+          "url": "https://patchwork.kernel.org/api/series/1080876/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080876",
+          "date": "2026-04-13T19:42:45",
+          "name": "[bpf-next] bpf: Fix use-after-free in arena_vm_close on fork",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080876/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] bpf, riscv: Remove redundant bpf_flush_icache() after pack allocator finalize",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260413191111.3426023-3-puranjay@kernel.org/",
+      "date": "2026-04-13T19:11:09",
+      "series": [
+        {
+          "id": 1080864,
+          "url": "https://patchwork.kernel.org/api/series/1080864/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080864",
+          "date": "2026-04-13T19:11:07",
+          "name": "bpf, arm64/riscv: Remove redundant icache flush after pack allocator finalize",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1080864/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf, arm64: Remove redundant bpf_flush_icache() after pack allocator finalize",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260413191111.3426023-2-puranjay@kernel.org/",
+      "date": "2026-04-13T19:11:08",
+      "series": [
+        {
+          "id": 1080864,
+          "url": "https://patchwork.kernel.org/api/series/1080864/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080864",
+          "date": "2026-04-13T19:11:07",
+          "name": "bpf, arm64/riscv: Remove redundant icache flush after pack allocator finalize",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1080864/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,3/3] selftests/bpf: Test small task local data allocation",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260413190259.358442-4-ameryhung@gmail.com/",
+      "date": "2026-04-13T19:02:59",
+      "series": [
+        {
+          "id": 1080858,
+          "url": "https://patchwork.kernel.org/api/series/1080858/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080858",
+          "date": "2026-04-13T19:02:56",
+          "name": "Fix garbage data in task local data",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080858/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,2/3] selftests/bpf: Fix tld_get_data() returning garbage data",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260413190259.358442-3-ameryhung@gmail.com/",
+      "date": "2026-04-13T19:02:58",
+      "series": [
+        {
+          "id": 1080858,
+          "url": "https://patchwork.kernel.org/api/series/1080858/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080858",
+          "date": "2026-04-13T19:02:56",
+          "name": "Fix garbage data in task local data",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080858/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,1/3] selftests/bpf: Prevent allocating data larger than a page",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260413190259.358442-2-ameryhung@gmail.com/",
+      "date": "2026-04-13T19:02:57",
+      "series": [
+        {
+          "id": 1080858,
+          "url": "https://patchwork.kernel.org/api/series/1080858/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080858",
+          "date": "2026-04-13T19:02:56",
+          "name": "Fix garbage data in task local data",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080858/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,8/8] selftests/bpf: add tests to validate KASAN on JIT programs",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260413-kasan-v1-8-1a5831230821@bootlin.com/",
+      "date": "2026-04-13T18:28:48",
+      "series": [
+        {
+          "id": 1080840,
+          "url": "https://patchwork.kernel.org/api/series/1080840/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080840",
+          "date": "2026-04-13T18:28:40",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080840/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,7/8] bpf, x86: enable KASAN for JITed programs on x86",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260413-kasan-v1-7-1a5831230821@bootlin.com/",
+      "date": "2026-04-13T18:28:47",
+      "series": [
+        {
+          "id": 1080840,
+          "url": "https://patchwork.kernel.org/api/series/1080840/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080840",
+          "date": "2026-04-13T18:28:40",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080840/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,6/8] selftests/bpf: do not run verifier JIT tests when BPF_JIT_KASAN is enabled",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260413-kasan-v1-6-1a5831230821@bootlin.com/",
+      "date": "2026-04-13T18:28:46",
+      "series": [
+        {
+          "id": 1080840,
+          "url": "https://patchwork.kernel.org/api/series/1080840/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080840",
+          "date": "2026-04-13T18:28:40",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080840/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,5/8] bpf, x86: emit KASAN checks into x86 JITed programs",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260413-kasan-v1-5-1a5831230821@bootlin.com/",
+      "date": "2026-04-13T18:28:45",
+      "series": [
+        {
+          "id": 1080840,
+          "url": "https://patchwork.kernel.org/api/series/1080840/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080840",
+          "date": "2026-04-13T18:28:40",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080840/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,4/8] bpf, x86: add helper to emit kasan checks in x86 JITed programs",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260413-kasan-v1-4-1a5831230821@bootlin.com/",
+      "date": "2026-04-13T18:28:44",
+      "series": [
+        {
+          "id": 1080840,
+          "url": "https://patchwork.kernel.org/api/series/1080840/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080840",
+          "date": "2026-04-13T18:28:40",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080840/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,3/8] bpf: add BPF_JIT_KASAN for KASAN instrumentation of JITed programs",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260413-kasan-v1-3-1a5831230821@bootlin.com/",
+      "date": "2026-04-13T18:28:43",
+      "series": [
+        {
+          "id": 1080840,
+          "url": "https://patchwork.kernel.org/api/series/1080840/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080840",
+          "date": "2026-04-13T18:28:40",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080840/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,2/8] bpf: mark instructions accessing program stack",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260413-kasan-v1-2-1a5831230821@bootlin.com/",
+      "date": "2026-04-13T18:28:42",
+      "series": [
+        {
+          "id": 1080840,
+          "url": "https://patchwork.kernel.org/api/series/1080840/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080840",
+          "date": "2026-04-13T18:28:40",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080840/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,1/8] kasan: expose generic kasan helpers",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260413-kasan-v1-1-1a5831230821@bootlin.com/",
+      "date": "2026-04-13T18:28:41",
+      "series": [
+        {
+          "id": 1080840,
+          "url": "https://patchwork.kernel.org/api/series/1080840/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080840",
+          "date": "2026-04-13T18:28:40",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080840/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3] bpf/tests: Exhaustive test coverage for signed division and modulo",
+      "author": "Jie Meng",
+      "url": "https://lore.kernel.org/bpf/20260413172311.3918767-1-jmeng@fb.com/",
+      "date": "2026-04-13T17:23:11",
+      "series": [
+        {
+          "id": 1080818,
+          "url": "https://patchwork.kernel.org/api/series/1080818/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080818",
+          "date": "2026-04-13T17:23:11",
+          "name": "[bpf-next,v3] bpf/tests: Exhaustive test coverage for signed division and modulo",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1080818/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v14,5/5] bpf, arm64: Emit BTI for indirect jump target",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/63b112e8dad43246e590b2be3ac9de592986963a.1776062885.git.xukuohai@hotmail.com/",
+      "date": "2026-04-13T12:45:02",
+      "series": [
+        {
+          "id": 1080724,
+          "url": "https://patchwork.kernel.org/api/series/1080724/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080724",
+          "date": "2026-04-13T12:45:02",
+          "name": "emit ENDBR/BTI instructions for indirect",
+          "version": 14,
+          "mbox": "https://patchwork.kernel.org/series/1080724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v14,4/5] bpf, x86: Emit ENDBR for indirect jump targets",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/0d74f28347a2223b92a2bb634a6793c182ef145f.1776062885.git.xukuohai@hotmail.com/",
+      "date": "2026-04-13T12:45:01",
+      "series": [
+        {
+          "id": 1080724,
+          "url": "https://patchwork.kernel.org/api/series/1080724/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080724",
+          "date": "2026-04-13T12:45:02",
+          "name": "emit ENDBR/BTI instructions for indirect",
+          "version": 14,
+          "mbox": "https://patchwork.kernel.org/series/1080724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v14,3/5] bpf: Add helper to detect indirect jump targets",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/02230fcf318eff0d60857a2887f1138e99893de6.1776062885.git.xukuohai@hotmail.com/",
+      "date": "2026-04-13T12:45:00",
+      "series": [
+        {
+          "id": 1080724,
+          "url": "https://patchwork.kernel.org/api/series/1080724/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080724",
+          "date": "2026-04-13T12:45:02",
+          "name": "emit ENDBR/BTI instructions for indirect",
+          "version": 14,
+          "mbox": "https://patchwork.kernel.org/series/1080724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v14,2/5] bpf: Pass bpf_verifier_env to JIT",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/e99d594bcedfc0d818242ca6dda26f8f45f44062.1776062885.git.xukuohai@hotmail.com/",
+      "date": "2026-04-13T12:44:59",
+      "series": [
+        {
+          "id": 1080724,
+          "url": "https://patchwork.kernel.org/api/series/1080724/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080724",
+          "date": "2026-04-13T12:45:02",
+          "name": "emit ENDBR/BTI instructions for indirect",
+          "version": 14,
+          "mbox": "https://patchwork.kernel.org/series/1080724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v14,1/5] bpf: Move constants blinding out of arch-specific JITs",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/7d88904b4028cbe124bbaba5739c525663bedc64.1776062885.git.xukuohai@hotmail.com/",
+      "date": "2026-04-13T12:44:58",
+      "series": [
+        {
+          "id": 1080724,
+          "url": "https://patchwork.kernel.org/api/series/1080724/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080724",
+          "date": "2026-04-13T12:45:02",
+          "name": "emit ENDBR/BTI instructions for indirect",
+          "version": 14,
+          "mbox": "https://patchwork.kernel.org/series/1080724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] bpf, riscv: Remove redundant bpf_flush_icache() after pack allocator finalize",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260413123256.3296452-3-puranjay@kernel.org/",
+      "date": "2026-04-13T12:32:55",
+      "series": [
+        {
+          "id": 1080711,
+          "url": "https://patchwork.kernel.org/api/series/1080711/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080711",
+          "date": "2026-04-13T12:32:53",
+          "name": "bpf, arm64/riscv: Remove redundant icache flush after pack allocator finalize",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080711/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf, arm64: Remove redundant bpf_flush_icache() after pack allocator finalize",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260413123256.3296452-2-puranjay@kernel.org/",
+      "date": "2026-04-13T12:32:54",
+      "series": [
+        {
+          "id": 1080711,
+          "url": "https://patchwork.kernel.org/api/series/1080711/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1080711",
+          "date": "2026-04-13T12:32:53",
+          "name": "bpf, arm64/riscv: Remove redundant icache flush after pack allocator finalize",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1080711/mbox/"
+        }
+      ]
+    }
+  ]
+}
