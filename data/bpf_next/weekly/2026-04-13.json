@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-04-14T00:00:00Z",
+  "period_start": "2026-04-06",
+  "period_end": "2026-04-13",
+  "patch_count": 100,
+  "thread_count": 20,
+  "top_contributors": ["Alexei Starovoitov", "Yonghong Song", "Emil Tsalapatis", "Eduard Zingerman", "Amery Hung"],
+  "key_topics": ["verifier", "liveness", "arena", "kfuncs", "stack-arguments", "local-storage", "selftests"],
+  "overview": "The week of April 6-13 on bpf-next was defined by two parallel verifier modernization efforts and a significant new calling-convention feature. Eduard Zingerman's static stack liveness analysis series (v4, 14 patches) completed its run, delivering 4-byte stack tracking granularity, a forward arg-tracking dataflow pass, and dead stack slot poisoning to strengthen initialization safety guarantees. Alexei Starovoitov simultaneously pursued a structural cleanup, splitting the monolithic verifier.c into focused modules across four revision rounds. On the feature side, Yonghong Song's v4 18-patch series brings stack-based argument passing to BPF functions and kfuncs, backed by x86_64 JIT support, while Emil Tsalapatis pushed the arena memory library to v7 with a buddy allocator and ASAN runtime.",
+  "patches": [
+    {
+      "title": "bpf: poison dead stack slots",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260410-patch-set-v4-14-5d4eecb343db@gmail.com/",
+      "summary": "The culmination of Zingerman's v4 static stack liveness series (14 patches), this patch uses the results of the new forward arg-tracking dataflow analysis to poison BPF stack slots that are written but never subsequently read. Poisoning dead slots causes the verifier to reject programs that rely on uninitialized stack memory, closing a class of subtle bugs where stale values could influence program behavior. The series builds on 4-byte stack granularity tracking, (callsite, depth)-keyed func_instances, and a new forward liveness API introduced in earlier patches.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Enforce regsafe base id consistency for BPF_ADD_CONST scalars",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260410232651.559778-1-daniel@iogearbox.net/",
+      "summary": "Fixes a verifier state-pruning correctness bug where the regsafe() check failed to account for base ID consistency when comparing two BPF_ADD_CONST scalar registers. Without this fix, the verifier could incorrectly declare two program states as equivalent and prune a branch that should have been explored, potentially accepting a program that reads out-of-bounds. A companion selftest is included to exercise the specific code path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Split fixup/post-processing logic from verifier.c into fixups.c",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260412152936.54262-2-alexei.starovoitov@gmail.com/",
+      "summary": "The opening patch of Starovoitov's v4 verifier.c split series moves fixup and post-processing logic out of the monolithic verifier.c into fixups.c. Over four revision rounds this week the series also spun out liveness.c, cfg.c, states.c, backtrack.c, and check_btf.c, dramatically reducing the size of verifier.c and making each subsystem independently reviewable. The refactoring is behavior-preserving and comes with no functional changes.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260412045955.257613-1-yonghong.song@linux.dev/",
+      "summary": "The core verifier patch of Song's v4 18-patch series teaches the BPF verifier to validate stack-based arguments at BPF-to-BPF call sites, extending the calling convention beyond the five-register limit. A new BPF_REG_STACK_ARG_BASE register is introduced for addressing arguments passed on the caller's stack, and the verifier enforces that stack arguments are only used in JITed programs not reachable through tail calls. This enables BPF functions and kfuncs to accept more than five arguments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf,x86: Implement JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260412050033.267815-1-yonghong.song@linux.dev/",
+      "summary": "The x86_64 JIT backend patch in Song's stack-arguments series emits code to correctly marshal arguments placed on the caller's stack frame at BPF function call boundaries. Arguments beyond the five-register window are addressed via BPF_REG_STACK_ARG_BASE and copied into the appropriate stack location before the call. This patch completes the end-to-end implementation for x86_64, with negative tests for unsupported configurations included in the selftest series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow instructions with arena source and non-arena dest registers",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260412174546.18684-2-emil@etsalapatis.com/",
+      "summary": "The first substantive verifier patch in Tsalapatis's v7 arena library series relaxes a restriction on mixed arena/non-arena arithmetic so that result values can be plain scalars or non-arena pointers. This is needed to support the user-space arena library code, which frequently mixes pointer types in address calculations. The v7 series accompanying it adds a buddy allocator, ASAN runtime, and a comprehensive libarena selftest suite.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix Null-Pointer Dereference in kernel_clone() via BPF fmod_ret on security_task_alloc",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20260411163556.8567-2-yangfeng59949@163.com/",
+      "summary": "This v3 bug fix addresses a null-pointer dereference triggered when a BPF fmod_ret program attached to the security_task_alloc hook returns non-zero, causing kernel_clone() to proceed with a partially-initialized task struct. The fix adds the missing return-value check so the error path is taken before the null dereference, and a selftest verifies correct behavior. This patch appeared as v2 earlier in the week and was refined to v3 by April 11.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Move constants blinding out of arch-specific JITs",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/20260411133847.1042658-2-xukuohai@huaweicloud.com/",
+      "summary": "The first patch in Xu Kuohai's v13 5-patch series consolidates JIT constant blinding into the architecture-independent BPF core, removing per-arch duplication. The series' broader goal is to enable all JIT backends to emit ENDBR (x86) and BTI (AArch64) instructions for indirect call targets, strengthening CFI on those architectures. Earlier patches in the series abstract the blinding so that the arch-specific CFI instruction emission can slot in cleanly.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Use kmalloc_nolock() universally in local storage",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260411015419.114016-3-ameryhung@gmail.com/",
+      "summary": "Converts BPF local storage allocation paths to use the recently introduced kmalloc_nolock() variant, which avoids lock acquisition and improves performance in the common case where the per-CPU slab is warm. A companion patch in the same v2 series removes now-unnecessary gfp_flags plumbing from bpf_local_storage_update(). The series also fixes a selftest that was inadvertently tracing kmalloc calls and would be perturbed by the allocation strategy change.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add missing fsession to the verifier log",
+      "author": "Menglong Dong",
+      "url": "https://lore.kernel.org/bpf/20260412060346.142007-2-dongml2@chinatelecom.cn/",
+      "summary": "Adds the BPF_TRACE_FSESSION attach type to the verifier's attach-type log output, which omitted it despite the type being defined. Two companion patches in the v3 series fix the same omission in the BPF documentation and bpftool's usage text. This is a purely cosmetic/correctness fix with no change to runtime behavior.",
+      "related_links": []
+    }
+  ]
+}

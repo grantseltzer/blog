@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-04-14T00:00:00Z",
+  "period_start": "2026-04-12",
+  "period_end": "2026-04-13",
+  "patch_count": 64,
+  "thread_count": 9,
+  "top_contributors": ["Alexei Starovoitov", "Yonghong Song", "Emil Tsalapatis", "Menglong Dong"],
+  "key_topics": ["verifier", "arena", "kfuncs", "stack-arguments", "selftests"],
+  "overview": "April 12-13 brought a wave of structural and feature work to bpf-next. Alexei Starovoitov posted four revision rounds of a series splitting the monolithic verifier.c into focused modules, while Yonghong Song's v4 18-patch series adds stack-based argument support for BPF functions and kfuncs with x86_64 JIT backing. Emil Tsalapatis's arena library reached v7, Menglong Dong fixed missing fsession references across the subsystem, and a lone test fix replaced a deprecated shm_open call with memfd_create.",
+  "patches": [
+    {
+      "title": "bpf: Split fixup/post-processing logic from verifier.c into fixups.c",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260412152936.54262-2-alexei.starovoitov@gmail.com/",
+      "summary": "The first patch of Starovoitov's v4 verifier.c split series moves the fixup and post-processing logic out of the monolithic verifier.c into a dedicated fixups.c. The overarching goal is to make the BPF verifier codebase more navigable by isolating distinct concerns into their own files, reducing the size of verifier.c from tens of thousands of lines to a more manageable core. This is the opening move in a 6-patch series that also splits out liveness, CFG analysis, state equivalence, backtracking, and BTF checking.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Move backtracking logic to backtrack.c",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260412152936.54262-6-alexei.starovoitov@gmail.com/",
+      "summary": "Part of the v4 verifier.c split series, this patch extracts the precision backtracking logic into its own backtrack.c file. Precision backtracking is one of the more complex subsystems in the verifier, responsible for determining which register values must be tracked precisely to correctly prune equivalent states. Isolating it improves reviewability and makes future modifications to the backtracking algorithm easier to scope.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260412045955.257613-1-yonghong.song@linux.dev/",
+      "summary": "This is the core verifier patch in Song's v4 18-patch series enabling BPF functions to pass arguments via the stack, overcoming the five-register argument limit. A new BPF_REG_STACK_ARG_BASE register is introduced to address arguments spilled beyond the register window, and the verifier is taught to validate PTR_TO_STACK arguments at call sites. The series handles both BPF-to-BPF calls and kfunc calls, with safeguards against use in programs reachable by tail calls or in non-JITed contexts.",
+      "related_links": []
+    },
+    {
+      "title": "bpf,x86: Implement JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260412050033.267815-1-yonghong.song@linux.dev/",
+      "summary": "The x86_64 JIT backend patch in Song's stack arguments series teaches the JIT to emit code that correctly marshals stack-based arguments at BPF function call boundaries. Arguments exceeding the five-register limit are placed in a designated area of the caller's stack frame and addressed relative to the new BPF_REG_STACK_ARG_BASE. The patch is paired with architecture enablement and verifier-side validation patches in the same series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow instructions with arena source and non-arena dest registers",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260412174546.18684-2-emil@etsalapatis.com/",
+      "summary": "The first substantive patch in Tsalapatis's v7 arena library series relaxes a verifier restriction to allow arithmetic operations where one operand is an arena pointer and the result is a plain scalar or non-arena pointer. This is needed so that user-space arena library code can freely mix arena and non-arena pointers in calculations without triggering spurious verifier rejections. The v7 series also adds a buddy allocator, ASAN support, and a full libarena test harness.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add missing fsession to the verifier log",
+      "author": "Menglong Dong",
+      "url": "https://lore.kernel.org/bpf/20260412060346.142007-2-dongml2@chinatelecom.cn/",
+      "summary": "This v3 patch adds the missing BPF_TRACE_FSESSION attach type to the verifier's human-readable log output, which previously omitted it when printing program attach type information. Companion patches in the same 3-patch series add fsession to the BPF documentation and to bpftool's usage and man page, rounding out the coverage for this attach type. The series is a straightforward completeness fix with no functional behavior change.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Use memfd_create instead of shm_open in cgroup_iter_memcg",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260412210636.47516-1-alexei.starovoitov@gmail.com/",
+      "summary": "Replaces the use of the now-deprecated shm_open() call in the cgroup_iter_memcg BPF selftest with the more modern memfd_create() interface. The existing shm_open usage was causing test infrastructure issues on systems where POSIX shared memory is not available or behaves differently. This is a one-patch cleanup with no impact on what the test actually exercises.",
+      "related_links": []
+    }
+  ]
+}
