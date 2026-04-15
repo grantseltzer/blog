@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-04-15T00:00:00Z",
+  "period_start": "2026-04-13",
+  "period_end": "2026-04-14",
+  "patch_count": 33,
+  "thread_count": 11,
+  "top_contributors": [
+    "Alexis Lothoré (eBPF Foundation)",
+    "Eduard Zingerman",
+    "Xu Kuohai",
+    "Tiezhu Yang",
+    "Puranjay Mohan"
+  ],
+  "key_topics": [
+    "verifier",
+    "jit",
+    "kasan",
+    "atomics",
+    "arena",
+    "selftests",
+    "arm64",
+    "x86"
+  ],
+  "overview": "Activity for April 13-14 was dominated by two significant RFC proposals: KASAN instrumentation for JIT-compiled BPF programs on x86, and an expanded atomics selftest suite targeting cpuv4 and sub-32-bit operations. The day also saw important verifier fixes from Eduard Zingerman correcting argument tracking through imprecise and multi-offset stack pointers, plus a use-after-free fix in BPF arena's fork handling from Alexei Starovoitov. Security hardening continued with Xu Kuohai's v14 series adding ENDBR/BTI emission for indirect jump targets across x86 and arm64.",
+  "patches": [
+    {
+      "title": "bpf: add BPF_JIT_KASAN for KASAN instrumentation of JITed programs",
+      "author": "Alexis Lothoré (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260413-kasan-v1-3-1a5831230821@bootlin.com/",
+      "summary": "This RFC introduces a new Kconfig option BPF_JIT_KASAN that enables Kernel Address Sanitizer checks inside JIT-compiled BPF programs on x86. The series works by having the BPF verifier mark instructions that access the program stack, then having the x86 JIT emit inline KASAN shadow-memory checks around those accesses. This brings the same memory-safety guarantees that KASAN provides to kernel C code into the JIT-compiled BPF execution path, significantly improving the ability to catch out-of-bounds and use-after-free bugs in BPF programs. The series is eight patches covering KASAN helper exposure, stack-access marking in the verifier, the core Kconfig, x86 JIT emission, and selftests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix use-after-free in arena_vm_close on fork",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260413194245.21449-1-alexei.starovoitov@gmail.com/",
+      "summary": "This single patch fixes a use-after-free bug triggered when a process that has a BPF arena mapped forks and then the child or parent closes the arena's VM region. The arena_vm_close callback was accessing memory that could already be freed in the fork path, leading to potential memory corruption or a kernel crash. The fix ensures proper reference counting and ordering so that the arena structure remains valid for the lifetime of all mappings referencing it.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: fix arg tracking for imprecise/multi-offset BPF_ST/STX",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260413-stacklive-fixes-v2-1-398e126e5cf3@gmail.com/",
+      "summary": "This v2 two-patch series corrects the BPF verifier's argument liveness tracking for BPF_ST and BPF_STX instructions when accessed through imprecise or multi-offset stack pointers. Without this fix, the verifier could fail to mark stack slots as live, causing incorrect pruning of program states and potentially accepting unsafe programs or rejecting valid ones. The companion selftest patch adds regression coverage for these edge cases involving imprecise pointer arithmetic targeting stack memory.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Move constants blinding out of arch-specific JITs",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/7d88904b4028cbe124bbaba5739c525663bedc64.1776062885.git.xukuohai@hotmail.com/",
+      "summary": "This is the base patch of a v14 five-patch series that refactors BPF JIT infrastructure to enable emission of ENDBR (x86 IBT) and BTI (arm64) instructions at indirect jump targets. The series first centralizes constant blinding out of arch-specific JITs, then passes bpf_verifier_env into the JIT, adds a generic helper to identify indirect jump targets, and finally adds x86 ENDBR and arm64 BTI emission. The result hardens JIT-compiled BPF programs against control-flow hijacking attacks on hardware that supports CET/BTI.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Remove redundant bpf_flush_icache() after pack allocator finalize",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260413191111.3426023-2-puranjay@kernel.org/",
+      "summary": "This v2 series removes redundant instruction-cache flush calls on arm64 and RISC-V that were being issued after the BPF pack allocator's finalize step. The pack allocator already performs an icache flush as part of finalization, making the subsequent flush in the JIT code superfluous and wasteful. Eliminating the duplicate flushes reduces overhead during BPF program load, particularly for workloads that frequently load and unload programs.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Prevent allocating data larger than a page",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260413190259.358442-2-ameryhung@gmail.com/",
+      "summary": "This three-patch series fixes bugs in the BPF task local storage selftests where allocations larger than a page were permitted, leading to garbage data being returned by tld_get_data(). The series adds a guard against oversized allocations, fixes the garbage-data return path, and adds a new selftest verifying that small task local data allocations work correctly end-to-end. These fixes improve reliability of the task local storage feature for programs that use it to track per-task state.",
+      "related_links": []
+    },
+    {
+      "title": "bpf/tests: Exhaustive test coverage for signed division and modulo",
+      "author": "Jie Meng",
+      "url": "https://lore.kernel.org/bpf/20260413172311.3918767-1-jmeng@fb.com/",
+      "summary": "This v3 single patch adds exhaustive test cases for signed 32-bit and 64-bit division and modulo operations in the BPF test infrastructure. The tests cover edge cases including division by negative numbers, INT_MIN divided by -1 (overflow), and modulo by negative divisors, which are all areas where interpreter and JIT implementations can diverge. Comprehensive coverage here helps catch correctness regressions across different architectures when new JIT backends are added or existing ones are modified.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Only define ENABLE_ATOMICS_TESTS for cpuv4 runner",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260414071507.29804-2-yangtiezhu@loongson.cn/",
+      "summary": "This RFC four-patch series updates the BPF atomics selftest suite with broader coverage, starting by scoping the ENABLE_ATOMICS_TESTS macro to cpuv4 runner environments to avoid spurious failures on older hardware. Subsequent patches in the series add 8-bit and 16-bit fetch-based atomic testcases, non-fetch-based atomics for all widths, and exhaustive stack-based atomic operation coverage. The expanded suite is motivated by work on LoongArch BPF JIT support and improves confidence in atomic instruction correctness across architectures.",
+      "related_links": []
+    }
+  ]
+}
