@@ -1,46 +1,46 @@
 {
-  "generated_at": "2026-04-10T10:10:19Z",
+  "generated_at": "2026-04-16T00:00:00Z",
   "period_start": "2026-04-09",
   "period_end": "2026-04-10",
   "patch_count": 44,
   "thread_count": 5,
   "top_contributors": ["Eduard Zingerman", "Daniel Borkmann", "Feng Yang"],
-  "key_topics": ["verifier", "liveness-analysis", "stack", "selftests", "fmod_ret", "security"],
-  "overview": "The bpf-next mailing list on April 9-10 was dominated by Eduard Zingerman's static stack liveness data flow analysis series, which reached its third revision with 13 patches introducing forward argument tracking, fine-grained 4-byte stack liveness, and dead stack slot poisoning in the verifier. Daniel Borkmann contributed a fix to prevent stale packet range tracking after scalar arithmetic, and Feng Yang posted a v2 fix for a null-pointer dereference triggered through BPF fmod_ret on security_task_alloc.",
+  "key_topics": ["verifier", "liveness-analysis", "stack-slots", "fmod_ret", "selftests"],
+  "overview": "Activity over this period was dominated by Eduard Zingerman's static stack liveness data flow analysis series, which progressed through three revisions (v1, v2, v3) and implements a new verifier pass to track dead stack slots and poison them at verification time. Daniel Borkmann contributed a fix to drop pkt_end markers after arithmetic operations to prevent the verifier's is_pkt_ptr_branch_taken() from making incorrect branch decisions, while Feng Yang addressed a null-pointer dereference in kernel_clone() triggered by a BPF fmod_ret program attached to security_task_alloc.",
   "patches": [
     {
       "title": "bpf: share several utility functions as internal API",
       "author": "Eduard Zingerman",
       "url": "https://lore.kernel.org/bpf/20260410-patch-set-v3-1-1f5826dc0ef2@gmail.com/",
-      "summary": "This foundational patch in the v3 static stack liveness series refactors several utility functions in the BPF verifier to be accessible as an internal API, enabling reuse by the new static analysis pass. It is the first of 13 patches in the series that together implement a full dataflow liveness analysis for BPF stack slots. By exposing these helpers cleanly, subsequent patches can build the forward arg-tracking and liveness propagation logic without duplicating code. The change sets the groundwork for improved dead stack slot detection and poisoning.",
+      "summary": "This patch opens the 13-patch v3 series implementing static stack liveness data flow analysis by refactoring several internal verifier utilities into a shared internal API. Exposing these helpers avoids duplication between liveness.c and the rest of the verifier. The series as a whole introduces a new forward dataflow analysis pass that precisely tracks which BPF stack slots are live across a program's execution paths, feeding into improved liveness masks. Later patches in the series build on this foundation to identify and poison dead stack slots, improving both safety and verifier diagnostics.",
       "related_links": []
     },
     {
       "title": "bpf: introduce forward arg-tracking dataflow analysis",
       "author": "Eduard Zingerman",
       "url": "https://lore.kernel.org/bpf/20260410-patch-set-v3-7-1f5826dc0ef2@gmail.com/",
-      "summary": "This patch introduces a forward dataflow analysis pass to the BPF verifier that tracks which stack slots are written and subsequently read as function arguments. It complements the existing backward liveness analysis by determining which writes are live at call boundaries, enabling the verifier to precisely identify dead stack writes. The analysis operates with 4-byte granularity on stack slots and integrates with the func_instances tracking. This is the core algorithmic addition in Zingerman's static stack liveness series.",
+      "summary": "Introduces the core new analysis pass in the static stack liveness series: a forward arg-tracking dataflow analysis that computes which subprogram arguments and stack slots are actually consumed during execution. This complements the existing backward liveness analysis by propagating use information in the forward direction through the CFG. The results are recorded in bpf_liveness masks, enabling the verifier to distinguish truly live slots from dead ones with higher precision. This is the algorithmic heart of the feature, upon which the subsequent logging improvements and dead-slot poisoning depend.",
       "related_links": []
     },
     {
       "title": "bpf: poison dead stack slots",
       "author": "Eduard Zingerman",
       "url": "https://lore.kernel.org/bpf/20260410-patch-set-v3-13-1f5826dc0ef2@gmail.com/",
-      "summary": "The final patch in the v3 static stack liveness series uses the results of the new dataflow analysis to poison stack slots that are written but never subsequently read. Poisoning these dead slots allows the verifier to detect and reject programs that rely on uninitialized or stale stack data, improving safety guarantees. This patch ties together all the preparatory infrastructure added by the preceding 12 patches. It also includes updates to verifier logging to report which slots were identified as dead.",
+      "summary": "The final patch of the v3 static stack liveness series implements the actual poisoning of stack slots determined to be dead by the new analysis pass. Dead slots are written with a special poison marker during verification, ensuring that any path the verifier missed which accesses them will be caught. This provides a defense-in-depth safety property and improves the quality of error messages when BPF programs touch uninitialized or logically dead stack memory. Accompanying selftests in patches 12/13 and earlier verify both the analysis results and the poisoning behavior.",
       "related_links": []
     },
     {
       "title": "bpf: Fix Null-Pointer Dereference in kernel_clone() via BPF fmod_ret on security_task_alloc",
       "author": "Feng Yang",
       "url": "https://lore.kernel.org/bpf/20260410061037.149532-2-yangfeng59949@163.com/",
-      "summary": "This v2 patch fixes a null-pointer dereference that can be triggered when a BPF program attached via fmod_ret to security_task_alloc returns an error, causing kernel_clone() to proceed with a partially initialized task structure. The fix adds a guard so that the cloned task is properly cleaned up when fmod_ret programs intercept the LSM hook and return a non-zero value. This closes a potential local denial-of-service vector exploitable by privileged BPF users. A companion selftest was added in patch 2/2 to verify the fix.",
+      "summary": "Fixes a null-pointer dereference in kernel_clone() that occurs when a BPF fmod_ret program attached to the security_task_alloc LSM hook returns a non-zero (error) value. In that case the fmod_ret causes an early return from the hook, bypassing actual task allocation, but the caller still dereferences the resulting null task pointer. The fix adjusts the error path to correctly handle the case where fmod_ret aborted allocation before a task object was produced. This is v2 of the series; patch 2/2 adds selftests exercising the corrected behavior.",
       "related_links": []
     },
     {
       "title": "bpf: Drop pkt_end markers on arithmetic to prevent is_pkt_ptr_branch_taken",
       "author": "Daniel Borkmann",
       "url": "https://lore.kernel.org/bpf/20260409155016.536608-1-daniel@iogearbox.net/",
-      "summary": "This patch fixes a verifier bug where performing scalar arithmetic on a packet pointer register incorrectly preserved the pkt_end marker, causing is_pkt_ptr_branch_taken() to make wrong assumptions about bounds checks in subsequent conditional branches. The fix clears the pkt_end marker when arithmetic modifies the register, preventing stale range information from influencing branch pruning. A regression selftest was added in the companion patch 2/2. This addresses a subtle correctness issue in XDP and TC packet processing programs that manipulate packet pointers arithmetically.",
+      "summary": "Fixes a verifier bug where pkt_end pointer markers were incorrectly retained after arithmetic operations (scalar addition or subtraction) on a packet-end pointer. Preserving the marker after arithmetic causes is_pkt_ptr_branch_taken() to treat the derived pointer as a genuine pkt_end boundary, leading to incorrect branch-pruning decisions and potential unsoundness. The fix drops the pkt_end marker whenever arithmetic is performed on such a pointer, since the result no longer carries the same semantic guarantee. Patch 2/2 adds a selftest reproducing the stale pkt range scenario to prevent regressions.",
       "related_links": []
     }
   ]
