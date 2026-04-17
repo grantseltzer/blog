@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-04-17T00:00:00Z",
+  "period_start": "2026-04-15",
+  "period_end": "2026-04-16",
+  "patch_count": 34,
+  "thread_count": 9,
+  "top_contributors": ["Ricardo B. Marlière", "Mykyta Yatsenko", "Nick Hudson", "Eduard Zingerman"],
+  "key_topics": ["tracepoints", "sleepable", "verifier", "tc", "selftests", "token"],
+  "overview": "The most notable submission was Mykyta Yatsenko's v10 of sleepable tracepoint support, a long-requested feature that allows raw and classic tracepoint BPF programs to call sleeping helpers and kfuncs. Nick Hudson's v4 series introduced new BPF_F_ADJ_ROOM_DECAP_* flags to fix GSO state corruption during tunnel decapsulation. Harishankar Vishwanathan improved the verifier's branch pruning with tnum intersection checks, and Ricardo B. Marlière posted an 11-patch series overhauling the BPF selftests build system to tolerate partial kernel configurations.",
+  "patches": [
+    {
+      "title": "bpf: Add sleepable support for raw tracepoint programs",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260415-sleepable_tracepoints-v10-1-161f40b33dd7@meta.com/",
+      "summary": "Adds support for BPF programs attaching to raw tracepoints to be marked sleepable, enabling them to call helpers and kfuncs that may sleep. This has been a long-requested feature (v10 of this series), as raw tracepoints see heavy use in production tracing infrastructure but could not previously use the growing set of sleepable-only BPF primitives. The series also extends libbpf with new section handlers for sleepable tracepoints and adds verifier logic to validate the sleepable flag for these program types.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add BPF_F_ADJ_ROOM_DECAP_* flags for tunnel decapsulation",
+      "author": "Nick Hudson",
+      "url": "https://lore.kernel.org/bpf/20260416075514.927101-4-nhudson@akamai.com/",
+      "summary": "Introduces new BPF_F_ADJ_ROOM_DECAP_* flags for the bpf_skb_adjust_room() helper to properly signal tunnel decapsulation operations to the kernel. Previously, programs performing decapsulation had no standard way to inform the kernel that GSO state needed updating after header removal, leading to potential packet corruption on large segmented packets. This series pairs the new flags with a fix to clear GSO state appropriately in skb_adjust_room when decapsulating.",
+      "related_links": []
+    },
+    {
+      "title": "bpf/verifier: Use intersection checks when simulating to detect dead branches",
+      "author": "Harishankar Vishwanathan",
+      "url": "https://lore.kernel.org/bpf/20260415160728.657270-2-harishankar.vishwanathan@gmail.com/",
+      "summary": "Improves the BPF verifier's branch pruning by computing tnum/u64 intersections to detect branches that can never be taken given current register constraints. This reduces the number of states the verifier must explore for programs with range checks, lowering verification time for complex programs. The accompanying selftest adds cases where the tnum and u64 ranges produce an empty intersection, verifying that the verifier correctly prunes those paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: copy BPF token from main program to subprograms",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260415-subprog-token-fix-v4-1-9bd000e8b068@gmail.com/",
+      "summary": "V4 of the fix ensuring BPF token delegation is correctly propagated from a main BPF program to its subprograms during verification. Without this, privileged operations in subprograms are incorrectly rejected even when the token grants the necessary permissions. This iteration addresses review feedback from v3 and improves selftest coverage verifying that kallsyms entries are present for token-loaded subprograms.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add BPF_STRICT_BUILD toggle",
+      "author": "Ricardo B. Marlière",
+      "url": "https://lore.kernel.org/bpf/20260415-selftests-bpf_misconfig-v5-1-03d0a52a898a@suse.com/",
+      "summary": "First patch in an 11-part series overhauling the BPF selftests build system to tolerate partial kernel configurations. Introduces a BPF_STRICT_BUILD toggle that lets upstreams enforce strict build behavior while allowing distro kernel CI environments to skip tests for features not compiled in. The full series handles BPF object compilation failures, skeleton generation failures, benchmark build failures, and install-time missing file handling.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Use local type for flow_offload_tuple_rhash in xdp_flowtable",
+      "author": "Gregory Bell",
+      "url": "https://lore.kernel.org/bpf/f6f80e1f34489ef0f3c47601e9d752da0d0259e5.1776280396.git.grbell@redhat.com/",
+      "summary": "Updates BPF selftests to use local type definitions for kfunc declarations rather than pulling in internal kernel headers directly, improving portability across kernel versions and configurations. The series covers two test files—xdp_flowtable and test_tunnel_kern—both of which referenced internal kernel types that can differ between kernel builds. Using local type definitions avoids header inclusion issues that arise when testing against distro or out-of-tree kernels.",
+      "related_links": []
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-04-17T00:00:00Z",
+  "period_start": "2026-04-14",
+  "period_end": "2026-04-15",
+  "patch_count": 24,
+  "thread_count": 8,
+  "top_contributors": ["Leon Hwang", "Alan Maguire", "Tiezhu Yang"],
+  "key_topics": ["btf", "percpu", "verifier", "dynptr", "tcp", "s390"],
+  "overview": "The day's patches centered on two substantial new features: Alan Maguire's series extending BTF's btf_type struct to use previously unused bits for larger vlen and kind fields, and Leon Hwang's v4 series introducing global per-CPU data support in BPF programs. Eduard Zingerman continued refining BPF token propagation to subprograms, while KaFai Wan added a kernel-side guard rejecting TCP_NODELAY from BPF TCP header option callbacks.",
+  "patches": [
+    {
+      "title": "bpf: Introduce global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260414132421.63409-3-leon.hwang@linux.dev/",
+      "summary": "Introduces first-class support for global per-CPU variables in BPF programs, allowing programs to declare and use per-CPU data in a way that is reflected in generated skeletons. This eliminates the need for manual per-CPU map management when global per-CPU state is desired. The series also adds BPF_F_ALL_CPUS flag support for per-CPU map updates and extends libbpf with feature probing and skeleton generation for the new type.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Extend BTF UAPI vlen, kinds to use unused bits",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260414195019.684531-2-alan.maguire@oracle.com/",
+      "summary": "Extends the BTF btf_type UAPI to repurpose previously unused bits, expanding the vlen field from 16 to 24 bits and the kind field from 5 to 8 bits. This unblocks future growth of BTF type counts (particularly for large structs with many members) and new kind definitions. The series includes matching libbpf feature detection, bpftool support for the wider fields, and selftest coverage for the new limits.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: copy BPF token from main program to subprograms",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260414-subprog-token-fix-v2-1-59146c31f6f1@gmail.com/",
+      "summary": "Fixes a bug where the BPF token associated with a main program was not propagated to its subprograms during verification, causing permission checks on subprogram-specific operations to fail when loading via token delegation. Without this fix, privileged operations in subprograms could be incorrectly rejected even when the token grants the necessary permissions. The accompanying selftest verifies that kallsyms entries are correctly created for token-loaded subprograms.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Reject TCP_NODELAY from BPF hdr opt callbacks",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20260414112310.1285783-2-kafai.wan@linux.dev/",
+      "summary": "Adds a kernel-side guard to reject attempts to set TCP_NODELAY from within BPF TCP header option write and reserve callbacks. Setting TCP_NODELAY from these callbacks can cause unexpected behavior because the callback context does not allow safe modification of socket-level TCP flags. The patch ensures consistent and safe behavior by failing such attempts early with an appropriate error code.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refactor dynptr mutability tracking",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260414191014.1218567-1-ameryhung@gmail.com/",
+      "summary": "Refactors how the BPF verifier tracks whether a dynptr is mutable or read-only, consolidating the logic to make it cleaner and easier to extend. The existing tracking was spread across multiple code paths using implicit conventions; this change makes mutability an explicit property of dynptr state. This v3 incorporates reviewer feedback from earlier rounds and should make future dynptr feature additions less error-prone.",
+      "related_links": []
+    },
+    {
+      "title": "s390/bpf: inline smp_processor_id and current_task",
+      "author": "Maxim Khmelevskii",
+      "url": "https://lore.kernel.org/bpf/20260414142930.528751-1-max@linux.ibm.com/",
+      "summary": "Teaches the s390 BPF JIT to inline calls to smp_processor_id() and current_task rather than emitting out-of-line function calls. Inlining these frequently-used helpers reduces call overhead and improves performance of BPF programs running on s390 hardware. This brings s390 more in line with x86 and arm64 JITs which have had similar optimizations for some time.",
+      "related_links": []
+    }
+  ]
+}
