@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-04-18T09:52:31Z",
+  "period_start": "2026-04-17",
+  "period_end": "2026-04-18",
+  "patch_count": 54,
+  "thread_count": 7,
+  "top_contributors": ["Jiri Olsa", "Yonghong Song", "Alan Maguire"],
+  "key_topics": ["tracing", "kfuncs", "btf", "jit", "selftests"],
+  "overview": "A busy day on bpf-next dominated by Jiri Olsa's 28-patch tracing_multi link series, which introduces a new BPF link type for attaching a single program to multiple kernel functions simultaneously via a single syscall. Yonghong Song's 16-patch series adding stack argument support for BPF functions and kfuncs also appeared, extending the calling convention to pass structs beyond the six-register limit on x86-64.",
+  "patches": [
+    {
+      "title": "bpf: Add support for tracing multi link",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-14-jolsa@kernel.org/",
+      "summary": "Introduces the new BPF_LINK_TYPE_TRACING_MULTI link type, allowing a single BPF tracing program to be attached to many kernel functions at once rather than requiring one link per function. The implementation reuses and extends the existing trampoline infrastructure, adding bpf_trampoline_multi_attach/detach helpers to manage bulk attachment. This is a significant usability improvement for tools that need to trace large numbers of functions—for example, function-graph style tracers or security monitors—without the overhead of managing thousands of individual links.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Add support to create tracing multi link",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-21-jolsa@kernel.org/",
+      "summary": "Adds the libbpf-side API for creating tracing_multi links, exposing the new kernel capability to userspace BPF programs. The patch wires up bpf_link_create() for the new attach type and introduces a btf_type_is_traceable_func() helper so that callers can filter BTF entries to only traceable functions before bulk attachment. Together with the kernel patches in this series, libbpf users gain a high-level interface for multi-function tracing.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034739.2629927-1-yonghong.song@linux.dev/",
+      "summary": "Extends the BPF verifier and calling convention to allow struct arguments larger than eight bytes to be passed on the stack to BPF-to-BPF calls, mirroring the C ABI on x86-64. Previously BPF functions were limited to six register-width arguments; this patch introduces the BPF_REG_PARAMS pseudo-register to track stack-passed parameters and updates the verifier to validate them. The change is a prerequisite for supporting the full kfunc calling convention when kfuncs themselves accept stack-spilled arguments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support stack arguments for kfunc calls",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034754.2630932-1-yonghong.song@linux.dev/",
+      "summary": "Adds verifier support for kfunc calls that take struct arguments passed on the stack, complementing the BPF-function stack-argument patch in the same series. The patch enforces that such structs are no larger than eight bytes per slot and rejects stack arguments when tail calls are reachable (since tail calls don't preserve the stack frame). x86-64 JIT emission for the new calling convention is handled by a companion patch in the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Extend BTF UAPI vlen, kinds to use unused bits",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260417143023.1551481-2-alan.maguire@oracle.com/",
+      "summary": "Expands the BTF type-info fields by repurposing currently-unused bits in the type_info word, raising the vlen limit from 16 bits to 24 bits and the kind field from 5 bits to 8 bits. This removes a long-standing constraint on the number of struct members and enum values that can be described in a single BTF type, which matters for very large auto-generated BTF from complex kernel structs. The series updates libbpf, bpftool, and selftests to handle the wider fields, with libbpf gaining a feature-probe to detect kernel support.",
+      "related_links": []
+    },
+    {
+      "title": "arm32, bpf: Reject BPF-to-BPF calls and callbacks in the JIT",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260417143353.838911-1-puranjay@kernel.org/",
+      "summary": "Makes the 32-bit ARM BPF JIT explicitly reject programs that use BPF-to-BPF calls or callbacks, which the JIT does not implement, rather than silently producing incorrect code. This is a correctness fix: without the rejection the interpreter would be invoked as a fallback but with a JIT-compiled caller, leading to undefined behavior. The v2 revision consolidates the rejection of both BPF_PSEUDO_CALL and callback-carrying helper calls into a single check.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Trace bpf_local_storage_update to debug flaky local storage tests",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260417233631.1443199-1-ameryhung@gmail.com/",
+      "summary": "Adds a fentry tracepoint on bpf_local_storage_update in the BPF local-storage selftests to capture diagnostic information when the tests fail intermittently. Flaky local-storage tests have been observed under memory pressure; the additional tracing helps identify whether failures correlate with concurrent updates or allocation failures. This is a test-infrastructure improvement rather than a kernel change.",
+      "related_links": []
+    }
+  ]
+}

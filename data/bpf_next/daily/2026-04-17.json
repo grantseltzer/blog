@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-04-17T10:16:06Z",
+  "period_start": "2026-04-16",
+  "period_end": "2026-04-17",
+  "patch_count": 61,
+  "thread_count": 7,
+  "top_contributors": ["Yonghong Song", "Ricardo B. Marlière", "Alan Maguire", "Paul Chaignon"],
+  "key_topics": ["verifier", "kfuncs", "btf", "selftests", "tc"],
+  "overview": "A productive day on bpf-next with three major series in flight. Yonghong Song's v5 stack-argument series for BPF functions and kfuncs reached near-final shape, while Paul Chaignon posted an RFC improving verifier register-bounds refinement for 32-to-64-bit range propagation. Mykyta Yatsenko fixed a NULL dereference in the verifier's kptr slot type-checking path, and Nick Hudson continued refining tunnel decapsulation flags for skb_adjust_room.",
+  "patches": [
+    {
+      "title": "bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034739.2629927-1-yonghong.song@linux.dev/",
+      "summary": "The core patch of Yonghong Song's 16-patch v5 series, teaching the BPF verifier to accept struct arguments passed on the stack in BPF-to-BPF calls. A new BPF_REG_PARAMS pseudo-register tracks the stack pointer for parameter spilling, and the verifier validates that stack slots are properly initialized before the call. The x86-64 JIT is updated in a companion patch to emit the required push/pop sequences, while non-JITed paths and tail-call-reachable paths are explicitly rejected.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix NULL deref in map_kptr_match_type for scalar regs",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260416-kptr_crash-v1-1-5589356584b4@meta.com/",
+      "summary": "Fixes a NULL pointer dereference in map_kptr_match_type() that occurs when a BPF program tries to store a scalar register into a map slot typed as a kernel pointer (kptr). The function assumed the source register always holds a pointer with associated BTF type info, but scalars have no such info, causing a crash during verification. The fix adds a scalar-register check before accessing the BTF type, and the companion selftest confirms the verifier now properly rejects such stores.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Extend BTF UAPI vlen, kinds to use unused bits",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260416143904.1220662-2-alan.maguire@oracle.com/",
+      "summary": "Version 2 of Alan Maguire's series widening the BTF type-info word's vlen field from 16 to 24 bits and the kind field from 5 to 8 bits by repurposing reserved bits. The kernel change is accompanied by libbpf updates that add a feature probe for extended-vlen kernel support and adjust btf_vlen() to return __u32, plus bpftool changes to display and handle 24-bit vlen values. This removes a hard ceiling on the number of members in large structs and enum types representable in BTF.",
+      "related_links": []
+    },
+    {
+      "title": "bpf/verifier: Use intersection checks when simulating to detect dead branches",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/681fc6e748330e6a765a89f7193c17b33d4ea26f.1776344897.git.paul.chaignon@gmail.com/",
+      "summary": "An RFC series improving the BPF verifier's ability to prune dead branches by using intersection checks between tnum (tracked number) constraints and integer range bounds when simulating conditional jumps. The series also fixes a bug in the verifier's slow-mode reg_bounds path and improves 32-to-64-bit range refinement so that the verifier derives tighter 64-bit bounds from known 32-bit constraints. Several new selftests capture the refinement cases that were previously missed.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add BPF_F_ADJ_ROOM_DECAP_* flags for tunnel decapsulation",
+      "author": "Nick Hudson",
+      "url": "https://lore.kernel.org/bpf/20260416075514.927101-4-nhudson@akamai.com/",
+      "summary": "Introduces new BPF_F_ADJ_ROOM_DECAP_L3_IPV4 and BPF_F_ADJ_ROOM_DECAP_L3_IPV6 flags for the bpf_skb_adjust_room() helper, allowing BPF programs performing tunnel decapsulation to signal the kernel that the outer IP header has been removed. A companion patch clears the GSO tunnel state in skb_adjust_room when decap flags are set, preventing the networking stack from incorrectly re-segmenting the now-bare inner packet. The v4 revision also adds a tc_tunnel selftest validating the GSO state after decapsulation.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add BPF_STRICT_BUILD toggle",
+      "author": "Ricardo B. Marlière",
+      "url": "https://lore.kernel.org/bpf/20260416-selftests-bpf_misconfig-v7-1-a078e18012e4@suse.com/",
+      "summary": "The first patch of Ricardo B. Marlière's v7 11-patch series that makes the BPF selftest build system more robust against partial kernel configurations. This patch adds a BPF_STRICT_BUILD Makefile toggle: when unset, compilation and BPF skeleton generation failures are tolerated rather than aborting the whole build. Subsequent patches in the series handle benchmark build failures, cross-test weak-symbol definitions, and install-time missing-file tolerance, making it practical to build and run BPF selftests on distro kernels without full source trees.",
+      "related_links": []
+    }
+  ]
+}
