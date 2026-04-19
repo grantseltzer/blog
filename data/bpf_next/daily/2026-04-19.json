@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-04-19T09:51:17Z",
+  "period_start": "2026-04-18",
+  "period_end": "2026-04-19",
+  "patch_count": 11,
+  "thread_count": 3,
+  "top_contributors": ["Puranjay Mohan", "Kumar Kartikeya Dwivedi", "Aaron Tomlin"],
+  "key_topics": ["verifier", "kfuncs", "libbpf", "kprobe", "jit", "arm64"],
+  "overview": "Today's bpf-next activity featured three series spanning the verifier, kfuncs, and libbpf. Kumar Kartikeya Dwivedi posted v3 of a series adding verifier warning infrastructure and a kfunc deprecation annotation, enabling non-fatal diagnostic messages during BPF program loading. Puranjay Mohan posted v13 of a long-running series introducing CPU time counter kfuncs with arm64 JIT support, bringing high-resolution per-CPU timing to BPF programs.",
+  "patches": [
+    {
+      "title": "libbpf: Report error when a negative kprobe offset is specified",
+      "author": "Aaron Tomlin",
+      "url": "https://lore.kernel.org/bpf/20260419030944.1423642-1-atomlin@atomlin.com/",
+      "summary": "libbpf now returns an error when a user specifies a negative offset for a kprobe attachment point. Previously this case could be silently accepted, leading to undefined behavior at attach time. This is a defensive input validation improvement that catches misconfigured kprobe offsets early during program load rather than at runtime.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add support for verifier warning messages",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260418171701.610025-2-memxor@gmail.com/",
+      "summary": "Introduces a new mechanism in the BPF verifier to emit non-fatal warning messages during program verification. Unlike verifier errors that abort loading, warnings allow programs to load successfully while surfacing diagnostic information to the user. This patch is the foundation of the series, adding the core warning message infrastructure that subsequent patches in the series build upon.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce __bpf_kfunc_mark_deprecated annotation",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260418171701.610025-3-memxor@gmail.com/",
+      "summary": "Adds the `__bpf_kfunc_mark_deprecated` annotation macro that kernel developers can use to mark kfuncs as deprecated. When a BPF program calls a deprecated kfunc, the verifier emits a warning rather than rejecting the program outright. This enables gradual kfunc lifecycle management, giving users time to migrate away from old APIs without breaking existing BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Request verifier warnings for object loads",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260418171701.610025-4-memxor@gmail.com/",
+      "summary": "Updates libbpf to opt in to the new verifier warning infrastructure when loading BPF objects, so that warning messages emitted by the kernel verifier are surfaced to userspace. This wires the kernel-side warning mechanism into the standard BPF program loading path. Users relying on libbpf will automatically receive deprecation and other verifier warnings without any application-level changes.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_get_cpu_time_counter kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260418131614.1501848-3-puranjay@kernel.org/",
+      "summary": "Introduces the `bpf_get_cpu_time_counter` kfunc, which exposes the per-CPU hardware time counter to BPF programs. This allows BPF programs to perform high-resolution timing measurements using the CPU's native cycle counter. Part of a series that has reached v13 after extensive review, this kfunc gives BPF programs direct access to low-overhead hardware timing primitives.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_cpu_time_counter_to_ns kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260418131614.1501848-4-puranjay@kernel.org/",
+      "summary": "Adds `bpf_cpu_time_counter_to_ns` as a companion kfunc to convert raw CPU time counter values to nanoseconds. Raw cycle counter values are CPU-frequency-dependent and not directly portable, so this conversion kfunc makes timing results meaningful across different hardware. Together with `bpf_get_cpu_time_counter`, BPF programs can now perform accurate, portable elapsed-time measurements.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Add JIT support for cpu time counter kfuncs",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260418131614.1501848-7-puranjay@kernel.org/",
+      "summary": "Adds arm64 JIT backend support for the new CPU time counter kfuncs, enabling them to be efficiently inlined on AArch64 hardware. Without JIT support the kfuncs would fall back to a slower generic execution path. This patch completes the architecture-specific optimization needed for production-quality use of the CPU timing kfuncs on arm64 systems.",
+      "related_links": []
+    }
+  ]
+}
