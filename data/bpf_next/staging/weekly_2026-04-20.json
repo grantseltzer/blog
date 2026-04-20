@@ -1,0 +1,1708 @@
+{
+  "period": "weekly",
+  "period_start": "2026-04-13",
+  "period_end": "2026-04-20",
+  "fetched_at": "2026-04-20T10:52:12Z",
+  "patches": [
+    {
+      "title": "[bpf-next] selftests/bpf: fix off-by-one in bpf_cpumask_populate related selftest",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260420093734.2400330-1-mattbobrowski@google.com/",
+      "date": "2026-04-20T09:37:34",
+      "series": [
+        {
+          "id": 1083212,
+          "url": "https://patchwork.kernel.org/api/series/1083212/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083212",
+          "date": "2026-04-20T09:37:34",
+          "name": "[bpf-next] selftests/bpf: fix off-by-one in bpf_cpumask_populate related selftest",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083212/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,17/17] selftests/bpf: Add verifier tests for stack argument validation",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163445.740437-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:34:45",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,16/17] selftests/bpf: Add tests for stack argument validation",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163440.740271-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:34:40",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,15/17] selftests/bpf: Add tests for BPF function stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163435.740110-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:34:35",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,14/17] bpf,x86: Implement JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163429.739002-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:34:28",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,13/17] bpf: Reject stack arguments if tail call reachable",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163422.738397-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:34:22",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,12/17] bpf: Support stack arguments for kfunc calls",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163417.736887-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:34:17",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,11/17] bpf: Enable r11 based insns",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163412.736133-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:34:12",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,10/17] bpf: Prepare architecture JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163407.735796-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:34:07",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,09/17] bpf: Track r11 registers in const_fold and liveness",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163402.734987-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:34:02",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,08/17] bpf: Reject stack arguments in non-JITed programs",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163357.734345-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:33:57",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,07/17] bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163352.734115-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:33:52",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,06/17] bpf: Reuse MAX_BPF_FUNC_ARGS for maximum number of arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163347.733962-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:33:47",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,05/17] bpf: Introduce bpf register BPF_REG_PARAMS",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163342.733840-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:33:42",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,04/17] bpf: Prepare verifier logs for upcoming kfunc stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163336.733654-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:33:36",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,03/17] bpf: Refactor to handle memory and size together",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163331.733278-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:33:31",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,02/17] bpf: Refactor to avoid redundant calculation of bpf_reg_state",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163326.732489-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:33:26",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,01/17] bpf: Remove unused parameter from check_map_kptr_access()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163321.732300-1-yonghong.song@linux.dev/",
+      "date": "2026-04-19T16:33:21",
+      "series": [
+        {
+          "id": 1082994,
+          "url": "https://patchwork.kernel.org/api/series/1082994/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082994",
+          "date": "2026-04-19T16:33:21",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1082994/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3] libbpf: Report error when a negative kprobe offset is specified",
+      "author": "Aaron Tomlin",
+      "url": "https://lore.kernel.org/bpf/20260419030944.1423642-1-atomlin@atomlin.com/",
+      "date": "2026-04-19T03:09:44",
+      "series": [
+        {
+          "id": 1082870,
+          "url": "https://patchwork.kernel.org/api/series/1082870/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082870",
+          "date": "2026-04-19T03:09:44",
+          "name": "[bpf-next,v3] libbpf: Report error when a negative kprobe offset is specified",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1082870/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,4/4] selftests/bpf: Test verifier warning logging",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260418171701.610025-5-memxor@gmail.com/",
+      "date": "2026-04-18T17:16:59",
+      "series": [
+        {
+          "id": 1082825,
+          "url": "https://patchwork.kernel.org/api/series/1082825/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082825",
+          "date": "2026-04-18T17:16:55",
+          "name": "Add support to emit verifier warnings",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1082825/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/4] libbpf: Request verifier warnings for object loads",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260418171701.610025-4-memxor@gmail.com/",
+      "date": "2026-04-18T17:16:58",
+      "series": [
+        {
+          "id": 1082825,
+          "url": "https://patchwork.kernel.org/api/series/1082825/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082825",
+          "date": "2026-04-18T17:16:55",
+          "name": "Add support to emit verifier warnings",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1082825/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/4] bpf: Introduce __bpf_kfunc_mark_deprecated annotation",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260418171701.610025-3-memxor@gmail.com/",
+      "date": "2026-04-18T17:16:57",
+      "series": [
+        {
+          "id": 1082825,
+          "url": "https://patchwork.kernel.org/api/series/1082825/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082825",
+          "date": "2026-04-18T17:16:55",
+          "name": "Add support to emit verifier warnings",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1082825/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/4] bpf: Add support for verifier warning messages",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260418171701.610025-2-memxor@gmail.com/",
+      "date": "2026-04-18T17:16:56",
+      "series": [
+        {
+          "id": 1082825,
+          "url": "https://patchwork.kernel.org/api/series/1082825/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082825",
+          "date": "2026-04-18T17:16:55",
+          "name": "Add support to emit verifier warnings",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1082825/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v13,6/6] bpf, arm64: Add JIT support for cpu time counter kfuncs",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260418131614.1501848-7-puranjay@kernel.org/",
+      "date": "2026-04-18T13:16:04",
+      "series": [
+        {
+          "id": 1082789,
+          "url": "https://patchwork.kernel.org/api/series/1082789/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082789",
+          "date": "2026-04-18T13:15:58",
+          "name": "bpf: add cpu time counter kfuncs",
+          "version": 13,
+          "mbox": "https://patchwork.kernel.org/series/1082789/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v13,5/6] selftests/bpf: add usage example for cpu time counter kfuncs",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260418131614.1501848-6-puranjay@kernel.org/",
+      "date": "2026-04-18T13:16:03",
+      "series": [
+        {
+          "id": 1082789,
+          "url": "https://patchwork.kernel.org/api/series/1082789/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082789",
+          "date": "2026-04-18T13:15:58",
+          "name": "bpf: add cpu time counter kfuncs",
+          "version": 13,
+          "mbox": "https://patchwork.kernel.org/series/1082789/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v13,4/6] selftests/bpf: add selftest to check bpf_get_cpu_time_counter jit",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260418131614.1501848-5-puranjay@kernel.org/",
+      "date": "2026-04-18T13:16:02",
+      "series": [
+        {
+          "id": 1082789,
+          "url": "https://patchwork.kernel.org/api/series/1082789/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082789",
+          "date": "2026-04-18T13:15:58",
+          "name": "bpf: add cpu time counter kfuncs",
+          "version": 13,
+          "mbox": "https://patchwork.kernel.org/series/1082789/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v13,3/6] bpf: add bpf_cpu_time_counter_to_ns kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260418131614.1501848-4-puranjay@kernel.org/",
+      "date": "2026-04-18T13:16:01",
+      "series": [
+        {
+          "id": 1082789,
+          "url": "https://patchwork.kernel.org/api/series/1082789/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082789",
+          "date": "2026-04-18T13:15:58",
+          "name": "bpf: add cpu time counter kfuncs",
+          "version": 13,
+          "mbox": "https://patchwork.kernel.org/series/1082789/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v13,2/6] bpf: add bpf_get_cpu_time_counter kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260418131614.1501848-3-puranjay@kernel.org/",
+      "date": "2026-04-18T13:16:00",
+      "series": [
+        {
+          "id": 1082789,
+          "url": "https://patchwork.kernel.org/api/series/1082789/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082789",
+          "date": "2026-04-18T13:15:58",
+          "name": "bpf: add cpu time counter kfuncs",
+          "version": 13,
+          "mbox": "https://patchwork.kernel.org/series/1082789/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v13,1/6] bpf: adjust BPF JIT dependency to BPF_SYSCALL",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260418131614.1501848-2-puranjay@kernel.org/",
+      "date": "2026-04-18T13:15:59",
+      "series": [
+        {
+          "id": 1082789,
+          "url": "https://patchwork.kernel.org/api/series/1082789/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082789",
+          "date": "2026-04-18T13:15:58",
+          "name": "bpf: add cpu time counter kfuncs",
+          "version": 13,
+          "mbox": "https://patchwork.kernel.org/series/1082789/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,1/1] selftests/bpf: Trace bpf_local_storage_update to debug flaky local storage tests",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260417233631.1443199-1-ameryhung@gmail.com/",
+      "date": "2026-04-17T23:36:31",
+      "series": [
+        {
+          "id": 1082709,
+          "url": "https://patchwork.kernel.org/api/series/1082709/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082709",
+          "date": "2026-04-17T23:36:31",
+          "name": "[bpf-next,v1,1/1] selftests/bpf: Trace bpf_local_storage_update to debug flaky local storage tests",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082709/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,28/28] selftests/bpf: Add tracing multi attach rollback tests",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-29-jolsa@kernel.org/",
+      "date": "2026-04-17T19:25:02",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,27/28] selftests/bpf: Add tracing multi attach benchmark test",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-28-jolsa@kernel.org/",
+      "date": "2026-04-17T19:25:01",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,26/28] selftests/bpf: Add tracing multi attach fails test",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-27-jolsa@kernel.org/",
+      "date": "2026-04-17T19:25:00",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,25/28] selftests/bpf: Add tracing multi session test",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-26-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:59",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,24/28] selftests/bpf: Add tracing multi cookies test",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-25-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:58",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,23/28] selftests/bpf: Add tracing multi intersect tests",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-24-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:57",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,22/28] selftests/bpf: Add tracing multi skel/pattern/ids module attach tests",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-23-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:56",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,21/28] selftests/bpf: Add tracing multi skel/pattern/ids attach tests",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-22-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:55",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,20/28] libbpf: Add support to create tracing multi link",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-21-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:54",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,19/28] libbpf: Add btf_type_is_traceable_func function",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-20-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:53",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,18/28] libbpf: Add bpf_link_create support for tracing_multi link",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-19-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:52",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,17/28] libbpf: Add bpf_object_cleanup_btf function",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-18-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:51",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,16/28] bpf: Add support for tracing_multi link fdinfo",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-17-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:50",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,15/28] bpf: Add support for tracing_multi link session",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-16-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:49",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,14/28] bpf: Add support for tracing_multi link cookies",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-15-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:48",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,13/28] bpf: Add support for tracing multi link",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-14-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:47",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,12/28] bpf: Add bpf_trampoline_multi_attach/detach functions",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-13-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:46",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,11/28] bpf: Move sleepable verification code to btf_id_allow_sleepable",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-12-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:45",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,10/28] bpf: Add multi tracing attach types",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-11-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:44",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,09/28] bpf: Factor fsession link to use struct bpf_tramp_node",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-10-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:43",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,08/28] bpf: Add struct bpf_tramp_node object",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-9-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:42",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,07/28] bpf: Add bpf_trampoline_add/remove_prog functions",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-8-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:41",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,06/28] bpf: Move trampoline image setup into bpf_trampoline_ops callbacks",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-7-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:40",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,05/28] bpf: Add struct bpf_trampoline_ops object",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-6-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:39",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,04/28] bpf: Use mutex lock pool for bpf trampolines",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-5-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:38",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,03/28] ftrace: Add add_ftrace_hash_entry function",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-4-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:37",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,02/28] ftrace: Add ftrace_hash_remove function",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-3-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:36",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[PATCHv5,bpf-next,01/28] ftrace: Add ftrace_hash_count function",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260417192502.194548-2-jolsa@kernel.org/",
+      "date": "2026-04-17T19:24:35",
+      "series": [
+        {
+          "id": 1082648,
+          "url": "https://patchwork.kernel.org/api/series/1082648/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082648",
+          "date": "2026-04-17T19:24:34",
+          "name": "bpf: tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082648/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: drop xdping tool",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260417-xdping-v1-1-9b0ce0e7adf8@bootlin.com/",
+      "date": "2026-04-17T15:33:02",
+      "series": [
+        {
+          "id": 1082584,
+          "url": "https://patchwork.kernel.org/api/series/1082584/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082584",
+          "date": "2026-04-17T15:33:02",
+          "name": "[bpf-next] selftests/bpf: drop xdping tool",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082584/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] arm32, bpf: Reject BPF-to-BPF calls and callbacks in the JIT",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260417143353.838911-1-puranjay@kernel.org/",
+      "date": "2026-04-17T14:33:52",
+      "series": [
+        {
+          "id": 1082555,
+          "url": "https://patchwork.kernel.org/api/series/1082555/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082555",
+          "date": "2026-04-17T14:33:52",
+          "name": "[bpf-next,v2] arm32, bpf: Reject BPF-to-BPF calls and callbacks in the JIT",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1082555/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,6/6] Documentation/bpf: Update btf doc with updated vlen, kind sizes",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260417143023.1551481-7-alan.maguire@oracle.com/",
+      "date": "2026-04-17T14:30:23",
+      "series": [
+        {
+          "id": 1082554,
+          "url": "https://patchwork.kernel.org/api/series/1082554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082554",
+          "date": "2026-04-17T14:30:18",
+          "name": "bpf: Extend BTF UAPI vlen, kinds to use unused bits",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1082554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,5/6] selftests/bpf: Fix up __u16 vlen assumptions",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260417143023.1551481-6-alan.maguire@oracle.com/",
+      "date": "2026-04-17T14:30:22",
+      "series": [
+        {
+          "id": 1082554,
+          "url": "https://patchwork.kernel.org/api/series/1082554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082554",
+          "date": "2026-04-17T14:30:18",
+          "name": "bpf: Extend BTF UAPI vlen, kinds to use unused bits",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1082554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,4/6] selftests/bpf: Fix up btf/invalid test for extended kind",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260417143023.1551481-5-alan.maguire@oracle.com/",
+      "date": "2026-04-17T14:30:21",
+      "series": [
+        {
+          "id": 1082554,
+          "url": "https://patchwork.kernel.org/api/series/1082554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082554",
+          "date": "2026-04-17T14:30:18",
+          "name": "bpf: Extend BTF UAPI vlen, kinds to use unused bits",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1082554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,3/6] bpftool: Support 24-bit vlen",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260417143023.1551481-4-alan.maguire@oracle.com/",
+      "date": "2026-04-17T14:30:20",
+      "series": [
+        {
+          "id": 1082554,
+          "url": "https://patchwork.kernel.org/api/series/1082554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082554",
+          "date": "2026-04-17T14:30:18",
+          "name": "bpf: Extend BTF UAPI vlen, kinds to use unused bits",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1082554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,2/6] libbpf: Adjust btf_vlen() to return a __u32",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260417143023.1551481-3-alan.maguire@oracle.com/",
+      "date": "2026-04-17T14:30:19",
+      "series": [
+        {
+          "id": 1082554,
+          "url": "https://patchwork.kernel.org/api/series/1082554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082554",
+          "date": "2026-04-17T14:30:18",
+          "name": "bpf: Extend BTF UAPI vlen, kinds to use unused bits",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1082554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,1/6] bpf: Extend BTF UAPI vlen, kinds to use unused bits",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260417143023.1551481-2-alan.maguire@oracle.com/",
+      "date": "2026-04-17T14:30:18",
+      "series": [
+        {
+          "id": 1082554,
+          "url": "https://patchwork.kernel.org/api/series/1082554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082554",
+          "date": "2026-04-17T14:30:18",
+          "name": "bpf: Extend BTF UAPI vlen, kinds to use unused bits",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1082554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf, arm32: Reject BPF_PSEUDO_CALL in the JIT",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260417103004.3552500-1-puranjay@kernel.org/",
+      "date": "2026-04-17T10:30:02",
+      "series": [
+        {
+          "id": 1082460,
+          "url": "https://patchwork.kernel.org/api/series/1082460/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082460",
+          "date": "2026-04-17T10:30:02",
+          "name": "[bpf-next] bpf, arm32: Reject BPF_PSEUDO_CALL in the JIT",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082460/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,16/16] selftests/bpf: Add verifier tests for stack argument validation",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034838.2638137-1-yonghong.song@linux.dev/",
+      "date": "2026-04-17T03:48:38",
+      "series": [
+        {
+          "id": 1082294,
+          "url": "https://patchwork.kernel.org/api/series/1082294/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082294",
+          "date": "2026-04-17T03:46:58",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1082294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,15/16] selftests/bpf: Add negative test for greater-than-8-byte kfunc stack argument",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034833.2636781-1-yonghong.song@linux.dev/",
+      "date": "2026-04-17T03:48:33",
+      "series": [
+        {
+          "id": 1082294,
+          "url": "https://patchwork.kernel.org/api/series/1082294/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082294",
+          "date": "2026-04-17T03:46:58",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1082294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,14/16] selftests/bpf: Add tests for BPF function stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034828.2634626-1-yonghong.song@linux.dev/",
+      "date": "2026-04-17T03:48:28",
+      "series": [
+        {
+          "id": 1082294,
+          "url": "https://patchwork.kernel.org/api/series/1082294/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082294",
+          "date": "2026-04-17T03:46:58",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1082294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,13/16] bpf,x86: Implement JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034823.2632289-1-yonghong.song@linux.dev/",
+      "date": "2026-04-17T03:48:05",
+      "series": [
+        {
+          "id": 1082294,
+          "url": "https://patchwork.kernel.org/api/series/1082294/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082294",
+          "date": "2026-04-17T03:46:58",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1082294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,12/16] bpf: Enable stack argument support for x86_64",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034800.2631277-1-yonghong.song@linux.dev/",
+      "date": "2026-04-17T03:47:59",
+      "series": [
+        {
+          "id": 1082294,
+          "url": "https://patchwork.kernel.org/api/series/1082294/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082294",
+          "date": "2026-04-17T03:46:58",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1082294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,11/16] bpf: Support stack arguments for kfunc calls",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034754.2630932-1-yonghong.song@linux.dev/",
+      "date": "2026-04-17T03:47:54",
+      "series": [
+        {
+          "id": 1082294,
+          "url": "https://patchwork.kernel.org/api/series/1082294/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082294",
+          "date": "2026-04-17T03:46:58",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1082294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,10/16] bpf: Reject stack arguments if tail call reachable",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034749.2630580-1-yonghong.song@linux.dev/",
+      "date": "2026-04-17T03:47:49",
+      "series": [
+        {
+          "id": 1082294,
+          "url": "https://patchwork.kernel.org/api/series/1082294/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082294",
+          "date": "2026-04-17T03:46:58",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1082294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,09/16] bpf: Reject stack arguments in non-JITed programs",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034744.2630316-1-yonghong.song@linux.dev/",
+      "date": "2026-04-17T03:47:44",
+      "series": [
+        {
+          "id": 1082294,
+          "url": "https://patchwork.kernel.org/api/series/1082294/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082294",
+          "date": "2026-04-17T03:46:58",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1082294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,08/16] bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034739.2629927-1-yonghong.song@linux.dev/",
+      "date": "2026-04-17T03:47:39",
+      "series": [
+        {
+          "id": 1082294,
+          "url": "https://patchwork.kernel.org/api/series/1082294/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082294",
+          "date": "2026-04-17T03:46:58",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1082294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,07/16] bpf: Reuse MAX_BPF_FUNC_ARGS for maximum number of arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034734.2629722-1-yonghong.song@linux.dev/",
+      "date": "2026-04-17T03:47:34",
+      "series": [
+        {
+          "id": 1082294,
+          "url": "https://patchwork.kernel.org/api/series/1082294/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082294",
+          "date": "2026-04-17T03:46:58",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1082294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,06/16] bpf: Limit the scope of BPF_REG_PARAMS usage",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034729.2629367-1-yonghong.song@linux.dev/",
+      "date": "2026-04-17T03:47:29",
+      "series": [
+        {
+          "id": 1082294,
+          "url": "https://patchwork.kernel.org/api/series/1082294/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082294",
+          "date": "2026-04-17T03:46:58",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1082294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,05/16] bpf: Introduce bpf register BPF_REG_PARAMS",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034724.2628054-1-yonghong.song@linux.dev/",
+      "date": "2026-04-17T03:47:24",
+      "series": [
+        {
+          "id": 1082294,
+          "url": "https://patchwork.kernel.org/api/series/1082294/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082294",
+          "date": "2026-04-17T03:46:58",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1082294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,04/16] bpf: Prepare verifier logs for upcoming kfunc stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034719.2627762-1-yonghong.song@linux.dev/",
+      "date": "2026-04-17T03:47:19",
+      "series": [
+        {
+          "id": 1082294,
+          "url": "https://patchwork.kernel.org/api/series/1082294/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082294",
+          "date": "2026-04-17T03:46:58",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1082294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,03/16] bpf: Refactor to handle memory and size together",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034713.2627100-1-yonghong.song@linux.dev/",
+      "date": "2026-04-17T03:47:13",
+      "series": [
+        {
+          "id": 1082294,
+          "url": "https://patchwork.kernel.org/api/series/1082294/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082294",
+          "date": "2026-04-17T03:46:58",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1082294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,02/16] bpf: Refactor to avoid redundant calculation of bpf_reg_state",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034708.2626711-1-yonghong.song@linux.dev/",
+      "date": "2026-04-17T03:47:08",
+      "series": [
+        {
+          "id": 1082294,
+          "url": "https://patchwork.kernel.org/api/series/1082294/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082294",
+          "date": "2026-04-17T03:46:58",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1082294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,01/16] bpf: Remove unused parameter from check_map_kptr_access()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260417034703.2625849-1-yonghong.song@linux.dev/",
+      "date": "2026-04-17T03:47:03",
+      "series": [
+        {
+          "id": 1082294,
+          "url": "https://patchwork.kernel.org/api/series/1082294/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082294",
+          "date": "2026-04-17T03:46:58",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1082294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,11/11] selftests/bpf: Tolerate missing files during install",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260416-selftests-bpf_misconfig-v7-11-a078e18012e4@suse.com/",
+      "date": "2026-04-16T19:31:00",
+      "series": [
+        {
+          "id": 1082185,
+          "url": "https://patchwork.kernel.org/api/series/1082185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082185",
+          "date": "2026-04-16T19:30:49",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1082185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,10/11] selftests/bpf: Provide weak definitions for cross-test functions",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260416-selftests-bpf_misconfig-v7-10-a078e18012e4@suse.com/",
+      "date": "2026-04-16T19:30:59",
+      "series": [
+        {
+          "id": 1082185,
+          "url": "https://patchwork.kernel.org/api/series/1082185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082185",
+          "date": "2026-04-16T19:30:49",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1082185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,09/11] selftests/bpf: Tolerate benchmark build failures",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260416-selftests-bpf_misconfig-v7-9-a078e18012e4@suse.com/",
+      "date": "2026-04-16T19:30:58",
+      "series": [
+        {
+          "id": 1082185,
+          "url": "https://patchwork.kernel.org/api/series/1082185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082185",
+          "date": "2026-04-16T19:30:49",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1082185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,08/11] selftests/bpf: Allow test_progs to link with a partial object set",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260416-selftests-bpf_misconfig-v7-8-a078e18012e4@suse.com/",
+      "date": "2026-04-16T19:30:57",
+      "series": [
+        {
+          "id": 1082185,
+          "url": "https://patchwork.kernel.org/api/series/1082185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082185",
+          "date": "2026-04-16T19:30:49",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1082185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,07/11] selftests/bpf: Skip tests whose objects were not built",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260416-selftests-bpf_misconfig-v7-7-a078e18012e4@suse.com/",
+      "date": "2026-04-16T19:30:56",
+      "series": [
+        {
+          "id": 1082185,
+          "url": "https://patchwork.kernel.org/api/series/1082185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082185",
+          "date": "2026-04-16T19:30:49",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1082185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,06/11] selftests/bpf: Tolerate test file compilation failures",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260416-selftests-bpf_misconfig-v7-6-a078e18012e4@suse.com/",
+      "date": "2026-04-16T19:30:55",
+      "series": [
+        {
+          "id": 1082185,
+          "url": "https://patchwork.kernel.org/api/series/1082185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082185",
+          "date": "2026-04-16T19:30:49",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1082185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,05/11] selftests/bpf: Make skeleton headers order-only prerequisites of .test.d",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260416-selftests-bpf_misconfig-v7-5-a078e18012e4@suse.com/",
+      "date": "2026-04-16T19:30:54",
+      "series": [
+        {
+          "id": 1082185,
+          "url": "https://patchwork.kernel.org/api/series/1082185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082185",
+          "date": "2026-04-16T19:30:49",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1082185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,04/11] selftests/bpf: Avoid rebuilds when running emit_tests",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260416-selftests-bpf_misconfig-v7-4-a078e18012e4@suse.com/",
+      "date": "2026-04-16T19:30:53",
+      "series": [
+        {
+          "id": 1082185,
+          "url": "https://patchwork.kernel.org/api/series/1082185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082185",
+          "date": "2026-04-16T19:30:49",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1082185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,03/11] selftests/bpf: Tolerate BPF and skeleton generation failures",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260416-selftests-bpf_misconfig-v7-3-a078e18012e4@suse.com/",
+      "date": "2026-04-16T19:30:52",
+      "series": [
+        {
+          "id": 1082185,
+          "url": "https://patchwork.kernel.org/api/series/1082185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082185",
+          "date": "2026-04-16T19:30:49",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1082185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,02/11] selftests/bpf: Fix test_kmods KDIR to honor O= and distro kernels",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260416-selftests-bpf_misconfig-v7-2-a078e18012e4@suse.com/",
+      "date": "2026-04-16T19:30:51",
+      "series": [
+        {
+          "id": 1082185,
+          "url": "https://patchwork.kernel.org/api/series/1082185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082185",
+          "date": "2026-04-16T19:30:49",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1082185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,01/11] selftests/bpf: Add BPF_STRICT_BUILD toggle",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260416-selftests-bpf_misconfig-v7-1-a078e18012e4@suse.com/",
+      "date": "2026-04-16T19:30:50",
+      "series": [
+        {
+          "id": 1082185,
+          "url": "https://patchwork.kernel.org/api/series/1082185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082185",
+          "date": "2026-04-16T19:30:49",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1082185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Reject scalar store into kptr slot",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260416-kptr_crash-v1-2-5589356584b4@meta.com/",
+      "date": "2026-04-16T18:08:08",
+      "series": [
+        {
+          "id": 1082160,
+          "url": "https://patchwork.kernel.org/api/series/1082160/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082160",
+          "date": "2026-04-16T18:08:06",
+          "name": "bpf: Fix NULL deref when storing scalar into kptr slot",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082160/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Fix NULL deref in map_kptr_match_type for scalar regs",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260416-kptr_crash-v1-1-5589356584b4@meta.com/",
+      "date": "2026-04-16T18:08:07",
+      "series": [
+        {
+          "id": 1082160,
+          "url": "https://patchwork.kernel.org/api/series/1082160/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082160",
+          "date": "2026-04-16T18:08:06",
+          "name": "bpf: Fix NULL deref when storing scalar into kptr slot",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1082160/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,8/8] Documentation/bpf: Update btf doc with updated vlen, kind sizes",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260416143904.1220662-9-alan.maguire@oracle.com/",
+      "date": "2026-04-16T14:39:04",
+      "series": [
+        {
+          "id": 1082089,
+          "url": "https://patchwork.kernel.org/api/series/1082089/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082089",
+          "date": "2026-04-16T14:38:59",
+          "name": "bpf: Extend BTF UAPI vlen, kinds to use unused bits",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1082089/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,7/8] selftests/bpf: Fix up __u16 vlen assumptions",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260416143904.1220662-8-alan.maguire@oracle.com/",
+      "date": "2026-04-16T14:39:03",
+      "series": [
+        {
+          "id": 1082089,
+          "url": "https://patchwork.kernel.org/api/series/1082089/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082089",
+          "date": "2026-04-16T14:38:59",
+          "name": "bpf: Extend BTF UAPI vlen, kinds to use unused bits",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1082089/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,6/8] selftests/bpf: Fix up btf/invalid test for extended kind",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260416143904.1220662-7-alan.maguire@oracle.com/",
+      "date": "2026-04-16T14:39:02",
+      "series": [
+        {
+          "id": 1082089,
+          "url": "https://patchwork.kernel.org/api/series/1082089/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082089",
+          "date": "2026-04-16T14:38:59",
+          "name": "bpf: Extend BTF UAPI vlen, kinds to use unused bits",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1082089/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,5/8] selftests/bpf: Test BTF sanitization rejection for invalid vlen",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260416143904.1220662-6-alan.maguire@oracle.com/",
+      "date": "2026-04-16T14:39:01",
+      "series": [
+        {
+          "id": 1082089,
+          "url": "https://patchwork.kernel.org/api/series/1082089/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1082089",
+          "date": "2026-04-16T14:38:59",
+          "name": "bpf: Extend BTF UAPI vlen, kinds to use unused bits",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1082089/mbox/"
+        }
+      ]
+    }
+  ]
+}
