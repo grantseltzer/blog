@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-04-21T00:00:00Z",
+  "period_start": "2026-04-19",
+  "period_end": "2026-04-20",
+  "patch_count": 20,
+  "thread_count": 3,
+  "top_contributors": ["Yonghong Song", "Matt Bobrowski", "Aaron Tomlin"],
+  "key_topics": ["verifier", "kfuncs", "stack-arguments", "jit", "libbpf", "selftests"],
+  "overview": "Activity on April 19–20 was dominated by Yonghong Song's v6 of the stack-arguments series for BPF functions and kfuncs, a 17-patch set that extends the BPF calling convention to pass arguments on the stack beyond the standard six registers with full x86-64 JIT support. Two smaller patches rounded out the day: Aaron Tomlin fixed libbpf to properly reject negative kprobe offsets, and Matt Bobrowski corrected an off-by-one error in the bpf_cpumask_populate selftest.",
+  "patches": [
+    {
+      "title": "bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163352.734115-1-yonghong.song@linux.dev/",
+      "summary": "This patch adds verifier support for BPF subprogram functions to receive arguments on the stack, enabling function signatures with more than the standard six register-based parameters. A new BPF_REG_PARAMS mechanism tracks the stack argument state through verifier analysis, and the calling convention is updated to lay out excess parameters in a well-defined region of the caller's stack frame. This is patch 07 of a 17-part series (v6) that collectively introduces stack argument passing for both BPF functions and kfuncs. The change is the core enabler for the rest of the series and requires corresponding JIT backend work to become operational.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support stack arguments for kfunc calls",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163417.736887-1-yonghong.song@linux.dev/",
+      "summary": "Extends the new stack argument infrastructure to kfunc calls, allowing kernel functions exposed to BPF programs to accept arguments beyond the six-register limit. The verifier is updated to validate that stack argument types and sizes match the expected kfunc BTF signature, keeping the calling convention consistent with BPF-to-BPF calls. This patch is the twelfth in the series and pairs tightly with the BPF subprogram stack argument changes introduced earlier. Unified handling across both call sites simplifies future extensions to the argument-passing mechanism.",
+      "related_links": []
+    },
+    {
+      "title": "bpf,x86: Implement JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260419163429.739002-1-yonghong.song@linux.dev/",
+      "summary": "Implements the x86-64 JIT backend changes required to physically place excess function arguments onto the stack when calling BPF subprograms or kfuncs. The JIT allocates additional stack space for spilled parameters and emits the appropriate store instructions to lay them out before the call site. Programs using stack arguments are rejected by the verifier on architectures without JIT support, making this x86-64 implementation the first concrete gate that allows the feature to be used in practice. Other JIT backends can add independent support following the same pattern.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Report error when a negative kprobe offset is specified",
+      "author": "Aaron Tomlin",
+      "url": "https://lore.kernel.org/bpf/20260419030944.1423642-1-atomlin@atomlin.com/",
+      "summary": "Fixes a libbpf bug where a negative offset for a kprobe attachment would be silently accepted rather than rejected at the library level, leading to confusing downstream failures. With this patch, libbpf validates the offset field and returns a clear EINVAL if a negative value is provided. This is the third revision of the fix, addressing earlier review feedback on where in the attachment path the check should live. Negative kprobe offsets are not supported by the kernel and catching them early improves the user experience for programs that misconfigure their probes.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: fix off-by-one in bpf_cpumask_populate related selftest",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260420093734.2400330-1-mattbobrowski@google.com/",
+      "summary": "Corrects an off-by-one error in a BPF selftest exercising bpf_cpumask_populate, where the loop bound caused a read one element past the intended array boundary. The bug could produce spurious failures or undefined behavior on configurations where the adjacent memory was not safely accessible. The fix is a one-line bound correction with no impact on the BPF subsystem itself. Keeping selftests clean ensures CI results accurately reflect real regressions rather than test-infrastructure noise.",
+      "related_links": []
+    }
+  ]
+}
