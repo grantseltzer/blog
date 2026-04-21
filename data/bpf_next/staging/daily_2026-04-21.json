@@ -1,0 +1,484 @@
+{
+  "period": "daily",
+  "period_start": "2026-04-20",
+  "period_end": "2026-04-21",
+  "fetched_at": "2026-04-21T10:20:13Z",
+  "patches": [
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Add test for map-stored struct file kptrs",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260420203306.3107246-3-utilityemal77@gmail.com/",
+      "date": "2026-04-20T20:33:06",
+      "series": [
+        {
+          "id": 1083496,
+          "url": "https://patchwork.kernel.org/api/series/1083496/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083496",
+          "date": "2026-04-20T20:33:04",
+          "name": "Allow storing referenced struct file kptrs in BPF maps",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083496/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Implement dtor for struct file BTF ID",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260420203306.3107246-2-utilityemal77@gmail.com/",
+      "date": "2026-04-20T20:33:05",
+      "series": [
+        {
+          "id": 1083496,
+          "url": "https://patchwork.kernel.org/api/series/1083496/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083496",
+          "date": "2026-04-20T20:33:04",
+          "name": "Allow storing referenced struct file kptrs in BPF maps",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083496/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] selftests/bpf: Enable stack argument tests for arm64",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260420153603.4097618-4-puranjay@kernel.org/",
+      "date": "2026-04-20T15:36:01",
+      "series": [
+        {
+          "id": 1083402,
+          "url": "https://patchwork.kernel.org/api/series/1083402/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083402",
+          "date": "2026-04-20T15:35:58",
+          "name": "bpf, arm64: Support stack arguments",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083402/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] bpf, arm64: Add JIT support for stack arguments",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260420153603.4097618-3-puranjay@kernel.org/",
+      "date": "2026-04-20T15:36:00",
+      "series": [
+        {
+          "id": 1083402,
+          "url": "https://patchwork.kernel.org/api/series/1083402/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083402",
+          "date": "2026-04-20T15:35:58",
+          "name": "bpf, arm64: Support stack arguments",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083402/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] bpf, arm64: Map BPF_REG_0 to x8 instead of x7",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260420153603.4097618-2-puranjay@kernel.org/",
+      "date": "2026-04-20T15:35:59",
+      "series": [
+        {
+          "id": 1083402,
+          "url": "https://patchwork.kernel.org/api/series/1083402/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083402",
+          "date": "2026-04-20T15:35:58",
+          "name": "bpf, arm64: Support stack arguments",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083402/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v12,8/8] selftests/bpf: Add tests to verify map create failure log",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260420141804.27179-9-leon.hwang@linux.dev/",
+      "date": "2026-04-20T14:18:04",
+      "series": [
+        {
+          "id": 1083367,
+          "url": "https://patchwork.kernel.org/api/series/1083367/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083367",
+          "date": "2026-04-20T14:17:56",
+          "name": "bpf: Extend BPF syscall with common attributes support",
+          "version": 12,
+          "mbox": "https://patchwork.kernel.org/series/1083367/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v12,7/8] libbpf: Add syscall common attributes support for map_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260420141804.27179-8-leon.hwang@linux.dev/",
+      "date": "2026-04-20T14:18:03",
+      "series": [
+        {
+          "id": 1083367,
+          "url": "https://patchwork.kernel.org/api/series/1083367/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083367",
+          "date": "2026-04-20T14:17:56",
+          "name": "bpf: Extend BPF syscall with common attributes support",
+          "version": 12,
+          "mbox": "https://patchwork.kernel.org/series/1083367/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v12,6/8] bpf: Add syscall common attributes support for map_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260420141804.27179-7-leon.hwang@linux.dev/",
+      "date": "2026-04-20T14:18:02",
+      "series": [
+        {
+          "id": 1083367,
+          "url": "https://patchwork.kernel.org/api/series/1083367/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083367",
+          "date": "2026-04-20T14:17:56",
+          "name": "bpf: Extend BPF syscall with common attributes support",
+          "version": 12,
+          "mbox": "https://patchwork.kernel.org/series/1083367/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v12,5/8] bpf: Add syscall common attributes support for btf_load",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260420141804.27179-6-leon.hwang@linux.dev/",
+      "date": "2026-04-20T14:18:01",
+      "series": [
+        {
+          "id": 1083367,
+          "url": "https://patchwork.kernel.org/api/series/1083367/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083367",
+          "date": "2026-04-20T14:17:56",
+          "name": "bpf: Extend BPF syscall with common attributes support",
+          "version": 12,
+          "mbox": "https://patchwork.kernel.org/series/1083367/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v12,4/8] bpf: Add syscall common attributes support for prog_load",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260420141804.27179-5-leon.hwang@linux.dev/",
+      "date": "2026-04-20T14:18:00",
+      "series": [
+        {
+          "id": 1083367,
+          "url": "https://patchwork.kernel.org/api/series/1083367/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083367",
+          "date": "2026-04-20T14:17:56",
+          "name": "bpf: Extend BPF syscall with common attributes support",
+          "version": 12,
+          "mbox": "https://patchwork.kernel.org/series/1083367/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v12,3/8] bpf: Refactor reporting log_true_size for prog_load",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260420141804.27179-4-leon.hwang@linux.dev/",
+      "date": "2026-04-20T14:17:59",
+      "series": [
+        {
+          "id": 1083367,
+          "url": "https://patchwork.kernel.org/api/series/1083367/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083367",
+          "date": "2026-04-20T14:17:56",
+          "name": "bpf: Extend BPF syscall with common attributes support",
+          "version": 12,
+          "mbox": "https://patchwork.kernel.org/series/1083367/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v12,2/8] libbpf: Add support for extended BPF syscall",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260420141804.27179-3-leon.hwang@linux.dev/",
+      "date": "2026-04-20T14:17:58",
+      "series": [
+        {
+          "id": 1083367,
+          "url": "https://patchwork.kernel.org/api/series/1083367/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083367",
+          "date": "2026-04-20T14:17:56",
+          "name": "bpf: Extend BPF syscall with common attributes support",
+          "version": 12,
+          "mbox": "https://patchwork.kernel.org/series/1083367/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v12,1/8] bpf: Extend BPF syscall with common attributes support",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260420141804.27179-2-leon.hwang@linux.dev/",
+      "date": "2026-04-20T14:17:57",
+      "series": [
+        {
+          "id": 1083367,
+          "url": "https://patchwork.kernel.org/api/series/1083367/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083367",
+          "date": "2026-04-20T14:17:56",
+          "name": "bpf: Extend BPF syscall with common attributes support",
+          "version": 12,
+          "mbox": "https://patchwork.kernel.org/series/1083367/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,6/6] selftests/bpf: Add XDP load-balancer benchmark run script",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260420111726.2118636-7-puranjay@kernel.org/",
+      "date": "2026-04-20T11:17:06",
+      "series": [
+        {
+          "id": 1083265,
+          "url": "https://patchwork.kernel.org/api/series/1083265/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083265",
+          "date": "2026-04-20T11:17:00",
+          "name": "selftests/bpf: Add XDP load-balancer benchmark",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083265/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,5/6] selftests/bpf: Add XDP load-balancer benchmark driver",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260420111726.2118636-6-puranjay@kernel.org/",
+      "date": "2026-04-20T11:17:05",
+      "series": [
+        {
+          "id": 1083265,
+          "url": "https://patchwork.kernel.org/api/series/1083265/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083265",
+          "date": "2026-04-20T11:17:00",
+          "name": "selftests/bpf: Add XDP load-balancer benchmark",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083265/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,4/6] selftests/bpf: Add XDP load-balancer BPF program",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260420111726.2118636-5-puranjay@kernel.org/",
+      "date": "2026-04-20T11:17:04",
+      "series": [
+        {
+          "id": 1083265,
+          "url": "https://patchwork.kernel.org/api/series/1083265/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083265",
+          "date": "2026-04-20T11:17:00",
+          "name": "selftests/bpf: Add XDP load-balancer benchmark",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083265/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,3/6] selftests/bpf: Add XDP load-balancer common definitions",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260420111726.2118636-4-puranjay@kernel.org/",
+      "date": "2026-04-20T11:17:03",
+      "series": [
+        {
+          "id": 1083265,
+          "url": "https://patchwork.kernel.org/api/series/1083265/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083265",
+          "date": "2026-04-20T11:17:00",
+          "name": "selftests/bpf: Add XDP load-balancer benchmark",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083265/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,2/6] selftests/bpf: Add BPF batch-timing library",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260420111726.2118636-3-puranjay@kernel.org/",
+      "date": "2026-04-20T11:17:02",
+      "series": [
+        {
+          "id": 1083265,
+          "url": "https://patchwork.kernel.org/api/series/1083265/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083265",
+          "date": "2026-04-20T11:17:00",
+          "name": "selftests/bpf: Add XDP load-balancer benchmark",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083265/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,1/6] selftests/bpf: Add bench_force_done() for early benchmark completion",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260420111726.2118636-2-puranjay@kernel.org/",
+      "date": "2026-04-20T11:17:01",
+      "series": [
+        {
+          "id": 1083265,
+          "url": "https://patchwork.kernel.org/api/series/1083265/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083265",
+          "date": "2026-04-20T11:17:00",
+          "name": "selftests/bpf: Add XDP load-balancer benchmark",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083265/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,2/2] selftests/bpf: Add LoongArch support for get_preempt_count()",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260420111516.19982-3-yangtiezhu@loongson.cn/",
+      "date": "2026-04-20T11:15:16",
+      "series": [
+        {
+          "id": 1083264,
+          "url": "https://patchwork.kernel.org/api/series/1083264/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083264",
+          "date": "2026-04-20T11:15:14",
+          "name": "selftests/bpf: Add support for get_preempt_count()",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083264/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,1/2] selftests/bpf: Add riscv support for get_preempt_count()",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260420111516.19982-2-yangtiezhu@loongson.cn/",
+      "date": "2026-04-20T11:15:15",
+      "series": [
+        {
+          "id": 1083264,
+          "url": "https://patchwork.kernel.org/api/series/1083264/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083264",
+          "date": "2026-04-20T11:15:14",
+          "name": "selftests/bpf: Add support for get_preempt_count()",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083264/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,6/6] selftests/bpf: add icmp_send_unreach_recursion test",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260420105816.72168-7-mahe.tardy@gmail.com/",
+      "date": "2026-04-20T10:58:16",
+      "series": [
+        {
+          "id": 1083255,
+          "url": "https://patchwork.kernel.org/api/series/1083255/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083255",
+          "date": "2026-04-20T10:58:10",
+          "name": "bpf: add icmp_send_unreach kfunc",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1083255/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,5/6] selftests/bpf: add icmp_send_unreach kfunc IPv6 tests",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260420105816.72168-6-mahe.tardy@gmail.com/",
+      "date": "2026-04-20T10:58:15",
+      "series": [
+        {
+          "id": 1083255,
+          "url": "https://patchwork.kernel.org/api/series/1083255/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083255",
+          "date": "2026-04-20T10:58:10",
+          "name": "bpf: add icmp_send_unreach kfunc",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1083255/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,4/6] selftests/bpf: add icmp_send_unreach kfunc tests",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260420105816.72168-5-mahe.tardy@gmail.com/",
+      "date": "2026-04-20T10:58:14",
+      "series": [
+        {
+          "id": 1083255,
+          "url": "https://patchwork.kernel.org/api/series/1083255/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083255",
+          "date": "2026-04-20T10:58:10",
+          "name": "bpf: add icmp_send_unreach kfunc",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1083255/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,3/6] bpf: add bpf_icmp_send_unreach kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260420105816.72168-4-mahe.tardy@gmail.com/",
+      "date": "2026-04-20T10:58:13",
+      "series": [
+        {
+          "id": 1083255,
+          "url": "https://patchwork.kernel.org/api/series/1083255/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083255",
+          "date": "2026-04-20T10:58:10",
+          "name": "bpf: add icmp_send_unreach kfunc",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1083255/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/6] net: move netfilter nf_reject6_fill_skb_dst to core ipv6",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260420105816.72168-3-mahe.tardy@gmail.com/",
+      "date": "2026-04-20T10:58:12",
+      "series": [
+        {
+          "id": 1083255,
+          "url": "https://patchwork.kernel.org/api/series/1083255/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083255",
+          "date": "2026-04-20T10:58:10",
+          "name": "bpf: add icmp_send_unreach kfunc",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1083255/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/6] net: move netfilter nf_reject_fill_skb_dst to core ipv4",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260420105816.72168-2-mahe.tardy@gmail.com/",
+      "date": "2026-04-20T10:58:11",
+      "series": [
+        {
+          "id": 1083255,
+          "url": "https://patchwork.kernel.org/api/series/1083255/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083255",
+          "date": "2026-04-20T10:58:10",
+          "name": "bpf: add icmp_send_unreach kfunc",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1083255/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: fix off-by-one in bpf_cpumask_populate related selftest",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260420093734.2400330-1-mattbobrowski@google.com/",
+      "date": "2026-04-20T09:37:34",
+      "series": [
+        {
+          "id": 1083212,
+          "url": "https://patchwork.kernel.org/api/series/1083212/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083212",
+          "date": "2026-04-20T09:37:34",
+          "name": "[bpf-next] selftests/bpf: fix off-by-one in bpf_cpumask_populate related selftest",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083212/mbox/"
+        }
+      ]
+    }
+  ]
+}
