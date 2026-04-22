@@ -1,0 +1,943 @@
+{
+  "period": "daily",
+  "period_start": "2026-04-21",
+  "period_end": "2026-04-22",
+  "fetched_at": "2026-04-22T10:21:26Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v2,9/9] bpf: Reuse MAX_BPF_FUNC_ARGS for maximum number of arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260422054235.3129028-1-yonghong.song@linux.dev/",
+      "date": "2026-04-22T05:42:35",
+      "series": [
+        {
+          "id": 1084128,
+          "url": "https://patchwork.kernel.org/api/series/1084128/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084128",
+          "date": "2026-04-22T05:41:49",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1084128/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,8/9] bpf: Introduce bpf register BPF_REG_PARAMS",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260422054229.3128677-1-yonghong.song@linux.dev/",
+      "date": "2026-04-22T05:42:29",
+      "series": [
+        {
+          "id": 1084128,
+          "url": "https://patchwork.kernel.org/api/series/1084128/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084128",
+          "date": "2026-04-22T05:41:49",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1084128/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,7/9] bpf: Prepare verifier logs for upcoming kfunc stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260422054224.3127905-1-yonghong.song@linux.dev/",
+      "date": "2026-04-22T05:42:24",
+      "series": [
+        {
+          "id": 1084128,
+          "url": "https://patchwork.kernel.org/api/series/1084128/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084128",
+          "date": "2026-04-22T05:41:49",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1084128/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,6/9] bpf: Rename existing argno to arg",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260422054219.3127560-1-yonghong.song@linux.dev/",
+      "date": "2026-04-22T05:42:19",
+      "series": [
+        {
+          "id": 1084128,
+          "url": "https://patchwork.kernel.org/api/series/1084128/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084128",
+          "date": "2026-04-22T05:41:49",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1084128/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/9] bpf: Refactor to handle memory and size together",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260422054214.3127005-1-yonghong.song@linux.dev/",
+      "date": "2026-04-22T05:42:14",
+      "series": [
+        {
+          "id": 1084128,
+          "url": "https://patchwork.kernel.org/api/series/1084128/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084128",
+          "date": "2026-04-22T05:41:49",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1084128/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/9] bpf: Refactor to avoid redundant calculation of bpf_reg_state",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260422054209.3126151-1-yonghong.song@linux.dev/",
+      "date": "2026-04-22T05:42:09",
+      "series": [
+        {
+          "id": 1084128,
+          "url": "https://patchwork.kernel.org/api/series/1084128/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084128",
+          "date": "2026-04-22T05:41:49",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1084128/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/9] bpf: Remove WARN_ON_ONCE in check_kfunc_mem_size_reg()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260422054204.3125553-1-yonghong.song@linux.dev/",
+      "date": "2026-04-22T05:42:04",
+      "series": [
+        {
+          "id": 1084128,
+          "url": "https://patchwork.kernel.org/api/series/1084128/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084128",
+          "date": "2026-04-22T05:41:49",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1084128/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/9] bpf: Fix tail_call_reachable leak",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260422054159.3124694-1-yonghong.song@linux.dev/",
+      "date": "2026-04-22T05:41:59",
+      "series": [
+        {
+          "id": 1084128,
+          "url": "https://patchwork.kernel.org/api/series/1084128/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084128",
+          "date": "2026-04-22T05:41:49",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1084128/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/9] bpf: Remove unused parameter from check_map_kptr_access()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260422054154.3124511-1-yonghong.song@linux.dev/",
+      "date": "2026-04-22T05:41:54",
+      "series": [
+        {
+          "id": 1084128,
+          "url": "https://patchwork.kernel.org/api/series/1084128/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084128",
+          "date": "2026-04-22T05:41:49",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1084128/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,9/9] selftests/bpf: Test using file dynptr after the reference on file is dropped",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260421221016.2967924-10-ameryhung@gmail.com/",
+      "date": "2026-04-21T22:10:16",
+      "series": [
+        {
+          "id": 1084054,
+          "url": "https://patchwork.kernel.org/api/series/1084054/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084054",
+          "date": "2026-04-21T22:10:07",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084054/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,8/9] selftests/bpf: Test using slice after invalidating dynptr clone",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260421221016.2967924-9-ameryhung@gmail.com/",
+      "date": "2026-04-21T22:10:15",
+      "series": [
+        {
+          "id": 1084054,
+          "url": "https://patchwork.kernel.org/api/series/1084054/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084054",
+          "date": "2026-04-21T22:10:07",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084054/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,7/9] selftests/bpf: Test using dynptr after freeing the underlying object",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260421221016.2967924-8-ameryhung@gmail.com/",
+      "date": "2026-04-21T22:10:14",
+      "series": [
+        {
+          "id": 1084054,
+          "url": "https://patchwork.kernel.org/api/series/1084054/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084054",
+          "date": "2026-04-21T22:10:07",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084054/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,6/9] selftests/bpf: Test creating dynptr from dynptr data and slice",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260421221016.2967924-7-ameryhung@gmail.com/",
+      "date": "2026-04-21T22:10:13",
+      "series": [
+        {
+          "id": 1084054,
+          "url": "https://patchwork.kernel.org/api/series/1084054/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084054",
+          "date": "2026-04-21T22:10:07",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084054/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,5/9] bpf: Remove redundant dynptr arg check for helper",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260421221016.2967924-6-ameryhung@gmail.com/",
+      "date": "2026-04-21T22:10:12",
+      "series": [
+        {
+          "id": 1084054,
+          "url": "https://patchwork.kernel.org/api/series/1084054/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084054",
+          "date": "2026-04-21T22:10:07",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084054/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,4/9] bpf: Refactor object relationship tracking and fix dynptr UAF bug",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260421221016.2967924-5-ameryhung@gmail.com/",
+      "date": "2026-04-21T22:10:11",
+      "series": [
+        {
+          "id": 1084054,
+          "url": "https://patchwork.kernel.org/api/series/1084054/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084054",
+          "date": "2026-04-21T22:10:07",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084054/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/9] bpf: Preserve reg->id of pointer objects after null-check",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260421221016.2967924-4-ameryhung@gmail.com/",
+      "date": "2026-04-21T22:10:10",
+      "series": [
+        {
+          "id": 1084054,
+          "url": "https://patchwork.kernel.org/api/series/1084054/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084054",
+          "date": "2026-04-21T22:10:07",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084054/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/9] bpf: Assign reg->id when getting referenced kptr from ctx",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260421221016.2967924-3-ameryhung@gmail.com/",
+      "date": "2026-04-21T22:10:09",
+      "series": [
+        {
+          "id": 1084054,
+          "url": "https://patchwork.kernel.org/api/series/1084054/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084054",
+          "date": "2026-04-21T22:10:07",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084054/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/9] bpf: Unify dynptr handling in the verifier",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260421221016.2967924-2-ameryhung@gmail.com/",
+      "date": "2026-04-21T22:10:08",
+      "series": [
+        {
+          "id": 1084054,
+          "url": "https://patchwork.kernel.org/api/series/1084054/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084054",
+          "date": "2026-04-21T22:10:07",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084054/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: remove string.h includes in bpf progs",
+      "author": "David Faust",
+      "url": "https://lore.kernel.org/bpf/20260421202233.528128-1-david.faust@oracle.com/",
+      "date": "2026-04-21T20:22:33",
+      "series": [
+        {
+          "id": 1084029,
+          "url": "https://patchwork.kernel.org/api/series/1084029/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084029",
+          "date": "2026-04-21T20:22:33",
+          "name": "[bpf-next] selftests/bpf: remove string.h includes in bpf progs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1084029/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next] bpf, x86: Granlund-Montgomery optimization for 64-bit div/mod by immediate",
+      "author": "Jie Meng",
+      "url": "https://lore.kernel.org/bpf/20260421175507.2396332-1-jmeng@fb.com/",
+      "date": "2026-04-21T17:55:07",
+      "series": [
+        {
+          "id": 1083971,
+          "url": "https://patchwork.kernel.org/api/series/1083971/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083971",
+          "date": "2026-04-21T17:55:07",
+          "name": "[v3,bpf-next] bpf, x86: Granlund-Montgomery optimization for 64-bit div/mod by immediate",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1083971/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,9/9] bpf: Reuse MAX_BPF_FUNC_ARGS for maximum number of arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260421172013.3512808-1-yonghong.song@linux.dev/",
+      "date": "2026-04-21T17:20:13",
+      "series": [
+        {
+          "id": 1083954,
+          "url": "https://patchwork.kernel.org/api/series/1083954/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083954",
+          "date": "2026-04-21T17:19:27",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083954/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,8/9] bpf: Introduce bpf register BPF_REG_PARAMS",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260421172007.3512280-1-yonghong.song@linux.dev/",
+      "date": "2026-04-21T17:20:07",
+      "series": [
+        {
+          "id": 1083954,
+          "url": "https://patchwork.kernel.org/api/series/1083954/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083954",
+          "date": "2026-04-21T17:19:27",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083954/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,7/9] bpf: Prepare verifier logs for upcoming kfunc stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260421172002.3510514-1-yonghong.song@linux.dev/",
+      "date": "2026-04-21T17:20:02",
+      "series": [
+        {
+          "id": 1083954,
+          "url": "https://patchwork.kernel.org/api/series/1083954/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083954",
+          "date": "2026-04-21T17:19:27",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083954/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,6/9] bpf: Rename existing argno to arg",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260421171957.3509719-1-yonghong.song@linux.dev/",
+      "date": "2026-04-21T17:19:57",
+      "series": [
+        {
+          "id": 1083954,
+          "url": "https://patchwork.kernel.org/api/series/1083954/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083954",
+          "date": "2026-04-21T17:19:27",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083954/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,5/9] bpf: Refactor to handle memory and size together",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260421171952.3509505-1-yonghong.song@linux.dev/",
+      "date": "2026-04-21T17:19:52",
+      "series": [
+        {
+          "id": 1083954,
+          "url": "https://patchwork.kernel.org/api/series/1083954/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083954",
+          "date": "2026-04-21T17:19:27",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083954/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/9] bpf: Refactor to avoid redundant calculation of bpf_reg_state",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260421171947.3509118-1-yonghong.song@linux.dev/",
+      "date": "2026-04-21T17:19:47",
+      "series": [
+        {
+          "id": 1083954,
+          "url": "https://patchwork.kernel.org/api/series/1083954/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083954",
+          "date": "2026-04-21T17:19:27",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083954/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/9] bpf: Remove WARN_ON_ONCE in check_kfunc_mem_size_reg()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260421171942.3508899-1-yonghong.song@linux.dev/",
+      "date": "2026-04-21T17:19:42",
+      "series": [
+        {
+          "id": 1083954,
+          "url": "https://patchwork.kernel.org/api/series/1083954/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083954",
+          "date": "2026-04-21T17:19:27",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083954/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/9] bpf: Fix tail_call_reachable leak",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260421171937.3508679-1-yonghong.song@linux.dev/",
+      "date": "2026-04-21T17:19:37",
+      "series": [
+        {
+          "id": 1083954,
+          "url": "https://patchwork.kernel.org/api/series/1083954/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083954",
+          "date": "2026-04-21T17:19:27",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083954/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/9] bpf: Remove unused parameter from check_map_kptr_access()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260421171932.3508283-1-yonghong.song@linux.dev/",
+      "date": "2026-04-21T17:19:32",
+      "series": [
+        {
+          "id": 1083954,
+          "url": "https://patchwork.kernel.org/api/series/1083954/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083954",
+          "date": "2026-04-21T17:19:27",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083954/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,6/6] selftests/bpf: Add tests for sleepable tracepoint programs",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260421-sleepable_tracepoints-v11-6-d8ff138d6f05@meta.com/",
+      "date": "2026-04-21T17:14:22",
+      "series": [
+        {
+          "id": 1083953,
+          "url": "https://patchwork.kernel.org/api/series/1083953/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083953",
+          "date": "2026-04-21T17:14:16",
+          "name": "bpf: Add support for sleepable tracepoint programs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1083953/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,5/6] libbpf: Add section handlers for sleepable tracepoints",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260421-sleepable_tracepoints-v11-5-d8ff138d6f05@meta.com/",
+      "date": "2026-04-21T17:14:21",
+      "series": [
+        {
+          "id": 1083953,
+          "url": "https://patchwork.kernel.org/api/series/1083953/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083953",
+          "date": "2026-04-21T17:14:16",
+          "name": "bpf: Add support for sleepable tracepoint programs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1083953/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,4/6] bpf: Verifier support for sleepable tracepoint programs",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260421-sleepable_tracepoints-v11-4-d8ff138d6f05@meta.com/",
+      "date": "2026-04-21T17:14:20",
+      "series": [
+        {
+          "id": 1083953,
+          "url": "https://patchwork.kernel.org/api/series/1083953/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083953",
+          "date": "2026-04-21T17:14:16",
+          "name": "bpf: Add support for sleepable tracepoint programs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1083953/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,3/6] bpf: Add sleepable support for classic tracepoint programs",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260421-sleepable_tracepoints-v11-3-d8ff138d6f05@meta.com/",
+      "date": "2026-04-21T17:14:19",
+      "series": [
+        {
+          "id": 1083953,
+          "url": "https://patchwork.kernel.org/api/series/1083953/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083953",
+          "date": "2026-04-21T17:14:16",
+          "name": "bpf: Add support for sleepable tracepoint programs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1083953/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,2/6] bpf: Add bpf_prog_run_array_sleepable()",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260421-sleepable_tracepoints-v11-2-d8ff138d6f05@meta.com/",
+      "date": "2026-04-21T17:14:18",
+      "series": [
+        {
+          "id": 1083953,
+          "url": "https://patchwork.kernel.org/api/series/1083953/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083953",
+          "date": "2026-04-21T17:14:16",
+          "name": "bpf: Add support for sleepable tracepoint programs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1083953/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,1/6] bpf: Add sleepable support for raw tracepoint programs",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260421-sleepable_tracepoints-v11-1-d8ff138d6f05@meta.com/",
+      "date": "2026-04-21T17:14:17",
+      "series": [
+        {
+          "id": 1083953,
+          "url": "https://patchwork.kernel.org/api/series/1083953/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083953",
+          "date": "2026-04-21T17:14:16",
+          "name": "bpf: Add support for sleepable tracepoint programs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1083953/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,8/8] selftests/bpf: Reuse stderr parsing for libarena ASAN tests",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260421165037.4736-9-emil@etsalapatis.com/",
+      "date": "2026-04-21T16:50:37",
+      "series": [
+        {
+          "id": 1083950,
+          "url": "https://patchwork.kernel.org/api/series/1083950/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083950",
+          "date": "2026-04-21T16:50:29",
+          "name": "Introduce arena library and runtime",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1083950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,7/8] selftests/bpf: Add selftests for libarena buddy allocator",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260421165037.4736-8-emil@etsalapatis.com/",
+      "date": "2026-04-21T16:50:36",
+      "series": [
+        {
+          "id": 1083950,
+          "url": "https://patchwork.kernel.org/api/series/1083950/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083950",
+          "date": "2026-04-21T16:50:29",
+          "name": "Introduce arena library and runtime",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1083950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,6/8] selftests/bpf: Add buddy allocator for libarena",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260421165037.4736-7-emil@etsalapatis.com/",
+      "date": "2026-04-21T16:50:35",
+      "series": [
+        {
+          "id": 1083950,
+          "url": "https://patchwork.kernel.org/api/series/1083950/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083950",
+          "date": "2026-04-21T16:50:29",
+          "name": "Introduce arena library and runtime",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1083950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,5/8] selftests/bpf: Add ASAN support for libarena selftests",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260421165037.4736-6-emil@etsalapatis.com/",
+      "date": "2026-04-21T16:50:34",
+      "series": [
+        {
+          "id": 1083950,
+          "url": "https://patchwork.kernel.org/api/series/1083950/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083950",
+          "date": "2026-04-21T16:50:29",
+          "name": "Introduce arena library and runtime",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1083950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,4/8] selftests/bpf: Add arena ASAN runtime to libarena",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260421165037.4736-5-emil@etsalapatis.com/",
+      "date": "2026-04-21T16:50:33",
+      "series": [
+        {
+          "id": 1083950,
+          "url": "https://patchwork.kernel.org/api/series/1083950/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083950",
+          "date": "2026-04-21T16:50:29",
+          "name": "Introduce arena library and runtime",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1083950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,3/8] selftests/bpf: Move arena-related headers into libarena",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260421165037.4736-4-emil@etsalapatis.com/",
+      "date": "2026-04-21T16:50:32",
+      "series": [
+        {
+          "id": 1083950,
+          "url": "https://patchwork.kernel.org/api/series/1083950/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083950",
+          "date": "2026-04-21T16:50:29",
+          "name": "Introduce arena library and runtime",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1083950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,2/8] selftests/bpf: Add basic libarena scaffolding",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260421165037.4736-3-emil@etsalapatis.com/",
+      "date": "2026-04-21T16:50:31",
+      "series": [
+        {
+          "id": 1083950,
+          "url": "https://patchwork.kernel.org/api/series/1083950/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083950",
+          "date": "2026-04-21T16:50:29",
+          "name": "Introduce arena library and runtime",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1083950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,1/8] selftests/bpf: Add ifdef guard for WRITE_ONCE macro in bpf_atomic.h",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260421165037.4736-2-emil@etsalapatis.com/",
+      "date": "2026-04-21T16:50:30",
+      "series": [
+        {
+          "id": 1083950,
+          "url": "https://patchwork.kernel.org/api/series/1083950/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083950",
+          "date": "2026-04-21T16:50:29",
+          "name": "Introduce arena library and runtime",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1083950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,4/4] selftests/bpf: Verify bpf-tcp-cc rejects TCP_NODELAY",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20260421155804.135786-5-kafai.wan@linux.dev/",
+      "date": "2026-04-21T15:58:04",
+      "series": [
+        {
+          "id": 1083936,
+          "url": "https://patchwork.kernel.org/api/series/1083936/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083936",
+          "date": "2026-04-21T15:58:00",
+          "name": "bpf: Reject TCP_NODELAY in TCP header option",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1083936/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,3/4] selftests/bpf: Test TCP_NODELAY in TCP hdr opt callbacks",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20260421155804.135786-4-kafai.wan@linux.dev/",
+      "date": "2026-04-21T15:58:03",
+      "series": [
+        {
+          "id": 1083936,
+          "url": "https://patchwork.kernel.org/api/series/1083936/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083936",
+          "date": "2026-04-21T15:58:00",
+          "name": "bpf: Reject TCP_NODELAY in TCP header option",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1083936/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/4] bpf: Reject TCP_NODELAY in bpf-tcp-cc",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20260421155804.135786-3-kafai.wan@linux.dev/",
+      "date": "2026-04-21T15:58:02",
+      "series": [
+        {
+          "id": 1083936,
+          "url": "https://patchwork.kernel.org/api/series/1083936/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083936",
+          "date": "2026-04-21T15:58:00",
+          "name": "bpf: Reject TCP_NODELAY in TCP header option",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1083936/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/4] bpf: Reject TCP_NODELAY in TCP header option callbacks",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20260421155804.135786-2-kafai.wan@linux.dev/",
+      "date": "2026-04-21T15:58:01",
+      "series": [
+        {
+          "id": 1083936,
+          "url": "https://patchwork.kernel.org/api/series/1083936/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083936",
+          "date": "2026-04-21T15:58:00",
+          "name": "bpf: Reject TCP_NODELAY in TCP header option",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1083936/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,3/3] selftests/bpf: Add test for large offset bpf-to-bpf call",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260421144504.823756-4-tangyazhou@zju.edu.cn/",
+      "date": "2026-04-21T14:45:04",
+      "series": [
+        {
+          "id": 1083904,
+          "url": "https://patchwork.kernel.org/api/series/1083904/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083904",
+          "date": "2026-04-21T14:45:01",
+          "name": "bpf: Fix call offset truncation and OOB read in bpf_patch_call_args()",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1083904/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,2/3] bpf: Fix s16 truncation for large bpf-to-bpf call offsets",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260421144504.823756-3-tangyazhou@zju.edu.cn/",
+      "date": "2026-04-21T14:45:03",
+      "series": [
+        {
+          "id": 1083904,
+          "url": "https://patchwork.kernel.org/api/series/1083904/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083904",
+          "date": "2026-04-21T14:45:01",
+          "name": "bpf: Fix call offset truncation and OOB read in bpf_patch_call_args()",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1083904/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,1/3] bpf: Fix out-of-bounds read in bpf_patch_call_args()",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260421144504.823756-2-tangyazhou@zju.edu.cn/",
+      "date": "2026-04-21T14:45:02",
+      "series": [
+        {
+          "id": 1083904,
+          "url": "https://patchwork.kernel.org/api/series/1083904/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083904",
+          "date": "2026-04-21T14:45:01",
+          "name": "bpf: Fix call offset truncation and OOB read in bpf_patch_call_args()",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1083904/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf/selftests: fix uprobe_multi usage",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260421-uprobe_multi_usage-v1-1-4c51675955e6@bootlin.com/",
+      "date": "2026-04-21T14:33:29",
+      "series": [
+        {
+          "id": 1083895,
+          "url": "https://patchwork.kernel.org/api/series/1083895/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083895",
+          "date": "2026-04-21T14:33:29",
+          "name": "[bpf-next] bpf/selftests: fix uprobe_multi usage",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083895/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,4/4] selftests/bpf: new cases handled by 32->64 range refinements",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260421-cnums-everywhere-rfc-v1-v1-4-8f8e98537f48@gmail.com/",
+      "date": "2026-04-21T10:28:52",
+      "series": [
+        {
+          "id": 1083766,
+          "url": "https://patchwork.kernel.org/api/series/1083766/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083766",
+          "date": "2026-04-21T10:28:48",
+          "name": "bpf: replace min/max fields with struct cnum{32,64}",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083766/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,3/4] bpf: replace min/max fields with struct cnum{32,64}",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260421-cnums-everywhere-rfc-v1-v1-3-8f8e98537f48@gmail.com/",
+      "date": "2026-04-21T10:28:51",
+      "series": [
+        {
+          "id": 1083766,
+          "url": "https://patchwork.kernel.org/api/series/1083766/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083766",
+          "date": "2026-04-21T10:28:48",
+          "name": "bpf: replace min/max fields with struct cnum{32,64}",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083766/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,2/4] bpf: use accessor functions for bpf_reg_state min/max fields",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260421-cnums-everywhere-rfc-v1-v1-2-8f8e98537f48@gmail.com/",
+      "date": "2026-04-21T10:28:50",
+      "series": [
+        {
+          "id": 1083766,
+          "url": "https://patchwork.kernel.org/api/series/1083766/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083766",
+          "date": "2026-04-21T10:28:48",
+          "name": "bpf: replace min/max fields with struct cnum{32,64}",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083766/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,1/4] bpf: representation and basic operations on circular numbers",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260421-cnums-everywhere-rfc-v1-v1-1-8f8e98537f48@gmail.com/",
+      "date": "2026-04-21T10:28:49",
+      "series": [
+        {
+          "id": 1083766,
+          "url": "https://patchwork.kernel.org/api/series/1083766/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1083766",
+          "date": "2026-04-21T10:28:48",
+          "name": "bpf: replace min/max fields with struct cnum{32,64}",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1083766/mbox/"
+        }
+      ]
+    }
+  ]
+}
