@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-04-22T00:00:00Z",
+  "period_start": "2026-04-20",
+  "period_end": "2026-04-21",
+  "patch_count": 28,
+  "thread_count": 7,
+  "top_contributors": ["Puranjay Mohan", "Leon Hwang", "Mahe Tardy"],
+  "key_topics": ["kfuncs", "arm64", "xdp", "btf", "maps", "syscall", "selftests"],
+  "overview": "Today's bpf-next activity spanned three significant feature series alongside a pair of RFC submissions. Leon Hwang's long-running series (now at v12) to extend the BPF syscall with common attributes landed alongside new kfunc work from Mahe Tardy and arm64 JIT improvements from Puranjay Mohan. Mohan also submitted an RFC XDP load-balancer benchmark framework, while Justin Suess introduced support for storing referenced struct file kptrs in BPF maps.",
+  "patches": [
+    {
+      "title": "bpf: Implement dtor for struct file BTF ID",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260420203306.3107246-2-utilityemal77@gmail.com/",
+      "summary": "Implements a destructor for the struct file BTF ID, enabling BPF maps to store referenced struct file kptrs. This is the core kernel patch of a two-part series that adds proper lifecycle management for file references held inside BPF maps. Tracking struct file references prevents resource leaks when map entries are removed or the map itself is destroyed. The accompanying selftest verifies that map-stored file kptrs are correctly acquired and released.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Map BPF_REG_0 to x8 instead of x7",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260420153603.4097618-2-puranjay@kernel.org/",
+      "summary": "Remaps BPF_REG_0 to the arm64 x8 register (the indirect result register) to free x7 for use as a stack-argument-passing register under the AAPCS64 calling convention. This register reassignment is a prerequisite for the arm64 BPF JIT to support BPF programs calling kernel functions that pass arguments on the stack rather than solely in registers. Follow-on patches in the series add the JIT logic for stack arguments and enable the relevant selftests on arm64.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Extend BPF syscall with common attributes support",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260420141804.27179-2-leon.hwang@linux.dev/",
+      "summary": "Introduces a unified common-attributes mechanism for the BPF syscall, allowing prog_load, btf_load, and map_create commands to share a consistent log-size reporting path. At version 12, this series also adds libbpf support and the ability for userspace to retrieve the true log buffer size when BPF object loading fails. The change reduces duplication in the BPF syscall implementation and makes failure diagnostics more consistent across all BPF object types.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_icmp_send_unreach kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260420105816.72168-4-mahe.tardy@gmail.com/",
+      "summary": "Adds a new kfunc bpf_icmp_send_unreach that allows BPF programs to generate ICMP destination-unreachable messages for both IPv4 and IPv6. This enables tc and XDP programs to reject packets with meaningful ICMP feedback rather than silently dropping them, improving network-level error signaling. The series refactors netfilter helper functions into core ipv4/ipv6 to make them reusable outside of netfilter, and is accompanied by comprehensive tests covering both address families and recursion safety.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add bench_force_done() for early benchmark completion",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260420111726.2118636-2-puranjay@kernel.org/",
+      "summary": "First patch of an RFC series adding an XDP load-balancer benchmark to the BPF selftest suite. This patch introduces bench_force_done(), a helper that lets a benchmark signal early completion without waiting for the full configured duration. Subsequent patches build a batch-timing library, a full XDP load-balancer BPF program with common definitions, and a driver and shell script to run the benchmark end-to-end. The RFC status invites feedback on the benchmark design and infrastructure before finalization.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: fix off-by-one in bpf_cpumask_populate related selftest",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260420093734.2400330-1-mattbobrowski@google.com/",
+      "summary": "Fixes an off-by-one error in the selftest for bpf_cpumask_populate. The bug caused the test to iterate one index past the valid CPU range, potentially producing incorrect results or accessing memory beyond the expected bounds on systems with specific CPU counts. This is a standalone single-patch fix with no other dependencies.",
+      "related_links": []
+    }
+  ]
+}
