@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-04-23T00:00:00Z",
+  "period_start": "2026-04-21",
+  "period_end": "2026-04-22",
+  "patch_count": 52,
+  "thread_count": 11,
+  "top_contributors": ["Yonghong Song", "Amery Hung", "Emil Tsalapatis", "Mykyta Yatsenko"],
+  "key_topics": ["verifier", "kfuncs", "tracepoints", "arena", "dynptr", "jit", "selftests"],
+  "overview": "Activity on April 21-22 was dominated by two major verifier-adjacent series: Yonghong Song's v2 9-patch series preparing the BPF verifier and calling convention to support stack-based arguments for kfuncs, and Amery Hung's v3 refactor of verifier object relationship tracking that also fixes a dynptr use-after-free bug. Mykyta Yatsenko's long-running effort to add sleepable tracepoint program support reached its 11th revision, while Emil Tsalapatis pushed an 8th iteration of the arena library and runtime. Eduard Zingerman also submitted an RFC proposing a structural overhaul of verifier scalar range tracking using typed circular number types.",
+  "patches": [
+    {
+      "title": "bpf: Introduce bpf register BPF_REG_PARAMS",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260422054229.3128677-1-yonghong.song@linux.dev/",
+      "summary": "Introduces a new BPF pseudo-register BPF_REG_PARAMS as part of the groundwork for supporting stack-based calling conventions in kfuncs. Currently all kfunc arguments pass through the standard register file; adding stack argument support requires a dedicated register to track the stack parameter region. This is patch 8 of 9 in Yonghong Song's v2 series 'bpf: Prepare to support stack arguments', which makes several preparatory refactors before the stack ABI extension lands.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refactor object relationship tracking and fix dynptr UAF bug",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260421221016.2967924-5-ameryhung@gmail.com/",
+      "summary": "Refactors how the BPF verifier tracks ownership and dependency relationships between objects such as dynptrs, slices, and kptrs, and simultaneously fixes a use-after-free bug in dynptr handling. The prior tracking was ad hoc and missed some invalidation paths, allowing a program to use a dynptr after the underlying object was released. This is the core patch in Amery Hung's v3 9-patch series on verifier object relationship tracking.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Unify dynptr handling in the verifier",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260421221016.2967924-2-ameryhung@gmail.com/",
+      "summary": "Consolidates the divergent code paths for dynptr validation in the BPF verifier into a single unified representation and set of helpers. The unification is a prerequisite for the subsequent object relationship tracking refactor in the same series. Together the series improves correctness guarantees for dynptr lifetime and cloning.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add sleepable support for raw tracepoint programs",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260421-sleepable_tracepoints-v11-1-d8ff138d6f05@meta.com/",
+      "summary": "Extends the BPF raw tracepoint infrastructure to allow programs to be marked sleepable, enabling use of blocking helpers and memory allocations within raw tracepoint handlers. Sleepable tracepoint programs are valuable for observability use cases that need to perform I/O or acquire locks during event capture. This is the first of six patches in Mykyta Yatsenko's 11th revision, which also covers classic tracepoints, verifier support, and libbpf section handlers.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add basic libarena scaffolding",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260421165037.4736-3-emil@etsalapatis.com/",
+      "summary": "Introduces the foundational test scaffolding for libarena, a new userspace-style dynamic memory management library built on top of BPF arena maps. libarena aims to give BPF programs safe, flexible allocation patterns without requiring fixed-size map entries. This is part of Emil Tsalapatis's v8 8-patch series, which includes a buddy allocator, ASAN runtime support, and comprehensive selftests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: replace min/max fields with struct cnum{32,64}",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260421-cnums-everywhere-rfc-v1-v1-3-8f8e98537f48@gmail.com/",
+      "summary": "RFC patch replacing the loose scalar min/max range fields in bpf_reg_state with typed circular number structs (cnum32/cnum64) that encode value and bit-width together. The goal is to make verifier range tracking structurally sound and enable better 32-to-64-bit range refinements. This is the central patch of Eduard Zingerman's 4-patch RFC series, which first introduces the cnum abstraction and accessor functions before applying the broad refactor.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Granlund-Montgomery optimization for 64-bit div/mod by immediate",
+      "author": "Jie Meng",
+      "url": "https://lore.kernel.org/bpf/20260421175507.2396332-1-jmeng@fb.com/",
+      "summary": "Applies the Granlund-Montgomery algorithm to the BPF x86 JIT, replacing expensive hardware division instructions with a multiply-and-shift sequence when the divisor is a compile-time immediate. Division is among the slowest x86 instructions, and BPF programs with tight loops that perform constant-divisor modulo or divide operations benefit significantly. This is the third revision of the single-patch optimization.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix out-of-bounds read in bpf_patch_call_args()",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260421144504.823756-2-tangyazhou@zju.edu.cn/",
+      "summary": "Fixes an out-of-bounds memory read in bpf_patch_call_args() that could be triggered by BPF-to-BPF calls with large offsets. The function failed to account for all expansion cases when reallocating the instruction array, allowing reads past the buffer end. This is the first of three patches in Yazhou Tang's v7 series, which also fixes s16 truncation of large call offsets and adds a regression selftest.",
+      "related_links": []
+    }
+  ]
+}
