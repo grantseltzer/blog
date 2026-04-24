@@ -1,0 +1,263 @@
+{
+  "period": "daily",
+  "period_start": "2026-04-23",
+  "period_end": "2026-04-24",
+  "fetched_at": "2026-04-24T10:25:32Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v2,4/4] selftests/bpf: new cases handled by 32->64 range refinements",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260424-cnums-everywhere-rfc-v1-v2-4-57091924c9d7@gmail.com/",
+      "date": "2026-04-24T08:17:43",
+      "series": [
+        {
+          "id": 1085073,
+          "url": "https://patchwork.kernel.org/api/series/1085073/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1085073",
+          "date": "2026-04-24T08:17:39",
+          "name": "bpf: replace min/max fields with struct cnum{32,64}",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1085073/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/4] bpf: replace min/max fields with struct cnum{32,64}",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260424-cnums-everywhere-rfc-v1-v2-3-57091924c9d7@gmail.com/",
+      "date": "2026-04-24T08:17:42",
+      "series": [
+        {
+          "id": 1085073,
+          "url": "https://patchwork.kernel.org/api/series/1085073/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1085073",
+          "date": "2026-04-24T08:17:39",
+          "name": "bpf: replace min/max fields with struct cnum{32,64}",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1085073/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/4] bpf: use accessor functions for bpf_reg_state min/max fields",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260424-cnums-everywhere-rfc-v1-v2-2-57091924c9d7@gmail.com/",
+      "date": "2026-04-24T08:17:41",
+      "series": [
+        {
+          "id": 1085073,
+          "url": "https://patchwork.kernel.org/api/series/1085073/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1085073",
+          "date": "2026-04-24T08:17:39",
+          "name": "bpf: replace min/max fields with struct cnum{32,64}",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1085073/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/4] bpf: representation and basic operations on circular numbers",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260424-cnums-everywhere-rfc-v1-v2-1-57091924c9d7@gmail.com/",
+      "date": "2026-04-24T08:17:40",
+      "series": [
+        {
+          "id": 1085073,
+          "url": "https://patchwork.kernel.org/api/series/1085073/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1085073",
+          "date": "2026-04-24T08:17:39",
+          "name": "bpf: replace min/max fields with struct cnum{32,64}",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1085073/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: Add test for map-stored struct file kptrs",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260423152239.4140627-3-utilityemal77@gmail.com/",
+      "date": "2026-04-23T15:22:39",
+      "series": [
+        {
+          "id": 1084780,
+          "url": "https://patchwork.kernel.org/api/series/1084780/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084780",
+          "date": "2026-04-23T15:22:37",
+          "name": "Allow storing referenced struct file kptrs in BPF maps",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1084780/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: Implement dtor for struct file BTF ID",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260423152239.4140627-2-utilityemal77@gmail.com/",
+      "date": "2026-04-23T15:22:38",
+      "series": [
+        {
+          "id": 1084780,
+          "url": "https://patchwork.kernel.org/api/series/1084780/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084780",
+          "date": "2026-04-23T15:22:37",
+          "name": "Allow storing referenced struct file kptrs in BPF maps",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1084780/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,9/9] bpf: Reuse MAX_BPF_FUNC_ARGS for maximum number of arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260423033511.2542870-1-yonghong.song@linux.dev/",
+      "date": "2026-04-23T03:35:11",
+      "series": [
+        {
+          "id": 1084497,
+          "url": "https://patchwork.kernel.org/api/series/1084497/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084497",
+          "date": "2026-04-23T03:34:25",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084497/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,8/9] bpf: Introduce bpf register BPF_REG_PARAMS",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260423033506.2542005-1-yonghong.song@linux.dev/",
+      "date": "2026-04-23T03:35:06",
+      "series": [
+        {
+          "id": 1084497,
+          "url": "https://patchwork.kernel.org/api/series/1084497/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084497",
+          "date": "2026-04-23T03:34:25",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084497/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,7/9] bpf: Prepare verifier logs for upcoming kfunc stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260423033501.2539667-1-yonghong.song@linux.dev/",
+      "date": "2026-04-23T03:35:01",
+      "series": [
+        {
+          "id": 1084497,
+          "url": "https://patchwork.kernel.org/api/series/1084497/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084497",
+          "date": "2026-04-23T03:34:25",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084497/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,6/9] bpf: Rename existing argno to arg",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260423033456.2539340-1-yonghong.song@linux.dev/",
+      "date": "2026-04-23T03:34:56",
+      "series": [
+        {
+          "id": 1084497,
+          "url": "https://patchwork.kernel.org/api/series/1084497/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084497",
+          "date": "2026-04-23T03:34:25",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084497/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,5/9] bpf: Refactor to handle memory and size together",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260423033451.2539065-1-yonghong.song@linux.dev/",
+      "date": "2026-04-23T03:34:51",
+      "series": [
+        {
+          "id": 1084497,
+          "url": "https://patchwork.kernel.org/api/series/1084497/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084497",
+          "date": "2026-04-23T03:34:25",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084497/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,4/9] bpf: Refactor to avoid redundant calculation of bpf_reg_state",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260423033446.2538321-1-yonghong.song@linux.dev/",
+      "date": "2026-04-23T03:34:46",
+      "series": [
+        {
+          "id": 1084497,
+          "url": "https://patchwork.kernel.org/api/series/1084497/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084497",
+          "date": "2026-04-23T03:34:25",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084497/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/9] bpf: Remove WARN_ON_ONCE in check_kfunc_mem_size_reg()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260423033441.2538149-1-yonghong.song@linux.dev/",
+      "date": "2026-04-23T03:34:41",
+      "series": [
+        {
+          "id": 1084497,
+          "url": "https://patchwork.kernel.org/api/series/1084497/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084497",
+          "date": "2026-04-23T03:34:25",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084497/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/9] bpf: Fix tail_call_reachable leak",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260423033435.2538013-1-yonghong.song@linux.dev/",
+      "date": "2026-04-23T03:34:35",
+      "series": [
+        {
+          "id": 1084497,
+          "url": "https://patchwork.kernel.org/api/series/1084497/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084497",
+          "date": "2026-04-23T03:34:25",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084497/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/9] bpf: Remove unused parameter from check_map_kptr_access()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260423033430.2537615-1-yonghong.song@linux.dev/",
+      "date": "2026-04-23T03:34:30",
+      "series": [
+        {
+          "id": 1084497,
+          "url": "https://patchwork.kernel.org/api/series/1084497/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1084497",
+          "date": "2026-04-23T03:34:25",
+          "name": "bpf: Prepare to support stack arguments",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1084497/mbox/"
+        }
+      ]
+    }
+  ]
+}
