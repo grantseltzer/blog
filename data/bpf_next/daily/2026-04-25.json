@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-04-25T10:15:04Z",
+  "period_start": "2026-04-24",
+  "period_end": "2026-04-25",
+  "patch_count": 38,
+  "thread_count": 5,
+  "top_contributors": ["Yonghong Song", "Mykyta Yatsenko", "Eduard Zingerman", "Justin Suess"],
+  "key_topics": ["verifier", "maps", "kfuncs", "kptr", "btf", "stack-arguments", "jit"],
+  "overview": "April 24 was one of the busiest days recently on the bpf mailing list, with two major new-feature series landing alongside continued iteration on earlier work. Yonghong Song posted an 18-patch series implementing full stack argument support for BPF functions and kfuncs, covering verifier liveness analysis, precision backtracking, JIT backends for x86 and arm64, and a comprehensive test suite. Mykyta Yatsenko's 10-patch v3 series introduces a resizable hash map type backed by the kernel rhashtable, supporting automatic resizing, batch operations, and BPF iterators.",
+  "patches": [
+    {
+      "title": "bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260424171438.2034741-1-yonghong.song@linux.dev/",
+      "summary": "The first patch in an 18-patch series that adds support for passing arguments on the stack to BPF subprograms and kfuncs, lifting the current hard limit of five register-passed arguments. When more arguments are needed than available registers, a pointer to an argument area is passed in r11 (BPF_REG_PARAMS) and the verifier is taught to validate accesses through that pointer. This enables writing BPF programs and kfuncs with richer signatures without resorting to context structs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add precision marking and backtracking for stack argument slots",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260424171443.2034958-1-yonghong.song@linux.dev/",
+      "summary": "Extends the verifier's precision backtracking pass to cover the stack slots used for stack-passed arguments. Precision marking is needed so that the verifier can correctly identify which stack argument slots must be tracked precisely for safety proofs and state pruning. Without this extension, the verifier would either over-approximate or reject valid programs that use stack arguments. The patch integrates stack argument liveness into the existing precision propagation framework.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support stack arguments for kfunc calls",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260424171514.2041929-1-yonghong.song@linux.dev/",
+      "summary": "Extends the stack argument mechanism from BPF-to-BPF calls to kfunc calls, allowing kfuncs to declare parameters beyond the five-register limit. The verifier validates that BPF programs set up the argument area correctly before calling such kfuncs and that the types of stack-passed arguments satisfy the kfunc's BTF annotations. This patch is a key enabler for kfuncs with complex or wide argument lists without requiring callers to bundle arguments into a struct.",
+      "related_links": []
+    },
+    {
+      "title": "bpf,x86: Implement JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260424171648.2043493-1-yonghong.song@linux.dev/",
+      "summary": "Implements the x86-64 JIT backend changes needed to emit code that sets up and tears down the stack argument area when calling functions or kfuncs with stack arguments. The JIT must allocate space on the program's stack frame, marshal arguments into the argument area, pass r11 pointing to it, and restore the stack afterward. A companion patch in the same series handles arm64.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Implement resizable hashmap basic functions",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260424-rhash-v3-1-d0fa0ce4379b@meta.com/",
+      "summary": "Introduces a new BPF map type BPF_MAP_TYPE_RHASH backed by the kernel's rhashtable, which automatically resizes as entries are inserted and removed. Unlike the existing BPF_MAP_TYPE_HASH, rhash does not require a pre-allocated fixed capacity and can grow without manual intervention, making it better suited for workloads with unpredictable cardinality. This first patch implements the core lookup, update, and delete operations; subsequent patches in the series add iterators, batch ops, timer/workqueue support, and libbpf/bpftool integration.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Support resizable hashtable",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260424-rhash-v3-6-d0fa0ce4379b@meta.com/",
+      "summary": "Adds libbpf-side support for the new BPF_MAP_TYPE_RHASH map type, allowing userspace programs to create and interact with resizable hash maps through the standard libbpf map API. The patch updates the map type table and any type-specific helpers so that tools like bpftool and skeleton-generated code can handle rhash maps transparently.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: representation and basic operations on circular numbers",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260424-cnums-everywhere-rfc-v1-v3-1-ca434b39a486@gmail.com/",
+      "summary": "V3 of the patch introducing cnum32 and cnum64 typed structs for circular integer range representation in the BPF verifier. This revision addresses review feedback on the arithmetic semantics and adds more thorough documentation of the invariants that the types maintain. The circular number abstraction replaces the existing eight loose scalar-range fields in bpf_reg_state, and this patch provides the foundational primitives used throughout the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Implement dtor for struct file BTF ID",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260424192252.695240-2-utilityemal77@gmail.com/",
+      "summary": "V3 of the patch registering fput() as the destructor for the struct file BTF ID, enabling BPF programs to store referenced struct file kptrs in maps. The new version incorporates review feedback on the destructor registration mechanism and ensures the BTF ID lookup is robust across kernel configurations. Together with the accompanying selftest patch, this series allows BPF programs to hold long-lived file references in map storage for use across program invocations.",
+      "related_links": []
+    }
+  ]
+}

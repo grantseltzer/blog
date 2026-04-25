@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-04-25T10:15:04Z",
+  "period_start": "2026-04-23",
+  "period_end": "2026-04-24",
+  "patch_count": 15,
+  "thread_count": 3,
+  "top_contributors": ["Yonghong Song", "Eduard Zingerman", "Justin Suess"],
+  "key_topics": ["verifier", "kfuncs", "kptr", "btf", "stack-arguments"],
+  "overview": "Activity on April 23-24 centered on three series targeting verifier range tracking, kptrs, and kfunc call conventions. Eduard Zingerman posted v2 of a series refactoring bpf_reg_state by replacing bare min/max fields with a typed circular-number abstraction (cnum), enabling stronger 32-to-64-bit range refinements in the verifier. Justin Suess enabled struct file as a reference-counted kptr storable in BPF maps, while Yonghong Song posted v3 preparatory cleanups to verifier argument handling ahead of upcoming kfunc stack argument support.",
+  "patches": [
+    {
+      "title": "bpf: representation and basic operations on circular numbers",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260424-cnums-everywhere-rfc-v1-v2-1-57091924c9d7@gmail.com/",
+      "summary": "Introduces cnum32 and cnum64, typed structs representing circular (wrapping) integer numbers with defined arithmetic semantics for use in the BPF verifier. Circular numbers more accurately model unsigned integer range constraints that can wrap around, avoiding the imprecision of separate smin/smax/umin/umax fields. This patch provides the foundation — constructors, comparison, and arithmetic primitives — that subsequent patches use to replace the existing verifier range fields. The approach enables more accurate range propagation, particularly for 32-to-64-bit sign-extension scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: replace min/max fields with struct cnum{32,64}",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260424-cnums-everywhere-rfc-v1-v2-3-57091924c9d7@gmail.com/",
+      "summary": "Replaces the eight loose scalar range fields in bpf_reg_state (smin32, smax32, umin32, umax32, smin64, smax64, umin64, umax64) with two typed structs cnum32 and cnum64. The structural change enforces correct usage through accessor functions added in the preceding patch and eliminates a class of subtle bugs where fields could be updated inconsistently. This is the core mechanical transformation of the series, affecting the verifier's central register-state data structure.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Implement dtor for struct file BTF ID",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260423152239.4140627-2-utilityemal77@gmail.com/",
+      "summary": "Registers a destructor for the struct file BTF ID so that BPF programs can hold referenced kptrs to struct file objects in maps without leaking file references. Without a dtor, the kernel refuses to allow struct file as a referenced kptr type because it cannot safely release the reference on map entry deletion. The patch wires up fput() as the destructor, enabling map-stored file references to be properly cleaned up when entries are removed or the map is freed.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add test for map-stored struct file kptrs",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260423152239.4140627-3-utilityemal77@gmail.com/",
+      "summary": "Adds a selftest exercising the new ability to store referenced struct file kptrs in BPF maps. The test acquires a file reference via a kfunc, stores it in a hash map, retrieves it, and verifies that the reference is properly released on map cleanup. Coverage confirms that both the kptr store/load paths and the destructor-triggered fput work correctly end-to-end.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Remove unused parameter from check_map_kptr_access()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260423033430.2537615-1-yonghong.song@linux.dev/",
+      "summary": "A small clean-up removing a parameter from check_map_kptr_access() that is no longer used after earlier refactoring. This is the first of a nine-patch preparatory series that restructures verifier internals to support passing arguments on the stack to BPF functions and kfuncs. The patch series as a whole refactors argument tracking, memory/size pairing, and verifier log messages without yet enabling the stack-argument feature itself.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce bpf register BPF_REG_PARAMS",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260423033506.2542005-1-yonghong.song@linux.dev/",
+      "summary": "Introduces a new pseudo-register alias BPF_REG_PARAMS (mapped to r11) to name the register that will hold a pointer to the stack-spilled arguments area when kfunc stack arguments are eventually supported. Using a named alias instead of a raw register number makes the upcoming JIT and verifier changes easier to follow and review. This patch is part of the v3 preparatory series by Yonghong Song and does not yet enable stack argument passing.",
+      "related_links": []
+    }
+  ]
+}
