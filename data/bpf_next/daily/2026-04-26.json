@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-04-26T09:56:49Z",
+  "period_start": "2026-04-25",
+  "period_end": "2026-04-26",
+  "patch_count": 2,
+  "thread_count": 1,
+  "top_contributors": ["Eduard Zingerman"],
+  "key_topics": ["verifier", "range-tracking", "selftests"],
+  "overview": "A single two-patch series from Eduard Zingerman addresses a correctness bug in the BPF verifier's range_within() function, which is used by is_state_visited() to prune redundant verification paths. The fix ensures that range subset checks operate on cnum (cross-value number) ranges rather than plain min/max pairs, preventing the verifier from incorrectly concluding that a prior state subsumes the current one.",
+  "patches": [
+    {
+      "title": "bpf: range_within() must check cnum ranges instead of min/max pairs",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260425-cnum-range-within-v1-1-2fdca70cb09d@gmail.com/",
+      "summary": "This patch fixes a bug in the BPF verifier's range_within() helper, which checks whether one register value range is a subset of another. The function was comparing raw min/max pairs rather than the correct cnum (cross-value number) ranges, causing is_state_visited() to make incorrect pruning decisions during verification. An incorrect subset determination can cause the verifier to skip re-examining a code path it should explore, potentially leading to missed safety violations or spurious rejections. The fix aligns range_within() with the same cnum-based representation used elsewhere in the verifier's range tracking logic.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: a test for proper cnums compare in is_state_visited()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260425-cnum-range-within-v1-2-2fdca70cb09d@gmail.com/",
+      "summary": "This patch adds a selftest to the BPF test suite that exercises the corrected cnum-based range comparison in is_state_visited(). The test constructs a scenario where the old min/max comparison would have produced a wrong result, confirming that the verifier now makes the correct pruning decision. Having an explicit regression test prevents future changes from silently reintroducing the same class of state-pruning bug.",
+      "related_links": []
+    }
+  ]
+}
