@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-04-28T00:00:00Z",
+  "period_start": "2026-04-26",
+  "period_end": "2026-04-27",
+  "patch_count": 15,
+  "thread_count": 4,
+  "top_contributors": ["Emil Tsalapatis", "David Windsor", "Jiayuan Chen"],
+  "key_topics": ["kfuncs", "arena", "tracepoint", "selftests"],
+  "overview": "April 26-27 brought three distinct series to bpf-next. The largest submission was Emil Tsalapatis's v9 of the libarena library, adding a buddy allocator and ASAN runtime for BPF arena-backed memory. David Windsor introduced a new kfunc for atomically labeling inodes with xattrs, and Jiayuan Chen fixed missing syncookie statistics for BPF custom syncookie implementations.",
+  "patches": [
+    {
+      "title": "bpf: add bpf_init_inode_xattr kfunc for atomic inode labeling",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260427001602.38353-2-dwindsor@gmail.com/",
+      "summary": "Introduces bpf_init_inode_xattr(), a new kfunc that allows BPF programs to atomically set an xattr on an inode during its initialization phase, before the inode is visible to other processes. This is intended for LSM-based security labeling workflows where a label must be present before the first access. The companion patch (2/2) adds selftests covering the kfunc under various inode types.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: add tests for bpf_init_inode_xattr kfunc",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260427001602.38353-3-dwindsor@gmail.com/",
+      "summary": "Adds a selftest suite for the bpf_init_inode_xattr kfunc introduced in patch 1/2. The tests attach a BPF LSM program to the inode_init_security hook and verify that the xattr is correctly set and readable after inode creation. Covers both success paths and error conditions such as oversized values or missing permissions.",
+      "related_links": []
+    },
+    {
+      "title": "net: add missing syncookie statistics for BPF custom syncookies",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260427001006.14465-2-jiayuan.chen@linux.dev/",
+      "summary": "Fixes a gap where BPF programs using the custom syncookie mechanism (via the bpf_tcp_raw_gen_syncookie_ipv4/ipv6 kfuncs) did not increment the standard SYN cookie counters visible via netstat. This makes BPF-handled syncookies observable through the same monitoring interfaces as kernel-native syncookies. The v3 series also includes a selftest that verifies the statistics are updated correctly.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add basic libarena scaffolding",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260426190338.4615-3-emil@etsalapatis.com/",
+      "summary": "Part of the v9 libarena series, this patch establishes the build scaffolding and test harness for a standalone user-space library that manages BPF arena memory. The library provides a C-callable allocator backed by BPF arena pages, letting user-space and BPF programs share memory without copying. Subsequent patches in the series add a buddy allocator and ASAN instrumentation for catching out-of-bounds accesses in arena-backed allocations.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add buddy allocator for libarena",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260426190338.4615-7-emil@etsalapatis.com/",
+      "summary": "Adds a power-of-two buddy allocator to libarena so that BPF programs can perform dynamic memory allocation within a BPF arena. The buddy allocator supports split and merge operations for efficient reuse of arena pages without external fragmentation. This enables BPF programs that need variable-sized allocations — such as per-connection state blocks — to manage their own memory without resorting to fixed-size map elements.",
+      "related_links": []
+    }
+  ]
+}

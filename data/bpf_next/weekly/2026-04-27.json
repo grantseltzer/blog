@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-04-28T00:00:00Z",
+  "period_start": "2026-04-20",
+  "period_end": "2026-04-27",
+  "patch_count": 100,
+  "thread_count": 19,
+  "top_contributors": ["Yonghong Song", "Mykyta Yatsenko", "Emil Tsalapatis", "Eduard Zingerman", "Amery Hung"],
+  "key_topics": ["verifier", "kfuncs", "maps", "jit", "arena", "tracepoint", "dynptr", "kptrs"],
+  "overview": "The week of April 20-27 was one of the most active bpf-next periods in recent months, with 100 patches across 19 distinct series touching nearly every layer of the BPF stack. The headline feature is Yonghong Song's 18-patch series adding full stack-argument support for BPF functions and kfuncs, complete with x86 and arm64 JIT backends, which lifts the long-standing six-argument limit. Mykyta Yatsenko drove two major features in parallel: a 10-patch resizable hash map backed by rhashtable and a 6-patch series (reaching v13) enabling sleepable tracepoint programs. On the verifier side, Eduard Zingerman continued refining the cnum-based range representation and Amery Hung posted a 9-patch series unifying dynptr object-relationship tracking and fixing a UAF bug.",
+  "patches": [
+    {
+      "title": "bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260424171438.2034741-1-yonghong.song@linux.dev/",
+      "summary": "The first patch of an 18-patch series that introduces a stack-based calling convention allowing BPF programs and kfuncs to accept more than six arguments. When a callee requires extra arguments beyond the six hardware registers, a pointer in r11 (BPF_REG_PARAMS) points to an on-stack argument area that the verifier validates. The series covers verifier liveness, precision backtracking, x86 and arm64 JIT backends, and a comprehensive test suite. This is the most significant BPF calling-convention change since the subsystem was created.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support stack arguments for kfunc calls",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260424171514.2041929-1-yonghong.song@linux.dev/",
+      "summary": "Extends the stack-argument calling convention to kfunc calls, allowing kernel functions exposed via the kfunc mechanism to declare parameters beyond position six. The verifier validates that BPF programs populate the stack argument area correctly before the call and that argument types match the kfunc's BTF annotations. This removes the need to bundle excess parameters into a context struct, enabling cleaner kfunc APIs for networking, storage, and LSM use cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf,x86: Implement JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260424171648.2043493-1-yonghong.song@linux.dev/",
+      "summary": "Implements x86-64 JIT emission for the new stack-argument calling convention. The JIT allocates space in the caller's stack frame, marshals excess arguments into the argument area, passes r11 pointing to it, and tears down the area on return. Stack arguments are rejected when the BPF interpreter is in use, so this patch is the prerequisite for the feature to be enabled on x86 systems.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Implement resizable hashmap basic functions",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260424-rhash-v3-1-d0fa0ce4379b@meta.com/",
+      "summary": "Introduces BPF_MAP_TYPE_RHASH, a new map type backed by the kernel's rhashtable that resizes automatically as entries are inserted and deleted, eliminating the need to pre-allocate a fixed capacity. This addresses a common operational pain point where over-provisioned hash maps waste memory while under-provisioned ones drop entries under load. The 10-patch v3 series adds batch ops, iterators, timer/workqueue support, libbpf integration, and bpftool documentation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add sleepable support for raw tracepoint programs",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260422-sleepable_tracepoints-v13-1-99005dff21ef@meta.com/",
+      "summary": "The first patch of a 6-patch v13 series enabling BPF programs attached to raw and classic tracepoints to be marked as sleepable. Sleepable tracepoint programs can acquire locks, call sleeping kfuncs, and perform GFP_KERNEL allocations, unlocking use cases such as per-event kernel object allocation that are currently impossible. The series adds the verifier gating, a new bpf_prog_run_array_sleepable() helper, libbpf section handlers, and a full selftest suite.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: representation and basic operations on circular numbers",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260424-cnums-everywhere-rfc-v1-v3-1-ca434b39a486@gmail.com/",
+      "summary": "Third iteration of the foundational patch introducing cnum32/cnum64 typed structs to replace the eight loose min/max scalar fields in bpf_reg_state. Circular-number semantics correctly model modular arithmetic for 32-bit sub-register range tracking, preventing a class of precision loss in the verifier. The v3 iteration incorporates reviewer feedback on the arithmetic primitives and adds more detailed correctness arguments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: range_within() must check cnum ranges instead of min/max pairs",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260425-cnum-range-within-v1-1-2fdca70cb09d@gmail.com/",
+      "summary": "Fixes a correctness bug in range_within(), the verifier's state-subsumption check used during state pruning: it was comparing raw min/max fields instead of the new cnum range representation, causing the pruner to incorrectly merge states that differ in circular-number range. Incorrect pruning can lead the verifier to accept programs that should be rejected. The companion patch (2/2) adds a regression test that triggers the wrong behaviour before the fix.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Unify dynptr handling in the verifier",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260421221016.2967924-2-ameryhung@gmail.com/",
+      "summary": "The first patch of a 9-patch v3 series that consolidates the verifier's scattered dynptr-validation logic into a single unified code path. Previously each dynptr type (ringbuf, skb, xdp, etc.) had its own partially duplicated checks; the refactor eliminates the duplication and provides a consistent foundation for the bug fixes and new tests that follow in the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refactor object relationship tracking and fix dynptr UAF bug",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260421221016.2967924-5-ameryhung@gmail.com/",
+      "summary": "The core patch of the v3 dynptr series, reworking how the verifier tracks ownership relationships between BPF objects (dynptrs, slices, and the underlying memory they reference). The refactor also fixes a use-after-free bug where the verifier failed to invalidate derived dynptr slices after the parent object was freed, potentially allowing a program to access freed memory at runtime.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_init_inode_xattr kfunc for atomic inode labeling",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260427001602.38353-2-dwindsor@gmail.com/",
+      "summary": "Introduces a new kfunc that BPF LSM programs can call from the inode_init_security hook to atomically attach an xattr to an inode before it becomes visible to the rest of the system. This fills a gap for security labeling workflows that need a label to be present from the moment of first access, without races against concurrent readers. The v1 series includes selftests exercising the kfunc across multiple inode types.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Granlund-Montgomery optimization for 64-bit div/mod by immediate",
+      "author": "Jie Meng",
+      "url": "https://lore.kernel.org/bpf/20260421175507.2396332-1-jmeng@fb.com/",
+      "summary": "Applies the Granlund-Montgomery strength-reduction technique to the x86 BPF JIT to replace 64-bit integer division and modulo by compile-time immediates with a multiply-shift sequence, avoiding the expensive DIV/IDIV instructions. The optimisation can be several times faster than hardware division on modern CPUs. This is v3 of the patch, incorporating earlier feedback on overflow edge cases and negative immediate handling.",
+      "related_links": []
+    },
+    {
+      "title": "net: add missing syncookie statistics for BPF custom syncookies",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260427001006.14465-2-jiayuan.chen@linux.dev/",
+      "summary": "Fixes missing counter increments in the network stack when BPF programs handle SYN cookies via the kfunc-based custom syncookie API, ensuring that /proc/net/netstat SYN cookie counters accurately reflect BPF-generated cookies. Without this fix, operators relying on standard Linux TCP statistics cannot detect or diagnose syncookie activity handled by BPF programs. The v3 series adds a selftest that verifies the counters increment correctly.",
+      "related_links": []
+    }
+  ]
+}
