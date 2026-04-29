@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-04-29T10:09:27Z",
+  "period_start": "2026-04-27",
+  "period_end": "2026-04-28",
+  "patch_count": 27,
+  "thread_count": 8,
+  "top_contributors": ["Puranjay Mohan", "Kaitao cheng", "Tiezhu Yang"],
+  "key_topics": ["kfuncs", "linked-list", "arm64", "jit", "xdp", "selftests", "syncookies"],
+  "overview": "This period's bpf-next activity centered on a v10 series extending the BPF linked-list API with new kfuncs (bpf_list_del, bpf_list_add, bpf_list_is_first/last/empty), and a v2 series adding arm64 JIT support for stack arguments by remapping registers and wiring in the AArch64 calling convention. The day also brought a new XDP load-balancer benchmark suite, a bpf_init_inode_xattr kfunc for atomic inode security labeling, syncookie statistics fixes, and build-failure patches addressing undefined symbol references from recent cnum changes.",
+  "patches": [
+    {
+      "title": "bpf: Introduce the bpf_list_del kfunc.",
+      "author": "Kaitao cheng",
+      "url": "https://lore.kernel.org/bpf/20260427165906.84420-4-kaitao.cheng@linux.dev/",
+      "summary": "Adds bpf_list_del, a new kfunc that removes a node from a BPF linked list given a direct pointer to the node rather than requiring callers to manage the list head. This is the core new primitive in the v10 \"Extend the bpf_list family of APIs\" series, which has been iterated extensively to handle ownership semantics and verifier integration correctly. The kfunc plugs into the existing BPF ownership model so the verifier can statically reason about node membership and prevent double-removal bugs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_list_is_first/last/empty kfuncs",
+      "author": "Kaitao cheng",
+      "url": "https://lore.kernel.org/bpf/20260427165906.84420-7-kaitao.cheng@linux.dev/",
+      "summary": "Introduces three new introspection kfuncs—bpf_list_is_first, bpf_list_is_last, and bpf_list_empty—that let BPF programs query the position and emptiness of nodes in a linked list without full traversal. These predicates complement the bpf_list_del and bpf_list_add kfuncs added earlier in the same series, rounding out the mid-list manipulation API. Together the series enables BPF programs to implement significantly more expressive in-kernel data structures.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Add JIT support for stack arguments",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260427234801.2104511-3-puranjay@kernel.org/",
+      "summary": "Extends the arm64 BPF JIT to spill function arguments onto the stack when a call exceeds the number of available argument registers, which is required for kfuncs that take more arguments than AArch64 registers can hold. The patch works in tandem with an earlier change in the series that remaps BPF_REG_0 from x7 to x8 to align with the AArch64 indirect result location register convention. A companion selftest patch validates stack-argument passing behavior on arm64.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add XDP load-balancer BPF program",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260427232313.1582588-6-puranjay@kernel.org/",
+      "summary": "Adds the core BPF XDP program for a new load-balancer benchmark suite intended to measure and track XDP forwarding performance across architectures and kernel versions. The seven-patch series also contributes a batch-timing library, a nop-baseline benchmark for overhead calibration, common definitions, a userspace benchmark driver, and a shell script for automated benchmark runs. The suite is designed for head-to-head regression testing rather than absolute throughput claims.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_init_inode_xattr kfunc for atomic inode labeling",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260427001602.38353-2-dwindsor@gmail.com/",
+      "summary": "Introduces bpf_init_inode_xattr, a new kfunc that allows BPF LSM programs to atomically set an xattr on a newly created inode during the inode_init_security hook, mirroring how in-kernel LSMs like SELinux and Smack perform mandatory access control labeling at creation time. Doing this atomically at initialization avoids the TOCTOU race that would result from setting xattrs after the inode is already visible. A companion selftest verifies the kfunc's behavior under the BPF LSM framework.",
+      "related_links": []
+    },
+    {
+      "title": "net: add missing syncookie statistics for BPF custom syncookies",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260427001006.14465-2-jiayuan.chen@linux.dev/",
+      "summary": "Fixes a gap where TCP syncookie-sent and syncookie-received statistics counters are not incremented when BPF programs implement custom syncookie logic via the BPF sock_ops hooks. Without these increments, standard monitoring tools and kernel selftests cannot detect or verify that the custom syncookie path is active. The v3 series includes a selftest that validates the counter values after the fix is applied.",
+      "related_links": []
+    },
+    {
+      "title": "Fix undefined symbol references for module build post cnum changes",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260427112205.1346733-1-alan.maguire@oracle.com/",
+      "summary": "Fixes a module build breakage where symbols used by modular BPF components became undefined after recent cnum (commit-number) infrastructure changes in the BPF tree. The patch adds EXPORT_SYMBOL annotations for the affected symbols to restore out-of-tree and modular kernel build compatibility. This follows a report from Thierry Reding that linux-next failed to build after pulling the bpf-next tree.",
+      "related_links": []
+    }
+  ]
+}
