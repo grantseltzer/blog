@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-04-30T10:21:05Z",
+  "period_start": "2026-04-28",
+  "period_end": "2026-04-29",
+  "patch_count": 28,
+  "thread_count": 8,
+  "top_contributors": ["Ricardo B. Marlière", "Justin Suess", "Paul Chaignon", "Yazhou Tang"],
+  "key_topics": ["verifier", "kptr", "btf", "xdp", "selftests", "jit"],
+  "overview": "The bpf-next mailing list for April 28-29 featured correctness fixes in core BPF infrastructure alongside testing improvements. Yazhou Tang posted a v8 series fixing an out-of-bounds read and s16 truncation bug in `bpf_patch_call_args()` for programs with large bpf-to-bpf call offsets, while Justin Suess addressed an NMI deadlock in referenced kptr destructors. Paul Chaignon improved verifier diagnostics by printing per-subprogram instruction counts, and Ricardo B. Marlière continued a large selftests series enabling BPF tests to tolerate partial kernel builds.",
+  "patches": [
+    {
+      "title": "bpf: Fix out-of-bounds read in bpf_patch_call_args()",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260429105608.92741-2-tangyazhou@zju.edu.cn/",
+      "summary": "Fixes an out-of-bounds read in `bpf_patch_call_args()` that can occur when patching bpf-to-bpf calls in programs with a large instruction count. The function previously lacked a bounds check before reading into the instruction buffer, creating a potential memory safety violation in the BPF core. This is patch 1 of a v8 three-patch series that also addresses a related s16 truncation bug for call offsets exceeding the 16-bit signed range. The series has gone through eight revisions reflecting the careful scrutiny applied to verifier-adjacent bug fixes.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix s16 truncation for large bpf-to-bpf call offsets",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260429105608.92741-3-tangyazhou@zju.edu.cn/",
+      "summary": "Addresses silent truncation of bpf-to-bpf call offsets when the relative distance between subprograms exceeds the range of a signed 16-bit integer. The offset was previously stored as s16 without range validation, causing the JIT to encode incorrect call targets in programs with many subprograms spread far apart in the instruction stream. This patch widens the representation and adds an explicit range check before encoding the call offset. It accompanies the out-of-bounds read fix submitted in the same v8 series by Yazhou Tang.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Limit fields used in btf_record_equal comparisons",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260428201422.1518903-2-utilityemal77@gmail.com/",
+      "summary": "Tightens the `btf_record_equal()` comparison to only consider the fields relevant for determining whether two BTF records are structurally equivalent. Comparing unnecessary fields can cause false mismatches or mask actual differences, and in this series the change is a prerequisite for safely restructuring BTF teardown. This is patch 1 of a 4-patch series titled \"bpf: Fix NMI deadlock in referenced kptr destructors\". The series also converts BTF teardown to rcu_work and fixes the kptr destructor deadlock in NMI context.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix deadlock in kptr dtor in nmi",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260428201422.1518903-4-utilityemal77@gmail.com/",
+      "summary": "Fixes a deadlock that arises when a referenced kptr destructor is invoked from NMI context on an SMP system. NMI handlers cannot safely acquire certain sleeping or spinlocks that the normal kptr destruction path takes, leading to a hard deadlock. The fix defers lock-requiring cleanup out of the NMI-safe hot path, relying on workqueue-based deferred execution introduced earlier in the series. A selftest reproducer accompanies the fix in patch 4/4.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Print breakdown of insns processed by subprogs",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/5c3514dbc879f22ba3f9eff8a2c730e13bd0572c.1777398528.git.paul.chaignon@gmail.com/",
+      "summary": "Extends the BPF verifier log to emit a per-subprogram breakdown of instructions processed during verification, in addition to the existing total count. Currently it is difficult to identify which subprogram dominates verification complexity when working with large BPF programs that contain many subprograms. The new output gives developers a direct signal for where to focus optimization efforts. This is the v2 revision of the series, paired with a selftest in patch 2/2.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add BPF_STRICT_BUILD toggle",
+      "author": "Ricardo B. Marlière",
+      "url": "https://lore.kernel.org/bpf/20260428-selftests-bpf_misconfig-v8-1-bf02cf97dbcb@suse.com/",
+      "summary": "Introduces a `BPF_STRICT_BUILD` Makefile variable for the BPF selftests as the first step in an 11-patch v8 series aimed at tolerating partial kernel builds. When the toggle is absent, individual test build failures are treated as non-fatal, allowing the suite to compile and run whatever subset of tests the current kernel config supports. This is particularly valuable on distribution kernels and CI systems that do not enable every BPF feature. The series goes on to handle benchmark failures, skeleton generation errors, missing install files, and cross-test weak symbol definitions.",
+      "related_links": []
+    },
+    {
+      "title": "xskmap: reject TX-only AF_XDP sockets",
+      "author": "Linpu Yu",
+      "url": "https://lore.kernel.org/bpf/20260428125518.4556-1-linpu5433@gmail.com/",
+      "summary": "Adds a validation check to `xskmap` that rejects AF_XDP sockets configured for TX-only operation at map update time. TX-only sockets have no receive queue, so placing them in an xskmap entry that the kernel uses for packet reception can cause a null pointer dereference on the RX path. The fix enforces the constraint early during `BPF_MAP_UPDATE_ELEM`, returning an error before a bad socket can be installed. This is the third revision of the patch.",
+      "related_links": []
+    }
+  ]
+}
