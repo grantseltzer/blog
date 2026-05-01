@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-04-30T10:57:52Z",
+  "period_start": "2026-04-29",
+  "period_end": "2026-04-30",
+  "patch_count": 25,
+  "thread_count": 8,
+  "top_contributors": [
+    "Ricardo B. Marlière",
+    "Yazhou Tang",
+    "Kuan-Wei Chiu",
+    "Matt Bobrowski",
+    "Paul Chaignon"
+  ],
+  "key_topics": [
+    "jit",
+    "verifier",
+    "selftests",
+    "lsm",
+    "riscv",
+    "m68k"
+  ],
+  "overview": "This daily window's highlight is a new BPF JIT compiler for the m68k architecture, alongside fixes and new 32-bit atomic support for the RISC-V 32-bit JIT. The verifier gained a useful diagnostic improvement to print per-subprogram instruction counts, and a crash in the BPF LSM dentry xattr helpers for negative dentries was corrected. A large selftests series (v9) to allow partial builds across varying kernel configs also landed.",
+  "patches": [
+    {
+      "title": "m68k, bpf: Add initial BPF JIT compiler support",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260429124046.3480827-1-visitorckw@gmail.com/",
+      "summary": "Adds an initial BPF JIT compiler for the m68k architecture, bringing JIT-accelerated BPF execution to this historically interpreter-only platform. The implementation covers the core BPF instruction set, translating BPF bytecode into native m68k machine code. This is significant because JIT compilation greatly reduces BPF program overhead compared to the interpreter path. It extends the set of architectures with BPF JIT support, which has grown substantially in recent kernel cycles.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Fix support for BPF_SDIV and BPF_SMOD in RV32 JIT",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260429123513.3477780-2-visitorckw@gmail.com/",
+      "summary": "Fixes handling of signed division (BPF_SDIV) and signed modulo (BPF_SMOD) in the RISC-V 32-bit BPF JIT, correcting incorrect results for negative operands. This is the first patch in a three-part series that also fixes BPF_MOVSX sign-extension support and adds 32-bit atomic operations to the RV32 JIT. Together, the series brings the RV32 JIT closer to feature parity with its 64-bit counterpart. Correct signed arithmetic is essential for BPF programs that perform integer division on potentially negative values.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Print breakdown of insns processed by subprogs",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/5590f9c67e614ec9054d0c7e74e87cc690a52c56.1777538384.git.paul.chaignon@gmail.com/",
+      "summary": "Extends the BPF verifier's log output to include a per-subprogram breakdown of the instruction count processed during verification, rather than just reporting the aggregate total. This makes it much easier to identify which subprogram is responsible for hitting verifier complexity limits in large BPF programs composed of multiple subprograms. The companion patch adds a selftest exercising this new output format. This is a diagnostic quality-of-life improvement that helps developers debug complex BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: fix crash in bpf_[set|remove]_dentry_xattr for negative dentries",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260430073836.2894001-1-mattbobrowski@google.com/",
+      "summary": "Fixes a kernel crash in the BPF LSM helpers bpf_set_dentry_xattr and bpf_remove_dentry_xattr when they are called with a negative dentry (one that does not resolve to an existing inode). Without this fix, operating on a negative dentry would cause a NULL pointer dereference. This is the second version of the fix, refining the approach from v1 submitted the previous day. The fix adds a proper check for the negative dentry case and returns an appropriate error code.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix out-of-bounds read in bpf_patch_call_args()",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260429171904.107244-2-tangyazhou@zju.edu.cn/",
+      "summary": "Fixes an out-of-bounds read in bpf_patch_call_args() that can occur when patching BPF-to-BPF call instructions during program loading. This is the first patch in a v9 three-part series; the second patch addresses a related s16 truncation bug for large call offsets that could produce incorrect branch targets. Together these fixes prevent memory safety issues in the BPF program loading path. The series also includes a selftest to exercise the large-offset call scenario.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add BPF_STRICT_BUILD toggle",
+      "author": "Ricardo B. Marlière",
+      "url": "https://lore.kernel.org/bpf/20260429-selftests-bpf_misconfig-v9-1-c311f06b4791@suse.com/",
+      "summary": "Introduces a BPF_STRICT_BUILD Makefile toggle as the first step in a large 11-patch series (v9) to allow the BPF selftests to build and run gracefully under partial kernel configurations. Without this work, missing kernel features (such as CONFIG options not selected) cause the entire selftest build to fail, making it difficult to run any tests on non-standard kernels. Subsequent patches in the series tolerate BPF/skeleton generation failures, test file compilation errors, benchmark build failures, and missing install files. This is important for downstream distributions and CI environments that build kernels with non-default configs.",
+      "related_links": []
+    }
+  ]
+}
