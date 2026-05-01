@@ -1,0 +1,1708 @@
+{
+  "period": "monthly",
+  "period_start": "2026-04-01",
+  "period_end": "2026-05-01",
+  "fetched_at": "2026-05-01T10:25:08Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v11,11/11] selftests/bpf: Tolerate missing files during install",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v11-11-e11f7a8c4fdc@suse.com/",
+      "date": "2026-04-30T16:02:12",
+      "series": [
+        {
+          "id": 1088230,
+          "url": "https://patchwork.kernel.org/api/series/1088230/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088230",
+          "date": "2026-04-30T16:02:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1088230/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,10/11] selftests/bpf: Provide weak definitions for cross-test functions",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v11-10-e11f7a8c4fdc@suse.com/",
+      "date": "2026-04-30T16:02:11",
+      "series": [
+        {
+          "id": 1088230,
+          "url": "https://patchwork.kernel.org/api/series/1088230/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088230",
+          "date": "2026-04-30T16:02:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1088230/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,09/11] selftests/bpf: Tolerate benchmark build failures",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v11-9-e11f7a8c4fdc@suse.com/",
+      "date": "2026-04-30T16:02:10",
+      "series": [
+        {
+          "id": 1088230,
+          "url": "https://patchwork.kernel.org/api/series/1088230/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088230",
+          "date": "2026-04-30T16:02:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1088230/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,08/11] selftests/bpf: Allow test_progs to link with a partial object set",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v11-8-e11f7a8c4fdc@suse.com/",
+      "date": "2026-04-30T16:02:09",
+      "series": [
+        {
+          "id": 1088230,
+          "url": "https://patchwork.kernel.org/api/series/1088230/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088230",
+          "date": "2026-04-30T16:02:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1088230/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,07/11] selftests/bpf: Skip tests whose objects were not built",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v11-7-e11f7a8c4fdc@suse.com/",
+      "date": "2026-04-30T16:02:08",
+      "series": [
+        {
+          "id": 1088230,
+          "url": "https://patchwork.kernel.org/api/series/1088230/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088230",
+          "date": "2026-04-30T16:02:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1088230/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,06/11] selftests/bpf: Tolerate test file compilation failures",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v11-6-e11f7a8c4fdc@suse.com/",
+      "date": "2026-04-30T16:02:07",
+      "series": [
+        {
+          "id": 1088230,
+          "url": "https://patchwork.kernel.org/api/series/1088230/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088230",
+          "date": "2026-04-30T16:02:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1088230/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,05/11] selftests/bpf: Make skeleton headers order-only prerequisites of .test.d",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v11-5-e11f7a8c4fdc@suse.com/",
+      "date": "2026-04-30T16:02:06",
+      "series": [
+        {
+          "id": 1088230,
+          "url": "https://patchwork.kernel.org/api/series/1088230/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088230",
+          "date": "2026-04-30T16:02:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1088230/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,04/11] selftests/bpf: Avoid rebuilds when running emit_tests",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v11-4-e11f7a8c4fdc@suse.com/",
+      "date": "2026-04-30T16:02:05",
+      "series": [
+        {
+          "id": 1088230,
+          "url": "https://patchwork.kernel.org/api/series/1088230/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088230",
+          "date": "2026-04-30T16:02:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1088230/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,03/11] selftests/bpf: Tolerate BPF and skeleton generation failures",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v11-3-e11f7a8c4fdc@suse.com/",
+      "date": "2026-04-30T16:02:04",
+      "series": [
+        {
+          "id": 1088230,
+          "url": "https://patchwork.kernel.org/api/series/1088230/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088230",
+          "date": "2026-04-30T16:02:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1088230/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,02/11] selftests/bpf: Fix test_kmods KDIR to honor O= and distro kernels",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v11-2-e11f7a8c4fdc@suse.com/",
+      "date": "2026-04-30T16:02:03",
+      "series": [
+        {
+          "id": 1088230,
+          "url": "https://patchwork.kernel.org/api/series/1088230/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088230",
+          "date": "2026-04-30T16:02:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1088230/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,01/11] selftests/bpf: Add BPF_STRICT_BUILD toggle",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v11-1-e11f7a8c4fdc@suse.com/",
+      "date": "2026-04-30T16:02:02",
+      "series": [
+        {
+          "id": 1088230,
+          "url": "https://patchwork.kernel.org/api/series/1088230/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088230",
+          "date": "2026-04-30T16:02:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1088230/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,11/11] selftests/bpf: Tolerate missing files during install",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v10-11-cd302a31af16@suse.com/",
+      "date": "2026-04-30T12:53:23",
+      "series": [
+        {
+          "id": 1088137,
+          "url": "https://patchwork.kernel.org/api/series/1088137/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088137",
+          "date": "2026-04-30T12:53:12",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1088137/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,10/11] selftests/bpf: Provide weak definitions for cross-test functions",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v10-10-cd302a31af16@suse.com/",
+      "date": "2026-04-30T12:53:22",
+      "series": [
+        {
+          "id": 1088137,
+          "url": "https://patchwork.kernel.org/api/series/1088137/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088137",
+          "date": "2026-04-30T12:53:12",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1088137/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,09/11] selftests/bpf: Tolerate benchmark build failures",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v10-9-cd302a31af16@suse.com/",
+      "date": "2026-04-30T12:53:21",
+      "series": [
+        {
+          "id": 1088137,
+          "url": "https://patchwork.kernel.org/api/series/1088137/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088137",
+          "date": "2026-04-30T12:53:12",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1088137/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,08/11] selftests/bpf: Allow test_progs to link with a partial object set",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v10-8-cd302a31af16@suse.com/",
+      "date": "2026-04-30T12:53:20",
+      "series": [
+        {
+          "id": 1088137,
+          "url": "https://patchwork.kernel.org/api/series/1088137/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088137",
+          "date": "2026-04-30T12:53:12",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1088137/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,07/11] selftests/bpf: Skip tests whose objects were not built",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v10-7-cd302a31af16@suse.com/",
+      "date": "2026-04-30T12:53:19",
+      "series": [
+        {
+          "id": 1088137,
+          "url": "https://patchwork.kernel.org/api/series/1088137/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088137",
+          "date": "2026-04-30T12:53:12",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1088137/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,06/11] selftests/bpf: Tolerate test file compilation failures",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v10-6-cd302a31af16@suse.com/",
+      "date": "2026-04-30T12:53:18",
+      "series": [
+        {
+          "id": 1088137,
+          "url": "https://patchwork.kernel.org/api/series/1088137/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088137",
+          "date": "2026-04-30T12:53:12",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1088137/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,05/11] selftests/bpf: Make skeleton headers order-only prerequisites of .test.d",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v10-5-cd302a31af16@suse.com/",
+      "date": "2026-04-30T12:53:17",
+      "series": [
+        {
+          "id": 1088137,
+          "url": "https://patchwork.kernel.org/api/series/1088137/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088137",
+          "date": "2026-04-30T12:53:12",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1088137/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,04/11] selftests/bpf: Avoid rebuilds when running emit_tests",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v10-4-cd302a31af16@suse.com/",
+      "date": "2026-04-30T12:53:16",
+      "series": [
+        {
+          "id": 1088137,
+          "url": "https://patchwork.kernel.org/api/series/1088137/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088137",
+          "date": "2026-04-30T12:53:12",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1088137/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,03/11] selftests/bpf: Tolerate BPF and skeleton generation failures",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v10-3-cd302a31af16@suse.com/",
+      "date": "2026-04-30T12:53:15",
+      "series": [
+        {
+          "id": 1088137,
+          "url": "https://patchwork.kernel.org/api/series/1088137/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088137",
+          "date": "2026-04-30T12:53:12",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1088137/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,02/11] selftests/bpf: Fix test_kmods KDIR to honor O= and distro kernels",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v10-2-cd302a31af16@suse.com/",
+      "date": "2026-04-30T12:53:14",
+      "series": [
+        {
+          "id": 1088137,
+          "url": "https://patchwork.kernel.org/api/series/1088137/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088137",
+          "date": "2026-04-30T12:53:12",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1088137/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,01/11] selftests/bpf: Add BPF_STRICT_BUILD toggle",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v10-1-cd302a31af16@suse.com/",
+      "date": "2026-04-30T12:53:13",
+      "series": [
+        {
+          "id": 1088137,
+          "url": "https://patchwork.kernel.org/api/series/1088137/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088137",
+          "date": "2026-04-30T12:53:12",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1088137/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/2] selftests/bpf: Test insns processed breakdown",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/3a5157f4573edaa8846f6fc4041f715136f693b1.1777538384.git.paul.chaignon@gmail.com/",
+      "date": "2026-04-30T08:45:24",
+      "series": [
+        {
+          "id": 1087975,
+          "url": "https://patchwork.kernel.org/api/series/1087975/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087975",
+          "date": "2026-04-30T08:44:28",
+          "name": "[bpf-next,v3,1/2] bpf: Print breakdown of insns processed by subprogs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1087975/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/2] bpf: Print breakdown of insns processed by subprogs",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/5590f9c67e614ec9054d0c7e74e87cc690a52c56.1777538384.git.paul.chaignon@gmail.com/",
+      "date": "2026-04-30T08:44:28",
+      "series": [
+        {
+          "id": 1087975,
+          "url": "https://patchwork.kernel.org/api/series/1087975/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087975",
+          "date": "2026-04-30T08:44:28",
+          "name": "[bpf-next,v3,1/2] bpf: Print breakdown of insns processed by subprogs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1087975/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] bpf: fix crash in bpf_[set|remove]_dentry_xattr for negative dentries",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260430073836.2894001-1-mattbobrowski@google.com/",
+      "date": "2026-04-30T07:38:36",
+      "series": [
+        {
+          "id": 1087946,
+          "url": "https://patchwork.kernel.org/api/series/1087946/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087946",
+          "date": "2026-04-30T07:38:36",
+          "name": "[bpf-next,v2] bpf: fix crash in bpf_[set|remove]_dentry_xattr for negative dentries",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1087946/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: fix crash in bpf_[set|remove]_dentry_xattr for negative dentries",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260429205438.2601592-1-mattbobrowski@google.com/",
+      "date": "2026-04-29T20:54:38",
+      "series": [
+        {
+          "id": 1087733,
+          "url": "https://patchwork.kernel.org/api/series/1087733/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087733",
+          "date": "2026-04-29T20:54:38",
+          "name": "[bpf-next] bpf: fix crash in bpf_[set|remove]_dentry_xattr for negative dentries",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1087733/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,3/3] selftests/bpf: Add test for large offset bpf-to-bpf call",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260429171904.107244-4-tangyazhou@zju.edu.cn/",
+      "date": "2026-04-29T17:19:04",
+      "series": [
+        {
+          "id": 1087632,
+          "url": "https://patchwork.kernel.org/api/series/1087632/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087632",
+          "date": "2026-04-29T17:19:01",
+          "name": "bpf: Fix call offset truncation and OOB read in bpf_patch_call_args()",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1087632/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,2/3] bpf: Fix s16 truncation for large bpf-to-bpf call offsets",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260429171904.107244-3-tangyazhou@zju.edu.cn/",
+      "date": "2026-04-29T17:19:03",
+      "series": [
+        {
+          "id": 1087632,
+          "url": "https://patchwork.kernel.org/api/series/1087632/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087632",
+          "date": "2026-04-29T17:19:01",
+          "name": "bpf: Fix call offset truncation and OOB read in bpf_patch_call_args()",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1087632/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,1/3] bpf: Fix out-of-bounds read in bpf_patch_call_args()",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260429171904.107244-2-tangyazhou@zju.edu.cn/",
+      "date": "2026-04-29T17:19:02",
+      "series": [
+        {
+          "id": 1087632,
+          "url": "https://patchwork.kernel.org/api/series/1087632/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087632",
+          "date": "2026-04-29T17:19:01",
+          "name": "bpf: Fix call offset truncation and OOB read in bpf_patch_call_args()",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1087632/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,11/11] selftests/bpf: Tolerate missing files during install",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260429-selftests-bpf_misconfig-v9-11-c311f06b4791@suse.com/",
+      "date": "2026-04-29T14:33:53",
+      "series": [
+        {
+          "id": 1087545,
+          "url": "https://patchwork.kernel.org/api/series/1087545/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087545",
+          "date": "2026-04-29T14:33:42",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1087545/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,10/11] selftests/bpf: Provide weak definitions for cross-test functions",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260429-selftests-bpf_misconfig-v9-10-c311f06b4791@suse.com/",
+      "date": "2026-04-29T14:33:52",
+      "series": [
+        {
+          "id": 1087545,
+          "url": "https://patchwork.kernel.org/api/series/1087545/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087545",
+          "date": "2026-04-29T14:33:42",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1087545/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,09/11] selftests/bpf: Tolerate benchmark build failures",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260429-selftests-bpf_misconfig-v9-9-c311f06b4791@suse.com/",
+      "date": "2026-04-29T14:33:51",
+      "series": [
+        {
+          "id": 1087545,
+          "url": "https://patchwork.kernel.org/api/series/1087545/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087545",
+          "date": "2026-04-29T14:33:42",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1087545/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,08/11] selftests/bpf: Allow test_progs to link with a partial object set",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260429-selftests-bpf_misconfig-v9-8-c311f06b4791@suse.com/",
+      "date": "2026-04-29T14:33:50",
+      "series": [
+        {
+          "id": 1087545,
+          "url": "https://patchwork.kernel.org/api/series/1087545/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087545",
+          "date": "2026-04-29T14:33:42",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1087545/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,07/11] selftests/bpf: Skip tests whose objects were not built",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260429-selftests-bpf_misconfig-v9-7-c311f06b4791@suse.com/",
+      "date": "2026-04-29T14:33:49",
+      "series": [
+        {
+          "id": 1087545,
+          "url": "https://patchwork.kernel.org/api/series/1087545/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087545",
+          "date": "2026-04-29T14:33:42",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1087545/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,06/11] selftests/bpf: Tolerate test file compilation failures",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260429-selftests-bpf_misconfig-v9-6-c311f06b4791@suse.com/",
+      "date": "2026-04-29T14:33:48",
+      "series": [
+        {
+          "id": 1087545,
+          "url": "https://patchwork.kernel.org/api/series/1087545/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087545",
+          "date": "2026-04-29T14:33:42",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1087545/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,05/11] selftests/bpf: Make skeleton headers order-only prerequisites of .test.d",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260429-selftests-bpf_misconfig-v9-5-c311f06b4791@suse.com/",
+      "date": "2026-04-29T14:33:47",
+      "series": [
+        {
+          "id": 1087545,
+          "url": "https://patchwork.kernel.org/api/series/1087545/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087545",
+          "date": "2026-04-29T14:33:42",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1087545/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,04/11] selftests/bpf: Avoid rebuilds when running emit_tests",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260429-selftests-bpf_misconfig-v9-4-c311f06b4791@suse.com/",
+      "date": "2026-04-29T14:33:46",
+      "series": [
+        {
+          "id": 1087545,
+          "url": "https://patchwork.kernel.org/api/series/1087545/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087545",
+          "date": "2026-04-29T14:33:42",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1087545/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,03/11] selftests/bpf: Tolerate BPF and skeleton generation failures",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260429-selftests-bpf_misconfig-v9-3-c311f06b4791@suse.com/",
+      "date": "2026-04-29T14:33:45",
+      "series": [
+        {
+          "id": 1087545,
+          "url": "https://patchwork.kernel.org/api/series/1087545/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087545",
+          "date": "2026-04-29T14:33:42",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1087545/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,02/11] selftests/bpf: Fix test_kmods KDIR to honor O= and distro kernels",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260429-selftests-bpf_misconfig-v9-2-c311f06b4791@suse.com/",
+      "date": "2026-04-29T14:33:44",
+      "series": [
+        {
+          "id": 1087545,
+          "url": "https://patchwork.kernel.org/api/series/1087545/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087545",
+          "date": "2026-04-29T14:33:42",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1087545/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,01/11] selftests/bpf: Add BPF_STRICT_BUILD toggle",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260429-selftests-bpf_misconfig-v9-1-c311f06b4791@suse.com/",
+      "date": "2026-04-29T14:33:43",
+      "series": [
+        {
+          "id": 1087545,
+          "url": "https://patchwork.kernel.org/api/series/1087545/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087545",
+          "date": "2026-04-29T14:33:42",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1087545/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] m68k, bpf: Add initial BPF JIT compiler support",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260429124046.3480827-1-visitorckw@gmail.com/",
+      "date": "2026-04-29T12:40:46",
+      "series": [
+        {
+          "id": 1087460,
+          "url": "https://patchwork.kernel.org/api/series/1087460/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087460",
+          "date": "2026-04-29T12:40:46",
+          "name": "[bpf-next] m68k, bpf: Add initial BPF JIT compiler support",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1087460/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] riscv, bpf: Add 32 bit atomic operations to RV32 JIT",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260429123513.3477780-4-visitorckw@gmail.com/",
+      "date": "2026-04-29T12:35:13",
+      "series": [
+        {
+          "id": 1087456,
+          "url": "https://patchwork.kernel.org/api/series/1087456/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087456",
+          "date": "2026-04-29T12:35:10",
+          "name": "riscv, bpf: Fix signed operations and add 32 bit atomics",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1087456/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] riscv, bpf: Fix support for BPF_MOVSX in RV32 JIT",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260429123513.3477780-3-visitorckw@gmail.com/",
+      "date": "2026-04-29T12:35:12",
+      "series": [
+        {
+          "id": 1087456,
+          "url": "https://patchwork.kernel.org/api/series/1087456/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087456",
+          "date": "2026-04-29T12:35:10",
+          "name": "riscv, bpf: Fix signed operations and add 32 bit atomics",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1087456/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] riscv, bpf: Fix support for BPF_SDIV and BPF_SMOD in RV32 JIT",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260429123513.3477780-2-visitorckw@gmail.com/",
+      "date": "2026-04-29T12:35:11",
+      "series": [
+        {
+          "id": 1087456,
+          "url": "https://patchwork.kernel.org/api/series/1087456/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087456",
+          "date": "2026-04-29T12:35:10",
+          "name": "riscv, bpf: Fix signed operations and add 32 bit atomics",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1087456/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,3/3] selftests/bpf: Add test for large offset bpf-to-bpf call",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260429105608.92741-4-tangyazhou@zju.edu.cn/",
+      "date": "2026-04-29T10:56:08",
+      "series": [
+        {
+          "id": 1087418,
+          "url": "https://patchwork.kernel.org/api/series/1087418/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087418",
+          "date": "2026-04-29T10:56:05",
+          "name": "bpf: Fix call offset truncation and OOB read in bpf_patch_call_args()",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1087418/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,2/3] bpf: Fix s16 truncation for large bpf-to-bpf call offsets",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260429105608.92741-3-tangyazhou@zju.edu.cn/",
+      "date": "2026-04-29T10:56:07",
+      "series": [
+        {
+          "id": 1087418,
+          "url": "https://patchwork.kernel.org/api/series/1087418/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087418",
+          "date": "2026-04-29T10:56:05",
+          "name": "bpf: Fix call offset truncation and OOB read in bpf_patch_call_args()",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1087418/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,1/3] bpf: Fix out-of-bounds read in bpf_patch_call_args()",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260429105608.92741-2-tangyazhou@zju.edu.cn/",
+      "date": "2026-04-29T10:56:06",
+      "series": [
+        {
+          "id": 1087418,
+          "url": "https://patchwork.kernel.org/api/series/1087418/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087418",
+          "date": "2026-04-29T10:56:05",
+          "name": "bpf: Fix call offset truncation and OOB read in bpf_patch_call_args()",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1087418/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,11/11] selftests/bpf: Tolerate missing files during install",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260428-selftests-bpf_misconfig-v8-11-bf02cf97dbcb@suse.com/",
+      "date": "2026-04-28T23:45:12",
+      "series": [
+        {
+          "id": 1087166,
+          "url": "https://patchwork.kernel.org/api/series/1087166/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087166",
+          "date": "2026-04-28T23:45:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1087166/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,10/11] selftests/bpf: Provide weak definitions for cross-test functions",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260428-selftests-bpf_misconfig-v8-10-bf02cf97dbcb@suse.com/",
+      "date": "2026-04-28T23:45:11",
+      "series": [
+        {
+          "id": 1087166,
+          "url": "https://patchwork.kernel.org/api/series/1087166/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087166",
+          "date": "2026-04-28T23:45:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1087166/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,09/11] selftests/bpf: Tolerate benchmark build failures",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260428-selftests-bpf_misconfig-v8-9-bf02cf97dbcb@suse.com/",
+      "date": "2026-04-28T23:45:10",
+      "series": [
+        {
+          "id": 1087166,
+          "url": "https://patchwork.kernel.org/api/series/1087166/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087166",
+          "date": "2026-04-28T23:45:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1087166/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,08/11] selftests/bpf: Allow test_progs to link with a partial object set",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260428-selftests-bpf_misconfig-v8-8-bf02cf97dbcb@suse.com/",
+      "date": "2026-04-28T23:45:09",
+      "series": [
+        {
+          "id": 1087166,
+          "url": "https://patchwork.kernel.org/api/series/1087166/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087166",
+          "date": "2026-04-28T23:45:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1087166/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,07/11] selftests/bpf: Skip tests whose objects were not built",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260428-selftests-bpf_misconfig-v8-7-bf02cf97dbcb@suse.com/",
+      "date": "2026-04-28T23:45:08",
+      "series": [
+        {
+          "id": 1087166,
+          "url": "https://patchwork.kernel.org/api/series/1087166/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087166",
+          "date": "2026-04-28T23:45:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1087166/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,06/11] selftests/bpf: Tolerate test file compilation failures",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260428-selftests-bpf_misconfig-v8-6-bf02cf97dbcb@suse.com/",
+      "date": "2026-04-28T23:45:07",
+      "series": [
+        {
+          "id": 1087166,
+          "url": "https://patchwork.kernel.org/api/series/1087166/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087166",
+          "date": "2026-04-28T23:45:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1087166/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,05/11] selftests/bpf: Make skeleton headers order-only prerequisites of .test.d",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260428-selftests-bpf_misconfig-v8-5-bf02cf97dbcb@suse.com/",
+      "date": "2026-04-28T23:45:06",
+      "series": [
+        {
+          "id": 1087166,
+          "url": "https://patchwork.kernel.org/api/series/1087166/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087166",
+          "date": "2026-04-28T23:45:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1087166/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,04/11] selftests/bpf: Avoid rebuilds when running emit_tests",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260428-selftests-bpf_misconfig-v8-4-bf02cf97dbcb@suse.com/",
+      "date": "2026-04-28T23:45:05",
+      "series": [
+        {
+          "id": 1087166,
+          "url": "https://patchwork.kernel.org/api/series/1087166/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087166",
+          "date": "2026-04-28T23:45:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1087166/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,03/11] selftests/bpf: Tolerate BPF and skeleton generation failures",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260428-selftests-bpf_misconfig-v8-3-bf02cf97dbcb@suse.com/",
+      "date": "2026-04-28T23:45:04",
+      "series": [
+        {
+          "id": 1087166,
+          "url": "https://patchwork.kernel.org/api/series/1087166/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087166",
+          "date": "2026-04-28T23:45:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1087166/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,02/11] selftests/bpf: Fix test_kmods KDIR to honor O= and distro kernels",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260428-selftests-bpf_misconfig-v8-2-bf02cf97dbcb@suse.com/",
+      "date": "2026-04-28T23:45:03",
+      "series": [
+        {
+          "id": 1087166,
+          "url": "https://patchwork.kernel.org/api/series/1087166/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087166",
+          "date": "2026-04-28T23:45:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1087166/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,01/11] selftests/bpf: Add BPF_STRICT_BUILD toggle",
+      "author": "Ricardo B. Marli\u00e8re",
+      "url": "https://lore.kernel.org/bpf/20260428-selftests-bpf_misconfig-v8-1-bf02cf97dbcb@suse.com/",
+      "date": "2026-04-28T23:45:02",
+      "series": [
+        {
+          "id": 1087166,
+          "url": "https://patchwork.kernel.org/api/series/1087166/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087166",
+          "date": "2026-04-28T23:45:01",
+          "name": "selftests/bpf: Tolerate partial builds across kernel configs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1087166/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: Test insns processed breakdown",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/24f2a5b5f8e3041d03d78305ca0e2277f684d588.1777398528.git.paul.chaignon@gmail.com/",
+      "date": "2026-04-28T21:40:33",
+      "series": [
+        {
+          "id": 1087120,
+          "url": "https://patchwork.kernel.org/api/series/1087120/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087120",
+          "date": "2026-04-28T21:39:51",
+          "name": "[bpf-next,v2,1/2] bpf: Print breakdown of insns processed by subprogs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1087120/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: Print breakdown of insns processed by subprogs",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/5c3514dbc879f22ba3f9eff8a2c730e13bd0572c.1777398528.git.paul.chaignon@gmail.com/",
+      "date": "2026-04-28T21:39:51",
+      "series": [
+        {
+          "id": 1087120,
+          "url": "https://patchwork.kernel.org/api/series/1087120/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087120",
+          "date": "2026-04-28T21:39:51",
+          "name": "[bpf-next,v2,1/2] bpf: Print breakdown of insns processed by subprogs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1087120/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/4] selftests/bpf: Add kptr nmi deadlock reproducer",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260428201422.1518903-5-utilityemal77@gmail.com/",
+      "date": "2026-04-28T20:14:22",
+      "series": [
+        {
+          "id": 1087094,
+          "url": "https://patchwork.kernel.org/api/series/1087094/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087094",
+          "date": "2026-04-28T20:14:18",
+          "name": "bpf: Fix NMI deadlock in referenced kptr destructors",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1087094/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/4] bpf: Fix deadlock in kptr dtor in nmi",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260428201422.1518903-4-utilityemal77@gmail.com/",
+      "date": "2026-04-28T20:14:21",
+      "series": [
+        {
+          "id": 1087094,
+          "url": "https://patchwork.kernel.org/api/series/1087094/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087094",
+          "date": "2026-04-28T20:14:18",
+          "name": "bpf: Fix NMI deadlock in referenced kptr destructors",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1087094/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/4] bpf: Use rcu_work in BTF teardown",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260428201422.1518903-3-utilityemal77@gmail.com/",
+      "date": "2026-04-28T20:14:20",
+      "series": [
+        {
+          "id": 1087094,
+          "url": "https://patchwork.kernel.org/api/series/1087094/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087094",
+          "date": "2026-04-28T20:14:18",
+          "name": "bpf: Fix NMI deadlock in referenced kptr destructors",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1087094/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/4] bpf: Limit fields used in btf_record_equal comparisons",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260428201422.1518903-2-utilityemal77@gmail.com/",
+      "date": "2026-04-28T20:14:19",
+      "series": [
+        {
+          "id": 1087094,
+          "url": "https://patchwork.kernel.org/api/series/1087094/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1087094",
+          "date": "2026-04-28T20:14:18",
+          "name": "bpf: Fix NMI deadlock in referenced kptr destructors",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1087094/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Test insns processed breakdown",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/30df9a4d569143e1d23a7c7aefd7dca85a21e2c8.1777388107.git.paul.chaignon@gmail.com/",
+      "date": "2026-04-28T14:55:40",
+      "series": [
+        {
+          "id": 1086923,
+          "url": "https://patchwork.kernel.org/api/series/1086923/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086923",
+          "date": "2026-04-28T14:55:20",
+          "name": "[bpf-next,1/2] bpf: Print breakdown of insns processed by subprogs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1086923/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Print breakdown of insns processed by subprogs",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/5c3514dbc879f22ba3f9eff8a2c730e13bd0572c.1777388107.git.paul.chaignon@gmail.com/",
+      "date": "2026-04-28T14:55:20",
+      "series": [
+        {
+          "id": 1086923,
+          "url": "https://patchwork.kernel.org/api/series/1086923/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086923",
+          "date": "2026-04-28T14:55:20",
+          "name": "[bpf-next,1/2] bpf: Print breakdown of insns processed by subprogs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1086923/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: Rename libarena malloc/free methods",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260428134252.2783519-1-etsal@meta.com/",
+      "date": "2026-04-28T13:42:52",
+      "series": [
+        {
+          "id": 1086880,
+          "url": "https://patchwork.kernel.org/api/series/1086880/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086880",
+          "date": "2026-04-28T13:42:52",
+          "name": "[bpf-next] selftests/bpf: Rename libarena malloc/free methods",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1086880/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3] xskmap: reject TX-only AF_XDP sockets",
+      "author": "Linpu Yu",
+      "url": "https://lore.kernel.org/bpf/20260428125518.4556-1-linpu5433@gmail.com/",
+      "date": "2026-04-28T12:54:58",
+      "series": [
+        {
+          "id": 1086843,
+          "url": "https://patchwork.kernel.org/api/series/1086843/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086843",
+          "date": "2026-04-28T12:54:58",
+          "name": "[bpf-next,v3] xskmap: reject TX-only AF_XDP sockets",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1086843/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,3/3] selftests/bpf: Test jited inline of bpf_get_smp_processor_id()",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260428080051.20938-4-yangtiezhu@loongson.cn/",
+      "date": "2026-04-28T08:00:51",
+      "series": [
+        {
+          "id": 1086642,
+          "url": "https://patchwork.kernel.org/api/series/1086642/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086642",
+          "date": "2026-04-28T08:00:49",
+          "name": "selftests/bpf: Test inline helpers for LoongArch",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1086642/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,2/3] selftests/bpf: Test inline_bpf_get_current_task() for LoongArch",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260428080051.20938-3-yangtiezhu@loongson.cn/",
+      "date": "2026-04-28T08:00:50",
+      "series": [
+        {
+          "id": 1086642,
+          "url": "https://patchwork.kernel.org/api/series/1086642/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086642",
+          "date": "2026-04-28T08:00:49",
+          "name": "selftests/bpf: Test inline helpers for LoongArch",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1086642/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,1/3] selftests/bpf: Add __arch_loongarch macro to limit test cases",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260428080051.20938-2-yangtiezhu@loongson.cn/",
+      "date": "2026-04-28T08:00:49",
+      "series": [
+        {
+          "id": 1086642,
+          "url": "https://patchwork.kernel.org/api/series/1086642/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086642",
+          "date": "2026-04-28T08:00:49",
+          "name": "selftests/bpf: Test inline helpers for LoongArch",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1086642/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/3] selftests/bpf: Enable stack argument tests for arm64",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260427234801.2104511-4-puranjay@kernel.org/",
+      "date": "2026-04-27T23:48:00",
+      "series": [
+        {
+          "id": 1086480,
+          "url": "https://patchwork.kernel.org/api/series/1086480/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086480",
+          "date": "2026-04-27T23:47:57",
+          "name": "bpf, arm64: Support stack arguments",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1086480/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/3] bpf, arm64: Add JIT support for stack arguments",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260427234801.2104511-3-puranjay@kernel.org/",
+      "date": "2026-04-27T23:47:59",
+      "series": [
+        {
+          "id": 1086480,
+          "url": "https://patchwork.kernel.org/api/series/1086480/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086480",
+          "date": "2026-04-27T23:47:57",
+          "name": "bpf, arm64: Support stack arguments",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1086480/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/3] bpf, arm64: Map BPF_REG_0 to x8 instead of x7",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260427234801.2104511-2-puranjay@kernel.org/",
+      "date": "2026-04-27T23:47:58",
+      "series": [
+        {
+          "id": 1086480,
+          "url": "https://patchwork.kernel.org/api/series/1086480/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086480",
+          "date": "2026-04-27T23:47:57",
+          "name": "bpf, arm64: Support stack arguments",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1086480/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,7/7] selftests/bpf: Add XDP load-balancer benchmark run script",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260427232313.1582588-8-puranjay@kernel.org/",
+      "date": "2026-04-27T23:23:04",
+      "series": [
+        {
+          "id": 1086474,
+          "url": "https://patchwork.kernel.org/api/series/1086474/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086474",
+          "date": "2026-04-27T23:22:57",
+          "name": "selftests/bpf: Add XDP load-balancer benchmark",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1086474/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,6/7] selftests/bpf: Add XDP load-balancer benchmark driver",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260427232313.1582588-7-puranjay@kernel.org/",
+      "date": "2026-04-27T23:23:03",
+      "series": [
+        {
+          "id": 1086474,
+          "url": "https://patchwork.kernel.org/api/series/1086474/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086474",
+          "date": "2026-04-27T23:22:57",
+          "name": "selftests/bpf: Add XDP load-balancer benchmark",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1086474/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,5/7] selftests/bpf: Add XDP load-balancer BPF program",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260427232313.1582588-6-puranjay@kernel.org/",
+      "date": "2026-04-27T23:23:02",
+      "series": [
+        {
+          "id": 1086474,
+          "url": "https://patchwork.kernel.org/api/series/1086474/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086474",
+          "date": "2026-04-27T23:22:57",
+          "name": "selftests/bpf: Add XDP load-balancer benchmark",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1086474/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/7] selftests/bpf: Add XDP load-balancer common definitions",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260427232313.1582588-5-puranjay@kernel.org/",
+      "date": "2026-04-27T23:23:01",
+      "series": [
+        {
+          "id": 1086474,
+          "url": "https://patchwork.kernel.org/api/series/1086474/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086474",
+          "date": "2026-04-27T23:22:57",
+          "name": "selftests/bpf: Add XDP load-balancer benchmark",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1086474/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/7] selftests/bpf: Add bpf-nop benchmark for timing overhead baseline",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260427232313.1582588-4-puranjay@kernel.org/",
+      "date": "2026-04-27T23:23:00",
+      "series": [
+        {
+          "id": 1086474,
+          "url": "https://patchwork.kernel.org/api/series/1086474/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086474",
+          "date": "2026-04-27T23:22:57",
+          "name": "selftests/bpf: Add XDP load-balancer benchmark",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1086474/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/7] selftests/bpf: Add BPF batch-timing library",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260427232313.1582588-3-puranjay@kernel.org/",
+      "date": "2026-04-27T23:22:59",
+      "series": [
+        {
+          "id": 1086474,
+          "url": "https://patchwork.kernel.org/api/series/1086474/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086474",
+          "date": "2026-04-27T23:22:57",
+          "name": "selftests/bpf: Add XDP load-balancer benchmark",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1086474/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/7] selftests/bpf: Add bench_force_done() for early benchmark completion",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260427232313.1582588-2-puranjay@kernel.org/",
+      "date": "2026-04-27T23:22:58",
+      "series": [
+        {
+          "id": 1086474,
+          "url": "https://patchwork.kernel.org/api/series/1086474/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086474",
+          "date": "2026-04-27T23:22:57",
+          "name": "selftests/bpf: Add XDP load-balancer benchmark",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1086474/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,8/8] selftests/bpf: Add test cases for bpf_list_del/add/is_first/is_last/empty",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260427165906.84420-9-kaitao.cheng@linux.dev/",
+      "date": "2026-04-27T16:59:06",
+      "series": [
+        {
+          "id": 1086278,
+          "url": "https://patchwork.kernel.org/api/series/1086278/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086278",
+          "date": "2026-04-27T16:58:59",
+          "name": "bpf: Extend the bpf_list family of APIs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1086278/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,7/8] bpf: allow non-owning list-node args via __nonown_allowed",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260427165906.84420-8-kaitao.cheng@linux.dev/",
+      "date": "2026-04-27T16:59:05",
+      "series": [
+        {
+          "id": 1086278,
+          "url": "https://patchwork.kernel.org/api/series/1086278/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086278",
+          "date": "2026-04-27T16:58:59",
+          "name": "bpf: Extend the bpf_list family of APIs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1086278/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,6/8] bpf: add bpf_list_is_first/last/empty kfuncs",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260427165906.84420-7-kaitao.cheng@linux.dev/",
+      "date": "2026-04-27T16:59:04",
+      "series": [
+        {
+          "id": 1086278,
+          "url": "https://patchwork.kernel.org/api/series/1086278/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086278",
+          "date": "2026-04-27T16:58:59",
+          "name": "bpf: Extend the bpf_list family of APIs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1086278/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,5/8] bpf: Add bpf_list_add to insert node after a given list node",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260427165906.84420-6-kaitao.cheng@linux.dev/",
+      "date": "2026-04-27T16:59:03",
+      "series": [
+        {
+          "id": 1086278,
+          "url": "https://patchwork.kernel.org/api/series/1086278/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086278",
+          "date": "2026-04-27T16:58:59",
+          "name": "bpf: Extend the bpf_list family of APIs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1086278/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,4/8] bpf: refactor __bpf_list_add to take insertion point via **prev_ptr",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260427165906.84420-5-kaitao.cheng@linux.dev/",
+      "date": "2026-04-27T16:59:02",
+      "series": [
+        {
+          "id": 1086278,
+          "url": "https://patchwork.kernel.org/api/series/1086278/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086278",
+          "date": "2026-04-27T16:58:59",
+          "name": "bpf: Extend the bpf_list family of APIs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1086278/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,3/8] bpf: Introduce the bpf_list_del kfunc.",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260427165906.84420-4-kaitao.cheng@linux.dev/",
+      "date": "2026-04-27T16:59:01",
+      "series": [
+        {
+          "id": 1086278,
+          "url": "https://patchwork.kernel.org/api/series/1086278/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086278",
+          "date": "2026-04-27T16:58:59",
+          "name": "bpf: Extend the bpf_list family of APIs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1086278/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,2/8] bpf: clear list node owner and unlink before drop",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260427165906.84420-3-kaitao.cheng@linux.dev/",
+      "date": "2026-04-27T16:59:00",
+      "series": [
+        {
+          "id": 1086278,
+          "url": "https://patchwork.kernel.org/api/series/1086278/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086278",
+          "date": "2026-04-27T16:58:59",
+          "name": "bpf: Extend the bpf_list family of APIs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1086278/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,1/8] bpf: refactor __bpf_list_del to take list node pointer",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260427165906.84420-2-kaitao.cheng@linux.dev/",
+      "date": "2026-04-27T16:58:59",
+      "series": [
+        {
+          "id": 1086278,
+          "url": "https://patchwork.kernel.org/api/series/1086278/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086278",
+          "date": "2026-04-27T16:58:59",
+          "name": "bpf: Extend the bpf_list family of APIs",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1086278/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "linux-next: build failure after merge of the bpf-next tree",
+      "author": "Thierry Reding",
+      "url": "https://lore.kernel.org/bpf/20260427132604.3754048-1-thierry.reding@kernel.org/",
+      "date": "2026-04-27T13:26:01",
+      "series": [
+        {
+          "id": 1086142,
+          "url": "https://patchwork.kernel.org/api/series/1086142/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086142",
+          "date": "2026-04-27T13:26:01",
+          "name": "linux-next: build failure after merge of the bpf-next tree",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1086142/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] Fix undefined symbol references for module build post cnum changes",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260427112205.1346733-1-alan.maguire@oracle.com/",
+      "date": "2026-04-27T11:22:05",
+      "series": [
+        {
+          "id": 1086071,
+          "url": "https://patchwork.kernel.org/api/series/1086071/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1086071",
+          "date": "2026-04-27T11:22:05",
+          "name": "[bpf-next] Fix undefined symbol references for module build post cnum changes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1086071/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: add tests for bpf_init_inode_xattr kfunc",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260427001602.38353-3-dwindsor@gmail.com/",
+      "date": "2026-04-27T00:15:58",
+      "series": [
+        {
+          "id": 1085747,
+          "url": "https://patchwork.kernel.org/api/series/1085747/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1085747",
+          "date": "2026-04-27T00:15:56",
+          "name": "bpf: add bpf_init_inode_xattr kfunc for atomic inode labeling",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1085747/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: add bpf_init_inode_xattr kfunc for atomic inode labeling",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260427001602.38353-2-dwindsor@gmail.com/",
+      "date": "2026-04-27T00:15:57",
+      "series": [
+        {
+          "id": 1085747,
+          "url": "https://patchwork.kernel.org/api/series/1085747/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1085747",
+          "date": "2026-04-27T00:15:56",
+          "name": "bpf: add bpf_init_inode_xattr kfunc for atomic inode labeling",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1085747/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/2] selftests/bpf: verify syncookie statistics in tcp_custom_syncookie",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260427001006.14465-3-jiayuan.chen@linux.dev/",
+      "date": "2026-04-27T00:09:51",
+      "series": [
+        {
+          "id": 1085744,
+          "url": "https://patchwork.kernel.org/api/series/1085744/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1085744",
+          "date": "2026-04-27T00:09:49",
+          "name": "bpf,net: add missing custom syncookie statistics and add selftest",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1085744/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/2] net: add missing syncookie statistics for BPF custom syncookies",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260427001006.14465-2-jiayuan.chen@linux.dev/",
+      "date": "2026-04-27T00:09:50",
+      "series": [
+        {
+          "id": 1085744,
+          "url": "https://patchwork.kernel.org/api/series/1085744/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1085744",
+          "date": "2026-04-27T00:09:49",
+          "name": "bpf,net: add missing custom syncookie statistics and add selftest",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1085744/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,8/8] selftests/bpf: Reuse stderr parsing for libarena ASAN tests",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260426190338.4615-9-emil@etsalapatis.com/",
+      "date": "2026-04-26T19:03:38",
+      "series": [
+        {
+          "id": 1085701,
+          "url": "https://patchwork.kernel.org/api/series/1085701/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1085701",
+          "date": "2026-04-26T19:03:30",
+          "name": "Introduce arena library and runtime",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1085701/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,7/8] selftests/bpf: Add selftests for libarena buddy allocator",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260426190338.4615-8-emil@etsalapatis.com/",
+      "date": "2026-04-26T19:03:37",
+      "series": [
+        {
+          "id": 1085701,
+          "url": "https://patchwork.kernel.org/api/series/1085701/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1085701",
+          "date": "2026-04-26T19:03:30",
+          "name": "Introduce arena library and runtime",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1085701/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,6/8] selftests/bpf: Add buddy allocator for libarena",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260426190338.4615-7-emil@etsalapatis.com/",
+      "date": "2026-04-26T19:03:36",
+      "series": [
+        {
+          "id": 1085701,
+          "url": "https://patchwork.kernel.org/api/series/1085701/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1085701",
+          "date": "2026-04-26T19:03:30",
+          "name": "Introduce arena library and runtime",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1085701/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,5/8] selftests/bpf: Add ASAN support for libarena selftests",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260426190338.4615-6-emil@etsalapatis.com/",
+      "date": "2026-04-26T19:03:35",
+      "series": [
+        {
+          "id": 1085701,
+          "url": "https://patchwork.kernel.org/api/series/1085701/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1085701",
+          "date": "2026-04-26T19:03:30",
+          "name": "Introduce arena library and runtime",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1085701/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,4/8] selftests/bpf: Add arena ASAN runtime to libarena",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260426190338.4615-5-emil@etsalapatis.com/",
+      "date": "2026-04-26T19:03:34",
+      "series": [
+        {
+          "id": 1085701,
+          "url": "https://patchwork.kernel.org/api/series/1085701/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1085701",
+          "date": "2026-04-26T19:03:30",
+          "name": "Introduce arena library and runtime",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1085701/mbox/"
+        }
+      ]
+    }
+  ]
+}
