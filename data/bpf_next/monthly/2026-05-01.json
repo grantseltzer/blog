@@ -1,0 +1,110 @@
+{
+  "generated_at": "2026-05-02T10:30:00Z",
+  "period_start": "2026-04-01",
+  "period_end": "2026-05-01",
+  "patch_count": 100,
+  "thread_count": 25,
+  "top_contributors": ["Ricardo B. Marlière", "Puranjay Mohan", "Kaitao Cheng", "Paul Chaignon", "Yazhou Tang"],
+  "key_topics": ["kfuncs", "jit", "verifier", "selftests", "xdp", "lsm", "maps", "arm64"],
+  "overview": "April 2026 was an active month for the bpf-next mailing list, with 100 patches across 25 series. The month was headlined by Kaitao Cheng's extended bpf_list kfunc API and Ricardo B. Marlière's substantial rework of the BPF selftests build system, the latter reaching its eleventh revision. JIT work was broad: Kuan-Wei Chiu added initial m68k BPF JIT support and fixed the RV32 JIT, while Puranjay Mohan added stack argument support to the arm64 JIT and contributed a new XDP load-balancer benchmark. LSM-related activity saw two new xattr kfuncs for atomic inode labeling and fixes for negative dentry crashes, and the verifier gained per-subprogram instruction count reporting from Paul Chaignon.",
+  "patches": [
+    {
+      "title": "bpf: refactor __bpf_list_del to take list node pointer",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260427165906.84420-2-kaitao.cheng@linux.dev/",
+      "summary": "First patch of an 8-part series (v10) extending the BPF linked-list kfunc API with new operations closer to the kernel's native list_head API. The series adds bpf_list_del (remove a node without knowing the head), bpf_list_add (insert after a given node), bpf_list_is_first/last/empty query kfuncs, and introduces __nonown_allowed annotations to permit non-owning reference arguments. These additions enable richer data structure manipulation in BPF programs and reflect extensive iteration on ownership semantics across the ten review rounds.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Map BPF_REG_0 to x8 instead of x7",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260427234801.2104511-2-puranjay@kernel.org/",
+      "summary": "First patch of a 3-part series (v2) enabling the arm64 BPF JIT to support functions with more than eight arguments via stack-based argument passing per the AArch64 calling convention. This initial patch remaps BPF_REG_0 from x7 to x8 to free the register slot needed for stack argument setup. Subsequent patches add JIT emission for stack arguments and update selftests to exercise the new path on arm64. This unblocks BPF programs that call kfuncs or helpers with many parameters on arm64 hardware.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add bench_force_done() for early benchmark completion",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260427232313.1582588-2-puranjay@kernel.org/",
+      "summary": "First patch of a 7-part series adding an XDP load-balancer benchmark to the BPF selftests suite. The series contributes a hash-based XDP load-balancing BPF program, a batch-timing library for precise measurement, a userspace benchmark driver, and a shell script for automated benchmark runs. A bpf-nop benchmark is also added to establish a timing overhead baseline. This fills a significant gap in performance tooling for XDP-based packet processing programs in the upstream test suite.",
+      "related_links": []
+    },
+    {
+      "title": "m68k, bpf: Add initial BPF JIT compiler support",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260429124046.3480827-1-visitorckw@gmail.com/",
+      "summary": "Introduces the first BPF JIT compiler for the m68k (Motorola 68000) architecture, bringing JIT acceleration to m68k systems running Linux. Before this patch, BPF programs on m68k ran exclusively through the interpreter. The JIT covers the core BPF instruction set and follows the established pattern of other architecture JIT implementations. This benefits embedded and retro computing platforms using m68k processors.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Fix support for BPF_SDIV and BPF_SMOD in RV32 JIT",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260429123513.3477780-2-visitorckw@gmail.com/",
+      "summary": "First patch of a 3-part series fixing and extending the RISC-V 32-bit BPF JIT. The patches correct incorrect code generation for signed division and modulo (BPF_SDIV/BPF_SMOD) and sign-extend moves (BPF_MOVSX), then add support for 32-bit atomic operations. The correctness fixes prevent silent arithmetic errors in BPF programs using signed integer division on RV32 platforms, and 32-bit atomic support expands the range of lock-free data structure operations available to BPF programs on RV32.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix out-of-bounds read in bpf_patch_call_args()",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260429171904.107244-2-tangyazhou@zju.edu.cn/",
+      "summary": "First patch of a 3-part series (v9) fixing two bugs in bpf_patch_call_args(): an out-of-bounds array read when the patch buffer is exhausted, and silent truncation of large BPF-to-BPF call offsets that do not fit in a signed 16-bit field. The truncation bug can produce incorrect branch targets in large BPF programs, leading to incorrect behavior or crashes at runtime. The series includes a selftest that specifically exercises the large-offset scenario to prevent regression.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Limit fields used in btf_record_equal comparisons",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260428201422.1518903-2-utilityemal77@gmail.com/",
+      "summary": "First patch of a 4-part series fixing a deadlock that occurs when a referenced kptr's destructor is invoked from NMI context while a spinlock is already held on the same CPU. The series limits unnecessary fields compared in btf_record_equal, defers BTF teardown via rcu_work to avoid NMI-unsafe locking, and directly fixes the kptr destructor deadlock path. A selftest reproducer for the NMI deadlock scenario is included as the final patch.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Print breakdown of insns processed by subprogs",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/5590f9c67e614ec9054d0c7e74e87cc690a52c56.1777538384.git.paul.chaignon@gmail.com/",
+      "summary": "Extends the BPF verifier's log to emit per-subprogram instruction counts rather than only an aggregate total. This gives developers visibility into which subprograms are driving verification complexity in large multi-subprog BPF programs, making it much easier to diagnose and fix programs that approach the verifier instruction limit. This v3 refines the log format based on reviewer feedback and is paired with a selftest that validates the new output lines.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_init_inode_xattr kfunc for atomic inode labeling",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260427001602.38353-2-dwindsor@gmail.com/",
+      "summary": "Introduces bpf_init_inode_xattr, a new kfunc allowing BPF LSM programs to atomically set an extended attribute on an inode during its initialization, before it becomes visible to other processes. This fills a race window in bpf_set_dentry_xattr where a label could be missing briefly after inode creation. The kfunc is intended for security labeling use cases where the label must be present from the very first access to the inode, and a selftest verifies the behavior in a BPF LSM context.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: fix crash in bpf_[set|remove]_dentry_xattr for negative dentries",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260430073836.2894001-1-mattbobrowski@google.com/",
+      "summary": "Fixes a null pointer dereference crash in bpf_set_dentry_xattr and bpf_remove_dentry_xattr when called with a negative dentry that has no associated inode. BPF LSM programs that walk filesystem paths can encounter negative dentries for non-existent files, and both kfuncs previously lacked a guard for this case. This v2 adds the necessary check to reject negative dentries early, preventing the crash without changing behavior for positive dentries.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add BPF_STRICT_BUILD toggle",
+      "author": "Ricardo B. Marlière",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v11-1-e11f7a8c4fdc@suse.com/",
+      "summary": "First patch of an 11-part series (v11) reworking the BPF selftests Makefile to handle partial kernel configurations gracefully. The series introduces BPF_STRICT_BUILD to toggle strict vs. tolerant behavior, adds skip logic for tests whose BPF objects were not compiled, fixes KDIR handling for distro out-of-tree builds, and tolerates BPF skeleton generation and benchmark build failures. The extensive revision history reflects the complexity of making the selftests build system robust across the wide variety of kernel configurations encountered in practice.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add arena ASAN runtime to libarena",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260426190338.4615-5-emil@etsalapatis.com/",
+      "summary": "Part of a v9 series developing the libarena memory allocator library for BPF selftests. This patch adds ASAN (AddressSanitizer) runtime support so that arena-backed allocations can be checked for memory safety errors during testing. Later patches in the series add a buddy allocator backend for libarena and associated selftests. The arena library provides a structured mechanism for BPF programs to manage large memory regions backed by BPF arena maps.",
+      "related_links": []
+    },
+    {
+      "title": "xskmap: reject TX-only AF_XDP sockets",
+      "author": "Linpu Yu",
+      "url": "https://lore.kernel.org/bpf/20260428125518.4556-1-linpu5433@gmail.com/",
+      "summary": "Adds a validation check to reject TX-only AF_XDP sockets from being inserted into an XSKMAP. TX-only sockets do not have a receive queue and cannot process XDP_REDIRECT actions, so permitting them in the map leads to silent packet drops that are difficult to diagnose. This v3 enforces the restriction at map insertion time with a clear EINVAL error, preventing misconfiguration of AF_XDP-based packet processing pipelines.",
+      "related_links": []
+    },
+    {
+      "title": "net: add missing syncookie statistics for BPF custom syncookies",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260427001006.14465-2-jiayuan.chen@linux.dev/",
+      "summary": "Fixes missing syncookie statistics when BPF programs handle SYN cookies via the custom syncookie interface. Without this fix, counters such as TcpExtSyncookiesRecv were not incremented for BPF-managed connections, making it impossible to distinguish BPF SYN flood mitigation from standard kernel behavior through standard statistics tooling like netstat or /proc/net/netstat. A selftest validates that the correct counters are updated when a BPF custom syncookie program handles a connection.",
+      "related_links": []
+    }
+  ]
+}

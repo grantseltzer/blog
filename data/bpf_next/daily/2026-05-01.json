@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-05-02T10:30:00Z",
+  "period_start": "2026-04-30",
+  "period_end": "2026-05-01",
+  "patch_count": 25,
+  "thread_count": 4,
+  "top_contributors": ["Ricardo B. Marlière", "Paul Chaignon", "Matt Bobrowski"],
+  "key_topics": ["selftests", "verifier", "kfuncs", "lsm"],
+  "overview": "April 30 saw heavy activity around the ongoing selftests/bpf build robustness series from Ricardo B. Marlière, which reached its eleventh revision with both v10 and v11 landing on the same day. Notable companion patches include Paul Chaignon's verifier enhancement to print per-subprogram instruction counts, and a crash fix from Matt Bobrowski for negative dentry handling in xattr kfuncs.",
+  "patches": [
+    {
+      "title": "selftests/bpf: Add BPF_STRICT_BUILD toggle",
+      "author": "Ricardo B. Marlière",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v11-1-e11f7a8c4fdc@suse.com/",
+      "summary": "First patch of an 11-part series (now at v11) reworking the BPF selftests build system to gracefully handle partial or misconfigured kernel configurations. This patch introduces a BPF_STRICT_BUILD Makefile toggle that, when disabled, allows the test suite to build and run even when some BPF features or kernel modules are absent. The series as a whole adds skip logic for missing compiled objects, tolerance for benchmark and skeleton generation failures, and fixes KDIR handling for distro kernels built with O=. This is particularly valuable for CI environments and downstream packagers who build BPF selftests against non-default kernel configs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Print breakdown of insns processed by subprogs",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/5590f9c67e614ec9054d0c7e74e87cc690a52c56.1777538384.git.paul.chaignon@gmail.com/",
+      "summary": "Extends the BPF verifier's log output to print a per-subprogram breakdown of instruction counts processed, rather than only a single aggregate total. Previously, developers debugging large BPF programs with multiple subprograms had no direct way to identify which subprogram was consuming most of the verifier budget. This v3 addresses reviewer feedback on the log format and is accompanied by a selftest that validates the new per-subprogram lines in the verifier log.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: fix crash in bpf_[set|remove]_dentry_xattr for negative dentries",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260430073836.2894001-1-mattbobrowski@google.com/",
+      "summary": "Fixes a null pointer dereference crash in the bpf_set_dentry_xattr and bpf_remove_dentry_xattr kfuncs when called with a negative dentry, i.e., one that does not correspond to an existing filesystem object. Both functions previously assumed the dentry had an associated inode and would crash when that assumption was violated. This v2 adds an early guard to reject negative dentries, preventing BPF LSM programs from triggering the crash when walking filesystem paths that include non-existent entries.",
+      "related_links": []
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-05-02T10:30:00Z",
+  "period_start": "2026-05-01",
+  "period_end": "2026-05-02",
+  "patch_count": 4,
+  "thread_count": 3,
+  "top_contributors": ["Florian Lehner", "hadrien Patte"],
+  "key_topics": ["bpftool", "perf", "links"],
+  "overview": "May 1 was a quiet day on the bpf-next mailing list with just two series submitted. Florian Lehner posted v3 of LINK_DETACH support for perf links, and hadrien Patte submitted two revisions of a bpftool build fix to resolve libcrypto link flags via pkg-config.",
+  "patches": [
+    {
+      "title": "bpf: Add LINK_DETACH support for perf link",
+      "author": "Florian Lehner",
+      "url": "https://lore.kernel.org/bpf/20260501160901.224134-2-dev@der-flo.net/",
+      "summary": "Adds LINK_DETACH semantics to perf links, enabling a perf link to be detached from its underlying perf event without closing the link file descriptor. This mirrors detach behavior already available for other BPF link types and is useful for programs that need to temporarily suspend tracing without fully tearing down associated state. The v3 series also includes a selftest that exercises the detach path for perf links and verifies correct behavior after detachment.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Resolve libcrypto link flags via pkg-config",
+      "author": "hadrien Patte",
+      "url": "https://lore.kernel.org/bpf/20260501224346.12765-1-hadrien.patte@protonmail.com/",
+      "summary": "Switches bpftool's libcrypto linkage from a hardcoded -lcrypto flag to a pkg-config query, improving portability across distributions and build environments where OpenSSL may be installed in non-standard locations. This v2 incorporates review feedback from the initial submission posted earlier the same day. The fix matters for downstream packagers who build bpftool against system-provided or vendored OpenSSL installations where pkg-config is the canonical way to obtain library flags.",
+      "related_links": []
+    }
+  ]
+}
