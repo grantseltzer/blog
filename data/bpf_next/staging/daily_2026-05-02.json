@@ -1,0 +1,76 @@
+{
+  "period": "daily",
+  "period_start": "2026-05-01",
+  "period_end": "2026-05-02",
+  "fetched_at": "2026-05-02T10:00:46Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v2] bpftool: Resolve libcrypto link flags via pkg-config",
+      "author": "hadrien Patte",
+      "url": "https://lore.kernel.org/bpf/20260501224346.12765-1-hadrien.patte@protonmail.com/",
+      "date": "2026-05-01T22:45:17",
+      "series": [
+        {
+          "id": 1088679,
+          "url": "https://patchwork.kernel.org/api/series/1088679/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088679",
+          "date": "2026-05-01T22:45:17",
+          "name": "[bpf-next,v2] bpftool: Resolve libcrypto link flags via pkg-config",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1088679/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpftool: Resolve libcrypto link flags via pkg-config",
+      "author": "hadrien Patte",
+      "url": "https://lore.kernel.org/bpf/20260501175829.9833-1-hadrien.patte@protonmail.com/",
+      "date": "2026-05-01T17:58:44",
+      "series": [
+        {
+          "id": 1088619,
+          "url": "https://patchwork.kernel.org/api/series/1088619/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088619",
+          "date": "2026-05-01T17:58:44",
+          "name": "[bpf-next] bpftool: Resolve libcrypto link flags via pkg-config",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1088619/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2,v3] selftests/bpf: Test LINK_DETACH for perf link",
+      "author": "Florian Lehner",
+      "url": "https://lore.kernel.org/bpf/20260501160901.224134-3-dev@der-flo.net/",
+      "date": "2026-05-01T16:09:01",
+      "series": [
+        {
+          "id": 1088581,
+          "url": "https://patchwork.kernel.org/api/series/1088581/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088581",
+          "date": "2026-05-01T16:09:00",
+          "name": "bpf: Add LINK_DETACH for perf links",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1088581/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2,v3] bpf: Add LINK_DETACH support for perf link",
+      "author": "Florian Lehner",
+      "url": "https://lore.kernel.org/bpf/20260501160901.224134-2-dev@der-flo.net/",
+      "date": "2026-05-01T16:09:00",
+      "series": [
+        {
+          "id": 1088581,
+          "url": "https://patchwork.kernel.org/api/series/1088581/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1088581",
+          "date": "2026-05-01T16:09:00",
+          "name": "bpf: Add LINK_DETACH for perf links",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1088581/mbox/"
+        }
+      ]
+    }
+  ]
+}
