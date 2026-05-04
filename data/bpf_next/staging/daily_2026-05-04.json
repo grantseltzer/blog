@@ -1,0 +1,93 @@
+{
+  "period": "daily",
+  "period_start": "2026-05-03",
+  "period_end": "2026-05-04",
+  "fetched_at": "2026-05-04T11:07:57Z",
+  "patches": [
+    {
+      "title": "[v2,bpf-next,2/2] selftests/bpf: add new negative tests for xattr related BPF kfuncs",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260504085428.2865671-2-mattbobrowski@google.com/",
+      "date": "2026-05-04T08:54:28",
+      "series": [
+        {
+          "id": 1089163,
+          "url": "https://patchwork.kernel.org/api/series/1089163/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1089163",
+          "date": "2026-05-04T08:54:27",
+          "name": "[v2,bpf-next,1/2] bpf: enforce VFS constraints for xattr related BPF kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1089163/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,1/2] bpf: enforce VFS constraints for xattr related BPF kfuncs",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260504085428.2865671-1-mattbobrowski@google.com/",
+      "date": "2026-05-04T08:54:27",
+      "series": [
+        {
+          "id": 1089163,
+          "url": "https://patchwork.kernel.org/api/series/1089163/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1089163",
+          "date": "2026-05-04T08:54:27",
+          "name": "[v2,bpf-next,1/2] bpf: enforce VFS constraints for xattr related BPF kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1089163/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: add new negative tests for xattr related BPF kfuncs",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260503200819.1530328-2-mattbobrowski@google.com/",
+      "date": "2026-05-03T20:08:19",
+      "series": [
+        {
+          "id": 1089016,
+          "url": "https://patchwork.kernel.org/api/series/1089016/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1089016",
+          "date": "2026-05-03T20:08:18",
+          "name": "[bpf-next,1/2] bpf: enforce VFS constraints for xattr related BPF kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1089016/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: enforce VFS constraints for xattr related BPF kfuncs",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260503200819.1530328-1-mattbobrowski@google.com/",
+      "date": "2026-05-03T20:08:18",
+      "series": [
+        {
+          "id": 1089016,
+          "url": "https://patchwork.kernel.org/api/series/1089016/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1089016",
+          "date": "2026-05-03T20:08:18",
+          "name": "[bpf-next,1/2] bpf: enforce VFS constraints for xattr related BPF kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1089016/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] m68k, bpf: Add initial BPF JIT compiler support",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260503181504.1037640-1-visitorckw@gmail.com/",
+      "date": "2026-05-03T18:15:04",
+      "series": [
+        {
+          "id": 1089005,
+          "url": "https://patchwork.kernel.org/api/series/1089005/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1089005",
+          "date": "2026-05-03T18:15:04",
+          "name": "[bpf-next,v2] m68k, bpf: Add initial BPF JIT compiler support",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1089005/mbox/"
+        }
+      ]
+    }
+  ]
+}
