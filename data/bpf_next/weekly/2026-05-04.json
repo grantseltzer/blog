@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-05-05T00:00:00Z",
+  "period_start": "2026-04-27",
+  "period_end": "2026-05-04",
+  "patch_count": 100,
+  "thread_count": 28,
+  "top_contributors": ["Ricardo B. Marlière", "Matt Bobrowski", "Puranjay Mohan", "Kuan-Wei Chiu", "Kaitao cheng"],
+  "key_topics": ["kfuncs", "jit", "selftests", "xdp", "kptr", "verifier", "xattr", "bpf-list"],
+  "overview": "The April 27 – May 4 week was busy across multiple BPF subsystems. The most active thread by patch volume was Ricardo B. Marlière's long-running selftests/bpf build-robustness series, which reached v11 and makes the test suite tolerate partial kernel configurations without aborting. On the JIT front, Kuan-Wei Chiu posted initial BPF JIT support for both m68k and RISC-V RV32, while Puranjay Mohan extended the arm64 JIT to handle stack arguments and contributed an XDP load-balancer benchmark suite. Matt Bobrowski addressed two xattr kfunc issues: a crash on negative dentries and a broader VFS constraint enforcement series. Kaitao cheng's v10 of the extended bpf_list kfunc API landed new list manipulation helpers, and Paul Chaignon added per-subprogram instruction-count reporting to improve verifier diagnostics.",
+  "patches": [
+    {
+      "title": "m68k, bpf: Add initial BPF JIT compiler support",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260503181504.1037640-1-visitorckw@gmail.com/",
+      "summary": "This v2 patch adds a BPF JIT for the m68k (Motorola 68000) architecture, eliminating the interpreter fallback on that platform. The JIT maps the full core BPF ISA — ALU operations, memory access, branches, and BPF-to-BPF calls — onto m68k assembly. The v2 revision addresses register allocation and instruction selection feedback from the initial posting. Gaining a JIT on m68k is meaningful for embedded and legacy m68k systems that run Linux and want the performance benefits of native BPF execution.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: enforce VFS constraints for xattr related BPF kfuncs",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260504085428.2865671-1-mattbobrowski@google.com/",
+      "summary": "This v2 patch enforces standard VFS permission and existence checks inside the BPF xattr kfuncs (bpf_get_dentry_xattr, bpf_set_dentry_xattr, bpf_remove_dentry_xattr). Without this, BPF LSM hook programs could bypass capability checks and operate on dentries that userspace code cannot access. The patch aligns kfunc semantics with what the normal VFS xattr path enforces, closing an inconsistency that could be exploited for privilege escalation in LSM-heavy environments. It pairs with the negative-dentry crash fix also posted this week.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: fix crash in bpf_[set|remove]_dentry_xattr for negative dentries",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260430073836.2894001-1-mattbobrowski@google.com/",
+      "summary": "This v2 single-patch fix prevents a NULL dereference crash in bpf_set_dentry_xattr and bpf_remove_dentry_xattr when the supplied dentry is negative (i.e., points to a path that does not exist). Negative dentries lack an associated inode, and the kfuncs were unconditionally dereferencing d_inode without checking first. The fix adds a guard that returns -ENOENT for negative dentries, matching VFS behavior and eliminating the crash vector for any BPF program that encounters a not-yet-created path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Add JIT support for stack arguments",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260427234801.2104511-3-puranjay@kernel.org/",
+      "summary": "This patch (v2, 2/3) implements stack-based argument passing in the arm64 BPF JIT, allowing BPF programs to call kernel functions that take more arguments than fit in the eight AArch64 argument registers. The series remaps BPF_REG_0 from x7 to x8 to free the last argument slot (patch 1), then uses the stack for spilling additional arguments (patch 2), and adds selftests that verify the calling convention on arm64 (patch 3). This unblocks kfunc authors who need to pass large structs or many parameters to helper functions from BPF on arm64.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add XDP load-balancer benchmark",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260427232313.1582588-2-puranjay@kernel.org/",
+      "summary": "This seven-patch series adds a complete XDP load-balancer benchmark to the BPF selftests suite, including a BPF program that performs L4 load balancing, a userspace driver, a batch-timing library, a bpf-nop baseline benchmark, and a run script. The benchmark is designed to measure end-to-end XDP packet-processing throughput and latency, giving developers a reproducible way to evaluate JIT and verifier changes against a realistic XDP workload. It complements the existing map and program-focused benchmarks already in selftests/bpf.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Extend the bpf_list family of APIs",
+      "author": "Kaitao cheng",
+      "url": "https://lore.kernel.org/bpf/20260427165906.84420-2-kaitao.cheng@linux.dev/",
+      "summary": "This v10 eight-patch series extends the BPF linked-list kfunc API with several new operations: bpf_list_del (remove a node from a list without freeing), bpf_list_add (insert a node after a given position), and bpf_list_is_first/last/empty (query helpers). It also introduces the __nonown_allowed annotation so non-owning list-node pointers can be passed as kfunc arguments. These additions allow BPF programs to implement more sophisticated in-kernel data structures using the existing bpf_list_head/node primitives, moving toward parity with the C linked-list API available to kernel modules.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add LINK_DETACH support for perf link",
+      "author": "Florian Lehner",
+      "url": "https://lore.kernel.org/bpf/20260501160901.224134-2-dev@der-flo.net/",
+      "summary": "This v3 two-patch series adds LINK_DETACH support to perf-type BPF links, enabling userspace to detach a BPF program from its perf event via the BPF_LINK_DETACH command without destroying the link object. Previously, perf links did not implement the detach operation, which prevented use cases that require temporarily suspending a BPF program attached to a perf event while keeping the link fd alive for later re-use. The selftest patch validates that a detached perf link stops delivering events and can be distinguished from a fully destroyed link.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Print breakdown of insns processed by subprogs",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/5590f9c67e614ec9054d0c7e74e87cc690a52c56.1777538384.git.paul.chaignon@gmail.com/",
+      "summary": "This v3 two-patch series makes the BPF verifier log include a per-subprogram breakdown of the instructions processed count alongside the existing aggregate figure. When a complex program composed of multiple subprograms approaches the verifier complexity limit, it can be hard to identify which subprogram is the bottleneck; the new output lines directly attribute instruction counts to each function. The companion selftest verifies the format of the new log lines. This is a developer-facing diagnostic improvement with no runtime overhead.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix out-of-bounds read in bpf_patch_call_args()",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260429171904.107244-2-tangyazhou@zju.edu.cn/",
+      "summary": "This v9 three-patch series fixes two related bugs in bpf_patch_call_args(): an out-of-bounds read that occurs when the insn array is grown for a large number of subprograms, and a silent s16 truncation of call offsets that overflows when a BPF-to-BPF call target is far away in the instruction stream. The OOB read can lead to kernel memory exposure; the truncation causes incorrect branch targets and potential crashes at runtime. The third patch adds a selftest with a program that generates a large call offset to act as a regression guard.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix NMI deadlock in referenced kptr destructors",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260428201422.1518903-2-utilityemal77@gmail.com/",
+      "summary": "This four-patch series fixes a deadlock that can occur when a referenced kptr's destructor is called from NMI context, where taking the locks normally acquired during BTF teardown is not safe. The fix uses rcu_work to defer BTF reference dropping out of NMI context, and limits the fields compared in btf_record_equal to avoid unnecessary lock acquisition. A selftest reproducer is included to verify that the deadlock path is closed. The bug affects any BPF program that holds a referenced kptr and is invoked from a perf NMI handler.",
+      "related_links": []
+    },
+    {
+      "title": "xskmap: reject TX-only AF_XDP sockets",
+      "author": "Linpu Yu",
+      "url": "https://lore.kernel.org/bpf/20260428125518.4556-1-linpu5433@gmail.com/",
+      "summary": "This v3 single patch adds a check in xskmap insertion that rejects TX-only AF_XDP sockets (those created without an RX ring). XSK maps are used for XDP redirect, which inherently requires an RX ring to receive packets; inserting a TX-only socket previously succeeded but caused silent misbehavior at redirect time. The fix returns -EINVAL early during map update if the socket lacks an RX ring, making the error explicit and preventing subtle data-path failures in production XDP setups.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Tolerate partial builds across kernel configs",
+      "author": "Ricardo B. Marlière",
+      "url": "https://lore.kernel.org/bpf/20260430-selftests-bpf_misconfig-v11-1-e11f7a8c4fdc@suse.com/",
+      "summary": "This v11 eleven-patch series makes the selftests/bpf Makefile and test runner gracefully handle builds where some BPF objects or skeleton headers could not be compiled due to missing kernel config options, rather than failing the entire build. Key changes include a BPF_STRICT_BUILD toggle, tolerating BPF and skeleton generation failures, skipping tests whose objects were not built, and tolerating missing files during install. The series allows developers and CI systems running non-standard kernel configurations (e.g., distro kernels) to still execute the subset of BPF selftests that do apply to their config.",
+      "related_links": []
+    }
+  ]
+}

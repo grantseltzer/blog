@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-05-05T00:00:00Z",
+  "period_start": "2026-05-03",
+  "period_end": "2026-05-04",
+  "patch_count": 5,
+  "thread_count": 3,
+  "top_contributors": ["Matt Bobrowski", "Kuan-Wei Chiu"],
+  "key_topics": ["kfuncs", "xattr", "jit", "m68k"],
+  "overview": "The May 3-4 window saw two active series. Matt Bobrowski posted a v2 two-patch series enforcing VFS constraints for xattr-related BPF kfuncs, tightening permission and existence checks that were previously bypassable from BPF context. Kuan-Wei Chiu followed up with a v2 of the initial BPF JIT compiler for the m68k architecture, bringing Motorola 68000-series CPUs into the JIT-capable BPF tier.",
+  "patches": [
+    {
+      "title": "bpf: enforce VFS constraints for xattr related BPF kfuncs",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260504085428.2865671-1-mattbobrowski@google.com/",
+      "summary": "This patch (v2, 1/2) enforces standard VFS permission and existence constraints inside the xattr BPF kfuncs bpf_get_dentry_xattr, bpf_set_dentry_xattr, and bpf_remove_dentry_xattr. Previously, BPF programs could bypass the checks that the regular VFS xattr path imposes, such as requiring a positive dentry and appropriate capabilities. The fix aligns kfunc behavior with what a userspace caller would experience, closing a privilege-related inconsistency in LSM hook programs. It is the companion to the negative-dentry crash fix posted earlier in the week.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: add new negative tests for xattr related BPF kfuncs",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260504085428.2865671-2-mattbobrowski@google.com/",
+      "summary": "This patch (v2, 2/2) adds a set of negative test cases that verify the VFS constraint enforcement introduced in the companion patch. The tests exercise scenarios such as operating on negative dentries, missing capability bits, and invalid xattr name prefixes to confirm the kfuncs now return the expected error codes. Covering these failure paths in selftests ensures regressions will be caught before the series lands in the tree.",
+      "related_links": []
+    },
+    {
+      "title": "m68k, bpf: Add initial BPF JIT compiler support",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260503181504.1037640-1-visitorckw@gmail.com/",
+      "summary": "This v2 patch introduces a BPF JIT compiler for the Motorola m68k architecture, making m68k the newest architecture to gain native BPF execution instead of falling back to the interpreter. The JIT covers the core BPF instruction set including ALU ops, memory loads and stores, branching, and function calls, mapping them to m68k assembly. The v2 addresses review feedback from the initial posting, primarily around instruction selection and register allocation details. This expands BPF's JIT footprint to an architecture frequently used in embedded and legacy systems.",
+      "related_links": []
+    }
+  ]
+}
