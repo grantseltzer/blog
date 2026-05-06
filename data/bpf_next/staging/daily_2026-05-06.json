@@ -1,0 +1,93 @@
+{
+  "period": "daily",
+  "period_start": "2026-05-05",
+  "period_end": "2026-05-06",
+  "fetched_at": "2026-05-06T11:09:13Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v10,3/3] selftests/bpf: Add test for large offset bpf-to-bpf call",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260506094714.419842-4-tangyazhou@zju.edu.cn/",
+      "date": "2026-05-06T09:47:14",
+      "series": [
+        {
+          "id": 1090376,
+          "url": "https://patchwork.kernel.org/api/series/1090376/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090376",
+          "date": "2026-05-06T09:47:12",
+          "name": "bpf: Fix call offset truncation and OOB read in bpf_patch_call_args()",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1090376/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,2/3] bpf: Fix s16 truncation for large bpf-to-bpf call offsets",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260506094714.419842-3-tangyazhou@zju.edu.cn/",
+      "date": "2026-05-06T09:47:13",
+      "series": [
+        {
+          "id": 1090376,
+          "url": "https://patchwork.kernel.org/api/series/1090376/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090376",
+          "date": "2026-05-06T09:47:12",
+          "name": "bpf: Fix call offset truncation and OOB read in bpf_patch_call_args()",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1090376/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,1/3] bpf: Fix out-of-bounds read in bpf_patch_call_args()",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260506094714.419842-2-tangyazhou@zju.edu.cn/",
+      "date": "2026-05-06T09:47:12",
+      "series": [
+        {
+          "id": 1090376,
+          "url": "https://patchwork.kernel.org/api/series/1090376/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090376",
+          "date": "2026-05-06T09:47:12",
+          "name": "bpf: Fix call offset truncation and OOB read in bpf_patch_call_args()",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1090376/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: Add kptr destructor NMI exerciser",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260505150851.3090688-3-utilityemal77@gmail.com/",
+      "date": "2026-05-05T15:08:51",
+      "series": [
+        {
+          "id": 1089971,
+          "url": "https://patchwork.kernel.org/api/series/1089971/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1089971",
+          "date": "2026-05-05T15:08:49",
+          "name": "bpf: Fix deadlock in kptr dtor in nmi",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1089971/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: Offload kptr destructors that run from NMI",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260505150851.3090688-2-utilityemal77@gmail.com/",
+      "date": "2026-05-05T15:08:50",
+      "series": [
+        {
+          "id": 1089971,
+          "url": "https://patchwork.kernel.org/api/series/1089971/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1089971",
+          "date": "2026-05-05T15:08:49",
+          "name": "bpf: Fix deadlock in kptr dtor in nmi",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1089971/mbox/"
+        }
+      ]
+    }
+  ]
+}
