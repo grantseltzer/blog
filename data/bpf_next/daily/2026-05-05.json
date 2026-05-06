@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-05-06T00:00:00Z",
+  "period_start": "2026-05-04",
+  "period_end": "2026-05-05",
+  "patch_count": 2,
+  "thread_count": 1,
+  "top_contributors": ["Matt Bobrowski"],
+  "key_topics": ["kfuncs", "xattr", "selftests"],
+  "overview": "A quiet day on bpf-next, with a single two-patch series from Matt Bobrowski. The v2 series enforces VFS constraints on the xattr BPF kfuncs and pairs that change with negative selftests that verify the error paths.",
+  "patches": [
+    {
+      "title": "bpf: enforce VFS constraints for xattr related BPF kfuncs",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260504085428.2865671-1-mattbobrowski@google.com/",
+      "summary": "This v2 patch enforces standard VFS permission and existence checks inside the BPF xattr kfuncs bpf_get_dentry_xattr, bpf_set_dentry_xattr, and bpf_remove_dentry_xattr. Without these guards, BPF LSM programs could bypass the capability checks and dentry validity requirements that the normal VFS xattr code path enforces, creating a privilege inconsistency. The fix aligns kfunc semantics with userspace-visible VFS behavior, closing a potential privilege-related gap for LSM-heavy deployments. This is the v2 revision incorporating feedback from the initial posting.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: add new negative tests for xattr related BPF kfuncs",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260504085428.2865671-2-mattbobrowski@google.com/",
+      "summary": "This companion patch adds a set of negative test cases exercising the VFS constraint enforcement introduced in the first patch of the series. The tests attempt xattr kfunc calls on negative dentries, on filesystems that do not support extended attributes, and with invalid capability state, confirming that the kernel returns the expected error codes in each case. Having explicit negative coverage prevents future regressions from quietly re-opening the constraint bypass.",
+      "related_links": []
+    }
+  ]
+}
