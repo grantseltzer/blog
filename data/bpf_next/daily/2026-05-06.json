@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-05-07T00:00:00Z",
+  "period_start": "2026-05-05",
+  "period_end": "2026-05-06",
+  "patch_count": 5,
+  "thread_count": 2,
+  "top_contributors": ["Yazhou Tang", "Justin Suess"],
+  "key_topics": ["bpf-to-bpf-calls", "verifier", "kptr", "nmi", "selftests"],
+  "overview": "Two fix series landed targeting correctness and safety in core BPF infrastructure. Yazhou Tang's v10 series addresses an out-of-bounds read and s16 call offset truncation bug in bpf_patch_call_args(), preventing memory corruption when BPF programs use large bpf-to-bpf call offsets. Justin Suess's v2 series fixes a deadlock that can occur when kptr destructors are triggered from NMI context by offloading them to a safe workqueue path.",
+  "patches": [
+    {
+      "title": "bpf: Fix out-of-bounds read in bpf_patch_call_args()",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260506094714.419842-2-tangyazhou@zju.edu.cn/",
+      "summary": "bpf_patch_call_args() is responsible for rewriting call instructions in BPF programs when functions are relocated during loading. This patch fixes an out-of-bounds memory read that occurs in that function when processing bpf-to-bpf calls with large offsets. The bug arises because the code reads beyond the bounds of the instruction array before the offset is validated. At v10, this fix has been through significant refinement and is paired with a companion patch correcting the underlying s16 truncation issue.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix s16 truncation for large bpf-to-bpf call offsets",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260506094714.419842-3-tangyazhou@zju.edu.cn/",
+      "summary": "When a bpf-to-bpf call offset is large enough to overflow a signed 16-bit integer, the value gets silently truncated during patching, causing the call instruction to jump to an incorrect address. This patch fixes the truncation by ensuring offsets are handled with the correct width throughout the call patching path. The bug could cause silent misbehavior in complex BPF programs with many subprograms spread far apart in the instruction stream. A selftest (patch 3/3) accompanies this fix to cover the large-offset case.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Offload kptr destructors that run from NMI",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260505150851.3090688-2-utilityemal77@gmail.com/",
+      "summary": "BPF kptr destructors can be invoked from NMI (non-maskable interrupt) context, for example via perf-event-attached programs, but acquiring the locks required for cleanup is unsafe in that context and can deadlock the kernel. This patch resolves the issue by detecting the NMI case and offloading the destructor call to a workqueue so it runs in a safe, preemptible context. The fix preserves correct lifecycle management for kptrs while eliminating the deadlock risk. A companion selftest (patch 2/2) exercises the NMI destructor path to prevent regressions.",
+      "related_links": []
+    }
+  ]
+}
