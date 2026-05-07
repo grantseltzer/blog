@@ -1,0 +1,263 @@
+{
+  "period": "daily",
+  "period_start": "2026-05-06",
+  "period_end": "2026-05-07",
+  "fetched_at": "2026-05-07T11:11:19Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v4,12/12] selftests/bpf: Test using file dynptr after the reference on file is dropped",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-13-ameryhung@gmail.com/",
+      "date": "2026-05-06T14:27:08",
+      "series": [
+        {
+          "id": 1090525,
+          "url": "https://patchwork.kernel.org/api/series/1090525/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090525",
+          "date": "2026-05-06T14:26:56",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1090525/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,11/12] selftests/bpf: Test using slice after invalidating dynptr clone",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-12-ameryhung@gmail.com/",
+      "date": "2026-05-06T14:27:07",
+      "series": [
+        {
+          "id": 1090525,
+          "url": "https://patchwork.kernel.org/api/series/1090525/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090525",
+          "date": "2026-05-06T14:26:56",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1090525/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,10/12] selftests/bpf: Test using dynptr after freeing the underlying object",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-11-ameryhung@gmail.com/",
+      "date": "2026-05-06T14:27:06",
+      "series": [
+        {
+          "id": 1090525,
+          "url": "https://patchwork.kernel.org/api/series/1090525/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090525",
+          "date": "2026-05-06T14:26:56",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1090525/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,09/12] selftests/bpf: Test creating dynptr from dynptr data and slice",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-10-ameryhung@gmail.com/",
+      "date": "2026-05-06T14:27:05",
+      "series": [
+        {
+          "id": 1090525,
+          "url": "https://patchwork.kernel.org/api/series/1090525/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090525",
+          "date": "2026-05-06T14:26:56",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1090525/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,08/12] bpf: Unify release handling for helpers and kfuncs",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-9-ameryhung@gmail.com/",
+      "date": "2026-05-06T14:27:04",
+      "series": [
+        {
+          "id": 1090525,
+          "url": "https://patchwork.kernel.org/api/series/1090525/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090525",
+          "date": "2026-05-06T14:26:56",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1090525/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,07/12] bpf: Unify referenced object tracking in verifier",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-8-ameryhung@gmail.com/",
+      "date": "2026-05-06T14:27:03",
+      "series": [
+        {
+          "id": 1090525,
+          "url": "https://patchwork.kernel.org/api/series/1090525/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090525",
+          "date": "2026-05-06T14:26:56",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1090525/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,06/12] bpf: Remove redundant dynptr arg check for helper",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-7-ameryhung@gmail.com/",
+      "date": "2026-05-06T14:27:02",
+      "series": [
+        {
+          "id": 1090525,
+          "url": "https://patchwork.kernel.org/api/series/1090525/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090525",
+          "date": "2026-05-06T14:26:56",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1090525/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,05/12] bpf: Refactor object relationship tracking and fix dynptr UAF bug",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-6-ameryhung@gmail.com/",
+      "date": "2026-05-06T14:27:01",
+      "series": [
+        {
+          "id": 1090525,
+          "url": "https://patchwork.kernel.org/api/series/1090525/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090525",
+          "date": "2026-05-06T14:26:56",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1090525/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,04/12] bpf: Preserve reg->id of pointer objects after null-check",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-5-ameryhung@gmail.com/",
+      "date": "2026-05-06T14:27:00",
+      "series": [
+        {
+          "id": 1090525,
+          "url": "https://patchwork.kernel.org/api/series/1090525/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090525",
+          "date": "2026-05-06T14:26:56",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1090525/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,03/12] bpf: Assign reg->id when getting referenced kptr from ctx",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-4-ameryhung@gmail.com/",
+      "date": "2026-05-06T14:26:59",
+      "series": [
+        {
+          "id": 1090525,
+          "url": "https://patchwork.kernel.org/api/series/1090525/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090525",
+          "date": "2026-05-06T14:26:56",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1090525/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,02/12] bpf: Unify dynptr handling in the verifier",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-3-ameryhung@gmail.com/",
+      "date": "2026-05-06T14:26:58",
+      "series": [
+        {
+          "id": 1090525,
+          "url": "https://patchwork.kernel.org/api/series/1090525/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090525",
+          "date": "2026-05-06T14:26:56",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1090525/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,01/12] bpf: Simplify mark_stack_slot_obj_read() and callers",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-2-ameryhung@gmail.com/",
+      "date": "2026-05-06T14:26:57",
+      "series": [
+        {
+          "id": 1090525,
+          "url": "https://patchwork.kernel.org/api/series/1090525/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090525",
+          "date": "2026-05-06T14:26:56",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1090525/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,3/3] selftests/bpf: Add test for large offset bpf-to-bpf call",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260506094714.419842-4-tangyazhou@zju.edu.cn/",
+      "date": "2026-05-06T09:47:14",
+      "series": [
+        {
+          "id": 1090376,
+          "url": "https://patchwork.kernel.org/api/series/1090376/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090376",
+          "date": "2026-05-06T09:47:12",
+          "name": "bpf: Fix call offset truncation and OOB read in bpf_patch_call_args()",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1090376/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,2/3] bpf: Fix s16 truncation for large bpf-to-bpf call offsets",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260506094714.419842-3-tangyazhou@zju.edu.cn/",
+      "date": "2026-05-06T09:47:13",
+      "series": [
+        {
+          "id": 1090376,
+          "url": "https://patchwork.kernel.org/api/series/1090376/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090376",
+          "date": "2026-05-06T09:47:12",
+          "name": "bpf: Fix call offset truncation and OOB read in bpf_patch_call_args()",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1090376/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v10,1/3] bpf: Fix out-of-bounds read in bpf_patch_call_args()",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260506094714.419842-2-tangyazhou@zju.edu.cn/",
+      "date": "2026-05-06T09:47:12",
+      "series": [
+        {
+          "id": 1090376,
+          "url": "https://patchwork.kernel.org/api/series/1090376/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1090376",
+          "date": "2026-05-06T09:47:12",
+          "name": "bpf: Fix call offset truncation and OOB read in bpf_patch_call_args()",
+          "version": 10,
+          "mbox": "https://patchwork.kernel.org/series/1090376/mbox/"
+        }
+      ]
+    }
+  ]
+}
