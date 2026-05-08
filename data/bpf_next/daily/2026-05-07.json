@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-05-08T00:00:00Z",
+  "period_start": "2026-05-06",
+  "period_end": "2026-05-07",
+  "patch_count": 15,
+  "thread_count": 2,
+  "top_contributors": ["Amery Hung", "Yazhou Tang"],
+  "key_topics": ["verifier", "dynptr", "kfuncs", "bug-fix"],
+  "overview": "Two patch series landed on bpf-next today. Amery Hung posted v4 of a 12-patch series refactoring verifier object relationship tracking, unifying dynptr and referenced-object handling while fixing a use-after-free bug in dynptr operations. Yazhou Tang posted v10 of a 3-patch series fixing an out-of-bounds read and s16 truncation bug in bpf_patch_call_args() for large bpf-to-bpf call offsets.",
+  "patches": [
+    {
+      "title": "bpf: Refactor object relationship tracking and fix dynptr UAF bug",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-6-ameryhung@gmail.com/",
+      "summary": "This is the core patch in a 12-patch series refactoring how the BPF verifier tracks relationships between objects. It rewrites the parent-child relationship model for dynptrs, slices, and referenced objects under a unified representation, and simultaneously fixes a use-after-free bug where a dynptr could be accessed after its underlying object was freed. The fix enforces stricter lifetime rules in the verifier so that deriving a dynptr from a freed resource is correctly rejected at verification time. This is a significant correctness improvement for programs that use dynptrs backed by kernel objects.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Unify dynptr handling in the verifier",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-3-ameryhung@gmail.com/",
+      "summary": "Consolidates dynptr state tracking in the verifier by routing all dynptr-related checks and state propagation through a single code path, removing previously scattered handling of dynptr metadata. This patch is a prerequisite for the later patches in the series that generalize object relationship tracking. The change improves maintainability and reduces the risk of subtle inconsistencies between different dynptr handling sites.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Unify referenced object tracking in verifier",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-8-ameryhung@gmail.com/",
+      "summary": "Merges the per-type tracking of referenced objects (dynptrs, slices, kptrs) into a single unified mechanism within the verifier. Previously, each object type carried partially redundant and inconsistent tracking data structures. The unified approach simplifies the verifier's internal state and makes it easier to extend object tracking for new reference types in the future.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Unify release handling for helpers and kfuncs",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-9-ameryhung@gmail.com/",
+      "summary": "Merges the release-handling paths for BPF helpers and kfuncs in the verifier, which previously maintained separate but largely duplicated logic for releasing acquired references. Unifying these paths ensures consistent semantics regardless of whether a reference is released via a helper or a kfunc. This is part of the broader series to consolidate verifier object tracking infrastructure.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix out-of-bounds read in bpf_patch_call_args()",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260506094714.419842-2-tangyazhou@zju.edu.cn/",
+      "summary": "Fixes an out-of-bounds read in bpf_patch_call_args(), the function responsible for rewriting bpf-to-bpf call instruction offsets during program loading. The bug could be triggered when patching programs with calls positioned near the end of the instruction array, causing the function to read beyond the allocated buffer. This is v10 of the fix series, reflecting a lengthy review process to ensure the bounds check is correct under all patching scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix s16 truncation for large bpf-to-bpf call offsets",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260506094714.419842-3-tangyazhou@zju.edu.cn/",
+      "summary": "Fixes an s16 truncation bug in bpf_patch_call_args() where call offsets exceeding the range of a signed 16-bit integer were silently truncated, producing incorrect jump targets in patched programs. The fix widens the internal offset representation to correctly handle large programs where the distance between caller and callee exceeds 32767 instructions. This patch pairs with the out-of-bounds read fix in the same series.",
+      "related_links": []
+    }
+  ]
+}
