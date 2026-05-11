@@ -1,0 +1,416 @@
+{
+  "period": "daily",
+  "period_start": "2026-05-10",
+  "period_end": "2026-05-11",
+  "fetched_at": "2026-05-11T12:13:43Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v3,24/24] selftests/bpf: Enable stack argument tests for arm64",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053513.1898124-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:35:13",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,23/24] bpf, arm64: Add JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053508.1895608-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:35:08",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,22/24] bpf, arm64: Map BPF_REG_0 to x8 instead of x7",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053503.1893617-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:35:03",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,21/24] selftests/bpf: Add precision backtracking test for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053457.1892311-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:34:57",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,20/24] selftests/bpf: Add verifier tests for stack argument validation",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053452.1892038-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:34:52",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,19/24] selftests/bpf: Add BTF fixup for __naked subprog parameter names",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053447.1891270-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:34:47",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,18/24] selftests/bpf: Add tests for stack argument validation",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053442.1891080-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:34:42",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,17/24] selftests/bpf: Add tests for BPF function stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053437.1890776-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:34:37",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,16/24] bpf,x86: Implement JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053432.1889692-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:34:23",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,15/24] bpf: Pass bpf_subprog_info to bpf_int_jit_compile()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053418.1888759-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:34:18",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,14/24] bpf: Reject stack arguments if tail call reachable",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053413.1888514-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:34:13",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,13/24] bpf: Support stack arguments for kfunc calls",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053408.1887504-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:34:08",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,12/24] bpf: Enable r11 based insns",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053403.1886118-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:34:03",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,11/24] bpf: Prepare architecture JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053358.1885674-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:33:58",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,10/24] bpf: Reject stack arguments in non-JITed programs",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053353.1885466-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:33:53",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,09/24] bpf: Extend liveness analysis to track stack argument slots",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053348.1885300-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:33:48",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,08/24] bpf: Refactor record_call_access() to extract per-arg logic",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053342.1885131-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:33:42",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,07/24] bpf: Add precision marking and backtracking for stack argument slots",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053337.1884840-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:33:37",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,06/24] bpf: Refactor jmp history to use dedicated spi/frame fields",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053332.1884123-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:33:32",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,05/24] bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053327.1883871-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:33:27",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,04/24] bpf: Set sub->arg_cnt earlier in btf_prepare_func_args()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053322.1883474-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:33:22",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,03/24] bpf: Add helper functions for r11-based stack argument insns",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053317.1882532-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:33:17",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,02/24] bpf: Remove copy_register_state wrapper function",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053312.1881536-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:33:12",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,01/24] bpf: Convert bpf_get_spilled_reg macro to static inline function",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053306.1880263-1-yonghong.song@linux.dev/",
+      "date": "2026-05-11T05:33:06",
+      "series": [
+        {
+          "id": 1092500,
+          "url": "https://patchwork.kernel.org/api/series/1092500/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1092500",
+          "date": "2026-05-11T05:33:01",
+          "name": "bpf: Support stack arguments for BPF functions and kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1092500/mbox/"
+        }
+      ]
+    }
+  ]
+}
