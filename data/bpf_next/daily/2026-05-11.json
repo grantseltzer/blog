@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-05-12T10:00:00Z",
+  "period_start": "2026-05-10",
+  "period_end": "2026-05-11",
+  "patch_count": 24,
+  "thread_count": 1,
+  "top_contributors": ["Yonghong Song"],
+  "key_topics": ["verifier", "jit", "kfuncs", "btf", "arm64"],
+  "overview": "Yonghong Song submitted v3 of his 24-patch series adding stack argument support for BPF functions and kfuncs, superseding the v2 sent earlier in the week. The series enables BPF programs to pass arguments to subprograms and kfuncs via the stack when register pressure exceeds six, aligning the BPF calling convention with native ABI practices. It spans verifier liveness and precision analysis, a new r11-based instruction encoding, x86-64 and arm64 JIT backends, and extensive selftests.",
+  "patches": [
+    {
+      "title": "bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053327.1883871-1-yonghong.song@linux.dev/",
+      "summary": "The central verifier patch enabling BPF subprograms to accept arguments beyond register r5 by passing them on an auxiliary stack frame. The verifier is extended to recognise the new stack-based argument slots, validate their types, and propagate liveness information through calls. This removes the hard six-argument limit for BPF-to-BPF calls.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add precision marking and backtracking for stack argument slots",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053337.1884840-1-yonghong.song@linux.dev/",
+      "summary": "Extends the verifier's precision backtracking engine to track stack argument slots in addition to registers. Precision marking is required for state pruning to be correct when programs use stack arguments, as the verifier must know which stack slots carry values that affect control flow. Without this, the verifier could incorrectly prune states and miss safety violations.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Extend liveness analysis to track stack argument slots",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053348.1885300-1-yonghong.song@linux.dev/",
+      "summary": "Teaches the verifier's liveness analysis to treat stack argument slots as live across a call site, ensuring that the writes to those slots are not incorrectly classified as dead stores. This is necessary for the verifier to correctly determine which stack writes must be preserved before a call instruction. The patch also updates the jmp_history mechanism to record stack-argument frame information.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Enable r11 based insns",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053403.1886118-1-yonghong.song@linux.dev/",
+      "summary": "Introduces support for a new pseudo-register r11 used as the base for stack argument addressing in BPF instructions. Since BPF's ISA did not previously expose r11, the verifier and disassembler are updated to accept and display r11-relative memory operands. This encoding allows the JIT to reliably distinguish stack argument accesses from regular frame-pointer-relative accesses.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support stack arguments for kfunc calls",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053408.1887504-1-yonghong.song@linux.dev/",
+      "summary": "Extends the new stack argument convention to kfunc call sites, allowing kernel functions registered as kfuncs to receive more than six typed arguments from BPF programs. The verifier validates the type and alignment of stack-passed arguments against the kfunc's BTF signature. This is particularly useful for kfuncs with struct-typed or numerous parameters.",
+      "related_links": []
+    },
+    {
+      "title": "bpf,x86: Implement JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053432.1889692-1-yonghong.song@linux.dev/",
+      "summary": "Implements x86-64 JIT code generation for the new stack argument passing convention. The JIT emits r11-based MOV instructions to write arguments into the callee's stack frame before the call instruction, following the System V AMD64 ABI spill area layout. This patch makes the feature functional on x86-64, the primary development architecture.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Add JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053508.1895608-1-yonghong.song@linux.dev/",
+      "summary": "Adds arm64 JIT backend support for the new stack argument calling convention, mirroring the x86-64 implementation. The arm64 JIT must also remap BPF_REG_0 from x7 to x8 (addressed in a companion patch) to free x7 for use as the auxiliary stack frame pointer. With this patch, the feature gains support on both major 64-bit architectures targeted by the series.",
+      "related_links": []
+    }
+  ]
+}

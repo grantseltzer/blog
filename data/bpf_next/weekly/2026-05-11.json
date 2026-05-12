@@ -1,0 +1,89 @@
+{
+  "generated_at": "2026-05-12T10:00:00Z",
+  "period_start": "2026-05-04",
+  "period_end": "2026-05-11",
+  "patch_count": 76,
+  "thread_count": 8,
+  "top_contributors": ["Yonghong Song", "Amery Hung", "Kuniyuki Iwashima", "Justin Suess", "Yazhou Tang", "Matt Bobrowski"],
+  "key_topics": ["verifier", "jit", "kfuncs", "sock-ops", "tcp", "kptr", "dynptr", "btf"],
+  "overview": "The week was headlined by Yonghong Song's sustained effort to add stack argument support for BPF functions and kfuncs, with v2 (23 patches) arriving mid-week and v3 (24 patches) following on Sunday, collectively touching the verifier, x86-64 and arm64 JITs, precision backtracking, and liveness analysis. Kuniyuki Iwashima introduced new BPF_SOCK_OPS hooks for TCP receive low-watermark tuning, enabling fine-grained per-socket control of sk_rcvlowat through a new kfunc. Amery Hung contributed a substantial 12-patch verifier refactor that unifies object relationship tracking and fixes a dynptr use-after-free bug. Justin Suess addressed a deadlock hazard by offloading kptr destructors invoked from NMI context to a work queue, and Yazhou Tang fixed an out-of-bounds read in bpf_patch_call_args() after ten revision cycles.",
+  "patches": [
+    {
+      "title": "bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053327.1883871-1-yonghong.song@linux.dev/",
+      "summary": "Core verifier patch from Yonghong Song's v3 series enabling BPF subprograms to receive arguments passed on an auxiliary stack frame when the six-register limit is exhausted. The verifier learns to validate new stack-based argument slots, track their types, and propagate liveness across call boundaries. This removes the hard six-argument ceiling for BPF-to-BPF calls and aligns the convention with native ABIs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add precision marking and backtracking for stack argument slots",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053337.1884840-1-yonghong.song@linux.dev/",
+      "summary": "Extends the verifier's precision backtracking engine to include stack argument slots so that state pruning remains correct when programs use the new calling convention. Without precision tracking for these slots, the verifier could incorrectly prune states and miss safety violations in programs that pass derived or constrained values as stack arguments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support stack arguments for kfunc calls",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053408.1887504-1-yonghong.song@linux.dev/",
+      "summary": "Extends the stack argument convention to kfunc call sites, letting kernel functions registered as kfuncs accept more than six typed arguments from BPF programs. The verifier validates each stack-passed argument against the kfunc's BTF signature, including type, size, and alignment. This is especially valuable for kfuncs with struct-typed or numerous parameters that could not previously be called with full argument sets.",
+      "related_links": []
+    },
+    {
+      "title": "bpf,x86: Implement JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053432.1889692-1-yonghong.song@linux.dev/",
+      "summary": "Implements x86-64 JIT code generation for the new stack argument passing convention, emitting r11-based MOV instructions to write arguments into the callee's stack area before a call. This makes the feature functional on x86-64 and serves as the reference JIT implementation for the feature across the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Introduce BPF_SOCK_OPS_RCVLOWAT_CB.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260508073355.3916746-3-kuniyu@google.com/",
+      "summary": "Adds a new BPF_SOCK_OPS_RCVLOWAT_CB callback to the SOCK_OPS framework, invoked when TCP needs to determine a socket's effective receive low watermark. This is the foundational piece of BPF-controlled TCP AutoLOWAT, allowing programs to inspect socket and buffer state and dynamically set sk_rcvlowat on a per-socket basis rather than relying on a fixed sysctl value.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Add kfunc to adjust sk->sk_rcvlowat.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260508073355.3916746-6-kuniyu@google.com/",
+      "summary": "Provides a kfunc callable within BPF_SOCK_OPS_RCVLOWAT_CB to write a new value back to sk_rcvlowat, completing the TCP AutoLOWAT control loop. Using a kfunc for the write-back, rather than the SOCK_OPS return value, keeps the API unambiguous and extensible. Proper BTF annotations and context guards are included to prevent misuse.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Offload kptr destructors that run from NMI",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260507175453.1140400-2-utilityemal77@gmail.com/",
+      "summary": "Fixes a deadlock hazard that occurs when a BPF kptr destructor is triggered from NMI context, where taking spinlocks required for safe reference-count management is prohibited. The fix defers such destructors to an IRQ work queue so they execute in a safe, non-NMI context. An NMI exerciser selftest accompanies the fix to verify correctness under stress.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refactor object relationship tracking and fix dynptr UAF bug",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-6-ameryhung@gmail.com/",
+      "summary": "Central patch in Amery Hung's 12-patch verifier refactor that unifies how the verifier tracks ownership relationships between referenced objects (kptrs, dynptrs, slices). The refactor also fixes a use-after-free bug where a dynptr's backing object could be freed while a slice pointing into it remained live. Subsequent patches extend the unified tracking to helpers and kfuncs and add regression tests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Unify referenced object tracking in verifier",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260506142709.2298255-8-ameryhung@gmail.com/",
+      "summary": "Consolidates the previously separate code paths for tracking referenced kptrs and dynptrs into a single, unified mechanism in the BPF verifier. This reduces duplication, makes it easier to reason about correctness, and lays the groundwork for future types of referenced objects to be tracked with minimal additional code.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix out-of-bounds read in bpf_patch_call_args()",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260506094714.419842-2-tangyazhou@zju.edu.cn/",
+      "summary": "Fixes an out-of-bounds read in bpf_patch_call_args() triggered when a BPF program has a very large number of instructions, causing the patched instruction array to be accessed beyond its allocated size. A companion patch addresses a related s16 truncation bug in call-offset encoding for large bpf-to-bpf call offsets. This is the tenth revision of the series, reflecting thorough review.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: enforce VFS constraints for xattr related BPF kfuncs",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260504085428.2865671-1-mattbobrowski@google.com/",
+      "summary": "Hardens the xattr BPF kfuncs by enforcing the same VFS-level constraints (capability checks, namespace restrictions, and immutability flags) that the standard getxattr/setxattr syscall path enforces. Without these checks, a BPF LSM program could read or write extended attributes that the calling process would not be permitted to access via normal syscalls. The series also adds negative selftests verifying each constraint is correctly enforced.",
+      "related_links": []
+    }
+  ]
+}

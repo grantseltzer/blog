@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-05-12T10:00:00Z",
+  "period_start": "2026-05-08",
+  "period_end": "2026-05-09",
+  "patch_count": 8,
+  "thread_count": 1,
+  "top_contributors": ["Kuniyuki Iwashima"],
+  "key_topics": ["sock-ops", "tcp", "kfuncs"],
+  "overview": "Activity today was limited to a single series from Kuniyuki Iwashima introducing BPF_SOCK_OPS_RCVLOWAT_CB, a new SOCK_OPS callback enabling BPF programs to dynamically control the TCP receive low-watermark threshold. The series adds a supporting kfunc to write back to sk_rcvlowat, extends bpf_skb_load_bytes() access to the new callback context, and includes selftest coverage.",
+  "patches": [
+    {
+      "title": "bpf: tcp: Introduce BPF_SOCK_OPS_RCVLOWAT_CB.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260508073355.3916746-3-kuniyu@google.com/",
+      "summary": "Introduces the new BPF_SOCK_OPS_RCVLOWAT_CB operation in the SOCK_OPS framework, fired when TCP needs to determine a socket's effective receive low watermark. BPF programs attached to this op can inspect packet data and socket state to compute an appropriate threshold, enabling TCP AutoLOWAT-style behaviour. The patch defines the new op constant and wires it into the SOCK_OPS dispatch path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Support bpf_skb_load_bytes() for BPF_SOCK_OPS_RCVLOWAT_CB.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260508073355.3916746-4-kuniyu@google.com/",
+      "summary": "Extends the bpf_skb_load_bytes() helper to be callable within the new BPF_SOCK_OPS_RCVLOWAT_CB context. This allows BPF programs running under the callback to inspect the contents of the socket receive buffer, which is necessary for making data-driven decisions about the appropriate low watermark. The change adds the new op to the set of SOCK_OPS operations that have a valid skb pointer.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Add kfunc to adjust sk->sk_rcvlowat.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260508073355.3916746-6-kuniyu@google.com/",
+      "summary": "Adds a kfunc that BPF programs can call within BPF_SOCK_OPS_RCVLOWAT_CB to explicitly set sk_rcvlowat on the current socket. Using a kfunc for the write-back rather than the SOCK_OPS return value avoids convention conflicts and keeps the API clean. The patch includes proper BTF type annotations and checks that the kfunc is only callable in the correct callback context.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Factorise bpf_skops_established().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260508073355.3916746-7-kuniyu@google.com/",
+      "summary": "Refactors the internal bpf_skops_established() function to extract shared logic needed by the new rcvlowat hook. This is a preparatory cleanup that avoids code duplication between the existing established-state SOCK_OPS dispatch and the new BPF_SOCK_OPS_RCVLOWAT_CB dispatch site. No functional change is intended.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Add SOCK_OPS rcvlowat hook.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260508073355.3916746-8-kuniyu@google.com/",
+      "summary": "The culminating patch of the series, this hooks BPF_SOCK_OPS_RCVLOWAT_CB into the TCP data-ready path so the callback fires at the correct moment. The result returned or written back by the BPF program is then applied as the socket's effective receive low watermark. Together with the preceding patches, this completes the end-to-end implementation of BPF-controlled TCP AutoLOWAT.",
+      "related_links": []
+    }
+  ]
+}
