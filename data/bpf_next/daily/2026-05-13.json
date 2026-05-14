@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-05-14T12:00:00Z",
+  "period_start": "2026-05-12",
+  "period_end": "2026-05-13",
+  "patch_count": 44,
+  "thread_count": 5,
+  "top_contributors": ["Yonghong Song", "Leon Hwang", "Kaitao Cheng", "Paul Chaignon"],
+  "key_topics": ["verifier", "kfuncs", "jit", "syscall", "selftests", "stack-args"],
+  "overview": "On May 12-13, Yonghong Song posted v4 of the 25-patch stack arguments series, adding a new patch that disables the x86_64 private stack optimization when stack arguments are in use and refining several earlier patches based on review feedback. Paul Chaignon contributed two independent patches: a new kernel-side feature reporting the maximum combined BPF program stack depth via the verifier log, and a build fix ensuring BPF selftests link correctly in static builds. Leon Hwang and Kaitao Cheng continued iteration on their series with v14 of the BPF syscall common attributes extension and another RESEND of the bpf_list API additions.",
+  "patches": [
+    {
+      "title": "bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260513045015.2385013-1-yonghong.song@linux.dev/",
+      "summary": "The core patch of Yonghong Song's v4 25-patch series 'bpf: Support stack arguments for BPF functions and kfuncs' implements verifier support for passing arguments via stack slots to BPF subprograms, overcoming the five-register argument limit. This v4 incorporates review feedback from v3 and adds a new patch (16/25) that disables the x86_64 private-stack-per-CPU optimization for programs using stack arguments, since the two features are incompatible. The series also adds full JIT backend support for x86 and arm64, liveness tracking for stack argument slots, precision backtracking, and verifier restrictions barring use with tail calls or non-JITed execution. An updated arm64 patch remaps BPF_REG_0 to x8 to align with the AAPCS64 indirect result register convention.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Report maximum combined stack depth",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/05f82d1180b68e856bb0cc03a5cd86305f5b7669.1778604369.git.paul.chaignon@gmail.com/",
+      "summary": "This patch makes the BPF verifier report the maximum combined stack depth across all subprograms in the verifier log after program load, giving developers a quick way to gauge how close a program is to the 512-byte per-frame limit. Previously this information was only available by summing per-subprogram stack depths manually or by reading JIT output. The companion selftest patch verifies the reported value matches expectations for programs with various subprogram call graphs. This is a small but useful observability improvement for BPF developers working with deeply nested or stack-heavy programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Extend BPF syscall with common attributes support",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260512153157.28382-2-leon.hwang@linux.dev/",
+      "summary": "The first patch of the 8-patch v14 series extends the BPF syscall with a unified common attributes structure for log buffer and log level, shared across `prog_load`, `btf_load`, and `map_create` commands. This v14 addresses review comments from v13 and further refines the libbpf API surface. Subsequent patches wire the common attribute into each command, update libbpf, and add selftests confirming that failure messages—including map creation errors—are surfaced correctly via the new interface. The series improves error observability without requiring callers to set up per-command log fields for each operation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce the bpf_list_del kfunc.",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260512055919.95716-4-kaitao.cheng@linux.dev/",
+      "summary": "A RESEND of the 8-patch v10 series 'bpf: Extend the bpf_list family of APIs,' this patch introduces the `bpf_list_del` kfunc for removing a node from a BPF linked list. Earlier patches refactor internal helpers to accept node pointers directly, while later patches add `bpf_list_add` for mid-list insertion, status-query kfuncs (`bpf_list_is_first`, `bpf_list_is_last`, `bpf_list_empty`), and a `__nonown_allowed` annotation supporting non-owning node arguments. The series has been under review for many iterations and the RESEND aims to keep it visible to maintainers for merging.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Override EXTRA_LDFLAGS for static builds",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/714556da329c812988010ffe53173d9152570a78.1778669303.git.paul.chaignon@gmail.com/",
+      "summary": "This single patch fixes a build issue where the BPF selftests' static build mode incorrectly propagates dynamic-linking flags via EXTRA_LDFLAGS, causing link failures. The fix overrides EXTRA_LDFLAGS with the appropriate static variants when building BPF test binaries in static mode, ensuring selftests can be linked without a dynamic linker. This is a small build infrastructure fix but is important for environments such as embedded or minimal-userspace test rigs where static BPF selftests are required.",
+      "related_links": []
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-05-14T12:00:00Z",
+  "period_start": "2026-05-11",
+  "period_end": "2026-05-12",
+  "patch_count": 48,
+  "thread_count": 7,
+  "top_contributors": ["Yonghong Song", "Kaitao Cheng", "Leon Hwang"],
+  "key_topics": ["verifier", "kfuncs", "jit", "syscall", "selftests"],
+  "overview": "Activity on May 11-12 was dominated by Yonghong Song's large 24-patch v3 series extending BPF to support stack-based argument passing for BPF-to-BPF function calls and kfuncs, including JIT backends for x86 and arm64 and verifier precision tracking. Alongside it, Kaitao Cheng posted a RESEND of v10 of the bpf_list kfunc API extensions, and Leon Hwang submitted v13 of a series adding common attribute support to the BPF syscall. Kuan-Wei Chiu contributed two notable JIT efforts: an initial BPF JIT for the m68k architecture and 32-bit atomic operation support for the RISC-V 32-bit JIT.",
+  "patches": [
+    {
+      "title": "bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260511053327.1883871-1-yonghong.song@linux.dev/",
+      "summary": "Part of the 24-patch v3 series 'bpf: Support stack arguments for BPF functions and kfuncs,' this patch implements the core verifier support for stack-slot-based argument passing in BPF-to-BPF calls, lifting the prior hard limit of five register arguments. It introduces a new r11-relative addressing scheme for stack argument slots and updates the verifier's type-checking logic accordingly. Companion patches in the series extend liveness analysis and precision backtracking to track stack argument slots, add JIT support for x86 and arm64, and enforce restrictions such as rejecting stack arguments when tail calls are reachable or when running under an interpreter. Comprehensive selftests cover verifier validation, precision tracking, and JIT correctness on both architectures.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce the bpf_list_del kfunc.",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260512055919.95716-4-kaitao.cheng@linux.dev/",
+      "summary": "Part of the 8-patch v10 RESEND series 'bpf: Extend the bpf_list family of APIs,' this patch introduces the `bpf_list_del` kfunc for removing a node from a BPF linked list without requiring ownership transfer back to the caller. Earlier patches in the series refactor the internal `__bpf_list_del` helper to accept a node pointer directly, while later patches add `bpf_list_add` for mid-list insertion and status query kfuncs `bpf_list_is_first`, `bpf_list_is_last`, and `bpf_list_empty`. An additional patch introduces the `__nonown_allowed` annotation to permit non-owning list-node arguments to kfuncs. Together these additions bring BPF list manipulation closer to parity with kernel-side linked-list operations.",
+      "related_links": []
+    },
+    {
+      "title": "m68k, bpf: Add initial BPF JIT compiler support",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260511212756.3163955-1-visitorckw@gmail.com/",
+      "summary": "This v3 single-patch submission adds an initial BPF JIT compiler for the m68k (Motorola 68000) architecture, which previously relied on the BPF interpreter. It covers register mapping, instruction translation for arithmetic, memory, branch, and call operations, and wires the JIT into the existing bpf_int_jit_compile infrastructure. Adding a JIT improves BPF program performance on m68k targets and eliminates the overhead of interpreter dispatch. This is a greenfield port that brings m68k into the set of Linux architectures with native BPF JIT support.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Add 32 bit atomic operations to RV32 JIT",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260511221648.3251464-4-visitorckw@gmail.com/",
+      "summary": "The final patch of the 3-patch v2 series 'riscv, bpf: Fix signed operations and add 32 bit atomics' implements 32-bit atomic operations (ADD, OR, AND, XOR, XCHG, CMPXCHG) in the RISC-V 32-bit BPF JIT using the RV32A extension instructions. The series also fixes two correctness bugs in the RV32 JIT: improper handling of BPF_MOVSX sign-extension moves and incorrect code generation for signed division (BPF_SDIV) and signed modulo (BPF_SMOD). These changes bring the RV32 JIT substantially closer to feature parity with the 64-bit RISC-V JIT.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Extend BPF syscall with common attributes support",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260511152817.89191-2-leon.hwang@linux.dev/",
+      "summary": "The first patch of the 8-patch v13 series extends the BPF syscall with a new common attributes structure that unifies log buffer and log level handling across the `prog_load`, `btf_load`, and `map_create` commands. Previously each command carried its own per-command log fields, making it awkward to pass a single log buffer for observing failures across multiple operations. Subsequent patches wire this common attribute into each command, update libbpf to expose a new API for callers, and add selftests verifying that failure messages (including map creation errors) are correctly reported. This improves error observability for all major BPF object creation paths.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: libarena: Add rbtree data structure",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260511210740.5395-2-emil@etsalapatis.com/",
+      "summary": "Part of the 2-patch series adding initial data structures to a new `libarena` selftest library, this patch implements an intrusive red-black tree backed by BPF arena memory. The companion patch adds a lock-free Lev-Chase work-stealing deque. The `libarena` library is intended to provide reusable, arena-allocator-backed data structures for BPF selftests, enabling tests that exercise complex heap-based program patterns without per-test boilerplate. A RESEND of the same series (1093106) also appeared the same day.",
+      "related_links": []
+    }
+  ]
+}
