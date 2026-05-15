@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-05-15T00:00:00Z",
+  "period_start": "2026-05-13",
+  "period_end": "2026-05-14",
+  "patch_count": 45,
+  "thread_count": 6,
+  "top_contributors": ["Yonghong Song", "Mykyta Yatsenko", "Paul Chaignon", "Jiayuan Chen"],
+  "key_topics": ["stack-arguments", "kfuncs", "maps", "verifier", "jit", "syncookies", "selftests"],
+  "overview": "Today's bpf-next activity was dominated by two significant feature series. Yonghong Song's 25-patch series (v4) introduces stack-based argument passing for BPF functions and kfuncs with JIT support on x86-64 and arm64, lifting the long-standing 5-register argument limit. Mykyta Yatsenko's 11-patch series (v4) adds a new resizable hash map type backed by the kernel's rhashtable infrastructure, with full libbpf and bpftool support.",
+  "patches": [
+    {
+      "title": "bpf: Support stack arguments for bpf functions",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260513045015.2385013-1-yonghong.song@linux.dev/",
+      "summary": "This patch adds core verifier support for passing arguments to BPF subprograms via the stack using a new r11-relative addressing scheme, complementing the existing register-based calling convention. BPF functions are currently limited to 5 register arguments (r1-r5), which restricts the number and size of parameters that can be passed. By enabling stack-based arguments the verifier must be taught to validate r11-based load/store instructions and track their types through precision backtracking and liveness analysis. This is the central piece of a 25-patch series that also adds JIT support for x86-64 and arm64.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support stack arguments for kfunc calls",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260513045104.2391543-1-yonghong.song@linux.dev/",
+      "summary": "This patch extends the stack argument mechanism to kfunc calls, allowing BPF programs to pass more than 5 arguments to kernel functions by placing overflow arguments on the stack. Kfuncs currently face the same register-count limit as BPF subprograms, restricting the expressiveness of kernel APIs exposed to BPF. The verifier's kfunc call handling is updated to recognize and validate stack-passed arguments using the new r11-relative addressing. This enables richer kernel APIs to be exposed as kfuncs without requiring workarounds such as packing arguments into structs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf,x86: Implement JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260513045122.2393118-1-yonghong.song@linux.dev/",
+      "summary": "This patch implements x86-64 JIT support for the new stack argument calling convention, emitting code to pass and receive values via the system stack when register arguments are exhausted. The JIT must set up r11 to point at the stack argument area on the caller side and emit the appropriate loads on the callee side. A companion patch (16/25) disables the BPF private stack feature for x86-64 when stack arguments are in use, since the two mechanisms conflict. This is the primary architecture-specific enabler for stack arguments on the most widely used BPF platform.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Add JIT support for stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260513045158.2402494-1-yonghong.song@linux.dev/",
+      "summary": "This patch adds arm64 JIT support for the new BPF stack argument passing convention, completing architecture coverage alongside the x86-64 implementation. A prerequisite change (patch 23/25) remaps BPF_REG_0 from x7 to x8 to align with the arm64 ABI's use of x8 as the indirect result register, which is required for correct stack argument handling. The JIT emits the appropriate load/store instructions to place and retrieve stack arguments on arm64. With this change, stack arguments are functional on both major JIT-supported architectures.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Implement resizable hashmap basic functions",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260513-rhash-v4-3-dd3d541ccb0b@meta.com/",
+      "summary": "This patch implements the core lookup, update, and delete operations for a new BPF_MAP_TYPE_RHASH resizable hash map type. Unlike the existing hash map which fixes its bucket count at creation time, this type uses the kernel's rhashtable infrastructure to dynamically grow and shrink based on the number of elements. The implementation handles locking and memory management differences between rhashtable and BPF's existing percpu hash map. This provides a more efficient and adaptive alternative for workloads with highly variable element counts.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Support resizable hashtable",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260513-rhash-v4-7-dd3d541ccb0b@meta.com/",
+      "summary": "This patch adds libbpf support for the new BPF_MAP_TYPE_RHASH resizable hash map type, enabling BPF C programs to declare and interact with resizable maps through the standard libbpf API. The patch updates libbpf's map type recognition and handles any type-specific attributes needed at map creation time. Companion patches in the series add bpftool documentation (10/11) and benchmark support (11/11) to fully round out the user-space tooling. Together with the kernel implementation patches, this makes the resizable hashmap a first-class, fully supported BPF map type.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Report maximum combined stack depth",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/d3d23a0410f87f116f3bbaa98a815dbae113bda2.1778700777.git.paul.chaignon@gmail.com/",
+      "summary": "This patch adds a new field to BPF program information that exposes the maximum combined stack depth across all subprograms reachable from the main program. The BPF verifier already tracks per-subprogram stack depth, but the worst-case combined depth (accounting for nested calls) is not currently surfaced to user space. This information is useful for debugging stack overflow issues and for static analysis tools to report resource consumption. A companion patch updates veristat to display the new field, and selftests verify correct reporting.",
+      "related_links": []
+    },
+    {
+      "title": "net: add missing syncookie statistics for BPF custom syncookies",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260514051015.177926-2-jiayuan.chen@linux.dev/",
+      "summary": "This patch fixes missing SYN cookie statistics when BPF programs implement custom syncookie handling via bpf_tcp_raw_check_syncookie_ipv4/ipv6 kfuncs. When the kernel's standard syncookie path is bypassed by a BPF program, counters such as TcpExtSyncookiesRecv are never incremented, causing misleading /proc/net/netstat output. The fix adds the missing statistics updates to the BPF custom syncookie code paths, bringing accounting into parity with the in-kernel path. A selftest verifies that the statistics are correctly reported after exercising the BPF-based syncookie path.",
+      "related_links": []
+    }
+  ]
+}
