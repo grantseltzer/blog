@@ -1,0 +1,195 @@
+{
+  "period": "daily",
+  "period_start": "2026-05-14",
+  "period_end": "2026-05-15",
+  "fetched_at": "2026-05-15T11:23:17Z",
+  "patches": [
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Add verification for BPF_PROG_QUERY attr size boundaries",
+      "author": "Yuyang Huang",
+      "url": "https://lore.kernel.org/bpf/20260515071504.2054786-3-yuyanghuang@google.com/",
+      "date": "2026-05-15T07:15:04",
+      "series": [
+        {
+          "id": 1095172,
+          "url": "https://patchwork.kernel.org/api/series/1095172/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1095172",
+          "date": "2026-05-15T07:15:02",
+          "name": "bpf: Align syscall writeback behavior with user-declared size",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1095172/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: align syscall writeback behavior with caller-declared size",
+      "author": "Yuyang Huang",
+      "url": "https://lore.kernel.org/bpf/20260515071504.2054786-2-yuyanghuang@google.com/",
+      "date": "2026-05-15T07:15:03",
+      "series": [
+        {
+          "id": 1095172,
+          "url": "https://patchwork.kernel.org/api/series/1095172/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1095172",
+          "date": "2026-05-15T07:15:02",
+          "name": "bpf: Align syscall writeback behavior with user-declared size",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1095172/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: Add test for stack arg read without caller write",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260515015003.1187170-1-yonghong.song@linux.dev/",
+      "date": "2026-05-15T01:50:03",
+      "series": [
+        {
+          "id": 1095081,
+          "url": "https://patchwork.kernel.org/api/series/1095081/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1095081",
+          "date": "2026-05-15T01:49:58",
+          "name": "[bpf-next,v2,1/2] bpf: Validate outgoing stack args when btf_prepare_func_args fails",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1095081/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: Validate outgoing stack args when btf_prepare_func_args fails",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260515014958.1186132-1-yonghong.song@linux.dev/",
+      "date": "2026-05-15T01:49:58",
+      "series": [
+        {
+          "id": 1095081,
+          "url": "https://patchwork.kernel.org/api/series/1095081/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1095081",
+          "date": "2026-05-15T01:49:58",
+          "name": "[bpf-next,v2,1/2] bpf: Validate outgoing stack args when btf_prepare_func_args fails",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1095081/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,3/3] bpf: Cache build IDs in sleepable stackmap path",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260515005244.1333013-4-ihor.solodrai@linux.dev/",
+      "date": "2026-05-15T00:52:44",
+      "series": [
+        {
+          "id": 1095066,
+          "url": "https://patchwork.kernel.org/api/series/1095066/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1095066",
+          "date": "2026-05-15T00:52:42",
+          "name": "bpf: Implement stack_map_get_build_id_offset_sleepable()",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1095066/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,2/3] bpf: Avoid faultable build ID reads under mm locks",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260515005244.1333013-3-ihor.solodrai@linux.dev/",
+      "date": "2026-05-15T00:52:43",
+      "series": [
+        {
+          "id": 1095066,
+          "url": "https://patchwork.kernel.org/api/series/1095066/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1095066",
+          "date": "2026-05-15T00:52:42",
+          "name": "bpf: Implement stack_map_get_build_id_offset_sleepable()",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1095066/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,1/3] bpf: Factor out stack_map_build_id_set_ip() in stackmap.c",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260515005244.1333013-2-ihor.solodrai@linux.dev/",
+      "date": "2026-05-15T00:52:42",
+      "series": [
+        {
+          "id": 1095066,
+          "url": "https://patchwork.kernel.org/api/series/1095066/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1095066",
+          "date": "2026-05-15T00:52:42",
+          "name": "bpf: Implement stack_map_get_build_id_offset_sleepable()",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1095066/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Add test for stack arg read without caller write",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260514184832.1620221-1-yonghong.song@linux.dev/",
+      "date": "2026-05-14T18:48:32",
+      "series": [
+        {
+          "id": 1094958,
+          "url": "https://patchwork.kernel.org/api/series/1094958/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1094958",
+          "date": "2026-05-14T18:48:32",
+          "name": "[bpf-next,1/2] bpf: Validate outgoing stack args when btf_prepare_func_args fails",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1094958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Validate outgoing stack args when btf_prepare_func_args fails",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260514184827.1619863-1-yonghong.song@linux.dev/",
+      "date": "2026-05-14T18:48:27",
+      "series": [
+        {
+          "id": 1094958,
+          "url": "https://patchwork.kernel.org/api/series/1094958/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1094958",
+          "date": "2026-05-14T18:48:32",
+          "name": "[bpf-next,1/2] bpf: Validate outgoing stack args when btf_prepare_func_args fails",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1094958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/2] selftests/bpf: verify syncookie statistics in tcp_custom_syncookie",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260514051015.177926-3-jiayuan.chen@linux.dev/",
+      "date": "2026-05-14T05:09:58",
+      "series": [
+        {
+          "id": 1094586,
+          "url": "https://patchwork.kernel.org/api/series/1094586/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1094586",
+          "date": "2026-05-14T05:09:56",
+          "name": "bpf,net: add missing custom syncookie statistics and add selftest",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1094586/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/2] net: add missing syncookie statistics for BPF custom syncookies",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260514051015.177926-2-jiayuan.chen@linux.dev/",
+      "date": "2026-05-14T05:09:57",
+      "series": [
+        {
+          "id": 1094586,
+          "url": "https://patchwork.kernel.org/api/series/1094586/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1094586",
+          "date": "2026-05-14T05:09:56",
+          "name": "bpf,net: add missing custom syncookie statistics and add selftest",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1094586/mbox/"
+        }
+      ]
+    }
+  ]
+}
