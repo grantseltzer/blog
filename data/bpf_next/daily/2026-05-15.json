@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-05-16T10:10:01Z",
+  "period_start": "2026-05-14",
+  "period_end": "2026-05-15",
+  "patch_count": 11,
+  "thread_count": 5,
+  "top_contributors": ["Yonghong Song", "Ihor Solodrai", "Yuyang Huang", "Jiayuan Chen"],
+  "key_topics": ["stackmap", "verifier", "syscall", "syncookie", "selftests"],
+  "overview": "Activity on bpf-next for May 14-15 centered on three areas: a five-revision series from Ihor Solodrai implementing a sleepable code path for stack map build-ID resolution, verifier fixes from Yonghong Song ensuring outgoing stack arguments are validated even when BTF introspection fails early, and a pair of fixes improving syscall writeback bounds and custom syncookie statistics.",
+  "patches": [
+    {
+      "title": "bpf: Factor out stack_map_build_id_set_ip() in stackmap.c",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260515005244.1333013-2-ihor.solodrai@linux.dev/",
+      "summary": "First patch in a three-part v5 series implementing a sleepable stack-map build-ID path. This preparatory change extracts the logic that records a build ID and instruction pointer into a new helper function stack_map_build_id_set_ip(), reducing duplication and making it easier to share the logic between the existing non-sleepable and the upcoming sleepable implementation. The refactor is a no-op in terms of runtime behavior but is a prerequisite for the two patches that follow.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Avoid faultable build ID reads under mm locks",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260515005244.1333013-3-ihor.solodrai@linux.dev/",
+      "summary": "Second patch in the sleepable stackmap series, addressing a correctness hazard in the existing path where build-ID reads from user memory could fault while mm locks are held. The fix ensures that any operation that may trigger a page fault is deferred or guarded so it cannot occur while the mm read lock is taken. This is a safety prerequisite for safely introducing a sleepable variant that can drop and reacquire locks around faultable accesses.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Cache build IDs in sleepable stackmap path",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260515005244.1333013-4-ihor.solodrai@linux.dev/",
+      "summary": "Culminating patch of the series, implementing stack_map_get_build_id_offset_sleepable() which allows BPF programs running in sleepable contexts to resolve build IDs from user-space stack traces without holding non-sleepable locks. Build IDs are cached to avoid repeated costly lookups. This enables accurate symbolization in profiling use cases that run under sleepable BPF programs, such as those attached via fentry/fexit on sleepable kernel functions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Validate outgoing stack args when btf_prepare_func_args fails",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260515014958.1186132-1-yonghong.song@linux.dev/",
+      "summary": "Verifier fix in the v2 revision of a two-patch series. When btf_prepare_func_args() returns an error early, the verifier previously skipped validation of outgoing stack-passed arguments, leaving them unchecked. This patch ensures that even on the failure path the stack argument regions are validated, preventing potential information leaks or incorrect program acceptance. A companion selftest is added in the second patch to exercise the newly covered code path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: align syscall writeback behavior with caller-declared size",
+      "author": "Yuyang Huang",
+      "url": "https://lore.kernel.org/bpf/20260515071504.2054786-2-yuyanghuang@google.com/",
+      "summary": "Fixes an inconsistency in BPF_PROG_QUERY where the kernel could write back more data than the user declared in the attribute's size field. The patch aligns writeback length with the size the caller provided, preventing potential buffer overruns on the user side and making the syscall behave consistently with how other BPF syscall commands handle user-declared sizes. A selftest verifying the size boundary is introduced in the accompanying patch.",
+      "related_links": []
+    },
+    {
+      "title": "net: add missing syncookie statistics for BPF custom syncookies",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260514051015.177926-2-jiayuan.chen@linux.dev/",
+      "summary": "Fourth revision of a two-patch series fixing a statistics gap when BPF programs implement custom TCP SYN-cookie handling. When a BPF program in the tc or XDP layer generates or validates syncookies, the standard kernel syncookie counters were not incremented, making the system appear to have no syncookie activity in tools like ss and netstat. This patch adds the missing counter updates so BPF-managed syncookie traffic is accounted for correctly alongside kernel-native syncookies.",
+      "related_links": []
+    }
+  ]
+}
