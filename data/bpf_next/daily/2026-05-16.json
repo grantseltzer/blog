@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-05-17T00:00:00Z",
+  "period_start": "2026-05-15",
+  "period_end": "2026-05-16",
+  "patch_count": 21,
+  "thread_count": 6,
+  "top_contributors": ["Yonghong Song", "Mahe Tardy", "Mykyta Yatsenko", "Ihor Solodrai"],
+  "key_topics": ["kfuncs", "verifier", "stack-args", "btf", "tracing", "stackmap", "syscall", "x86"],
+  "overview": "Activity on May 15–16 centered on follow-up fixes for BPF stack argument support in the verifier and x86 JIT (v3 of Yonghong Song's series), a new bpf_icmp_send kfunc enabling BPF programs to emit ICMP messages (v5, Mahe Tardy), and infrastructure to expose tracepoint BTF IDs through tracefs (Mykyta Yatsenko). Additional work addressed syscall writeback boundary correctness and added build ID caching to the sleepable stackmap path.",
+  "patches": [
+    {
+      "title": "bpf: add bpf_icmp_send kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260515194746.50920-2-mahe.tardy@gmail.com/",
+      "summary": "Introduces a new bpf_icmp_send kfunc that allows BPF programs to send ICMP messages directly from the kernel, wrapping the existing icmp_send and icmp6_send infrastructure. This enables use cases such as custom network error signaling and path MTU discovery helpers that previously required kernel modifications. The v5 series covers both IPv4 and IPv6 with dedicated selftests, and includes a recursion test to verify safety under re-entrant conditions.",
+      "related_links": []
+    },
+    {
+      "title": "tracing: Expose tracepoint BTF ids via tracefs",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260515-generic_tracepoint-v1-2-aa619fa94132@meta.com/",
+      "summary": "Exposes per-tracepoint BTF type IDs through a new tracefs file, making it easier for BPF programs and userspace tools to discover typed tracepoint argument layouts without relying on name-based BTF lookups. A companion patch exports btf_get_module_btf() and btf_relocate_id() to support cross-module BTF resolution needed by the new interface. This infrastructure lays groundwork for more reliable generic tracepoint attachment in BPF.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Validate outgoing stack args when btf_prepare_func_args fails",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260515225040.821515-1-yonghong.song@linux.dev/",
+      "summary": "Fixes a gap in the BPF verifier where outgoing stack arguments were not validated when btf_prepare_func_args failed, which could leave stack slots in an inconsistent state. This is patch 1/7 of the v3 follow-up series for stack argument support, which also improves liveness analysis logging and cleans up redundant checks for non-JITed programs. The series addresses correctness issues surfaced during review of the original stack argument passing feature.",
+      "related_links": []
+    },
+    {
+      "title": "bpf,x86: Fix exception unwinding with outgoing stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260515225106.824804-1-yonghong.song@linux.dev/",
+      "summary": "Fixes exception unwinding on x86 when BPF programs use outgoing stack arguments, ensuring the stack frame state is correctly maintained during exception handling. Without this fix, the unwinder could misinterpret stack slots used for passing arguments as part of the exception handler frame. This patch is part of the same v3 stack argument follow-up series from Yonghong Song.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: align syscall writeback behavior with caller-declared size",
+      "author": "Yuyang Huang",
+      "url": "https://lore.kernel.org/bpf/20260515071504.2054786-2-yuyanghuang@google.com/",
+      "summary": "Corrects the BPF syscall's data writeback to respect the size declared by the caller rather than always writing the kernel's internal buffer size, preventing potential exposure of uninitialized memory past the requested boundary. The fix applies to BPF_PROG_QUERY and similar commands that copy data back to userspace. An accompanying selftest verifies correct boundary enforcement for the attr size parameter.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Cache build IDs in sleepable stackmap path",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260515005244.1333013-4-ihor.solodrai@linux.dev/",
+      "summary": "Implements build ID caching in the sleepable stackmap code path, reducing overhead for stack traces that include build IDs by avoiding repeated lookups for the same mappings. A prerequisite patch in the series also avoids faultable build ID reads while mm locks are held, fixing a correctness issue that could cause deadlocks. The series refactors internal stackmap helpers to cleanly support both sleepable and non-sleepable code paths.",
+      "related_links": []
+    }
+  ]
+}
