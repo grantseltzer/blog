@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-05-19T00:00:00Z",
+  "period_start": "2026-05-17",
+  "period_end": "2026-05-18",
+  "patch_count": 8,
+  "thread_count": 2,
+  "top_contributors": ["Mahe Tardy", "Yonghong Song"],
+  "key_topics": ["kfuncs", "icmp", "verifier", "x86-jit", "selftests"],
+  "overview": "Activity on May 17-18 was dominated by two series: Mahe Tardy's v6 of the bpf_icmp_send kfunc, which adds the ability for BPF programs to emit ICMP messages from both IPv4 and IPv6 paths, and Yonghong Song's follow-up fix for exception unwinding when BPF functions pass arguments on the stack. Both series continued iterating toward merge readiness.",
+  "patches": [
+    {
+      "title": "bpf: add bpf_icmp_send kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260518122842.218522-4-mahe.tardy@gmail.com/",
+      "summary": "This patch (3/6 of the v6 series) introduces the bpf_icmp_send kfunc, which lets BPF programs send ICMP error messages directly from the kernel networking stack. It builds on earlier refactoring that moved netfilter's nf_reject_fill_skb_dst helpers into the core IPv4 and IPv6 layers, making them reusable outside of netfilter. The kfunc is gated by appropriate capability checks and includes recursion protection. This fills a long-standing gap for BPF-based packet filtering policies that need to signal rejection back to senders.",
+      "related_links": []
+    },
+    {
+      "title": "net: move netfilter nf_reject_fill_skb_dst to core ipv4",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260518122842.218522-2-mahe.tardy@gmail.com/",
+      "summary": "Prerequisite patch for bpf_icmp_send that refactors the netfilter IPv4 reject helper nf_reject_fill_skb_dst out of the nf_reject_ipv4 module and into core IPv4 code. This makes the destination fill logic reachable by non-netfilter subsystems, specifically the new BPF kfunc. An identical companion patch (2/6) does the same for the IPv6 path via nf_reject6_fill_skb_dst.",
+      "related_links": []
+    },
+    {
+      "title": "bpf,x86: Fix exception unwinding with outgoing stack arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260517150702.288031-1-yonghong.song@linux.dev/",
+      "summary": "This two-patch series addresses a bug in the x86 BPF JIT where the exception unwinding path fails to correctly account for stack space used to pass arguments beyond the six-register ABI limit. When a BPF-to-BPF call places extra arguments on the stack, the unwinder could miscalculate the frame pointer, leading to incorrect stack traces or crash recovery. A companion selftest patch validates the fix across a range of argument-passing scenarios.",
+      "related_links": []
+    }
+  ]
+}

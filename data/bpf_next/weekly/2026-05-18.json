@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-05-19T00:00:00Z",
+  "period_start": "2026-05-11",
+  "period_end": "2026-05-18",
+  "patch_count": 101,
+  "thread_count": 21,
+  "top_contributors": ["Yonghong Song", "Mykyta Yatsenko", "Paul Chaignon", "Mahe Tardy", "Leon Hwang", "Kaitao Cheng"],
+  "key_topics": ["verifier", "kfuncs", "maps", "stack-arguments", "jit", "btf", "icmp", "rhashtable", "selftests"],
+  "overview": "The week of May 11-18 saw a burst of ambitious work landing in bpf-next. The single largest series was Yonghong Song's 25-patch v4 adding stack argument support for BPF-to-BPF function calls and kfuncs on both x86-64 and arm64, including verifier extensions for liveness and precision tracking. In parallel, Mykyta Yatsenko posted v4 of a resizable BPF hash map built on the kernel's rhashtable, and also introduced a tracefs interface to expose tracepoint BTF IDs. Other notable efforts include Leon Hwang's v14 extending the BPF syscall with common attributes (log size feedback for map_create and btf_load), Kaitao Cheng's v10 expanding the bpf_list kfunc family with deletion, insertion, and query primitives, and Kuan-Wei Chiu's new m68k BPF JIT plus RISC-V 32-bit atomic fixes.",
+  "patches": [
+    {
+      "title": "bpf: Support stack arguments for BPF functions and kfuncs",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260513044954.2382693-1-yonghong.song@linux.dev/",
+      "summary": "This landmark 25-patch series (v4) adds support for passing arguments beyond the five-register BPF ABI via the stack, matching how native C calling conventions spill arguments on x86-64 and arm64. It introduces a new r11-based instruction class for stack-argument addressing, extends the verifier's liveness analysis and precision-backtracking engine to track stack argument slots, and implements JIT lowering for both x86 and arm64. Programs using stack arguments cannot mix with tail calls and must be JIT-compiled. The series also includes a comprehensive set of verifier and functional selftests. This unlocks calling kfuncs with more than five arguments, a long-requested capability for complex in-kernel helper use cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce resizable hash map",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260513-rhash-v4-1-dd3d541ccb0b@meta.com/",
+      "summary": "This 11-patch v4 series introduces BPF_MAP_TYPE_RHASH, a new map type backed by the kernel's rhashtable that automatically resizes as elements are inserted and removed. Unlike BPF_MAP_TYPE_HASH, which requires a fixed max_entries budget, the resizable hash map amortizes rehashing over updates and avoids worst-case memory waste. The series adds rhashtable_next_key() to traverse the table during BPF iteration, wires up iterator ops and special-field support, adds a word-sized key optimization, updates libbpf and bpftool documentation, and provides benchmarks. This is a significant quality-of-life improvement for programs that manage variable-cardinality state.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Extend BPF syscall with common attributes support",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260512153157.28382-2-leon.hwang@linux.dev/",
+      "summary": "Now at v14, this 8-patch series adds a common attributes block to the BPF syscall that can carry log-level settings and receive the true log size back from the kernel for prog_load, btf_load, and map_create commands. Previously only prog_load could report how much log space was actually consumed; this unifies the pattern. libbpf is updated to populate the new common attribute structure when applications set log-level parameters, and selftests verify that oversized attribute structs are correctly rejected.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Extend the bpf_list family of APIs",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260512055919.95716-2-kaitao.cheng@linux.dev/",
+      "summary": "This v10 resend (8 patches) expands the BPF linked-list kfunc set with bpf_list_del (remove a node by pointer), bpf_list_add (insert after an arbitrary node), and bpf_list_is_first/is_last/is_empty queries. The internal __bpf_list_del and __bpf_list_add helpers are refactored to take node pointers and **prev_ptr respectively, enabling positional insertion without walking the list. Non-owning list-node arguments are permitted via a new __nonown_allowed annotation, and the node owner and link are cleared before drop to prevent dangling references.",
+      "related_links": []
+    },
+    {
+      "title": "tracing: Expose tracepoint BTF ids via tracefs",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260515-generic_tracepoint-v1-2-aa619fa94132@meta.com/",
+      "summary": "This 3-patch series exposes each tracepoint's BTF type ID through a new btf_ids file under tracefs, letting userspace tools enumerate the BTF-typed tracepoints without requiring kernel headers or parsing /sys/kernel/btf/vmlinux directly. It also exports btf_get_module_btf() and btf_relocate_id() so the tracing subsystem can resolve cross-module BTF references. A selftest verifies that the exposed IDs round-trip correctly through the BTF APIs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Follow-up fixes for stack argument support",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260515225040.821515-1-yonghong.song@linux.dev/",
+      "summary": "This 7-patch v3 series addresses post-review issues found in the stack argument feature. It adds validation of outgoing stack arguments when btf_prepare_func_args fails, fixes a verifier log message to use the correct sa (stack argument) prefix for slot tracking, cleans up redundant stack arg checks for non-JIT paths, and fixes exception unwinding on x86 when stack arguments are present. New selftests cover the case where a callee reads a stack slot that the caller never wrote.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Implement stack_map_get_build_id_offset_sleepable()",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260515005244.1333013-2-ihor.solodrai@linux.dev/",
+      "summary": "This 3-patch v5 series adds a sleepable variant of the stack map's build-ID resolution path for use in BPF programs that run in sleepable context. It avoids faultable memory reads under mm locks by deferring them to a safe window, and caches resolved build IDs to amortize repeated ELF header lookups in the same VMA region. The refactoring factors out stack_map_build_id_set_ip() to share logic between the sleepable and non-sleepable paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Maximum combined stack depth",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/d3d23a0410f87f116f3bbaa98a815dbae113bda2.1778700777.git.paul.chaignon@gmail.com/",
+      "summary": "This 3-patch v3 series adds a new field to BPF program info reporting the maximum combined stack depth across all subprograms reachable from the main function. Currently the kernel only reports per-subprogram stack usage, making it difficult to reason about worst-case stack consumption in programs with deep subprogram chains. A companion veristat patch surfaces the new field in its output for offline analysis, and a selftest validates the reported values against known program structures.",
+      "related_links": []
+    },
+    {
+      "title": "m68k, bpf: Add initial BPF JIT compiler support",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260511212756.3163955-1-visitorckw@gmail.com/",
+      "summary": "This single-patch v3 introduces a BPF JIT for the Motorola 68000 (m68k) architecture, enabling native JIT compilation of BPF programs on m68k-based embedded systems. The JIT covers the core BPF instruction set including ALU operations, memory loads and stores, calls, and jumps. Previously m68k programs fell back to the BPF interpreter, which carries significant overhead. This makes m68k one of the more unusual architectures to gain a dedicated BPF JIT.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Fix signed operations and add 32 bit atomics",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260511221648.3251464-2-visitorckw@gmail.com/",
+      "summary": "This 3-patch v2 series fixes two correctness bugs in the RISC-V 32-bit BPF JIT — BPF_SDIV/BPF_SMOD (signed division and modulo) emitted incorrect instruction sequences, and BPF_MOVSX (sign-extending move) was broken. It also adds full 32-bit atomic operation support (add, and, or, xor, xchg, cmpxchg) to the RV32 JIT, bringing it to feature parity with the 64-bit RISC-V JIT for atomic workloads.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_icmp_send kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260518122842.218522-4-mahe.tardy@gmail.com/",
+      "summary": "At v6, this 6-patch series adds the bpf_icmp_send kfunc, allowing BPF programs to synthesize and transmit ICMP error messages (unreachable, time exceeded, etc.) in response to dropped packets. Two prerequisite patches move the netfilter nf_reject destination-fill helpers into core IPv4 and IPv6 to avoid a netfilter dependency. Selftests cover IPv4, IPv6, and recursion guards that prevent a BPF-triggered ICMP from itself triggering another call back into the kfunc.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: align syscall writeback behavior with caller-declared size",
+      "author": "Yuyang Huang",
+      "url": "https://lore.kernel.org/bpf/20260515071504.2054786-2-yuyanghuang@google.com/",
+      "summary": "This 2-patch series fixes an inconsistency in the BPF_PROG_QUERY syscall path where the kernel could write back more bytes into user buffers than the caller declared via attr_size, violating the extensible attribute protocol established elsewhere in the BPF syscall. The fix restricts writebacks to the declared size boundary, ensuring forward-compatibility when newer kernels communicate with older libbpf versions.",
+      "related_links": []
+    }
+  ]
+}
