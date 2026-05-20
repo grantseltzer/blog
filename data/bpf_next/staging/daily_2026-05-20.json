@@ -1,0 +1,535 @@
+{
+  "period": "daily",
+  "period_start": "2026-05-19",
+  "period_end": "2026-05-20",
+  "fetched_at": "2026-05-20T11:50:24Z",
+  "patches": [
+    {
+      "title": "[RFC,bpf-next,12/12] selftests/bpf: Test attaching struct_ops to a cgroup",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-13-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:19",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,11/12] libbpf: Support attaching struct_ops to a cgroup",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-12-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:18",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,10/12] bpf: tcp: Support selected sock_ops callbacks as struct_ops",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-11-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:17",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,09/12] bpf: Add infrastructure to support attaching struct_ops to cgroups",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-10-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:16",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,08/12] bpf: Add a few bpf_cgroup_array_* helper functions",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-9-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:15",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,07/12] bpf: Move LSM trampoline unlink into bpf_cgroup_link_auto_detach()",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-8-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:14",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,06/12] bpf: Add prog_list_init_item(), prog_list_replace_item(), and prog_list_id()",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-7-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:13",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,05/12] bpf: Replace prog_list_prog() check with direct pl->prog and pl->link check",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-6-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:12",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,04/12] bpf: Remove unnecessary prog_list_prog() check",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-5-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:11",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,03/12] bpf: Add bpf_struct_ops accessor helpers",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-4-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:10",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,02/12] bpf: Make struct_ops tasks_rcu grace period optional",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-3-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:09",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,01/12] bpf: Remove __rcu tagging in st_link->map",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-2-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:08",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,14/14] selftests/bpf: Test using file dynptr after the reference on file is dropped",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-15-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:12",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,13/14] selftests/bpf: Test using slice after invalidating dynptr clone",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-14-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:11",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,12/14] selftests/bpf: Test using dynptr after freeing the underlying object",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-13-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:10",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,11/14] selftests/bpf: Test creating dynptr from dynptr data and slice",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-12-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:09",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,10/14] bpf: Fix dynptr ref counting to scan all call frames",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-11-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:08",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,09/14] bpf: Fold ref_obj_id into id and introduce virtual references",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-10-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:07",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,08/14] bpf: Unify release handling for helpers and kfuncs",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-9-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:06",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,07/14] bpf: Unify referenced object tracking in verifier",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-8-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:05",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,06/14] bpf: Remove redundant dynptr arg check for helper",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-7-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:04",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,05/14] bpf: Refactor object relationship tracking and fix dynptr UAF bug",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-6-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:03",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,04/14] bpf: Preserve reg->id of pointer objects after null-check",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-5-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:02",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,03/14] bpf: Assign reg->id when getting referenced kptr from ctx",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-4-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:01",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,02/14] bpf: Unify dynptr handling in the verifier",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-3-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:00",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,01/14] bpf: Simplify mark_stack_slot_obj_read() and callers",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-2-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:12:59",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/4] selftests/bpf: Filter timing outliers with IQR in batch-timing library",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260519163632.2220753-5-puranjay@kernel.org/",
+      "date": "2026-05-19T16:36:32",
+      "series": [
+        {
+          "id": 1097518,
+          "url": "https://patchwork.kernel.org/api/series/1097518/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097518",
+          "date": "2026-05-19T16:36:28",
+          "name": "selftests/bpf: XDP LB benchmark fixes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097518/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/4] selftests/bpf: Cap batch-timing calibration at BPF may_goto loop limit",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260519163632.2220753-4-puranjay@kernel.org/",
+      "date": "2026-05-19T16:36:31",
+      "series": [
+        {
+          "id": 1097518,
+          "url": "https://patchwork.kernel.org/api/series/1097518/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097518",
+          "date": "2026-05-19T16:36:28",
+          "name": "selftests/bpf: XDP LB benchmark fixes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097518/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/4] selftests/bpf: Fix expired UDP LRU entries in XDP LB benchmark",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260519163632.2220753-3-puranjay@kernel.org/",
+      "date": "2026-05-19T16:36:30",
+      "series": [
+        {
+          "id": 1097518,
+          "url": "https://patchwork.kernel.org/api/series/1097518/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097518",
+          "date": "2026-05-19T16:36:28",
+          "name": "selftests/bpf: XDP LB benchmark fixes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097518/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/4] selftests/bpf: Fix cold_lru producing zero batch_hash in XDP LB benchmark",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260519163632.2220753-2-puranjay@kernel.org/",
+      "date": "2026-05-19T16:36:29",
+      "series": [
+        {
+          "id": 1097518,
+          "url": "https://patchwork.kernel.org/api/series/1097518/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097518",
+          "date": "2026-05-19T16:36:28",
+          "name": "selftests/bpf: XDP LB benchmark fixes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097518/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/1] bpf: fix deadlock in special field destruction in NMI",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260519011450.1144935-2-utilityemal77@gmail.com/",
+      "date": "2026-05-19T01:14:50",
+      "series": [
+        {
+          "id": 1096949,
+          "url": "https://patchwork.kernel.org/api/series/1096949/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1096949",
+          "date": "2026-05-19T01:14:49",
+          "name": "bpf: Fix deadlock in freeing of special fields in NMI",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1096949/mbox/"
+        }
+      ]
+    }
+  ]
+}
