@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-05-20T00:00:00Z",
+  "period_start": "2026-05-18",
+  "period_end": "2026-05-19",
+  "patch_count": 16,
+  "thread_count": 5,
+  "top_contributors": ["Mahe Tardy", "Leon Hwang", "Mykyta Yatsenko"],
+  "key_topics": ["kfuncs", "btf", "tracing", "syscall", "verifier"],
+  "overview": "Activity on the bpf-next mailing list for May 18–19 was headlined by two new feature series and several correctness fixes. Mahe Tardy's series to add a bpf_icmp_send kfunc reached its sixth revision, enabling BPF programs to send ICMP messages for both IPv4 and IPv6. Leon Hwang posted follow-up fixes to BPF syscall common attribute handling, and Mykyta Yatsenko's series to expose tracepoint BTF IDs via tracefs arrived in a second revision.",
+  "patches": [
+    {
+      "title": "bpf: add bpf_icmp_send kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260518122842.218522-4-mahe.tardy@gmail.com/",
+      "summary": "This patch, part of a six-patch series now in its sixth revision, introduces the bpf_icmp_send kfunc allowing BPF programs to generate ICMP error messages in response to network events. The series also refactors netfilter's nf_reject helper functions into core IPv4 and IPv6 to make the destination-filling logic reusable. Adding an ICMP send primitive to the kfunc interface gives BPF-based network policies a standard mechanism to signal errors back to senders without resorting to custom helpers. Comprehensive selftests covering both IPv4 and IPv6 paths, as well as a recursion safety test, are included.",
+      "related_links": []
+    },
+    {
+      "title": "tracing: Expose tracepoint BTF ids via tracefs",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260518-generic_tracepoint-v2-2-b755a5cf67bb@meta.com/",
+      "summary": "This patch exposes per-tracepoint BTF type IDs through a new tracefs file, making it possible for user-space tools to programmatically discover the BTF-typed arguments for any tracepoint without parsing kernel headers. It is the core piece of a three-patch series (v2) that also makes btf_get_module_btf() and btf_relocate_id() non-static so they can be called from the tracing subsystem. The change improves the ergonomics of generic tracepoint BPF programs by giving loaders a stable interface to resolve argument types at runtime.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: fix deadlock in special field destruction in NMI",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260519011450.1144935-2-utilityemal77@gmail.com/",
+      "summary": "This fix addresses a deadlock that can occur when BPF map special fields (such as spin locks or timers) are destroyed from NMI context, where taking a sleeping or regular spinlock is unsafe. The patch ensures that the field-destruction path uses an NMI-safe locking strategy to avoid the deadlock. This is an important correctness fix for any workload that can trigger map cleanup from interrupt context.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Check tail zero of bpf_common_attr using offsetofend",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260518145446.6794-2-leon.hwang@linux.dev/",
+      "summary": "The first patch in a five-patch follow-up series improves how the kernel validates the trailing padding bytes of bpf_common_attr by switching from a manual size check to offsetofend(), which is more precise and less error-prone. The series also fixes a concurrency regression in map_create(), adds OPTS_VALID() coverage for log_opts in libbpf's bpf_map_create, and extends selftests to cover both the padding check and the token_fd edge case. Together these patches tighten the BPF syscall attribute ABI and harden the map creation path.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Fix test for refinement of single-value tnum",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/be2dc2c3d85120286e60b3029b3338fff339f942.1779121582.git.paul.chaignon@gmail.com/",
+      "summary": "This standalone patch corrects a selftest that validates the verifier's tnum (tracked number) refinement logic for registers known to hold a single concrete value. The test was not properly exercising the refinement path, so this fix ensures the coverage is accurate. Keeping verifier selftests precise is important for catching regressions in the abstract interpretation engine.",
+      "related_links": []
+    }
+  ]
+}
