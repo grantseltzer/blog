@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-05-21T00:00:00Z",
+  "period_start": "2026-05-19",
+  "period_end": "2026-05-20",
+  "patch_count": 31,
+  "thread_count": 4,
+  "top_contributors": ["Amery Hung", "Martin KaFai Lau", "Puranjay Mohan"],
+  "key_topics": ["struct_ops", "cgroup", "verifier", "dynptr", "xdp", "tcp", "selftests"],
+  "overview": "The 2026-05-19/20 period was dominated by two significant series targeting the bpf-next tree. Martin KaFai Lau posted a 12-patch RFC introducing common infrastructure for attaching struct_ops programs to cgroups, with TCP sock_ops callbacks as the first concrete consumer. Amery Hung's fifth revision of a verifier refactor series unifies dynptr and referenced-object tracking, fixes a dynptr use-after-free bug, and lays groundwork for virtual references.",
+  "patches": [
+    {
+      "title": "bpf: Add infrastructure to support attaching struct_ops to cgroups",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-10-martin.lau@linux.dev/",
+      "summary": "This patch adds the core kernel-side plumbing that allows a BPF struct_ops map to be attached to a cgroup, analogous to how cgroup-bpf programs are attached today. It introduces a new attach_cgroup / detach_cgroup path in the struct_ops subsystem and wires it into the cgroup hierarchy so that struct_ops implementations are automatically inherited and detached as cgroups come and go. The change builds on earlier patches in the series that refactored prog_list helpers and made the tasks_rcu grace period optional for struct_ops. Together these patches enable a general mechanism for per-cgroup behavioral customization via struct_ops without requiring a bespoke attach type for every future use case.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Support selected sock_ops callbacks as struct_ops",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-11-martin.lau@linux.dev/",
+      "summary": "This patch exposes a curated subset of TCP sock_ops callbacks through the new cgroup-attached struct_ops mechanism, making it the first real consumer of the infrastructure added earlier in the series. By doing so, BPF programs gain a type-safe, struct_ops-based alternative to the older BPF_PROG_TYPE_SOCK_OPS approach for per-cgroup TCP policy. The patch registers the relevant TCP callbacks with the struct_ops subsystem so that a BPF program implementing the struct can be loaded and attached to a cgroup just like any other struct_ops map. This positions the kernel to eventually migrate more sock_ops functionality to the cleaner struct_ops model.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refactor object relationship tracking and fix dynptr UAF bug",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-6-ameryhung@gmail.com/",
+      "summary": "This patch, the centerpiece of Amery Hung's v5 series, consolidates how the BPF verifier tracks ownership relationships between registers that point to reference-counted objects. The existing code used separate, partly duplicated logic for dynptrs, slices, and kptrs; this change unifies them under a single \"object relationship\" model that makes parent-child lifetime constraints explicit. As a side effect it fixes a real use-after-free bug where the verifier would allow a dynptr to be used after its backing object had already been released. The refactor is a prerequisite for the later patches in the series that introduce virtual references and unify release handling.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fold ref_obj_id into id and introduce virtual references",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-10-ameryhung@gmail.com/",
+      "summary": "The BPF verifier historically maintained two separate ID namespaces: reg->id for aliasing and reg->ref_obj_id for reference tracking. This patch merges them into a single id field, reducing verifier state size and eliminating the conceptual split that complicated dynptr and kptr handling. It simultaneously introduces the notion of \"virtual references\": lightweight tracked references that don't correspond directly to a kernel refcount but allow the verifier to reason about object lifetimes across helper and kfunc calls. The change simplifies several verifier paths and is a direct enabler for the cross-call-frame dynptr ref-count fix that follows.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Fix expired UDP LRU entries in XDP LB benchmark",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260519163632.2220753-3-puranjay@kernel.org/",
+      "summary": "The XDP load-balancer benchmark in selftests/bpf uses an LRU map to track active UDP flows, but stale entries were not being evicted correctly, causing the benchmark to route packets to the wrong backend after a flow's natural expiry. This patch adds proper expiry logic so that aged-out LRU entries are treated as new flows and re-hashed to a fresh backend. The fix is part of a four-patch series that also addresses a zero-hash corner case and caps the calibration loop at the may_goto limit to avoid hangs on slow machines.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: fix deadlock in special field destruction in NMI",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260519011450.1144935-2-utilityemal77@gmail.com/",
+      "summary": "When a BPF map value containing special fields (such as bpf_spin_lock or bpf_timer) is destroyed from an NMI context, the cleanup path attempted to acquire a spin lock that is not NMI-safe, resulting in a deadlock. This patch defers the special-field teardown out of the NMI-hot path by queuing the work to a safe context before performing any locking. The fix prevents a hard-to-trigger but potentially fatal lockup on systems where map entries can be freed at interrupt level.",
+      "related_links": []
+    }
+  ]
+}
