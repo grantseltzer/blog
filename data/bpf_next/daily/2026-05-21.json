@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-05-22T00:00:00Z",
+  "period_start": "2026-05-20",
+  "period_end": "2026-05-21",
+  "patch_count": 16,
+  "thread_count": 6,
+  "top_contributors": ["Kaitao Cheng", "Puranjay Mohan", "Alexis Lothoré (eBPF Foundation)"],
+  "key_topics": ["kfuncs", "linked-list", "arena", "docs", "xdp", "selftests"],
+  "overview": "Activity on bpf-next for May 20–21 was dominated by Kaitao Cheng's v11 series extending the BPF linked-list kfunc API with deletion, mid-list insertion, and boundary-query helpers. Documentation coverage also improved, with new BPF ISA docs for atomic LOAD_ACQUIRE and STORE_RELEASE instructions, and kernel-doc annotations for arena page kfuncs.",
+  "patches": [
+    {
+      "title": "bpf: Extend the bpf_list family of APIs",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260521032306.97118-2-kaitao.cheng@linux.dev/",
+      "summary": "This v11 eight-patch series significantly extends the BPF linked-list kfunc API. It introduces bpf_list_del to remove a node from a list in-place, bpf_list_add to insert a node after an arbitrary existing node (enabling mid-list insertion rather than only head/tail), and bpf_list_is_first/bpf_list_is_last/bpf_list_empty helpers for querying list state. Supporting refactors rework the internal __bpf_list_del and __bpf_list_add helpers to accept direct node or prev-pointer arguments, and a new __nonown_allowed annotation is introduced to permit non-owning list-node arguments in the verifier. Selftests covering all new operations are added in the final patch.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add kernel-doc for arena page kfuncs",
+      "author": "Dhiraj Shah",
+      "url": "https://lore.kernel.org/bpf/20260521043553.199781-1-find.dhiraj@gmail.com/",
+      "summary": "This single patch adds kernel-doc comments to the BPF arena page kfuncs, filling a documentation gap for the arena memory subsystem introduced in recent kernels. Arena kfuncs allow BPF programs to allocate and manage contiguous page regions, and the new docs describe parameters, return values, and usage constraints. Proper kernel-doc coverage makes these APIs easier to discover and use correctly from both BPF program and tooling perspectives.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, docs: add LOAD_ACQUIRE and STORE_RELEASE instructions",
+      "author": "Alexis Lothoré (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260521-bpf-insn-doc-v2-1-8c43c037d599@bootlin.com/",
+      "summary": "This v2 patch updates the BPF ISA documentation to formally describe the LOAD_ACQUIRE and STORE_RELEASE atomic memory instructions added to the BPF instruction set. These instructions provide acquire and release memory ordering semantics for BPF programs running on SMP systems, bridging a gap between the implemented behavior and the official specification. The v2 revision corrects a typo in the instruction name present in v1 (LOAD_AQCUIRE) and refines the prose descriptions.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: XDP LB benchmark fixes",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260520133338.3392667-2-puranjay@kernel.org/",
+      "summary": "This v2 three-patch series fixes correctness and statistical reliability issues in the XDP load-balancer benchmark selftests. Patch 1 fixes cold_lru producing a zero batch_hash value, patch 2 addresses expired UDP LRU entries that could corrupt benchmark measurements, and patch 3 introduces interquartile range (IQR) filtering to the batch-timing library to discard timing outliers and produce more stable latency results. Together these changes make the XDP LB benchmark suitable for automated performance regression testing.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Fix zero batch_hash on CPU 0 after batch_gen wraparound",
+      "author": "Muhammad Bilal",
+      "url": "https://lore.kernel.org/bpf/20260520203318.31939-1-meatuni001@gmail.com/",
+      "summary": "This patch fixes a bug in the BPF selftests where the batch_hash value for CPU 0 could become zero after the batch_gen counter wraps around, causing incorrect test assertions. The root cause is an off-by-one in the hash computation that produces the reserved value 0 only for the wraparound case on the first CPU. The fix adjusts the hash so that valid hashes are never zero regardless of counter value or CPU index.",
+      "related_links": []
+    }
+  ]
+}
