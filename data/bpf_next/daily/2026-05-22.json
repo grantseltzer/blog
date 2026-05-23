@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-05-23T10:04:57Z",
+  "period_start": "2026-05-21",
+  "period_end": "2026-05-22",
+  "patch_count": 39,
+  "thread_count": 7,
+  "top_contributors": ["KP Singh", "Kuniyuki Iwashima", "Kaitao Cheng"],
+  "key_topics": ["sock-ops", "tcp", "security", "lsm", "kfuncs", "stack-map", "maps", "linked-list"],
+  "overview": "Activity on May 21-22 was dominated by two major series: KP Singh's 13-patch series enabling signed BPF programs with IPE (Integrity Policy Enforcement) policy gating, and Kuniyuki Iwashima's 11-patch v2 series adding SOCK_OPS hooks for TCP AutoLOWAT with a new kfunc to dynamically adjust sk_rcvlowat. Kaitao Cheng posted v11 of the bpf_list API extensions adding bpf_list_del, bpf_list_add, and is_first/last/empty kfuncs, while Ihor Solodrai's v6 series improved sleepable stackmap build ID handling.",
+  "patches": [
+    {
+      "title": "bpf: expose signature verdict to LSMs via bpf_prog_aux",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-2-kpsingh@kernel.org/",
+      "summary": "Exposes the signature verification verdict for BPF programs to LSMs by storing it in bpf_prog_aux, laying the foundation for integrity policy enforcement at BPF program load time. This allows LSM hooks to inspect whether a loader program was signed and what the verdict was. It is the first patch in the 13-patch 'Signed BPF + IPE Policies' series, which integrates BPF with the Integrity Policy Enforcement LSM to address supply-chain security concerns for BPF programs. Downstream patches build on this to implement the full kfunc-based metadata verification and IPE policy gating.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_loader_verify_metadata kfunc",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-5-kpsingh@kernel.org/",
+      "summary": "Adds a new kfunc bpf_loader_verify_metadata that allows loader-style BPF programs to verify metadata attached to the program being loaded, resolving kfunc calls against prog BTF rather than kernel BTF. This is a key building block of the signed BPF + IPE framework, enabling BPF programs to participate in their own integrity attestation at load time. It works in conjunction with the prog digest computed at BPF_PROG_LOAD entry and feeds into the post-integrity LSM hook. The kfunc is available only to loader programs and enforces strict type safety through BTF resolution.",
+      "related_links": []
+    },
+    {
+      "title": "ipe: gate post-integrity BPF program loads",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-13-kpsingh@kernel.org/",
+      "summary": "Wires IPE policy enforcement into the new security_bpf_prog_load_post_integrity LSM hook so that IPE can gate BPF program loads based on cryptographic signature properties. System administrators can write IPE policies that allow or deny BPF programs depending on whether their loader's signature was valid and the metadata verified. This completes the end-to-end flow from loader signature verification through BPF program BTF embedding to IPE decision enforcement. Integration tests in selftests/bpf validate the full policy pipeline.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Introduce BPF_SOCK_OPS_RCVQ_CB",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260522074601.1658705-3-kuniyu@google.com/",
+      "summary": "Introduces a new sock_ops callback BPF_SOCK_OPS_RCVQ_CB that fires when data arrives in a TCP socket's receive queue, enabling BPF programs to react to incoming data and adjust receive behavior dynamically. This callback is the core mechanism behind the TCP AutoLOWAT feature, which allows BPF to set sk_rcvlowat based on inspection of pending data. The patch ensures mutual exclusivity with SOCKMAP and disallows the callback on MPTCP sockets, and also prevents enabling it when the receive queue is already non-empty to avoid missed callbacks. It is part of the v2 11-patch series 'bpf: Add SOCK_OPS hooks for TCP AutoLOWAT'.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Add kfunc to adjust sk->sk_rcvlowat",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260522074601.1658705-6-kuniyu@google.com/",
+      "summary": "Adds a new kfunc callable from BPF_SOCK_OPS_RCVQ_CB programs that adjusts sk->sk_rcvlowat, the minimum number of bytes that must be in the receive buffer before waking up a waiting reader. This enables 'AutoLOWAT' behavior where BPF inspects incoming data inside the new RCVQ callback and sets an appropriate threshold, eliminating spurious wakeups when partial data arrives. The kfunc builds on the __tcp_set_rcvlowat() helper split out in an earlier patch in the series. It also supports bpf_skb_load_bytes() within the same callback context to allow programs to examine payload content when making the threshold decision.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce the bpf_list_del kfunc",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260521032306.97118-5-kaitao.cheng@linux.dev/",
+      "summary": "Adds bpf_list_del, a new kfunc that removes a node from a BPF linked list given a non-owning reference to the node, without requiring access to the list head. This is part of v11 of the 'bpf: Extend the bpf_list family of APIs' series, which also introduces bpf_list_add for arbitrary insertion, and bpf_list_is_first/is_last/is_empty for introspection. The series refactors __bpf_list_del and __bpf_list_add internally to operate on node pointers and insertion-point pointers respectively, and relaxes ownership rules via a new __nonown_allowed annotation. Together these bring BPF linked-list semantics much closer to those available in kernel code.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Cache build IDs in sleepable stackmap path",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260521225022.2695755-4-ihor.solodrai@linux.dev/",
+      "summary": "Implements stack_map_get_build_id_offset_sleepable() which caches ELF build IDs in the sleepable stackmap code path, avoiding faultable reads under mm locks that could cause issues in non-sleepable contexts. This is the final patch of v6 of the series, which first factors out shared build ID helpers and then fixes the non-sleepable path to avoid page faults under mmap_lock. The result is more reliable build ID collection when BPF stack traces are captured from sleepable programs such as fentry/fexit and LSM hooks. Proper caching also reduces overhead on repeated stack captures of the same binary.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix concurrent regression in map_create()",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260521142909.95818-1-leon.hwang@linux.dev/",
+      "summary": "Fixes a concurrency bug in map_create() where a race between concurrent map creation calls could lead to incorrect behavior introduced by a recent change. This v2 single-patch series corrects the synchronization logic to ensure the common single-threaded path is not penalized while the concurrent case is handled correctly. The fix is targeted and minimal, addressing the regression without restructuring the broader map creation flow.",
+      "related_links": []
+    }
+  ]
+}
