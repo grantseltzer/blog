@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-05-24T00:00:00Z",
+  "period_start": "2026-05-22",
+  "period_end": "2026-05-23",
+  "patch_count": 38,
+  "thread_count": 4,
+  "top_contributors": ["Kuniyuki Iwashima", "KP Singh", "Daniel Borkmann"],
+  "key_topics": ["sock-ops", "tcp", "kfuncs", "lsm", "bpffs", "ipe", "security"],
+  "overview": "Today's bpf-next activity centered on three significant patch series. Kuniyuki Iwashima posted v3 of a series adding BPF_SOCK_OPS_RCVQ_CB hooks and kfuncs for TCP AutoLOWAT, enabling BPF programs to dynamically adjust sk_rcvlowat when data arrives in the TCP receive queue. Daniel Borkmann submitted a 3-patch series adding basic xattr support to bpffs for object labeling, while KP Singh contributed a substantial 13-patch series implementing signed BPF programs and IPE policies to enforce integrity-based access control at program load time.",
+  "patches": [
+    {
+      "title": "bpf: tcp: Introduce BPF_SOCK_OPS_RCVQ_CB.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260523083001.2911931-3-kuniyu@google.com/",
+      "summary": "Introduces a new BPF_SOCK_OPS_RCVQ_CB callback into the SOCK_OPS framework that fires when data arrives in the TCP receive queue. This enables BPF programs to inspect incoming data and dynamically adjust socket parameters such as rcvlowat, supporting the TCP AutoLOWAT feature. The hook is the central mechanism for the entire 11-patch series, providing a new programmability point in the TCP receive path. This patch is part of v3 of the series, incorporating feedback from earlier revisions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Add kfunc to adjust sk->sk_rcvlowat.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260523083001.2911931-6-kuniyu@google.com/",
+      "summary": "Adds a new kfunc allowing BPF programs running under BPF_SOCK_OPS_RCVQ_CB to modify the sk_rcvlowat field of a TCP socket, controlling the minimum receive threshold for readability and EPOLLRDHUP events. This enables dynamic, per-connection tuning to reduce unnecessary wakeups in high-throughput workloads. The kfunc is designed to be called from within the receive-queue callback to implement AutoLOWAT-style optimizations. It is mutually exclusive with SOCKMAP and unsupported on MPTCP sockets, as established by companion patches in the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Add SOCK_OPS rcvlowat hook.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260523083001.2911931-11-kuniyu@google.com/",
+      "summary": "Wires up the new BPF_SOCK_OPS_RCVQ_CB hook into the TCP stack's data-ready path, invoking the BPF program whenever data is added to the socket's receive queue. The hook integrates with the existing SOCK_OPS infrastructure and shares the BPF socket operations context, with support for bpf_skb_load_bytes() to inspect receive-queue contents. This v3 revision incorporates fixes for mutual-exclusivity with SOCKMAP, rejection when the receive queue is already non-empty, and refactoring of bpf_skops_established() to reduce duplication.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add simple xattr support to bpffs",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260522135626.120732-1-daniel@iogearbox.net/",
+      "summary": "Adds basic extended attribute (xattr) support to the BPF filesystem, allowing user-space to annotate BPF objects pinned in bpffs with custom key-value metadata. This lays the groundwork for BPF LSM-based labeling workflows where security labels can be read by BPF hooks at access time. The implementation is intentionally minimal, supporting a well-defined set of xattr namespaces. Two companion selftests cover the new API and demonstrate integration with BPF LSM label enforcement.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: expose signature verdict to LSMs via bpf_prog_aux",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-2-kpsingh@kernel.org/",
+      "summary": "Stores the BPF loader signature verification verdict in bpf_prog_aux, making it accessible to LSM hooks during program loading. This is the foundation of the 13-patch 'Signed BPF + IPE Policies' series, which integrates BPF loader signature verification with the Integrity Policy Enforcement LSM. The verdict field allows security policies to gate program loads based on whether the BPF program was signed by a trusted key, enabling supply-chain-level integrity enforcement for BPF deployments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_loader_verify_metadata kfunc",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-5-kpsingh@kernel.org/",
+      "summary": "Introduces a kfunc callable from BPF loader programs that triggers metadata verification against a signed scope, combining the program BTF digest and loader signature into a unified integrity check. This allows the loader program itself to assert that the BPF program being loaded matches an expected signed description. The kfunc bridges the BPF verifier with the kernel's existing signature verification infrastructure and is the mechanism through which IPE policies can enforce signing requirements at load time.",
+      "related_links": []
+    },
+    {
+      "title": "lsm: add bpf_prog_load_post_integrity hook",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-10-kpsingh@kernel.org/",
+      "summary": "Adds a new LSM hook bpf_prog_load_post_integrity that fires after a BPF program's integrity has been verified but before the program is fully committed to the kernel. This hook allows LSMs like IPE to implement mandatory access control policies conditioned on BPF program signatures, blocking unsigned or mis-signed programs from loading. It completes the integrity enforcement path alongside earlier patches in the series that compute the program digest, expose the signature verdict, and wire up IPE policy evaluation for BPF program loads.",
+      "related_links": []
+    }
+  ]
+}
