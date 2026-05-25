@@ -1,0 +1,1708 @@
+{
+  "period": "weekly",
+  "period_start": "2026-05-18",
+  "period_end": "2026-05-25",
+  "fetched_at": "2026-05-25T12:34:43Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v2] bpf: Add kernel-doc for arena page kfuncs",
+      "author": "Dhiraj Shah",
+      "url": "https://lore.kernel.org/bpf/20260524114243.259916-1-find.dhiraj@gmail.com/",
+      "date": "2026-05-24T11:42:43",
+      "series": [
+        {
+          "id": 1099978,
+          "url": "https://patchwork.kernel.org/api/series/1099978/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099978",
+          "date": "2026-05-24T11:42:43",
+          "name": "[bpf-next,v2] bpf: Add kernel-doc for arena page kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1099978/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,11/11] selftest: bpf: Add test for BPF_SOCK_OPS_RCVQ_CB.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260523083001.2911931-12-kuniyu@google.com/",
+      "date": "2026-05-23T08:29:40",
+      "series": [
+        {
+          "id": 1099743,
+          "url": "https://patchwork.kernel.org/api/series/1099743/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099743",
+          "date": "2026-05-23T08:29:29",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1099743/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,10/11] bpf: tcp: Add SOCK_OPS rcvlowat hook.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260523083001.2911931-11-kuniyu@google.com/",
+      "date": "2026-05-23T08:29:39",
+      "series": [
+        {
+          "id": 1099743,
+          "url": "https://patchwork.kernel.org/api/series/1099743/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099743",
+          "date": "2026-05-23T08:29:29",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1099743/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,09/11] bpf: tcp: Factorise bpf_skops_established().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260523083001.2911931-10-kuniyu@google.com/",
+      "date": "2026-05-23T08:29:38",
+      "series": [
+        {
+          "id": 1099743,
+          "url": "https://patchwork.kernel.org/api/series/1099743/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099743",
+          "date": "2026-05-23T08:29:29",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1099743/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,08/11] bpf: tcp: Reject BPF_SOCK_OPS_RCVQ_CB if receive queue is not empty.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260523083001.2911931-9-kuniyu@google.com/",
+      "date": "2026-05-23T08:29:37",
+      "series": [
+        {
+          "id": 1099743,
+          "url": "https://patchwork.kernel.org/api/series/1099743/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099743",
+          "date": "2026-05-23T08:29:29",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1099743/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,07/11] bpf: mptcp: Don't support BPF_SOCK_OPS_RCVQ_CB.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260523083001.2911931-8-kuniyu@google.com/",
+      "date": "2026-05-23T08:29:36",
+      "series": [
+        {
+          "id": 1099743,
+          "url": "https://patchwork.kernel.org/api/series/1099743/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099743",
+          "date": "2026-05-23T08:29:29",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1099743/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,06/11] bpf: tcp: Make BPF_SOCK_OPS_RCVQ_CB and SOCKMAP mutually exclusive.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260523083001.2911931-7-kuniyu@google.com/",
+      "date": "2026-05-23T08:29:35",
+      "series": [
+        {
+          "id": 1099743,
+          "url": "https://patchwork.kernel.org/api/series/1099743/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099743",
+          "date": "2026-05-23T08:29:29",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1099743/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,05/11] bpf: tcp: Add kfunc to adjust sk->sk_rcvlowat.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260523083001.2911931-6-kuniyu@google.com/",
+      "date": "2026-05-23T08:29:34",
+      "series": [
+        {
+          "id": 1099743,
+          "url": "https://patchwork.kernel.org/api/series/1099743/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099743",
+          "date": "2026-05-23T08:29:29",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1099743/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,04/11] tcp: Split out __tcp_set_rcvlowat().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260523083001.2911931-5-kuniyu@google.com/",
+      "date": "2026-05-23T08:29:33",
+      "series": [
+        {
+          "id": 1099743,
+          "url": "https://patchwork.kernel.org/api/series/1099743/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099743",
+          "date": "2026-05-23T08:29:29",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1099743/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,03/11] bpf: tcp: Support bpf_skb_load_bytes() for BPF_SOCK_OPS_RCVQ_CB.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260523083001.2911931-4-kuniyu@google.com/",
+      "date": "2026-05-23T08:29:32",
+      "series": [
+        {
+          "id": 1099743,
+          "url": "https://patchwork.kernel.org/api/series/1099743/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099743",
+          "date": "2026-05-23T08:29:29",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1099743/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,02/11] bpf: tcp: Introduce BPF_SOCK_OPS_RCVQ_CB.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260523083001.2911931-3-kuniyu@google.com/",
+      "date": "2026-05-23T08:29:31",
+      "series": [
+        {
+          "id": 1099743,
+          "url": "https://patchwork.kernel.org/api/series/1099743/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099743",
+          "date": "2026-05-23T08:29:29",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1099743/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,01/11] selftest: bpf: Use BPF_SOCK_OPS_ALL_CB_FLAGS + 1 for bad_cb_test_rv.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260523083001.2911931-2-kuniyu@google.com/",
+      "date": "2026-05-23T08:29:30",
+      "series": [
+        {
+          "id": 1099743,
+          "url": "https://patchwork.kernel.org/api/series/1099743/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099743",
+          "date": "2026-05-23T08:29:29",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1099743/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] selftests/bpf: Add xattr label test with BPF LSM",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260522135626.120732-3-daniel@iogearbox.net/",
+      "date": "2026-05-22T13:56:26",
+      "series": [
+        {
+          "id": 1099411,
+          "url": "https://patchwork.kernel.org/api/series/1099411/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099411",
+          "date": "2026-05-22T13:56:26",
+          "name": "[bpf-next,1/3] bpf: Add simple xattr support to bpffs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1099411/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] selftests/bpf: Add bpffs xattr API coverage test",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260522135626.120732-2-daniel@iogearbox.net/",
+      "date": "2026-05-22T13:56:25",
+      "series": [
+        {
+          "id": 1099411,
+          "url": "https://patchwork.kernel.org/api/series/1099411/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099411",
+          "date": "2026-05-22T13:56:26",
+          "name": "[bpf-next,1/3] bpf: Add simple xattr support to bpffs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1099411/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] bpf: Add simple xattr support to bpffs",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260522135626.120732-1-daniel@iogearbox.net/",
+      "date": "2026-05-22T13:56:24",
+      "series": [
+        {
+          "id": 1099411,
+          "url": "https://patchwork.kernel.org/api/series/1099411/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099411",
+          "date": "2026-05-22T13:56:26",
+          "name": "[bpf-next,1/3] bpf: Add simple xattr support to bpffs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1099411/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,11/11] selftest: bpf: Add test for BPF_SOCK_OPS_RCVQ_CB.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260522074601.1658705-12-kuniyu@google.com/",
+      "date": "2026-05-22T07:45:02",
+      "series": [
+        {
+          "id": 1099193,
+          "url": "https://patchwork.kernel.org/api/series/1099193/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099193",
+          "date": "2026-05-22T07:44:51",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1099193/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,10/11] bpf: tcp: Add SOCK_OPS rcvlowat hook.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260522074601.1658705-11-kuniyu@google.com/",
+      "date": "2026-05-22T07:45:01",
+      "series": [
+        {
+          "id": 1099193,
+          "url": "https://patchwork.kernel.org/api/series/1099193/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099193",
+          "date": "2026-05-22T07:44:51",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1099193/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,09/11] bpf: tcp: Factorise bpf_skops_established().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260522074601.1658705-10-kuniyu@google.com/",
+      "date": "2026-05-22T07:45:00",
+      "series": [
+        {
+          "id": 1099193,
+          "url": "https://patchwork.kernel.org/api/series/1099193/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099193",
+          "date": "2026-05-22T07:44:51",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1099193/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,08/11] bpf: tcp: Reject BPF_SOCK_OPS_RCVQ_CB if receive queue is not empty.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260522074601.1658705-9-kuniyu@google.com/",
+      "date": "2026-05-22T07:44:59",
+      "series": [
+        {
+          "id": 1099193,
+          "url": "https://patchwork.kernel.org/api/series/1099193/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099193",
+          "date": "2026-05-22T07:44:51",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1099193/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,07/11] bpf: mptcp: Don't support BPF_SOCK_OPS_RCVQ_CB.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260522074601.1658705-8-kuniyu@google.com/",
+      "date": "2026-05-22T07:44:58",
+      "series": [
+        {
+          "id": 1099193,
+          "url": "https://patchwork.kernel.org/api/series/1099193/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099193",
+          "date": "2026-05-22T07:44:51",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1099193/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,06/11] bpf: tcp: Make BPF_SOCK_OPS_RCVQ_CB and SOCKMAP mutually exclusive.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260522074601.1658705-7-kuniyu@google.com/",
+      "date": "2026-05-22T07:44:57",
+      "series": [
+        {
+          "id": 1099193,
+          "url": "https://patchwork.kernel.org/api/series/1099193/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099193",
+          "date": "2026-05-22T07:44:51",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1099193/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,05/11] bpf: tcp: Add kfunc to adjust sk->sk_rcvlowat.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260522074601.1658705-6-kuniyu@google.com/",
+      "date": "2026-05-22T07:44:56",
+      "series": [
+        {
+          "id": 1099193,
+          "url": "https://patchwork.kernel.org/api/series/1099193/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099193",
+          "date": "2026-05-22T07:44:51",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1099193/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,04/11] tcp: Split out __tcp_set_rcvlowat().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260522074601.1658705-5-kuniyu@google.com/",
+      "date": "2026-05-22T07:44:55",
+      "series": [
+        {
+          "id": 1099193,
+          "url": "https://patchwork.kernel.org/api/series/1099193/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099193",
+          "date": "2026-05-22T07:44:51",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1099193/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,03/11] bpf: tcp: Support bpf_skb_load_bytes() for BPF_SOCK_OPS_RCVQ_CB.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260522074601.1658705-4-kuniyu@google.com/",
+      "date": "2026-05-22T07:44:54",
+      "series": [
+        {
+          "id": 1099193,
+          "url": "https://patchwork.kernel.org/api/series/1099193/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099193",
+          "date": "2026-05-22T07:44:51",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1099193/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,02/11] bpf: tcp: Introduce BPF_SOCK_OPS_RCVQ_CB.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260522074601.1658705-3-kuniyu@google.com/",
+      "date": "2026-05-22T07:44:53",
+      "series": [
+        {
+          "id": 1099193,
+          "url": "https://patchwork.kernel.org/api/series/1099193/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099193",
+          "date": "2026-05-22T07:44:51",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1099193/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,01/11] selftest: bpf: Use BPF_SOCK_OPS_ALL_CB_FLAGS + 1 for bad_cb_test_rv.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260522074601.1658705-2-kuniyu@google.com/",
+      "date": "2026-05-22T07:44:52",
+      "series": [
+        {
+          "id": 1099193,
+          "url": "https://patchwork.kernel.org/api/series/1099193/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099193",
+          "date": "2026-05-22T07:44:51",
+          "name": "bpf: Add SOCK_OPS hooks for TCP AutoLOWAT.",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1099193/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,13/13] selftests/bpf: add IPE BPF policy integration tests",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-14-kpsingh@kernel.org/",
+      "date": "2026-05-22T02:32:33",
+      "series": [
+        {
+          "id": 1099102,
+          "url": "https://patchwork.kernel.org/api/series/1099102/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099102",
+          "date": "2026-05-22T02:32:20",
+          "name": "Signed BPF + IPE Policies",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1099102/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,12/13] ipe: gate post-integrity BPF program loads",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-13-kpsingh@kernel.org/",
+      "date": "2026-05-22T02:32:32",
+      "series": [
+        {
+          "id": 1099102,
+          "url": "https://patchwork.kernel.org/api/series/1099102/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099102",
+          "date": "2026-05-22T02:32:20",
+          "name": "Signed BPF + IPE Policies",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1099102/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,11/13] ipe: add BPF program signature properties",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-12-kpsingh@kernel.org/",
+      "date": "2026-05-22T02:32:31",
+      "series": [
+        {
+          "id": 1099102,
+          "url": "https://patchwork.kernel.org/api/series/1099102/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099102",
+          "date": "2026-05-22T02:32:20",
+          "name": "Signed BPF + IPE Policies",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1099102/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,10/13] bpf: invoke security_bpf_prog_load_post_integrity from the metadata kfunc",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-11-kpsingh@kernel.org/",
+      "date": "2026-05-22T02:32:30",
+      "series": [
+        {
+          "id": 1099102,
+          "url": "https://patchwork.kernel.org/api/series/1099102/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099102",
+          "date": "2026-05-22T02:32:20",
+          "name": "Signed BPF + IPE Policies",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1099102/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,09/13] lsm: add bpf_prog_load_post_integrity hook",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-10-kpsingh@kernel.org/",
+      "date": "2026-05-22T02:32:29",
+      "series": [
+        {
+          "id": 1099102,
+          "url": "https://patchwork.kernel.org/api/series/1099102/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099102",
+          "date": "2026-05-22T02:32:20",
+          "name": "Signed BPF + IPE Policies",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1099102/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,08/13] bpftool gen: embed loader prog BTF in the lskel header",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-9-kpsingh@kernel.org/",
+      "date": "2026-05-22T02:32:28",
+      "series": [
+        {
+          "id": 1099102,
+          "url": "https://patchwork.kernel.org/api/series/1099102/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099102",
+          "date": "2026-05-22T02:32:20",
+          "name": "Signed BPF + IPE Policies",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1099102/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,07/13] libbpf: generate prog BTF for loader programs",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-8-kpsingh@kernel.org/",
+      "date": "2026-05-22T02:32:27",
+      "series": [
+        {
+          "id": 1099102,
+          "url": "https://patchwork.kernel.org/api/series/1099102/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099102",
+          "date": "2026-05-22T02:32:20",
+          "name": "Signed BPF + IPE Policies",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1099102/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,06/13] bpf: resolve loader-style kfunc CALLs against prog BTF",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-7-kpsingh@kernel.org/",
+      "date": "2026-05-22T02:32:26",
+      "series": [
+        {
+          "id": 1099102,
+          "url": "https://patchwork.kernel.org/api/series/1099102/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099102",
+          "date": "2026-05-22T02:32:20",
+          "name": "Signed BPF + IPE Policies",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1099102/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,05/13] bpf: compute prog->digest at BPF_PROG_LOAD entry",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-6-kpsingh@kernel.org/",
+      "date": "2026-05-22T02:32:25",
+      "series": [
+        {
+          "id": 1099102,
+          "url": "https://patchwork.kernel.org/api/series/1099102/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099102",
+          "date": "2026-05-22T02:32:20",
+          "name": "Signed BPF + IPE Policies",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1099102/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,04/13] bpf: add bpf_loader_verify_metadata kfunc",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-5-kpsingh@kernel.org/",
+      "date": "2026-05-22T02:32:24",
+      "series": [
+        {
+          "id": 1099102,
+          "url": "https://patchwork.kernel.org/api/series/1099102/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099102",
+          "date": "2026-05-22T02:32:20",
+          "name": "Signed BPF + IPE Policies",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1099102/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,03/13] bpf, libbpf: load prog BTF in the skel_internal loader",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-4-kpsingh@kernel.org/",
+      "date": "2026-05-22T02:32:23",
+      "series": [
+        {
+          "id": 1099102,
+          "url": "https://patchwork.kernel.org/api/series/1099102/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099102",
+          "date": "2026-05-22T02:32:20",
+          "name": "Signed BPF + IPE Policies",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1099102/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,02/13] bpf: include prog BTF in the signed loader signature scope",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-3-kpsingh@kernel.org/",
+      "date": "2026-05-22T02:32:22",
+      "series": [
+        {
+          "id": 1099102,
+          "url": "https://patchwork.kernel.org/api/series/1099102/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099102",
+          "date": "2026-05-22T02:32:20",
+          "name": "Signed BPF + IPE Policies",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1099102/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,01/13] bpf: expose signature verdict to LSMs via bpf_prog_aux",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-2-kpsingh@kernel.org/",
+      "date": "2026-05-22T02:32:21",
+      "series": [
+        {
+          "id": 1099102,
+          "url": "https://patchwork.kernel.org/api/series/1099102/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099102",
+          "date": "2026-05-22T02:32:20",
+          "name": "Signed BPF + IPE Policies",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1099102/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,3/3] bpf: Cache build IDs in sleepable stackmap path",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260521225022.2695755-4-ihor.solodrai@linux.dev/",
+      "date": "2026-05-21T22:50:22",
+      "series": [
+        {
+          "id": 1099047,
+          "url": "https://patchwork.kernel.org/api/series/1099047/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099047",
+          "date": "2026-05-21T22:50:20",
+          "name": "bpf: Implement stack_map_get_build_id_offset_sleepable()",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1099047/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,2/3] bpf: Avoid faultable build ID reads under mm locks",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260521225022.2695755-3-ihor.solodrai@linux.dev/",
+      "date": "2026-05-21T22:50:21",
+      "series": [
+        {
+          "id": 1099047,
+          "url": "https://patchwork.kernel.org/api/series/1099047/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099047",
+          "date": "2026-05-21T22:50:20",
+          "name": "bpf: Implement stack_map_get_build_id_offset_sleepable()",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1099047/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,1/3] bpf: Factor out stack_map build ID helpers",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260521225022.2695755-2-ihor.solodrai@linux.dev/",
+      "date": "2026-05-21T22:50:20",
+      "series": [
+        {
+          "id": 1099047,
+          "url": "https://patchwork.kernel.org/api/series/1099047/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099047",
+          "date": "2026-05-21T22:50:20",
+          "name": "bpf: Implement stack_map_get_build_id_offset_sleepable()",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1099047/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] bpf: Fix concurrent regression in map_create()",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260521142909.95818-1-leon.hwang@linux.dev/",
+      "date": "2026-05-21T14:29:09",
+      "series": [
+        {
+          "id": 1098836,
+          "url": "https://patchwork.kernel.org/api/series/1098836/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098836",
+          "date": "2026-05-21T14:29:09",
+          "name": "[bpf-next,v2] bpf: Fix concurrent regression in map_create()",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1098836/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,2/2] selftests/bpf: Add __arch_loongarch to limit test cases",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260521125636.26744-3-yangtiezhu@loongson.cn/",
+      "date": "2026-05-21T12:56:36",
+      "series": [
+        {
+          "id": 1098735,
+          "url": "https://patchwork.kernel.org/api/series/1098735/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098735",
+          "date": "2026-05-21T12:56:34",
+          "name": "selftests/bpf: Add some tests for LoongArch",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1098735/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,1/2] selftests/bpf: Support get_preempt_count() for LoongArch",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260521125636.26744-2-yangtiezhu@loongson.cn/",
+      "date": "2026-05-21T12:56:35",
+      "series": [
+        {
+          "id": 1098735,
+          "url": "https://patchwork.kernel.org/api/series/1098735/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098735",
+          "date": "2026-05-21T12:56:34",
+          "name": "selftests/bpf: Add some tests for LoongArch",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1098735/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Add kernel-doc for arena page kfuncs",
+      "author": "Dhiraj Shah",
+      "url": "https://lore.kernel.org/bpf/20260521043553.199781-1-find.dhiraj@gmail.com/",
+      "date": "2026-05-21T04:35:53",
+      "series": [
+        {
+          "id": 1098444,
+          "url": "https://patchwork.kernel.org/api/series/1098444/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098444",
+          "date": "2026-05-21T04:35:53",
+          "name": "[bpf-next] bpf: Add kernel-doc for arena page kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1098444/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,8/8] selftests/bpf: Add test cases for bpf_list_del/add/is_first/is_last/empty",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260521032306.97118-9-kaitao.cheng@linux.dev/",
+      "date": "2026-05-21T03:23:06",
+      "series": [
+        {
+          "id": 1098416,
+          "url": "https://patchwork.kernel.org/api/series/1098416/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098416",
+          "date": "2026-05-21T03:22:59",
+          "name": "bpf: Extend the bpf_list family of APIs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1098416/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,7/8] bpf: add bpf_list_is_first/last/empty kfuncs",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260521032306.97118-8-kaitao.cheng@linux.dev/",
+      "date": "2026-05-21T03:23:05",
+      "series": [
+        {
+          "id": 1098416,
+          "url": "https://patchwork.kernel.org/api/series/1098416/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098416",
+          "date": "2026-05-21T03:22:59",
+          "name": "bpf: Extend the bpf_list family of APIs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1098416/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,6/8] bpf: Add bpf_list_add to insert node after a given list node",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260521032306.97118-7-kaitao.cheng@linux.dev/",
+      "date": "2026-05-21T03:23:04",
+      "series": [
+        {
+          "id": 1098416,
+          "url": "https://patchwork.kernel.org/api/series/1098416/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098416",
+          "date": "2026-05-21T03:22:59",
+          "name": "bpf: Extend the bpf_list family of APIs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1098416/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,5/8] bpf: refactor __bpf_list_add to take insertion point via **prev_ptr",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260521032306.97118-6-kaitao.cheng@linux.dev/",
+      "date": "2026-05-21T03:23:03",
+      "series": [
+        {
+          "id": 1098416,
+          "url": "https://patchwork.kernel.org/api/series/1098416/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098416",
+          "date": "2026-05-21T03:22:59",
+          "name": "bpf: Extend the bpf_list family of APIs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1098416/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,4/8] bpf: Introduce the bpf_list_del kfunc.",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260521032306.97118-5-kaitao.cheng@linux.dev/",
+      "date": "2026-05-21T03:23:02",
+      "series": [
+        {
+          "id": 1098416,
+          "url": "https://patchwork.kernel.org/api/series/1098416/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098416",
+          "date": "2026-05-21T03:22:59",
+          "name": "bpf: Extend the bpf_list family of APIs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1098416/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,3/8] bpf: allow non-owning list-node args via __nonown_allowed",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260521032306.97118-4-kaitao.cheng@linux.dev/",
+      "date": "2026-05-21T03:23:01",
+      "series": [
+        {
+          "id": 1098416,
+          "url": "https://patchwork.kernel.org/api/series/1098416/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098416",
+          "date": "2026-05-21T03:22:59",
+          "name": "bpf: Extend the bpf_list family of APIs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1098416/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,2/8] bpf: clear list node owner and unlink before drop",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260521032306.97118-3-kaitao.cheng@linux.dev/",
+      "date": "2026-05-21T03:23:00",
+      "series": [
+        {
+          "id": 1098416,
+          "url": "https://patchwork.kernel.org/api/series/1098416/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098416",
+          "date": "2026-05-21T03:22:59",
+          "name": "bpf: Extend the bpf_list family of APIs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1098416/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,1/8] bpf: refactor __bpf_list_del to take list node pointer",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260521032306.97118-2-kaitao.cheng@linux.dev/",
+      "date": "2026-05-21T03:22:59",
+      "series": [
+        {
+          "id": 1098416,
+          "url": "https://patchwork.kernel.org/api/series/1098416/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098416",
+          "date": "2026-05-21T03:22:59",
+          "name": "bpf: Extend the bpf_list family of APIs",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1098416/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] bpf, docs: add LOAD_ACQUIRE and STORE_RELEASE instructions",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260521-bpf-insn-doc-v2-1-8c43c037d599@bootlin.com/",
+      "date": "2026-05-20T22:09:11",
+      "series": [
+        {
+          "id": 1098326,
+          "url": "https://patchwork.kernel.org/api/series/1098326/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098326",
+          "date": "2026-05-20T22:09:11",
+          "name": "[bpf-next,v2] bpf, docs: add LOAD_ACQUIRE and STORE_RELEASE instructions",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1098326/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: Fix zero batch_hash on CPU 0 after batch_gen wraparound",
+      "author": "Muhammad Bilal",
+      "url": "https://lore.kernel.org/bpf/20260520203318.31939-1-meatuni001@gmail.com/",
+      "date": "2026-05-20T20:33:18",
+      "series": [
+        {
+          "id": 1098273,
+          "url": "https://patchwork.kernel.org/api/series/1098273/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098273",
+          "date": "2026-05-20T20:33:18",
+          "name": "[bpf-next] selftests/bpf: Fix zero batch_hash on CPU 0 after batch_gen wraparound",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1098273/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf, docs: add LOAD_AQCUIRE and STORE_RELEASE instructions",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260520-bpf-insn-doc-v1-1-74d7dada9bfc@bootlin.com/",
+      "date": "2026-05-20T14:36:19",
+      "series": [
+        {
+          "id": 1098082,
+          "url": "https://patchwork.kernel.org/api/series/1098082/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098082",
+          "date": "2026-05-20T14:36:19",
+          "name": "[bpf-next] bpf, docs: add LOAD_AQCUIRE and STORE_RELEASE instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1098082/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/3] selftests/bpf: Filter timing outliers with IQR in batch-timing library",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260520133338.3392667-4-puranjay@kernel.org/",
+      "date": "2026-05-20T13:33:32",
+      "series": [
+        {
+          "id": 1098035,
+          "url": "https://patchwork.kernel.org/api/series/1098035/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098035",
+          "date": "2026-05-20T13:33:29",
+          "name": "selftests/bpf: XDP LB benchmark fixes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1098035/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/3] selftests/bpf: Fix expired UDP LRU entries in XDP LB benchmark",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260520133338.3392667-3-puranjay@kernel.org/",
+      "date": "2026-05-20T13:33:31",
+      "series": [
+        {
+          "id": 1098035,
+          "url": "https://patchwork.kernel.org/api/series/1098035/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098035",
+          "date": "2026-05-20T13:33:29",
+          "name": "selftests/bpf: XDP LB benchmark fixes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1098035/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/3] selftests/bpf: Fix cold_lru producing zero batch_hash in XDP LB benchmark",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260520133338.3392667-2-puranjay@kernel.org/",
+      "date": "2026-05-20T13:33:30",
+      "series": [
+        {
+          "id": 1098035,
+          "url": "https://patchwork.kernel.org/api/series/1098035/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1098035",
+          "date": "2026-05-20T13:33:29",
+          "name": "selftests/bpf: XDP LB benchmark fixes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1098035/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,12/12] selftests/bpf: Test attaching struct_ops to a cgroup",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-13-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:19",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,11/12] libbpf: Support attaching struct_ops to a cgroup",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-12-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:18",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,10/12] bpf: tcp: Support selected sock_ops callbacks as struct_ops",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-11-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:17",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,09/12] bpf: Add infrastructure to support attaching struct_ops to cgroups",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-10-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:16",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,08/12] bpf: Add a few bpf_cgroup_array_* helper functions",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-9-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:15",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,07/12] bpf: Move LSM trampoline unlink into bpf_cgroup_link_auto_detach()",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-8-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:14",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,06/12] bpf: Add prog_list_init_item(), prog_list_replace_item(), and prog_list_id()",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-7-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:13",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,05/12] bpf: Replace prog_list_prog() check with direct pl->prog and pl->link check",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-6-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:12",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,04/12] bpf: Remove unnecessary prog_list_prog() check",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-5-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:11",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,03/12] bpf: Add bpf_struct_ops accessor helpers",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-4-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:10",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,02/12] bpf: Make struct_ops tasks_rcu grace period optional",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-3-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:09",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,01/12] bpf: Remove __rcu tagging in st_link->map",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-2-martin.lau@linux.dev/",
+      "date": "2026-05-19T21:58:08",
+      "series": [
+        {
+          "id": 1097630,
+          "url": "https://patchwork.kernel.org/api/series/1097630/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097630",
+          "date": "2026-05-19T21:58:07",
+          "name": "bpf: A common way to attach struct_ops to a cgroup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097630/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,14/14] selftests/bpf: Test using file dynptr after the reference on file is dropped",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-15-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:12",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,13/14] selftests/bpf: Test using slice after invalidating dynptr clone",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-14-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:11",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,12/14] selftests/bpf: Test using dynptr after freeing the underlying object",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-13-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:10",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,11/14] selftests/bpf: Test creating dynptr from dynptr data and slice",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-12-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:09",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,10/14] bpf: Fix dynptr ref counting to scan all call frames",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-11-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:08",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,09/14] bpf: Fold ref_obj_id into id and introduce virtual references",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-10-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:07",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,08/14] bpf: Unify release handling for helpers and kfuncs",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-9-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:06",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,07/14] bpf: Unify referenced object tracking in verifier",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-8-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:05",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,06/14] bpf: Remove redundant dynptr arg check for helper",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-7-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:04",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,05/14] bpf: Refactor object relationship tracking and fix dynptr UAF bug",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-6-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:03",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,04/14] bpf: Preserve reg->id of pointer objects after null-check",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-5-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:02",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,03/14] bpf: Assign reg->id when getting referenced kptr from ctx",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-4-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:01",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,02/14] bpf: Unify dynptr handling in the verifier",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-3-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:13:00",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,01/14] bpf: Simplify mark_stack_slot_obj_read() and callers",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-2-ameryhung@gmail.com/",
+      "date": "2026-05-19T18:12:59",
+      "series": [
+        {
+          "id": 1097554,
+          "url": "https://patchwork.kernel.org/api/series/1097554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097554",
+          "date": "2026-05-19T18:12:58",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1097554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/4] selftests/bpf: Filter timing outliers with IQR in batch-timing library",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260519163632.2220753-5-puranjay@kernel.org/",
+      "date": "2026-05-19T16:36:32",
+      "series": [
+        {
+          "id": 1097518,
+          "url": "https://patchwork.kernel.org/api/series/1097518/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097518",
+          "date": "2026-05-19T16:36:28",
+          "name": "selftests/bpf: XDP LB benchmark fixes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097518/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/4] selftests/bpf: Cap batch-timing calibration at BPF may_goto loop limit",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260519163632.2220753-4-puranjay@kernel.org/",
+      "date": "2026-05-19T16:36:31",
+      "series": [
+        {
+          "id": 1097518,
+          "url": "https://patchwork.kernel.org/api/series/1097518/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097518",
+          "date": "2026-05-19T16:36:28",
+          "name": "selftests/bpf: XDP LB benchmark fixes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097518/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/4] selftests/bpf: Fix expired UDP LRU entries in XDP LB benchmark",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260519163632.2220753-3-puranjay@kernel.org/",
+      "date": "2026-05-19T16:36:30",
+      "series": [
+        {
+          "id": 1097518,
+          "url": "https://patchwork.kernel.org/api/series/1097518/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097518",
+          "date": "2026-05-19T16:36:28",
+          "name": "selftests/bpf: XDP LB benchmark fixes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097518/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/4] selftests/bpf: Fix cold_lru producing zero batch_hash in XDP LB benchmark",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260519163632.2220753-2-puranjay@kernel.org/",
+      "date": "2026-05-19T16:36:29",
+      "series": [
+        {
+          "id": 1097518,
+          "url": "https://patchwork.kernel.org/api/series/1097518/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1097518",
+          "date": "2026-05-19T16:36:28",
+          "name": "selftests/bpf: XDP LB benchmark fixes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1097518/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/1] bpf: fix deadlock in special field destruction in NMI",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260519011450.1144935-2-utilityemal77@gmail.com/",
+      "date": "2026-05-19T01:14:50",
+      "series": [
+        {
+          "id": 1096949,
+          "url": "https://patchwork.kernel.org/api/series/1096949/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1096949",
+          "date": "2026-05-19T01:14:49",
+          "name": "bpf: Fix deadlock in freeing of special fields in NMI",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1096949/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: Fix test for refinement of single-value tnum",
+      "author": "Paul Chaignon",
+      "url": "https://lore.kernel.org/bpf/be2dc2c3d85120286e60b3029b3338fff339f942.1779121582.git.paul.chaignon@gmail.com/",
+      "date": "2026-05-18T16:26:35",
+      "series": [
+        {
+          "id": 1096734,
+          "url": "https://patchwork.kernel.org/api/series/1096734/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1096734",
+          "date": "2026-05-18T16:26:35",
+          "name": "[bpf-next] selftests/bpf: Fix test for refinement of single-value tnum",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1096734/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/3] selftests/bpf: Add test for tracepoint btf_ids tracefs file",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260518-generic_tracepoint-v2-3-b755a5cf67bb@meta.com/",
+      "date": "2026-05-18T15:23:17",
+      "series": [
+        {
+          "id": 1096695,
+          "url": "https://patchwork.kernel.org/api/series/1096695/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1096695",
+          "date": "2026-05-18T15:23:14",
+          "name": "tracing: Expose tracepoint BTF ids via tracefs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1096695/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/3] tracing: Expose tracepoint BTF ids via tracefs",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260518-generic_tracepoint-v2-2-b755a5cf67bb@meta.com/",
+      "date": "2026-05-18T15:23:16",
+      "series": [
+        {
+          "id": 1096695,
+          "url": "https://patchwork.kernel.org/api/series/1096695/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1096695",
+          "date": "2026-05-18T15:23:14",
+          "name": "tracing: Expose tracepoint BTF ids via tracefs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1096695/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/3] bpf: Make btf_get_module_btf() and btf_relocate_id() non-static",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260518-generic_tracepoint-v2-1-b755a5cf67bb@meta.com/",
+      "date": "2026-05-18T15:23:15",
+      "series": [
+        {
+          "id": 1096695,
+          "url": "https://patchwork.kernel.org/api/series/1096695/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1096695",
+          "date": "2026-05-18T15:23:14",
+          "name": "tracing: Expose tracepoint BTF ids via tracefs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1096695/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,5/5] selftests/bpf: Add test to verify checking padding bytes for BPF syscall common attributes",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260518145446.6794-6-leon.hwang@linux.dev/",
+      "date": "2026-05-18T14:54:46",
+      "series": [
+        {
+          "id": 1096685,
+          "url": "https://patchwork.kernel.org/api/series/1096685/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1096685",
+          "date": "2026-05-18T14:54:41",
+          "name": "bpf: Follow-up fixes for BPF syscall common attributes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1096685/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/5] selftests/bpf: Use -1 as token_fd in map create failure test",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260518145446.6794-5-leon.hwang@linux.dev/",
+      "date": "2026-05-18T14:54:45",
+      "series": [
+        {
+          "id": 1096685,
+          "url": "https://patchwork.kernel.org/api/series/1096685/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1096685",
+          "date": "2026-05-18T14:54:41",
+          "name": "bpf: Follow-up fixes for BPF syscall common attributes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1096685/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/5] libbpf: Add OPTS_VALID() for log_opts in bpf_map_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260518145446.6794-4-leon.hwang@linux.dev/",
+      "date": "2026-05-18T14:54:44",
+      "series": [
+        {
+          "id": 1096685,
+          "url": "https://patchwork.kernel.org/api/series/1096685/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1096685",
+          "date": "2026-05-18T14:54:41",
+          "name": "bpf: Follow-up fixes for BPF syscall common attributes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1096685/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/5] bpf: Fix concurrent regression in map_create()",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260518145446.6794-3-leon.hwang@linux.dev/",
+      "date": "2026-05-18T14:54:43",
+      "series": [
+        {
+          "id": 1096685,
+          "url": "https://patchwork.kernel.org/api/series/1096685/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1096685",
+          "date": "2026-05-18T14:54:41",
+          "name": "bpf: Follow-up fixes for BPF syscall common attributes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1096685/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/5] bpf: Check tail zero of bpf_common_attr using offsetofend",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260518145446.6794-2-leon.hwang@linux.dev/",
+      "date": "2026-05-18T14:54:42",
+      "series": [
+        {
+          "id": 1096685,
+          "url": "https://patchwork.kernel.org/api/series/1096685/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1096685",
+          "date": "2026-05-18T14:54:41",
+          "name": "bpf: Follow-up fixes for BPF syscall common attributes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1096685/mbox/"
+        }
+      ]
+    }
+  ]
+}

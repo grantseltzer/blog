@@ -1,0 +1,25 @@
+{
+  "period": "daily",
+  "period_start": "2026-05-24",
+  "period_end": "2026-05-25",
+  "fetched_at": "2026-05-25T12:34:43Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v2] bpf: Add kernel-doc for arena page kfuncs",
+      "author": "Dhiraj Shah",
+      "url": "https://lore.kernel.org/bpf/20260524114243.259916-1-find.dhiraj@gmail.com/",
+      "date": "2026-05-24T11:42:43",
+      "series": [
+        {
+          "id": 1099978,
+          "url": "https://patchwork.kernel.org/api/series/1099978/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1099978",
+          "date": "2026-05-24T11:42:43",
+          "name": "[bpf-next,v2] bpf: Add kernel-doc for arena page kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1099978/mbox/"
+        }
+      ]
+    }
+  ]
+}
