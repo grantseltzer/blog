@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-05-26T00:00:00Z",
+  "period_start": "2026-05-18",
+  "period_end": "2026-05-25",
+  "patch_count": 100,
+  "thread_count": 21,
+  "top_contributors": ["Kuniyuki Iwashima", "Amery Hung", "KP Singh", "Martin KaFai Lau", "Kaitao Cheng"],
+  "key_topics": ["sock-ops", "tcp", "verifier", "kfuncs", "lsm", "bpffs", "btf", "struct-ops", "maps", "xdp"],
+  "overview": "The week of May 18–25 was one of the busiest of the cycle, with 100 patches across 21 series. The headline work spans three major areas: KP Singh's 13-patch series wiring BPF program signing into the Linux IPE (Integrity Policy Enforcement) framework for secure BPF deployments, Amery Hung's 14-patch verifier refactor that unifies object relationship tracking and fixes a dynptr use-after-free bug, and Kuniyuki Iwashima's v3 series adding SOCK_OPS hooks for TCP AutoLOWAT. Martin KaFai Lau posted an RFC for a common mechanism to attach struct_ops programs to cgroups, which would extend TCP sock_ops callbacks to the struct_ops model. Additional highlights include Daniel Borkmann adding xattr support to bpffs, Kaitao Cheng's v11 of the bpf_list kfunc extensions, tracepoint BTF ID exposure via tracefs, and several selftest and documentation improvements.",
+  "patches": [
+    {
+      "title": "bpf: expose signature verdict to LSMs via bpf_prog_aux",
+      "author": "KP Singh",
+      "url": "https://lore.kernel.org/bpf/20260522023234.3778588-2-kpsingh@kernel.org/",
+      "summary": "Opens the 13-patch 'Signed BPF + IPE Policies' series by plumbing the BPF program signature verdict through bpf_prog_aux so that LSM hooks can observe it. The series as a whole teaches libbpf to embed prog BTF in the loader program signature, adds a bpf_loader_verify_metadata kfunc for signature verification, hooks into the IPE policy engine to gate BPF program loads post-integrity-check, and provides selftests. Together these patches make it possible to enforce signed-BPF policies via IPE, allowing security-sensitive deployments to cryptographically verify BPF programs at load time.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add simple xattr support to bpffs",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260522135626.120732-1-daniel@iogearbox.net/",
+      "summary": "Adds basic extended-attribute (xattr) support to bpffs, the virtual filesystem where BPF objects such as pinned maps and programs are stored. This enables userspace tooling and BPF LSM programs to attach metadata to pinned BPF objects using standard xattr interfaces. Two follow-on patches in the series add a selftest for the new API and a BPF LSM integration test using security.bpf xattr labels. The feature fills a long-standing gap that prevented bpffs objects from participating in Linux label-based access control systems.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Introduce BPF_SOCK_OPS_RCVQ_CB.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260523083001.2911931-3-kuniyu@google.com/",
+      "summary": "Introduces the core callback of the 11-patch TCP AutoLOWAT series (v3): BPF_SOCK_OPS_RCVQ_CB fires when data arrives in the TCP receive queue, giving a BPF program the opportunity to adjust sk_rcvlowat before the socket's wait-queue is signalled. The series also adds bpf_skb_load_bytes() support in the callback, a kfunc to set sk_rcvlowat, mutual exclusion with SOCKMAP, MPTCP rejection, and a full selftest. The feature enables protocol-aware wakeup suppression to reduce unnecessary application wake-ups on partial message delivery.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refactor object relationship tracking and fix dynptr UAF bug",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260519181314.2731658-6-ameryhung@gmail.com/",
+      "summary": "The central patch of a 14-patch verifier refactor series (v5) that unifies how the BPF verifier tracks ownership and lifetime relationships between heap objects, dynptrs, and slices. By folding ref_obj_id into the existing id field and introducing 'virtual references', the series eliminates parallel tracking structures and fixes a dynptr use-after-free bug where a dynptr derived from a file object could be used after the underlying file reference was dropped. The refactor also unifies release handling for helpers and kfuncs and adds comprehensive selftests covering the new edge cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add infrastructure to support attaching struct_ops to cgroups",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260519215841.2984970-10-martin.lau@linux.dev/",
+      "summary": "Core patch from a 12-patch RFC series proposing a common mechanism for attaching struct_ops BPF programs to cgroups, similar to how classic sock_ops and LSM programs attach today. The infrastructure introduces bpf_cgroup_array_* helpers and extends the bpf_cgroup_link lifecycle management. A follow-on patch in the series demonstrates the model by exposing selected tcp sock_ops callbacks as struct_ops, replacing boilerplate with type-safe function pointers. The RFC solicits feedback on the overall architecture before wider adoption.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce the bpf_list_del kfunc.",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260521032306.97118-5-kaitao.cheng@linux.dev/",
+      "summary": "Part of an 8-patch v11 series extending the BPF linked-list kfunc family. This patch adds bpf_list_del(), which removes a node from its list given a direct pointer to the node rather than requiring a container-of lookup. Companion patches in the series add bpf_list_add() (insert after a given node), bpf_list_is_first(), bpf_list_is_last(), and bpf_list_empty() kfuncs, along with the necessary verifier changes to permit non-owning list-node arguments via a new __nonown_allowed annotation. The series substantially fills the gap between the kernel's list_head API and what BPF programs can use.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Factor out stack_map build ID helpers",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260521225022.2695755-2-ihor.solodrai@linux.dev/",
+      "summary": "First patch of a 3-patch v6 series implementing a sleepable version of the stack_map build-ID resolution path. This preparatory patch extracts the build-ID lookup helpers from the existing non-sleepable code so they can be reused by the new stack_map_get_build_id_offset_sleepable() function added in the next patch. A follow-on patch eliminates faultable build-ID reads that were being performed under mm locks by deferring them to the sleepable context, fixing a latent correctness issue on systems with strict lock-ordering requirements.",
+      "related_links": []
+    },
+    {
+      "title": "tracing: Expose tracepoint BTF ids via tracefs",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260518-generic_tracepoint-v2-2-b755a5cf67bb@meta.com/",
+      "summary": "Adds a new tracefs file that exports the BTF type IDs for kernel tracepoints, allowing userspace tools and BPF loaders to look up tracepoint argument types without resorting to offline BTF parsing. This is a building block for generic tracepoint attachment: a BPF loader can read the BTF ID from tracefs at runtime and use it to verify argument types before attaching a program. A companion patch makes btf_get_module_btf() and btf_relocate_id() non-static so they can be called from the tracing subsystem.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, docs: add LOAD_ACQUIRE and STORE_RELEASE instructions",
+      "author": "Alexis Lothoré",
+      "url": "https://lore.kernel.org/bpf/20260521-bpf-insn-doc-v2-1-8c43c037d599@bootlin.com/",
+      "summary": "Documents the LOAD_ACQUIRE and STORE_RELEASE atomic memory-ordering instructions in the BPF ISA specification. These instructions, which emit acquire/release barriers on architectures that support them, were added to the BPF bytecode but lacked formal documentation in the instruction set reference. This v2 addresses typos and formatting issues noted in review of the original submission, completing the documentation of BPF's atomic instruction set.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Check tail zero of bpf_common_attr using offsetofend",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260518145446.6794-2-leon.hwang@linux.dev/",
+      "summary": "Lead patch of a 5-patch cleanup series for BPF syscall attribute validation. This patch corrects the tail-zero check in the common attribute structure to use offsetofend() rather than a hand-rolled calculation, closing a potential gap where new fields added at the end of the struct might bypass the zero-check. Subsequent patches fix a concurrency regression in map_create(), add OPTS_VALID() checking for log_opts, and add selftests verifying padding byte enforcement. Together the series tightens the BPF syscall ABI.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix concurrent regression in map_create()",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260521142909.95818-1-leon.hwang@linux.dev/",
+      "summary": "Fixes a race condition in map_create() introduced by the recent BPF common-attribute refactor, where a concurrent map creation could observe partially initialized state. This v2 standalone submission extracts the fix from the larger cleanup series for faster merging. The race window is narrow but reproducible under parallel BPF program loading, making it important to land before the window of common-attribute changes closes.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: fix deadlock in special field destruction in NMI",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260519011450.1144935-2-utilityemal77@gmail.com/",
+      "summary": "Fixes a deadlock that can occur when BPF special fields (such as bpf_spin_lock or bpf_timer) are destroyed from NMI context. The NMI handler would attempt to acquire a spinlock already held on the interrupted CPU, causing a hard lockup. The fix defers the destruction work to a safe context using an existing irq-work mechanism already present in the BPF runtime. The bug affects any workload using BPF maps with special fields on kernels that allow NMI-context BPF execution.",
+      "related_links": []
+    }
+  ]
+}

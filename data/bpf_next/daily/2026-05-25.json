@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-05-26T00:00:00Z",
+  "period_start": "2026-05-24",
+  "period_end": "2026-05-25",
+  "patch_count": 1,
+  "thread_count": 1,
+  "top_contributors": ["Dhiraj Shah"],
+  "key_topics": ["arena", "kfuncs", "docs"],
+  "overview": "May 24–25 saw a single patch to bpf-next: v2 of Dhiraj Shah's kernel-doc addition for the BPF arena page kfuncs. The patch documents the kfunc interface that allows BPF programs to allocate and manage pages within a BPF arena, improving API discoverability for this relatively new memory-management primitive.",
+  "patches": [
+    {
+      "title": "bpf: Add kernel-doc for arena page kfuncs",
+      "author": "Dhiraj Shah",
+      "url": "https://lore.kernel.org/bpf/20260524114243.259916-1-find.dhiraj@gmail.com/",
+      "summary": "Adds kernel-doc comments to the BPF arena page kfuncs, which expose page-level memory management to BPF programs running in an arena context. The BPF arena is a relatively new feature that allows BPF programs to work with large, sparsely populated memory regions; the kfuncs provide the primitives for allocating, freeing, and querying pages within that arena. This v2 patch addresses review feedback on the documentation format and coverage from the initial submission. Improved docs make the arena kfunc API more discoverable for BPF developers building memory-intensive programs.",
+      "related_links": []
+    }
+  ]
+}
