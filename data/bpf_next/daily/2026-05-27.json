@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-05-28T00:00:00Z",
+  "period_start": "2026-05-26",
+  "period_end": "2026-05-27",
+  "patch_count": 72,
+  "thread_count": 9,
+  "top_contributors": ["Jiri Olsa", "Eduard Zingerman", "teawater", "Mahe Tardy"],
+  "key_topics": ["tracing", "trampoline", "verifier", "kfuncs", "struct-ops", "arena", "libbpf", "maps"],
+  "overview": "Activity on bpf-next for May 26-27 was dominated by Jiri Olsa's sixth revision of the `tracing_multi` link series — a 29-patch effort enabling a single BPF fentry/fexit program to attach to multiple kernel functions through one link file descriptor. Eduard Zingerman posted three rapid RFC revisions improving verifier diagnostics when the 1M-instruction budget is exhausted, adding hot callchain reporting and loop hierarchy analysis. Additional highlights include a new `bpf_icmp_send` kfunc reaching version 7, reduced annotation burden for BPF arena programs, a BPF struct_ops interface for memory cgroup customization, and an RCU correctness fix for hash table updates.",
+  "patches": [
+    {
+      "title": "bpf: Add support for tracing multi link",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260527113951.46265-14-jolsa@kernel.org/",
+      "summary": "Introduces the core `tracing_multi` link type, allowing a single BPF fentry/fexit/fmod_ret program to be attached to multiple kernel functions simultaneously via one link file descriptor. Previously, attaching to N functions required N separate links; this new type collapses that into a single operation backed by a shared trampoline. The implementation builds on new `bpf_trampoline_ops` callbacks and `bpf_tramp_node` abstractions introduced earlier in the same series. Support for session semantics, per-attachment cookies, and fdinfo introspection is also included in the overall 29-patch series. This is the sixth version, addressing accumulated review feedback.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add multi tracing attach types",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260527113951.46265-11-jolsa@kernel.org/",
+      "summary": "Defines the new `BPF_TRACE_MULTI_*` attach type constants that form the UAPI surface for the `tracing_multi` link, extending kernel-internal routing so that programs using these types are dispatched to the new link creation path. The attach types plug into the verifier's program type validation, ensuring programs are checked against BTF-typed function signatures before any multi-attachment is allowed. This patch is a prerequisite for the core tracing_multi link creation and trampoline management code that follows it in the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: report hot simulated callchains when 1M instructions limit is met",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260527-better-1m-reporting-v3-4-b3ede0588a75@gmail.com/",
+      "summary": "When the BPF verifier exhausts its 1-million-instruction budget it currently emits a generic error with little actionable detail; this patch adds logic to identify and report the hottest simulated callchains — the control-flow paths that consumed the most verification steps. Tracking is done by recording simulation depth at each explored state and surfacing the top offenders in the verifier log, giving developers a concrete starting point for reducing program complexity. A companion patch in the series adds register-difference summaries for those hot callchains. This is version 3 of the RFC, iterating on the data-collection heuristics based on mailing list feedback.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow subprogs to return arena pointers",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260527071457.4598-5-emil@etsalapatis.com/",
+      "summary": "Extends the BPF verifier to propagate arena-pointer classification across subprogram (helper function) boundaries, allowing callees to return `arena`-tagged pointers without requiring explicit `__arena` annotations at every call site. Previously the arena memory region marker was dropped at subprogram boundaries, forcing developers to annotate all intermediary functions manually and cluttering otherwise clean code. The fix parses BTF type tags on function return types and threads the arena classification through the call-return path in the verifier. Part of a five-patch series aimed at minimising annotation overhead for BPF arena programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_icmp_send kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260526153708.279717-4-mahe.tardy@gmail.com/",
+      "summary": "Adds a new `bpf_icmp_send` kfunc that allows BPF programs attached to tc, cgroup_skb, and related hooks to synthesize and inject ICMP error messages in response to observed traffic. The implementation reuses existing netfilter `nf_reject` utilities — moved to core IPv4/IPv6 in earlier patches of the series — and handles both IPv4 ICMPv4 and IPv6 ICMPv6 destinations. A recursion guard prevents re-entrant ICMP generation. Version 7 of the series includes selftest coverage for cgroup_skb (IPv4 and IPv6), tc attach points, and the recursion prevention path.",
+      "related_links": []
+    },
+    {
+      "title": "mm: memcontrol: Add BPF struct_ops for memory controller",
+      "author": "teawater",
+      "url": "https://lore.kernel.org/bpf/9e081d01a0708dcdd101af7f7bede07cf43ca21d.1779760876.git.zhuhui@kylinos.cn/",
+      "summary": "Introduces a `memcg_bpf_ops` struct_ops interface that allows BPF programs to customise memory cgroup behaviour, including priority-based memory protection and asynchronous page reclaim policies, without requiring kernel patches. Memory controller hooks are exposed as BPF struct_ops callbacks, so operators can implement per-cgroup-hierarchy policies in BPF and load them at runtime. The series also adds a `bpf_try_to_free_mem_cgroup_pages` kfunc for triggering reclaim from BPF context, and extends `bpf_link_create` to pass flags for struct_ops attachment. This seventh RFC iteration incorporates feedback on hierarchy support and libbpf API design.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Use hlist_nulls_replace_rcu() when updating htab elements",
+      "author": "luoxuanqiang",
+      "url": "https://lore.kernel.org/bpf/20260527070139.223386-1-xuanqiang.luo@linux.dev/",
+      "summary": "Fixes an RCU correctness issue in the BPF hash table map where element updates used the standard hlist replacement helper instead of `hlist_nulls_replace_rcu()`, which is required for nulls-terminated lists traversed under RCU read locks. Without the nulls-aware variant a concurrent reader walking the list could fail to observe the sentinel value and loop indefinitely or access freed memory. The fix is a targeted replacement that aligns hash table element updates with the RCU guarantees already provided elsewhere in the htab code.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Add __NR_bpf definition for LoongArch",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260526063936.16769-1-yangtiezhu@loongson.cn/",
+      "summary": "Adds the missing `__NR_bpf` syscall number constant for the LoongArch architecture to libbpf's internal syscall fallback header, enabling the BPF userspace library to invoke the bpf(2) syscall on LoongArch systems whose system headers do not expose this definition. LoongArch is a RISC ISA developed by Loongson Technology that is supported in the mainline Linux kernel. This small portability fix completes libbpf's architecture coverage for LoongArch, mirroring similar definitions already present for MIPS, RISCV, and other non-x86 targets.",
+      "related_links": []
+    }
+  ]
+}
