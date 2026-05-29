@@ -1,0 +1,603 @@
+{
+  "period": "daily",
+  "period_start": "2026-05-28",
+  "period_end": "2026-05-29",
+  "fetched_at": "2026-05-29T12:17:56Z",
+  "patches": [
+    {
+      "title": "[bpf-next,3/3] libbpf: Also reset {insn,data}_cur on realloc failure",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260529094119.307264-3-daniel@iogearbox.net/",
+      "date": "2026-05-29T09:41:18",
+      "series": [
+        {
+          "id": 1102769,
+          "url": "https://patchwork.kernel.org/api/series/1102769/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102769",
+          "date": "2026-05-29T09:41:16",
+          "name": "[bpf-next,1/3] libbpf: Drop redundant self-loop in emit_check_err",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1102769/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] libbpf: Skip hash computation when loader generation failed",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260529094119.307264-2-daniel@iogearbox.net/",
+      "date": "2026-05-29T09:41:17",
+      "series": [
+        {
+          "id": 1102769,
+          "url": "https://patchwork.kernel.org/api/series/1102769/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102769",
+          "date": "2026-05-29T09:41:16",
+          "name": "[bpf-next,1/3] libbpf: Drop redundant self-loop in emit_check_err",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1102769/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] libbpf: Drop redundant self-loop in emit_check_err",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260529094119.307264-1-daniel@iogearbox.net/",
+      "date": "2026-05-29T09:41:16",
+      "series": [
+        {
+          "id": 1102769,
+          "url": "https://patchwork.kernel.org/api/series/1102769/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102769",
+          "date": "2026-05-29T09:41:16",
+          "name": "[bpf-next,1/3] libbpf: Drop redundant self-loop in emit_check_err",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1102769/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,13/13] selftests/bpf: Test using dynptr after freeing the underlying object",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-14-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:36",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,12/13] selftests/bpf: Test using file dynptr after the reference on file is dropped",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-13-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:35",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,11/13] selftests/bpf: Test using slice after invalidating dynptr clone",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-12-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:34",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,10/13] selftests/bpf: Test creating dynptr from dynptr data and slice",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-11-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:33",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,09/13] bpf: Fix dynptr ref counting to scan all call frames",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-10-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:32",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,08/13] bpf: Unify release handling for helpers and kfuncs",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-9-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:31",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,07/13] bpf: Unify referenced object tracking in verifier",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-8-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:30",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,06/13] bpf: Remove redundant dynptr arg check for helper",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-7-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:29",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,05/13] bpf: Refactor object relationship tracking and fix dynptr UAF bug",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-6-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:28",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,04/13] bpf: Preserve reg->id of pointer objects after null-check",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-5-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:27",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,03/13] bpf: Assign reg->id when getting referenced kptr from ctx",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-4-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:26",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,02/13] bpf: Unify dynptr handling in the verifier",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-3-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:25",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,01/13] bpf: Simplify mark_stack_slot_obj_read() and callers",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-2-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:24",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Take mmap_lock in zap_pages()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260528222014.38980-1-alexei.starovoitov@gmail.com/",
+      "date": "2026-05-28T22:20:14",
+      "series": [
+        {
+          "id": 1102498,
+          "url": "https://patchwork.kernel.org/api/series/1102498/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102498",
+          "date": "2026-05-28T22:20:14",
+          "name": "[bpf-next] bpf: Take mmap_lock in zap_pages()",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1102498/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,3/3] selftests/bpf: Stress LRU rqspinlock recovery paths",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-lru_map_spin-v1-3-4f52223170cf@meta.com/",
+      "date": "2026-05-28T18:13:26",
+      "series": [
+        {
+          "id": 1102390,
+          "url": "https://patchwork.kernel.org/api/series/1102390/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102390",
+          "date": "2026-05-28T18:13:23",
+          "name": "bpf: Fix LRU NMI/tracepoint re-entry deadlock",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1102390/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,2/3] Documentation/bpf: Refresh map_lru_hash_update.dot for rqspinlock",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-lru_map_spin-v1-2-4f52223170cf@meta.com/",
+      "date": "2026-05-28T18:13:25",
+      "series": [
+        {
+          "id": 1102390,
+          "url": "https://patchwork.kernel.org/api/series/1102390/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102390",
+          "date": "2026-05-28T18:13:23",
+          "name": "bpf: Fix LRU NMI/tracepoint re-entry deadlock",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1102390/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,1/3] bpf: Fix NMI/tracepoint re-entry deadlock on lru locks",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-lru_map_spin-v1-1-4f52223170cf@meta.com/",
+      "date": "2026-05-28T18:13:24",
+      "series": [
+        {
+          "id": 1102390,
+          "url": "https://patchwork.kernel.org/api/series/1102390/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102390",
+          "date": "2026-05-28T18:13:23",
+          "name": "bpf: Fix LRU NMI/tracepoint re-entry deadlock",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1102390/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,11/11] selftests/bpf: Add resizable hashmap to benchmarks",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-rhash-v5-11-7205191b6c57@meta.com/",
+      "date": "2026-05-28T17:47:22",
+      "series": [
+        {
+          "id": 1102374,
+          "url": "https://patchwork.kernel.org/api/series/1102374/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102374",
+          "date": "2026-05-28T17:47:11",
+          "name": "bpf: Introduce resizable hash map",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1102374/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,10/11] bpftool: Add rhash map documentation",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-rhash-v5-10-7205191b6c57@meta.com/",
+      "date": "2026-05-28T17:47:21",
+      "series": [
+        {
+          "id": 1102374,
+          "url": "https://patchwork.kernel.org/api/series/1102374/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102374",
+          "date": "2026-05-28T17:47:11",
+          "name": "bpf: Introduce resizable hash map",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1102374/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,09/11] selftests/bpf: Add BPF iterator tests for resizable hash map",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-rhash-v5-9-7205191b6c57@meta.com/",
+      "date": "2026-05-28T17:47:20",
+      "series": [
+        {
+          "id": 1102374,
+          "url": "https://patchwork.kernel.org/api/series/1102374/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102374",
+          "date": "2026-05-28T17:47:11",
+          "name": "bpf: Introduce resizable hash map",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1102374/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,08/11] selftests/bpf: Add basic tests for resizable hash map",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-rhash-v5-8-7205191b6c57@meta.com/",
+      "date": "2026-05-28T17:47:19",
+      "series": [
+        {
+          "id": 1102374,
+          "url": "https://patchwork.kernel.org/api/series/1102374/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102374",
+          "date": "2026-05-28T17:47:11",
+          "name": "bpf: Introduce resizable hash map",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1102374/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,07/11] libbpf: Support resizable hashtable",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-rhash-v5-7-7205191b6c57@meta.com/",
+      "date": "2026-05-28T17:47:18",
+      "series": [
+        {
+          "id": 1102374,
+          "url": "https://patchwork.kernel.org/api/series/1102374/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102374",
+          "date": "2026-05-28T17:47:11",
+          "name": "bpf: Introduce resizable hash map",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1102374/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,06/11] bpf: Optimize word-sized keys for resizable hashtable",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-rhash-v5-6-7205191b6c57@meta.com/",
+      "date": "2026-05-28T17:47:17",
+      "series": [
+        {
+          "id": 1102374,
+          "url": "https://patchwork.kernel.org/api/series/1102374/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102374",
+          "date": "2026-05-28T17:47:11",
+          "name": "bpf: Introduce resizable hash map",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1102374/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,05/11] bpf: Allow special fields in resizable hashtab",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-rhash-v5-5-7205191b6c57@meta.com/",
+      "date": "2026-05-28T17:47:16",
+      "series": [
+        {
+          "id": 1102374,
+          "url": "https://patchwork.kernel.org/api/series/1102374/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102374",
+          "date": "2026-05-28T17:47:11",
+          "name": "bpf: Introduce resizable hash map",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1102374/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,04/11] bpf: Implement iteration ops for resizable hashtab",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-rhash-v5-4-7205191b6c57@meta.com/",
+      "date": "2026-05-28T17:47:15",
+      "series": [
+        {
+          "id": 1102374,
+          "url": "https://patchwork.kernel.org/api/series/1102374/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102374",
+          "date": "2026-05-28T17:47:11",
+          "name": "bpf: Introduce resizable hash map",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1102374/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,03/11] bpf: Implement resizable hashmap basic functions",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-rhash-v5-3-7205191b6c57@meta.com/",
+      "date": "2026-05-28T17:47:14",
+      "series": [
+        {
+          "id": 1102374,
+          "url": "https://patchwork.kernel.org/api/series/1102374/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102374",
+          "date": "2026-05-28T17:47:11",
+          "name": "bpf: Introduce resizable hash map",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1102374/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,02/11] rhashtable: Add selftest for rhashtable_next_key()",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-rhash-v5-2-7205191b6c57@meta.com/",
+      "date": "2026-05-28T17:47:13",
+      "series": [
+        {
+          "id": 1102374,
+          "url": "https://patchwork.kernel.org/api/series/1102374/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102374",
+          "date": "2026-05-28T17:47:11",
+          "name": "bpf: Introduce resizable hash map",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1102374/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,01/11] rhashtable: Add rhashtable_next_key() API",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-rhash-v5-1-7205191b6c57@meta.com/",
+      "date": "2026-05-28T17:47:12",
+      "series": [
+        {
+          "id": 1102374,
+          "url": "https://patchwork.kernel.org/api/series/1102374/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102374",
+          "date": "2026-05-28T17:47:11",
+          "name": "bpf: Introduce resizable hash map",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1102374/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Use at least 10 args in stack argument tests",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260528161750.1900674-3-puranjay@kernel.org/",
+      "date": "2026-05-28T16:17:48",
+      "series": [
+        {
+          "id": 1102342,
+          "url": "https://patchwork.kernel.org/api/series/1102342/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102342",
+          "date": "2026-05-28T16:17:46",
+          "name": "bpf, arm64: Stack argument fixes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1102342/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf, arm64: Fix redundant MOV and clarify stack arg comments",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260528161750.1900674-2-puranjay@kernel.org/",
+      "date": "2026-05-28T16:17:47",
+      "series": [
+        {
+          "id": 1102342,
+          "url": "https://patchwork.kernel.org/api/series/1102342/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102342",
+          "date": "2026-05-28T16:17:46",
+          "name": "bpf, arm64: Stack argument fixes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1102342/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: ignore call depth accounting for retbleed in verifier tests",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260528-fix_tests_for_retbleed_stuff-v1-1-c2022a1f3bee@bootlin.com/",
+      "date": "2026-05-28T13:27:14",
+      "series": [
+        {
+          "id": 1102260,
+          "url": "https://patchwork.kernel.org/api/series/1102260/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102260",
+          "date": "2026-05-28T13:27:14",
+          "name": "[bpf-next] selftests/bpf: ignore call depth accounting for retbleed in verifier tests",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1102260/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3] bpf: reject overlarge global subprog argument sizes",
+      "author": "Taegu Ha",
+      "url": "https://lore.kernel.org/bpf/20260528062155.3988156-1-hataegu0826@gmail.com/",
+      "date": "2026-05-28T06:21:55",
+      "series": [
+        {
+          "id": 1101988,
+          "url": "https://patchwork.kernel.org/api/series/1101988/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1101988",
+          "date": "2026-05-28T06:21:55",
+          "name": "[bpf-next,v3] bpf: reject overlarge global subprog argument sizes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1101988/mbox/"
+        }
+      ]
+    }
+  ]
+}
