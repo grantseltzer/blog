@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-05-29T00:30:00Z",
+  "period_start": "2026-05-27",
+  "period_end": "2026-05-28",
+  "patch_count": 44,
+  "thread_count": 7,
+  "top_contributors": ["Jiri Olsa", "Eduard Zingerman", "Emil Tsalapatis"],
+  "key_topics": ["verifier", "tracing", "trampoline", "arena", "ftrace", "btf", "maps"],
+  "overview": "A busy two-day window dominated by Jiri Olsa's long-running tracing_multi link series (v6, 29 patches), which introduces a new BPF link type allowing a single link to attach a tracing program to multiple kernel functions atomically. Eduard Zingerman followed up with a v3 RFC improving verifier diagnostics when the 1M-instruction budget is exhausted, adding callchain profiling and loop-hierarchy analysis to help developers understand why verification explodes.",
+  "patches": [
+    {
+      "title": "bpf: Add support for tracing multi link",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260527113951.46265-14-jolsa@kernel.org/",
+      "summary": "Core patch (13/29) of the tracing_multi link series that introduces BPF_TRACE_MULTI_KPROBE and BPF_TRACE_MULTI_KRETPROBE attach types, letting a single BPF link cover hundreds of kernel functions in one syscall. The implementation reuses the existing multi-kprobe infrastructure and adds a new bpf_link_ops backend. Companion patches refactor the trampoline layer with bpf_trampoline_ops callbacks and a mutex-lock pool to support concurrent attachment. Full libbpf API and selftest coverage is included in the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: report hot simulated callchains when 1M instructions limit is met",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260527-better-1m-reporting-v3-4-b3ede0588a75@gmail.com/",
+      "summary": "Part of an RFC series (v3) that dramatically improves the BPF verifier's error output when the 1M-instruction limit is hit. This patch profiles the verifier's simulated execution to surface the hottest call chains — the loops or call paths consuming the most instruction budget. Combined with earlier patches in the series that compute loop hierarchy and print register diffs, developers can now pinpoint which part of their program causes budget exhaustion rather than guessing from a bare error message.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow subprogs to return arena pointers",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260527071457.4598-5-emil@etsalapatis.com/",
+      "summary": "Part of a 5-patch series aiming to reduce the annotation burden for BPF arena programs. This patch teaches the verifier to accept arena pointer return types from subprograms, removing the need for explicit casts at every call site. An earlier patch in the series extends BTF type-tag parsing for function arguments so the verifier can infer arena ownership from the __arena qualifier. Together they allow arena-heavy programs to be written in a more natural C style.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: reject overlarge global subprog argument sizes",
+      "author": "Taegu Ha",
+      "url": "https://lore.kernel.org/bpf/20260528062155.3988156-1-hataegu0826@gmail.com/",
+      "summary": "Third revision of a standalone verifier fix that rejects global subprogram arguments whose aggregate size exceeds what the BPF calling convention can safely pass. Without this check, an oversized argument could silently truncate or corrupt data at the callee boundary. The fix adds an explicit size validation pass during global subprogram verification before register setup, preventing a class of hard-to-diagnose runtime bugs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix bpf_arena_handle_page_fault() redefinition without CONFIG_BPF_SYSCALL",
+      "author": "Tejun Heo",
+      "url": "https://lore.kernel.org/bpf/20260527192632.2109419-1-tj@kernel.org/",
+      "summary": "One-liner fix from Tejun Heo addressing a compile error where bpf_arena_handle_page_fault() was defined twice when CONFIG_BPF_SYSCALL is disabled. The duplicate definition was introduced by a recent arena patch and breaks kernel configs that enable BPF JIT or tracing without the full BPF syscall. The fix guards the second definition with the appropriate ifdef.",
+      "related_links": []
+    },
+    {
+      "title": "x86/ftrace: relocate %rip-relative percpu refs in dynamic trampolines",
+      "author": "Alexis Lothoré (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260527-fix_call_depth_in_trampoline-v1-1-1c1abc8ae310@bootlin.com/",
+      "summary": "Fixes a subtle bug in x86 dynamic BPF trampolines where %rip-relative accesses to per-CPU variables were not being relocated when the trampoline image was copied to a new memory location. This could produce incorrect per-CPU reads in trampoline code that references kernel per-CPU data, leading to silent data corruption or crashes on SMP systems. The patch adds relocation logic for this specific addressing mode during trampoline image finalization.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Use hlist_nulls_replace_rcu() when updating htab elements",
+      "author": "luoxuanqiang",
+      "url": "https://lore.kernel.org/bpf/20260527070139.223386-1-xuanqiang.luo@linux.dev/",
+      "summary": "Correctness fix for the BPF hash map (htab) update path that switches from an open-coded RCU list splice to the proper hlist_nulls_replace_rcu() helper. The existing code could allow a reader traversing the nulls-terminated list to see a stale terminator during an in-place element replacement, producing a use-after-free or premature loop termination. Using the dedicated helper ensures the nulls marker is updated atomically with the pointer swap.",
+      "related_links": []
+    }
+  ]
+}
