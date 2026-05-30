@@ -1,0 +1,535 @@
+{
+  "period": "daily",
+  "period_start": "2026-05-29",
+  "period_end": "2026-05-30",
+  "fetched_at": "2026-05-30T10:48:45Z",
+  "patches": [
+    {
+      "title": "[v2,bpf-next,4/4] selftests/bpf: Add tests for arena slub-backed allocator",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260530011345.99342-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-05-30T01:13:44",
+      "series": [
+        {
+          "id": 1103166,
+          "url": "https://patchwork.kernel.org/api/series/1103166/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103166",
+          "date": "2026-05-30T01:13:40",
+          "name": "bpf,slab: Introduce bpf_arena_alloc() kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1103166/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,3/4] bpf,slab: Add slub-backed allocator for bpf_arena",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260530011345.99342-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-05-30T01:13:43",
+      "series": [
+        {
+          "id": 1103166,
+          "url": "https://patchwork.kernel.org/api/series/1103166/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103166",
+          "date": "2026-05-30T01:13:40",
+          "name": "bpf,slab: Introduce bpf_arena_alloc() kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1103166/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,2/4] slub: Pass kmem_cache to alloc_slab_page()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260530011345.99342-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-05-30T01:13:42",
+      "series": [
+        {
+          "id": 1103166,
+          "url": "https://patchwork.kernel.org/api/series/1103166/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103166",
+          "date": "2026-05-30T01:13:40",
+          "name": "bpf,slab: Introduce bpf_arena_alloc() kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1103166/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,1/4] slab: Introduce kmem_cache_alloc_arena_nolock and kfree_arena_nolock",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260530011345.99342-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-05-30T01:13:41",
+      "series": [
+        {
+          "id": 1103166,
+          "url": "https://patchwork.kernel.org/api/series/1103166/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103166",
+          "date": "2026-05-30T01:13:40",
+          "name": "bpf,slab: Introduce bpf_arena_alloc() kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1103166/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/5] selftests/bpf: libarena: Directly return arena pointers from functions",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260530002259.4505-6-emil@etsalapatis.com/",
+      "date": "2026-05-30T00:22:59",
+      "series": [
+        {
+          "id": 1103160,
+          "url": "https://patchwork.kernel.org/api/series/1103160/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103160",
+          "date": "2026-05-30T00:22:54",
+          "name": "bpf: Minimize annotations for arena programs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1103160/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/5] selftests/bpf: Remove __arg_arena from the codebase",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260530002259.4505-5-emil@etsalapatis.com/",
+      "date": "2026-05-30T00:22:58",
+      "series": [
+        {
+          "id": 1103160,
+          "url": "https://patchwork.kernel.org/api/series/1103160/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103160",
+          "date": "2026-05-30T00:22:54",
+          "name": "bpf: Minimize annotations for arena programs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1103160/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/5] bpf: Allow subprogs to return arena pointers",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260530002259.4505-4-emil@etsalapatis.com/",
+      "date": "2026-05-30T00:22:57",
+      "series": [
+        {
+          "id": 1103160,
+          "url": "https://patchwork.kernel.org/api/series/1103160/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103160",
+          "date": "2026-05-30T00:22:54",
+          "name": "bpf: Minimize annotations for arena programs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1103160/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/5] verifier: parse BTF type tags for function arguments",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260530002259.4505-3-emil@etsalapatis.com/",
+      "date": "2026-05-30T00:22:56",
+      "series": [
+        {
+          "id": 1103160,
+          "url": "https://patchwork.kernel.org/api/series/1103160/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103160",
+          "date": "2026-05-30T00:22:54",
+          "name": "bpf: Minimize annotations for arena programs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1103160/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/5] selftests/bpf: libarena: Add \"arena\" BTF type tag to __arena qualifier",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260530002259.4505-2-emil@etsalapatis.com/",
+      "date": "2026-05-30T00:22:55",
+      "series": [
+        {
+          "id": 1103160,
+          "url": "https://patchwork.kernel.org/api/series/1103160/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103160",
+          "date": "2026-05-30T00:22:54",
+          "name": "bpf: Minimize annotations for arena programs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1103160/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: MAINTAINERS: Update bpf maintainers",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260529203909.1222164-1-martin.lau@linux.dev/",
+      "date": "2026-05-29T20:39:09",
+      "series": [
+        {
+          "id": 1103114,
+          "url": "https://patchwork.kernel.org/api/series/1103114/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103114",
+          "date": "2026-05-29T20:39:09",
+          "name": "[bpf-next] bpf: MAINTAINERS: Update bpf maintainers",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1103114/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/4] selftests/bpf: Add tests for arena slub-backed allocator",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260529202438.16408-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-05-29T20:24:37",
+      "series": [
+        {
+          "id": 1103103,
+          "url": "https://patchwork.kernel.org/api/series/1103103/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103103",
+          "date": "2026-05-29T20:24:33",
+          "name": "bpf,slab: Introduce bpf_arena_alloc() kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1103103/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/4] bpf,slab: Add slub-backed allocator for bpf_arena",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260529202438.16408-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-05-29T20:24:36",
+      "series": [
+        {
+          "id": 1103103,
+          "url": "https://patchwork.kernel.org/api/series/1103103/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103103",
+          "date": "2026-05-29T20:24:33",
+          "name": "bpf,slab: Introduce bpf_arena_alloc() kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1103103/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/4] slub: Pass kmem_cache to alloc_slab_page()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260529202438.16408-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-05-29T20:24:35",
+      "series": [
+        {
+          "id": 1103103,
+          "url": "https://patchwork.kernel.org/api/series/1103103/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103103",
+          "date": "2026-05-29T20:24:33",
+          "name": "bpf,slab: Introduce bpf_arena_alloc() kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1103103/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/4] slab: Introduce kmem_cache_alloc_nolock()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260529202438.16408-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-05-29T20:24:34",
+      "series": [
+        {
+          "id": 1103103,
+          "url": "https://patchwork.kernel.org/api/series/1103103/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103103",
+          "date": "2026-05-29T20:24:33",
+          "name": "bpf,slab: Introduce bpf_arena_alloc() kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1103103/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] libbpf: Skip endianness swap when loader generation failed",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260529162829.315921-1-daniel@iogearbox.net/",
+      "date": "2026-05-29T16:28:29",
+      "series": [
+        {
+          "id": 1103022,
+          "url": "https://patchwork.kernel.org/api/series/1103022/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103022",
+          "date": "2026-05-29T16:28:29",
+          "name": "[bpf-next] libbpf: Skip endianness swap when loader generation failed",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1103022/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] libbpf: Also reset {insn,data}_cur on realloc failure",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260529094119.307264-3-daniel@iogearbox.net/",
+      "date": "2026-05-29T09:41:18",
+      "series": [
+        {
+          "id": 1102769,
+          "url": "https://patchwork.kernel.org/api/series/1102769/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102769",
+          "date": "2026-05-29T09:41:16",
+          "name": "[bpf-next,1/3] libbpf: Drop redundant self-loop in emit_check_err",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1102769/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] libbpf: Skip hash computation when loader generation failed",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260529094119.307264-2-daniel@iogearbox.net/",
+      "date": "2026-05-29T09:41:17",
+      "series": [
+        {
+          "id": 1102769,
+          "url": "https://patchwork.kernel.org/api/series/1102769/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102769",
+          "date": "2026-05-29T09:41:16",
+          "name": "[bpf-next,1/3] libbpf: Drop redundant self-loop in emit_check_err",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1102769/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] libbpf: Drop redundant self-loop in emit_check_err",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260529094119.307264-1-daniel@iogearbox.net/",
+      "date": "2026-05-29T09:41:16",
+      "series": [
+        {
+          "id": 1102769,
+          "url": "https://patchwork.kernel.org/api/series/1102769/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102769",
+          "date": "2026-05-29T09:41:16",
+          "name": "[bpf-next,1/3] libbpf: Drop redundant self-loop in emit_check_err",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1102769/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,13/13] selftests/bpf: Test using dynptr after freeing the underlying object",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-14-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:36",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,12/13] selftests/bpf: Test using file dynptr after the reference on file is dropped",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-13-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:35",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,11/13] selftests/bpf: Test using slice after invalidating dynptr clone",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-12-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:34",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,10/13] selftests/bpf: Test creating dynptr from dynptr data and slice",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-11-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:33",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,09/13] bpf: Fix dynptr ref counting to scan all call frames",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-10-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:32",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,08/13] bpf: Unify release handling for helpers and kfuncs",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-9-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:31",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,07/13] bpf: Unify referenced object tracking in verifier",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-8-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:30",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,06/13] bpf: Remove redundant dynptr arg check for helper",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-7-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:29",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,05/13] bpf: Refactor object relationship tracking and fix dynptr UAF bug",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-6-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:28",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,04/13] bpf: Preserve reg->id of pointer objects after null-check",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-5-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:27",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,03/13] bpf: Assign reg->id when getting referenced kptr from ctx",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-4-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:26",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,02/13] bpf: Unify dynptr handling in the verifier",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-3-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:25",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,01/13] bpf: Simplify mark_stack_slot_obj_read() and callers",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-2-ameryhung@gmail.com/",
+      "date": "2026-05-29T01:49:24",
+      "series": [
+        {
+          "id": 1102560,
+          "url": "https://patchwork.kernel.org/api/series/1102560/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1102560",
+          "date": "2026-05-29T01:49:23",
+          "name": "Refactor verifier object relationship tracking",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1102560/mbox/"
+        }
+      ]
+    }
+  ]
+}
