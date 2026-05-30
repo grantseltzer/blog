@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-05-30T00:00:00Z",
+  "period_start": "2026-05-28",
+  "period_end": "2026-05-29",
+  "patch_count": 35,
+  "thread_count": 8,
+  "top_contributors": ["Mykyta Yatsenko", "Amery Hung", "Daniel Borkmann"],
+  "key_topics": ["verifier", "dynptr", "maps", "libbpf", "lru", "arm64"],
+  "overview": "The day was dominated by two major multi-patch series: Amery Hung's v6 13-patch refactor of verifier object relationship tracking that also fixes a dynptr use-after-free bug, and Mykyta Yatsenko's v5 11-patch introduction of a resizable BPF hash map backed by the kernel's rhashtable infrastructure. Additional work addressed LRU map NMI/tracepoint re-entry deadlocks, mmap locking correctness in BPF arena teardown, libbpf error-path cleanup, arm64 JIT redundancy, and verifier hardening against oversized global subprogram arguments.",
+  "patches": [
+    {
+      "title": "bpf: Refactor object relationship tracking and fix dynptr UAF bug",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-6-ameryhung@gmail.com/",
+      "summary": "The central patch of a 13-patch v6 series refactoring how the BPF verifier tracks relationships between referenced objects such as dynptrs and kptrs. It fixes a use-after-free bug where a dynptr could be accessed after its underlying object had been released by unifying release handling under a common object-relationship framework. The refactor improves correctness of liveness and release-order analysis across inlined and called subprograms. Companion patches unify dynptr handling, fix ref-counting across call frames, and add selftests covering the newly caught UAF scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Implement resizable hashmap basic functions",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-rhash-v5-3-7205191b6c57@meta.com/",
+      "summary": "Core implementation patch from a v5 11-patch series introducing a new BPF_MAP_TYPE_RHASH map type backed by the kernel's rhashtable infrastructure. This patch provides lookup, update, and delete operations for the resizable hash map, which automatically grows and shrinks as elements are inserted or removed, eliminating the need to pre-size maps at creation time. The series also adds special-field support, BPF iterator integration, libbpf API support, bpftool documentation, and selftests including benchmark comparisons.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix NMI/tracepoint re-entry deadlock on lru locks",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-lru_map_spin-v1-1-4f52223170cf@meta.com/",
+      "summary": "RFC patch fixing a deadlock that occurs when an NMI or tracepoint fires while an LRU hash map's spinlock is held and the handler also attempts to access an LRU map. The fix converts LRU map locking to rqspinlock (raw queued spinlock), which is safe for NMI re-entry because it does not disable interrupts in a way that causes deadlock under re-entry. The series includes updated documentation diagrams for LRU map state transitions and a stress test that exercises the recovery paths under concurrent NMI load.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Take mmap_lock in zap_pages()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260528222014.38980-1-alexei.starovoitov@gmail.com/",
+      "summary": "Fixes a missing mmap_lock acquisition in zap_pages(), which is called when BPF arena memory mappings are torn down. Without holding the lock, a concurrent page fault into the arena could race with the zap operation and observe inconsistent page table state, potentially causing memory corruption or a crash. This is a targeted correctness fix for BPF arena (mmap-backed) memory management introduced in recent kernel versions.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Also reset {insn,data}_cur on realloc failure",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260529094119.307264-3-daniel@iogearbox.net/",
+      "summary": "Final patch of a 3-patch libbpf cleanup series ensuring that insn_cur and data_cur pointers in the BPF loader program generator are reset to NULL when a realloc call fails. Without the reset, error-path code could dereference a stale freed pointer. The series also drops a redundant self-loop in emit_check_err and skips the program hash computation step when loader generation has already failed earlier, avoiding unnecessary work on an invalid program.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: reject overlarge global subprog argument sizes",
+      "author": "Taegu Ha",
+      "url": "https://lore.kernel.org/bpf/20260528062155.3988156-1-hataegu0826@gmail.com/",
+      "summary": "v3 verifier patch adding a check to reject BPF programs whose global subprograms declare argument sizes exceeding the maximum allowed stack frame size. Previously such programs could trigger out-of-bounds arithmetic during argument size calculations in the verifier before the normal stack depth limit was enforced. The fix adds an early validation step that aligns argument size constraints with existing per-frame stack depth limits.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Fix redundant MOV and clarify stack arg comments",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260528161750.1900674-2-puranjay@kernel.org/",
+      "summary": "Removes a redundant MOV instruction in the arm64 BPF JIT's stack argument handling path where a register was being reloaded with a value it already contained. The patch also rewrites accompanying comments to more accurately describe the arm64 calling convention for stack-passed arguments. A companion selftest patch adds a test case that uses at least 10 arguments to ensure the stack argument path is exercised on arm64, where the first 8 arguments are passed in registers.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: ignore call depth accounting for retbleed in verifier tests",
+      "author": "Alexis Lothoré (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260528-fix_tests_for_retbleed_stuff-v1-1-c2022a1f3bee@bootlin.com/",
+      "summary": "Adjusts BPF verifier selftests to tolerate the additional call depth overhead introduced by retbleed mitigations on x86. When retbleed mitigations are active the kernel inserts call-depth accounting thunks that consume extra call stack depth, causing tests that assert specific call depth counts to fail on mitigated kernels. The patch updates the affected tests to skip or relax call depth assertions when running under a retbleed-mitigated configuration.",
+      "related_links": []
+    }
+  ]
+}
