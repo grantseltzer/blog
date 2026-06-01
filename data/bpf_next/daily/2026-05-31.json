@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-06-01T11:00:00Z",
+  "period_start": "2026-05-30",
+  "period_end": "2026-05-31",
+  "patch_count": 13,
+  "thread_count": 4,
+  "top_contributors": ["Emil Tsalapatis", "Alexei Starovoitov", "Yuyang Huang"],
+  "key_topics": ["bpf-arena", "kfuncs", "slab", "verifier", "btf", "syscall"],
+  "overview": "Activity this period centered on advancing BPF arena memory management from two directions: Alexei Starovoitov introduced SLUB-backed allocator kfuncs for bpf_arena, bridging the kernel slab allocator into arena-resident programs, while Emil Tsalapatis continued reducing arena annotation overhead by teaching the verifier to infer arena pointer types via BTF type tags. A separate fix from Yuyang Huang addressed an OOB write in BPF_PROG_QUERY and corrected cgroup backward-compatibility behavior.",
+  "patches": [
+    {
+      "title": "slab: Introduce kmem_cache_alloc_arena_nolock and kfree_arena_nolock",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260530011345.99342-2-alexei.starovoitov@gmail.com/",
+      "summary": "Introduces two new slab primitives, kmem_cache_alloc_arena_nolock and kfree_arena_nolock, that allocate and free slab objects without holding the slab lock. These are the foundational pieces enabling the bpf_arena SLUB-backed allocator, where BPF programs manage their own concurrency guarantees. The lock-free contract is safe here because arena programs operate under BPF's existing memory model constraints. This is patch 1 of 4 in the series 'bpf,slab: Introduce bpf_arena_alloc() kfuncs'.",
+      "related_links": []
+    },
+    {
+      "title": "bpf,slab: Add slub-backed allocator for bpf_arena",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260530011345.99342-4-alexei.starovoitov@gmail.com/",
+      "summary": "Wires up the new lock-free slab primitives as a SLUB-backed allocator for bpf_arena, allowing BPF programs to call bpf_arena_alloc() kfuncs that return arena-resident pointers backed by real slab caches. This enables efficient, type-safe heap allocation within arena programs without resorting to custom bump allocators or per-CPU pools. The allocator respects arena address space constraints and interoperates with existing arena pointer tracking in the verifier.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: libarena: Add \"arena\" BTF type tag to __arena qualifier",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260530002259.4505-2-emil@etsalapatis.com/",
+      "summary": "Attaches the 'arena' BTF type tag to the __arena pointer qualifier in libarena so that the type information survives into the compiled BPF object. This is the foundation for the rest of the 'Minimize annotations for arena programs' series, giving the verifier something concrete to read when inferring whether a pointer lives in arena memory. Removing the need for explicit __arg_arena annotations at call sites is the payoff downstream.",
+      "related_links": []
+    },
+    {
+      "title": "verifier: parse BTF type tags for function arguments",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260530002259.4505-3-emil@etsalapatis.com/",
+      "summary": "Extends the BPF verifier to read BTF type tags on function argument types, enabling annotation-free arena pointer passing between subprograms. Previously the verifier required explicit __arg_arena markers at every call site; now it can derive the same information from the 'arena' BTF tag attached by the updated __arena qualifier. This is a meaningful ergonomics improvement for complex arena-heavy programs with many internal helper functions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow subprogs to return arena pointers",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260530002259.4505-4-emil@etsalapatis.com/",
+      "summary": "Teaches the verifier to accept arena pointers as return values from BPF subprograms, completing the annotation-minimization work for inter-subprogram arena data flow. Previously only scalar and PTR_TO_MAP_VALUE returns were tracked cleanly; this change adds arena-tagged pointer returns so callers know the returned pointer is arena-resident without additional hints. The companion selftests remove all remaining __arg_arena annotations from the libarena test suite.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: fix BPF_PROG_QUERY OOB write and cgroup backward compat",
+      "author": "Yuyang Huang",
+      "url": "https://lore.kernel.org/bpf/20260531075600.4058207-2-yuyanghuang@google.com/",
+      "summary": "Fixes an out-of-bounds write in BPF_PROG_QUERY where the kernel could write past the end of a user-supplied attribute buffer if the user declared a shorter uattr size than the kernel expected. The patch aligns writeback to respect the user-declared size boundary and restores backward-compatible behavior for cgroup queries that predates the current attr layout. This is the v3 revision, replacing the earlier approach of outright rejecting short uattr sizes with a safer truncation strategy.",
+      "related_links": []
+    }
+  ]
+}
