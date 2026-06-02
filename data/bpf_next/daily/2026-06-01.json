@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-06-02T00:00:00Z",
+  "period_start": "2026-05-31",
+  "period_end": "2026-06-01",
+  "patch_count": 16,
+  "thread_count": 6,
+  "top_contributors": ["Daniel Borkmann", "Yuyang Huang", "Tejun Heo"],
+  "key_topics": ["maps", "signed-loader", "arena", "syscall", "libbpf"],
+  "overview": "Activity on June 1st was dominated by Daniel Borkmann's v2 gen_loader fix series (7 patches), which tightens security invariants around exclusive maps in the BPF signed program loader by preventing them from being inserted as inner maps and enforcing that metadata maps be exclusive. Yuyang Huang posted v3 of a fix for an out-of-bounds write in BPF_PROG_QUERY, and Tejun Heo submitted a standalone arena page-allocation correctness fix.",
+  "patches": [
+    {
+      "title": "bpf: Reject exclusive maps as inner maps in map-in-map",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260601150248.394863-2-daniel@iogearbox.net/",
+      "summary": "Prevents exclusive maps (maps that enforce single-owner semantics in the signed BPF loader) from being used as inner maps inside map-in-map structures. Without this restriction a program could bypass the exclusivity guarantee because map-in-map lookup can hand out references to inner maps without going through the signed loader's ownership checks. This is the first kernel-side patch in Borkmann's v2 \"More gen_loader fixes\" series of 7, which also adds corresponding libbpf enforcement and selftests.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Reject non-exclusive metadata maps in the signed loader",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260601150248.394863-4-daniel@iogearbox.net/",
+      "summary": "Adds a check in libbpf's gen_loader code to reject metadata maps that are not marked exclusive, preventing unsigned or world-writable maps from being embedded in a signed program's metadata section. This pairs with the kernel-side exclusivity enforcement to close an integrity gap in the signed loader pipeline. It is patch 3/7 of the same v2 series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: fix BPF_PROG_QUERY OOB write and cgroup backward compat",
+      "author": "Yuyang Huang",
+      "url": "https://lore.kernel.org/bpf/20260531075600.4058207-2-yuyanghuang@google.com/",
+      "summary": "Fixes an out-of-bounds write in the BPF_PROG_QUERY syscall path that occurs when a user passes a uattr struct smaller than the current kernel layout expects. The fix writes back only up to the user-declared size rather than the full kernel-internal struct size, and also preserves backward compatibility for cgroup queries that rely on older result layouts. This is patch 1/2 of the v3 revision, replacing the narrower fix in v2.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Overwrite scratch PTE when allocating arena pages",
+      "author": "Tejun Heo",
+      "url": "https://lore.kernel.org/bpf/20260531165852.555930-1-tj@kernel.org/",
+      "summary": "Fixes a bug in bpf_arena page allocation where scratch PTEs were left stale rather than being overwritten when a real backing page is faulted in. Stale scratch PTEs could cause BPF arena programs to see incorrect memory mappings after allocation, leading to subtle memory corruption. The fix is a targeted single-patch correction to the arena page fault handler.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add arena invalid node id test",
+      "author": "random6",
+      "url": "https://lore.kernel.org/bpf/20260531135234.233421-1-random6.xyz@gmail.com/",
+      "summary": "Adds a selftest that exercises BPF arena's validation of node IDs, verifying that the kernel correctly rejects operations on out-of-range or invalid node IDs. Arena node ID validation is a safety property that prevents out-of-bounds memory access through arena pointers. This is a standalone single-patch selftest addition with no kernel changes.",
+      "related_links": []
+    }
+  ]
+}

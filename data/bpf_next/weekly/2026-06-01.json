@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-06-02T00:00:00Z",
+  "period_start": "2026-05-25",
+  "period_end": "2026-06-01",
+  "patch_count": 100,
+  "thread_count": 23,
+  "top_contributors": ["Jiri Olsa", "Daniel Borkmann", "Mykyta Yatsenko", "Amery Hung", "Alexei Starovoitov"],
+  "key_topics": ["maps", "tracing", "arena", "verifier", "libbpf", "kfuncs", "lru"],
+  "overview": "The week ending June 1st was one of the busiest in recent memory for the BPF subsystem, with 100 patches across 23 series. The headline contribution is Jiri Olsa's 29-patch tracing_multi link series (v6), which introduces a new BPF link type that allows a single tracing program to attach to multiple kernel functions atomically and efficiently. Mykyta Yatsenko posted v5 of the resizable hash map, a new BPF map type backed by the kernel rhashtable that can grow and shrink at runtime, while Alexei Starovoitov introduced SLUB-backed kfuncs for BPF arena allocation and Emil Tsalapatis reduced arena annotation overhead by teaching the verifier to track arena pointer return values from subprogs. Amery Hung's v6 verifier object relationship refactor rounded out the week with a dynptr use-after-free fix and unified object tracking infrastructure.",
+  "patches": [
+    {
+      "title": "bpf: Implement resizable hashmap basic functions",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-rhash-v5-3-7205191b6c57@meta.com/",
+      "summary": "Implements the core lookup, update, and delete operations for a new BPF_MAP_TYPE_RHASH resizable hash map backed by the kernel's rhashtable infrastructure. Unlike the fixed-size BPF hash map, this map can resize its bucket array at runtime as the element count grows or shrinks, avoiding the need to pre-allocate for worst-case load. The v5 series spans 11 patches and includes rhashtable API additions, iteration support, special field handling, and bpftool documentation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add support for tracing multi link",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260527113951.46265-14-jolsa@kernel.org/",
+      "summary": "Introduces a new BPF_LINK_TYPE_TRACING_MULTI link that allows a single BPF tracing program to be attached to a set of kernel functions in one operation, replacing the overhead of creating N individual fentry/fexit links. The kernel side adds multi-attach/detach trampoline infrastructure and a new set of attach types. The 29-patch series (v6) also adds libbpf API support, session and cookie support for the new link type, and comprehensive selftests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf,slab: Add slub-backed allocator for bpf_arena",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260530011345.99342-4-alexei.starovoitov@gmail.com/",
+      "summary": "Adds a SLUB-backed slab allocator for bpf_arena that allows BPF programs to call kmem_cache_alloc/free-style kfuncs within the arena address space, enabling arena-based data structures with efficient per-object allocation. The implementation adds arena-aware nolock variants of kmem_cache operations to avoid deadlocks with BPF's non-preemptible execution contexts. This is the core patch of Starovoitov's 4-patch v2 series introducing bpf_arena_alloc() kfuncs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refactor object relationship tracking and fix dynptr UAF bug",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-6-ameryhung@gmail.com/",
+      "summary": "Refactors how the BPF verifier tracks relationships between referenced objects (dynptrs, slices, and kptrs) by introducing a unified parent-child model, and simultaneously fixes a use-after-free bug where a dynptr slice could be used after its parent dynptr was invalidated. The refactor unifies dynptr and referenced-object tracking into a shared infrastructure, making future extensions cleaner. This is patch 5/13 of Amery Hung's v6 series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow subprogs to return arena pointers",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260530002259.4505-4-emil@etsalapatis.com/",
+      "summary": "Extends the BPF verifier to recognize and propagate arena pointer types through subprogram return values, eliminating the need for callers to re-annotate returned pointers with __arena or __arg_arena. This is the core verifier change in the 5-patch \"Minimize annotations for arena programs\" series, which also adds an \"arena\" BTF type tag, teaches the verifier to parse BTF type tags for function arguments, and removes now-unnecessary __arg_arena annotations from the selftests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject exclusive maps as inner maps in map-in-map",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260601150248.394863-2-daniel@iogearbox.net/",
+      "summary": "Blocks exclusive maps from being nested inside map-in-map structures, closing a loophole where the map-in-map lookup path could hand out references to an exclusive inner map without the signed loader's ownership checks. The v2 series (7 patches) also drops a redundant hash_buf parameter from map_get_hash, adds libbpf-side enforcement of exclusive metadata maps in the signed loader, and adds selftests. This is patch 1/7.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix NMI/tracepoint re-entry deadlock on lru locks",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-lru_map_spin-v1-1-4f52223170cf@meta.com/",
+      "summary": "RFC patch that replaces the raw spinlock in LRU hash map operations with an rqspinlock (a lock variant that records the interrupted holder context), preventing deadlocks when a BPF tracepoint fires on a CPU that is already holding the LRU lock in an NMI or softirq context. This is a known pain point for BPF programs that trace memory-allocation paths. The 3-patch series also updates the LRU state-machine diagram for the new lock variant.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: fix BPF_PROG_QUERY OOB write and cgroup backward compat",
+      "author": "Yuyang Huang",
+      "url": "https://lore.kernel.org/bpf/20260531075600.4058207-2-yuyanghuang@google.com/",
+      "summary": "Fixes an out-of-bounds write in BPF_PROG_QUERY where the kernel wrote back more bytes than the user-declared uattr size, potentially corrupting adjacent user memory. The fix uses the user-declared size for writeback, while a companion patch adds boundary verification selftests. Backward compatibility with cgroup queries using older-layout attrs is explicitly preserved.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: reject overlarge global subprog argument sizes",
+      "author": "하태구",
+      "url": "https://lore.kernel.org/bpf/20260528062155.3988156-1-hataegu0826@gmail.com/",
+      "summary": "Adds a verifier check that rejects global subprograms whose argument types would result in a combined stack frame larger than BPF's MAX_BPF_STACK limit. Without the check, a global subprog with oversized struct-by-value arguments could pass verification but overflow the stack at runtime. This is v3 of the standalone single-patch fix.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: report hot simulated callchains when 1M instructions limit is met",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260527-better-1m-reporting-v3-4-b3ede0588a75@gmail.com/",
+      "summary": "RFC patch that makes the BPF verifier emit diagnostic information about the hottest simulated call chains when it hits the 1 million instruction verification budget, helping developers understand why a complex program is exhausting the verifier. This is part of a 6-patch series that also adds register diff summaries for hot callchains and a selftest for the new reporting. The improved diagnostics address a long-standing usability gap when debugging large BPF programs.",
+      "related_links": []
+    }
+  ]
+}

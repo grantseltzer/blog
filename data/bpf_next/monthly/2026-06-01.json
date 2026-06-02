@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-06-02T00:00:00Z",
+  "period_start": "2026-05-02",
+  "period_end": "2026-06-01",
+  "patch_count": 100,
+  "thread_count": 23,
+  "top_contributors": ["Jiri Olsa", "Daniel Borkmann", "Mykyta Yatsenko", "Amery Hung", "Alexei Starovoitov"],
+  "key_topics": ["maps", "tracing", "arena", "verifier", "libbpf", "kfuncs", "lru", "signed-loader"],
+  "overview": "May 2026 saw substantial forward momentum in the BPF subsystem, with the activity concentrated in the final week. The most ambitious contribution is Jiri Olsa's 29-patch bpf tracing_multi link series (v6), which introduces a new link type enabling a single BPF tracing program to be attached atomically to many kernel functions, dramatically reducing per-function attachment overhead. Alexei Starovoitov advanced BPF arena memory management by introducing SLUB-backed kfuncs for arena allocation, pairing with Emil Tsalapatis's work to minimize the annotation burden on arena programs through verifier improvements that propagate arena pointer types across subprogram boundaries. Mykyta Yatsenko drove two major initiatives: a v5 resizable hash map backed by the kernel's rhashtable, and an RFC fixing an NMI/tracepoint re-entry deadlock in LRU map locking. Amery Hung's v6 verifier object relationship refactor unified dynptr and kptr tracking and fixed a dynptr use-after-free bug, while Daniel Borkmann contributed a series of signed loader integrity fixes and Eduard Zingerman submitted an RFC improving verifier diagnostics when the 1M instruction budget is exhausted.",
+  "patches": [
+    {
+      "title": "bpf: Implement resizable hashmap basic functions",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-rhash-v5-3-7205191b6c57@meta.com/",
+      "summary": "Implements the core lookup, update, and delete operations for a new BPF_MAP_TYPE_RHASH resizable hash map backed by the kernel's rhashtable infrastructure. Unlike fixed-size BPF hash maps, this map type can resize its bucket array at runtime as element count changes, removing the need to over-provision capacity at creation time. The 11-patch v5 series includes rhashtable API additions, iterator support, special field handling, word-sized key optimizations, and bpftool documentation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add support for tracing multi link",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260527113951.46265-14-jolsa@kernel.org/",
+      "summary": "Introduces BPF_LINK_TYPE_TRACING_MULTI, a new link type that attaches a single BPF tracing program to multiple kernel functions in a single syscall, replacing the cost of N individual fentry/fexit links. The kernel adds multi-attach/detach trampoline infrastructure, new multi tracing attach types, and session/cookie support. The 29-patch v6 series also adds full libbpf API support, benchmark tests, and thorough selftests covering attach failures, rollback, and intersection semantics.",
+      "related_links": []
+    },
+    {
+      "title": "bpf,slab: Add slub-backed allocator for bpf_arena",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260530011345.99342-4-alexei.starovoitov@gmail.com/",
+      "summary": "Adds a SLUB-backed per-object allocator for bpf_arena that exposes kmem_cache_alloc/free semantics to BPF programs via new kfuncs, enabling efficient arena-based data structures without manual slab management. The implementation introduces arena-aware nolock variants of kmem_cache operations to prevent deadlocks in BPF's non-preemptible contexts. This is the core of Starovoitov's 4-patch v2 series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refactor object relationship tracking and fix dynptr UAF bug",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260529014936.2811085-6-ameryhung@gmail.com/",
+      "summary": "Refactors the BPF verifier's handling of object relationships (dynptrs, slices, kptrs) by introducing a unified parent-child ownership model and fixes a use-after-free bug where a dynptr slice remained accessible after its parent dynptr was freed. The unified infrastructure also correctly propagates invalidation across call frames, fixing a dynptr ref-count scanning bug. This is patch 5/13 of Amery Hung's v6 series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow subprogs to return arena pointers",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260530002259.4505-4-emil@etsalapatis.com/",
+      "summary": "Teaches the BPF verifier to recognize arena pointer types returned from subprograms by parsing the \"arena\" BTF type tag on return types, so callers no longer need to re-annotate returned pointers. The change removes the last common source of required __arg_arena annotations and is accompanied by a codebase-wide cleanup removing those annotations from selftests. This is the verifier core patch of Emil Tsalapatis's 5-patch v2 series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject exclusive maps as inner maps in map-in-map",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260601150248.394863-2-daniel@iogearbox.net/",
+      "summary": "Prevents exclusive maps from being nested as inner maps in map-in-map types, closing a path by which the map-in-map lookup could distribute exclusive map references without the signed loader's ownership checks. The v2 7-patch series also drops a redundant hash_buf from map_get_hash, adds libbpf-side enforcement for exclusive metadata maps in the signed loader, and adds selftests for both constraints.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix NMI/tracepoint re-entry deadlock on lru locks",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260528-lru_map_spin-v1-1-4f52223170cf@meta.com/",
+      "summary": "RFC patch replacing the raw spinlock in LRU hash map operations with an rqspinlock, which records the interrupted CPU context so that NMI or tracepoint re-entry on the same CPU does not deadlock when the BPF program itself accesses the LRU map. The 3-patch series also refreshes the LRU state machine diagram and adds a stress test for the recovery path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: report hot simulated callchains when 1M instructions limit is met",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260527-better-1m-reporting-v3-4-b3ede0588a75@gmail.com/",
+      "summary": "RFC patch that records and reports the most frequently simulated call chains during BPF verification, emitting them as diagnostics when the verifier exhausts its 1M instruction budget. A companion patch adds register diff summaries for hot callchains to help pinpoint why state merging fails to converge. This 6-patch RFC (v3) addresses a significant usability gap when developing large BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: fix BPF_PROG_QUERY OOB write and cgroup backward compat",
+      "author": "Yuyang Huang",
+      "url": "https://lore.kernel.org/bpf/20260531075600.4058207-2-yuyanghuang@google.com/",
+      "summary": "Fixes an out-of-bounds write in BPF_PROG_QUERY where the kernel wrote back more bytes than the user-declared uattr size, potentially corrupting user memory adjacent to the attr struct. The fix caps writeback to the user-declared size and restores backward compatibility for older cgroup query layouts. A companion patch adds boundary verification tests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Take mmap_lock in zap_pages()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260528222014.38980-1-alexei.starovoitov@gmail.com/",
+      "summary": "Fixes a missing mmap_lock acquisition in the bpf_arena zap_pages() path, which unmaps arena pages from user space. Without the lock, concurrent mmap operations could race with page zapping and corrupt the process address space. This is a standalone single-patch fix to the arena memory management path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: reject overlarge global subprog argument sizes",
+      "author": "하태구",
+      "url": "https://lore.kernel.org/bpf/20260528062155.3988156-1-hataegu0826@gmail.com/",
+      "summary": "Adds a verifier check that rejects global subprograms whose by-value struct arguments would produce a combined frame larger than BPF's maximum stack size. Without this guard, such programs could pass verification and then overflow the stack at runtime. This v3 single-patch fix closes a gap in the global subprog stack-frame validation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: MAINTAINERS: Update bpf maintainers",
+      "author": "Martin KaFai Lau",
+      "url": "https://lore.kernel.org/bpf/20260529203909.1222164-1-martin.lau@linux.dev/",
+      "summary": "Updates the MAINTAINERS file to reflect changes in the BPF subsystem maintainer list. MAINTAINERS updates are a notable signal of organizational changes in a subsystem and affect who receives patch submissions and review requests via the get_maintainer.pl script.",
+      "related_links": []
+    }
+  ]
+}
