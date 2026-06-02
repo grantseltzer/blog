@@ -1,0 +1,535 @@
+{
+  "period": "daily",
+  "period_start": "2026-06-01",
+  "period_end": "2026-06-02",
+  "fetched_at": "2026-06-02T12:45:29Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v3,6/6] selftests/bpf: Add tests for the new type-tag based __arena identifier",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260602004120.17087-7-emil@etsalapatis.com/",
+      "date": "2026-06-02T00:41:20",
+      "series": [
+        {
+          "id": 1104285,
+          "url": "https://patchwork.kernel.org/api/series/1104285/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104285",
+          "date": "2026-06-02T00:41:14",
+          "name": "Minimize annotations for arena programs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1104285/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,5/6] selftests/bpf: libarena: Directly return arena pointers from functions",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260602004120.17087-6-emil@etsalapatis.com/",
+      "date": "2026-06-02T00:41:19",
+      "series": [
+        {
+          "id": 1104285,
+          "url": "https://patchwork.kernel.org/api/series/1104285/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104285",
+          "date": "2026-06-02T00:41:14",
+          "name": "Minimize annotations for arena programs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1104285/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,4/6] selftests/bpf: Remove __arg_arena from the codebase",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260602004120.17087-5-emil@etsalapatis.com/",
+      "date": "2026-06-02T00:41:18",
+      "series": [
+        {
+          "id": 1104285,
+          "url": "https://patchwork.kernel.org/api/series/1104285/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104285",
+          "date": "2026-06-02T00:41:14",
+          "name": "Minimize annotations for arena programs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1104285/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/6] bpf: Allow subprogs to return arena pointers",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260602004120.17087-4-emil@etsalapatis.com/",
+      "date": "2026-06-02T00:41:17",
+      "series": [
+        {
+          "id": 1104285,
+          "url": "https://patchwork.kernel.org/api/series/1104285/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104285",
+          "date": "2026-06-02T00:41:14",
+          "name": "Minimize annotations for arena programs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1104285/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/6] verifier: parse BTF type tags for function arguments",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260602004120.17087-3-emil@etsalapatis.com/",
+      "date": "2026-06-02T00:41:16",
+      "series": [
+        {
+          "id": 1104285,
+          "url": "https://patchwork.kernel.org/api/series/1104285/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104285",
+          "date": "2026-06-02T00:41:14",
+          "name": "Minimize annotations for arena programs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1104285/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/6] selftests/bpf: libarena: Add \"arena\" BTF type tag to __arena qualifier",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260602004120.17087-2-emil@etsalapatis.com/",
+      "date": "2026-06-02T00:41:15",
+      "series": [
+        {
+          "id": 1104285,
+          "url": "https://patchwork.kernel.org/api/series/1104285/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104285",
+          "date": "2026-06-02T00:41:14",
+          "name": "Minimize annotations for arena programs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1104285/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,14/14] docs, resolve_btfids: Document kfunc BTF annotation emission",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260601221805.821394-15-ihor.solodrai@linux.dev/",
+      "date": "2026-06-01T22:18:05",
+      "series": [
+        {
+          "id": 1104254,
+          "url": "https://patchwork.kernel.org/api/series/1104254/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104254",
+          "date": "2026-06-01T22:17:51",
+          "name": "resolve_btfids: Implement BTF tags emission for kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1104254/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,13/14] kbuild: Drop decl_tag_kfuncs and attributes from pahole flags",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260601221805.821394-14-ihor.solodrai@linux.dev/",
+      "date": "2026-06-01T22:18:04",
+      "series": [
+        {
+          "id": 1104254,
+          "url": "https://patchwork.kernel.org/api/series/1104254/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104254",
+          "date": "2026-06-01T22:17:51",
+          "name": "resolve_btfids: Implement BTF tags emission for kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1104254/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,12/14] selftests/bpf: Verify arena type tags in resolve_btfids test",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260601221805.821394-13-ihor.solodrai@linux.dev/",
+      "date": "2026-06-01T22:18:03",
+      "series": [
+        {
+          "id": 1104254,
+          "url": "https://patchwork.kernel.org/api/series/1104254/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104254",
+          "date": "2026-06-01T22:17:51",
+          "name": "resolve_btfids: Implement BTF tags emission for kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1104254/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,11/14] resolve_btfids: Process KF_ARENA_* flags in resolve_btfids",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260601221805.821394-12-ihor.solodrai@linux.dev/",
+      "date": "2026-06-01T22:18:02",
+      "series": [
+        {
+          "id": 1104254,
+          "url": "https://patchwork.kernel.org/api/series/1104254/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104254",
+          "date": "2026-06-01T22:17:51",
+          "name": "resolve_btfids: Implement BTF tags emission for kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1104254/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,10/14] selftests/bpf: Verify bpf_fastcall decl tags in resolve_btfids test",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260601221805.821394-11-ihor.solodrai@linux.dev/",
+      "date": "2026-06-01T22:18:01",
+      "series": [
+        {
+          "id": 1104254,
+          "url": "https://patchwork.kernel.org/api/series/1104254/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104254",
+          "date": "2026-06-01T22:17:51",
+          "name": "resolve_btfids: Implement BTF tags emission for kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1104254/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,09/14] resolve_btfids: Emit a decl tag for kfuncs with KF_FASTCALL",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260601221805.821394-10-ihor.solodrai@linux.dev/",
+      "date": "2026-06-01T22:18:00",
+      "series": [
+        {
+          "id": 1104254,
+          "url": "https://patchwork.kernel.org/api/series/1104254/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104254",
+          "date": "2026-06-01T22:17:51",
+          "name": "resolve_btfids: Implement BTF tags emission for kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1104254/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,08/14] selftests/bpf: Verify bpf_kfunc decl tag emission in resolve_btfids",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260601221805.821394-9-ihor.solodrai@linux.dev/",
+      "date": "2026-06-01T22:17:59",
+      "series": [
+        {
+          "id": 1104254,
+          "url": "https://patchwork.kernel.org/api/series/1104254/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104254",
+          "date": "2026-06-01T22:17:51",
+          "name": "resolve_btfids: Implement BTF tags emission for kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1104254/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,07/14] resolve_btfids: Emit bpf_kfunc BTF decl tag for discovered kfuncs",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260601221805.821394-8-ihor.solodrai@linux.dev/",
+      "date": "2026-06-01T22:17:58",
+      "series": [
+        {
+          "id": 1104254,
+          "url": "https://patchwork.kernel.org/api/series/1104254/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104254",
+          "date": "2026-06-01T22:17:51",
+          "name": "resolve_btfids: Implement BTF tags emission for kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1104254/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,06/14] resolve_btfids: Discover kfuncs from BTF ID sets",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260601221805.821394-7-ihor.solodrai@linux.dev/",
+      "date": "2026-06-01T22:17:57",
+      "series": [
+        {
+          "id": 1104254,
+          "url": "https://patchwork.kernel.org/api/series/1104254/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104254",
+          "date": "2026-06-01T22:17:51",
+          "name": "resolve_btfids: Implement BTF tags emission for kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1104254/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,05/14] resolve_btfids: Index BTF ID symbols by address",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260601221805.821394-6-ihor.solodrai@linux.dev/",
+      "date": "2026-06-01T22:17:56",
+      "series": [
+        {
+          "id": 1104254,
+          "url": "https://patchwork.kernel.org/api/series/1104254/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104254",
+          "date": "2026-06-01T22:17:51",
+          "name": "resolve_btfids: Implement BTF tags emission for kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1104254/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,04/14] selftests/bpf: Add kfunc set test to resolve_btfids",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260601221805.821394-5-ihor.solodrai@linux.dev/",
+      "date": "2026-06-01T22:17:55",
+      "series": [
+        {
+          "id": 1104254,
+          "url": "https://patchwork.kernel.org/api/series/1104254/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104254",
+          "date": "2026-06-01T22:17:51",
+          "name": "resolve_btfids: Implement BTF tags emission for kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1104254/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,03/14] selftests/bpf: Fix resolve_btfids test reads of BTF ID sets in PIE builds",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260601221805.821394-4-ihor.solodrai@linux.dev/",
+      "date": "2026-06-01T22:17:54",
+      "series": [
+        {
+          "id": 1104254,
+          "url": "https://patchwork.kernel.org/api/series/1104254/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104254",
+          "date": "2026-06-01T22:17:51",
+          "name": "resolve_btfids: Implement BTF tags emission for kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1104254/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,02/14] selftests/bpf: Modernize resolve_btfids test scaffolding",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260601221805.821394-3-ihor.solodrai@linux.dev/",
+      "date": "2026-06-01T22:17:53",
+      "series": [
+        {
+          "id": 1104254,
+          "url": "https://patchwork.kernel.org/api/series/1104254/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104254",
+          "date": "2026-06-01T22:17:51",
+          "name": "resolve_btfids: Implement BTF tags emission for kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1104254/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,01/14] tools/bpf: Sync btf_ids.h to tools",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260601221805.821394-2-ihor.solodrai@linux.dev/",
+      "date": "2026-06-01T22:17:52",
+      "series": [
+        {
+          "id": 1104254,
+          "url": "https://patchwork.kernel.org/api/series/1104254/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104254",
+          "date": "2026-06-01T22:17:51",
+          "name": "resolve_btfids: Implement BTF tags emission for kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1104254/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Replace scratch PTE atomically when allocating arena pages",
+      "author": "Tejun Heo",
+      "url": "https://lore.kernel.org/bpf/20260601183728.1800490-1-tj@kernel.org/",
+      "date": "2026-06-01T18:37:28",
+      "series": [
+        {
+          "id": 1104183,
+          "url": "https://patchwork.kernel.org/api/series/1104183/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104183",
+          "date": "2026-06-01T18:37:28",
+          "name": "[bpf-next] bpf: Replace scratch PTE atomically when allocating arena pages",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1104183/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,7/7] selftests/bpf: Test that exclusive maps are rejected in map-in-map",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260601150248.394863-8-daniel@iogearbox.net/",
+      "date": "2026-06-01T15:02:48",
+      "series": [
+        {
+          "id": 1104078,
+          "url": "https://patchwork.kernel.org/api/series/1104078/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104078",
+          "date": "2026-06-01T15:02:43",
+          "name": "More gen_loader fixes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1104078/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,6/7] selftests/bpf: Adjust verifier_map_ptr for the map's excl field",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260601150248.394863-7-daniel@iogearbox.net/",
+      "date": "2026-06-01T15:02:47",
+      "series": [
+        {
+          "id": 1104078,
+          "url": "https://patchwork.kernel.org/api/series/1104078/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104078",
+          "date": "2026-06-01T15:02:43",
+          "name": "More gen_loader fixes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1104078/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/7] libbpf: Skip max_entries override on signed loaders",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260601150248.394863-6-daniel@iogearbox.net/",
+      "date": "2026-06-01T15:02:46",
+      "series": [
+        {
+          "id": 1104078,
+          "url": "https://patchwork.kernel.org/api/series/1104078/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104078",
+          "date": "2026-06-01T15:02:43",
+          "name": "More gen_loader fixes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1104078/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/7] libbpf: Skip initial_value override on signed loaders",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260601150248.394863-5-daniel@iogearbox.net/",
+      "date": "2026-06-01T15:02:45",
+      "series": [
+        {
+          "id": 1104078,
+          "url": "https://patchwork.kernel.org/api/series/1104078/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104078",
+          "date": "2026-06-01T15:02:43",
+          "name": "More gen_loader fixes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1104078/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/7] libbpf: Reject non-exclusive metadata maps in the signed loader",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260601150248.394863-4-daniel@iogearbox.net/",
+      "date": "2026-06-01T15:02:44",
+      "series": [
+        {
+          "id": 1104078,
+          "url": "https://patchwork.kernel.org/api/series/1104078/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104078",
+          "date": "2026-06-01T15:02:43",
+          "name": "More gen_loader fixes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1104078/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/7] bpf: Drop redundant hash_buf from map_get_hash operation",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260601150248.394863-3-daniel@iogearbox.net/",
+      "date": "2026-06-01T15:02:43",
+      "series": [
+        {
+          "id": 1104078,
+          "url": "https://patchwork.kernel.org/api/series/1104078/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104078",
+          "date": "2026-06-01T15:02:43",
+          "name": "More gen_loader fixes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1104078/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/7] bpf: Reject exclusive maps as inner maps in map-in-map",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260601150248.394863-2-daniel@iogearbox.net/",
+      "date": "2026-06-01T15:02:42",
+      "series": [
+        {
+          "id": 1104078,
+          "url": "https://patchwork.kernel.org/api/series/1104078/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1104078",
+          "date": "2026-06-01T15:02:43",
+          "name": "More gen_loader fixes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1104078/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] libbpf: Skip max_entries override on signed loaders",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260601100307.386243-3-daniel@iogearbox.net/",
+      "date": "2026-06-01T10:03:06",
+      "series": [
+        {
+          "id": 1103933,
+          "url": "https://patchwork.kernel.org/api/series/1103933/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103933",
+          "date": "2026-06-01T10:03:06",
+          "name": "[bpf-next,1/3] libbpf: Reject non-exclusive metadata maps in the signed loader",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1103933/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] libbpf: Skip initial_value override on signed loaders",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260601100307.386243-2-daniel@iogearbox.net/",
+      "date": "2026-06-01T10:03:05",
+      "series": [
+        {
+          "id": 1103933,
+          "url": "https://patchwork.kernel.org/api/series/1103933/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103933",
+          "date": "2026-06-01T10:03:06",
+          "name": "[bpf-next,1/3] libbpf: Reject non-exclusive metadata maps in the signed loader",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1103933/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] libbpf: Reject non-exclusive metadata maps in the signed loader",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260601100307.386243-1-daniel@iogearbox.net/",
+      "date": "2026-06-01T10:03:04",
+      "series": [
+        {
+          "id": 1103933,
+          "url": "https://patchwork.kernel.org/api/series/1103933/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1103933",
+          "date": "2026-06-01T10:03:06",
+          "name": "[bpf-next,1/3] libbpf: Reject non-exclusive metadata maps in the signed loader",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1103933/mbox/"
+        }
+      ]
+    }
+  ]
+}
