@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-06-03T00:00:00Z",
+  "period_start": "2026-06-01",
+  "period_end": "2026-06-02",
+  "patch_count": 31,
+  "thread_count": 5,
+  "top_contributors": ["Ihor Solodrai", "Daniel Borkmann", "Emil Tsalapatis"],
+  "key_topics": ["arena", "btf", "kfuncs", "verifier", "libbpf", "maps"],
+  "overview": "Activity over this period centered on two substantial infrastructure series: a 14-patch effort by Ihor Solodrai to have resolve_btfids emit BTF decl tags for kfuncs at build time, and a 6-patch v3 series from Emil Tsalapatis to minimize boilerplate annotations in BPF arena programs by leveraging BTF type tags. Daniel Borkmann contributed a second revision of gen_loader hardening fixes, and Tejun Heo landed a concurrency correctness fix for arena page allocation.",
+  "patches": [
+    {
+      "title": "selftests/bpf: libarena: Add \"arena\" BTF type tag to __arena qualifier",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260602004120.17087-2-emil@etsalapatis.com/",
+      "summary": "This is the first patch of a 6-part v3 series titled \"Minimize annotations for arena programs.\" It encodes the \"arena\" semantic directly into the BTF type tag attached to the __arena qualifier so the verifier can identify arena pointers without extra per-argument annotations. Paired with subsequent patches that teach the verifier to parse these tags and allow subprograms to return arena pointers, the series significantly reduces the annotation burden for arena-heavy BPF programs. The selftests are updated throughout to drop the now-redundant __arg_arena annotations.",
+      "related_links": []
+    },
+    {
+      "title": "verifier: parse BTF type tags for function arguments",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260602004120.17087-3-emil@etsalapatis.com/",
+      "summary": "Extends the BPF verifier to inspect BTF decl/type tags attached to function argument types, enabling tag-driven argument classification without explicit user-space annotations. This is the core verifier change in Emil's arena annotation minimization series: the verifier can now infer that a parameter carries arena semantics from the \"arena\" type tag alone. The change is backward compatible since existing programs without the tag continue to use the __arg_arena annotation path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow subprogs to return arena pointers",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260602004120.17087-4-emil@etsalapatis.com/",
+      "summary": "Teaches the verifier to accept arena-typed return values from BPF subprograms, completing the type-tag-based arena pointer tracking introduced earlier in the series. Previously, returning an arena pointer from a helper or subprog required workarounds; now the verifier propagates the arena type through function return values automatically. This unlocks cleaner factoring of arena-based BPF programs and is validated by the new selftests added in later patches of the series.",
+      "related_links": []
+    },
+    {
+      "title": "tools/bpf: Sync btf_ids.h to tools",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260601221805.821394-2-ihor.solodrai@linux.dev/",
+      "summary": "First patch of Ihor Solodrai's 14-patch series \"resolve_btfids: Implement BTF tags emission for kfuncs.\" It synchronizes the kernel's btf_ids.h header into the tools/ mirror so that resolve_btfids can access up-to-date KF_* flag definitions. The series as a whole moves kfunc metadata (bpf_kfunc, KF_FASTCALL, KF_ARENA_*) from pahole-driven flags into proper BTF decl tags emitted directly by the resolve_btfids build tool, eliminating the need for special pahole flags and making kfunc annotations self-contained in the BTF blob.",
+      "related_links": []
+    },
+    {
+      "title": "resolve_btfids: Emit bpf_kfunc BTF decl tag for discovered kfuncs",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260601221805.821394-8-ihor.solodrai@linux.dev/",
+      "summary": "Implements the core emission logic in resolve_btfids: after discovering kfuncs from BTF ID sets, the tool now writes a \"bpf_kfunc\" decl tag into the BTF blob for each identified function. This makes kfunc identity introspectable at runtime without relying on separate pahole post-processing. Companion patches (08-11/14) extend the mechanism to also emit decl tags for KF_FASTCALL and KF_ARENA_* flagged kfuncs, and patch 13/14 removes the now-redundant pahole flags from kbuild.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Replace scratch PTE atomically when allocating arena pages",
+      "author": "Tejun Heo",
+      "url": "https://lore.kernel.org/bpf/20260601183728.1800490-1-tj@kernel.org/",
+      "summary": "Fixes a concurrency bug in BPF arena page allocation where the scratch PTE used during page mapping was not replaced atomically, creating a window where a concurrent CPU could observe an inconsistent PTE state. The patch switches to an atomic cmpxchg-based replacement to close the race. Arena memory is increasingly used by production BPF programs (e.g., in scheduling and networking), so correctness of its page-fault path is important for reliability under load.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject exclusive maps as inner maps in map-in-map",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260601150248.394863-2-daniel@iogearbox.net/",
+      "summary": "First patch of Daniel Borkmann's 7-patch v2 series \"More gen_loader fixes,\" which hardens the signed BPF loader (gen_loader) against misuse. This particular patch prevents exclusive maps—maps that must not be shared across programs—from being embedded as inner maps in map-in-map structures, which could bypass the exclusivity invariant. The series also fixes libbpf to skip max_entries and initial_value overrides when operating on a signed loader, and drops a redundant hash_buf from the map_get_hash operation.",
+      "related_links": []
+    }
+  ]
+}
