@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-06-04T00:00:00Z",
+  "period_start": "2026-06-02",
+  "period_end": "2026-06-03",
+  "patch_count": 74,
+  "thread_count": 10,
+  "top_contributors": ["Jiri Olsa", "Mykyta Yatsenko", "Ricardo B. Marlière", "Leo Yan", "Emil Tsalapatis"],
+  "key_topics": ["tracing", "maps", "arena", "verifier", "libbpf", "selftests", "jit", "build"],
+  "overview": "The bpf-next mailing list saw heavy activity on June 2-3, 2026, dominated by Jiri Olsa's tracing_multi link series reaching v7 (29 patches), which enables attaching a single BPF tracing program to multiple kernel functions in one syscall. Other highlights include v6 of Mykyta Yatsenko's resizable BPF hash map, improvements to arena pointer handling in the verifier, and a large batch of selftests build-system robustness work.",
+  "patches": [
+    {
+      "title": "bpf: Add support for tracing multi link",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260603110554.29590-14-jolsa@kernel.org/",
+      "summary": "This is the kernel-side core of the tracing_multi link series (v7, 29 patches), introducing a new BPF link type that lets a single program attach to multiple tracing targets atomically. The series refactors the BPF trampoline infrastructure—introducing bpf_trampoline_ops callbacks, a mutex lock pool, and bpf_tramp_node objects—to support batch attach and detach. Compared to attaching per-function links individually, tracing_multi links reduce overhead and make rollback semantics tractable when some attach targets fail. Additional patches in the series add cookie support, session semantics, fdinfo reporting, and libbpf/selftests coverage.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Add support to create tracing multi link",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260603110554.29590-21-jolsa@kernel.org/",
+      "summary": "The libbpf-side counterpart to the tracing_multi kernel patches, adding bpf_link_create support for the new BPF_LINK_TYPE_TRACING_MULTI link type. It builds on a new btf_type_is_traceable_func helper and a bpf_object_cleanup_btf utility to properly manage BTF lifetimes during multi-attach. Users can now specify lists of function names, patterns, or module-scoped symbols and have libbpf resolve and attach them in a single call.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Implement resizable hashmap basic functions",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260602-rhash-v6-3-1bfd35a4184f@meta.com/",
+      "summary": "Sixth revision of the resizable BPF hash map (rhash) series from Meta, introducing a new map type backed by the kernel's rhashtable infrastructure. Unlike fixed-size BPF hash maps, the rhash grows and shrinks automatically as entries are added and removed, avoiding both over-provisioning and hash collisions under load. The series also adds rhashtable_next_key() to the kernel rhashtable API for iteration support, implements BPF iterator ops, special-field handling, word-sized key optimizations, libbpf wiring, bpftool documentation, and benchmark tests.",
+      "related_links": []
+    },
+    {
+      "title": "verifier: parse BTF type tags for function arguments",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260602004120.17087-3-emil@etsalapatis.com/",
+      "summary": "Part of the 'Minimize annotations for arena programs' series (v3), this verifier patch teaches the BPF verifier to inspect BTF type tags on subprogram arguments to infer pointer ownership without requiring explicit __arg_arena annotations. By reading the 'arena' tag introduced by the accompanying libarena changes, the verifier can validate arena pointer usage automatically, reducing the annotation burden on BPF programmers writing arena-heavy programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow subprogs to return arena pointers",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260602004120.17087-4-emil@etsalapatis.com/",
+      "summary": "Companion to the BTF type-tag verifier patch, this change relaxes the BPF verifier to allow subprograms to return pointers into a BPF arena region. Previously, returning arena-typed pointers from helper subprograms required workarounds; this patch makes the verifier track the return type correctly so that arena-backed data structures can be built with ordinary C function call patterns. The series also removes all remaining __arg_arena annotations from the selftests codebase now that the tag-based mechanism covers them.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject exclusive maps for bpf_map_elem iterators",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260602133052.423725-2-daniel@iogearbox.net/",
+      "summary": "From Daniel Borkmann's 'More gen_loader fixes #2' series (4 patches), this kernel patch tightens the validation of bpf_map_elem iterators to reject maps marked as exclusive—those that must not be iterated while concurrently modified—at iterator creation time rather than at runtime. A companion libbpf patch guards add_data() against size overflow in the gen_loader path, closing a potential integer overflow when loading large BPF objects. Selftests are updated to cover both the new rejection behavior and retained ops-pointer-access exercising.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, riscv: inline bpf_get_current_task() and bpf_get_current_task_btf()",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260602205847.102825-3-varunrmallya@gmail.com/",
+      "summary": "Adds RISC-V JIT support for inlining bpf_get_current_task() and bpf_get_current_task_btf(), avoiding a full helper call for these hot paths by emitting a direct load from the current task_struct. This mirrors similar optimizations already present in x86 and arm64 JITs. The series also fixes the BPF selftests JIT disassembler to query actual host CPU features rather than using a static default, improving cross-architecture test accuracy.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add BPF_STRICT_BUILD toggle",
+      "author": "Ricardo B. Marlière",
+      "url": "https://lore.kernel.org/bpf/20260602-selftests-bpf_misconfig-v12-1-27f898b3ba26@suse.com/",
+      "summary": "First patch of a 11-patch v12 series (resent) that makes the BPF selftests build system resilient to partial kernel configurations. The series introduces a BPF_STRICT_BUILD Makefile toggle, fixes KDIR handling for distro kernels and O= out-of-tree builds, tolerates compilation failures for individual test files, allows test_progs to link against a partial object set, and adds graceful skipping of tests whose objects were not built. This is particularly useful for CI environments and embedded builds where not all kernel features are enabled.",
+      "related_links": []
+    }
+  ]
+}
