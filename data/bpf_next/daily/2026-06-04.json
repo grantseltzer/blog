@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-06-05T00:00:00Z",
+  "period_start": "2026-06-03",
+  "period_end": "2026-06-04",
+  "patch_count": 48,
+  "thread_count": 11,
+  "top_contributors": ["Jiri Olsa", "Daniel Borkmann", "chenyuan", "Mykyta Yatsenko", "Emil Tsalapatis", "Leon Hwang"],
+  "key_topics": ["tracing_multi", "trampoline", "libbpf", "bpf-token", "lru-maps", "btf", "arena", "maps"],
+  "overview": "The bpf-next list on June 3-4 was dominated by Jiri Olsa's v7 29-patch series introducing the new tracing_multi link type, which allows a single BPF tracing program to attach to multiple kernel functions in one syscall, backed by significant trampoline and ftrace infrastructure refactoring. Alongside that, Mykyta Yatsenko posted an RFC fixing a nasty NMI/tracepoint re-entry deadlock in LRU map locking by switching to rqspinlocks. Additional work included libbpf fixes for BPF token handling during feature probing, correctness validation for padding bytes in bpf_map_info and bpf_prog_info, and new arena selftest coverage.",
+  "patches": [
+    {
+      "title": "bpf: Add support for tracing multi link",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260603110554.29590-14-jolsa@kernel.org/",
+      "summary": "Core patch in a 29-patch v7 series implementing a new BPF_LINK_TYPE_TRACING_MULTI link that attaches a single BPF tracing program to multiple kernel functions atomically. The series refactors the trampoline subsystem to introduce bpf_trampoline_ops callbacks, a bpf_tramp_node object, and new multi-attach/detach functions so that one link can manage trampolines for an arbitrary set of BTF function IDs. This avoids the overhead and complexity of creating one link per function when instrumenting large numbers of kernel entry/exit points. The series also adds session and cookie support for multi links, fdinfo reporting, and a full libbpf API for creating them. Extensive selftests cover skel-based attach, pattern and ID based attach, module attach, cookies, sessions, intersections, verifier failure handling, and benchmarks.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix NMI/tracepoint re-entry deadlock on lru locks",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260603-lru_map_spin-v2-1-7060cfb6cdac@meta.com/",
+      "summary": "RFC v2 patch that replaces the spinlocks in BPF LRU hash maps with rqspinlocks (reentrant queued spinlocks) to eliminate a deadlock that occurs when an NMI or tracepoint handler attempts to access an LRU map that is already locked on the same CPU. The root cause is that LRU map operations are not NMI-safe; when a tracing program fires inside the lock critical section and tries to update the same map, a deadlock results. Switching to rqspinlocks allows the re-entrant acquisition to succeed safely. An accompanying documentation patch refreshes the LRU hash update flow diagram, and a selftest stresses the recovery paths.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Skip bpf_object__probe_loading() when BPF token is in use",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260604031033.806727-2-chenyuan_fl@163.com/",
+      "summary": "First patch in a v2 three-patch series fixing feature probe failures when libbpf uses implicit BPF tokens. When a BPF token is present, bpf_object__probe_loading() attempts feature detection probes that can fail spuriously because the token's permissions differ from the assumed defaults, causing libbpf to incorrectly disable features the kernel actually supports. The fix skips the probe_loading path entirely when a token is in use, relying instead on the token-aware code paths. A companion patch adds ARRAY map type coverage to the relevant token selftests, and a third patch fixes remaining feature probe failures exposed by the same token scenario.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Cover exclusive map create-time validation",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260603211658.471212-1-daniel@iogearbox.net/",
+      "summary": "Lead patch of a v2 two-patch series adding selftest coverage for validation of mutually exclusive flags and attributes at BPF map creation time. The tests exercise kernel-side rejection of invalid flag combinations to prevent regressions in the map creation sanity checks. The companion patch adds selftest coverage for error paths in the signed BPF loader, ensuring that signing-related failures are handled and reported correctly. Both patches are resends of a v1 series posted earlier the same day.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Check tail zero of bpf_map_info",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260603144518.67065-2-leon.hwang@linux.dev/",
+      "summary": "First patch in a three-patch series that adds tail-zero validation to the bpf_map_info and bpf_prog_info structures passed by user space in BPF_OBJ_GET_INFO_BY_FD calls. Requiring that any bytes beyond the known struct size be zeroed prevents future ABI confusion where a newer kernel fills new fields that an older user-space binary leaves as garbage, and also guards against user-space programs passing oversized structs with uninitialized padding. A companion patch applies the same check to bpf_prog_info, and a third patch adds selftests verifying that non-zero padding bytes are correctly rejected.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: clean up btf_scan_decl_tags()",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260603201822.770596-1-mattbobrowski@google.com/",
+      "summary": "Standalone cleanup patch that refactors the btf_scan_decl_tags() function in the BPF BTF subsystem. The change improves code clarity and removes unnecessary complexity without altering the function's behavior. This is part of ongoing maintenance work on BTF declaration tag scanning, which is used by the verifier to process __attribute__-based annotations on kernel types and BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: libarena: Add rbtree data structure",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260603182727.3922-2-emil@etsalapatis.com/",
+      "summary": "First patch in a v2 three-patch series building a libarena test harness for BPF arena selftests. This patch adds a red-black tree data structure to libarena to support more complex concurrent test scenarios. The second patch adds a single-producer multiple-consumer (SPMC) queue, and the third integrates a parallel test harness with a SPMC-based selftest that exercises arena memory under concurrent load. The series provides reusable data structure primitives for writing arena stress tests.",
+      "related_links": []
+    }
+  ]
+}
