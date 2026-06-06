@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-06-06T00:00:00Z",
+  "period_start": "2026-06-04",
+  "period_end": "2026-06-05",
+  "patch_count": 57,
+  "thread_count": 15,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Mykyta Yatsenko", "Alexis Lothoré (eBPF Foundation)", "Emil Tsalapatis", "Amery Hung", "Leon Hwang"],
+  "key_topics": ["verifier", "maps", "rhashtable", "kasan", "jit", "rbtree", "arena", "selftests"],
+  "overview": "June 4-5 saw two major in-progress series advance significantly: Mykyta Yatsenko's v7 resizable BPF hash map (12 patches built on a reworked rhashtable core) and Kumar Kartikeya Dwivedi's sweeping 17-patch redesign of verifier error reporting into structured, categorized diagnostics. Alexis Lothoré's KASAN-for-JIT series also reached v2, adding sanitizer instrumentation to x86 JIT-compiled BPF programs, while smaller fixes addressed rbtree node linkage on free, a PTR_TO_FLOW_KEYS bounds check, and refsafe() reference-state pruning. Selftest and cleanup activity continued with new libarena data structures, arena split/fork coverage, and the removal of the aging lirc test.",
+  "patches": [
+    {
+      "title": "bpf: Implement resizable hashmap basic functions",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260605-rhash-v7-4-5b8e05f8630d@meta.com/",
+      "summary": "Fourth patch in Mykyta Yatsenko's v7 twelve-patch series introducing a resizable BPF hash map that grows and shrinks its bucket table on demand instead of relying on a fixed-size allocation. This patch lays down the basic create/update/lookup/delete operations for the new map type, building on the rhashtable groundwork laid earlier in the series, including a new rhashtable_next_key() API and irq-work-based shrinking. Later patches add iteration support, special-field handling (timers, kptrs, etc.), word-sized key optimizations, libbpf and bpftool integration, and a benchmark comparing the new map against the existing fixed-size hashtable. At v7 the series looks close to merge-ready and would give BPF programs a long-requested map type that adapts its memory footprint to actual load.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add verifier diagnostics report helpers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260605063412.974640-2-memxor@gmail.com/",
+      "summary": "Opening patch of Kumar Kartikeya Dwivedi's ambitious 17-patch v1 series overhauling how the BPF verifier reports errors to users. It introduces the core diagnostics-report helpers and infrastructure that the rest of the series builds on, including new diagnostic categories (register type safety, memory-bounds, resource-lifetime, execution-context, call-type-safety, program-structure/CFG, and more) and history tracking for branches, registers, references, and overall verifier context. The goal is to replace today's often-cryptic verifier rejection messages with structured, categorized diagnostics that point developers directly at the offending instruction and explain why a program failed to load. The closing patches gate the new diagnostics on log level so the added bookkeeping costs nothing when verbose verifier logging is disabled.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: mark instructions accessing program stack",
+      "author": "Alexis Lothoré (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260604-kasan-v2-1-c066e627fda8@bootlin.com/",
+      "summary": "First patch in Alexis Lothoré's v2 eight-patch series bringing KASAN (Kernel Address Sanitizer) coverage to JIT-compiled BPF programs on x86. It marks instructions that access the BPF program's stack so the JIT backend can later emit the matching sanitizer instrumentation around them. Subsequent patches add a BPF_JIT_KASAN config option, helpers that emit KASAN shadow-memory checks directly into the x86 JIT output, a refactor of BPF_ST handling in do_jit() to make room for the new checks, and selftests (including a helper that detects whether eBPF KASAN is active) validating that the instrumentation catches out-of-bounds stack accesses. The series closes a long-standing gap where memory-safety bugs in JIT-compiled programs were invisible to KASAN.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Clear rb node linkage when freeing bpf_rb_root",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260605094143.5509-1-kaitao.cheng@linux.dev/",
+      "summary": "v2 fix from Kaitao Cheng for a bug where freeing a bpf_rb_root left dangling rb_node linkage pointers behind in the freed nodes. Without clearing these pointers, code that later inspects or reuses the freed memory could follow stale links into already-freed objects, a dangerous class of bug for the kernel's rbtree-backed BPF data structures. The fix clears the node linkage as part of the bpf_rb_root teardown path so no stale references survive the free. It's a small but important correctness fix for BPF's rbtree map infrastructure, which underpins features like custom allocators and ordered collections in BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, verifier: fold reg->var_off into PTR_TO_FLOW_KEYS bounds check",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260604180730.2518088-2-gnq25@mails.tsinghua.edu.cn/",
+      "summary": "Lead patch of a v2 two-patch verifier fix from Nuoqi Gui closing an out-of-bounds hole in how the verifier checks constant-offset accesses to PTR_TO_FLOW_KEYS pointers. The existing bounds check considers only the static offset and ignores the register's tracked var_off range, so a program could construct an access whose effective offset escapes the flow-keys structure while still passing verification. This patch folds reg->var_off into the bounds computation so the verifier accounts for the full possible range of the pointer before allowing the access. A companion selftest patch adds coverage that exercises constant-offset accesses at and beyond the flow-keys boundary to guard against regressions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Compare parent_id in refsafe() for REF_TYPE_PTR",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260604220904.1032145-3-ameryhung@gmail.com/",
+      "summary": "Middle patch of a three-patch v1 follow-up from Amery Hung to an earlier verifier object-relationship refactor. It updates refsafe(), the function that decides whether two reference-tracking register states are equivalent for state-pruning purposes, to also compare parent_id for REF_TYPE_PTR references instead of treating them as interchangeable based on type alone. Without this check the verifier could incorrectly prune divergent states and miss real differences in object lineage, opening the door to type-confusion bugs. The series also fixes a dead error check on acquire_reference() inside check_kfunc_call() and switches a selftest to use bpf_dynptr_slice() when reading file dynptrs in a reference-leak test, tightening the correctness of the reference-tracking machinery.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: libarena: Add rbtree data structure",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260604235016.20856-2-emil@etsalapatis.com/",
+      "summary": "First of three v3 patches from Emil Tsalapatis building out libarena, a shared library of data structures for BPF arena selftests. This patch adds a red-black tree implementation suitable for use inside an arena-backed BPF program, giving test authors a reusable building block for ordered, dynamically-sized collections in arena memory. The follow-up patches add a single-producer/multiple-consumer (SPMC) queue and a parallel test harness with an SPMC-based selftest that stresses concurrent arena access across multiple CPUs. Together they give arena selftest authors richer primitives for writing realistic concurrency and memory-management tests against the BPF arena allocator.",
+      "related_links": []
+    },
+    {
+      "title": "bpf/selftests: remove lirc test",
+      "author": "Bastien Curutchet (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260605-remove-lirc-test-v1-1-ee3f1ea5f3ae@bootlin.com/",
+      "summary": "Small cleanup patch from Bastien Curutchet (eBPF Foundation) that removes the lirc (Linux Infrared Remote Control) BPF selftest from the kernel's selftest suite. The test exercises a niche BPF program type tied to the lirc subsystem, which has seen little maintenance and adds little value for catching regressions in core BPF infrastructure. Dropping it trims selftest run time and the surface area that needs updating whenever core BPF code changes, in line with ongoing efforts to keep the selftest suite focused on actively used program types.",
+      "related_links": []
+    }
+  ]
+}
