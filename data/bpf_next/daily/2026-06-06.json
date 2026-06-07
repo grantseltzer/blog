@@ -1,0 +1,81 @@
+{
+  "generated_at": "2026-06-07T00:00:00Z",
+  "period_start": "2026-06-05",
+  "period_end": "2026-06-06",
+  "patch_count": 44,
+  "thread_count": 14,
+  "top_contributors": [
+    "Kumar Kartikeya Dwivedi",
+    "Mykyta Yatsenko",
+    "Amery Hung",
+    "Leon Hwang",
+    "Emil Tsalapatis"
+  ],
+  "key_topics": [
+    "verifier",
+    "maps",
+    "lsm",
+    "kfuncs",
+    "arena",
+    "helpers"
+  ],
+  "overview": "June 5–6 was an active day on bpf-next, with 44 patches across 14 series. The headline contribution is Kumar Kartikeya Dwivedi's 17-patch overhaul of BPF verifier error reporting, which introduces structured diagnostic categories and per-context history to make verification failures far easier to diagnose. Alongside that, Mykyta Yatsenko posted v7 of a resizable BPF hash map, and several smaller series addressed verifier correctness, LSM program constraints, and reference-tracking bugs.",
+  "patches": [
+    {
+      "title": "bpf: Add verifier diagnostics report helpers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260605063412.974640-2-memxor@gmail.com/",
+      "summary": "First patch in a 17-patch series redesigning how the BPF verifier communicates errors to users. It introduces new report-helper functions that emit structured, categorized diagnostic messages rather than ad-hoc strings. Subsequent patches in the series define error categories (register type safety, memory bounds, resource lifetime, CFG, call-type safety, limits, and internal errors) and wire each category to per-context diagnostic history. The goal is to make verifier rejections actionable: a developer should be able to read the error output and understand exactly which safety property was violated and where.",
+      "related_links": []
+    },
+    {
+      "title": "rhashtable: Add rhashtable_next_key() API",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260605-rhash-v7-1-5b8e05f8630d@meta.com/",
+      "summary": "Opens a 12-patch v7 series introducing a resizable BPF hash map type. This first patch adds a new rhashtable_next_key() API to the kernel's generic rhashtable layer, enabling safe iteration that survives a concurrent resize. Later patches implement the BPF map type itself, iteration ops, support for special fields, word-sized key optimisation, libbpf integration, BPF iterator tests, and benchmarks. The new map type eliminates the requirement to predict a fixed maximum entry count at creation time, which is a significant ergonomic improvement for long-running BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Expose signature verdict via bpf_prog_aux",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260605213518.544262-1-daniel@iogearbox.net/",
+      "summary": "Makes the BPF program signature verification verdict available through bpf_prog_aux so that BPF LSM programs can inspect it at hook time. This enables security policies that gate behaviour on whether a program was cryptographically signed and what the verification outcome was. The companion patch (2/2) adds a selftest demonstrating how an LSM program reads the verdict. This is particularly relevant for environments enforcing program signing policies.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix dead error check on acquire_reference() in check_kfunc_call",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260605202056.1780352-2-ameryhung@gmail.com/",
+      "summary": "First patch in a 5-patch v3 series following up on verifier object-relationship tracking refactoring. This patch corrects a dead error check in check_kfunc_call where the return value of acquire_reference() was silently discarded, masking potential reference acquisition failures. The series additionally fixes error handling for __ref struct_ops arguments, tightens parent_id comparison in refsafe() for REF_TYPE_PTR, removes an unnecessary WARN_ON_ONCE in check_ids(), and updates selftests to use bpf_dynptr_slice() for file dynptr reads.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: reject sleepable BPF_LSM_CGROUP programs at load time",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260605145707.608579-1-dwindsor@gmail.com/",
+      "summary": "Adds an explicit load-time check that rejects sleepable BPF programs attached to BPF_LSM_CGROUP hooks. Cgroup LSM hooks run in contexts where sleeping is not permitted, so sleepable programs are fundamentally incompatible with this attach type. Previously this combination could be loaded without error and only fail at runtime or produce silent misbehaviour. The fix gives developers an immediate, clear rejection message.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, verifier: fold reg->var_off into PTR_TO_FLOW_KEYS bounds check",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260606-c3-01-v3-v3-1-97c51f592f15@mails.tsinghua.edu.cn/",
+      "summary": "First of two patches (v3) fixing an out-of-bounds access the BPF verifier failed to detect for PTR_TO_FLOW_KEYS pointers. The bounds check previously considered only the constant offset component of a register, ignoring the variable offset (reg->var_off), allowing a combined offset to escape the valid flow-keys range without triggering a verifier error. This patch folds var_off into the check; the companion patch adds selftests that verify the corrected rejection behaviour.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Clear rb node linkage when freeing bpf_rb_root",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260605094143.5509-1-kaitao.cheng@linux.dev/",
+      "summary": "Fixes a correctness bug where red-black tree node linkage fields were not zeroed when a bpf_rb_root was freed. Nodes that were members of the freed root could retain stale back-pointers, creating a use-after-free hazard for BPF programs that reuse those nodes. The fix clears the linkage on teardown, ensuring that any subsequent rb_tree operations on reused nodes start from a clean state.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Check tail zero of bpf_map_info",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260605155249.20772-2-leon.hwang@linux.dev/",
+      "summary": "First of three patches (v3) adding validation of padding bytes in bpf_map_info and bpf_prog_info when these structures are passed through the BPF syscall. The kernel now rejects requests where bytes beyond the known structure layout are non-zero, following the ABI convention already used by other extensible kernel structures. This enables safe future extension of these info structs: new fields can be added knowing that older kernels will enforce zero-initialisation, preventing confusion between old and new userspace.",
+      "related_links": []
+    }
+  ]
+}
