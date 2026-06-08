@@ -1,0 +1,110 @@
+{
+  "period": "daily",
+  "period_start": "2026-06-07",
+  "period_end": "2026-06-08",
+  "fetched_at": "2026-06-08T13:09:36Z",
+  "patches": [
+    {
+      "title": "linux-next: manual merge of the bpf-next tree with the vfs-brauner tree",
+      "author": "Mark Brown",
+      "url": "https://lore.kernel.org/bpf/aiamrLm8DnCP6dbw@sirena.org.uk/",
+      "date": "2026-06-08T11:25:32",
+      "series": [
+        {
+          "id": 1107785,
+          "url": "https://patchwork.kernel.org/api/series/1107785/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107785",
+          "date": "2026-06-08T11:25:32",
+          "name": "linux-next: manual merge of the bpf-next tree with the vfs-brauner tree",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1107785/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next] arm64: mm: Complete the PTE store in ptep_try_set()",
+      "author": "Tejun Heo",
+      "url": "https://lore.kernel.org/bpf/7f5f7c94601312c1a401fb18998291cc@kernel.org/",
+      "date": "2026-06-08T07:25:47",
+      "series": [
+        {
+          "id": 1107546,
+          "url": "https://patchwork.kernel.org/api/series/1107546/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107546",
+          "date": "2026-06-08T07:25:47",
+          "name": "[v2,bpf-next] arm64: mm: Complete the PTE store in ptep_try_set()",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1107546/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/3] selftests/bpf: Stress LRU rqspinlock recovery paths",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260607-lru_map_spin-v3-3-bcd9332e911b@meta.com/",
+      "date": "2026-06-07T20:30:43",
+      "series": [
+        {
+          "id": 1107368,
+          "url": "https://patchwork.kernel.org/api/series/1107368/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107368",
+          "date": "2026-06-07T20:30:40",
+          "name": "bpf: Fix LRU NMI/tracepoint re-entry deadlock",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1107368/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/3] Documentation/bpf: Refresh map_lru_hash_update.dot for rqspinlock",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260607-lru_map_spin-v3-2-bcd9332e911b@meta.com/",
+      "date": "2026-06-07T20:30:42",
+      "series": [
+        {
+          "id": 1107368,
+          "url": "https://patchwork.kernel.org/api/series/1107368/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107368",
+          "date": "2026-06-07T20:30:40",
+          "name": "bpf: Fix LRU NMI/tracepoint re-entry deadlock",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1107368/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/3] bpf: Fix NMI/tracepoint re-entry deadlock on lru locks",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260607-lru_map_spin-v3-1-bcd9332e911b@meta.com/",
+      "date": "2026-06-07T20:30:41",
+      "series": [
+        {
+          "id": 1107368,
+          "url": "https://patchwork.kernel.org/api/series/1107368/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107368",
+          "date": "2026-06-07T20:30:40",
+          "name": "bpf: Fix LRU NMI/tracepoint re-entry deadlock",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1107368/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] arm64: mm: Complete the PTE store in ptep_try_set()",
+      "author": "Tejun Heo",
+      "url": "https://lore.kernel.org/bpf/088f52fd25860ca961449d53f91b214a@kernel.org/",
+      "date": "2026-06-07T07:59:36",
+      "series": [
+        {
+          "id": 1107210,
+          "url": "https://patchwork.kernel.org/api/series/1107210/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107210",
+          "date": "2026-06-07T07:59:36",
+          "name": "[bpf-next] arm64: mm: Complete the PTE store in ptep_try_set()",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1107210/mbox/"
+        }
+      ]
+    }
+  ]
+}
