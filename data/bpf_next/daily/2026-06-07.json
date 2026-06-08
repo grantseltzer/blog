@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-06-08T00:00:00Z",
+  "period_start": "2026-06-06",
+  "period_end": "2026-06-07",
+  "patch_count": 33,
+  "thread_count": 4,
+  "top_contributors": ["Jiri Olsa", "Nuoqi Gui", "Tejun Heo", "Mykyta Yatsenko"],
+  "key_topics": ["tracing-multi", "trampoline", "ftrace", "libbpf", "verifier"],
+  "overview": "The standout activity this period is Jiri Olsa's v8 of the bpf: tracing_multi link series, a 29-patch effort introducing a new BPF link type that atomically attaches multiple tracing programs to multiple kernel functions through a single link. Alongside that, Nuoqi Gui fixes an out-of-bounds verifier issue for PTR_TO_FLOW_KEYS offset checks, while Mykyta Yatsenko silences rhashtable build warnings and Tejun Heo corrects an incomplete PTE store on arm64.",
+  "patches": [
+    {
+      "title": "bpf: Add support for tracing multi link",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260606123955.345967-14-jolsa@kernel.org/",
+      "summary": "Introduces the new BPF_TRACE_MULTI_KPROBE/KRETPROBE attach types and the core kernel-side implementation of the tracing_multi link. Unlike existing fentry/fexit links that attach to a single target, a tracing_multi link can attach one BPF program to an arbitrary set of kernel functions in a single syscall. This dramatically reduces overhead and complexity for tools that need broad tracing coverage such as function tracers and security monitors. The patch builds on top of the trampoline refactoring earlier in the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add bpf_trampoline_multi_attach/detach functions",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260606123955.345967-13-jolsa@kernel.org/",
+      "summary": "Adds the bpf_trampoline_multi_attach() and bpf_trampoline_multi_detach() helpers that drive the multi-function attachment logic underpinning the tracing_multi link. These functions iterate the set of requested kernel functions, allocate or reuse trampolines for each, and roll back cleanly if any individual attachment fails. The rollback guarantee is exercised by the selftest added later in the series. This is part of the broader trampoline refactor that introduces bpf_trampoline_ops callbacks.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Add support to create tracing multi link",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260606123955.345967-21-jolsa@kernel.org/",
+      "summary": "Extends libbpf's bpf_link_create() to handle the new BPF_TRACE_MULTI_KPROBE and BPF_TRACE_MULTI_KRETPROBE attach types, wiring up the kernel ABI for tracing_multi links into the standard libbpf API. It also adds high-level auto-attach support so that skeleton-based programs can use the new link type transparently. Together with the preceding BTF helper patch, this gives userspace tools a clean path to multi-function tracing without manual syscall construction.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, verifier: fold reg->var_off into PTR_TO_FLOW_KEYS bounds check",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260606-c3-01-v3-v3-1-97c51f592f15@mails.tsinghua.edu.cn/",
+      "summary": "Fixes a verifier bug where a constant offset stored in reg->var_off was not being folded into the PTR_TO_FLOW_KEYS bounds check, allowing a BPF program to pass verification while actually accessing memory out of the struct bpf_flow_keys bounds. The fix aligns PTR_TO_FLOW_KEYS handling with how other pointer types fold var_off before the range check. A companion selftest in patch 2/2 covers both the fixed case and additional offset boundary conditions.",
+      "related_links": []
+    },
+    {
+      "title": "rhashtable: Fix rhashtable_next_key() build warnings",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260606-rhash_fixes_1-v1-1-932ab036e6bc@meta.com/",
+      "summary": "Resolves compiler build warnings emitted from the rhashtable_next_key() function, which is used internally by BPF's hash map iteration path. The warnings appear on certain compiler versions due to type or signedness mismatches in the helper. This is a small correctness and cleanliness fix that unblocks warning-free builds on affected toolchains.",
+      "related_links": []
+    },
+    {
+      "title": "arm64: mm: Complete the PTE store in ptep_try_set()",
+      "author": "Tejun Heo",
+      "url": "https://lore.kernel.org/bpf/088f52fd25860ca961449d53f91b214a@kernel.org/",
+      "summary": "Fixes ptep_try_set() on arm64 to ensure the PTE store is fully completed before returning, addressing a potential memory ordering issue relevant to BPF JIT and trampoline memory mappings on arm64 systems. An incomplete PTE store could allow another CPU to observe a partially-written page table entry, leading to subtle corruption. The fix adds the necessary barrier to guarantee the write is visible before the function returns.",
+      "related_links": []
+    }
+  ]
+}
