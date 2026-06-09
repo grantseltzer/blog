@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-06-09T00:00:00Z",
+  "period_start": "2026-06-07",
+  "period_end": "2026-06-08",
+  "patch_count": 6,
+  "thread_count": 4,
+  "top_contributors": ["Mykyta Yatsenko", "Tejun Heo", "Mark Brown"],
+  "key_topics": ["lru-maps", "locking", "arm64", "selftests"],
+  "overview": "June 7-8 activity on bpf-next was dominated by a three-part series from Mykyta Yatsenko (v3) fixing a deadlock that can occur when BPF LRU maps are accessed from NMI or tracepoint context while using the rqspinlock implementation. Tejun Heo also posted v2 of a fix for an incomplete PTE store in the arm64 ptep_try_set() function, ensuring atomicity of page table operations relevant to BPF arena.",
+  "patches": [
+    {
+      "title": "bpf: Fix NMI/tracepoint re-entry deadlock on lru locks",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260607-lru_map_spin-v3-1-bcd9332e911b@meta.com/",
+      "summary": "Fixes a deadlock that can occur when BPF LRU hash map operations are preempted by NMI or tracepoint handlers that access the same map. The rqspinlock-based LRU eviction path was not protected against re-entry from these contexts, leading to potential deadlocks on systems where BPF programs monitor LRU map operations at tracepoint or NMI boundaries. This is the first of a three-patch v3 series that also updates documentation and adds a stress test.",
+      "related_links": []
+    },
+    {
+      "title": "Documentation/bpf: Refresh map_lru_hash_update.dot for rqspinlock",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260607-lru_map_spin-v3-2-bcd9332e911b@meta.com/",
+      "summary": "Updates the BPF documentation diagram for LRU hash map update sequences to accurately reflect the rqspinlock-based locking model. The revised .dot diagram shows the locking protocol and the paths that must be guarded against NMI re-entry, helping maintainers and contributors understand the fixed concurrency model. This accompanies the core deadlock fix in patch 1/3.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Stress LRU rqspinlock recovery paths",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260607-lru_map_spin-v3-3-bcd9332e911b@meta.com/",
+      "summary": "Adds a selftest that hammers LRU map update paths with concurrent NMI and tracepoint-based accesses, specifically targeting the rqspinlock recovery paths introduced in the deadlock fix. The test exercises contention and failure-injection scenarios to verify the fix holds under load. This is the final patch of the three-part LRU NMI deadlock fix series.",
+      "related_links": []
+    },
+    {
+      "title": "arm64: mm: Complete the PTE store in ptep_try_set()",
+      "author": "Tejun Heo",
+      "url": "https://lore.kernel.org/bpf/7f5f7c94601312c1a401fb18998291cc@kernel.org/",
+      "summary": "This v2 patch ensures the PTE store in arm64's ptep_try_set() is fully visible to other CPUs before the function returns, closing a race where a partially committed page table entry could be observed. The fix is relevant to BPF arena, which relies on page table manipulation for its mmap-backed memory model on arm64. The patch resolves a correctness hazard that could cause subtle memory safety violations in arena-using BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "linux-next: manual merge of the bpf-next tree with the vfs-brauner tree",
+      "author": "Mark Brown",
+      "url": "https://lore.kernel.org/bpf/aiamrLm8DnCP6dbw@sirena.org.uk/",
+      "summary": "Mark Brown reported a manual merge conflict between the bpf-next tree and the vfs-brauner tree in linux-next, documenting the conflicting hunks and the resolution applied. Such reports help subsystem maintainers coordinate overlapping changes before they reach Linus's tree. The conflict touches code paths shared between BPF and VFS filesystem work led by Christian Brauner.",
+      "related_links": []
+    }
+  ]
+}

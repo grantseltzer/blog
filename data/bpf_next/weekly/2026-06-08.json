@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-06-09T00:00:00Z",
+  "period_start": "2026-06-01",
+  "period_end": "2026-06-08",
+  "patch_count": 100,
+  "thread_count": 23,
+  "top_contributors": ["Jiri Olsa", "Kumar Kartikeya Dwivedi", "Mykyta Yatsenko", "Amery Hung", "Emil Tsalapatis"],
+  "key_topics": ["verifier", "tracing", "maps", "lru-maps", "kfuncs", "libbpf", "arm64", "selftests"],
+  "overview": "The week of June 1-8, 2026 saw substantial activity on bpf-next, headlined by two major multi-patch series. Jiri Olsa posted v8 of the long-awaited tracing_multi link (29 patches), enabling a single BPF program to atomically attach to multiple kernel functions in one syscall, while Kumar Kartikeya Dwivedi submitted a sweeping 17-patch redesign of verifier error reporting that introduces structured diagnostic categories with rich contextual history. Mykyta Yatsenko contributed two notable series: v7 of the resizable BPF hash map backed by rhashtable, and a fix for an NMI/tracepoint re-entry deadlock in LRU map locking. Other highlights include Daniel Borkmann exposing signature verdict information to BPF LSM programs, Alexis Lothoré adding KASAN instrumentation support for JITed programs, and several verifier correctness fixes from Amery Hung and Nuoqi Gui.",
+  "patches": [
+    {
+      "title": "bpf: Add support for tracing multi link",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260606123955.345967-14-jolsa@kernel.org/",
+      "summary": "The core patch of Jiri Olsa's 29-patch v8 series implementing the tracing_multi link type, allowing a single BPF tracing program to attach to multiple kernel functions atomically in one syscall. The new link type significantly reduces overhead compared to creating one link per function, making high-coverage tracing workloads far more practical. The series also introduces multi-attach rollback on failure, session and cookie support, full libbpf API coverage, and benchmarks demonstrating the performance advantage.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add verifier diagnostics report helpers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260605063412.974640-2-memxor@gmail.com/",
+      "summary": "First patch of Kumar Kartikeya Dwivedi's 17-patch 'Redesign Verification Errors' series, which overhauls how the BPF verifier communicates rejection reasons to userspace. The series introduces structured diagnostic categories—memory safety, register type, resource lifetime, CFG, execution context, and more—each with tracked history of registers and references at the point of failure. This is a major usability improvement that will help developers understand complex verifier rejections without reverse-engineering log output.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Implement resizable hashmap basic functions",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260605-rhash-v7-4-5b8e05f8630d@meta.com/",
+      "summary": "Core implementation patch of the resizable BPF hash map series (v7, 12 patches), introducing a new BPF map type backed by the kernel rhashtable infrastructure that automatically grows and shrinks based on the number of entries. Unlike the existing fixed-size hash map, this eliminates the need to pre-size maps at creation time, improving memory efficiency for workloads with variable cardinality. The series also adds libbpf support, BPF iterator integration, bpftool documentation, and benchmarks.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix NMI/tracepoint re-entry deadlock on lru locks",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260607-lru_map_spin-v3-1-bcd9332e911b@meta.com/",
+      "summary": "Fixes a deadlock that can occur when BPF LRU hash map operations are preempted by NMI or tracepoint handlers that access the same map. The rqspinlock-based LRU eviction path was not safe against re-entry from NMI or tracepoint context, leading to potential deadlocks on systems where BPF programs observe LRU map activity. This v3 series also updates the LRU documentation diagram and adds a stress selftest for the recovery paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Expose signature verdict via bpf_prog_aux",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260605213518.544262-1-daniel@iogearbox.net/",
+      "summary": "Exposes the kernel's BPF program signature verification verdict through bpf_prog_aux, making it readable by BPF LSM programs via a new field. This allows LSM hooks to enforce signing policies by querying whether the currently executing BPF program passed or failed kernel signature verification at load time. A companion selftest demonstrates inspecting the verdict from within a BPF LSM hook.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, verifier: fold reg->var_off into PTR_TO_FLOW_KEYS bounds check",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260606-c3-01-v3-v3-1-97c51f592f15@mails.tsinghua.edu.cn/",
+      "summary": "Fixes an out-of-bounds access bug in the BPF verifier's PTR_TO_FLOW_KEYS bounds checking, where the variable offset component (reg->var_off) was not incorporated into the computed range. This could allow programs to pass verification while performing reads beyond the valid flow_keys structure in XDP and tc programs. The v3 patch folds the variable offset into the bounds check and adds selftests that verify the fix.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: add tests to validate KASAN on JIT programs",
+      "author": "Alexis Lothoré",
+      "url": "https://lore.kernel.org/bpf/20260604-kasan-v2-8-c066e627fda8@bootlin.com/",
+      "summary": "Final patch of a v2 series adding KASAN (Kernel Address Sanitizer) instrumentation support to BPF JIT-compiled programs. The series enables the JIT to emit KASAN shadow memory checks for load and store operations in JITed code, catching memory safety bugs that slip past the verifier or occur in helper implementations. This selftest patch validates that KASAN correctly detects out-of-bounds accesses in JITed BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix dead error check on acquire_reference() in check_kfunc_call",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260605202056.1780352-2-ameryhung@gmail.com/",
+      "summary": "First patch of Amery Hung's 5-patch v3 series following up on the object relationship tracking refactor, fixing a dead error check in the kfunc verifier path where an acquire_reference() failure was silently discarded. The series also corrects parent_id comparison in refsafe() for REF_TYPE_PTR, fixes error propagation for struct_ops __ref arguments, and removes an incorrect WARN_ON_ONCE in check_ids(). These corrections tighten the verifier's reference lifetime tracking.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: reject sleepable BPF_LSM_CGROUP programs at load time",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260605145707.608579-1-dwindsor@gmail.com/",
+      "summary": "Adds a load-time check that rejects BPF LSM programs attached to cgroup hooks when they are marked sleepable, since the cgroup LSM context does not support sleeping. Previously such programs could be loaded successfully and would fail only at runtime in an opaque way. The upfront rejection gives developers a clear error message and prevents latent issues from programs that inadvertently set the sleepable flag in an incompatible context.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Clear rb node linkage when freeing bpf_rb_root",
+      "author": "Kaitao Cheng",
+      "url": "https://lore.kernel.org/bpf/20260605094143.5509-1-kaitao.cheng@linux.dev/",
+      "summary": "Fixes a potential use-after-free issue where bpf_rb_root cleanup left stale rb_node linkage pointers in freed elements, which could cause corruption if the underlying memory was reused and the rb_node fields were subsequently inspected. The patch ensures left and right child pointers are nulled when an element is removed during map cleanup. This v2 incorporates review feedback from the initial submission.",
+      "related_links": []
+    },
+    {
+      "title": "arm64: mm: Complete the PTE store in ptep_try_set()",
+      "author": "Tejun Heo",
+      "url": "https://lore.kernel.org/bpf/7f5f7c94601312c1a401fb18998291cc@kernel.org/",
+      "summary": "Ensures the PTE store in arm64's ptep_try_set() is fully ordered and visible before the function returns, closing a race where another CPU could observe a partial page table entry. This fix is relevant to BPF arena on arm64, which relies on page table manipulation for its mmap-backed memory model. The v2 was posted the following day after initial review of v1 identified the remaining gap.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Check tail zero of bpf_map_info",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260605155249.20772-2-leon.hwang@linux.dev/",
+      "summary": "Adds validation that the padding bytes at the tail of bpf_map_info structures passed through the BPF syscall are zeroed, ensuring forward-compatible usage and preventing userspace from relying on uninitialized fields. This v3 series applies the same check to bpf_prog_info and includes selftests covering both structures. The check aligns with similar tail-zero validation already present in other BPF uAPI structs.",
+      "related_links": []
+    }
+  ]
+}
