@@ -1,0 +1,501 @@
+{
+  "period": "daily",
+  "period_start": "2026-06-08",
+  "period_end": "2026-06-09",
+  "fetched_at": "2026-06-09T12:07:24Z",
+  "patches": [
+    {
+      "title": "[bpf-next,6/6] selftests/bpf: Fix typo in verify_umulti_link_info",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260609104244.588321-7-jolsa@kernel.org/",
+      "date": "2026-06-09T10:42:44",
+      "series": [
+        {
+          "id": 1108502,
+          "url": "https://patchwork.kernel.org/api/series/1108502/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1108502",
+          "date": "2026-06-09T10:42:38",
+          "name": "bpf: Allow uprobe_multi binary specified by file descriptor",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1108502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,5/6] selftests/bpf: Add uprobe_multi path_fd fail tests",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260609104244.588321-6-jolsa@kernel.org/",
+      "date": "2026-06-09T10:42:43",
+      "series": [
+        {
+          "id": 1108502,
+          "url": "https://patchwork.kernel.org/api/series/1108502/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1108502",
+          "date": "2026-06-09T10:42:38",
+          "name": "bpf: Allow uprobe_multi binary specified by file descriptor",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1108502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/6] selftests/bpf: Add uprobe_multi path_fd test",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260609104244.588321-5-jolsa@kernel.org/",
+      "date": "2026-06-09T10:42:42",
+      "series": [
+        {
+          "id": 1108502,
+          "url": "https://patchwork.kernel.org/api/series/1108502/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1108502",
+          "date": "2026-06-09T10:42:38",
+          "name": "bpf: Allow uprobe_multi binary specified by file descriptor",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1108502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/6] libbpf: Add path_fd to struct bpf_link_create_opts",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260609104244.588321-4-jolsa@kernel.org/",
+      "date": "2026-06-09T10:42:41",
+      "series": [
+        {
+          "id": 1108502,
+          "url": "https://patchwork.kernel.org/api/series/1108502/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1108502",
+          "date": "2026-06-09T10:42:38",
+          "name": "bpf: Allow uprobe_multi binary specified by file descriptor",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1108502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/6] bpf: Add support to specify uprobe_multi target via file descriptor",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260609104244.588321-3-jolsa@kernel.org/",
+      "date": "2026-06-09T10:42:40",
+      "series": [
+        {
+          "id": 1108502,
+          "url": "https://patchwork.kernel.org/api/series/1108502/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1108502",
+          "date": "2026-06-09T10:42:38",
+          "name": "bpf: Allow uprobe_multi binary specified by file descriptor",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1108502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/6] bpf: Use user_path_at for path resolution in uprobe_multi",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260609104244.588321-2-jolsa@kernel.org/",
+      "date": "2026-06-09T10:42:39",
+      "series": [
+        {
+          "id": 1108502,
+          "url": "https://patchwork.kernel.org/api/series/1108502/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1108502",
+          "date": "2026-06-09T10:42:38",
+          "name": "bpf: Allow uprobe_multi binary specified by file descriptor",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1108502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/4] selftests/bpf: Exercise kptr map update lifetime",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260609093719.2858096-5-memxor@gmail.com/",
+      "date": "2026-06-09T09:37:17",
+      "series": [
+        {
+          "id": 1108441,
+          "url": "https://patchwork.kernel.org/api/series/1108441/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1108441",
+          "date": "2026-06-09T09:37:13",
+          "name": "Fix kptr dtor deadlock",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1108441/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/4] selftests/bpf: Exercise unsafe obj drops from tracing progs",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260609093719.2858096-4-memxor@gmail.com/",
+      "date": "2026-06-09T09:37:16",
+      "series": [
+        {
+          "id": 1108441,
+          "url": "https://patchwork.kernel.org/api/series/1108441/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1108441",
+          "date": "2026-06-09T09:37:13",
+          "name": "Fix kptr dtor deadlock",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1108441/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/4] bpf: Cancel special fields on map value recycle",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260609093719.2858096-3-memxor@gmail.com/",
+      "date": "2026-06-09T09:37:15",
+      "series": [
+        {
+          "id": 1108441,
+          "url": "https://patchwork.kernel.org/api/series/1108441/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1108441",
+          "date": "2026-06-09T09:37:13",
+          "name": "Fix kptr dtor deadlock",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1108441/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/4] bpf: Reject bpf_obj_drop() from tracing progs",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260609093719.2858096-2-memxor@gmail.com/",
+      "date": "2026-06-09T09:37:14",
+      "series": [
+        {
+          "id": 1108441,
+          "url": "https://patchwork.kernel.org/api/series/1108441/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1108441",
+          "date": "2026-06-09T09:37:13",
+          "name": "Fix kptr dtor deadlock",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1108441/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next] selftests/bpf: add tests for arena vma split and fork",
+      "author": "Ruslan Valiyev",
+      "url": "https://lore.kernel.org/bpf/20260609083709.168755-1-linuxoid@gmail.com/",
+      "date": "2026-06-09T08:37:09",
+      "series": [
+        {
+          "id": 1108395,
+          "url": "https://patchwork.kernel.org/api/series/1108395/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1108395",
+          "date": "2026-06-09T08:37:09",
+          "name": "[v3,bpf-next] selftests/bpf: add tests for arena vma split and fork",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1108395/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] selftests/bpf: libarena: Avoid spurious spmc parallel selftest errors",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260609063630.10245-1-emil@etsalapatis.com/",
+      "date": "2026-06-09T06:36:30",
+      "series": [
+        {
+          "id": 1108307,
+          "url": "https://patchwork.kernel.org/api/series/1108307/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1108307",
+          "date": "2026-06-09T06:36:30",
+          "name": "[bpf-next,v2] selftests/bpf: libarena: Avoid spurious spmc parallel selftest errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1108307/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: libarena: Avoid spurious spmc parallel selftest errors",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260608224732.4482-1-emil@etsalapatis.com/",
+      "date": "2026-06-08T22:47:32",
+      "series": [
+        {
+          "id": 1108144,
+          "url": "https://patchwork.kernel.org/api/series/1108144/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1108144",
+          "date": "2026-06-08T22:47:32",
+          "name": "[bpf-next] selftests/bpf: libarena: Avoid spurious spmc parallel selftest errors",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1108144/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,9/9] selftests/bpf: Add test to verify bpf_iter for global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260608145113.65857-10-leon.hwang@linux.dev/",
+      "date": "2026-06-08T14:51:13",
+      "series": [
+        {
+          "id": 1107932,
+          "url": "https://patchwork.kernel.org/api/series/1107932/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107932",
+          "date": "2026-06-08T14:51:05",
+          "name": "bpf: Introduce global percpu data",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1107932/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,8/9] selftests/bpf: Add test to verify xlated insns for global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260608145113.65857-9-leon.hwang@linux.dev/",
+      "date": "2026-06-08T14:51:12",
+      "series": [
+        {
+          "id": 1107932,
+          "url": "https://patchwork.kernel.org/api/series/1107932/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107932",
+          "date": "2026-06-08T14:51:05",
+          "name": "bpf: Introduce global percpu data",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1107932/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,7/9] selftests/bpf: Add tests to verify verifier log for global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260608145113.65857-8-leon.hwang@linux.dev/",
+      "date": "2026-06-08T14:51:11",
+      "series": [
+        {
+          "id": 1107932,
+          "url": "https://patchwork.kernel.org/api/series/1107932/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107932",
+          "date": "2026-06-08T14:51:05",
+          "name": "bpf: Introduce global percpu data",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1107932/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,6/9] selftests/bpf: Add tests to verify global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260608145113.65857-7-leon.hwang@linux.dev/",
+      "date": "2026-06-08T14:51:10",
+      "series": [
+        {
+          "id": 1107932,
+          "url": "https://patchwork.kernel.org/api/series/1107932/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107932",
+          "date": "2026-06-08T14:51:05",
+          "name": "bpf: Introduce global percpu data",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1107932/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,5/9] bpftool: Generate skeleton for global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260608145113.65857-6-leon.hwang@linux.dev/",
+      "date": "2026-06-08T14:51:09",
+      "series": [
+        {
+          "id": 1107932,
+          "url": "https://patchwork.kernel.org/api/series/1107932/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107932",
+          "date": "2026-06-08T14:51:05",
+          "name": "bpf: Introduce global percpu data",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1107932/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,4/9] libbpf: Add support for global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260608145113.65857-5-leon.hwang@linux.dev/",
+      "date": "2026-06-08T14:51:08",
+      "series": [
+        {
+          "id": 1107932,
+          "url": "https://patchwork.kernel.org/api/series/1107932/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107932",
+          "date": "2026-06-08T14:51:05",
+          "name": "bpf: Introduce global percpu data",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1107932/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,3/9] libbpf: Probe percpu data feature",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260608145113.65857-4-leon.hwang@linux.dev/",
+      "date": "2026-06-08T14:51:07",
+      "series": [
+        {
+          "id": 1107932,
+          "url": "https://patchwork.kernel.org/api/series/1107932/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107932",
+          "date": "2026-06-08T14:51:05",
+          "name": "bpf: Introduce global percpu data",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1107932/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,2/9] bpf: Introduce global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260608145113.65857-3-leon.hwang@linux.dev/",
+      "date": "2026-06-08T14:51:06",
+      "series": [
+        {
+          "id": 1107932,
+          "url": "https://patchwork.kernel.org/api/series/1107932/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107932",
+          "date": "2026-06-08T14:51:05",
+          "name": "bpf: Introduce global percpu data",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1107932/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,1/9] bpf: Drop duplicate blank lines in verifier",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260608145113.65857-2-leon.hwang@linux.dev/",
+      "date": "2026-06-08T14:51:05",
+      "series": [
+        {
+          "id": 1107932,
+          "url": "https://patchwork.kernel.org/api/series/1107932/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107932",
+          "date": "2026-06-08T14:51:05",
+          "name": "bpf: Introduce global percpu data",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1107932/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,5/5] selftests/bpf: Exercise kptr map update lifetime",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260608144841.1732406-6-memxor@gmail.com/",
+      "date": "2026-06-08T14:48:38",
+      "series": [
+        {
+          "id": 1107931,
+          "url": "https://patchwork.kernel.org/api/series/1107931/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107931",
+          "date": "2026-06-08T14:48:33",
+          "name": "Fix kptr dtor deadlock",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1107931/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,4/5] selftests/bpf: Exercise unsafe obj drops from tracing progs",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260608144841.1732406-5-memxor@gmail.com/",
+      "date": "2026-06-08T14:48:37",
+      "series": [
+        {
+          "id": 1107931,
+          "url": "https://patchwork.kernel.org/api/series/1107931/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107931",
+          "date": "2026-06-08T14:48:33",
+          "name": "Fix kptr dtor deadlock",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1107931/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,3/5] bpf: Cancel special fields on map value recycle",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260608144841.1732406-4-memxor@gmail.com/",
+      "date": "2026-06-08T14:48:36",
+      "series": [
+        {
+          "id": 1107931,
+          "url": "https://patchwork.kernel.org/api/series/1107931/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107931",
+          "date": "2026-06-08T14:48:33",
+          "name": "Fix kptr dtor deadlock",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1107931/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,2/5] bpf: Reject bpf_obj_drop() from tracing progs",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260608144841.1732406-3-memxor@gmail.com/",
+      "date": "2026-06-08T14:48:35",
+      "series": [
+        {
+          "id": 1107931,
+          "url": "https://patchwork.kernel.org/api/series/1107931/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107931",
+          "date": "2026-06-08T14:48:33",
+          "name": "Fix kptr dtor deadlock",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1107931/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,1/5] bpf: Treat non-iterator tracing progs as tracing",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260608144841.1732406-2-memxor@gmail.com/",
+      "date": "2026-06-08T14:48:34",
+      "series": [
+        {
+          "id": 1107931,
+          "url": "https://patchwork.kernel.org/api/series/1107931/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107931",
+          "date": "2026-06-08T14:48:33",
+          "name": "Fix kptr dtor deadlock",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1107931/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "linux-next: manual merge of the bpf-next tree with the vfs-brauner tree",
+      "author": "Mark Brown",
+      "url": "https://lore.kernel.org/bpf/aiamrLm8DnCP6dbw@sirena.org.uk/",
+      "date": "2026-06-08T11:25:32",
+      "series": [
+        {
+          "id": 1107785,
+          "url": "https://patchwork.kernel.org/api/series/1107785/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107785",
+          "date": "2026-06-08T11:25:32",
+          "name": "linux-next: manual merge of the bpf-next tree with the vfs-brauner tree",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1107785/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next] arm64: mm: Complete the PTE store in ptep_try_set()",
+      "author": "Tejun Heo",
+      "url": "https://lore.kernel.org/bpf/7f5f7c94601312c1a401fb18998291cc@kernel.org/",
+      "date": "2026-06-08T07:25:47",
+      "series": [
+        {
+          "id": 1107546,
+          "url": "https://patchwork.kernel.org/api/series/1107546/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1107546",
+          "date": "2026-06-08T07:25:47",
+          "name": "[v2,bpf-next] arm64: mm: Complete the PTE store in ptep_try_set()",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1107546/mbox/"
+        }
+      ]
+    }
+  ]
+}
