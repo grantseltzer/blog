@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-06-10T00:00:00Z",
+  "period_start": "2026-06-08",
+  "period_end": "2026-06-09",
+  "patch_count": 29,
+  "thread_count": 9,
+  "top_contributors": ["Leon Hwang", "Kumar Kartikeya Dwivedi", "Jiri Olsa"],
+  "key_topics": ["percpu", "kptr", "uprobe", "arena", "libbpf", "selftests"],
+  "overview": "June 8-9 saw significant activity across three major series on bpf-next. Leon Hwang's v5 series introduces global per-CPU data support for BPF programs, enabling programs to efficiently access per-CPU state declared as global variables, with kernel verifier, libbpf, and bpftool all updated. Kumar Kartikeya Dwivedi submitted v2 of fixes for a kptr destructor deadlock, rejecting bpf_obj_drop() from tracing programs and ensuring special fields are canceled on map value recycle. Jiri Olsa introduced a new series allowing uprobe_multi probes to specify their target binary by file descriptor rather than path, improving usability in containerized environments.",
+  "patches": [
+    {
+      "title": "bpf: Introduce global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260608145113.65857-3-leon.hwang@linux.dev/",
+      "summary": "Introduces a new BPF feature enabling programs to declare global per-CPU variables that are backed by a dedicated percpu data section, analogous to how global data sections work for non-percpu variables. The kernel verifier gains new logic to identify and validate accesses to this section, translating them into efficient per-CPU memory references at runtime. This is patch 2 of a 9-patch v5 series that also updates libbpf, bpftool skeleton generation, and adds comprehensive selftests including bpf_iter support.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Add support for global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260608145113.65857-5-leon.hwang@linux.dev/",
+      "summary": "Adds userspace support in libbpf for loading and managing BPF programs that use global per-CPU data sections. The library handles mapping the new percpu data ELF section to a BPF percpu array map and wiring up the skeleton accessors, making the feature transparent to users of the high-level BPF skeleton API. This is patch 4/9 and is accompanied by a feature probe in patch 3/9 to detect kernel support at runtime.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject bpf_obj_drop() from tracing progs",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260609093719.2858096-2-memxor@gmail.com/",
+      "summary": "Fixes a deadlock where tracing BPF programs could call bpf_obj_drop() to release a kptr, triggering the object's destructor while already holding map locks, causing a lock-order inversion. The fix rejects bpf_obj_drop() at verification time for non-iterator tracing programs, preventing the unsafe drop path from ever executing. This is patch 1/4 of the v2 series; the v1 five-patch series was also posted the same day.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Cancel special fields on map value recycle",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260609093719.2858096-3-memxor@gmail.com/",
+      "summary": "Ensures that when a map value slot containing kptrs or other special fields is recycled (reused for a new entry), the special fields are properly cancelled rather than relying on the destructor path. Without this change, recycling could leave dangling references or trigger destructors at unsafe points. This patch works in concert with the bpf_obj_drop() rejection to fully close the kptr destructor deadlock.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add support to specify uprobe_multi target via file descriptor",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260609104244.588321-3-jolsa@kernel.org/",
+      "summary": "Extends the uprobe_multi link creation path to accept an open file descriptor identifying the target binary, in addition to the existing path string. This is useful in containerized and sandboxed environments where an absolute filesystem path may not be available but the binary can be referenced via a pre-opened fd. The kernel resolves the binary using user_path_at() on the provided fd, keeping the rest of the uprobe_multi logic unchanged.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Add path_fd to struct bpf_link_create_opts",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260609104244.588321-4-jolsa@kernel.org/",
+      "summary": "Exposes the new kernel-side path_fd capability for uprobe_multi through the libbpf API by adding a path_fd field to bpf_link_create_opts. Users of the bpf_link_create() and bpf_program__attach_uprobe_multi() APIs can now pass an fd instead of a path string when attaching uprobe_multi programs. Accompanying selftests in patches 4/6 and 5/6 cover both success and expected failure cases for the new option.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: add tests for arena vma split and fork",
+      "author": "Ruslan Valiyev",
+      "url": "https://lore.kernel.org/bpf/20260609083709.168755-1-linuxoid@gmail.com/",
+      "summary": "This v3 single-patch selftest exercises BPF arena memory behavior across two important but previously untested scenarios: VMA splitting (when a range within the arena mapping is unmapped, splitting the VMA into two) and process fork (verifying the arena is handled correctly across the copy-on-write fork boundary). These tests help guard against regressions in the arena's interaction with the Linux mm subsystem.",
+      "related_links": []
+    }
+  ]
+}
