@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-06-11T00:00:00Z",
+  "period_start": "2026-06-09",
+  "period_end": "2026-06-10",
+  "patch_count": 37,
+  "thread_count": 18,
+  "top_contributors": ["Nuoqi Gui", "Kumar Kartikeya Dwivedi", "Jiri Olsa", "Yonghong Song"],
+  "key_topics": ["verifier", "uprobe", "kfuncs", "maps", "cgroup", "arena", "selftests", "helpers"],
+  "overview": "June 9-10 saw a strong focus on BPF verifier hardening, with Nuoqi Gui submitting three separate series tightening memory safety: rejecting scalar addition from untrusted memory, enforcing write checks for BTF pointer helper access, and fixing gotox target validation against the CFG. Jiri Olsa landed a notable new feature allowing uprobe_multi to target binaries via file descriptors rather than path strings, simplifying container and mount-namespace use cases. Kumar Kartikeya Dwivedi continued iterating on a fix for kptr destructor deadlocks, now at v3, rejecting bpf_obj_drop() from tracing programs and properly cancelling special fields on map value recycle.",
+  "patches": [
+    {
+      "title": "bpf: Use user_path_at for path resolution in uprobe_multi",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260609104244.588321-2-jolsa@kernel.org/",
+      "summary": "First patch in a 6-patch series adding support for specifying an uprobe_multi target binary via a file descriptor rather than a path string. This patch refactors path resolution in uprobe_multi to use user_path_at, laying the groundwork for the fd-based interface introduced in patch 2/6. This matters because path-based target specification breaks in container and mount-namespace environments where path semantics differ; using an open file descriptor sidesteps those issues cleanly. The series also includes libbpf changes to expose path_fd in bpf_link_create_opts and comprehensive selftests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject bpf_obj_drop() from tracing progs",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260609202548.3571690-2-memxor@gmail.com/",
+      "summary": "First kernel patch in a v3 4-patch series fixing a deadlock triggered when kptr destructors are called from contexts that already hold locks the destructor needs to acquire. The fix rejects bpf_obj_drop() calls from tracing programs, which can execute in arbitrary contexts including under spinlocks. A companion patch cancels special fields on map value recycle rather than running their destructors inline. This v3 adds selftests for unsafe object drops from tracing programs and kptr map update lifetime.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject scalar addition from untrusted memory",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260609-f01-03-scalar-add-bpf-next-v1-1-e6212e274155@mails.tsinghua.edu.cn/",
+      "summary": "The BPF verifier allowed scalar values loaded from read-only untrusted memory to be added to pointers, enabling verifier-invisible pointer arithmetic that could undermine memory safety. This patch adds a check to reject such additions, ensuring only values from trusted or verified sources can influence pointer offsets. A corresponding selftest covers the now-rejected pattern to guard against regressions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Enforce write checks for BTF pointer helper access",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260609-f01-04-btf-writable-arg-v1-1-f449cd970669@mails.tsinghua.edu.cn/",
+      "summary": "BTF-typed pointer arguments passed to BPF helpers were not uniformly checked for writability, creating a gap where a program could pass a read-only pointer to a helper that writes through it. This patch extends the verifier to enforce write checks on BTF pointer helper access, and a companion patch extends the check to global subprogram arguments. Together they close a class of potential type-confusion issues at the helper and subprogram boundaries.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix gotox target validation against CFG",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260609-f01-02-gotox-bpf-next-v1-1-b441d63a1559@mails.tsinghua.edu.cn/",
+      "summary": "The gotox (unconditional jump extended) instruction's branch target was not being validated against the program's control flow graph, meaning the verifier could accept programs jumping to unreachable or invalid targets. This patch adds the missing CFG validation step for gotox targets, aligning it with checks already applied to other jump instructions. A selftest covering cross-subprogram gotox target scenarios is included.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BPF_FIB_LOOKUP_VLAN flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260609172052.81613-1-avinash.duduskar@gmail.com/",
+      "summary": "Extends the bpf_fib_lookup() helper with a new BPF_FIB_LOOKUP_VLAN flag that instructs the FIB lookup to consider VLAN-tagged interfaces during route resolution. Previously callers had no way to factor VLAN membership into FIB lookups, causing incorrect nexthop resolution in VLAN-aware network topologies. This is particularly useful for XDP and tc programs performing VLAN-aware routing or load balancing without needing to hand off to the kernel routing stack.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix use-after-free on mm_struct in bpf_find_vma()",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260610024637.343364-1-sanghyun.park.cnu@gmail.com/",
+      "summary": "bpf_find_vma() is a BPF helper that walks a task's memory map to find the VMA containing a given address; a concurrent task exit could free the mm_struct while the helper still holds a reference to it. This v4 submission fixes the use-after-free by taking an appropriate reference to the mm_struct for the duration of the lookup. This is a correctness and stability fix relevant to any BPF program using bpf_find_vma() to inspect process memory layout at runtime.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix setting retval to -EPERM for cgroup hooks not returning errno",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/20260610201724.733943-2-xukuohai@huaweicloud.com/",
+      "summary": "Some LSM cgroup hooks return a boolean (allow/deny) rather than an errno, but the BPF runtime was incorrectly setting retval to -EPERM for those hooks when a program returned denial. This patch fixes the return value handling to correctly distinguish between bool-returning and errno-returning cgroup hooks, ensuring that -EPERM is only set when the hook's contract calls for it. A selftest is added to cover both hook categories and prevent future regressions.",
+      "related_links": []
+    }
+  ]
+}
