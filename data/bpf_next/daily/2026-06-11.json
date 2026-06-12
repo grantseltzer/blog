@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-06-12T00:00:00Z",
+  "period_start": "2026-06-10",
+  "period_end": "2026-06-11",
+  "patch_count": 32,
+  "thread_count": 13,
+  "top_contributors": ["Jiri Olsa", "Daniel Borkmann", "Tiezhu Yang"],
+  "key_topics": ["uprobe", "signed-loader", "cgroup", "interpreter", "libbpf", "token", "uaf"],
+  "overview": "Activity on June 10-11 was dominated by two major feature series: Jiri Olsa's v3 series enabling uprobe_multi to accept a target binary via file descriptor, and Daniel Borkmann's BPF signed loader verification work that enforces cryptographic signature checks at program load time. Several correctness and safety fixes also landed, including a use-after-free in bpf_find_vma(), a cgroup hook retval bug affecting LSM programs, and an unaligned interpreter panic on architectures falling back from JIT to the BPF interpreter.",
+  "patches": [
+    {
+      "title": "bpf: Add support to specify uprobe_multi target via file descriptor",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260611114230.950379-4-jolsa@kernel.org/",
+      "summary": "This patch extends the uprobe_multi link type to accept a target binary via an open file descriptor (path_fd) in addition to the existing path-string approach. The change uses user_path_at() for proper fd-relative path resolution and adds access_ok() guards around __get_user accesses for the user-supplied uprobe_multi data. Allowing uprobe attachment by fd is useful for container and sandboxed environments where the target binary path may not be directly accessible but an fd can be passed across privilege boundaries. The series also extends libbpf's bpf_link_create_opts with path_fd and adds comprehensive selftests covering both success and expected-failure paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Verify signed loader metadata at load time",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260610230329.727075-2-daniel@iogearbox.net/",
+      "summary": "This patch implements kernel-side verification of cryptographic signatures embedded in BPF loader metadata at program load time, providing a foundation for enforcing that only trusted BPF programs can be loaded in hardened environments. The accompanying bpftool change ensures the loader metadata itself is covered by the program signature, closing a potential gap where metadata could be tampered with post-signing. libbpf is updated to move metadata integrity checks to load time rather than performing them inside the loader itself. A new selftest verifies the end-to-end signed loader flow, and documentation describing the BPF signing and enforcement model is added.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix unaligned interpreter panic on JIT fallback path",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260611101216.30153-1-yangtiezhu@loongson.cn/",
+      "summary": "On architectures such as LoongArch that require strict memory alignment, the BPF interpreter can panic when a JIT-compiled program falls back to interpretation due to an alignment mismatch in the interpreter's internal state. This fix ensures correct alignment of the relevant data structures on the fallback path so the interpreter can safely handle programs that were initially targeted for JIT compilation. The bug is a regression that only surfaces on alignment-strict platforms and does not affect x86 or arm64.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix setting retval to -EPERM for cgroup hooks not returning errno",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/20260610201724.733943-2-xukuohai@huaweicloud.com/",
+      "summary": "BPF LSM programs attached to cgroup hooks that return a boolean (allow/deny) rather than an errno value were incorrectly having their return value overwritten with -EPERM in some codepaths, causing unexpected denials. This patch distinguishes between hooks that return an errno and those that return a bool, and ensures the retval is only set to -EPERM when the hook signature actually supports errno returns. A selftest is added to cover the affected bool and errno LSM cgroup hook combinations.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Tighten cgroup storage cookie checks for prog arrays",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260610105539.705887-1-daniel@iogearbox.net/",
+      "summary": "This patch strengthens the cgroup storage cookie validation when BPF programs are stored in prog arrays used for tail calls, preventing a scenario where a program with a mismatched cgroup storage cookie could be inserted and later invoked via tail call in a different cgroup context. The fix adds an explicit cookie consistency check at prog-array update time so the mismatch is caught eagerly. A selftest covering tail-call cgroup storage prog-array interactions is included.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Skip bpf_object__probe_loading() when BPF token is in use",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260610145059.113412-2-chenyuan_fl@163.com/",
+      "summary": "When a BPF token is provided, libbpf currently still runs bpf_object__probe_loading() which attempts unprivileged capability probes that are not meaningful in a token-based access model and can produce misleading errors. This series skips the probe step when a token is in use and instead fetches the set of probeable program types directly from the token's permitted operations. The change improves libbpf correctness in delegated permission environments such as containers using BPF token delegation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix use-after-free on mm_struct in bpf_find_vma()",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260610024637.343364-1-sanghyun.park.cnu@gmail.com/",
+      "summary": "bpf_find_vma() acquires a reference to the task's mm_struct but under certain task-exit races the mm can be freed before the VMA walk completes, leading to a use-after-free. This v4 patch adds proper mmgrab/mmdrop reference counting around the VMA lookup so the mm_struct lifetime is correctly managed regardless of concurrent task teardown. The fix addresses a potential kernel memory safety issue that could be triggered from BPF programs that call the bpf_find_vma() helper on short-lived tasks.",
+      "related_links": []
+    }
+  ]
+}
