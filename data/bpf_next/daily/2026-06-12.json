@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-06-13T00:00:00Z",
+  "period_start": "2026-06-11",
+  "period_end": "2026-06-12",
+  "patch_count": 28,
+  "thread_count": 12,
+  "top_contributors": ["Jiri Olsa", "Cong Wang", "Kuniyuki Iwashima", "Tianci Cao", "Tiezhu Yang"],
+  "key_topics": ["verifier", "kfuncs", "uprobe", "tcp", "hwtstamp", "arena", "interpreter"],
+  "overview": "The June 11-12 bpf-next window brought several notable new features alongside important fixes. Jiri Olsa continued work enabling uprobe_multi to target binaries via file descriptor, Cong Wang proposed an RFC for opportunistic TCP loopback splice using a new BPF kfunc, and Kuniyuki Iwashima introduced hardware timestamp proxy support for BPF programs. The BPF verifier also gained support for shift operations with non-constant source registers, and a recurring unaligned interpreter panic on JIT fallback paths received its third revision fix.",
+  "patches": [
+    {
+      "title": "bpf: Add support to specify uprobe_multi target via file descriptor",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260611114230.950379-4-jolsa@kernel.org/",
+      "summary": "This patch (3/7 of the series) adds kernel support for specifying the uprobe_multi target binary via a file descriptor rather than a path string. The change relies on the preceding patch's switch to user_path_at for path resolution, allowing callers to pass an open fd via the new path_fd field in the link create attributes. This is useful in containerized or sandboxed environments where a process may not have a resolvable filesystem path for a target binary. The series also updates libbpf and adds selftest coverage for both the success and failure cases.",
+      "related_links": []
+    },
+    {
+      "title": "tcp_bpf: add bpf_sock_splice_pair kfunc for opportunistic loopback splice",
+      "author": "Cong Wang",
+      "url": "https://lore.kernel.org/bpf/20260612011452.134466-2-xiyou.wangcong@gmail.com/",
+      "summary": "This RFC introduces a new kfunc, bpf_sock_splice_pair, that pairs two TCP sockets for opportunistic loopback splicing, allowing data to bypass the network stack when both endpoints are on the same host. The mechanism builds on tcp_bpf infrastructure and lets a sockops BPF program opt sockets into splice pairing without changing application code. Subsequent patches in the series add busy-polling of the splice ring on the receiver side, expose SO_BUSY_POLL via bpf_setsockopt, and provide selftest coverage. This is an RFC seeking feedback on the overall approach before the implementation is finalized.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add kfunc to proxy TX HW Timestamp",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260612001803.23341-5-kuniyu@google.com/",
+      "summary": "Part of a five-patch series adding RX and TX hardware timestamp proxy support via BPF, this patch introduces a kfunc that allows a BPF program to forward a TX hardware timestamp from one socket to another. The series also adds bpf_skb_set_hwtstamp for setting hardware timestamps on skbs and extends ethtool with ETHTOOL_MSG_TSINFO_SET to let virtual interfaces advertise timestamp capabilities. Together these primitives let BPF programs implement transparent timestamp proxying for use cases like PTP over virtual interfaces.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: support shift operations with non-const src operand",
+      "author": "Tianci Cao",
+      "url": "https://lore.kernel.org/bpf/20260612121041.25254-2-ziye@zju.edu.cn/",
+      "summary": "This patch teaches the BPF verifier to track and verify shift operations (LSH, RSH, ARSH) where the source register is not a compile-time constant. Previously the verifier required the shift amount to be a known constant, which forced programmers to add unnecessary masking or use workarounds. The implementation extends scalar value range propagation through non-const shifts, with the companion patch adding selftests to verify the new behavior. This is the second revision of the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix unaligned interpreter panic on JIT fallback path",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260612011016.25701-1-yangtiezhu@loongson.cn/",
+      "summary": "This is the third revision of a fix addressing a kernel panic that occurs on architectures with strict alignment requirements (such as LoongArch) when a BPF program falls back from JIT compilation to the interpreter. The panic arises because the interpreter assumes naturally aligned access to the BPF instruction stream, which is not guaranteed on the JIT fallback path. The patch ensures proper alignment before the interpreter begins execution.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add cgroup kptr NMI deadlock reproducer",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260611195844.2830283-1-utilityemal77@gmail.com/",
+      "summary": "This selftest adds a reproducer for a deadlock condition that can occur when a cgroup BPF program manipulates kptr-typed map values from an NMI context. The test exercises the race between normal-context kptr release and NMI-context access that can cause a spinlock deadlock. Including this as a selftest helps prevent regressions once the underlying kernel fix is in place and documents the exact scenario that triggers the bug.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add arena direct-value one-past-end reject test",
+      "author": "Woojin Ji",
+      "url": "https://lore.kernel.org/bpf/20260612-arena-direct-value-v1-v4-1-b81b642f5277@gmail.com/",
+      "summary": "This fourth-revision selftest verifies that the BPF verifier correctly rejects a program that constructs a direct-value pointer pointing one byte past the end of an arena allocation. Accessing one-past-end through a direct value bypasses the usual bounds checks if not explicitly caught, making this a correctness edge case for the arena memory model. The test ensures the verifier's arena bounds enforcement handles this off-by-one scenario.",
+      "related_links": []
+    }
+  ]
+}
