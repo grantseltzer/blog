@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-06-14T00:00:00Z",
+  "period_start": "2026-06-12",
+  "period_end": "2026-06-13",
+  "patch_count": 32,
+  "thread_count": 11,
+  "top_contributors": ["Kuniyuki Iwashima", "Jiayuan Chen", "Cong Wang", "Tianci Cao"],
+  "key_topics": ["jit", "kfuncs", "sockmap", "verifier", "hwtstamp", "selftests"],
+  "overview": "This period's bpf-next activity spans a new BPF JIT for the m68k architecture, a series of sockmap safety fixes, and new kfuncs for proxying hardware timestamps on virtual interfaces. An RFC from Cong Wang proposes opportunistic loopback TCP splicing for BPF-paired sockets, and verifier patches add enforcement of gotox cross-subprogram jump targets and support for shift operations with non-constant source registers.",
+  "patches": [
+    {
+      "title": "m68k, bpf: Add initial BPF JIT compiler support",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260612195805.3243333-1-visitorckw@gmail.com/",
+      "summary": "Adds an initial BPF JIT compiler for the Motorola 68000 (m68k) architecture, enabling native BPF program execution instead of falling back to the generic interpreter. This fourth revision expands BPF's architecture coverage to m68k, which is used in embedded and legacy systems. The JIT will improve performance for BPF use cases on m68k hardware and brings the platform in line with other supported architectures.",
+      "related_links": []
+    },
+    {
+      "title": "tcp_bpf: add bpf_sock_splice_pair kfunc for opportunistic loopback splice",
+      "author": "Cong Wang",
+      "url": "https://lore.kernel.org/bpf/20260612011452.134466-2-xiyou.wangcong@gmail.com/",
+      "summary": "This RFC series introduces opportunistic loopback TCP splicing for BPF-paired sockets, short-circuiting the network stack when both endpoints of a TCP connection are on the same host. A new kfunc `bpf_sock_splice_pair` allows BPF sockops programs to pair two sockets for spliced data transfer, and the receiver busy-polls the splice ring before parking. The series also adds `SO_BUSY_POLL` support to `bpf_setsockopt()` and includes selftests for the new mechanism.",
+      "related_links": []
+    },
+    {
+      "title": "ethtool: Introduce ETHTOOL_MSG_TSINFO_SET for virtual interfaces.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260613010039.1362312-2-kuniyu@google.com/",
+      "summary": "This v2 series adds BPF-based RX/TX hardware timestamp proxying so BPF programs on virtual interfaces can expose hardware timestamping capabilities derived from an underlying physical interface. It introduces a new ethtool message `ETHTOOL_MSG_TSINFO_SET` for setting timestamp info on virtual interfaces, a `bpf_skb_set_hwtstamp()` helper for RX path stamping, and a TX kfunc for proxying TX hardware timestamps. This is valuable for PTP and precision-timing workloads on virtualized networking setups.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Enforce gotox targets against subprog bounds",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260613-f01-02-gotox-bpf-next-v2-send-v2-1-ff980bc5a329@mails.tsinghua.edu.cn/",
+      "summary": "Adds verifier enforcement that `gotox` (cross-subprogram goto) jump targets fall within valid subprogram bounds, preventing out-of-bounds control flow transfers via the extended goto instruction. Without this check, a crafted BPF program could potentially jump to arbitrary offsets across subprogram boundaries. The companion patch adds selftests covering cross-subprog gotox target validation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: support shift operations with non-const src operand",
+      "author": "Tianci Cao",
+      "url": "https://lore.kernel.org/bpf/20260612121041.25254-2-ziye@zju.edu.cn/",
+      "summary": "Extends the BPF verifier to handle shift instructions (LSH, RSH, ARSH) where the source operand is a non-constant register rather than an immediate value, which was previously unsupported. This v2 expands the expressiveness of BPF programs performing bitwise operations without requiring workarounds like storing constants in scratch registers. Accompanying selftests verify the new behavior for all affected shift instruction forms.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: reject overflowing copy + len in bpf_msg_push_data()",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260612130919.299124-2-jiayuan.chen@linux.dev/",
+      "summary": "This 7-patch v3 series fixes multiple correctness and safety issues in the sockmap and skmsg subsystem. It addresses an integer overflow in `bpf_msg_push_data()` bounds checks, a use-after-free in `udp_bpf_recvmsg()`, failure to zero-initialize pages in `bpf_msg_push_data`, a wrong rsge offset, and copy-state sync issues. Together these harden the sockmap data path against memory-safety bugs that could be triggered by manipulated socket message operations.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix unaligned interpreter panic on JIT fallback path",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260612011016.25701-1-yangtiezhu@loongson.cn/",
+      "summary": "Fixes a kernel panic that occurs on architectures requiring aligned memory access (such as LoongArch) when BPF JIT compilation fails and execution falls back to the generic interpreter. The BPF image may not satisfy the interpreter's alignment requirements on the fallback path, causing alignment faults. This v3 patch ensures the image is properly aligned before handing off to the interpreter.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Better build_id caching in stack_map_get_build_id_offset()",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260612220651.2507843-1-ihor.solodrai@linux.dev/",
+      "summary": "Improves the build ID caching strategy in `stack_map_get_build_id_offset()`, which is used when capturing stack traces with ELF build IDs in BPF stack maps. More effective caching reduces redundant lookups into the ELF note headers during high-frequency stack-unwinding workloads. This is a v2 of the optimization, targeting improved performance for profiling and tracing use cases that rely on build ID resolution.",
+      "related_links": []
+    }
+  ]
+}
