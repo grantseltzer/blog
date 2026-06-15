@@ -1,0 +1,246 @@
+{
+  "period": "daily",
+  "period_start": "2026-06-14",
+  "period_end": "2026-06-15",
+  "fetched_at": "2026-06-15T15:18:04Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v2,4/4] selftests/bpf: Test jited inline of bpf_get_smp_processor_id() for LoongArch",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260615100506.19558-5-yangtiezhu@loongson.cn/",
+      "date": "2026-06-15T10:05:06",
+      "series": [
+        {
+          "id": 1111610,
+          "url": "https://patchwork.kernel.org/api/series/1111610/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111610",
+          "date": "2026-06-15T10:05:04",
+          "name": "selftests/bpf: Add some tests for LoongArch",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1111610/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/4] selftests/bpf: Test jited inline of bpf_get_current_task() for LoongArch",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260615100506.19558-4-yangtiezhu@loongson.cn/",
+      "date": "2026-06-15T10:05:05",
+      "series": [
+        {
+          "id": 1111610,
+          "url": "https://patchwork.kernel.org/api/series/1111610/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111610",
+          "date": "2026-06-15T10:05:04",
+          "name": "selftests/bpf: Add some tests for LoongArch",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1111610/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/4] selftests/bpf: Add __arch_loongarch to limit test cases for LoongArch",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260615100506.19558-3-yangtiezhu@loongson.cn/",
+      "date": "2026-06-15T10:05:04",
+      "series": [
+        {
+          "id": 1111610,
+          "url": "https://patchwork.kernel.org/api/series/1111610/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111610",
+          "date": "2026-06-15T10:05:04",
+          "name": "selftests/bpf: Add some tests for LoongArch",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1111610/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/4] selftests/bpf: Add get_preempt_count() support for LoongArch",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260615100506.19558-2-yangtiezhu@loongson.cn/",
+      "date": "2026-06-15T10:05:03",
+      "series": [
+        {
+          "id": 1111610,
+          "url": "https://patchwork.kernel.org/api/series/1111610/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111610",
+          "date": "2026-06-15T10:05:04",
+          "name": "selftests/bpf: Add some tests for LoongArch",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1111610/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Cover half-slot cleanup of pointer spills",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260615-f01-06-half-slot-pointer-spill-v1-2-47f1c18a8965@mails.tsinghua.edu.cn/",
+      "date": "2026-06-15T08:09:54",
+      "series": [
+        {
+          "id": 1111532,
+          "url": "https://patchwork.kernel.org/api/series/1111532/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111532",
+          "date": "2026-06-15T08:09:53",
+          "name": "bpf: Preserve pointer spill metadata during half-slot cleanup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1111532/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Preserve pointer spill metadata during half-slot cleanup",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260615-f01-06-half-slot-pointer-spill-v1-1-47f1c18a8965@mails.tsinghua.edu.cn/",
+      "date": "2026-06-15T08:09:53",
+      "series": [
+        {
+          "id": 1111532,
+          "url": "https://patchwork.kernel.org/api/series/1111532/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111532",
+          "date": "2026-06-15T08:09:53",
+          "name": "bpf: Preserve pointer spill metadata during half-slot cleanup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1111532/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4] bpf: Fix unaligned interpreter panic on JIT fallback path",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260615025316.24429-1-yangtiezhu@loongson.cn/",
+      "date": "2026-06-15T02:53:16",
+      "series": [
+        {
+          "id": 1111415,
+          "url": "https://patchwork.kernel.org/api/series/1111415/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111415",
+          "date": "2026-06-15T02:53:16",
+          "name": "[bpf-next,v4] bpf: Fix unaligned interpreter panic on JIT fallback path",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1111415/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,6/6] selftests/bpf: add test for bpf_msg_pop_data() overflow",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260615021959.140010-7-jiayuan.chen@linux.dev/",
+      "date": "2026-06-15T02:19:59",
+      "series": [
+        {
+          "id": 1111404,
+          "url": "https://patchwork.kernel.org/api/series/1111404/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111404",
+          "date": "2026-06-15T02:19:53",
+          "name": "bpf, skmsg: some fixes for skmsg",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1111404/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,5/6] bpf, sockmap: fix integer overflow in bpf_msg_pop_data() bounds check",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260615021959.140010-6-jiayuan.chen@linux.dev/",
+      "date": "2026-06-15T02:19:58",
+      "series": [
+        {
+          "id": 1111404,
+          "url": "https://patchwork.kernel.org/api/series/1111404/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111404",
+          "date": "2026-06-15T02:19:53",
+          "name": "bpf, skmsg: some fixes for skmsg",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1111404/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,4/6] sockmap: Fix use-after-free in udp_bpf_recvmsg()",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260615021959.140010-5-jiayuan.chen@linux.dev/",
+      "date": "2026-06-15T02:19:57",
+      "series": [
+        {
+          "id": 1111404,
+          "url": "https://patchwork.kernel.org/api/series/1111404/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111404",
+          "date": "2026-06-15T02:19:53",
+          "name": "bpf, skmsg: some fixes for skmsg",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1111404/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,3/6] bpf, sockmap: keep sk_msg copy state in sync",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260615021959.140010-4-jiayuan.chen@linux.dev/",
+      "date": "2026-06-15T02:19:56",
+      "series": [
+        {
+          "id": 1111404,
+          "url": "https://patchwork.kernel.org/api/series/1111404/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111404",
+          "date": "2026-06-15T02:19:53",
+          "name": "bpf, skmsg: some fixes for skmsg",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1111404/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/6] bpf, sockmap: Fix wrong rsge offset in bpf_msg_push_data()",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260615021959.140010-3-jiayuan.chen@linux.dev/",
+      "date": "2026-06-15T02:19:55",
+      "series": [
+        {
+          "id": 1111404,
+          "url": "https://patchwork.kernel.org/api/series/1111404/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111404",
+          "date": "2026-06-15T02:19:53",
+          "name": "bpf, skmsg: some fixes for skmsg",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1111404/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/6] bpf, sockmap: reject overflowing copy + len in bpf_msg_push_data()",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260615021959.140010-2-jiayuan.chen@linux.dev/",
+      "date": "2026-06-15T02:19:54",
+      "series": [
+        {
+          "id": 1111404,
+          "url": "https://patchwork.kernel.org/api/series/1111404/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111404",
+          "date": "2026-06-15T02:19:53",
+          "name": "bpf, skmsg: some fixes for skmsg",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1111404/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] arm64: mm: Remove misleading pte_none() comment from ptep_try_set()",
+      "author": "Tejun Heo",
+      "url": "https://lore.kernel.org/bpf/20260614210209.2371030-1-tj@kernel.org/",
+      "date": "2026-06-14T21:02:09",
+      "series": [
+        {
+          "id": 1111374,
+          "url": "https://patchwork.kernel.org/api/series/1111374/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111374",
+          "date": "2026-06-14T21:02:09",
+          "name": "[bpf-next] arm64: mm: Remove misleading pte_none() comment from ptep_try_set()",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1111374/mbox/"
+        }
+      ]
+    }
+  ]
+}
