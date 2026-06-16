@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-06-16T00:00:00Z",
+  "period_start": "2026-06-08",
+  "period_end": "2026-06-15",
+  "patch_count": 100,
+  "thread_count": 41,
+  "top_contributors": ["Kuniyuki Iwashima", "Jiayuan Chen", "Jiri Olsa", "Tiezhu Yang", "Daniel Borkmann", "Nuoqi Gui"],
+  "key_topics": ["verifier", "sockmap", "uprobe", "jit", "kfuncs", "security", "selftests"],
+  "overview": "The week of June 8-15 saw 100 patches across 41 series spanning a wide range of BPF subsystems. The most significant contribution is Daniel Borkmann's BPF signed loader verification infrastructure, which adds kernel-enforced code signing for BPF programs at load time. Jiri Olsa continued refining uprobe_multi to accept the target binary via file descriptor rather than a path string, improving usability in sandboxed environments. Kuan-Wei Chiu posted an initial BPF JIT for the m68k architecture, while Kuniyuki Iwashima introduced new kfuncs for proxying RX/TX hardware timestamps through BPF programs; ongoing verifier correctness work from Nuoqi Gui and others rounded out an active week.",
+  "patches": [
+    {
+      "title": "bpf: Verify signed loader metadata at load time",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260610230329.727075-2-daniel@iogearbox.net/",
+      "summary": "This patch introduces kernel-side verification of BPF signed loader metadata at program load time, enabling enforcement of code-signing policies for BPF programs. It is the first functional patch in a five-part series that also extends bpftool to cover loader metadata in program signatures, adjusts libbpf to drop in-loader metadata checks in favor of load-time verification, adds selftests, and includes documentation. The feature allows operators to enforce that BPF programs were built and signed by a trusted toolchain, closing a gap in BPF security hardening.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Raise maximum call chain depth to 16 frames",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260613180755.29671-1-alexei.starovoitov@gmail.com/",
+      "summary": "The BPF verifier's limit on subprogram call chain depth is raised from 8 to 16 frames, unblocking more complex programs that compose multiple layers of helper calls or internal subprograms. The existing limit was a historical conservative bound that has proven too restrictive for real-world use cases, especially with BPF programs using kfuncs and tail-call-free logic. The change updates the verifier's call depth tracking accordingly.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add support to specify uprobe_multi target via file descriptor",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260611114230.950379-4-jolsa@kernel.org/",
+      "summary": "This patch extends the uprobe_multi link creation API to accept the target binary specified as a file descriptor instead of requiring a filesystem path, which is necessary when the target binary is not accessible via a visible path (e.g., in container or sandbox environments). It is patch 3 of a seven-part PATCHv3 series that also switches uprobe_multi path resolution to user_path_at, adds access_ok guards for user data, extends libbpf with a path_fd field in bpf_link_create_opts, and adds corresponding selftests. This makes uprobe_multi more flexible for modern deployment scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "m68k, bpf: Add initial BPF JIT compiler support",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260612195805.3243333-1-visitorckw@gmail.com/",
+      "summary": "This v4 patch introduces the first BPF JIT compiler for the m68k (Motorola 68000) architecture, expanding BPF hardware acceleration to yet another platform. The JIT handles the core BPF instruction set and implements the standard Linux BPF JIT registration interface. Adding a JIT for m68k allows BPF programs to run efficiently on embedded and retro-compatible m68k systems rather than falling back to the interpreter.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add kfunc to proxy TX HW Timestamp.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260613224823.2399535-4-kuniyu@google.com/",
+      "summary": "This patch adds a BPF kfunc enabling TC programs to proxy hardware transmit timestamps from a physical NIC to a virtual interface, completing the RX/TX hardware timestamp proxy feature. It is patch 3 of a four-part v3 series that also introduces bpf_skb_set_hwtstamp() for writing RX hardware timestamps into skbs, renames an internal kfunc set for clarity, and adds selftests. The series enables BPF programs to bridge hardware timestamping to virtual network devices, which is valuable for precise latency measurement in virtualized environments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject bpf_obj_drop() from tracing progs",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260609202548.3571690-2-memxor@gmail.com/",
+      "summary": "This patch prevents tracing programs from calling bpf_obj_drop() on kptrs, which can cause a deadlock because the destructor may acquire a lock already held on the tracing path. It is the first patch in a four-part v3 series; companion patches add map value recycling that cancels special fields instead of dropping them, and selftests exercising both unsafe drops from tracing programs and the corrected kptr map update lifetime. This closes a real deadlock vector that arises when tracing programs interact with map values containing kernel pointers.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support BPF_F_INGRESS with bpf_redirect_peer",
+      "author": "Jordan Rife",
+      "url": "https://lore.kernel.org/bpf/20260613183424.1198073-2-jordan@jrife.io/",
+      "summary": "The bpf_redirect_peer() helper gains support for the BPF_F_INGRESS flag, allowing TC programs to redirect traffic into the ingress path of a peer device in addition to the existing egress-only behavior. This enables more flexible packet redirection topologies between virtual network interfaces. The companion selftest patch verifies both the new ingress redirect behavior and any regressions in the existing egress case.",
+      "related_links": []
+    },
+    {
+      "title": "tcp_bpf: add bpf_sock_splice_pair kfunc for opportunistic loopback splice",
+      "author": "Cong Wang",
+      "url": "https://lore.kernel.org/bpf/20260612011452.134466-2-xiyou.wangcong@gmail.com/",
+      "summary": "This RFC patch proposes a new bpf_sock_splice_pair() kfunc that allows BPF programs to pair two TCP sockets for opportunistic zero-copy loopback splicing, bypassing the normal socket send/receive buffer path when both endpoints are on the same host. The full five-patch RFC series also adds busy-polling of the splice ring before parking the receiver, enables SO_BUSY_POLL in bpf_setsockopt(), and includes a basic round-trip selftest. This approach could significantly reduce CPU overhead for local inter-process communication over BPF-managed TCP connections.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Preserve pointer spill metadata during half-slot cleanup",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260615-f01-06-half-slot-pointer-spill-v1-1-47f1c18a8965@mails.tsinghua.edu.cn/",
+      "summary": "The BPF verifier incorrectly discards pointer type metadata when cleaning up half-stack-slot spills, potentially causing spurious verification failures for programs that spill pointers to sub-aligned stack offsets. This patch preserves the metadata through the cleanup path so subsequent verification steps can reason accurately about the spilled value's type. The companion patch adds selftests to prevent regressions in this verifier path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: support shift operations with non-const src operand",
+      "author": "曹天赐",
+      "url": "https://lore.kernel.org/bpf/20260612121041.25254-2-ziye@zju.edu.cn/",
+      "summary": "This v2 patch extends the BPF verifier and JIT backends to support shift instructions (LSH, RSH, ARSH) where the shift amount is a non-constant register value, which is a legal BPF ISA encoding that was previously rejected or mishandled by the verifier. Supporting dynamic shift amounts allows compilers to generate more natural code for bit-manipulation routines without artificial workarounds. The series includes selftests verifying the new behavior across multiple shift-amount scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Tighten cgroup storage cookie checks for prog arrays",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260610105539.705887-1-daniel@iogearbox.net/",
+      "summary": "This patch tightens the validation of cgroup storage cookies when BPF programs are inserted into prog arrays used for tail calls, ensuring that a program is only associated with a cgroup storage entry that matches the correct cookie. Without this check, it was possible to load a cgroup BPF program with a storage map whose cookie did not correspond to the intended cgroup, creating a potential for incorrect storage access. A companion selftest verifies the tightened constraint across tail-call chains involving cgroup storage.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Better build_id caching in stack_map_get_build_id_offset()",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260612220651.2507843-1-ihor.solodrai@linux.dev/",
+      "summary": "This v2 patch improves how the BPF stack map caches build IDs when resolving user-space stack frames, reducing redundant work when multiple frames resolve from the same mapped file. The previous implementation could re-read the ELF build ID note on every lookup even when it had already been resolved for the same vma. The optimization lowers overhead for profiling use cases that frequently capture stack traces from the same binaries.",
+      "related_links": []
+    }
+  ]
+}

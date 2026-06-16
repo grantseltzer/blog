@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-06-16T00:00:00Z",
+  "period_start": "2026-06-14",
+  "period_end": "2026-06-15",
+  "patch_count": 14,
+  "thread_count": 5,
+  "top_contributors": ["Jiayuan Chen", "Tiezhu Yang", "Nuoqi Gui"],
+  "key_topics": ["verifier", "sockmap", "jit", "selftests", "loongarch"],
+  "overview": "The bpf mailing list saw 14 patches across 5 series on June 14-15, with activity focused on verifier correctness, sockmap/skmsg fixes, and LoongArch platform support. Nuoqi Gui addressed a verifier bug where pointer spill metadata was lost during half-slot cleanup. Jiayuan Chen posted a v4 of a six-patch skmsg series tackling integer overflows, use-after-free, and copy-state sync issues in the sockmap path.",
+  "patches": [
+    {
+      "title": "bpf: Preserve pointer spill metadata during half-slot cleanup",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260615-f01-06-half-slot-pointer-spill-v1-1-47f1c18a8965@mails.tsinghua.edu.cn/",
+      "summary": "The BPF verifier incorrectly discards pointer type metadata when cleaning up half-stack-slot spills, potentially causing spurious rejections or missed type errors in programs that spill pointers to sub-aligned stack offsets. This patch preserves the pointer spill metadata through the cleanup path so downstream verification remains accurate. It is the first of two patches; the second adds selftests covering the corrected behavior. The fix improves verifier soundness for programs relying on pointer spills at unusual stack alignments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix unaligned interpreter panic on JIT fallback path",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260615025316.24429-1-yangtiezhu@loongson.cn/",
+      "summary": "On architectures that enforce strict memory alignment, such as LoongArch, the BPF interpreter panicked when invoked on the JIT fallback path due to a misaligned access to the BPF instruction stream. This v4 patch corrects the alignment handling so the interpreter executes safely even when the JIT is unavailable or disabled. The fix is essential for running BPF programs on alignment-sensitive platforms without a working JIT backend.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: reject overflowing copy + len in bpf_msg_push_data()",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260615021959.140010-2-jiayuan.chen@linux.dev/",
+      "summary": "This is the first patch in a six-part v4 series fixing correctness issues in the BPF sockmap/skmsg implementation. It prevents integer overflow when the sum of copy and len exceeds the maximum value in bpf_msg_push_data(), closing a potential bounds-check bypass. Other patches in the series fix a wrong rsge offset, keep sk_msg copy state in sync, repair a use-after-free in udp_bpf_recvmsg(), and address integer overflow in bpf_msg_pop_data() bounds checks.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add get_preempt_count() support for LoongArch",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260615100506.19558-2-yangtiezhu@loongson.cn/",
+      "summary": "This patch adds LoongArch-specific get_preempt_count() support to the BPF selftests infrastructure, enabling preemption-related test cases to compile and run on that architecture. It is the first of four patches in a v2 series that also introduces an __arch_loongarch annotation for architecture-specific test gating and adds selftests verifying JIT-inlined bpf_get_current_task() and bpf_get_smp_processor_id() on LoongArch. The series expands platform parity for BPF testing on the LoongArch architecture.",
+      "related_links": []
+    },
+    {
+      "title": "arm64: mm: Remove misleading pte_none() comment from ptep_try_set()",
+      "author": "Tejun Heo",
+      "url": "https://lore.kernel.org/bpf/20260614210209.2371030-1-tj@kernel.org/",
+      "summary": "A documentation fix that removes an inaccurate comment about pte_none() behavior from the ptep_try_set() function in the arm64 memory management code. The misleading comment incorrectly implied a constraint not reflected by the actual function contract, which could confuse developers working on arena or memory-mapping features that interact with arm64 page table operations. The patch has no functional change.",
+      "related_links": []
+    }
+  ]
+}
