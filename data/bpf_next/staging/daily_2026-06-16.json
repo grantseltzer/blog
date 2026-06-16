@@ -1,0 +1,535 @@
+{
+  "period": "daily",
+  "period_start": "2026-06-15",
+  "period_end": "2026-06-16",
+  "fetched_at": "2026-06-16T14:12:33Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v2] bpf: Allow type tag BTF records to succeed other modifier records",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260616061454.7869-1-emil@etsalapatis.com/",
+      "date": "2026-06-16T06:14:54",
+      "series": [
+        {
+          "id": 1112082,
+          "url": "https://patchwork.kernel.org/api/series/1112082/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1112082",
+          "date": "2026-06-16T06:14:54",
+          "name": "[bpf-next,v2] bpf: Allow type tag BTF records to succeed other modifier records",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1112082/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Cover small conntrack opts error writes",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/c4c898dd23181b676ebf6b6b4d9c54f51bb69c75.1781586477.git.chenyy23@mails.tsinghua.edu.cn/",
+      "date": "2026-06-16T05:42:35",
+      "series": [
+        {
+          "id": 1112073,
+          "url": "https://patchwork.kernel.org/api/series/1112073/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1112073",
+          "date": "2026-06-16T05:42:33",
+          "name": "bpf: Guard conntrack opts error writes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1112073/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Guard conntrack opts error writes",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/70aeec0ab762aebe65129cf6052e132c7329edc2.1781586477.git.chenyy23@mails.tsinghua.edu.cn/",
+      "date": "2026-06-16T05:42:34",
+      "series": [
+        {
+          "id": 1112073,
+          "url": "https://patchwork.kernel.org/api/series/1112073/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1112073",
+          "date": "2026-06-16T05:42:33",
+          "name": "bpf: Guard conntrack opts error writes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1112073/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Emit verbose message when prog-specific btf_struct_access rejects a write",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260615232146.5491-1-alexei.starovoitov@gmail.com/",
+      "date": "2026-06-15T23:21:46",
+      "series": [
+        {
+          "id": 1111979,
+          "url": "https://patchwork.kernel.org/api/series/1111979/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111979",
+          "date": "2026-06-15T23:21:46",
+          "name": "[bpf-next] bpf: Emit verbose message when prog-specific btf_struct_access rejects a write",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1111979/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3] bpf: Better build_id caching in stack_map_get_build_id_offset()",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260615195536.1065107-1-ihor.solodrai@linux.dev/",
+      "date": "2026-06-15T19:55:36",
+      "series": [
+        {
+          "id": 1111924,
+          "url": "https://patchwork.kernel.org/api/series/1111924/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111924",
+          "date": "2026-06-15T19:55:36",
+          "name": "[bpf-next,v3] bpf: Better build_id caching in stack_map_get_build_id_offset()",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1111924/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Allow type tag BTF records to succeed other modifier records",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260615180614.4376-1-emil@etsalapatis.com/",
+      "date": "2026-06-15T18:06:14",
+      "series": [
+        {
+          "id": 1111871,
+          "url": "https://patchwork.kernel.org/api/series/1111871/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111871",
+          "date": "2026-06-15T18:06:14",
+          "name": "[bpf-next] bpf: Allow type tag BTF records to succeed other modifier records",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1111871/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,12/12] selftests/bpf: Add test to verify bpf_iter for global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260615152646.27639-13-leon.hwang@linux.dev/",
+      "date": "2026-06-15T15:26:46",
+      "series": [
+        {
+          "id": 1111782,
+          "url": "https://patchwork.kernel.org/api/series/1111782/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111782",
+          "date": "2026-06-15T15:26:34",
+          "name": "bpf: Introduce global percpu data",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1111782/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,11/12] selftests/bpf: Add test to verify xlated insns for global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260615152646.27639-12-leon.hwang@linux.dev/",
+      "date": "2026-06-15T15:26:45",
+      "series": [
+        {
+          "id": 1111782,
+          "url": "https://patchwork.kernel.org/api/series/1111782/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111782",
+          "date": "2026-06-15T15:26:34",
+          "name": "bpf: Introduce global percpu data",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1111782/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,10/12] selftests/bpf: Add tests to verify verifier log for global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260615152646.27639-11-leon.hwang@linux.dev/",
+      "date": "2026-06-15T15:26:44",
+      "series": [
+        {
+          "id": 1111782,
+          "url": "https://patchwork.kernel.org/api/series/1111782/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111782",
+          "date": "2026-06-15T15:26:34",
+          "name": "bpf: Introduce global percpu data",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1111782/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,09/12] selftests/bpf: Add test to verify accessing rdonly percpu_array",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260615152646.27639-10-leon.hwang@linux.dev/",
+      "date": "2026-06-15T15:26:43",
+      "series": [
+        {
+          "id": 1111782,
+          "url": "https://patchwork.kernel.org/api/series/1111782/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111782",
+          "date": "2026-06-15T15:26:34",
+          "name": "bpf: Introduce global percpu data",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1111782/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,08/12] selftests/bpf: Add tests to verify global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260615152646.27639-9-leon.hwang@linux.dev/",
+      "date": "2026-06-15T15:26:42",
+      "series": [
+        {
+          "id": 1111782,
+          "url": "https://patchwork.kernel.org/api/series/1111782/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111782",
+          "date": "2026-06-15T15:26:34",
+          "name": "bpf: Introduce global percpu data",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1111782/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,07/12] bpftool: Generate skeleton for global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260615152646.27639-8-leon.hwang@linux.dev/",
+      "date": "2026-06-15T15:26:41",
+      "series": [
+        {
+          "id": 1111782,
+          "url": "https://patchwork.kernel.org/api/series/1111782/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111782",
+          "date": "2026-06-15T15:26:34",
+          "name": "bpf: Introduce global percpu data",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1111782/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,06/12] libbpf: Add support for global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260615152646.27639-7-leon.hwang@linux.dev/",
+      "date": "2026-06-15T15:26:40",
+      "series": [
+        {
+          "id": 1111782,
+          "url": "https://patchwork.kernel.org/api/series/1111782/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111782",
+          "date": "2026-06-15T15:26:34",
+          "name": "bpf: Introduce global percpu data",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1111782/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,05/12] libbpf: Probe percpu data feature",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260615152646.27639-6-leon.hwang@linux.dev/",
+      "date": "2026-06-15T15:26:39",
+      "series": [
+        {
+          "id": 1111782,
+          "url": "https://patchwork.kernel.org/api/series/1111782/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111782",
+          "date": "2026-06-15T15:26:34",
+          "name": "bpf: Introduce global percpu data",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1111782/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,04/12] bpf: Introduce global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260615152646.27639-5-leon.hwang@linux.dev/",
+      "date": "2026-06-15T15:26:38",
+      "series": [
+        {
+          "id": 1111782,
+          "url": "https://patchwork.kernel.org/api/series/1111782/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111782",
+          "date": "2026-06-15T15:26:34",
+          "name": "bpf: Introduce global percpu data",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1111782/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,03/12] bpf: Disallow interpreter fallback for BPF_ADDR_PERCPU insn",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260615152646.27639-4-leon.hwang@linux.dev/",
+      "date": "2026-06-15T15:26:37",
+      "series": [
+        {
+          "id": 1111782,
+          "url": "https://patchwork.kernel.org/api/series/1111782/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111782",
+          "date": "2026-06-15T15:26:34",
+          "name": "bpf: Introduce global percpu data",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1111782/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,02/12] bpf: Disallow interpreter fallback for user BPF_ADDR_SPACE_CAST insn",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260615152646.27639-3-leon.hwang@linux.dev/",
+      "date": "2026-06-15T15:26:36",
+      "series": [
+        {
+          "id": 1111782,
+          "url": "https://patchwork.kernel.org/api/series/1111782/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111782",
+          "date": "2026-06-15T15:26:34",
+          "name": "bpf: Introduce global percpu data",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1111782/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,01/12] bpf: Drop duplicate blank lines in verifier",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260615152646.27639-2-leon.hwang@linux.dev/",
+      "date": "2026-06-15T15:26:35",
+      "series": [
+        {
+          "id": 1111782,
+          "url": "https://patchwork.kernel.org/api/series/1111782/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111782",
+          "date": "2026-06-15T15:26:34",
+          "name": "bpf: Introduce global percpu data",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1111782/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/4] selftests/bpf: Test jited inline of bpf_get_smp_processor_id() for LoongArch",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260615100506.19558-5-yangtiezhu@loongson.cn/",
+      "date": "2026-06-15T10:05:06",
+      "series": [
+        {
+          "id": 1111610,
+          "url": "https://patchwork.kernel.org/api/series/1111610/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111610",
+          "date": "2026-06-15T10:05:04",
+          "name": "selftests/bpf: Add some tests for LoongArch",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1111610/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/4] selftests/bpf: Test jited inline of bpf_get_current_task() for LoongArch",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260615100506.19558-4-yangtiezhu@loongson.cn/",
+      "date": "2026-06-15T10:05:05",
+      "series": [
+        {
+          "id": 1111610,
+          "url": "https://patchwork.kernel.org/api/series/1111610/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111610",
+          "date": "2026-06-15T10:05:04",
+          "name": "selftests/bpf: Add some tests for LoongArch",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1111610/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/4] selftests/bpf: Add __arch_loongarch to limit test cases for LoongArch",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260615100506.19558-3-yangtiezhu@loongson.cn/",
+      "date": "2026-06-15T10:05:04",
+      "series": [
+        {
+          "id": 1111610,
+          "url": "https://patchwork.kernel.org/api/series/1111610/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111610",
+          "date": "2026-06-15T10:05:04",
+          "name": "selftests/bpf: Add some tests for LoongArch",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1111610/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/4] selftests/bpf: Add get_preempt_count() support for LoongArch",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260615100506.19558-2-yangtiezhu@loongson.cn/",
+      "date": "2026-06-15T10:05:03",
+      "series": [
+        {
+          "id": 1111610,
+          "url": "https://patchwork.kernel.org/api/series/1111610/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111610",
+          "date": "2026-06-15T10:05:04",
+          "name": "selftests/bpf: Add some tests for LoongArch",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1111610/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Cover half-slot cleanup of pointer spills",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260615-f01-06-half-slot-pointer-spill-v1-2-47f1c18a8965@mails.tsinghua.edu.cn/",
+      "date": "2026-06-15T08:09:54",
+      "series": [
+        {
+          "id": 1111532,
+          "url": "https://patchwork.kernel.org/api/series/1111532/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111532",
+          "date": "2026-06-15T08:09:53",
+          "name": "bpf: Preserve pointer spill metadata during half-slot cleanup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1111532/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Preserve pointer spill metadata during half-slot cleanup",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260615-f01-06-half-slot-pointer-spill-v1-1-47f1c18a8965@mails.tsinghua.edu.cn/",
+      "date": "2026-06-15T08:09:53",
+      "series": [
+        {
+          "id": 1111532,
+          "url": "https://patchwork.kernel.org/api/series/1111532/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111532",
+          "date": "2026-06-15T08:09:53",
+          "name": "bpf: Preserve pointer spill metadata during half-slot cleanup",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1111532/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4] bpf: Fix unaligned interpreter panic on JIT fallback path",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260615025316.24429-1-yangtiezhu@loongson.cn/",
+      "date": "2026-06-15T02:53:16",
+      "series": [
+        {
+          "id": 1111415,
+          "url": "https://patchwork.kernel.org/api/series/1111415/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111415",
+          "date": "2026-06-15T02:53:16",
+          "name": "[bpf-next,v4] bpf: Fix unaligned interpreter panic on JIT fallback path",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1111415/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,6/6] selftests/bpf: add test for bpf_msg_pop_data() overflow",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260615021959.140010-7-jiayuan.chen@linux.dev/",
+      "date": "2026-06-15T02:19:59",
+      "series": [
+        {
+          "id": 1111404,
+          "url": "https://patchwork.kernel.org/api/series/1111404/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111404",
+          "date": "2026-06-15T02:19:53",
+          "name": "bpf, skmsg: some fixes for skmsg",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1111404/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,5/6] bpf, sockmap: fix integer overflow in bpf_msg_pop_data() bounds check",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260615021959.140010-6-jiayuan.chen@linux.dev/",
+      "date": "2026-06-15T02:19:58",
+      "series": [
+        {
+          "id": 1111404,
+          "url": "https://patchwork.kernel.org/api/series/1111404/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111404",
+          "date": "2026-06-15T02:19:53",
+          "name": "bpf, skmsg: some fixes for skmsg",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1111404/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,4/6] sockmap: Fix use-after-free in udp_bpf_recvmsg()",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260615021959.140010-5-jiayuan.chen@linux.dev/",
+      "date": "2026-06-15T02:19:57",
+      "series": [
+        {
+          "id": 1111404,
+          "url": "https://patchwork.kernel.org/api/series/1111404/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111404",
+          "date": "2026-06-15T02:19:53",
+          "name": "bpf, skmsg: some fixes for skmsg",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1111404/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,3/6] bpf, sockmap: keep sk_msg copy state in sync",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260615021959.140010-4-jiayuan.chen@linux.dev/",
+      "date": "2026-06-15T02:19:56",
+      "series": [
+        {
+          "id": 1111404,
+          "url": "https://patchwork.kernel.org/api/series/1111404/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111404",
+          "date": "2026-06-15T02:19:53",
+          "name": "bpf, skmsg: some fixes for skmsg",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1111404/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/6] bpf, sockmap: Fix wrong rsge offset in bpf_msg_push_data()",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260615021959.140010-3-jiayuan.chen@linux.dev/",
+      "date": "2026-06-15T02:19:55",
+      "series": [
+        {
+          "id": 1111404,
+          "url": "https://patchwork.kernel.org/api/series/1111404/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111404",
+          "date": "2026-06-15T02:19:53",
+          "name": "bpf, skmsg: some fixes for skmsg",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1111404/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/6] bpf, sockmap: reject overflowing copy + len in bpf_msg_push_data()",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260615021959.140010-2-jiayuan.chen@linux.dev/",
+      "date": "2026-06-15T02:19:54",
+      "series": [
+        {
+          "id": 1111404,
+          "url": "https://patchwork.kernel.org/api/series/1111404/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1111404",
+          "date": "2026-06-15T02:19:53",
+          "name": "bpf, skmsg: some fixes for skmsg",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1111404/mbox/"
+        }
+      ]
+    }
+  ]
+}
