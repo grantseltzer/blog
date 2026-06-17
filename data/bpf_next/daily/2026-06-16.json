@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-06-17T00:00:00Z",
+  "period_start": "2026-06-15",
+  "period_end": "2026-06-16",
+  "patch_count": 33,
+  "thread_count": 10,
+  "top_contributors": ["Leon Hwang", "Jiayuan Chen", "Tiezhu Yang"],
+  "key_topics": ["percpu", "btf", "verifier", "sockmap", "stack-map", "jit", "conntrack"],
+  "overview": "The June 15-16 bpf-next window was highlighted by v6 of Leon Hwang's global percpu data series, a substantial 12-patch feature adding first-class percpu variable support across the kernel, libbpf, and bpftool. The verifier received several correctness improvements: Alexei Starovoitov added verbose diagnostics for btf_struct_access write rejections, Emil Tsalapatis fixed BTF type tag ordering rules, and Nuoqi Gui preserved pointer spill metadata through half-slot cleanup. Rounding out the day were a batch of sockmap bug fixes from Jiayuan Chen, improved build_id caching in stack maps, and a JIT fallback alignment panic fix for LoongArch.",
+  "patches": [
+    {
+      "title": "bpf: Introduce global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260615152646.27639-5-leon.hwang@linux.dev/",
+      "summary": "The core patch in a 12-patch v6 series that introduces global percpu data to BPF programs, implemented via a new BPF_ADDR_PERCPU instruction. The feature allows BPF programs to declare and access per-CPU global variables without going through a percpu_array map, matching ergonomics developers already enjoy with global scalar data. Companion patches update libbpf to expose the new section type and bpftool to generate skeleton bindings for it. Interpreter fallback is explicitly disallowed for the new instruction, requiring JIT. The series includes extensive selftests covering verifier log output, xlated instructions, read-only access, and bpf_iter integration.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Emit verbose message when prog-specific btf_struct_access rejects a write",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260615232146.5491-1-alexei.starovoitov@gmail.com/",
+      "summary": "When a program-type-specific btf_struct_access callback rejects a write, the verifier previously surfaced a generic error with no indication of which field or type caused the rejection. This patch adds a targeted verbose log message at the rejection site, making it easier for developers to diagnose write-permission failures in programs like BPF LSM or struct_ops that use prog-specific access checks. The change is purely diagnostic and does not alter any access-control decisions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow type tag BTF records to succeed other modifier records",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260616061454.7869-1-emil@etsalapatis.com/",
+      "summary": "BTF modifier records (const, volatile, restrict, typedef) are chained as a linked list in front of a base type. The BTF spec allows type tags to appear anywhere in that chain, but the kernel's BTF validator was too strict, rejecting type tags that followed other modifiers. This v2 patch relaxes the ordering check so that type tags are accepted after any combination of the other modifier kinds. The fix unblocks Rust's use of BTF type tags in annotated kernel types, where the compiler may generate modifier orderings the kernel previously rejected.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Preserve pointer spill metadata during half-slot cleanup",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260615-f01-06-half-slot-pointer-spill-v1-1-47f1c18a8965@mails.tsinghua.edu.cn/",
+      "summary": "When the verifier cleans up a half-slot stack write (a sub-register write that partially overlaps an existing spill slot), it was zeroing the entire slot's register state metadata including the pointer type and ID. This caused spurious verifier rejections for programs that spill a pointer, then write to a neighboring byte within the same aligned slot. The fix preserves the pointer spill metadata for the unaffected bytes during the cleanup operation. A selftest covers the previously failing pattern.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: reject overflowing copy + len in bpf_msg_push_data()",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260615021959.140010-2-jiayuan.chen@linux.dev/",
+      "summary": "A 6-patch v4 series fixing several correctness issues in the skmsg layer. The first patch rejects bpf_msg_push_data() calls where the copy offset plus length would overflow, preventing silent data corruption. Subsequent patches fix a wrong rsge offset in bpf_msg_push_data(), synchronize sk_msg copy state fields that could diverge, fix a use-after-free in udp_bpf_recvmsg(), and guard against integer overflow in bpf_msg_pop_data() bounds checking. The series also adds a selftest specifically for the pop_data overflow case.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Better build_id caching in stack_map_get_build_id_offset()",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260615195536.1065107-1-ihor.solodrai@linux.dev/",
+      "summary": "stack_map_get_build_id_offset() is called on every stack trace capture and must look up the build ID of the VMA containing the sampled address. The current implementation re-reads ELF headers on each call even for the same VMA. This v3 patch improves caching so that a previously resolved build ID is reused for repeated samples within the same VMA, reducing overhead for high-frequency stack sampling workloads such as profilers using BPF stack maps.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix unaligned interpreter panic on JIT fallback path",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260615025316.24429-1-yangtiezhu@loongson.cn/",
+      "summary": "On architectures that require aligned memory accesses (LoongArch in this case), the BPF interpreter could panic when invoked on the JIT fallback path because the image buffer was not guaranteed to be aligned to the instruction size expected by the interpreter. This v4 patch ensures the interpreter's working buffer is properly aligned before execution begins, eliminating the unaligned-access fault. The fix is relevant to any architecture that enforces strict alignment and permits JIT fallback.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Guard conntrack opts error writes",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/70aeec0ab762aebe65129cf6052e132c7329edc2.1781586477.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "BPF programs that interact with netfilter conntrack can write error values back through conntrack option structures. This patch adds missing bounds checks so that small (sub-field-size) error writes cannot reach beyond the intended option field, preventing potential out-of-bounds writes in the conntrack option path. A companion selftest verifies that small error writes are handled correctly.",
+      "related_links": []
+    }
+  ]
+}
