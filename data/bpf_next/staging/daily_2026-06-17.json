@@ -1,0 +1,161 @@
+{
+  "period": "daily",
+  "period_start": "2026-06-16",
+  "period_end": "2026-06-17",
+  "fetched_at": "2026-06-17T12:52:54Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v2,4/4] selftests/bpf: Add bpf_fib_lookup() VLAN flag tests",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260616223426.3568080-5-avinash.duduskar@gmail.com/",
+      "date": "2026-06-16T22:34:26",
+      "series": [
+        {
+          "id": 1112579,
+          "url": "https://patchwork.kernel.org/api/series/1112579/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1112579",
+          "date": "2026-06-16T22:34:22",
+          "name": "bpf: bidirectional VLAN support for bpf_fib_lookup()",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1112579/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/4] bpf: Add BPF_FIB_LOOKUP_VLAN_INPUT flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260616223426.3568080-4-avinash.duduskar@gmail.com/",
+      "date": "2026-06-16T22:34:25",
+      "series": [
+        {
+          "id": 1112579,
+          "url": "https://patchwork.kernel.org/api/series/1112579/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1112579",
+          "date": "2026-06-16T22:34:22",
+          "name": "bpf: bidirectional VLAN support for bpf_fib_lookup()",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1112579/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/4] bpf: Add BPF_FIB_LOOKUP_VLAN flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260616223426.3568080-3-avinash.duduskar@gmail.com/",
+      "date": "2026-06-16T22:34:24",
+      "series": [
+        {
+          "id": 1112579,
+          "url": "https://patchwork.kernel.org/api/series/1112579/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1112579",
+          "date": "2026-06-16T22:34:22",
+          "name": "bpf: bidirectional VLAN support for bpf_fib_lookup()",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1112579/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/4] bpf: Initialize the l3mdev field for the fib lookup flow",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260616223426.3568080-2-avinash.duduskar@gmail.com/",
+      "date": "2026-06-16T22:34:23",
+      "series": [
+        {
+          "id": 1112579,
+          "url": "https://patchwork.kernel.org/api/series/1112579/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1112579",
+          "date": "2026-06-16T22:34:22",
+          "name": "bpf: bidirectional VLAN support for bpf_fib_lookup()",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1112579/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/hid: Cover hid_bpf_get_data() size overflow",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/49d892af0a5e994676723a81d2584fb91bc22a9d.1781627122.git.chenyy23@mails.tsinghua.edu.cn/",
+      "date": "2026-06-16T16:35:07",
+      "series": [
+        {
+          "id": 1112468,
+          "url": "https://patchwork.kernel.org/api/series/1112468/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1112468",
+          "date": "2026-06-16T16:35:05",
+          "name": "HID: bpf: Fix hid_bpf_get_data() range check",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1112468/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] HID: bpf: Fix hid_bpf_get_data() range check",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/783681f27625a11ed58f00221be046643232a2fc.1781627122.git.chenyy23@mails.tsinghua.edu.cn/",
+      "date": "2026-06-16T16:35:06",
+      "series": [
+        {
+          "id": 1112468,
+          "url": "https://patchwork.kernel.org/api/series/1112468/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1112468",
+          "date": "2026-06-16T16:35:05",
+          "name": "HID: bpf: Fix hid_bpf_get_data() range check",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1112468/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] bpf: Allow type tag BTF records to succeed other modifier records",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260616061454.7869-1-emil@etsalapatis.com/",
+      "date": "2026-06-16T06:14:54",
+      "series": [
+        {
+          "id": 1112082,
+          "url": "https://patchwork.kernel.org/api/series/1112082/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1112082",
+          "date": "2026-06-16T06:14:54",
+          "name": "[bpf-next,v2] bpf: Allow type tag BTF records to succeed other modifier records",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1112082/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Cover small conntrack opts error writes",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/c4c898dd23181b676ebf6b6b4d9c54f51bb69c75.1781586477.git.chenyy23@mails.tsinghua.edu.cn/",
+      "date": "2026-06-16T05:42:35",
+      "series": [
+        {
+          "id": 1112073,
+          "url": "https://patchwork.kernel.org/api/series/1112073/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1112073",
+          "date": "2026-06-16T05:42:33",
+          "name": "bpf: Guard conntrack opts error writes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1112073/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Guard conntrack opts error writes",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/70aeec0ab762aebe65129cf6052e132c7329edc2.1781586477.git.chenyy23@mails.tsinghua.edu.cn/",
+      "date": "2026-06-16T05:42:34",
+      "series": [
+        {
+          "id": 1112073,
+          "url": "https://patchwork.kernel.org/api/series/1112073/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1112073",
+          "date": "2026-06-16T05:42:33",
+          "name": "bpf: Guard conntrack opts error writes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1112073/mbox/"
+        }
+      ]
+    }
+  ]
+}
