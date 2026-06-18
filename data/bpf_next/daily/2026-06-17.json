@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-06-18T00:00:00Z",
+  "period_start": "2026-06-16",
+  "period_end": "2026-06-17",
+  "patch_count": 9,
+  "thread_count": 4,
+  "top_contributors": ["Avinash Duduskar", "Yiyang Chen", "Emil Tsalapatis"],
+  "key_topics": ["helpers", "fib-lookup", "vlan", "hid-bpf", "btf", "conntrack"],
+  "overview": "The June 16-17 window saw a v2 series from Avinash Duduskar adding bidirectional VLAN support to the bpf_fib_lookup() helper, enabling XDP and tc programs to perform VLAN-aware L3 forwarding. Yiyang Chen contributed two fix series addressing a range-check overflow in the HID BPF data accessor and unsafe error writes in conntrack option handling. Emil Tsalapatis submitted a v2 BTF fix relaxing type tag ordering constraints to accommodate modern Clang-emitted BTF.",
+  "patches": [
+    {
+      "title": "bpf: Initialize the l3mdev field for the fib lookup flow",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260616223426.3568080-2-avinash.duduskar@gmail.com/",
+      "summary": "Initializes the l3mdev field in the flow structure used during FIB lookups in BPF programs, preventing undefined behavior when the kernel resolves routes across VRF-aware interfaces. Uninitialized fields can cause incorrect routing decisions or subtle memory issues when packets traverse VRF domains. This patch is a prerequisite fix for the broader bidirectional VLAN support series that follows.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BPF_FIB_LOOKUP_VLAN flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260616223426.3568080-3-avinash.duduskar@gmail.com/",
+      "summary": "Adds a new BPF_FIB_LOOKUP_VLAN flag to the bpf_fib_lookup() helper, enabling BPF programs to request egress VLAN information as part of FIB route resolution. Previously, bpf_fib_lookup() did not surface VLAN egress context, making it insufficient for VLAN-aware packet forwarding in XDP and tc programs. This is the first half of a bidirectional VLAN support series, with a companion patch adding input VLAN handling.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BPF_FIB_LOOKUP_VLAN_INPUT flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260616223426.3568080-4-avinash.duduskar@gmail.com/",
+      "summary": "Adds BPF_FIB_LOOKUP_VLAN_INPUT, allowing BPF programs to supply ingress VLAN context to the FIB lookup so the kernel routing stack can correctly handle VLAN-tagged flows from both directions. Together with the output VLAN flag, this completes full bidirectional VLAN awareness for bpf_fib_lookup(). The change is particularly valuable for XDP programs implementing VLAN-aware L3 forwarding without requiring separate per-direction lookups.",
+      "related_links": []
+    },
+    {
+      "title": "HID: bpf: Fix hid_bpf_get_data() range check",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/783681f27625a11ed58f00221be046643232a2fc.1781627122.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "Fixes an incorrect bounds check in the hid_bpf_get_data() helper where the combination of offset and size parameters was not properly validated, potentially allowing a size overflow that could lead to out-of-bounds memory access in HID BPF programs. HID BPF programs use this helper to read raw device report data, making a correct range check critical for kernel safety. A companion selftest is added to verify the overflow case is properly rejected.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow type tag BTF records to succeed other modifier records",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260616061454.7869-1-emil@etsalapatis.com/",
+      "summary": "Relaxes the BTF verifier's ordering constraint on type tag records, allowing them to appear after other modifier types such as const, volatile, and restrict in the BTF type chain. The previous strict ordering conflicted with BTF emitted by newer Clang versions, causing BPF programs to fail loading with BTF validation errors. This v2 fix aligns kernel BTF validation with the intended specification semantics, improving compatibility with modern toolchains.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Guard conntrack opts error writes",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/70aeec0ab762aebe65129cf6052e132c7329edc2.1781586477.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "Adds size guards before error code writes to conntrack option structures in BPF programs, preventing potential memory corruption when option buffers are smaller than expected. Without this check, BPF programs interacting with Netfilter conntrack options could write beyond the valid buffer region when propagating errors. A selftest covering small buffer edge cases is included to ensure the guard is exercised.",
+      "related_links": []
+    }
+  ]
+}
