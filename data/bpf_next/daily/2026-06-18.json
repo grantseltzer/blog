@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-06-19T00:00:00Z",
+  "period_start": "2026-06-17",
+  "period_end": "2026-06-18",
+  "patch_count": 17,
+  "thread_count": 6,
+  "top_contributors": ["Emil Tsalapatis", "Ihor Solodrai", "Avinash Duduskar"],
+  "key_topics": ["verifier", "helpers", "conntrack", "vlan", "arena", "btf", "selftests"],
+  "overview": "The bpf-next mailing list received 17 patches across 6 series on June 17-18, 2026. Highlights include bidirectional VLAN support for the bpf_fib_lookup() helper, a verifier fix preserving pointer spill metadata during half-slot cleanup, and hardening of conntrack option error writes.",
+  "patches": [
+    {
+      "title": "bpf: Guard conntrack opts error writes",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/9535e781fe14449b1d4e9bbc3baa7566a93bf512.1781765747.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "This patch (v2) guards write operations on error fields within BPF conntrack options, preventing unsafe writes when BPF programs interact with netfilter conntrack state. Without this guard, a BPF program could write to conntrack option error fields in unexpected conditions. The accompanying selftest covers small conntrack opts error write paths to ensure the guard is exercised correctly.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BPF_FIB_LOOKUP_VLAN flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260617224729.1428662-2-avinash.duduskar@gmail.com/",
+      "summary": "This patch introduces a new BPF_FIB_LOOKUP_VLAN flag for the bpf_fib_lookup() helper, enabling VLAN-aware forwarding information base lookups from BPF programs. It is the first part of a v3 series adding bidirectional VLAN support, with a companion patch adding BPF_FIB_LOOKUP_VLAN_INPUT for inbound VLAN handling. This is important for XDP and tc BPF programs that need to make routing decisions on VLAN-tagged traffic.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BPF_FIB_LOOKUP_VLAN_INPUT flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260617224729.1428662-3-avinash.duduskar@gmail.com/",
+      "summary": "This patch adds a BPF_FIB_LOOKUP_VLAN_INPUT flag to complement the BPF_FIB_LOOKUP_VLAN flag, completing bidirectional VLAN support in bpf_fib_lookup(). Together these flags allow BPF programs to perform FIB lookups that account for VLAN tags on both ingress and egress paths. Selftests covering both new flags are included in the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Preserve pointer spill metadata during half-slot cleanup",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260617-f01-06-half-slot-pointer-spill-v2-1-42b9cdc3cf64@mails.tsinghua.edu.cn/",
+      "summary": "This verifier fix (v2) ensures that pointer spill metadata is not discarded when the verifier cleans up half-slot stack entries. A bug in the cleanup path could cause the verifier to lose register type information for pointers that were spilled to misaligned or partial stack slots. Losing this metadata could lead to incorrect verification results for programs that spill pointers in non-standard stack layouts.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add arena-based bitmap data structure",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260618085626.19633-5-emil@etsalapatis.com/",
+      "summary": "This patch implements a bitmap data structure backed by BPF arena memory as part of the libarena selftest library. It is part of a 5-patch series that also cleans up libarena internals, fixes a zero-variable definition, and modernizes test naming conventions. The arena-based bitmap expands the set of data structures available for BPF programs using the arena memory model.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Fix resolve_btfids test reads of BTF ID sets in PIE builds",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260617210619.1562858-4-ihor.solodrai@linux.dev/",
+      "summary": "This patch fixes the resolve_btfids selftest so that BTF ID sets are read correctly when the test binary is built as a position-independent executable (PIE). PIE builds alter symbol relocation semantics, which can cause the test to read stale or incorrect BTF ID values. The fix is part of a broader series modernizing the resolve_btfids test scaffolding and syncing btf_ids.h to the tools directory.",
+      "related_links": []
+    }
+  ]
+}
