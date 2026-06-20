@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-06-20T00:00:00Z",
+  "period_start": "2026-06-18",
+  "period_end": "2026-06-19",
+  "patch_count": 13,
+  "thread_count": 5,
+  "top_contributors": ["Emil Tsalapatis", "Yiyang Chen", "David Windsor", "Jordan Rife"],
+  "key_topics": ["verifier", "kfuncs", "tc", "conntrack", "arena", "selftests"],
+  "overview": "The June 18-19 bpf-next window brought 13 patches across 5 series. Highlights include a new bpf_init_inode_xattr kfunc enabling atomic inode xattr labeling for LSM BPF programs, egress redirection support added to bpf_redirect_peer, and verifier hardening to reject offset arguments to refcount acquire kfuncs. Conntrack option write safety improvements and arena-based bitmap infrastructure for selftests round out the activity.",
+  "patches": [
+    {
+      "title": "bpf: add bpf_init_inode_xattr kfunc for atomic inode labeling",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260618203411.73917-2-dwindsor@gmail.com/",
+      "summary": "Introduces a new kfunc bpf_init_inode_xattr that allows BPF programs to atomically set an xattr on an inode at creation time. This is useful for LSM-style BPF programs that need to label new files before they become accessible to userspace, avoiding TOCTOU races that would arise from a separate setxattr call. The kfunc is on its third revision, addressing earlier review feedback around error handling and locking. Tests covering the atomic labeling behavior are included in the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support BPF_F_EGRESS with bpf_redirect_peer",
+      "author": "Jordan Rife",
+      "url": "https://lore.kernel.org/bpf/20260618182035.43811-2-jordan@jrife.io/",
+      "summary": "Extends bpf_redirect_peer to accept the BPF_F_EGRESS flag, enabling tc BPF programs to redirect packets directly to the egress path of a peer veth device rather than the ingress. Without this flag, peer redirection was ingress-only, requiring an extra ingress hook on the peer side for certain traffic flows. This v2 addresses correctness issues from the first submission and includes a selftest validating the egress redirect path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject offset refcount acquire arguments",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/fa2336b329055908a401ec3b18f8498ebc03846f.1781852308.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "Hardens the BPF verifier to reject arguments to refcount acquire kfuncs that carry a non-zero offset into a referenced object. Previously, passing an offset pointer when acquiring a new reference led to ambiguous ownership semantics that the verifier did not catch. This patch makes such usage a load-time verifier error. The accompanying selftest covers the rejected offset cases to prevent future regressions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Guard conntrack opts error writes",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/9535e781fe14449b1d4e9bbc3baa7566a93bf512.1781765747.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "Adds a guard in the BPF conntrack option write path to prevent erroneous writes when conntrack option fields are set with invalid sizes. The fix ensures error conditions in conntrack option handling are caught before memory is modified, improving safety for BPF programs that manipulate conntrack metadata. This is the second revision of the patch, with the selftest covering small write edge cases that previously went unchecked.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add arena-based bitmap data structure",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260618085626.19633-5-emil@etsalapatis.com/",
+      "summary": "Adds an arena-backed bitmap data structure to the BPF selftest libarena library, complementing the existing buddy allocator. Bitmaps are a common building block for allocators and schedulers, so a tested arena-native implementation will facilitate more complex BPF program development in arena memory. The series also cleans up prefix inconsistencies in libarena, fixes a zero-variable definition bug in can-loop tests, and improves allocation state cleanup between buddy allocator tests.",
+      "related_links": []
+    }
+  ]
+}
