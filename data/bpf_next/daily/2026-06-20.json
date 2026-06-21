@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-06-21T00:00:00Z",
+  "period_start": "2026-06-19",
+  "period_end": "2026-06-20",
+  "patch_count": 26,
+  "thread_count": 5,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Nuoqi Gui", "Sechang Lim", "Yiyang Chen"],
+  "key_topics": ["verifier", "sockmap", "sched_ext", "kfuncs", "btf", "security"],
+  "overview": "Two prominent series dominated the bpf-next mailing list on June 19-20: Kumar Kartikeya Dwivedi's 17-patch 'Redesign Verification Errors' series introduces structured, categorized diagnostics for the BPF verifier, fundamentally improving error reporting clarity. Security and correctness fixes also appeared, requiring CAP_BPF for pseudo-BTF ksym loads, rejecting offset arguments to refcount kfuncs, and enforcing that SK_SKB stream parsers cannot modify packet data.",
+  "patches": [
+    {
+      "title": "bpf: Add verifier diagnostics report helpers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260619205934.1312876-2-memxor@gmail.com/",
+      "summary": "This is the first patch in a major 17-patch series (v2) that redesigns how the BPF verifier reports errors. It introduces foundational helper infrastructure for emitting structured diagnostic messages, replacing the current approach of ad-hoc free-form log text. Subsequent patches in the series build on this to report categorized error classes — register type safety, memory bounds, resource lifetime leaks, CFG issues, and more — each tied to structured diagnostic events. The goal is to make verifier errors more actionable and machine-parseable for tooling.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: reject a packet-modifying SK_SKB stream parser",
+      "author": "Sechang Lim",
+      "url": "https://lore.kernel.org/bpf/20260620024423.4141004-3-rhkrqnwk98@gmail.com/",
+      "summary": "This patch (v5, core change in the 3-patch series) adds verifier-level rejection of SK_SKB stream parser programs that attempt to modify packet data. In the sockmap framework, stream parsers are responsible only for determining message boundaries; packet modification belongs exclusively to the stream verdict program. Allowing parsers to modify packets is semantically incorrect and can lead to subtle bugs or data corruption. Being on its fifth revision reflects thorough review iteration.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Require CAP_BPF for pseudo-BTF ksym loads",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260620-f01-13-pseudo-btf-id-cap-bpf-v1-1-f950f69fe60c@mails.tsinghua.edu.cn/",
+      "summary": "This patch enforces that loading pseudo-BTF ksym (kernel symbol) references requires the CAP_BPF capability. The pseudo-BTF ksym mechanism allows BPF programs to reference kernel variables by BTF ID; without this check, the load path could be exercised by callers lacking the appropriate privilege level. The companion selftest patch extends test coverage to verify the capability requirement is correctly enforced.",
+      "related_links": []
+    },
+    {
+      "title": "sched_ext: Mark scx_bpf_cpu_rq() as nullable",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260619-f01-14-scx-cpu-rq-ret-null-v1-1-3b4281cdf0da@mails.tsinghua.edu.cn/",
+      "summary": "This patch marks the return value of the `scx_bpf_cpu_rq()` kfunc as nullable, reflecting that the function can legitimately return NULL (e.g., when the requested CPU has no associated run queue). With this annotation the BPF verifier will require callers to perform a NULL check before dereferencing the result, preventing potential null pointer dereferences in sched_ext BPF scheduler programs. A selftest is included to validate the null-return path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject offset refcount acquire arguments",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/fa2336b329055908a401ec3b18f8498ebc03846f.1781852308.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "This patch makes the BPF verifier reject arguments passed to refcount-acquire kfuncs when those arguments carry a non-zero offset from the base pointer. Refcount acquire operations expect a pointer to the start of a reference-counted object; an offset pointer would cause the reference count field to be read from the wrong memory location, resulting in memory corruption or incorrect reference tracking. The accompanying selftest covers the new rejection behavior for offset-based refcount acquire arguments.",
+      "related_links": []
+    }
+  ]
+}
