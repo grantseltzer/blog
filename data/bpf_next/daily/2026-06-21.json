@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-06-22T00:00:00Z",
+  "period_start": "2026-06-20",
+  "period_end": "2026-06-21",
+  "patch_count": 9,
+  "thread_count": 4,
+  "top_contributors": ["Yiyang Chen", "Sechang Lim"],
+  "key_topics": ["verifier", "rcu", "sockmap", "hid-bpf", "refcount"],
+  "overview": "This daily period saw two verifier correctness patches from Yiyang Chen addressing RCU pointer nullness preservation and offset refcount validation, alongside a bug fix for hid_bpf_get_data() range checking in the HID subsystem. Sechang Lim contributed a fifth-revision patch to enforce that SK_SKB stream parser programs cannot modify packet data, closing a longstanding semantic gap in sockmap.",
+  "patches": [
+    {
+      "title": "bpf: Preserve nullable RCU pointer state on unlock",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/aaad3eeba3ea62f2c332701b28bc28387dcd5a42.1781968391.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "The BPF verifier currently loses the nullable state of RCU-protected pointers when they are accessed after an RCU read lock is released. This patch preserves the pointer's nullness flag through the unlock transition so that subsequent null checks in verifier state remain accurate. Without this fix, the verifier could incorrectly allow dereferences of pointers that may be null after the lock is dropped. The companion selftest covers this exact use-after-unlock scenario.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject offset refcount acquire arguments",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/faad6ed6ab46008e1b0ca5c490a706dbebb80ea8.1781963957.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "BPF programs that call kfuncs to acquire a reference-counted object should pass a pointer at offset zero; passing an offset pointer is semantically incorrect and could lead to verifier tracking errors. This patch adds a verifier check that rejects any refcount acquire kfunc argument with a non-zero offset. This is the v2 iteration of the series, which also adds a selftest to confirm the rejection.",
+      "related_links": []
+    },
+    {
+      "title": "HID: bpf: Fix hid_bpf_get_data() range check",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/6dbee73169b80f27a63dbf3db3488649df61b65d.1781964949.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "The hid_bpf_get_data() helper performed an incorrect range check that could allow an integer overflow when the caller supplies a large size argument. This fix corrects the arithmetic to properly validate that the requested range stays within the HID report buffer bounds. The bug could result in out-of-bounds memory access from BPF programs attached to HID devices. A selftest is included to cover the overflow path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: reject a packet-modifying SK_SKB stream parser",
+      "author": "Sechang Lim",
+      "url": "https://lore.kernel.org/bpf/20260620024423.4141004-3-rhkrqnwk98@gmail.com/",
+      "summary": "SK_SKB sockmap programs have two roles — stream parser and stream verdict — but only the verdict program should be allowed to modify packet data. Previously the verifier did not distinguish between the two and permitted data writes in parser programs, which breaks the sockmap invariant that parsers only inspect packet boundaries. This v5 patch adds verifier enforcement to reject parser programs that attempt packet modification, preventing subtle runtime data corruption.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Cover nullable RCU pointer use after unlock",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/ed2b303079d5955af859daaae94dfde5d29bd64d.1781968391.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "This selftest complements the verifier fix that preserves nullable RCU pointer state across unlock boundaries. It exercises the scenario where a BPF program holds an RCU-protected nullable pointer, releases the lock, and then attempts to use the pointer, verifying that the verifier correctly tracks nullness in this path. The test ensures regressions in this behavior are caught going forward.",
+      "related_links": []
+    }
+  ]
+}
