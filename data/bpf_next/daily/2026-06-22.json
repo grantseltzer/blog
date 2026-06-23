@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-06-23T00:00:00Z",
+  "period_start": "2026-06-21",
+  "period_end": "2026-06-22",
+  "patch_count": 35,
+  "thread_count": 9,
+  "top_contributors": ["Leon Hwang", "Mahe Tardy", "Yiyang Chen", "Gyutae Bae", "Jiri Olsa"],
+  "key_topics": ["percpu", "kfuncs", "maps", "verifier", "tracing", "riscv", "sockmap", "hid"],
+  "overview": "Two major feature series landed on June 22: Leon Hwang's v7 11-patch series introducing global percpu data adds a new BPF_ADDR_PERCPU instruction class with full libbpf and bpftool skeleton support, and Mahe Tardy's v8 7-patch series adds a bpf_icmp_send kfunc enabling BPF programs to send ICMP packets from tc and cgroup_skb hooks. Additional highlights include an RFC from Gyutae Bae proposing atomic compare-and-delete semantics for hash maps, RISC-V BPF exceptions support from Varun R Mallya, tracing_multi link info from Jiri Olsa, and several verifier correctness fixes from Yiyang Chen.",
+  "patches": [
+    {
+      "title": "bpf: Introduce global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260622143557.22955-5-leon.hwang@linux.dev/",
+      "summary": "Introduces a new BPF instruction class BPF_ADDR_PERCPU enabling global per-CPU data storage accessible directly from BPF programs without a map lookup. The series (v7, 11 patches) adds the core kernel instruction support, disallows interpreter fallback for BPF_ADDR_PERCPU instructions (requiring JIT compilation), extends libbpf to probe and support the feature, and updates bpftool to generate skeletons for percpu globals. This provides a first-class, low-overhead mechanism for per-CPU counters and accumulators that BPF programs can access with a single instruction rather than a map lookup.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_icmp_send kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260622120515.137082-4-mahe.tardy@gmail.com/",
+      "summary": "Adds a bpf_icmp_send kfunc that allows BPF programs to synthesize and send ICMP (v4 and v6) packets in response to network events. The v8 series refactors netfilter helper functions nf_reject_fill_skb_dst and nf_reject6_fill_skb_dst into core IPv4/IPv6 so they can be reused by the kfunc outside of netfilter. Tests cover tc program attachment and cgroup_skb hooks for both IPv4 and IPv6, and include a recursion guard test.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: implement compare-and-delete (BPF_F_COMPARE) for BPF_MAP_TYPE_HASH",
+      "author": "Gyutae Bae",
+      "url": "https://lore.kernel.org/bpf/20260622071649.31541-3-gyutae.opensource@navercorp.com/",
+      "summary": "RFC proposing a new BPF_F_COMPARE flag for BPF_MAP_DELETE_ELEM that enables atomic compare-and-delete semantics on hash maps. A new compare_value field is added to the map element UAPI; the delete only proceeds if the current map value matches compare_value. This solves a TOCTOU race that exists when userspace reads a value and then conditionally deletes it in two separate syscalls.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add tracing_multi link info support",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260621204524.61067-2-jolsa@kernel.org/",
+      "summary": "Adds BPF link info reporting for tracing_multi links, exposing the list of attached trampoline targets and cookie values through the BPF_OBJ_GET_INFO_BY_FD syscall. bpftool is updated to parse and display the new tracing_multi link info. This fills a visibility gap where bpftool link show would not reveal which functions a multi-attach tracing program was attached to.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Add support for BPF exceptions",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260621144259.288135-3-varunrmallya@gmail.com/",
+      "summary": "Implements BPF exception support for the RISC-V architecture, bringing it to parity with x86_64 and arm64. The series implements arch_bpf_stack_walk() for RISC-V to enable unwinding through BPF JIT frames and adds the exception entry/exit trampoline code. The BPF CI denylist entry for RISC-V BPF exceptions is removed once the implementation is complete.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject flexible-array allocation types",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/c230ebd7f2e28e0cc3820bcb2701ec517933063e.1782100805.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "Fixes the BPF verifier to reject programs that attempt to allocate kernel objects with flexible-array member types using kfuncs. Allocating a flexible-array type via a kfunc would produce an object of indeterminate size, which the verifier cannot safely track. A selftest is added to confirm the rejection path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, unix: Guard sk_msg-dependent code behind CONFIG_NET_SOCK_MSG",
+      "author": "Jakub Sitnicki",
+      "url": "https://lore.kernel.org/bpf/20260622-bpf-sk_msg-split-unix-v1-1-d7e0cb7bb03b@cloudflare.com/",
+      "summary": "Guards Unix domain socket sk_msg path code behind the CONFIG_NET_SOCK_MSG Kconfig option to reduce code size on kernels that do not need BPF sockmap support for Unix sockets. This mirrors how TCP/UDP sk_msg paths are already conditionally compiled, and avoids pulling in sockmap infrastructure for configurations that do not enable it.",
+      "related_links": []
+    }
+  ]
+}

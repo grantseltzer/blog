@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-06-23T00:00:00Z",
+  "period_start": "2026-06-15",
+  "period_end": "2026-06-22",
+  "patch_count": 100,
+  "thread_count": 32,
+  "top_contributors": ["Yiyang Chen", "Kumar Kartikeya Dwivedi", "Leon Hwang", "Mahe Tardy", "Avinash Duduskar"],
+  "key_topics": ["verifier", "percpu", "kfuncs", "maps", "tracing", "riscv", "sockmap", "tc", "btf", "libbpf"],
+  "overview": "The week of June 15-22 was exceptionally active across the BPF subsystem, headlined by Kumar Kartikeya Dwivedi's 17-patch series redesigning verifier error reporting with structured diagnostic categories, source context tracking, and log-level gating. Leon Hwang's v7 global percpu data series and Mahe Tardy's v8 bpf_icmp_send kfunc both matured toward merge readiness, representing significant new capabilities for the runtime. The week also brought BPF exception support for RISC-V, VLAN-aware bpf_fib_lookup extensions, egress redirection via bpf_redirect_peer, and a new bpf_init_inode_xattr kfunc for atomic inode labeling, alongside a steady stream of verifier correctness fixes from Yiyang Chen and Nuoqi Gui.",
+  "patches": [
+    {
+      "title": "bpf: Add verifier diagnostics report helpers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260619205934.1312876-2-memxor@gmail.com/",
+      "summary": "First patch of a sweeping 17-patch v2 series titled 'Redesign Verification Errors' that overhauls how the BPF verifier emits error messages. The series introduces a structured event log for diagnostics, adds source and instruction context to error reports, categorizes errors into types (memory safety, register type, call type, CFG, resource lifetime, execution context, policy, limits, internal), and gates verbose diagnostic output behind log levels. The result is that error messages include actionable context about which register, instruction, and source line triggered the rejection, making BPF program debugging substantially easier.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260622143557.22955-5-leon.hwang@linux.dev/",
+      "summary": "Core patch of an 11-patch v7 series adding a new BPF_ADDR_PERCPU instruction class that gives BPF programs direct access to global per-CPU variables without a map lookup. The JIT is required (interpreter fallback is explicitly disallowed), and the feature is exposed through libbpf's feature probing and skeleton generation via bpftool. Per-CPU globals backed by this mechanism are significantly cheaper than per-CPU array maps for hot-path counters.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_icmp_send kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260622120515.137082-4-mahe.tardy@gmail.com/",
+      "summary": "Adds bpf_icmp_send, a new kfunc enabling BPF programs attached to tc and cgroup_skb hooks to synthesize and transmit ICMP (v4/v6) error replies. The v8 series extracts netfilter's nf_reject_fill_skb_dst helpers into core IPv4/IPv6 so they are usable outside netfilter, then builds the kfunc on top. Recursion protection prevents a BPF program triggered by an ICMP packet from looping.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: compare-and-delete (BPF_F_COMPARE) for hash maps",
+      "author": "Gyutae Bae",
+      "url": "https://lore.kernel.org/bpf/20260622071649.31541-3-gyutae.opensource@navercorp.com/",
+      "summary": "RFC introducing a new BPF_F_COMPARE flag for BPF_MAP_DELETE_ELEM that adds atomic compare-and-delete to BPF_MAP_TYPE_HASH. The UAPI is extended with a compare_value field; the delete only proceeds when the live value matches. This eliminates the TOCTOU race inherent to separate read-then-delete syscall sequences and is modeled on the compare-and-swap primitive familiar from lock-free data structures.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Add support for BPF exceptions",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260621144259.288135-3-varunrmallya@gmail.com/",
+      "summary": "Brings BPF exception handling to RISC-V, matching the existing x86_64 and arm64 implementations. The series adds arch_bpf_stack_walk() for unwinding through JIT frames, implements exception entry/exit trampolines, and removes RISC-V from the BPF CI exceptions denylist. BPF exceptions allow programs to signal early termination without returning through all their call frames.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add tracing_multi link info support",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260621204524.61067-2-jolsa@kernel.org/",
+      "summary": "Adds BPF_LINK_TYPE_TRACING_MULTI link info to BPF_OBJ_GET_INFO_BY_FD, exposing the set of kernel functions a multi-attach tracing program is attached to along with their cookies. bpftool is updated to display the new info. Before this change, 'bpftool link show' could not reveal which functions a tracing_multi program was monitoring.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_init_inode_xattr kfunc for atomic inode labeling",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260618203411.73917-2-dwindsor@gmail.com/",
+      "summary": "Introduces a bpf_init_inode_xattr kfunc that atomically sets an extended attribute on a newly created inode during the inode_init_security LSM hook. This enables BPF LSM programs to participate in inode labeling at creation time, a capability needed for systems implementing security policies through BPF rather than a classic LSM module. The v3 series includes selftests exercising the kfunc via struct_ops.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support BPF_F_EGRESS with bpf_redirect_peer",
+      "author": "Jordan Rife",
+      "url": "https://lore.kernel.org/bpf/20260618182035.43811-2-jordan@jrife.io/",
+      "summary": "Extends bpf_redirect_peer to support the BPF_F_EGRESS flag, allowing packets to be redirected into the egress path of a peer netdevice rather than its ingress. Previously bpf_redirect_peer only supported ingress injection, limiting its use in veth-based container networking where bidirectional steering is needed. The v2 series includes tests covering the new redirect direction.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BPF_FIB_LOOKUP_VLAN flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260617224729.1428662-2-avinash.duduskar@gmail.com/",
+      "summary": "Adds two new flags to bpf_fib_lookup: BPF_FIB_LOOKUP_VLAN to pass VLAN information into the lookup and BPF_FIB_LOOKUP_VLAN_INPUT to use the VLAN tag from the input packet. This enables correct FIB lookups on VLAN-aware interfaces from BPF XDP and tc programs without stripping the VLAN header first. The v3 series includes bidirectional VLAN support and associated selftests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Require CAP_BPF for pseudo-BTF ksym loads",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260620-f01-13-pseudo-btf-id-cap-bpf-v1-1-f950f69fe60c@mails.tsinghua.edu.cn/",
+      "summary": "Tightens the capability check for loading programs that use pseudo-BTF ID relocations (ksym references), requiring CAP_BPF rather than the previously weaker check. Pseudo-BTF ksym loads let programs reference kernel symbols by BTF ID, and restricting them to CAP_BPF is consistent with the general principle that direct kernel object access requires elevated privilege.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: reject a packet-modifying SK_SKB stream parser",
+      "author": "Sechang Lim",
+      "url": "https://lore.kernel.org/bpf/20260620024423.4141004-3-rhkrqnwk98@gmail.com/",
+      "summary": "Fixes a correctness issue by rejecting SK_SKB stream parser programs that attempt to modify packet data. Stream parsers are called to determine message boundaries and should be read-only observers; allowing packet modification in the parser corrupted the data stream seen by the verdict program. The v5 series also fixes an existing selftest that was itself incorrectly modifying the skb.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Emit verbose message when prog-specific btf_struct_access rejects a write",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260615232146.5491-1-alexei.starovoitov@gmail.com/",
+      "summary": "Improves verifier diagnostics by emitting a verbose log message when a program-type-specific btf_struct_access callback rejects a write to a BTF-typed struct field. Previously the rejection was silent at lower log levels, leaving developers with no indication of which field triggered the error or why the write was forbidden.",
+      "related_links": []
+    }
+  ]
+}
