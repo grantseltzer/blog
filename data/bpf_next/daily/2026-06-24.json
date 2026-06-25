@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-06-25T00:00:00Z",
+  "period_start": "2026-06-23",
+  "period_end": "2026-06-24",
+  "patch_count": 50,
+  "thread_count": 13,
+  "top_contributors": ["Amery Hung", "Longjun Tang", "Yiyang Chen", "Avinash Duduskar"],
+  "key_topics": ["struct_ops", "kfuncs", "cgroup", "verifier", "fib-lookup", "tracing", "tcp", "btf"],
+  "overview": "June 23–24 brought 50 patches across 13 series to bpf-next. The dominant submission was Amery Hung's 15-patch series adding a common mechanism to attach struct_ops to cgroups, including TCP header option hooks and sock_ops callback support. Other highlights include new bpf_memcmp and bpf_strpbrk kfuncs, bidirectional VLAN support for bpf_fib_lookup, tracing_multi link info, and several verifier hardening patches rejecting out-of-bounds and unsafe accesses.",
+  "patches": [
+    {
+      "title": "bpf: Add infrastructure to support attaching struct_ops to cgroups",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260623175006.3136053-10-ameryhung@gmail.com/",
+      "summary": "This patch, the core of a 15-patch series, adds the infrastructure needed to attach BPF struct_ops programs directly to cgroups, enabling fine-grained per-cgroup policy control via struct_ops. It introduces a cgroup array type and attach/detach plumbing so struct_ops links can be scoped to a cgroup hierarchy. This generalizes the existing cgroup-BPF attachment model beyond classic prog types. The broader series also adds libbpf and TCP-specific support, making bpf_tcp_ops available as a struct_ops attached to a cgroup rather than globally.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Support selected sock_ops callbacks as struct_ops",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260623175006.3136053-12-ameryhung@gmail.com/",
+      "summary": "Part of the struct_ops-to-cgroup series, this patch exposes selected TCP sock_ops callbacks through the bpf_tcp_ops struct_ops type, allowing BPF programs to implement per-cgroup TCP policy using a familiar struct interface rather than the older sockops prog type. It bridges the gap between the struct_ops programming model and the full range of TCP extension points previously only accessible via BPF_PROG_TYPE_SOCK_OPS. Combined with patch 12/15, TCP header option parsing, writing, and length hooks are also supported.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_memcmp kfunc",
+      "author": "Longjun Tang",
+      "url": "https://lore.kernel.org/bpf/20260624093638.117062-2-lange_tang@163.com/",
+      "summary": "Adds bpf_memcmp as a new kernel function (kfunc) accessible from BPF programs, exposing memory comparison semantics similar to the libc memcmp. BPF programs currently lack a safe, verifier-aware way to compare arbitrary memory regions beyond manual loops, which this kfunc addresses. This is part of a two-kfunc series (v2) alongside bpf_strpbrk, expanding the set of string/memory primitives available to BPF. The companion selftests verify correct behavior including edge cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_strpbrk kfunc",
+      "author": "Longjun Tang",
+      "url": "https://lore.kernel.org/bpf/20260624093638.117062-5-lange_tang@163.com/",
+      "summary": "Adds bpf_strpbrk as a new kfunc, providing BPF programs with the ability to search a string for any character in a given set, analogous to the standard strpbrk. This kfunc complements bpf_memcmp in the same series, continuing the effort to bring rich string manipulation primitives into the BPF ecosystem. Both functions operate on bounded memory with verifier-enforced safety. Selftests covering typical and boundary conditions are included in patch 5/5 of the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BPF_FIB_LOOKUP_VLAN flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260624030530.3342884-2-avinash.duduskar@gmail.com/",
+      "summary": "Introduces a BPF_FIB_LOOKUP_VLAN output flag so that bpf_fib_lookup() can report the VLAN ID of the egress interface, enabling BPF programs to make forwarding decisions that are VLAN-aware. A companion patch (2/3) adds BPF_FIB_LOOKUP_VLAN_INPUT so ingress VLAN information can also be passed into the lookup. This is v5 of the series, addressing review feedback on earlier iterations and rounding out bidirectional VLAN support for the FIB lookup helper used heavily in XDP and tc programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add tracing_multi link info support",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260623142417.275892-2-jolsa@kernel.org/",
+      "summary": "Extends the BPF link info infrastructure to expose metadata for tracing_multi links, which attach BPF programs to multiple tracepoints or kprobes in a single operation. Previously, bpftool and user tools could not introspect which attach points a tracing_multi link covered; this patch fills that gap by populating the link info struct with the relevant target information. Companion patches add selftests and bpftool output formatting for the new info fields.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: support shift operations with non-const src operand",
+      "author": "Tianci Cao",
+      "url": "https://lore.kernel.org/bpf/20260623120218.25869-2-ziye@zju.edu.cn/",
+      "summary": "Improves the BPF verifier's range tracking for shift operations (LSH/RSH/ARSH) when the shift amount is a runtime variable with a bounded value rather than a compile-time constant. Previously the verifier would pessimistically widen the destination register's range in such cases, leading to spurious verification failures for programs that use variable shifts with provably safe bounds. This fix enables more BPF programs to pass verification without artificial restructuring.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject MEM_ALLOC BTF accesses past object bounds",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/703a2cbfeb17ae707fa4a003b795c5326cc0abb8.1782197377.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "Hardens the BPF verifier to reject field accesses on MEM_ALLOC pointers that reach beyond the allocated object's size as described by its BTF type. Such out-of-bounds accesses could silently read or write adjacent kernel memory, so the verifier now enforces that all BTF-typed field offsets remain within the object boundary. A companion selftest exercises the new rejection logic for several boundary conditions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Mask pseudo pointer values in verifier logs",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260623-f01-13-pseudo-btf-id-cap-bpf-v2-1-a190ebb8f3e2@mails.tsinghua.edu.cn/",
+      "summary": "Prevents raw kernel pointer values from leaking into BPF verifier log output for pseudo-BTF ksym references, which can be visible to unprivileged observers in some configurations. The verifier already masks pointer values in register state dumps; this patch extends that masking to the ksym resolution path. This is v2 of the series, tightening the fix after earlier review and adding a selftest that verifies the masking behavior.",
+      "related_links": []
+    }
+  ]
+}
