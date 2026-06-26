@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-06-26T00:00:00Z",
+  "period_start": "2026-06-24",
+  "period_end": "2026-06-25",
+  "patch_count": 23,
+  "thread_count": 6,
+  "top_contributors": ["Mahe Tardy", "Daniel Borkmann", "Lange Tang", "Ihor Solodrai"],
+  "key_topics": ["kfuncs", "security", "libbpf", "xdp", "btf"],
+  "overview": "The bpf-next mailing list for June 24-25 saw 23 patches across 6 series, with a strong focus on new kfuncs and BPF security. Highlights include a new bpf_icmp_send kfunc enabling BPF programs to generate ICMP responses, a BPF signed loader verification mechanism from Daniel Borkmann, and new string/memory kfuncs bpf_memcmp and bpf_strpbrk. VLAN support was also extended to bpf_fib_lookup(), and libbpf received -Wformat warning fixes.",
+  "patches": [
+    {
+      "title": "bpf: add bpf_icmp_send kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260624185554.362555-2-mahe.tardy@gmail.com/",
+      "summary": "Adds a new bpf_icmp_send kernel function allowing BPF programs to generate and send ICMP packets. This ninth-revision series targets cgroup_skb hooks, enabling BPF-based network policy to emit ICMP error responses rather than silently dropping packets. Selftests cover IPv4 and IPv6 cgroup_skb scenarios, recursion protection, and the no-route edge case. The long revision history reflects careful review of the helper's safety and interaction with existing ICMP rate limiting.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Verify signed loader metadata at load time",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260624140301.93421-2-daniel@iogearbox.net/",
+      "summary": "Adds kernel-side enforcement that verifies signed BPF loader metadata at program load time, part of a broader BPF signing and enforcement framework. When signing enforcement is active, loaders without valid signatures are rejected before their BPF programs can be loaded. A companion patch updates bpftool to include loader metadata in program signatures, while another drops the now-redundant in-loader metadata check. The series also ships documentation covering the full BPF signing and enforcement design.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_memcmp kfunc",
+      "author": "Lange Tang",
+      "url": "https://lore.kernel.org/bpf/20260624093638.117062-2-lange_tang@163.com/",
+      "summary": "Introduces bpf_memcmp as a new kfunc that provides a safe memory comparison primitive to BPF programs. A companion patch in the same series adds bpf_strpbrk, which scans a string for the first occurrence of any character from a set. Together they expand BPF programs' ability to perform string and memory inspection without requiring custom per-program implementations. Selftests for both kfuncs are included, along with a rename of a conflicting local bpf_memcmp symbol in the existing selftest suite.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BPF_FIB_LOOKUP_VLAN flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260624030530.3342884-2-avinash.duduskar@gmail.com/",
+      "summary": "Extends bpf_fib_lookup() with bidirectional VLAN support via two new flags: BPF_FIB_LOOKUP_VLAN for output VLAN lookup and BPF_FIB_LOOKUP_VLAN_INPUT for input VLAN lookup. This allows XDP and tc BPF programs to perform correct FIB lookups on VLAN-tagged packets without stripping the tag before the lookup. The fifth revision of this series reflects sustained review and refinement of the flag semantics and ABI compatibility.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: fix -Wformat warnings from format/argument type mismatches",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20260624204946.2901178-1-andrii@kernel.org/",
+      "summary": "Fixes a set of -Wformat compiler warnings in libbpf caused by mismatches between printf-style format specifiers and their argument types. Addressing these warnings improves portability and allows libbpf to build cleanly under stricter warning flags. While individually minor, format/argument mismatches can mask real integer-size bugs on 32-bit or cross-compilation targets.",
+      "related_links": []
+    },
+    {
+      "title": "tools/bpf: Sync btf_ids.h to tools",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260624005546.1818483-2-ihor.solodrai@linux.dev/",
+      "summary": "Syncs btf_ids.h from the kernel tree into the BPF tools directory as part of a series modernizing the resolve_btfids selftest infrastructure. The series also fixes test reads of BTF ID sets in PIE (Position Independent Executable) builds, where absolute addresses cannot be read directly, and adds a kfunc set test to resolve_btfids. These improvements make the BTF ID resolution tooling more robust and better aligned with current kernel conventions.",
+      "related_links": []
+    }
+  ]
+}
