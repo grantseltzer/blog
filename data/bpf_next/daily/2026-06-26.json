@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-06-27T00:00:00Z",
+  "period_start": "2026-06-25",
+  "period_end": "2026-06-26",
+  "patch_count": 7,
+  "thread_count": 2,
+  "top_contributors": ["Mahe Tardy", "Woojin Ji"],
+  "key_topics": ["kfuncs", "verifier", "selftests"],
+  "overview": "A relatively quiet day on bpf-next, with two series landing. Mahe Tardy's long-running series (v10) to add a bpf_icmp_send kfunc reached the mailing list alongside a verifier fix from Woojin Ji that improves how scalar zero spills are tracked during stack reads.",
+  "patches": [
+    {
+      "title": "bpf: add bpf_icmp_send kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260625110321.28236-2-mahe.tardy@gmail.com/",
+      "summary": "This patch (1/5 of the series) introduces a new kfunc, bpf_icmp_send, that lets BPF programs generate and send ICMP messages from within a cgroup_skb hook. Reaching version 10, the series has gone through substantial iteration to handle corner cases like recursion and missing routes. The accompanying selftests cover IPv4 and IPv6 cgroup_skb attachment, recursion guards, and the no-route error path, giving broad confidence in the new interface.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Preserve scalar zero spills for stack reads",
+      "author": "Woojin Ji",
+      "url": "https://lore.kernel.org/bpf/20260625-bpf-stack-var-off-zero-v1-v3-1-a068210a761b@gmail.com/",
+      "summary": "This verifier patch fixes a correctness gap where scalar values that are known to be zero get their type information lost after being spilled to the stack and later read back at a variable offset. Without the fix, the verifier forgets the zero constraint and may reject otherwise valid programs or produce imprecise type tracking. The companion selftest (patch 2/2) adds targeted coverage for the affected stack-read patterns.",
+      "related_links": []
+    }
+  ]
+}
