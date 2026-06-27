@@ -1,0 +1,127 @@
+{
+  "period": "daily",
+  "period_start": "2026-06-26",
+  "period_end": "2026-06-27",
+  "fetched_at": "2026-06-27T10:58:48Z",
+  "patches": [
+    {
+      "title": "[bpf-next,2/2] libbpf: selftest for bpf_map__reuse_fd_from_loader_ctx()",
+      "author": "John Fastabend",
+      "url": "https://lore.kernel.org/bpf/20260626215113.52273-2-john.fastabend@gmail.com/",
+      "date": "2026-06-26T21:51:13",
+      "series": [
+        {
+          "id": 1117301,
+          "url": "https://patchwork.kernel.org/api/series/1117301/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117301",
+          "date": "2026-06-26T21:51:12",
+          "name": "[bpf-next,1/2] libbpf: add bpf_map__reuse_fd_from_loader_ctx() to allow shared maps",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] libbpf: add bpf_map__reuse_fd_from_loader_ctx() to allow shared maps",
+      "author": "John Fastabend",
+      "url": "https://lore.kernel.org/bpf/20260626215113.52273-1-john.fastabend@gmail.com/",
+      "date": "2026-06-26T21:51:12",
+      "series": [
+        {
+          "id": 1117301,
+          "url": "https://patchwork.kernel.org/api/series/1117301/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117301",
+          "date": "2026-06-26T21:51:12",
+          "name": "[bpf-next,1/2] libbpf: add bpf_map__reuse_fd_from_loader_ctx() to allow shared maps",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,5/5] x86/bpf: enable EXECMEM_ROX_CACHE for BPF allocations",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260626-execmem-x86-rox-bpf-v0-v1-5-45a0b0ed4fe9@kernel.org/",
+      "date": "2026-06-26T18:42:32",
+      "series": [
+        {
+          "id": 1117279,
+          "url": "https://patchwork.kernel.org/api/series/1117279/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117279",
+          "date": "2026-06-26T18:42:27",
+          "name": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117279/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/5] bpf, x86: make sure allocation in arch_bpf_trampoline_size() is writable",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260626-execmem-x86-rox-bpf-v0-v1-4-45a0b0ed4fe9@kernel.org/",
+      "date": "2026-06-26T18:42:31",
+      "series": [
+        {
+          "id": 1117279,
+          "url": "https://patchwork.kernel.org/api/series/1117279/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117279",
+          "date": "2026-06-26T18:42:27",
+          "name": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117279/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/5] bpf: alloc_prog_pack(): skip ROX management for already ROX memory",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260626-execmem-x86-rox-bpf-v0-v1-3-45a0b0ed4fe9@kernel.org/",
+      "date": "2026-06-26T18:42:30",
+      "series": [
+        {
+          "id": 1117279,
+          "url": "https://patchwork.kernel.org/api/series/1117279/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117279",
+          "date": "2026-06-26T18:42:27",
+          "name": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117279/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/5] bpf: drop __weak from bpf_jit_alloc_exec() and bpf_jit_free_exec()",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260626-execmem-x86-rox-bpf-v0-v1-2-45a0b0ed4fe9@kernel.org/",
+      "date": "2026-06-26T18:42:29",
+      "series": [
+        {
+          "id": 1117279,
+          "url": "https://patchwork.kernel.org/api/series/1117279/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117279",
+          "date": "2026-06-26T18:42:27",
+          "name": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117279/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/5] bpf: dispatcher: allocate bpf_dispatcher->rw_image with vmalloc()",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260626-execmem-x86-rox-bpf-v0-v1-1-45a0b0ed4fe9@kernel.org/",
+      "date": "2026-06-26T18:42:28",
+      "series": [
+        {
+          "id": 1117279,
+          "url": "https://patchwork.kernel.org/api/series/1117279/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117279",
+          "date": "2026-06-26T18:42:27",
+          "name": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117279/mbox/"
+        }
+      ]
+    }
+  ]
+}
