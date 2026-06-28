@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-06-28T00:00:00Z",
+  "period_start": "2026-06-26",
+  "period_end": "2026-06-27",
+  "patch_count": 7,
+  "thread_count": 2,
+  "top_contributors": ["Mike Rapoport", "John Fastabend"],
+  "key_topics": ["libbpf", "maps", "jit", "x86", "execmem", "memory-management"],
+  "overview": "Two series landed on June 26-27: John Fastabend adds a new libbpf API for sharing maps across independently loaded BPF programs, and Mike Rapoport contributes a 5-patch series enabling the EXECMEM_ROX_CACHE mechanism for BPF JIT allocations on x86, tightening memory security and efficiency for compiled BPF code.",
+  "patches": [
+    {
+      "title": "libbpf: add bpf_map__reuse_fd_from_loader_ctx() to allow shared maps",
+      "author": "John Fastabend",
+      "url": "https://lore.kernel.org/bpf/20260626215113.52273-1-john.fastabend@gmail.com/",
+      "summary": "Introduces a new libbpf API, bpf_map__reuse_fd_from_loader_ctx(), that allows BPF programs loaded by different loaders to share a map file descriptor sourced from a loader context. This enables coordination between independently loaded BPF programs through shared state without either program needing a direct reference to the other. The feature is especially useful in multi-component BPF deployments where programs are managed separately but need to exchange data. A dedicated selftest is included in the companion patch 2/2.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: selftest for bpf_map__reuse_fd_from_loader_ctx()",
+      "author": "John Fastabend",
+      "url": "https://lore.kernel.org/bpf/20260626215113.52273-2-john.fastabend@gmail.com/",
+      "summary": "Adds a selftest that exercises the new bpf_map__reuse_fd_from_loader_ctx() API introduced in the first patch of this series. The test validates that two BPF programs loaded with separate loader contexts can correctly share a map file descriptor. Covering this with a selftest ensures the feature stays correct as the libbpf loader logic evolves.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: dispatcher: allocate bpf_dispatcher->rw_image with vmalloc()",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260626-execmem-x86-rox-bpf-v0-v1-1-45a0b0ed4fe9@kernel.org/",
+      "summary": "The first patch in a 5-part series reworking BPF JIT memory allocation on x86. It switches bpf_dispatcher's rw_image (the writable alias used during JIT compilation) to be allocated with vmalloc() rather than the previous mechanism. This is a preparatory step that decouples the writable and executable views of dispatcher memory, setting the stage for EXECMEM_ROX_CACHE integration.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: alloc_prog_pack(): skip ROX management for already ROX memory",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260626-execmem-x86-rox-bpf-v0-v1-3-45a0b0ed4fe9@kernel.org/",
+      "summary": "Adds a guard in alloc_prog_pack() to skip redundant ROX (Read-Only eXecutable) management when the memory being allocated is already marked ROX. This avoids double-processing when the new EXECMEM_ROX_CACHE path is active and ensures the allocation fast-path stays clean for memory that does not need permission transitions.",
+      "related_links": []
+    },
+    {
+      "title": "x86/bpf: enable EXECMEM_ROX_CACHE for BPF allocations",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260626-execmem-x86-rox-bpf-v0-v1-5-45a0b0ed4fe9@kernel.org/",
+      "summary": "The concluding patch of the series actually enables EXECMEM_ROX_CACHE for BPF JIT allocations on x86. EXECMEM_ROX_CACHE provides a pool of read-only executable pages that can be written through a separate writable mapping, avoiding the need to flip page permissions at runtime. Enabling it for BPF improves both security (W^X is always maintained) and performance (no set_memory_ro/rw calls in the hot path for cached allocations). This completes the groundwork laid by the prior four patches in the series.",
+      "related_links": []
+    }
+  ]
+}
