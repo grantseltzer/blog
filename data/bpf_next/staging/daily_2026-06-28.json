@@ -1,0 +1,263 @@
+{
+  "period": "daily",
+  "period_start": "2026-06-27",
+  "period_end": "2026-06-28",
+  "fetched_at": "2026-06-28T11:10:34Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v2,3/3] riscv, bpf: Remove BPF exceptions from BPF CI denylist",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260628081710.113333-4-varunrmallya@gmail.com/",
+      "date": "2026-06-28T08:17:10",
+      "series": [
+        {
+          "id": 1117594,
+          "url": "https://patchwork.kernel.org/api/series/1117594/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117594",
+          "date": "2026-06-28T08:17:07",
+          "name": "Add BPF Exceptions support for RISC-V",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1117594/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/3] riscv, bpf: Add support for BPF exceptions",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260628081710.113333-3-varunrmallya@gmail.com/",
+      "date": "2026-06-28T08:17:09",
+      "series": [
+        {
+          "id": 1117594,
+          "url": "https://patchwork.kernel.org/api/series/1117594/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117594",
+          "date": "2026-06-28T08:17:07",
+          "name": "Add BPF Exceptions support for RISC-V",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1117594/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/3] riscv: stacktrace: Implement arch_bpf_stack_walk() for BPF",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260628081710.113333-2-varunrmallya@gmail.com/",
+      "date": "2026-06-28T08:17:08",
+      "series": [
+        {
+          "id": 1117594,
+          "url": "https://patchwork.kernel.org/api/series/1117594/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117594",
+          "date": "2026-06-28T08:17:07",
+          "name": "Add BPF Exceptions support for RISC-V",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1117594/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,12/12] selftests/bpf: Add tests for bpf SDT probe",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/04b17848a1b9bf61c27317075829cd9570aa8557.1782571533.git.xukuohai@huawei.com/",
+      "date": "2026-06-27T22:51:46",
+      "series": [
+        {
+          "id": 1117484,
+          "url": "https://patchwork.kernel.org/api/series/1117484/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117484",
+          "date": "2026-06-27T22:51:35",
+          "name": "bpf: Introduce static-defined tracing probe for BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117484/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,11/12] bpf, x86: Add JIT support SDT for probe",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/48943c5608280cade48d459ca15fd156c7470209.1782571533.git.xukuohai@huawei.com/",
+      "date": "2026-06-27T22:51:45",
+      "series": [
+        {
+          "id": 1117484,
+          "url": "https://patchwork.kernel.org/api/series/1117484/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117484",
+          "date": "2026-06-27T22:51:35",
+          "name": "bpf: Introduce static-defined tracing probe for BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117484/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,10/12] bpf: Support attach and detach for SDT observer program",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/1b13b561aae721fec70107256228a77fbc0e8987.1782571533.git.xukuohai@huawei.com/",
+      "date": "2026-06-27T22:51:44",
+      "series": [
+        {
+          "id": 1117484,
+          "url": "https://patchwork.kernel.org/api/series/1117484/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117484",
+          "date": "2026-06-27T22:51:35",
+          "name": "bpf: Introduce static-defined tracing probe for BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117484/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,09/12] bpf: Add kernel support to load SDT observer program",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/e5e991c7573600676c0de49b7b794e1f2b6d956a.1782571533.git.xukuohai@huawei.com/",
+      "date": "2026-06-27T22:51:43",
+      "series": [
+        {
+          "id": 1117484,
+          "url": "https://patchwork.kernel.org/api/series/1117484/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117484",
+          "date": "2026-06-27T22:51:35",
+          "name": "bpf: Introduce static-defined tracing probe for BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117484/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,08/12] libbpf: Add libbpf support to load SDT observer program",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/b097ab082dc6cdde03ace4ad53e9e52b567a976d.1782571533.git.xukuohai@huawei.com/",
+      "date": "2026-06-27T22:51:42",
+      "series": [
+        {
+          "id": 1117484,
+          "url": "https://patchwork.kernel.org/api/series/1117484/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117484",
+          "date": "2026-06-27T22:51:35",
+          "name": "bpf: Introduce static-defined tracing probe for BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117484/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,07/12] bpf: Record probe name in SDT map",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/43eaa2bc686c9f8309d37b96f15646eaa9e51899.1782571533.git.xukuohai@huawei.com/",
+      "date": "2026-06-27T22:51:41",
+      "series": [
+        {
+          "id": 1117484,
+          "url": "https://patchwork.kernel.org/api/series/1117484/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117484",
+          "date": "2026-06-27T22:51:35",
+          "name": "bpf: Introduce static-defined tracing probe for BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117484/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,06/12] bpf: Add type check for SDT probe site",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/d20d2be69ab6bfa5f81c249bf54c2d47558d239e.1782571533.git.xukuohai@huawei.com/",
+      "date": "2026-06-27T22:51:40",
+      "series": [
+        {
+          "id": 1117484,
+          "url": "https://patchwork.kernel.org/api/series/1117484/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117484",
+          "date": "2026-06-27T22:51:35",
+          "name": "bpf: Introduce static-defined tracing probe for BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117484/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,05/12] bpf: Collect SDT probe BTF IDs from BTF decl tags",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/ec8e3dcd0857d4ed80151ab68be9acf01fa4d93b.1782571533.git.xukuohai@huawei.com/",
+      "date": "2026-06-27T22:51:39",
+      "series": [
+        {
+          "id": 1117484,
+          "url": "https://patchwork.kernel.org/api/series/1117484/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117484",
+          "date": "2026-06-27T22:51:35",
+          "name": "bpf: Introduce static-defined tracing probe for BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117484/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,04/12] bpf: Create insn_array map for bpf SDT probe",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/809bd2ae46a0505a1f8fdaeacb4e1db489bfa641.1782571533.git.xukuohai@huawei.com/",
+      "date": "2026-06-27T22:51:38",
+      "series": [
+        {
+          "id": 1117484,
+          "url": "https://patchwork.kernel.org/api/series/1117484/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117484",
+          "date": "2026-06-27T22:51:35",
+          "name": "bpf: Introduce static-defined tracing probe for BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117484/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,03/12] libbpf: Add bpf_sdt_notes section parser",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/5834001015dba4c202cbd141c4c8723e4983b196.1782571533.git.xukuohai@huawei.com/",
+      "date": "2026-06-27T22:51:37",
+      "series": [
+        {
+          "id": 1117484,
+          "url": "https://patchwork.kernel.org/api/series/1117484/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117484",
+          "date": "2026-06-27T22:51:35",
+          "name": "bpf: Introduce static-defined tracing probe for BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117484/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,02/12] libbpf: Introduce bpf SDT probe macros",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/8d42452bd09872847be4c1953e4e1362db898d9a.1782571533.git.xukuohai@huawei.com/",
+      "date": "2026-06-27T22:51:36",
+      "series": [
+        {
+          "id": 1117484,
+          "url": "https://patchwork.kernel.org/api/series/1117484/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117484",
+          "date": "2026-06-27T22:51:35",
+          "name": "bpf: Introduce static-defined tracing probe for BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117484/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,01/12] libbpf: Prepare bpf SDT probe section for the linker",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/addc1860d60c2eee409f187805b6cfbc5382e82a.1782571533.git.xukuohai@huawei.com/",
+      "date": "2026-06-27T22:51:35",
+      "series": [
+        {
+          "id": 1117484,
+          "url": "https://patchwork.kernel.org/api/series/1117484/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1117484",
+          "date": "2026-06-27T22:51:35",
+          "name": "bpf: Introduce static-defined tracing probe for BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1117484/mbox/"
+        }
+      ]
+    }
+  ]
+}
