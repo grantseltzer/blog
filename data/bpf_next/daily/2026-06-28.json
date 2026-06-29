@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-06-29T00:00:00Z",
+  "period_start": "2026-06-27",
+  "period_end": "2026-06-28",
+  "patch_count": 15,
+  "thread_count": 2,
+  "top_contributors": ["Xu Kuohai", "Varun R Mallya"],
+  "key_topics": ["bpf-exceptions", "risc-v", "sdt", "tracing", "libbpf", "jit", "btf"],
+  "overview": "Two notable patch series arrived on June 27-28. Varun R Mallya posted a v2 series adding BPF exception support to RISC-V, including the required arch_bpf_stack_walk() stack unwinding implementation, completing the architecture port and removing RISC-V from the BPF CI denylist. Xu Kuohai posted a 12-patch RFC introducing static-defined tracing (SDT) probes for BPF, a new mechanism allowing BPF programs to define named probe sites that observer programs can attach to at runtime, with BTF type checking and x86 JIT support.",
+  "patches": [
+    {
+      "title": "riscv, bpf: Add support for BPF exceptions",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260628081710.113333-3-varunrmallya@gmail.com/",
+      "summary": "This patch implements BPF exception support for the RISC-V architecture, forming the core of the three-patch v2 series. BPF exceptions allow BPF programs to cleanly unwind the call stack and return early on error conditions without requiring per-call error propagation. The implementation hooks into the existing BPF exception infrastructure introduced for x86 and arm64 and adapts it to RISC-V calling conventions. This v2 addresses review feedback from the initial submission.",
+      "related_links": []
+    },
+    {
+      "title": "riscv: stacktrace: Implement arch_bpf_stack_walk() for BPF",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260628081710.113333-2-varunrmallya@gmail.com/",
+      "summary": "Implements the arch_bpf_stack_walk() callback for RISC-V, which the BPF exception mechanism requires to unwind the stack when an exception is thrown from a BPF program. Without this architecture-specific hook the BPF runtime cannot correctly walk RISC-V frames during exception handling. This patch is the prerequisite for the BPF exception support patch that follows in the series.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Remove BPF exceptions from BPF CI denylist",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260628081710.113333-4-varunrmallya@gmail.com/",
+      "summary": "Removes BPF exception-related tests from the RISC-V CI denylist, enabling the BPF CI to run these tests on RISC-V going forward. The denylist entry existed because RISC-V previously lacked BPF exception support; this patch signals the feature is complete and ready for continuous automated testing.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Introduce bpf SDT probe macros",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/8d42452bd09872847be4c1953e4e1362db898d9a.1782571533.git.xukuohai@huawei.com/",
+      "summary": "Introduces user-facing macros in libbpf for defining BPF SDT (static-defined tracing) probe sites within BPF programs. These macros allow BPF developers to annotate their programs with named probe points, similar to SystemTap SDT markers in userspace programs, that observer BPF programs can attach to at runtime. This is the libbpf API surface of the larger 12-patch RFC series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Collect SDT probe BTF IDs from BTF decl tags",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/ec8e3dcd0857d4ed80151ab68be9acf01fa4d93b.1782571533.git.xukuohai@huawei.com/",
+      "summary": "Implements the mechanism for discovering and collecting SDT probe point BTF IDs by scanning BTF declaration tags embedded in a loaded BPF program. This allows the kernel to identify all probe sites and associate them with their BTF type information for later type-checking of observer programs. It integrates SDT probe discovery into the verifier's BTF processing pipeline.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add kernel support to load SDT observer program",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/e5e991c7573600676c0de49b7b794e1f2b6d956a.1782571533.git.xukuohai@huawei.com/",
+      "summary": "Adds kernel-side support for loading BPF programs that act as SDT observers, capable of attaching to static probe sites defined in other BPF programs. This is the core kernel infrastructure that validates, loads, and tracks SDT observer programs, checking that observer argument types match the probe site's BTF signature. It works alongside the libbpf macros and JIT patches to form the complete SDT probe pipeline.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Add JIT support SDT for probe",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/48943c5608280cade48d459ca15fd156c7470209.1782571533.git.xukuohai@huawei.com/",
+      "summary": "Implements x86 JIT compiler support for BPF SDT probes, enabling the JIT to emit the correct instruction sequences at probe sites and handle observer program attachment and detachment. The JIT must emit patchable instruction slots at probe sites so observers can be wired in without re-JITting the target program. This patch makes SDT probes functional on x86_64, currently the only JIT target supported in this RFC.",
+      "related_links": []
+    }
+  ]
+}
