@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-06-29T13:09:44Z",
+  "period_start": "2026-06-28",
+  "period_end": "2026-06-29",
+  "patch_count": 6,
+  "thread_count": 3,
+  "top_contributors": ["Varun R Mallya", "Nuoqi Gui", "Matt Bobrowski"],
+  "key_topics": ["verifier", "riscv", "bpf-exceptions", "local-storage", "gotox"],
+  "overview": "A quiet day on the bpf-next list with just three threads. Varun R Mallya posted v2 of a series bringing BPF exception support to riscv, including a new arch_bpf_stack_walk() implementation, and Nuoqi Gui sent v3 of a verifier hardening series that enforces gotox jump targets against subprogram bounds. Matt Bobrowski also proposed rejecting BPF_MAP_TYPE_INODE_STORAGE map creation when the BPF LSM hasn't been initialized.",
+  "patches": [
+    {
+      "title": "bpf: reject BPF_MAP_TYPE_INODE_STORAGE creation if BPF LSM is uninitialized",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20260628201103.3624525-1-mattbobrowski@google.com/",
+      "summary": "This patch rejects creation of BPF_MAP_TYPE_INODE_STORAGE maps when the BPF LSM has not been initialized on the system. Inode local storage relies on security blob infrastructure set up by the BPF LSM, so allowing map creation without it risks undefined behavior or crashes. The fix adds an explicit check at map-create time so callers get a clear error instead of a delayed failure.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Enforce gotox targets against subprog bounds",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260628-f01-03-gotox-bpf-next-v3-1-b744432e1361@mails.tsinghua.edu.cn/",
+      "summary": "This v3 patch tightens verifier checks on the gotox indirect-jump instruction so that computed targets must stay within the bounds of the current subprogram. Without this, a crafted gotox could in principle jump across subprog boundaries, which the verifier's control-flow analysis does not expect. The change closes a verification gap that could otherwise be leveraged to confuse the verifier's safety guarantees around subprog isolation.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add cross-subprog gotox target coverage",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260628-f01-03-gotox-bpf-next-v3-2-b744432e1361@mails.tsinghua.edu.cn/",
+      "summary": "Companion selftest patch for the gotox subprog-bounds enforcement change, adding coverage for programs that attempt cross-subprog gotox jumps. These tests confirm the verifier correctly rejects out-of-bounds jump targets while still accepting legitimate in-subprog gotox usage. Solid test coverage here matters since gotox is a relatively new and sensitive verifier feature.",
+      "related_links": []
+    },
+    {
+      "title": "riscv: stacktrace: Implement arch_bpf_stack_walk() for BPF",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260628081710.113333-2-varunrmallya@gmail.com/",
+      "summary": "First patch in a v2 series adding BPF exception support to riscv, this implements the arch_bpf_stack_walk() callback needed to unwind the stack during BPF exception handling on riscv. Other architectures like x86 and arm64 already provide this hook for BPF exceptions to work correctly. This is foundational plumbing required before riscv can support bpf_throw() and related exception-handling helpers.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Add support for BPF exceptions",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260628081710.113333-3-varunrmallya@gmail.com/",
+      "summary": "Builds on the new stack-walk implementation to wire up actual BPF exception support on riscv, bringing the architecture to parity with x86 and arm64. This enables BPF programs compiled for riscv to use bpf_throw() and exception-based error handling patterns. It's a meaningful step in riscv's ongoing BPF JIT feature catch-up.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Remove BPF exceptions from BPF CI denylist",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260628081710.113333-4-varunrmallya@gmail.com/",
+      "summary": "Final patch in the series, removing BPF exception selftests from the riscv CI denylist now that the feature is implemented and passing. This turns on continuous test coverage for BPF exceptions on riscv going forward, helping catch regressions as the JIT and verifier evolve.",
+      "related_links": []
+    }
+  ]
+}

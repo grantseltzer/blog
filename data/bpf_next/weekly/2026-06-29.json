@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-06-29T13:09:44Z",
+  "period_start": "2026-06-22",
+  "period_end": "2026-06-29",
+  "patch_count": 100,
+  "thread_count": 25,
+  "top_contributors": ["Amery Hung", "Xu Kuohai", "Mahe Tardy", "Longjun Tang", "Leon Hwang"],
+  "key_topics": ["struct-ops", "kfuncs", "verifier", "tracing", "security", "percpu-data", "fib-lookup", "btf"],
+  "overview": "A heavy week on bpf-next with 100 patches across 25 threads. The biggest series were Amery Hung's 15-patch effort to let struct_ops be attached to a cgroup, Xu Kuohai's 12-patch RFC introducing static-defined tracing (SDT) probes for BPF, and Leon Hwang's v7 global percpu data series, which is maturing toward merge. Security-focused work also landed, including Daniel Borkmann's signed-loader verification series and Mike Rapoport's patches enabling EXECMEM_ROX_CACHE for BPF JIT allocations on x86. New kfuncs (bpf_icmp_send reaching v10, plus bpf_memcmp/bpf_strpbrk) and verifier hardening around gotox targets rounded out a broad, feature-heavy week.",
+  "patches": [
+    {
+      "title": "bpf: Add infrastructure to support attaching struct_ops to cgroups",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260623175006.3136053-10-ameryhung@gmail.com/",
+      "summary": "Core patch in a 15-part v2 series that introduces a generic mechanism for attaching struct_ops implementations to a cgroup rather than globally. This lets TCP congestion control and other struct_ops-based programs scope their behavior to specific cgroups, a long-requested capability for multi-tenant systems. The series also touches libbpf, selftests, and supporting refactors of the existing prog_list infrastructure to share code between cgroup and global attachment paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add kernel support to load SDT observer program",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/1b13b561aae721fec70107256228a77fbc0e8987.1782571533.git.xukuohai@huawei.com/",
+      "summary": "Part of a 12-patch RFC introducing static-defined tracing (SDT) probes for BPF, giving userspace-style USDT-like probe points but defined and consumed natively through BPF. This patch adds kernel-side support for loading an SDT 'observer' program that gets invoked when a probe fires. The series spans libbpf macros, BTF decl-tag based probe metadata, x86 JIT support, and a new insn_array map type, making it one of the more ambitious tracing proposals this cycle.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Add support for global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260622143557.22955-7-leon.hwang@linux.dev/",
+      "summary": "Now at v7, this series lets BPF programs declare global percpu variables directly, rather than requiring a percpu array map for this common pattern. This patch wires up libbpf to recognize and relocate global percpu data sections during program loading. With seven revisions of review behind it, the series is converging on something close to mergeable, including bpftool skeleton generation and verifier-log coverage.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_icmp_send kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260625110321.28236-2-mahe.tardy@gmail.com/",
+      "summary": "At v10, this patch adds a bpf_icmp_send kfunc that lets BPF programs trigger ICMP error messages (e.g. destination unreachable) directly from cgroup_skb or similar hooks. This is useful for BPF-based routers and firewalls that need to signal packet drops back to senders without bouncing through userspace. The long revision history reflects careful review of recursion safety and route-lookup edge cases, both covered by accompanying selftests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Verify signed loader metadata at load time",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260624140301.93421-2-daniel@iogearbox.net/",
+      "summary": "This v2 series adds support for verifying a cryptographic signature over BPF loader metadata at load time, strengthening the chain of trust for BPF program deployment. It builds on libbpf's loader program mechanism and extends bpftool to cover the new signed metadata when generating signatures. This is part of an ongoing push to support signed/verified BPF program loading for security-sensitive environments.",
+      "related_links": []
+    },
+    {
+      "title": "x86/bpf: enable EXECMEM_ROX_CACHE for BPF allocations",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260626-execmem-x86-rox-bpf-v0-v1-5-45a0b0ed4fe9@kernel.org/",
+      "summary": "Final patch in a 5-part series that switches BPF JIT memory allocations on x86 to use the kernel's EXECMEM_ROX_CACHE infrastructure, which keeps executable BPF memory read-only-execute outside of brief writable windows. This reduces the attack surface for exploits that try to overwrite JIT-compiled BPF code. The series also fixes several allocation sites (trampolines, dispatcher) to be compatible with ROX-cached memory.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BPF_FIB_LOOKUP_VLAN flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260624030530.3342884-2-avinash.duduskar@gmail.com/",
+      "summary": "At v5, this series adds bidirectional VLAN support to the bpf_fib_lookup() helper, letting BPF programs account for VLAN tags when performing FIB lookups for routing decisions. This patch introduces the output-side BPF_FIB_LOOKUP_VLAN flag; a companion flag handles VLAN on the input side. This closes a gap for XDP and tc-based routers operating on VLAN-tagged traffic.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_memcmp kfunc",
+      "author": "Longjun Tang",
+      "url": "https://lore.kernel.org/bpf/20260624093638.117062-2-lange_tang@163.com/",
+      "summary": "This v2 patch adds a bpf_memcmp kfunc for safe, verifier-checked memory comparison from BPF programs, paired with a bpf_strpbrk kfunc in the same series for finding any of a set of characters within a string. These fill in commonly-needed string/memory primitives that previously required hand-rolled, harder-to-verify loops in BPF C code. The series also renames a conflicting local helper in selftests to avoid symbol clashes.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Enforce gotox targets against subprog bounds",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260628-f01-03-gotox-bpf-next-v3-1-b744432e1361@mails.tsinghua.edu.cn/",
+      "summary": "This v3 patch tightens verifier checks on the gotox indirect-jump instruction so computed targets must remain within the current subprogram's bounds, closing a gap where crafted jumps could otherwise cross subprog boundaries. It's accompanied by new cross-subprog gotox selftest coverage. This kind of hardening matters as gotox sees more real-world use in compiled BPF code.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add tracing_multi link info support",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260623142417.275892-2-jolsa@kernel.org/",
+      "summary": "This patch adds link-info reporting for tracing_multi links, the multi-target fentry/fexit attachment mechanism, so tools like bpftool can introspect which functions a given multi-link is attached to. Companion patches add selftest coverage and bpftool output formatting for the new link info. This improves observability for programs using the increasingly popular tracing_multi attach API.",
+      "related_links": []
+    }
+  ]
+}
