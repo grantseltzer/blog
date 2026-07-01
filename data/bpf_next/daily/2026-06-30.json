@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-07-01T00:00:00Z",
+  "period_start": "2026-06-29",
+  "period_end": "2026-06-30",
+  "patch_count": 33,
+  "thread_count": 11,
+  "top_contributors": ["Leon Hwang", "Jiri Olsa", "Pu Lehui", "Yiyang Chen"],
+  "key_topics": ["verifier", "percpu", "arena", "tracing", "sockmap", "riscv", "tailcall", "libbpf", "btf"],
+  "overview": "Activity on June 29-30 was dominated by Leon Hwang's v8 series introducing global per-CPU data to BPF, enabling programs to declare per-CPU variables accessible directly through the skeleton. Jiri Olsa continued iterating on tracing_multi link info support (now at v4), and Pu Lehui landed a significant RISC-V JIT improvement allowing bpf2bpf calls and tail calls to be mixed on RV64. Several verifier hardening patches from Yiyang Chen tightened bounds checking for arena frees and MEM_ALLOC BTF accesses.",
+  "patches": [
+    {
+      "title": "bpf: Introduce global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260629152406.52582-3-leon.hwang@linux.dev/",
+      "summary": "This 9-patch series (v8) adds native support for global per-CPU variables in BPF programs, backed by a read-only percpu_array map that the verifier understands directly. Programs can declare per-CPU globals in a dedicated ELF section and access them without explicit map lookups, similar to how global data sections work for shared state. libbpf gains feature probing for the capability and skeleton generation for the new section type, and bpftool is updated accordingly. The series also adds comprehensive selftests covering verifier log output and bpf_iter-based iteration over the per-CPU data.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add tracing_multi link info support",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260629212208.895962-2-jolsa@kernel.org/",
+      "summary": "This v4 series adds BPF_LINK_TYPE_TRACING_MULTI link info to the kernel so that bpf_link_info can report all attach points for multi-kprobe and multi-uprobe programs in a single query. The kernel patch extends the link info union with a new tracing_multi member, selftests verify the info is populated correctly, and bpftool is updated to display the new fields in its link show output. Having consolidated link info for multi-attach programs simplifies tooling and debugging of high-fanout tracing use cases.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Mixing bpf2bpf and tailcalls",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260629140048.733346-6-pulehui@huaweicloud.com/",
+      "summary": "This v4 series closes a long-standing gap on RISC-V 64-bit by enabling BPF programs to combine bpf2bpf subprogram calls with tail calls, a combination already supported on x86 and arm64. The main patch implements the necessary trampoline and JIT adjustments to preserve the call frame across tail calls when subprograms are present, using a new RV_TAILCALL_OFFSET macro to encode the offset correctly. Preparatory patches clean up context initialization and switch to kvzalloc_objs for cache buffer allocation. The series removes the relevant tests from the riscv64 denylist, indicating they now pass.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject arena frees below the arena base",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/2a3747e64898cc7dda6578279cb5688f7029f658.1782813442.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "This 2-patch series tightens the BPF arena allocator by having the verifier reject programs that attempt to free a pointer whose address falls below the arena's base address. Such frees are always invalid and could corrupt allocator metadata, so rejecting them at verification time prevents potential memory safety issues. The companion selftest exercises the boundary condition by attempting scalar frees below the base and confirming the verifier rejects them.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject MEM_ALLOC BTF accesses past object bounds",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/4b8c8a81102ba4b595011434c881194f264ddc59.1782807039.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "This v3 series adds a verifier check to reject BTF-typed field accesses on MEM_ALLOC pointers when the computed offset would fall past the end of the allocated object. Previously the verifier would allow such accesses if the BTF type checked out, even when the offset exceeded the actual allocation size. The fix cross-references the allocated size tracked in the register state against the BTF-derived access range, and the accompanying selftest confirms the verifier produces the expected rejection.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix use-after-free on mm_struct in bpf_find_vma()",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260630032543.3165720-1-sanghyun.park.cnu@gmail.com/",
+      "summary": "This v6 single-patch fix addresses a use-after-free race in bpf_find_vma() where the helper accesses task->mm without holding a reference, allowing the mm_struct to be freed by another thread before the VMA walk completes. The fix acquires a proper reference via mmget_not_zero() before dereferencing the mm and drops it afterward, closing the race window. This is a correctness fix for production systems using BPF helpers that inspect process memory maps.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: disallow update and delete from tc, xdp and flow_dissector",
+      "author": "Sechang Lim",
+      "url": "https://lore.kernel.org/bpf/20260629172704.1302218-2-rhkrqnwk98@gmail.com/",
+      "summary": "This v3 series enforces that sockmap and sockhash maps cannot be mutated (via bpf_map_update_elem or bpf_map_delete_elem) from tc, XDP, or flow_dissector program types, which lack the socket context needed to safely manage socket references. Allowing such mutations from these contexts can lead to reference count imbalances and use-after-free bugs on the underlying sockets. The kernel patch adds program-type checks in the sockmap helper dispatch, and the selftest patch removes now-expected-to-fail mutation tests from those program type contexts.",
+      "related_links": []
+    }
+  ]
+}
