@@ -1,0 +1,109 @@
+{
+  "generated_at": "2026-07-02T00:00:00Z",
+  "period_start": "2026-06-01",
+  "period_end": "2026-07-01",
+  "patch_count": 100,
+  "thread_count": 29,
+  "top_contributors": [
+    "Xu Kuohai",
+    "Alexis Lothoré (eBPF Foundation)",
+    "Mahe Tardy",
+    "Leon Hwang",
+    "Pu Lehui"
+  ],
+  "key_topics": ["kasan", "jit", "xdp", "kfuncs", "tracing", "sdt", "percpu", "security", "sockmap", "arena", "verifier", "libbpf"],
+  "overview": "June 2026 saw broad and deep activity across the BPF subsystem with 100 patches across 29 series. Security improvements were a recurring theme: Daniel Borkmann posted a v2 series for verifying signed BPF loader metadata at load time, and a landmark series from Alexis Lothoré (eBPF Foundation) added KASAN instrumentation to x86 JIT-compiled programs to catch memory errors that previously escaped detection. Architecture support was meaningfully extended: Varun Mallya brought BPF exceptions to RISC-V, and Pu Lehui enabled mixed bpf2bpf calls and tail calls on RV64, both long-standing gaps relative to x86. Several new kfuncs progressed through review — Mahe Tardy's `bpf_icmp_send` reached v10, Longjun Tang proposed `bpf_strpbrk`, and David Windsor finalized `bpf_init_inode_xattr` for atomic inode labeling. Xu Kuohai posted a large RFC series introducing static-defined tracing probes (SDT) for BPF programs, enabling stable probe sites in kernel and userspace programs analogous to USDT.",
+  "patches": [
+    {
+      "title": "bpf: add BPF_JIT_KASAN for KASAN instrumentation of JITed programs",
+      "author": "Alexis Lothoré (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260701-kasan-v3-3-bd09bb942d86@bootlin.com/",
+      "summary": "This patch introduces BPF_JIT_KASAN, a Kconfig option enabling KASAN memory error detection for JIT-compiled BPF programs, closing a gap where memory bugs in JIT output went undetected under kernel sanitizer builds. The core mechanism relies on prior patches in the 10-patch series that propagate original instruction offsets through program patching and mark stack-accessing instructions so the x86 JIT can inject KASAN shadow-check callouts. At v3, the series includes x86-specific emission logic, refactoring of BPF_ST handling in `do_jit`, and comprehensive selftests that validate KASAN fires on out-of-bounds JIT program memory accesses.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce static-defined tracing probe for BPF",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/addc1860d60c2eee409f187805b6cfbc5382e82a.1782571533.git.xukuohai@huawei.com/",
+      "summary": "This RFC series (12 patches) introduces BPF SDT (static-defined tracing) probes, allowing kernel and userspace programs to embed stable, named tracepoints that BPF observer programs can attach to at runtime. The design uses BTF decl tags to declare probe sites, an `insn_array` map to hold the probe instruction slots, and new libbpf APIs plus a `bpf_sdt_notes` ELF section parser to locate and load probe metadata. The x86 JIT gains support for emitting SDT probe trampolines, and attach/detach semantics for observer programs are introduced through new syscall paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260629152406.52582-3-leon.hwang@linux.dev/",
+      "summary": "This series (v8, 9 patches) introduces global per-CPU data for BPF programs, allowing BPF objects to declare per-CPU global variables that are directly accessible in programs without a map lookup, similar to how regular globals work but with per-CPU semantics. The implementation spans the kernel (verifier and loader), libbpf (feature probing and skeleton generation), bpftool (skeleton codegen), and selftests, and also adds support for directly reading and writing read-only percpu_array maps. At v8, the implementation adds `bpf_iter` support for iterating over global per-CPU data slots.",
+      "related_links": []
+    },
+    {
+      "title": "xdp: let XDP programs assert the RX checksum over redirect",
+      "author": "Vladimir Vdovin",
+      "url": "https://lore.kernel.org/bpf/20260630191510.81402-2-deliran@verdict.gg/",
+      "summary": "This RFC series adds a `bpf_xdp_assert_rx_csum` mechanism and a `bpf_xdp_metadata_rx_csum()` kfunc that lets XDP programs verify that hardware has offloaded RX checksum validation before redirecting packets, enabling the receiving network stack to skip software checksum re-computation. Driver support is added for mlx5e, ice, and veth to populate the RX checksum metadata hint. The RFC targets both cpumap and direct redirect paths and includes test coverage in the `xdp_metadata` selftest suite.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Verify signed loader metadata at load time",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260624140301.93421-2-daniel@iogearbox.net/",
+      "summary": "This series (v2, 5 patches) extends BPF program signing to verify loader metadata at load time, ensuring that the signed BPF object's embedded loader context (map names, pinning, program attachment points) has not been tampered with between signing and loading. The implementation updates bpftool to include loader metadata in the program signature, drops the in-loader metadata self-check in libbpf in favor of kernel-side verification, and adds selftests and documentation for the full signing and enforcement flow. This is part of a broader effort to make BPF program provenance auditable on hardened systems.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260626-execmem-x86-rox-bpf-v0-v1-1-45a0b0ed4fe9@kernel.org/",
+      "summary": "This series (5 patches) switches BPF JIT allocations on x86 to use the `EXECMEM_ROX_CACHE` allocator, which maintains a pool of read-only-executable memory that can be temporarily made writable for patching, improving security by reducing the window during which JIT memory is simultaneously writable and executable. Preparatory patches drop the `__weak` annotations from `bpf_jit_alloc_exec()` / `bpf_jit_free_exec()` so x86 can override them directly and fix ROX management in `alloc_prog_pack()` and the trampoline size path. The dispatcher is also updated to allocate its `rw_image` via `vmalloc()` to align with the new model.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_icmp_send kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260625110321.28236-2-mahe.tardy@gmail.com/",
+      "summary": "This patch (v10 of the series) adds a `bpf_icmp_send()` kfunc that allows BPF programs attached to cgroup_skb hooks to send ICMP error messages in response to packet-level policy decisions, enabling BPF-based firewalls to provide informative rejections rather than silently dropping packets. The kfunc handles both IPv4 and IPv6, includes recursion protection to prevent ICMP storms, and no-route cases are handled gracefully. After 10 revisions addressing nit feedback and test coverage, the implementation supports both `cgroup_skb/egress` and `cgroup_skb/ingress` attach types.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Add support for BPF exceptions",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260628081710.113333-3-varunrmallya@gmail.com/",
+      "summary": "This patch (v2, 2/3) adds BPF exception support to the RISC-V JIT, allowing BPF programs on RV64 to use the `bpf_throw()` kfunc for structured early-exit error handling, a feature previously available only on x86. The implementation requires `arch_bpf_stack_walk()` (added in patch 1/3) to unwind the stack to the exception handler frame, and adapts the RISC-V JIT to emit the necessary exception table entries. The final patch in the series removes the RISC-V BPF CI denylist entries that previously excluded exception tests.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Mixing bpf2bpf and tailcalls",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260629140048.733346-6-pulehui@huaweicloud.com/",
+      "summary": "This patch (v4, 5/6) implements support for mixing BPF-to-BPF calls and tail calls in a single RISC-V JIT program, a feature that required careful prologue/epilogue coordination and tail call offset tracking that was previously only supported on x86. The series extracts `is_struct_ops_tramp` as a helper, adds a `RV_TAILCALL_OFFSET` macro for consistent offset formatting, and uses `kvzalloc_objs` for cache buffer allocation. With this change, combined bpf2bpf and tailcall patterns on RV64 become fully functional and the corresponding CI denylist entries can be removed.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add tracing_multi link info support",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260629212208.895962-2-jolsa@kernel.org/",
+      "summary": "This patch (v4, 1/3) adds kernel-side support for exposing `tracing_multi` link information through `BPF_LINK_INFO`, enabling userspace tools to query which functions a multi-kprobe attachment is monitoring. The tracing_multi link type allows attaching a single BPF program to multiple kernel functions at once; without link info support, introspection tools like bpftool had no way to enumerate the attached function set. The series adds the kernel implementation, selftests, and bpftool output formatting for the new link info.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_init_inode_xattr kfunc for atomic inode labeling",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260630183956.281293-3-dwindsor@gmail.com/",
+      "summary": "This patch (v4) introduces `bpf_init_inode_xattr()`, a kfunc that allows BPF LSM programs to atomically set extended attributes on inodes at creation time by threading xattr data through the `inode_init_security` LSM hook via a new `lsm_xattrs` struct. Atomic labeling at inode creation is critical for mandatory access control frameworks, which require that labels be present from the first moment a file is observable to other processes. The series modifies the security layer to pass xattrs through `struct lsm_xattrs` and exposes the new kfunc with full selftest coverage.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: disallow update and delete from tc, xdp, socket_filter and flow_dissector",
+      "author": "Sechang Lim",
+      "url": "https://lore.kernel.org/bpf/20260630145410.3648099-2-rhkrqnwk98@gmail.com/",
+      "summary": "This patch (v4) restricts sockmap `map_update_elem` and `map_delete_elem` from BPF programs running in tc, XDP, socket_filter, and flow_dissector contexts, which cannot safely acquire socket locks. Allowing mutations from these contexts could cause deadlocks and use-after-free issues because sockets stored in the map may hold locks incompatible with these BPF program contexts. The change enforces a clear contract: sockmap mutations are only permitted from contexts — such as stream parsers and stream verdicts — where socket locking is properly managed.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Enforce gotox targets against subprog bounds",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260628-f01-03-gotox-bpf-next-v3-1-b744432e1361@mails.tsinghua.edu.cn/",
+      "summary": "This patch (v3) adds verifier enforcement that `gotox` (goto-with-exit) jump targets must remain within the bounds of their containing subprogram, preventing cross-subprogram gotox jumps that could bypass subprogram-level safety invariants. The gotox instruction allows early exit from a subprogram, but without bounds enforcement, a crafted target could jump into the middle of a different subprogram with incorrect register state. The companion selftest adds cross-subprog gotox target coverage to the verifier test suite.",
+      "related_links": []
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "generated_at": "2026-07-02T00:00:00Z",
+  "period_start": "2026-06-30",
+  "period_end": "2026-07-01",
+  "patch_count": 32,
+  "thread_count": 12,
+  "top_contributors": [
+    "Alexis Lothoré (eBPF Foundation)",
+    "Vladimir Vdovin",
+    "Yiyang Chen",
+    "David Windsor"
+  ],
+  "key_topics": ["kasan", "jit", "xdp", "kfuncs", "verifier", "sockmap", "arena"],
+  "overview": "Activity on 2026-06-30 to 2026-07-01 was dominated by a major v3 series from Alexis Lothoré (eBPF Foundation) adding KASAN memory error detection support to JIT-compiled BPF programs on x86. Two significant verifier hardening patches from Yiyang Chen tightened memory safety for arena and MEM_ALLOC BTF accesses, while an RFC from Vladimir Vdovin proposed XDP RX checksum metadata hints with driver support across mlx5e, ice, and veth.",
+  "patches": [
+    {
+      "title": "bpf: add BPF_JIT_KASAN for KASAN instrumentation of JITed programs",
+      "author": "Alexis Lothoré (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260701-kasan-v3-3-bd09bb942d86@bootlin.com/",
+      "summary": "This patch introduces BPF_JIT_KASAN, a new Kconfig option enabling KASAN memory error detection for JIT-compiled BPF programs, closing a long-standing gap where memory bugs in JIT output went undetected. The core mechanism relies on prior patches in the series that propagate original instruction offsets through program patching and mark stack-accessing instructions, allowing the x86 JIT to inject KASAN shadow-check callouts around stack reads and writes. This is the third version of the series; the remaining patches implement the x86-specific emission of KASAN checks and add selftests that validate KASAN fires correctly on out-of-bounds JIT program accesses.",
+      "related_links": []
+    },
+    {
+      "title": "xdp: let XDP programs assert the RX checksum over redirect",
+      "author": "Vladimir Vdovin",
+      "url": "https://lore.kernel.org/bpf/20260630191510.81402-2-deliran@verdict.gg/",
+      "summary": "This RFC series adds a `bpf_xdp_assert_rx_csum` mechanism letting XDP programs assert that hardware has verified the RX checksum when redirecting packets via cpumap or veth, so the receiving network stack can trust the hardware checksum offload. A new `bpf_xdp_metadata_rx_csum()` kfunc retrieves the hardware checksum status from XDP metadata, and driver support is added for mlx5e, ice, and veth to populate the hint. The RFC status reflects ongoing discussion about the API shape and coverage of checksum assertion semantics across different redirect paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_init_inode_xattr kfunc for atomic inode labeling",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260630183956.281293-3-dwindsor@gmail.com/",
+      "summary": "This patch (v4) introduces `bpf_init_inode_xattr()`, a new kfunc that allows BPF LSM programs to set extended attributes on inodes atomically at creation time rather than after the fact. The implementation threads xattr data through the `inode_init_security` LSM hook via a new `lsm_xattrs` struct, eliminating the TOCTOU window that existed when BPF programs attempted to label inodes post-creation. This enables security policy enforcement tools to attach labels to files at the moment they are created, improving consistency with mandatory access control frameworks.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: disallow update and delete from tc, xdp, socket_filter and flow_dissector",
+      "author": "Sechang Lim",
+      "url": "https://lore.kernel.org/bpf/20260630145410.3648099-2-rhkrqnwk98@gmail.com/",
+      "summary": "This patch (v4) restricts sockmap `map_update_elem` and `map_delete_elem` operations from BPF programs running in tc, XDP, socket_filter, and flow_dissector contexts, which cannot safely acquire socket locks held by sockets stored in the map. Allowing mutations from these contexts risked deadlocks and use-after-free bugs because sockets in the map may be in an incompatible locking state relative to these program types. The change enforces a clear contract: sockmap mutations are only permitted from contexts where socket locking can be safely managed.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject arena frees below the arena base",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/2a3747e64898cc7dda6578279cb5688f7029f658.1782813442.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "This patch adds a verifier check that rejects BPF arena free operations targeting addresses below the arena's base address, preventing potential memory corruption from corrupted or miscalculated pointers. BPF arenas use a bump-pointer allocator where the base marks the lowest valid address; freeing below the base is always an error. The fix is a targeted bounds check in the verifier's arena free handling path with corresponding selftest coverage for scalar arena frees.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject MEM_ALLOC BTF accesses past object bounds",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/4b8c8a81102ba4b595011434c881194f264ddc59.1782807039.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "This patch (v3) strengthens the verifier to reject BTF-typed field accesses on `MEM_ALLOC` objects when the computed offset exceeds the object's allocation size, closing an out-of-bounds access window. Previously, register-computed offsets into dynamically-allocated kernel objects could escape the verifier's bounds checks when typed via BTF, potentially allowing reads or writes past the end of an allocation. The fix adds a size check in the verifier's BTF access handling for MEM_ALLOC-tagged pointers.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix use-after-free on mm_struct in bpf_find_vma()",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260630032543.3165720-1-sanghyun.park.cnu@gmail.com/",
+      "summary": "This patch (v6) fixes a use-after-free race in `bpf_find_vma()` where the `mm_struct` could be freed between the reference acquisition and the subsequent `mmap_read_lock` call. The helper is used by BPF profiling and tracing programs to look up virtual memory areas for a given address, and the race was triggerable under concurrent process exit. The fix ensures proper mm_struct lifetime management throughout the helper's execution path.",
+      "related_links": []
+    }
+  ]
+}
