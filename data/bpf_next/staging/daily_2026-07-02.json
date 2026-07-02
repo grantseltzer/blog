@@ -1,0 +1,586 @@
+{
+  "period": "daily",
+  "period_start": "2026-07-01",
+  "period_end": "2026-07-02",
+  "fetched_at": "2026-07-02T11:36:47Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v6] bpf: Reject programs with inlined helpers if JIT is unavailable",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260702053127.23599-1-yangtiezhu@loongson.cn/",
+      "date": "2026-07-02T05:31:27",
+      "series": [
+        {
+          "id": 1120233,
+          "url": "https://patchwork.kernel.org/api/series/1120233/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120233",
+          "date": "2026-07-02T05:31:27",
+          "name": "[bpf-next,v6] bpf: Reject programs with inlined helpers if JIT is unavailable",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1120233/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,11/11] selftests/bpf: Add LoongArch deny list",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-12-dongtai.guo@linux.dev/",
+      "date": "2026-07-02T02:23:22",
+      "series": [
+        {
+          "id": 1120185,
+          "url": "https://patchwork.kernel.org/api/series/1120185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120185",
+          "date": "2026-07-02T02:23:12",
+          "name": "LoongArch: BPF: arena features, exceptions, private stack and may_goto",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1120185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,10/11] selftests/bpf: Enable arena atomics tests on LoongArch",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-11-dongtai.guo@linux.dev/",
+      "date": "2026-07-02T02:23:21",
+      "series": [
+        {
+          "id": 1120185,
+          "url": "https://patchwork.kernel.org/api/series/1120185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120185",
+          "date": "2026-07-02T02:23:12",
+          "name": "LoongArch: BPF: arena features, exceptions, private stack and may_goto",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1120185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,09/11] selftests/bpf: Enable arena LDSX tests on LoongArch",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-10-dongtai.guo@linux.dev/",
+      "date": "2026-07-02T02:23:20",
+      "series": [
+        {
+          "id": 1120185,
+          "url": "https://patchwork.kernel.org/api/series/1120185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120185",
+          "date": "2026-07-02T02:23:12",
+          "name": "LoongArch: BPF: arena features, exceptions, private stack and may_goto",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1120185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,08/11] selftests/bpf: Enable struct_ops private stack test for LoongArch",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-9-dongtai.guo@linux.dev/",
+      "date": "2026-07-02T02:23:19",
+      "series": [
+        {
+          "id": 1120185,
+          "url": "https://patchwork.kernel.org/api/series/1120185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120185",
+          "date": "2026-07-02T02:23:12",
+          "name": "LoongArch: BPF: arena features, exceptions, private stack and may_goto",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1120185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,07/11] LoongArch: BPF: Support atomics on arena pointers",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-8-dongtai.guo@linux.dev/",
+      "date": "2026-07-02T02:23:18",
+      "series": [
+        {
+          "id": 1120185,
+          "url": "https://patchwork.kernel.org/api/series/1120185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120185",
+          "date": "2026-07-02T02:23:12",
+          "name": "LoongArch: BPF: arena features, exceptions, private stack and may_goto",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1120185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,06/11] LoongArch: BPF: Support sign-extending loads from arena",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-7-dongtai.guo@linux.dev/",
+      "date": "2026-07-02T02:23:17",
+      "series": [
+        {
+          "id": 1120185,
+          "url": "https://patchwork.kernel.org/api/series/1120185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120185",
+          "date": "2026-07-02T02:23:12",
+          "name": "LoongArch: BPF: arena features, exceptions, private stack and may_goto",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1120185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,05/11] LoongArch: BPF: Add exceptions (bpf_throw) support",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-6-dongtai.guo@linux.dev/",
+      "date": "2026-07-02T02:23:16",
+      "series": [
+        {
+          "id": 1120185,
+          "url": "https://patchwork.kernel.org/api/series/1120185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120185",
+          "date": "2026-07-02T02:23:12",
+          "name": "LoongArch: BPF: arena features, exceptions, private stack and may_goto",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1120185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,04/11] LoongArch: BPF: Add private stack support",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-5-dongtai.guo@linux.dev/",
+      "date": "2026-07-02T02:23:15",
+      "series": [
+        {
+          "id": 1120185,
+          "url": "https://patchwork.kernel.org/api/series/1120185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120185",
+          "date": "2026-07-02T02:23:12",
+          "name": "LoongArch: BPF: arena features, exceptions, private stack and may_goto",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1120185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,03/11] LoongArch: BPF: Add timed may_goto support",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-4-dongtai.guo@linux.dev/",
+      "date": "2026-07-02T02:23:14",
+      "series": [
+        {
+          "id": 1120185,
+          "url": "https://patchwork.kernel.org/api/series/1120185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120185",
+          "date": "2026-07-02T02:23:12",
+          "name": "LoongArch: BPF: arena features, exceptions, private stack and may_goto",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1120185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,02/11] LoongArch: BPF: Support internal-only MOV to resolve per-CPU addrs",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-3-dongtai.guo@linux.dev/",
+      "date": "2026-07-02T02:23:13",
+      "series": [
+        {
+          "id": 1120185,
+          "url": "https://patchwork.kernel.org/api/series/1120185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120185",
+          "date": "2026-07-02T02:23:12",
+          "name": "LoongArch: BPF: arena features, exceptions, private stack and may_goto",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1120185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,01/11] LoongArch: BPF: Fix tail call count pointer offset for arena programs",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-2-dongtai.guo@linux.dev/",
+      "date": "2026-07-02T02:23:12",
+      "series": [
+        {
+          "id": 1120185,
+          "url": "https://patchwork.kernel.org/api/series/1120185/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120185",
+          "date": "2026-07-02T02:23:12",
+          "name": "LoongArch: BPF: arena features, exceptions, private stack and may_goto",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1120185/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5] bpf: Reject programs with inlined helpers if JIT is unavailable",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260702022108.17693-1-yangtiezhu@loongson.cn/",
+      "date": "2026-07-02T02:21:08",
+      "series": [
+        {
+          "id": 1120180,
+          "url": "https://patchwork.kernel.org/api/series/1120180/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120180",
+          "date": "2026-07-02T02:21:08",
+          "name": "[bpf-next,v5] bpf: Reject programs with inlined helpers if JIT is unavailable",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1120180/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,5/5] selftests/bpf: libarena: Add parallel bitmap selftest",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260701225034.12628-6-emil@etsalapatis.com/",
+      "date": "2026-07-01T22:50:34",
+      "series": [
+        {
+          "id": 1120129,
+          "url": "https://patchwork.kernel.org/api/series/1120129/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120129",
+          "date": "2026-07-01T22:50:29",
+          "name": "selftests/bpf: libarena cleanup and bitmap struct",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1120129/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,4/5] selftests/bpf: libarena: Add bitmap selftests",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260701225034.12628-5-emil@etsalapatis.com/",
+      "date": "2026-07-01T22:50:33",
+      "series": [
+        {
+          "id": 1120129,
+          "url": "https://patchwork.kernel.org/api/series/1120129/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120129",
+          "date": "2026-07-01T22:50:29",
+          "name": "selftests/bpf: libarena cleanup and bitmap struct",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1120129/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/5] selftests/bpf: Add arena-based bitmap data structure",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260701225034.12628-4-emil@etsalapatis.com/",
+      "date": "2026-07-01T22:50:32",
+      "series": [
+        {
+          "id": 1120129,
+          "url": "https://patchwork.kernel.org/api/series/1120129/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120129",
+          "date": "2026-07-01T22:50:29",
+          "name": "selftests/bpf: libarena cleanup and bitmap struct",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1120129/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/5] selftests/bpf: libarena: Clean up allocation state before buddy tests",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260701225034.12628-3-emil@etsalapatis.com/",
+      "date": "2026-07-01T22:50:31",
+      "series": [
+        {
+          "id": 1120129,
+          "url": "https://patchwork.kernel.org/api/series/1120129/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120129",
+          "date": "2026-07-01T22:50:29",
+          "name": "selftests/bpf: libarena cleanup and bitmap struct",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1120129/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/5] selftests/bpf: libarena: Fix can-loop zero variable definition",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260701225034.12628-2-emil@etsalapatis.com/",
+      "date": "2026-07-01T22:50:30",
+      "series": [
+        {
+          "id": 1120129,
+          "url": "https://patchwork.kernel.org/api/series/1120129/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120129",
+          "date": "2026-07-01T22:50:29",
+          "name": "selftests/bpf: libarena cleanup and bitmap struct",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1120129/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/5] selftests/bpf: libarena: Add parallel bitmap selftest",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260701185235.4516-6-emil@etsalapatis.com/",
+      "date": "2026-07-01T18:52:35",
+      "series": [
+        {
+          "id": 1120063,
+          "url": "https://patchwork.kernel.org/api/series/1120063/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120063",
+          "date": "2026-07-01T18:52:30",
+          "name": "selftests/bpf: libarena cleanup and bitmap struct",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1120063/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/5] selftests/bpf: libarena: Add bitmap selftets",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260701185235.4516-5-emil@etsalapatis.com/",
+      "date": "2026-07-01T18:52:34",
+      "series": [
+        {
+          "id": 1120063,
+          "url": "https://patchwork.kernel.org/api/series/1120063/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120063",
+          "date": "2026-07-01T18:52:30",
+          "name": "selftests/bpf: libarena cleanup and bitmap struct",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1120063/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/5] selftests/bpf: Add arena-based bitmap data structure",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260701185235.4516-4-emil@etsalapatis.com/",
+      "date": "2026-07-01T18:52:33",
+      "series": [
+        {
+          "id": 1120063,
+          "url": "https://patchwork.kernel.org/api/series/1120063/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120063",
+          "date": "2026-07-01T18:52:30",
+          "name": "selftests/bpf: libarena cleanup and bitmap struct",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1120063/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/5] selftests/bpf: libarena: Clean up allocation state before buddy tests",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260701185235.4516-3-emil@etsalapatis.com/",
+      "date": "2026-07-01T18:52:32",
+      "series": [
+        {
+          "id": 1120063,
+          "url": "https://patchwork.kernel.org/api/series/1120063/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120063",
+          "date": "2026-07-01T18:52:30",
+          "name": "selftests/bpf: libarena cleanup and bitmap struct",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1120063/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/5] selftests/bpf: libarena: Fix can-loop zero variable definition",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260701185235.4516-2-emil@etsalapatis.com/",
+      "date": "2026-07-01T18:52:31",
+      "series": [
+        {
+          "id": 1120063,
+          "url": "https://patchwork.kernel.org/api/series/1120063/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1120063",
+          "date": "2026-07-01T18:52:30",
+          "name": "selftests/bpf: libarena cleanup and bitmap struct",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1120063/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,10/10] selftests/bpf: add tests to validate KASAN on JIT programs",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260701-kasan-v3-10-bd09bb942d86@bootlin.com/",
+      "date": "2026-07-01T10:02:58",
+      "series": [
+        {
+          "id": 1119611,
+          "url": "https://patchwork.kernel.org/api/series/1119611/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1119611",
+          "date": "2026-07-01T10:02:48",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1119611/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,09/10] selftests/bpf: move bpf_jit_harden helper into testing_helpers",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260701-kasan-v3-9-bd09bb942d86@bootlin.com/",
+      "date": "2026-07-01T10:02:57",
+      "series": [
+        {
+          "id": 1119611,
+          "url": "https://patchwork.kernel.org/api/series/1119611/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1119611",
+          "date": "2026-07-01T10:02:48",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1119611/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,08/10] selftests/bpf: add helper to check whether eBPF KASAN is active",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260701-kasan-v3-8-bd09bb942d86@bootlin.com/",
+      "date": "2026-07-01T10:02:56",
+      "series": [
+        {
+          "id": 1119611,
+          "url": "https://patchwork.kernel.org/api/series/1119611/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1119611",
+          "date": "2026-07-01T10:02:48",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1119611/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,07/10] bpf, x86: enable KASAN for JITed programs on x86",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260701-kasan-v3-7-bd09bb942d86@bootlin.com/",
+      "date": "2026-07-01T10:02:55",
+      "series": [
+        {
+          "id": 1119611,
+          "url": "https://patchwork.kernel.org/api/series/1119611/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1119611",
+          "date": "2026-07-01T10:02:48",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1119611/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,06/10] bpf, x86: emit KASAN checks into x86 JITed programs",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260701-kasan-v3-6-bd09bb942d86@bootlin.com/",
+      "date": "2026-07-01T10:02:54",
+      "series": [
+        {
+          "id": 1119611,
+          "url": "https://patchwork.kernel.org/api/series/1119611/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1119611",
+          "date": "2026-07-01T10:02:48",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1119611/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,05/10] bpf, x86: refactor BPF_ST management in do_jit",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260701-kasan-v3-5-bd09bb942d86@bootlin.com/",
+      "date": "2026-07-01T10:02:53",
+      "series": [
+        {
+          "id": 1119611,
+          "url": "https://patchwork.kernel.org/api/series/1119611/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1119611",
+          "date": "2026-07-01T10:02:48",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1119611/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,04/10] bpf, x86: add helper to emit kasan checks in x86 JITed programs",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260701-kasan-v3-4-bd09bb942d86@bootlin.com/",
+      "date": "2026-07-01T10:02:52",
+      "series": [
+        {
+          "id": 1119611,
+          "url": "https://patchwork.kernel.org/api/series/1119611/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1119611",
+          "date": "2026-07-01T10:02:48",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1119611/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,03/10] bpf: add BPF_JIT_KASAN for KASAN instrumentation of JITed programs",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260701-kasan-v3-3-bd09bb942d86@bootlin.com/",
+      "date": "2026-07-01T10:02:51",
+      "series": [
+        {
+          "id": 1119611,
+          "url": "https://patchwork.kernel.org/api/series/1119611/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1119611",
+          "date": "2026-07-01T10:02:48",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1119611/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,02/10] bpf: mark instructions accessing program stack",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260701-kasan-v3-2-bd09bb942d86@bootlin.com/",
+      "date": "2026-07-01T10:02:50",
+      "series": [
+        {
+          "id": 1119611,
+          "url": "https://patchwork.kernel.org/api/series/1119611/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1119611",
+          "date": "2026-07-01T10:02:48",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1119611/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,01/10] bpf: propagate original instruction offset when patching program",
+      "author": "Alexis Lothor\u00e9 (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260701-kasan-v3-1-bd09bb942d86@bootlin.com/",
+      "date": "2026-07-01T10:02:49",
+      "series": [
+        {
+          "id": 1119611,
+          "url": "https://patchwork.kernel.org/api/series/1119611/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1119611",
+          "date": "2026-07-01T10:02:48",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1119611/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1] bpf: Use BPF_CALL_IMM macro consistently in bpf_do_misc_fixups",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260701035107.8069-1-yangtiezhu@loongson.cn/",
+      "date": "2026-07-01T03:51:07",
+      "series": [
+        {
+          "id": 1119381,
+          "url": "https://patchwork.kernel.org/api/series/1119381/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1119381",
+          "date": "2026-07-01T03:51:07",
+          "name": "[bpf-next,v1] bpf: Use BPF_CALL_IMM macro consistently in bpf_do_misc_fixups",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1119381/mbox/"
+        }
+      ]
+    }
+  ]
+}
