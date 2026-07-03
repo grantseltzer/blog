@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-07-03T00:00:00Z",
+  "period_start": "2026-07-01",
+  "period_end": "2026-07-02",
+  "patch_count": 35,
+  "thread_count": 7,
+  "top_contributors": ["George Guo", "Alexis Lothoré", "Emil Tsalapatis", "Tiezhu Yang"],
+  "key_topics": ["kasan", "jit", "loongarch", "arena", "selftests", "x86"],
+  "overview": "The day's activity was dominated by two substantial series: KASAN memory-safety instrumentation for x86 JIT-compiled BPF programs, and a broad expansion of LoongArch BPF support covering arena features, exceptions, private stacks, and atomic operations. Additional work introduced an arena-based bitmap data structure in libarena selftests, and a verifier-level fix to reject programs that rely on inlined helpers when no JIT is available.",
+  "patches": [
+    {
+      "title": "bpf: add BPF_JIT_KASAN for KASAN instrumentation of JITed programs",
+      "author": "Alexis Lothoré (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260701-kasan-v3-3-bd09bb942d86@bootlin.com/",
+      "summary": "Introduces a new Kconfig option BPF_JIT_KASAN that enables KASAN address-sanitizer instrumentation inside JIT-compiled BPF programs. When active, the JIT emits shadow-memory checks around every stack and memory access, allowing KASAN to catch out-of-bounds and use-after-free bugs in BPF programs at runtime. This is part of a 10-patch series (v3) that also propagates original instruction offsets through the patcher so that KASAN reports map back to correct BPF instruction positions. The feature significantly improves BPF memory-safety auditing without requiring interpreter fallback.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: enable KASAN for JITed programs on x86",
+      "author": "Alexis Lothoré (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260701-kasan-v3-7-bd09bb942d86@bootlin.com/",
+      "summary": "Hooks the new BPF_JIT_KASAN infrastructure into the x86-64 BPF JIT backend, making KASAN checks active on the most widely deployed architecture. The patch wires the Kconfig gate and call sites so the x86 JIT emits KASAN shadow checks whenever the feature is compiled in. Together with the companion patch that adds a helper to emit the actual check sequences, this completes the first architecture-specific enablement of BPF JIT KASAN.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: propagate original instruction offset when patching program",
+      "author": "Alexis Lothoré (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260701-kasan-v3-1-bd09bb942d86@bootlin.com/",
+      "summary": "Fixes the BPF program patcher to carry original instruction offsets through to replacement instructions so that post-patch analysis (including KASAN error reporting) can reference the correct source location. Previously, patched instructions lost their offset provenance, making it impossible to attribute JIT-inserted code back to the original BPF instruction. This foundational change enables the rest of the KASAN-for-JIT series to produce accurate diagnostics.",
+      "related_links": []
+    },
+    {
+      "title": "LoongArch: BPF: Add private stack support",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-5-dongtai.guo@linux.dev/",
+      "summary": "Adds private (per-program) stack support to the LoongArch BPF JIT, bringing the architecture in line with existing x86 and arm64 implementations. Private stacks isolate BPF program stack frames from the kernel stack, reducing the risk of kernel stack exhaustion under deep BPF call chains. This is part of a larger v2 series that extends LoongArch BPF with arena features, exceptions, may_goto, and several selftests.",
+      "related_links": []
+    },
+    {
+      "title": "LoongArch: BPF: Add exceptions (bpf_throw) support",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-6-dongtai.guo@linux.dev/",
+      "summary": "Implements the bpf_throw exception mechanism in the LoongArch JIT, allowing BPF programs to abort execution and unwind cleanly back to the caller. Exception support requires careful coordination between the JIT, the unwinder, and exception table entries; this patch handles all of those details for LoongArch. The change enables LoongArch users to run the same exception-reliant BPF programs that work on x86 and arm64.",
+      "related_links": []
+    },
+    {
+      "title": "LoongArch: BPF: Support atomics on arena pointers",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-8-dongtai.guo@linux.dev/",
+      "summary": "Extends the LoongArch BPF JIT to emit correct atomic instructions when operating on arena-mapped pointers. Arena pointers require special address translation before atomic operations, and this patch ensures that translation happens before the LoongArch atomic opcodes are emitted. Correct atomic support on arena pointers is necessary for concurrent BPF data structures such as the arena-based bitmap being developed in a parallel series.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add arena-based bitmap data structure",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260701225034.12628-4-emil@etsalapatis.com/",
+      "summary": "Adds a bitmap data structure implemented entirely in BPF arena memory to the libarena selftest library. The bitmap supports concurrent set, clear, and test operations via arena-safe atomics, demonstrating the kind of high-performance concurrent data structures that arena memory enables. This v3 patch is part of a 5-patch series that also adds both single-threaded and parallel selftests for the bitmap and cleans up the existing libarena buddy allocator tests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject programs with inlined helpers if JIT is unavailable",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260702053127.23599-1-yangtiezhu@loongson.cn/",
+      "summary": "Makes the BPF verifier reject programs that contain inlined helper calls when the JIT compiler is not available on the current architecture. Inlined helpers are encoded as special call instructions that only the JIT knows how to lower; running them through the interpreter would produce incorrect or unsafe behavior. This v6 of the patch (the same day as v5 was posted) ensures a clean and early failure rather than a silent miscompilation.",
+      "related_links": []
+    }
+  ]
+}
