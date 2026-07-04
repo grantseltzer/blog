@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-07-04T00:00:00Z",
+  "period_start": "2026-07-02",
+  "period_end": "2026-07-03",
+  "patch_count": 21,
+  "thread_count": 5,
+  "top_contributors": ["George Guo", "Daniel Borkmann", "Tiezhu Yang"],
+  "key_topics": ["jit", "security", "signing", "loongarch", "arena", "exceptions", "private-stack", "may_goto"],
+  "overview": "July 2-3 activity centered on three themes: BPF program signing, JIT enforcement, and LoongArch platform expansion. Daniel Borkmann's six-patch series (v3) introduces load-time verification of signed BPF loader metadata, adding a kernel-level enforcement mechanism for BPF signing. Tiezhu Yang's work adds a jit_required flag to prevent kernel panics when JIT-compiled constructs are loaded on non-JIT architectures, while George Guo's eleven-patch LoongArch series brings arena, exceptions, private stack, and may_goto support to the LoongArch BPF JIT.",
+  "patches": [
+    {
+      "title": "bpf: Resolve and cache fd_array objects at load time",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260702143605.252797-2-daniel@iogearbox.net/",
+      "summary": "The first patch in Daniel Borkmann's 'Verify BPF signed loader at load time' series (v3), this adds infrastructure to resolve and cache file descriptor array objects at BPF program load time rather than at runtime. This is a prerequisite for load-time signature verification, since the loader metadata—including map references—must be pinned before signatures can be computed and checked. The change enables a more complete and tamper-resistant view of the program's resources at verification time.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Verify signed loader metadata at load time",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260702143605.252797-3-daniel@iogearbox.net/",
+      "summary": "This patch implements the core of load-time BPF program signing enforcement, adding kernel logic to verify the signature of the loader metadata—including the BPF program binary and associated map and fd references—at the point of program loading. The approach moves signature checking from a libbpf in-loader step to the kernel itself, strengthening the chain of trust for deployments that require signed BPF programs. Together with the fd_array caching patch, it provides a kernel-enforced guarantee that loaded programs match their signed representation.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Cover loader metadata with the program signature",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260702143605.252797-5-daniel@iogearbox.net/",
+      "summary": "This patch updates bpftool to include loader metadata (map FDs, fd_array entries) within the scope of the BPF program signature. Previously only the raw program bytecode was signed, leaving metadata unsigned and potentially vulnerable to substitution. By extending the signature to cover the full loader context, it ensures that signed programs cannot be loaded with tampered map bindings or fd arrays, closing an important gap in the BPF signing coverage.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce jit_required flag and refactor kfunc path",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260702143656.28845-2-yangtiezhu@loongson.cn/",
+      "summary": "The first patch in Tiezhu Yang's v7 series introduces a jit_required flag to the BPF program loader and refactors the kfunc (kernel function call) path to set it when appropriate. Kfuncs and certain other constructs rely on JIT-compiled trampolines and cannot fall back to the BPF interpreter, so this flag allows the verifier to track that requirement explicitly. The refactoring lays the groundwork for the subsequent patch that rejects such programs outright when JIT is unavailable.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject programs with inlined helpers if JIT is unavailable",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260702143656.28845-3-yangtiezhu@loongson.cn/",
+      "summary": "This patch (2/2, v7) teaches the BPF verifier to reject programs that require JIT compilation when the JIT compiler is disabled or unavailable on the target architecture. BPF programs calling kfuncs or relying on inlined helpers produce call sites that the interpreter cannot execute, which previously led to kernel panics on architectures without a BPF JIT. The change enforces the rejection at load time, giving users a clear error instead of a panic.",
+      "related_links": []
+    },
+    {
+      "title": "LoongArch: BPF: Add private stack support",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-5-dongtai.guo@linux.dev/",
+      "summary": "Part of George Guo's comprehensive LoongArch BPF feature series (v2), this patch adds private stack support to the LoongArch BPF JIT. The private stack allows BPF programs to use a stack region separate from the kernel thread stack, enabling deeper recursion and larger local variable usage without risking overflow into kernel memory. This brings LoongArch's BPF JIT closer to feature parity with x86 and arm64.",
+      "related_links": []
+    },
+    {
+      "title": "LoongArch: BPF: Add exceptions (bpf_throw) support",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-6-dongtai.guo@linux.dev/",
+      "summary": "This patch enables BPF exception support (bpf_throw) on LoongArch, allowing BPF programs to use the exception mechanism for structured error handling and early exit from nested BPF sub-programs. The implementation adds the necessary JIT code generation for exception throw and catch paths, adapting the ABI for LoongArch calling conventions. It expands the set of BPF programs that can run on LoongArch to include those using exception-based control flow.",
+      "related_links": []
+    }
+  ]
+}
