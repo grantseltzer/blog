@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-07-05T00:00:00Z",
+  "period_start": "2026-07-03",
+  "period_end": "2026-07-04",
+  "patch_count": 5,
+  "thread_count": 2,
+  "top_contributors": ["Avinash Duduskar", "Maxim Khmelevskii"],
+  "key_topics": ["helpers", "fib-lookup", "vlan", "s390", "selftests"],
+  "overview": "Activity on July 3-4 centered on two patch series. Avinash Duduskar submitted a v6 update adding bidirectional VLAN support to the bpf_fib_lookup() helper, introducing BPF_FIB_LOOKUP_VLAN and BPF_FIB_LOOKUP_VLAN_INPUT flags for handling VLAN-tagged traffic on both egress and ingress paths. Maxim Khmelevskii contributed a correctness fix to the s390 BPF JIT by replacing the ly instruction with llgf to avoid unintended sign-extension when loading 32-bit values.",
+  "patches": [
+    {
+      "title": "bpf: Add BPF_FIB_LOOKUP_VLAN flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260704092159.1256823-2-avinash.duduskar@gmail.com/",
+      "summary": "This patch (part of the v6 bidirectional VLAN support series) adds a new BPF_FIB_LOOKUP_VLAN flag to the bpf_fib_lookup() helper, allowing BPF programs to supply VLAN context when performing FIB lookups. This enables the kernel routing logic to make accurate egress path decisions for VLAN-tagged packets from within a BPF program. The change fills a gap for XDP and tc programs operating in VLAN-aware network environments. Being in its sixth revision, the patch has undergone substantial review and refinement before submission.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BPF_FIB_LOOKUP_VLAN_INPUT flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260704092159.1256823-3-avinash.duduskar@gmail.com/",
+      "summary": "This companion patch in the VLAN series introduces BPF_FIB_LOOKUP_VLAN_INPUT, which extends bpf_fib_lookup() to account for VLAN tags on the ingress side of a lookup. Together with BPF_FIB_LOOKUP_VLAN, it completes bidirectional VLAN support, giving BPF programs full control over FIB lookups in environments with tagged traffic flowing in both directions. This is valuable for BPF-based virtual switching and routing stacks that must correctly handle 802.1Q VLAN headers.",
+      "related_links": []
+    },
+    {
+      "title": "s390/bpf: Replace ly instruction with llgf",
+      "author": "Maxim Khmelevskii",
+      "url": "https://lore.kernel.org/bpf/20260703125648.919196-5-max@linux.ibm.com/",
+      "summary": "This patch corrects a subtle JIT code-generation bug on s390 by substituting the ly (Load) instruction with llgf (Load Logical Long from Fullword) when loading 32-bit values into 64-bit registers. The ly instruction performs sign-extension, which incorrectly fills the upper 32 bits of a register when the source value's high bit is set, causing wrong results for unsigned 32-bit operations in BPF programs. Switching to llgf ensures zero-extension, matching the BPF semantics for 32-bit loads. A corresponding selftest for bpf_get_smp_processor_id is included to verify correct behavior on s390.",
+      "related_links": []
+    }
+  ]
+}
