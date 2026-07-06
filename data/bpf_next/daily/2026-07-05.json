@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-07-06T00:00:00Z",
+  "period_start": "2026-07-04",
+  "period_end": "2026-07-05",
+  "patch_count": 3,
+  "thread_count": 1,
+  "top_contributors": ["Avinash Duduskar"],
+  "key_topics": ["helpers", "fib-lookup", "vlan", "selftests"],
+  "overview": "Activity for July 4-5 consisted of a single patch series: Avinash Duduskar's v6 update adding bidirectional VLAN support to the bpf_fib_lookup() helper. The series introduces BPF_FIB_LOOKUP_VLAN and BPF_FIB_LOOKUP_VLAN_INPUT flags to enable VLAN-aware FIB lookups on both egress and ingress paths, along with corresponding selftests to validate the new flags.",
+  "patches": [
+    {
+      "title": "bpf: Add BPF_FIB_LOOKUP_VLAN flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260704092159.1256823-2-avinash.duduskar@gmail.com/",
+      "summary": "This patch introduces the BPF_FIB_LOOKUP_VLAN flag to the bpf_fib_lookup() helper, allowing BPF programs to provide VLAN context when performing FIB lookups for egress traffic. Without this flag, the helper ignores VLAN tagging, which can result in incorrect routing decisions in VLAN-segmented networks. The change is particularly useful for XDP and tc programs that need to forward VLAN-tagged packets along the correct path. Now in its sixth revision, the patch has received considerable review and refinement.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BPF_FIB_LOOKUP_VLAN_INPUT flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260704092159.1256823-3-avinash.duduskar@gmail.com/",
+      "summary": "This companion patch adds BPF_FIB_LOOKUP_VLAN_INPUT, extending bpf_fib_lookup() to account for VLAN tags on the ingress direction of a lookup. Together with BPF_FIB_LOOKUP_VLAN, it completes bidirectional VLAN support for the helper, giving BPF programs full visibility into 802.1Q context on both directions of traffic flow. This is valuable for BPF-based virtual switching and routing stacks operating in VLAN-aware environments.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add bpf_fib_lookup() VLAN flag tests",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260704092159.1256823-4-avinash.duduskar@gmail.com/",
+      "summary": "This patch adds selftests covering the two new VLAN flags introduced earlier in the series. The tests verify that BPF_FIB_LOOKUP_VLAN and BPF_FIB_LOOKUP_VLAN_INPUT produce correct FIB lookup results for VLAN-tagged traffic in both the egress and ingress directions. Having dedicated test coverage ensures that future changes to the helper or the underlying routing stack do not silently regress the new VLAN-aware behavior.",
+      "related_links": []
+    }
+  ]
+}
