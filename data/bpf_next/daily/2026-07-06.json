@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-07-07T00:00:00Z",
+  "period_start": "2026-07-05",
+  "period_end": "2026-07-06",
+  "patch_count": 8,
+  "thread_count": 2,
+  "top_contributors": ["Mahe Tardy", "Tiezhu Yang"],
+  "key_topics": ["kfuncs", "jit", "sockets", "verifier"],
+  "overview": "July 6th activity on bpf-next was dominated by two series: a new bpf_ksock kfunc subsystem enabling BPF programs to create and connect kernel sockets, and the eighth revision of a series adding a jit_required flag to safely reject BPF programs that rely on inlined helpers when a JIT compiler is not available.",
+  "patches": [
+    {
+      "title": "bpf: Add ksock kfuncs",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260706093525.13030-3-mahe.tardy@gmail.com/",
+      "summary": "Introduces a set of kfuncs implementing bpf_ksock, a new abstraction that allows BPF programs to create, configure, and connect kernel-space TCP/UDP sockets. The kfuncs wrap the newly added __sys_connect_socket() helper and include support for net namespace quotas, LSM recursion guards, and async callback protection. This enables BPF programs to initiate outbound connections from within the kernel without relying on userspace, a capability useful for proxying and load-balancing use cases.",
+      "related_links": []
+    },
+    {
+      "title": "net: Add __sys_connect_socket() helper",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260706093525.13030-2-mahe.tardy@gmail.com/",
+      "summary": "Adds a new __sys_connect_socket() helper to the networking core that performs a socket connect operation from kernel context. This is the foundational networking-side change required to support the bpf_ksock kfunc series, extracting and exposing connect logic so that BPF programs can drive it via the new kfuncs. It separates the syscall path from the underlying socket machinery in a reusable way.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add ksock test for async callback guard",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260706093525.13030-7-mahe.tardy@gmail.com/",
+      "summary": "Adds a selftest that exercises the async callback guard in the bpf_ksock implementation, ensuring BPF programs cannot misuse ksock operations from async callback contexts where reentrancy would be unsafe. This test complements the broader bpf_ksock selftest suite covering kfunc correctness, network namespace quotas, and LSM recursion, and is critical for validating the safety invariants of the new subsystem.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce jit_required flag and remove bpf_prog_has_kfunc_call()",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260706040006.10331-2-yangtiezhu@loongson.cn/",
+      "summary": "Introduces a jit_required flag on BPF programs and removes the now-redundant bpf_prog_has_kfunc_call() helper. The flag is set whenever a program contains instructions that cannot be safely interpreted without a JIT compiler, such as kfunc calls or inlined helpers. This is version 8 of the series, incorporating reviewer feedback on the flag semantics and the removal of the older kfunc detection helper.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject programs with inlined helpers if JIT is not available",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260706040006.10331-3-yangtiezhu@loongson.cn/",
+      "summary": "Uses the newly introduced jit_required flag to reject BPF programs at load time when they contain inlined helpers but no JIT compiler is available on the target architecture. Previously, such programs could cause a kernel panic when the interpreter attempted to execute JIT-only instructions. This fix prevents the panic by returning an appropriate error at load time, closing a long-standing safety gap on architectures like LoongArch that may boot without JIT enabled.",
+      "related_links": []
+    }
+  ]
+}

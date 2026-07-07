@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-07-07T00:00:00Z",
+  "period_start": "2026-06-29",
+  "period_end": "2026-07-06",
+  "patch_count": 99,
+  "thread_count": 28,
+  "top_contributors": ["George Guo", "Alexis Lothoré (eBPF Foundation)", "Emil Tsalapatis", "Leon Hwang", "Tiezhu Yang", "Daniel Borkmann"],
+  "key_topics": ["kfuncs", "jit", "kasan", "xdp", "verifier", "arena", "security", "tracing", "percpu", "sockmap"],
+  "overview": "The week of June 29 through July 6 saw broad activity across the BPF subsystem. Headline features include a new bpf_ksock kfunc layer for kernel-initiated socket connections, KASAN instrumentation support for x86 JIT-compiled programs, global per-CPU data for BPF programs backed by libbpf and bpftool, and a third revision of Daniel Borkmann's BPF signed loader verification series. Architecture-specific work continued with LoongArch gaining arena, exceptions, private stack, and may_goto support, and RISC-V picking up mixed bpf2bpf and tail call support. Several verifier correctness patches also landed, including bounds enforcement for MEM_ALLOC BTF accesses and arena free addresses.",
+  "patches": [
+    {
+      "title": "bpf: Add ksock kfuncs",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260706093525.13030-3-mahe.tardy@gmail.com/",
+      "summary": "Introduces bpf_ksock, a new kfunc-based API allowing BPF programs to create and connect kernel-space TCP/UDP sockets. The implementation wraps a new __sys_connect_socket() networking helper and adds guards for net namespace quotas, LSM recursion, and async callbacks. This enables transparent proxying and load-balancing scenarios directly from BPF without requiring userspace socket setup, and is accompanied by a comprehensive selftest suite.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce jit_required flag and remove bpf_prog_has_kfunc_call()",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260706040006.10331-2-yangtiezhu@loongson.cn/",
+      "summary": "Adds a jit_required flag to BPF programs to track whether the program contains instructions that cannot be safely interpreted without a JIT compiler. The accompanying patch uses this flag to reject such programs at load time when no JIT is available, preventing kernel panics on architectures like LoongArch. This is version 8 after multiple rounds of review refining the flag semantics and cleaning up the now-redundant bpf_prog_has_kfunc_call() helper.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Verify signed loader metadata at load time",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260702143605.252797-3-daniel@iogearbox.net/",
+      "summary": "Third revision of the BPF signed loader series, which validates the cryptographic signature embedded in a BPF loader program's metadata at load time rather than at attach time. The series resolves and caches fd_array objects early, moves the signature check to occur before any program resources are committed, drops an in-loader metadata check from libbpf that is now superseded, updates bpftool to cover loader metadata in the program signature, and adds documentation for the overall BPF signing and enforcement mechanism.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260629152406.52582-3-leon.hwang@linux.dev/",
+      "summary": "Introduces global per-CPU data as a first-class BPF construct, allowing BPF programs to declare per-CPU variables with global scope similar to kernel percpu variables. The series extends libbpf to handle the new section type and generate skeletons for it, adds a percpu data feature probe, updates bpftool to expose per-CPU data in program skeletons, and includes a bpf_iter interface for iterating global per-CPU data. This is the eighth revision, addressing feedback on the kernel-side data layout and verifier handling.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add BPF_JIT_KASAN for KASAN instrumentation of JITed programs",
+      "author": "Alexis Lothoré (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260701-kasan-v3-3-bd09bb942d86@bootlin.com/",
+      "summary": "Introduces BPF_JIT_KASAN, a new Kconfig option that enables KASAN memory-safety instrumentation of BPF programs compiled by the x86 JIT. The implementation marks BPF instructions that access the program stack, adds a helper to emit inline KASAN checks into the JIT output, and enables the feature for x86. A new selftest validates that KASAN correctly detects out-of-bounds accesses in JITed programs. This significantly improves memory-safety coverage for BPF workloads and is the third revision of the series.",
+      "related_links": []
+    },
+    {
+      "title": "xdp: let XDP programs assert the RX checksum over redirect",
+      "author": "Vladimir Vdovin",
+      "url": "https://lore.kernel.org/bpf/20260630191510.81402-2-deliran@verdict.gg/",
+      "summary": "An RFC series proposing a new bpf_xdp_assert_rx_csum() helper that allows XDP programs to assert the hardware-validated RX checksum remains valid after a redirect operation. The series also adds a bpf_xdp_metadata_rx_csum() kfunc to expose the RX checksum metadata hint, and implements driver-side support for veth, ice, and mlx5e. This enables checksum offload to be safely carried across CPU redirects without forcing software re-validation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_init_inode_xattr kfunc for atomic inode labeling",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260630183956.281293-3-dwindsor@gmail.com/",
+      "summary": "Adds a bpf_init_inode_xattr kfunc that allows BPF LSM programs to atomically set extended attributes on inodes at creation time, alongside the inode_init_security LSM hook. The series refactors the security layer to pass xattrs via a new lsm_xattrs struct, enabling BPF programs to inject security labels at the same point as other LSMs without a separate setxattr call. This fourth revision addresses feedback on the lsm_xattrs interface and selftest coverage.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add tracing_multi link info support",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260629212208.895962-2-jolsa@kernel.org/",
+      "summary": "Extends the BPF link info infrastructure to expose attach-point details for tracing_multi links, which can attach a single BPF program to multiple kernel functions simultaneously. The kernel-side change populates the new link info fields with the list of attached function addresses, and bpftool is updated to display this information in its link output. This is the fourth revision and makes tracing_multi links fully observable via the standard bpf_link_info interface.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Mixing bpf2bpf and tailcalls",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260629140048.733346-6-pulehui@huaweicloud.com/",
+      "summary": "Implements support for mixed bpf2bpf calls and tail calls on the RISC-V 64-bit BPF JIT, bringing it to feature parity with x86 and ARM64. The series extracts an is_struct_ops_tramp helper, introduces an RV_TAILCALL_OFFSET macro for consistent offset formatting, switches cache buffer allocation to kvzalloc_objs, and adds the actual mixed-call trampoline logic. The tailcalls deny list entry for riscv64 is removed now that the feature is supported.",
+      "related_links": []
+    },
+    {
+      "title": "LoongArch: BPF: Add private stack support",
+      "author": "George Guo",
+      "url": "https://lore.kernel.org/bpf/20260702022322.51033-5-dongtai.guo@linux.dev/",
+      "summary": "Part of a broader eleven-patch series bringing LoongArch BPF JIT up to full feature parity, this patch adds private stack support so deeply-nested BPF calls can use a dedicated stack region instead of the kernel stack. The series also adds timed may_goto, per-CPU address resolution via internal MOV, bpf_throw exception handling, sign-extending arena loads, arena atomic operations, and corresponding selftests with a LoongArch deny list. This is the second revision addressing JIT correctness issues found in the first round.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject MEM_ALLOC BTF accesses past object bounds",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/4b8c8a81102ba4b595011434c881194f264ddc59.1782807039.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "Fixes a verifier gap where BPF programs could compute pointer offsets past the end of a MEM_ALLOC-tagged BTF object without being rejected. The patch adds a bounds check in the verifier's BTF access path to enforce that all struct field accesses remain within the allocated object size. A companion patch adds selftests covering both valid boundary accesses and out-of-bounds cases that should now be correctly rejected.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BPF_FIB_LOOKUP_VLAN flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260704092159.1256823-2-avinash.duduskar@gmail.com/",
+      "summary": "Adds two new flags to the bpf_fib_lookup() helper: BPF_FIB_LOOKUP_VLAN for egress VLAN tag output and BPF_FIB_LOOKUP_VLAN_INPUT for ingress VLAN-aware FIB lookups, enabling bidirectional VLAN support. Previously BPF programs performing FIB lookups on VLAN-tagged traffic had to handle VLAN stripping and retagging manually; these flags let the kernel handle VLAN context in the lookup. This is the sixth revision incorporating feedback on the flag semantics and the selftest infrastructure.",
+      "related_links": []
+    }
+  ]
+}
