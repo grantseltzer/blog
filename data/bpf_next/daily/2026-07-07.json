@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-07-08T00:00:00Z",
+  "period_start": "2026-07-06",
+  "period_end": "2026-07-07",
+  "patch_count": 44,
+  "thread_count": 11,
+  "top_contributors": ["Amery Hung", "Daniel Borkmann", "Emil Tsalapatis", "Mahe Tardy"],
+  "key_topics": ["struct_ops", "cgroup", "kfuncs", "security", "jit", "arena", "uprobes", "riscv"],
+  "overview": "The bpf-next mailing list saw substantial activity on July 6-7, 2026, headlined by a 15-patch series adding infrastructure to attach struct_ops programs to cgroups and a 9-patch series implementing load-time verification of signed BPF loaders. Other notable contributions include new bpf_ksock kfuncs enabling kernel-side socket management from BPF, RISC-V RV32 JIT extensions for signed arithmetic and 32-bit atomics, and a safety fix to prevent kernel panics when programs requiring JIT are loaded without one.",
+  "patches": [
+    {
+      "title": "bpf: Add infrastructure to support attaching struct_ops to cgroups",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260706171918.317102-10-ameryhung@gmail.com/",
+      "summary": "Core patch of a 15-patch v3 series titled 'bpf: A common way to attach struct_ops to a cgroup'. It adds the underlying kernel infrastructure enabling BPF struct_ops programs to be attached to cgroups, allowing per-cgroup customization of kernel behaviors through the struct_ops mechanism. Companion patches extend this to TCP sock_ops callbacks (parse, len, write header option hooks in bpf_tcp_ops) and add libbpf support for the new attachment type. This significantly broadens the scope of what struct_ops can control at the cgroup level.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Verify signed loader metadata at load time",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260706135644.326006-4-daniel@iogearbox.net/",
+      "summary": "Part of a 9-patch v4 series ('Verify BPF signed loader at load time') implementing load-time cryptographic verification of BPF signed loader metadata. This security enforcement feature allows kernel administrators to require that BPF programs originate from an authorized signed loader, blocking untrusted programs at load time. Companion patches update bpftool to cover loader metadata with the program signature and add documentation for the BPF signing and enforcement subsystem.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add ksock kfuncs",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260706093525.13030-3-mahe.tardy@gmail.com/",
+      "summary": "Second patch in the 6-patch 'Introduce bpf_ksock' series, which adds kernel socket (ksock) kfuncs that let BPF programs create and operate kernel-side sockets without user-space involvement. This opens new use cases such as BPF programs initiating TCP connections directly from within the kernel. The series also includes async callback guard infrastructure, network namespace quota enforcement for ksocks, and LSM recursion protection.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce jit_required flag and remove bpf_prog_has_kfunc_call()",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260706040006.10331-2-yangtiezhu@loongson.cn/",
+      "summary": "First patch of a 2-patch v8 series aimed at preventing kernel panics when BPF programs that use kfuncs or inlined helpers are loaded on architectures without a JIT compiler. It introduces a `jit_required` flag on programs that need JIT support, replacing the older `bpf_prog_has_kfunc_call()` helper. The companion patch then enforces rejection of such programs at load time when JIT is unavailable, closing a gap that could otherwise cause a crash at execution time.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Add support for BPF_SDIV and BPF_SMOD in RV32 JIT",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260706172846.3876436-2-visitorckw@gmail.com/",
+      "summary": "Lead patch of a 3-patch v3 series extending the RISC-V 32-bit BPF JIT with signed arithmetic and atomic operations. This patch adds support for BPF_SDIV (signed division) and BPF_SMOD (signed modulo) in the RV32 JIT. Companion patches add BPF_MOVSX (sign-extending move) and 32-bit atomic operations, bringing RV32 JIT coverage closer to parity with the 64-bit RISC-V JIT and the broader BPF instruction set.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject out-of-range arena free addresses",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260706-f01-31-arena-free-bpf-next-v1-1-3ad6e7384285@mails.tsinghua.edu.cn/",
+      "summary": "First patch in a 2-patch series that adds bounds validation to the BPF arena allocator, rejecting free operations targeting addresses outside the valid arena range. Without this guard, a BPF program could corrupt arena metadata by freeing an out-of-range pointer, a subtle safety issue in the arena memory management path. A companion selftest patch covers the new validation with out-of-range address scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "uprobes: Switch uretprobes_srcu to SRCU-fast-updown",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260706172744.3920417-3-puranjay@kernel.org/",
+      "summary": "Second patch in a 2-patch series that converts the `uretprobes_srcu` domain to the SRCU-fast-updown flavor, which is optimized for workloads with frequent updates. The companion patch adds a lock guard for the srcu_fast_updown variant. This change is expected to reduce contention overhead when uretprobes are attached and detached at high frequency, benefiting BPF uretprobe-heavy tracing workloads.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add arena-based bitmap data structure",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260706181730.21731-5-emil@etsalapatis.com/",
+      "summary": "Fourth patch in the resent 6-patch v3 series 'selftests/bpf: libarena cleanup and bitmap struct', introducing an arena-based bitmap data structure for BPF arena allocations. BPF arenas allow programs to manage their own memory pools; a bitmap layer enables efficient tracking of allocation state within an arena region. The series also fixes several libarena test infrastructure issues and adds both sequential and parallel bitmap selftests.",
+      "related_links": []
+    }
+  ]
+}
