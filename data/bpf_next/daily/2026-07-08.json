@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-07-09T00:00:00Z",
+  "period_start": "2026-07-07",
+  "period_end": "2026-07-08",
+  "patch_count": 56,
+  "thread_count": 16,
+  "top_contributors": ["Daniel Borkmann", "Pu Lehui", "Alexis Lothoré (eBPF Foundation)"],
+  "key_topics": ["jit", "kasan", "security", "verifier", "btf", "kfuncs", "tailcalls", "riscv"],
+  "overview": "A busy day on bpf-next dominated by three major series: Daniel Borkmann's BPF signed loader load-time verification (v6), Alexis Lothoré's KASAN instrumentation for JITed programs on x86 (v4), and Pu Lehui's bpf2bpf-plus-tailcall mixing support for RISC-V 64-bit (v6). Additional highlights include Kumar Kartikeya Dwivedi tightening verifier safety by rejecting writes through untrusted BTF pointers, Eduard Zingerman lifting artificial restrictions on spillable pointer types, and a new bpf_init_inode_xattr kfunc enabling atomic inode xattr labeling from BPF LSM programs.",
+  "patches": [
+    {
+      "title": "bpf: Resolve and cache fd_array objects at load time",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260708075343.358712-2-daniel@iogearbox.net/",
+      "summary": "This is the first patch in Daniel Borkmann's v6 eight-patch series that introduces load-time verification of BPF signed loaders. The series resolves and caches fd_array objects at load time so the kernel can cryptographically verify the loader metadata (including the program hash) before committing to execution. Companion patches update bpftool to cover loader metadata in the program signature, drop redundant in-loader checks from libbpf, and add comprehensive selftests and documentation. The feature is aimed at hardening BPF deployments where only signed, trusted loaders should be permitted to load programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: propagate original instruction offset when patching program",
+      "author": "Alexis Lothoré (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260708-kasan-v4-1-d5c177ab8227@bootlin.com/",
+      "summary": "First patch in the ten-patch KASAN-for-JIT series (v4) from Alexis Lothoré. The series adds BPF_JIT_KASAN, a new Kconfig option that enables KASAN memory-access instrumentation directly inside x86-64 JITed BPF programs, catching out-of-bounds and use-after-free bugs at JIT time rather than only during interpretation. This patch lays the groundwork by preserving original instruction offsets through the program-patching pipeline, a prerequisite for accurate KASAN shadow-address generation. Later patches in the series add x86 JIT back-end support, a helper for emitting KASAN checks, selftest infrastructure, and tests that validate the feature end-to-end.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject writes through untrusted BTF pointers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260708030752.2503467-2-memxor@gmail.com/",
+      "summary": "The verifier was previously allowing store instructions through BTF pointers obtained from untrusted sources (e.g., kptrs acquired without proper reference-tracking), which could allow BPF programs to corrupt kernel memory in unexpected ways. This v2 patch teaches the verifier to detect and reject such writes, closing a subtle safety hole. The companion selftest patch adds a regression test covering the scenario. This is a correctness and safety fix with implications for any program that manipulates kernel data structures via BTF-typed pointers.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce jit_required flag and remove bpf_prog_has_kfunc_call()",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260708101806.18885-2-yangtiezhu@loongson.cn/",
+      "summary": "On architectures where the BPF JIT is unavailable or disabled, programs that use inlined helpers or kfuncs would previously cause a kernel panic because the interpreter cannot execute them. This v9 patch introduces a jit_required flag that is set on programs containing constructs that demand JIT compilation, and the second patch in the series makes the verifier reject such programs early with a clear error when JIT is not available. As a cleanup it also removes the now-redundant bpf_prog_has_kfunc_call() helper. This fixes a potential panic on non-JIT architectures like LoongArch.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: remove artificial limitations on pointer types eligable for spilling",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260707-missing-spillable-types-v1-1-44a92121dc41@gmail.com/",
+      "summary": "The BPF verifier has historically only allowed certain pointer types to be spilled to and filled from the BPF stack, rejecting valid programs that temporarily store other pointer kinds. This patch removes those artificial restrictions so that all pointer types the verifier understands can be safely round-tripped through stack slots. The change simplifies verifier logic and unblocks legitimate programming patterns, particularly in programs that need to preserve pointers across helper calls or conditional branches. A paired selftest patch validates the newly-allowed spill/fill combinations.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Extract the is_struct_ops_tramp helper",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260708064436.2971933-2-pulehui@huaweicloud.com/",
+      "summary": "Lead patch of Pu Lehui's v6 seven-patch series enabling mixed bpf2bpf calls and tail calls on RISC-V 64-bit, a capability x86-64 has supported for some time. The series fixes a kernel stack corruption bug in the RISC-V JIT when CFI is active during tailcalls, corrects a memory leak in bpf_jit_free, switches cache-buffer allocation to kvzalloc_objs, and introduces the RV_TAILCALL_OFFSET macro. The final patch removes the now-passing tailcall tests from the riscv64 DENYLIST. This brings RISC-V 64-bit BPF JIT closer to feature parity with x86-64.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix use-after-free on mm_struct in bpf_find_vma()",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260708072106.199637-2-sanghyun.park.cnu@gmail.com/",
+      "summary": "bpf_find_vma() acquires a reference to the task's mm_struct but under certain race conditions the mm could be freed before the VMA lookup completes, leading to a use-after-free. This v7 single-patch fix ensures the mm reference is properly held for the duration of the lookup and released safely afterward. The fix addresses a kernel memory-safety bug that could be triggered by concurrent thread exit while a BPF program is walking VMAs, relevant to profiling and stack-unwinding use cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_init_inode_xattr kfunc for atomic inode labeling",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260708000956.46138-3-dwindsor@gmail.com/",
+      "summary": "This v5 patch introduces the bpf_init_inode_xattr kfunc, which allows BPF LSM programs to atomically set extended attributes on an inode at creation time as part of the security_inode_init_security hook. Previously there was no way to label new inodes from BPF without racing against other operations. A companion patch reworks the kernel's inode_init_security xattr handling to accommodate the new calling convention, and selftests verify correct behavior. The kfunc is particularly useful for BPF-based MAC security modules that need to assign labels to newly created files.",
+      "related_links": []
+    }
+  ]
+}
