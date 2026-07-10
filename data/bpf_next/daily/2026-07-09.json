@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-07-10T00:00:00Z",
+  "period_start": "2026-07-08",
+  "period_end": "2026-07-09",
+  "patch_count": 72,
+  "thread_count": 17,
+  "top_contributors": [
+    "Daniel Borkmann",
+    "Alexis Lothoré (eBPF Foundation)",
+    "Yonghong Song",
+    "Pu Lehui",
+    "Vladimir Vdovin"
+  ],
+  "key_topics": [
+    "kasan",
+    "jit",
+    "verifier",
+    "kfuncs",
+    "btf",
+    "xdp",
+    "security",
+    "selftests"
+  ],
+  "overview": "A busy day on bpf-next with 72 patches across 17 series touching JIT compilation, the verifier, XDP metadata, and BPF security. The standout submissions are a v5 series adding KASAN instrumentation to x86 JIT-compiled programs, a 12-patch series enabling 16-byte kfunc return values via the R0:R2 register pair, and Daniel Borkmann's v6 signed-loader verification work that enforces load-time cryptographic checks on BPF programs.",
+  "patches": [
+    {
+      "title": "bpf: propagate original instruction offset when patching program",
+      "author": "Alexis Lothoré (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260709-kasan-v5-1-1c64af8e4e1e@bootlin.com/",
+      "summary": "First patch of a 10-part v5 series adding KASAN (Kernel Address Sanitizer) support to BPF JIT-compiled programs on x86. It propagates original instruction offsets through program patching so KASAN can attribute memory errors back to the originating BPF instruction. Later patches in the series introduce a BPF_JIT_KASAN config option, add x86 JIT helpers that emit inline KASAN shadow checks, and provide selftests that validate out-of-bounds stack accesses are caught. This significantly improves debuggability of memory bugs in production BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Factor check_global_ret_scalar_reg() out of the global return check",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260708200944.2153909-1-yonghong.song@linux.dev/",
+      "summary": "Opens a 12-patch series that enables kfuncs to return 16-byte aggregate values using the R0:R2 register pair. Previously BPF kfuncs were constrained to 8-byte return values, preventing them from returning C structs larger than a pointer. The series adds verifier support for tracking R2 alongside R0, updates precision backtracking and live register analysis, forces JIT for such programs, wires up x86 JIT support, and adds comprehensive selftests and documentation. This is an important expressiveness improvement for kfunc-based kernel extensions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Resolve and cache fd_array objects at load time",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260708075343.358712-2-daniel@iogearbox.net/",
+      "summary": "First patch of an 8-part v6 series implementing load-time verification of signed BPF loader metadata. The kernel resolves and caches fd_array objects at load time, and subsequent patches validate cryptographic signatures on loader metadata via an LSM hook before program load proceeds. bpftool is updated to include loader metadata in the program signature, and libbpf drops its in-loader metadata check now that the kernel enforces it. The work enables locked-down deployments where only programs signed by authorized loaders are accepted.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Extract the is_struct_ops_tramp helper",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260708064436.2971933-2-pulehui@huaweicloud.com/",
+      "summary": "Leads a 7-patch v6 series enabling mixed bpf2bpf calls and tailcalls on RISC-V 64-bit, bringing parity with the x86 JIT. The series fixes a kernel stack corruption bug when CFI is enabled during tailcalls, resolves a memory leak in bpf_jit_free, introduces an RV_TAILCALL_OFFSET macro, and implements the combined bpf2bpf+tailcall optimization path for RV64. Self-tests previously blocked on riscv64 are re-enabled, removing entries from DENYLIST.riscv64.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject writes through untrusted BTF pointers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260708030752.2503467-2-memxor@gmail.com/",
+      "summary": "Closes a verifier gap that permitted BPF programs to store values through PTR_TO_BTF_ID registers that lacked the trusted flag. Such pointers point at kernel objects whose lifetime and integrity guarantees are not held by BPF, so allowing writes through them violates memory safety invariants. The fix adds an explicit rejection in the verifier's store path, and the accompanying patch adds a regression selftest that covers the previously-allowed pattern.",
+      "related_links": []
+    },
+    {
+      "title": "netlink: specs: Add XDP RX checksum capability to XDP metadata specs",
+      "author": "Vladimir Vdovin",
+      "url": "https://lore.kernel.org/bpf/20260708203410.45121-2-deliran@verdict.gg/",
+      "summary": "Opens a 6-patch v4 series enabling XDP programs to read hardware-computed RX checksums via the XDP metadata interface. The series extends XDP metadata netlink specs, adds xmo_rx_checksum callbacks to both the veth and Intel ice drivers, introduces the bpf_xdp_metadata_rx_checksum kfunc, and provides selftests for both the in-kernel path and the drv-net testing framework. Applications that trust NIC-computed checksums can bypass redundant software verification, reducing CPU overhead in high-throughput networking paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix vmlinux BTF prep race in bpf_get_btf_vmlinux",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260708211537.371874-2-daniel@iogearbox.net/",
+      "summary": "First of four patches addressing issues uncovered by sashiko fuzzing. It fixes a race condition in bpf_get_btf_vmlinux where concurrent callers could both attempt vmlinux BTF initialization, leading to a double-init. The series also adds a dedicated mutex for BTF init serialization, accounts insn_aux_data allocations inside bpf_check for memory tracking purposes, and includes the scratch buffer in bpf_prog_calc_tag. The BTF race fix is particularly impactful for systems that load many BPF programs concurrently at boot.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_init_inode_xattr kfunc for atomic inode labeling",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260708000956.46138-3-dwindsor@gmail.com/",
+      "summary": "Introduces the bpf_init_inode_xattr kfunc, allowing BPF LSM programs to atomically set initial xattrs on inodes at creation time. Previously BPF programs had no way to participate in inode_init_security without races, making it difficult to implement MAC-style labeling (e.g., SELinux or Smack contexts) from BPF. The series first reworks the security subsystem's xattr handling to provide a stable interface, then exposes it through the kfunc, with selftests verifying correct labeling behavior.",
+      "related_links": []
+    }
+  ]
+}
