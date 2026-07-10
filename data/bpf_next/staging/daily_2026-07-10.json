@@ -1,0 +1,467 @@
+{
+  "period": "daily",
+  "period_start": "2026-07-09",
+  "period_end": "2026-07-10",
+  "fetched_at": "2026-07-10T11:55:01Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v1,4/4] bpf: Unify helper and kfunc call argument meta",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260709230242.2003459-5-ameryhung@gmail.com/",
+      "date": "2026-07-09T23:02:41",
+      "series": [
+        {
+          "id": 1125033,
+          "url": "https://patchwork.kernel.org/api/series/1125033/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125033",
+          "date": "2026-07-09T23:02:37",
+          "name": "Unify helper and kfunc call_arg_meta",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1125033/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,3/4] bpf: Unify helper and kfunc allocation-size argument handling",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260709230242.2003459-4-ameryhung@gmail.com/",
+      "date": "2026-07-09T23:02:40",
+      "series": [
+        {
+          "id": 1125033,
+          "url": "https://patchwork.kernel.org/api/series/1125033/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125033",
+          "date": "2026-07-09T23:02:37",
+          "name": "Unify helper and kfunc call_arg_meta",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1125033/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,2/4] bpf: Factor out raw_mode-related fields in bpf_call_arg_meta",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260709230242.2003459-3-ameryhung@gmail.com/",
+      "date": "2026-07-09T23:02:39",
+      "series": [
+        {
+          "id": 1125033,
+          "url": "https://patchwork.kernel.org/api/series/1125033/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125033",
+          "date": "2026-07-09T23:02:37",
+          "name": "Unify helper and kfunc call_arg_meta",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1125033/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,1/4] bpf: Remove dynptr check in check_stack_range_initialized()",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260709230242.2003459-2-ameryhung@gmail.com/",
+      "date": "2026-07-09T23:02:38",
+      "series": [
+        {
+          "id": 1125033,
+          "url": "https://patchwork.kernel.org/api/series/1125033/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125033",
+          "date": "2026-07-09T23:02:37",
+          "name": "Unify helper and kfunc call_arg_meta",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1125033/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: remove redundant config option from selftests fragments",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260709-testing-fragments-v1-1-65244b0650ff@bootlin.com/",
+      "date": "2026-07-09T18:42:59",
+      "series": [
+        {
+          "id": 1124905,
+          "url": "https://patchwork.kernel.org/api/series/1124905/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124905",
+          "date": "2026-07-09T18:42:59",
+          "name": "[bpf-next] selftests/bpf: remove redundant config option from selftests fragments",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1124905/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/2] selftests/bpf: test bpf_cpumask_populate() rejects a borrowed cpumask",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260709182800.2037938-3-main.kalliope@gmail.com/",
+      "date": "2026-07-09T18:28:00",
+      "series": [
+        {
+          "id": 1124896,
+          "url": "https://patchwork.kernel.org/api/series/1124896/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124896",
+          "date": "2026-07-09T18:27:58",
+          "name": "bpf: require an owned cpumask for bpf_cpumask_populate()",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1124896/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/2] bpf: Require a BPF cpumask for bpf_cpumask_populate()",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260709182800.2037938-2-main.kalliope@gmail.com/",
+      "date": "2026-07-09T18:27:59",
+      "series": [
+        {
+          "id": 1124896,
+          "url": "https://patchwork.kernel.org/api/series/1124896/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124896",
+          "date": "2026-07-09T18:27:58",
+          "name": "bpf: require an owned cpumask for bpf_cpumask_populate()",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1124896/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: add test for oversized rdonly/rdwr_buf_size kfunc argument",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260709155837.1879230-3-main.kalliope@gmail.com/",
+      "date": "2026-07-09T15:58:37",
+      "series": [
+        {
+          "id": 1124822,
+          "url": "https://patchwork.kernel.org/api/series/1124822/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124822",
+          "date": "2026-07-09T15:58:35",
+          "name": "bpf: bound rdonly/rdwr_buf_size kfunc return size",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1124822/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: reject rdonly/rdwr_buf_size kfunc arguments that exceed u32 max",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260709155837.1879230-2-main.kalliope@gmail.com/",
+      "date": "2026-07-09T15:58:36",
+      "series": [
+        {
+          "id": 1124822,
+          "url": "https://patchwork.kernel.org/api/series/1124822/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124822",
+          "date": "2026-07-09T15:58:35",
+          "name": "bpf: bound rdonly/rdwr_buf_size kfunc return size",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1124822/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Add test for scalar id on sign-extending stack fill",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260709153131.386599-2-daniel@iogearbox.net/",
+      "date": "2026-07-09T15:31:31",
+      "series": [
+        {
+          "id": 1124807,
+          "url": "https://patchwork.kernel.org/api/series/1124807/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124807",
+          "date": "2026-07-09T15:31:30",
+          "name": "[bpf-next,1/2] bpf: Drop scalar id on sign-extending narrowing stack fills",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1124807/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Drop scalar id on sign-extending narrowing stack fills",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260709153131.386599-1-daniel@iogearbox.net/",
+      "date": "2026-07-09T15:31:30",
+      "series": [
+        {
+          "id": 1124807,
+          "url": "https://patchwork.kernel.org/api/series/1124807/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124807",
+          "date": "2026-07-09T15:31:30",
+          "name": "[bpf-next,1/2] bpf: Drop scalar id on sign-extending narrowing stack fills",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1124807/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,5/5] selftests/bpf: add bpf_icmp_send no route test",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260709144900.245904-6-mahe.tardy@gmail.com/",
+      "date": "2026-07-09T14:49:00",
+      "series": [
+        {
+          "id": 1124785,
+          "url": "https://patchwork.kernel.org/api/series/1124785/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124785",
+          "date": "2026-07-09T14:48:55",
+          "name": "bpf: add icmp_send kfunc",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1124785/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,4/5] selftests/bpf: add bpf_icmp_send recursion test",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260709144900.245904-5-mahe.tardy@gmail.com/",
+      "date": "2026-07-09T14:48:59",
+      "series": [
+        {
+          "id": 1124785,
+          "url": "https://patchwork.kernel.org/api/series/1124785/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124785",
+          "date": "2026-07-09T14:48:55",
+          "name": "bpf: add icmp_send kfunc",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1124785/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,3/5] selftests/bpf: add bpf_icmp_send kfunc cgroup_skb IPv6 tests",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260709144900.245904-4-mahe.tardy@gmail.com/",
+      "date": "2026-07-09T14:48:58",
+      "series": [
+        {
+          "id": 1124785,
+          "url": "https://patchwork.kernel.org/api/series/1124785/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124785",
+          "date": "2026-07-09T14:48:55",
+          "name": "bpf: add icmp_send kfunc",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1124785/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,2/5] selftests/bpf: add bpf_icmp_send kfunc cgroup_skb tests",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260709144900.245904-3-mahe.tardy@gmail.com/",
+      "date": "2026-07-09T14:48:57",
+      "series": [
+        {
+          "id": 1124785,
+          "url": "https://patchwork.kernel.org/api/series/1124785/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124785",
+          "date": "2026-07-09T14:48:55",
+          "name": "bpf: add icmp_send kfunc",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1124785/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,1/5] bpf: add bpf_icmp_send kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260709144900.245904-2-mahe.tardy@gmail.com/",
+      "date": "2026-07-09T14:48:56",
+      "series": [
+        {
+          "id": 1124785,
+          "url": "https://patchwork.kernel.org/api/series/1124785/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124785",
+          "date": "2026-07-09T14:48:55",
+          "name": "bpf: add icmp_send kfunc",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1124785/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,10/10] selftests/bpf: add tests to validate KASAN on JIT programs",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260709-kasan-v5-10-1c64af8e4e1e@bootlin.com/",
+      "date": "2026-07-09T10:01:51",
+      "series": [
+        {
+          "id": 1124557,
+          "url": "https://patchwork.kernel.org/api/series/1124557/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124557",
+          "date": "2026-07-09T10:01:41",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1124557/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,09/10] selftests/bpf: move bpf_jit_harden helper into testing_helpers",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260709-kasan-v5-9-1c64af8e4e1e@bootlin.com/",
+      "date": "2026-07-09T10:01:50",
+      "series": [
+        {
+          "id": 1124557,
+          "url": "https://patchwork.kernel.org/api/series/1124557/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124557",
+          "date": "2026-07-09T10:01:41",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1124557/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,08/10] selftests/bpf: add helpers for KASAN in JIT testing",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260709-kasan-v5-8-1c64af8e4e1e@bootlin.com/",
+      "date": "2026-07-09T10:01:49",
+      "series": [
+        {
+          "id": 1124557,
+          "url": "https://patchwork.kernel.org/api/series/1124557/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124557",
+          "date": "2026-07-09T10:01:41",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1124557/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,07/10] bpf, x86: enable KASAN for JITed programs on x86",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260709-kasan-v5-7-1c64af8e4e1e@bootlin.com/",
+      "date": "2026-07-09T10:01:48",
+      "series": [
+        {
+          "id": 1124557,
+          "url": "https://patchwork.kernel.org/api/series/1124557/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124557",
+          "date": "2026-07-09T10:01:41",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1124557/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,06/10] bpf, x86: emit KASAN checks into x86 JITed programs",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260709-kasan-v5-6-1c64af8e4e1e@bootlin.com/",
+      "date": "2026-07-09T10:01:47",
+      "series": [
+        {
+          "id": 1124557,
+          "url": "https://patchwork.kernel.org/api/series/1124557/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124557",
+          "date": "2026-07-09T10:01:41",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1124557/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,05/10] bpf, x86: refactor BPF_ST management in do_jit",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260709-kasan-v5-5-1c64af8e4e1e@bootlin.com/",
+      "date": "2026-07-09T10:01:46",
+      "series": [
+        {
+          "id": 1124557,
+          "url": "https://patchwork.kernel.org/api/series/1124557/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124557",
+          "date": "2026-07-09T10:01:41",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1124557/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,04/10] bpf, x86: add helper to emit kasan checks in x86 JITed programs",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260709-kasan-v5-4-1c64af8e4e1e@bootlin.com/",
+      "date": "2026-07-09T10:01:45",
+      "series": [
+        {
+          "id": 1124557,
+          "url": "https://patchwork.kernel.org/api/series/1124557/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124557",
+          "date": "2026-07-09T10:01:41",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1124557/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,03/10] bpf: add BPF_JIT_KASAN for KASAN instrumentation of JITed programs",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260709-kasan-v5-3-1c64af8e4e1e@bootlin.com/",
+      "date": "2026-07-09T10:01:44",
+      "series": [
+        {
+          "id": 1124557,
+          "url": "https://patchwork.kernel.org/api/series/1124557/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124557",
+          "date": "2026-07-09T10:01:41",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1124557/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,02/10] bpf: mark instructions accessing program stack",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260709-kasan-v5-2-1c64af8e4e1e@bootlin.com/",
+      "date": "2026-07-09T10:01:43",
+      "series": [
+        {
+          "id": 1124557,
+          "url": "https://patchwork.kernel.org/api/series/1124557/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124557",
+          "date": "2026-07-09T10:01:41",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1124557/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,01/10] bpf: propagate original instruction offset when patching program",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260709-kasan-v5-1-1c64af8e4e1e@bootlin.com/",
+      "date": "2026-07-09T10:01:42",
+      "series": [
+        {
+          "id": 1124557,
+          "url": "https://patchwork.kernel.org/api/series/1124557/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124557",
+          "date": "2026-07-09T10:01:41",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1124557/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Fix security_bpf_map_create error handling",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260709073422.379247-1-daniel@iogearbox.net/",
+      "date": "2026-07-09T07:34:22",
+      "series": [
+        {
+          "id": 1124418,
+          "url": "https://patchwork.kernel.org/api/series/1124418/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1124418",
+          "date": "2026-07-09T07:34:22",
+          "name": "[bpf-next] bpf: Fix security_bpf_map_create error handling",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1124418/mbox/"
+        }
+      ]
+    }
+  ]
+}
