@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-07-11T00:00:00Z",
+  "period_start": "2026-07-09",
+  "period_end": "2026-07-10",
+  "patch_count": 27,
+  "thread_count": 8,
+  "top_contributors": ["Alexis Lothoré", "Mahe Tardy", "Amery Hung", "Nicholas Dudar", "Daniel Borkmann"],
+  "key_topics": ["verifier", "kfuncs", "jit", "kasan", "selftests"],
+  "overview": "Today's bpf-next activity was headlined by a 10-patch v5 series adding KASAN instrumentation support to x86 JIT-compiled BPF programs, enabling memory safety checks in JIT output. Alongside this, an 11th-revision series landed adding a `bpf_icmp_send` kfunc for sending ICMP packets directly from BPF programs, and Amery Hung submitted a 4-patch verifier refactor unifying the argument metadata structures shared between helper and kfunc call processing.",
+  "patches": [
+    {
+      "title": "bpf: add BPF_JIT_KASAN for KASAN instrumentation of JITed programs",
+      "author": "Alexis Lothoré",
+      "url": "https://lore.kernel.org/bpf/20260709-kasan-v5-3-1c64af8e4e1e@bootlin.com/",
+      "summary": "Part of a 10-patch series (v5) that adds KASAN memory-safety instrumentation to x86 BPF JIT-compiled programs. This patch introduces the BPF_JIT_KASAN Kconfig option that gates the feature, while companion patches emit KASAN shadow-memory checks into JIT output, propagate original instruction offsets through program patching, and add selftests to exercise the new instrumentation. Enabling KASAN in JITed BPF code allows the existing kernel sanitizer infrastructure to catch out-of-bounds stack accesses and use-after-free bugs in BPF programs at runtime.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_icmp_send kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260709144900.245904-2-mahe.tardy@gmail.com/",
+      "summary": "Introduces the `bpf_icmp_send` kfunc (v11), which allows BPF programs attached to cgroup_skb hooks to generate and send ICMP error messages in response to filtered or redirected packets. The series includes selftests covering IPv4 and IPv6 cgroup_skb scenarios, a recursion guard test, and a no-route test to verify graceful failure when the destination is unreachable. Reaching its 11th revision reflects the care taken to handle all the edge cases involved in generating ICMP packets safely from within the BPF runtime.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Remove dynptr check in check_stack_range_initialized()",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260709230242.2003459-2-ameryhung@gmail.com/",
+      "summary": "First patch in a 4-patch series that refactors the BPF verifier to unify the argument metadata structures used for helper calls and kfunc calls. This patch removes an unnecessary dynptr check inside `check_stack_range_initialized()` as a prerequisite cleanup, after which subsequent patches factor out raw_mode fields and allocation-size handling into a shared `bpf_call_arg_meta` structure used by both paths. The goal is to reduce code duplication in the verifier and make future extensions to argument handling easier to implement consistently.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Drop scalar id on sign-extending narrowing stack fills",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260709153131.386599-1-daniel@iogearbox.net/",
+      "summary": "Fixes a verifier correctness issue where a scalar ID was incorrectly preserved after a sign-extending narrowing stack fill (e.g., reading a 32-bit value that was stored as 64-bit). Keeping the stale scalar ID could allow the verifier to make incorrect equivalence assumptions about register values, potentially enabling out-of-bounds access. The accompanying selftest adds a case that triggers the broken behavior without the fix.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Require a BPF cpumask for bpf_cpumask_populate()",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260709182800.2037938-2-main.kalliope@gmail.com/",
+      "summary": "Tightens the kfunc argument type for `bpf_cpumask_populate()` to require an owned (BPF-managed) cpumask rather than accepting borrowed cpumasks. Allowing a borrowed cpumask to be populated is unsafe because the lifetime is not controlled by the caller, and the restriction makes the API safer with no loss of expressiveness for legitimate use cases. A selftest patch verifies that passing a borrowed cpumask now correctly results in a verifier rejection.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: reject rdonly/rdwr_buf_size kfunc arguments that exceed u32 max",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260709155837.1879230-2-main.kalliope@gmail.com/",
+      "summary": "Adds a verifier check that rejects kfunc `rdonly_buf_size` and `rdwr_buf_size` annotated arguments whose value exceeds the u32 maximum, preventing a potential silent truncation when the size is cast internally. Without the check, an oversized constant could wrap around and produce an incorrect (smaller) memory access bound, creating an out-of-bounds access risk. The companion selftest validates that the verifier now correctly rejects such oversized buffer-size arguments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix security_bpf_map_create error handling",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260709073422.379247-1-daniel@iogearbox.net/",
+      "summary": "Fixes an error-handling bug in the `security_bpf_map_create` LSM hook path where a failure did not correctly unwind the partially-created map state, potentially leaking resources or leaving inconsistent security module state. The fix ensures the cleanup path is invoked on error, aligning BPF map creation with the standard pattern used elsewhere in the kernel. This is a standalone single-patch fix.",
+      "related_links": []
+    }
+  ]
+}
