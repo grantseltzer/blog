@@ -1,0 +1,246 @@
+{
+  "period": "daily",
+  "period_start": "2026-07-10",
+  "period_end": "2026-07-11",
+  "fetched_at": "2026-07-11T10:17:25Z",
+  "patches": [
+    {
+      "title": "[bpf-next,2/2] bpf: Remove unnecessary dup/restore subprog_starts and prog clone",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/329e83120f0d88c2e5dc9d7bb2c0d38988959d32.1783775928.git.xukuohai@huaweicloud.com/",
+      "date": "2026-07-11T13:23:12",
+      "series": [
+        {
+          "id": 1125719,
+          "url": "https://patchwork.kernel.org/api/series/1125719/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125719",
+          "date": "2026-07-11T13:23:10",
+          "name": "bpf: Eliminate unnecessary clone/restore due to constants blinding",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1125719/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Eliminate dup/restore of insn_aux_data",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/c5b9d3af5a828e6c0e46e0bee058bca73b2c69e7.1783775928.git.xukuohai@huaweicloud.com/",
+      "date": "2026-07-11T13:23:11",
+      "series": [
+        {
+          "id": 1125719,
+          "url": "https://patchwork.kernel.org/api/series/1125719/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125719",
+          "date": "2026-07-11T13:23:10",
+          "name": "bpf: Eliminate unnecessary clone/restore due to constants blinding",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1125719/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/5] x86/bpf: enable EXECMEM_ROX_CACHE for BPF allocations",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260711-execmem-x86-rox-bpf-v0-v2-5-bfd956d35119@kernel.org/",
+      "date": "2026-07-11T09:43:49",
+      "series": [
+        {
+          "id": 1125781,
+          "url": "https://patchwork.kernel.org/api/series/1125781/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125781",
+          "date": "2026-07-11T09:43:44",
+          "name": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1125781/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/5] bpf, x86: make sure allocation in arch_bpf_trampoline_size() is writable",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260711-execmem-x86-rox-bpf-v0-v2-4-bfd956d35119@kernel.org/",
+      "date": "2026-07-11T09:43:48",
+      "series": [
+        {
+          "id": 1125781,
+          "url": "https://patchwork.kernel.org/api/series/1125781/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125781",
+          "date": "2026-07-11T09:43:44",
+          "name": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1125781/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/5] bpf: alloc_prog_pack(): skip ROX management for already ROX memory",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260711-execmem-x86-rox-bpf-v0-v2-3-bfd956d35119@kernel.org/",
+      "date": "2026-07-11T09:43:47",
+      "series": [
+        {
+          "id": 1125781,
+          "url": "https://patchwork.kernel.org/api/series/1125781/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125781",
+          "date": "2026-07-11T09:43:44",
+          "name": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1125781/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/5] bpf: drop __weak from bpf_jit_alloc_exec() and bpf_jit_free_exec()",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260711-execmem-x86-rox-bpf-v0-v2-2-bfd956d35119@kernel.org/",
+      "date": "2026-07-11T09:43:46",
+      "series": [
+        {
+          "id": 1125781,
+          "url": "https://patchwork.kernel.org/api/series/1125781/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125781",
+          "date": "2026-07-11T09:43:44",
+          "name": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1125781/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/5] bpf: dispatcher: allocate bpf_dispatcher->rw_image with vmalloc()",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260711-execmem-x86-rox-bpf-v0-v2-1-bfd956d35119@kernel.org/",
+      "date": "2026-07-11T09:43:45",
+      "series": [
+        {
+          "id": 1125781,
+          "url": "https://patchwork.kernel.org/api/series/1125781/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125781",
+          "date": "2026-07-11T09:43:44",
+          "name": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1125781/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/3] selftests/bpf: Add tests for >8 byte return value and 128-bit arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260710225222.4015115-1-yonghong.song@linux.dev/",
+      "date": "2026-07-10T22:52:22",
+      "series": [
+        {
+          "id": 1125658,
+          "url": "https://patchwork.kernel.org/api/series/1125658/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125658",
+          "date": "2026-07-10T22:52:11",
+          "name": "bpf: Fix trampoline handling of 128-bit values",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1125658/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/3] bpf, x86: Fix trampoline stack size for 128-bit arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260710225217.4014393-1-yonghong.song@linux.dev/",
+      "date": "2026-07-10T22:52:17",
+      "series": [
+        {
+          "id": 1125658,
+          "url": "https://patchwork.kernel.org/api/series/1125658/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125658",
+          "date": "2026-07-10T22:52:11",
+          "name": "bpf: Fix trampoline handling of 128-bit values",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1125658/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/3] bpf: Reject >8 byte return values on return-reading trampoline paths",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260710225211.4013521-1-yonghong.song@linux.dev/",
+      "date": "2026-07-10T22:52:11",
+      "series": [
+        {
+          "id": 1125658,
+          "url": "https://patchwork.kernel.org/api/series/1125658/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125658",
+          "date": "2026-07-10T22:52:11",
+          "name": "bpf: Fix trampoline handling of 128-bit values",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1125658/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v1,1/1] bpf: Enable JIT hardening by default when x86_64 CFI is enabled",
+      "author": "Jennifer Miller",
+      "url": "https://lore.kernel.org/bpf/20260710191932.120911-2-jmill@asu.edu/",
+      "date": "2026-07-10T19:19:32",
+      "series": [
+        {
+          "id": 1125573,
+          "url": "https://patchwork.kernel.org/api/series/1125573/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125573",
+          "date": "2026-07-10T19:19:31",
+          "name": "Enable BPF JIT hardening by default when x86_64 CFI is enabled",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1125573/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Fix unused nskb warning in bpf_icmp_send",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260710180915.7105-1-mahe.tardy@gmail.com/",
+      "date": "2026-07-10T18:09:15",
+      "series": [
+        {
+          "id": 1125546,
+          "url": "https://patchwork.kernel.org/api/series/1125546/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125546",
+          "date": "2026-07-10T18:09:15",
+          "name": "[bpf-next] bpf: Fix unused nskb warning in bpf_icmp_send",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1125546/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Test fentry link after tracing_multi link",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260710144734.78203-3-leon.hwang@linux.dev/",
+      "date": "2026-07-10T14:47:34",
+      "series": [
+        {
+          "id": 1125462,
+          "url": "https://patchwork.kernel.org/api/series/1125462/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125462",
+          "date": "2026-07-10T14:47:33",
+          "name": "bpf: Fix WARNING in bpf_trampoline_multi_detach",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1125462/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Mark tracing_multi trampolines as ftrace managed",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260710144734.78203-2-leon.hwang@linux.dev/",
+      "date": "2026-07-10T14:47:33",
+      "series": [
+        {
+          "id": 1125462,
+          "url": "https://patchwork.kernel.org/api/series/1125462/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1125462",
+          "date": "2026-07-10T14:47:33",
+          "name": "bpf: Fix WARNING in bpf_trampoline_multi_detach",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1125462/mbox/"
+        }
+      ]
+    }
+  ]
+}
