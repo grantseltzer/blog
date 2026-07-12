@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-07-12T10:36:31Z",
+  "period_start": "2026-07-10",
+  "period_end": "2026-07-11",
+  "patch_count": 14,
+  "thread_count": 6,
+  "top_contributors": ["Mike Rapoport", "Yonghong Song", "Xu Kuohai", "Leon Hwang"],
+  "key_topics": ["jit", "trampoline", "x86", "memory", "constants-blinding", "selftests"],
+  "overview": "BPF activity on July 10-11 focused on JIT memory management and trampoline correctness improvements. Mike Rapoport submitted v2 of a five-patch series enabling EXECMEM_ROX_CACHE for BPF JIT allocations on x86, tightening memory permissions by moving JIT code to read-only executable pages. Yonghong Song's series fixed 128-bit value handling in trampolines, while Xu Kuohai removed redundant clone/restore overhead introduced during constants blinding.",
+  "patches": [
+    {
+      "title": "x86/bpf: enable EXECMEM_ROX_CACHE for BPF allocations",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260711-execmem-x86-rox-bpf-v0-v2-5-bfd956d35119@kernel.org/",
+      "summary": "This patch enables the EXECMEM_ROX_CACHE allocator for BPF JIT allocations on x86_64, replacing the previous writable-then-executable allocation approach with read-only executable (ROX) memory. By leveraging the execmem ROX cache, BPF JIT-compiled programs run from pages that are never simultaneously writable, strengthening kernel memory security. The series (v2) consists of preparatory steps including vmalloc-based rw_image allocation, removal of weak JIT alloc/free symbols, and ROX-awareness in alloc_prog_pack before this final enablement.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject >8 byte return values on return-reading trampoline paths",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260710225211.4013521-1-yonghong.song@linux.dev/",
+      "summary": "The BPF trampoline infrastructure does not properly handle functions returning values wider than 8 bytes such as 128-bit integers, leading to potential stack corruption on fexit/fmod_ret paths. This patch adds a verifier-level check to reject programs that attempt to read return values wider than 8 bytes via trampolines. The companion x86 trampoline fix ensures the stack layout correctly accounts for 128-bit arguments passed in register pairs, and selftests cover the new behavior across both cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Eliminate dup/restore of insn_aux_data",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/c5b9d3af5a828e6c0e46e0bee058bca73b2c69e7.1783775928.git.xukuohai@huaweicloud.com/",
+      "summary": "During constants blinding, the BPF verifier duplicates insn_aux_data and the program image before patching, then restores them if blinding turns out to be unnecessary. This patch eliminates the unnecessary duplication of insn_aux_data by restructuring the blinding path so that the auxiliary data is only modified when blinding is actually applied. The companion patch removes the corresponding dup/restore of subprog_starts and the prog clone, reducing transient memory allocation overhead in the constants blinding path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Enable JIT hardening by default when x86_64 CFI is enabled",
+      "author": "Jennifer Miller",
+      "url": "https://lore.kernel.org/bpf/20260710191932.120911-2-jmill@asu.edu/",
+      "summary": "This RFC proposes automatically enabling BPF JIT hardening (bpf_jit_harden=1) on x86_64 systems that boot with Control Flow Integrity (CFI) active, since both features share the goal of hardening indirect control flow and CFI-enabled kernels already carry the associated overhead. JIT hardening provides additional protection against BPF constant blinding attacks, making it a natural complement to CFI. The patch is an RFC seeking community feedback on the policy before wider adoption.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Mark tracing_multi trampolines as ftrace managed",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260710144734.78203-2-leon.hwang@linux.dev/",
+      "summary": "When multiple BPF programs are attached via tracing_multi links, the associated trampolines must be properly marked as ftrace-managed to ensure correct detach sequencing. Without this marking, detaching a fentry link after a tracing_multi link on the same target function triggers a WARNING in bpf_trampoline_multi_detach due to inconsistent reference state. This patch fixes the marking flag and the companion selftest reproduces the problematic attach/detach sequence.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix unused nskb warning in bpf_icmp_send",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260710180915.7105-1-mahe.tardy@gmail.com/",
+      "summary": "A compiler warning about an unused nskb variable was introduced in the bpf_icmp_send helper under certain kernel configurations. This single-patch fix adjusts the variable declaration so it is properly consumed in all compilation paths, eliminating the warning without any change in runtime behavior. The fix is a minor cleanup targeting code quality in the BPF network helper layer.",
+      "related_links": []
+    }
+  ]
+}

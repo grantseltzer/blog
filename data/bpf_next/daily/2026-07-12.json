@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-07-12T10:36:31Z",
+  "period_start": "2026-07-11",
+  "period_end": "2026-07-12",
+  "patch_count": 11,
+  "thread_count": 4,
+  "top_contributors": ["Mike Rapoport", "Xu Kuohai", "Leon Hwang", "Pu Lehui"],
+  "key_topics": ["jit", "trampoline", "tailcall", "verifier", "x86", "memory"],
+  "overview": "July 11-12 saw continued refinement of several patch series, with Xu Kuohai's two-patch cleanup of constants blinding overhead alongside Pu Lehui's new verifier enforcement rejecting tailcall invocations from callback subprograms. Leon Hwang posted v2 of the tracing_multi trampoline fix, and Mike Rapoport's EXECMEM_ROX_CACHE series for x86 BPF allocations continued to circulate for review.",
+  "patches": [
+    {
+      "title": "bpf: Reject callback subprogs invoke tailcall",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260711104727.4023420-2-pulehui@huaweicloud.com/",
+      "summary": "The BPF verifier currently allows callback subprograms passed to helpers or kfuncs to invoke bpf_tail_call, which conflicts with the callback return path and can lead to undefined behavior. This patch adds a verifier-level check that explicitly rejects BPF programs where a callback subprogram attempts to invoke a tailcall. The companion selftest exercises the newly forbidden combination, confirming that the verifier correctly rejects such programs.",
+      "related_links": []
+    },
+    {
+      "title": "x86/bpf: enable EXECMEM_ROX_CACHE for BPF allocations",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260711-execmem-x86-rox-bpf-v0-v2-5-bfd956d35119@kernel.org/",
+      "summary": "The final patch in a v2 five-patch series, this change enables the EXECMEM_ROX_CACHE allocator for BPF JIT allocations on x86_64 so that JIT-compiled programs run from read-only executable pages rather than pages that are ever simultaneously writable. Preparatory patches in the series update the BPF dispatcher to use vmalloc for rw_image, remove weak JIT alloc/free symbols, and add ROX-awareness to alloc_prog_pack. This top-level x86 enablement is the culmination of those steps.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Eliminate dup/restore of insn_aux_data",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/c5b9d3af5a828e6c0e46e0bee058bca73b2c69e7.1783775928.git.xukuohai@huaweicloud.com/",
+      "summary": "During constants blinding the BPF verifier clones insn_aux_data along with the program image to preserve originals in case blinding is not needed, incurring unnecessary allocation overhead on every blinding attempt. This patch eliminates the insn_aux_data duplication by restructuring the blinding path so auxiliary data is only written when blinding is confirmed necessary. It is the first of two cleanup patches that together simplify the constants blinding infrastructure.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Remove unnecessary dup/restore subprog_starts and prog clone",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/329e83120f0d88c2e5dc9d7bb2c0d38988959d32.1783775928.git.xukuohai@huaweicloud.com/",
+      "summary": "Complementing the insn_aux_data elimination, this second patch removes the dup/restore of subprog_starts and the full program clone that constants blinding used as a fallback path. With the restructured blinding logic from the first patch, these temporary copies are no longer needed and can be dropped entirely. Together the two patches remove transient allocations that were always discarded on the successful blinding path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Mark tracing_multi trampolines as ftrace managed",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260711124822.29406-2-leon.hwang@linux.dev/",
+      "summary": "This v2 patch corrects the lifecycle management of trampolines created for tracing_multi BPF links by ensuring they are properly flagged as ftrace-managed. The missing flag caused a WARNING in bpf_trampoline_multi_detach when a fentry link was subsequently detached after a tracing_multi link on the same kernel function. The revision addresses review feedback from the initial v1 submission and includes an updated selftest.",
+      "related_links": []
+    }
+  ]
+}
