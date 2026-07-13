@@ -1,0 +1,42 @@
+{
+  "period": "daily",
+  "period_start": "2026-07-12",
+  "period_end": "2026-07-13",
+  "fetched_at": "2026-07-13T12:08:41Z",
+  "patches": [
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Cover helper reads of invalid spill siblings",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/feb30511a4b3e198253666b5ea2499d0944c153f.1783920884.git.chenyy23@mails.tsinghua.edu.cn/",
+      "date": "2026-07-13T06:16:12",
+      "series": [
+        {
+          "id": 1126317,
+          "url": "https://patchwork.kernel.org/api/series/1126317/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1126317",
+          "date": "2026-07-13T06:16:10",
+          "name": "bpf: Validate byte type for helper stack reads",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1126317/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Check byte type when validating helper stack reads",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/855140e07cebafa6770d577ed107b2541b92f95e.1783920884.git.chenyy23@mails.tsinghua.edu.cn/",
+      "date": "2026-07-13T06:16:11",
+      "series": [
+        {
+          "id": 1126317,
+          "url": "https://patchwork.kernel.org/api/series/1126317/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1126317",
+          "date": "2026-07-13T06:16:10",
+          "name": "bpf: Validate byte type for helper stack reads",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1126317/mbox/"
+        }
+      ]
+    }
+  ]
+}
