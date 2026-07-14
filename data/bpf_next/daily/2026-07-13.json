@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-07-14T00:00:00Z",
+  "period_start": "2026-07-12",
+  "period_end": "2026-07-13",
+  "patch_count": 2,
+  "thread_count": 1,
+  "top_contributors": ["Yiyang Chen"],
+  "key_topics": ["verifier", "helpers"],
+  "overview": "A single patch series landed on bpf-next on July 13th, tightening the BPF verifier's validation of helper function stack accesses. The series introduces a byte-type check that prevents helpers from reading from invalid spill sibling slots, closing a gap in stack-slot correctness reasoning, and adds a selftest to prevent regressions.",
+  "patches": [
+    {
+      "title": "bpf: Check byte type when validating helper stack reads",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/855140e07cebafa6770d577ed107b2541b92f95e.1783920884.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "This patch adds a byte-type check in the BPF verifier when validating helper function accesses to the program stack. Previously, the verifier could allow helpers to read from stack slots whose sibling bytes were left with an invalid spill type, leading to unsound reasoning about stack contents. The fix ensures that helper stack reads are rejected when the target slot contains bytes of an incorrect type, improving verifier correctness. The companion patch (2/2) adds a selftest covering the corrected behavior.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Cover helper reads of invalid spill siblings",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/feb30511a4b3e198253666b5ea2499d0944c153f.1783920884.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "This selftest exercises the byte-type validation for helper stack reads introduced in the companion kernel patch. It constructs BPF programs that attempt to pass stack slots with invalid spill sibling bytes to helpers, verifying that the verifier now correctly rejects these cases. Expanding coverage in this area guards against future regressions in the stack slot validation logic.",
+      "related_links": []
+    }
+  ]
+}

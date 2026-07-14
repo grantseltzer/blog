@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-07-14T00:00:00Z",
+  "period_start": "2026-07-06",
+  "period_end": "2026-07-13",
+  "patch_count": 100,
+  "thread_count": 29,
+  "top_contributors": ["Yonghong Song", "Daniel Borkmann", "Alexis Lothoré", "Pu Lehui", "Mike Rapoport"],
+  "key_topics": ["verifier", "jit", "kfuncs", "trampoline", "kasan", "xdp", "security", "tailcall"],
+  "overview": "The week of July 6-13 was exceptionally active on bpf-next, with 100 patches across 29 series spanning major new features, security hardening, and architecture-level fixes. A headline entry was Yonghong Song's 12-patch series enabling 16-byte return values via the R0:R2 register pair, a long-requested capability for kfuncs returning aggregate C types. Daniel Borkmann posted v6 of load-time BPF signed loader verification, while Alexis Lothoré advanced KASAN instrumentation of JITed BPF programs to v5 on x86. Additional highlights include Mike Rapoport's ROX cache for BPF memory allocations, the long-running bpf_icmp_send kfunc reaching v11, Pu Lehui enabling mixed bpf2bpf and tailcalls on RISC-V 64, and a verifier refactor unifying helper and kfunc argument metadata.",
+  "patches": [
+    {
+      "title": "bpf: Add verifier support for 16-byte returns in R0:R2",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260708200949.2156169-1-yonghong.song@linux.dev/",
+      "summary": "Part of a major 12-patch series extending BPF kfuncs to support 16-byte (128-bit) return values using the R0:R2 register pair, filling a long-standing gap in BPF's type system for returning aggregate C structures. The verifier is taught to recognize and validate the R0:R2 pair as a single logical return value, precision backtracking and live register analysis are updated accordingly, and the x86 JIT is wired up to correctly emit code for wider returns. Programs using R0:R2 returns are forced to JIT, trampoline paths for large returns are handled, and the feature is documented in the BPF kfunc documentation. A follow-up v3 series also fixes trampoline stack sizing for 128-bit arguments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Verify signed loader metadata at load time",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260708075343.358712-3-daniel@iogearbox.net/",
+      "summary": "Part of Daniel Borkmann's v6 series adding load-time verification of signed BPF loaders, a key piece of BPF security enforcement infrastructure. This patch implements the kernel-side check that validates signed loader metadata at program load time, allowing the system to enforce that BPF programs are loaded by a trusted, signed loader. Companion patches update bpftool to cover loader metadata in program signatures, drop an in-loader metadata check from libbpf that is superseded by kernel-side verification, resolve and cache fd_array objects at load time, and add documentation for BPF signing and enforcement.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add BPF_JIT_KASAN for KASAN instrumentation of JITed programs",
+      "author": "Alexis Lothoré",
+      "url": "https://lore.kernel.org/bpf/20260709-kasan-v5-3-1c64af8e4e1e@bootlin.com/",
+      "summary": "Part of the v5 series adding KASAN memory safety checks to BPF JIT-compiled programs on x86, enabling detection of out-of-bounds stack accesses in running BPF programs. A new BPF_JIT_KASAN Kconfig option gates the feature, the verifier is extended to propagate original instruction offsets through patching and mark stack-accessing instructions, and the x86 JIT backend emits KASAN shadow checks around those accesses. This brings a valuable debugging and security-hardening capability to BPF programs that mirrors what KASAN provides to regular kernel code.",
+      "related_links": []
+    },
+    {
+      "title": "x86/bpf: enable EXECMEM_ROX_CACHE for BPF allocations",
+      "author": "Mike Rapoport (Microsoft)",
+      "url": "https://lore.kernel.org/bpf/20260711-execmem-x86-rox-bpf-v0-v2-5-bfd956d35119@kernel.org/",
+      "summary": "The final patch in Mike Rapoport's v2 series transitioning BPF JIT allocations on x86 to use the execmem read-execute-only (ROX) cache, improving memory security for JITed BPF code. The series reworks the bpf_dispatcher to use vmalloc for its read-write image, removes the __weak annotations from BPF JIT alloc/free functions, adds a guard to skip ROX management when memory is already ROX, and ensures allocations in arch_bpf_trampoline_size() are writable. Consolidating BPF into the execmem ROX cache reduces fragmentation and centralizes management of executable memory.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_icmp_send kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260709144900.245904-2-mahe.tardy@gmail.com/",
+      "summary": "After eleven revision cycles, this patch adds the bpf_icmp_send() kfunc allowing BPF programs attached to cgroup sockets to send ICMP error messages in response to network events. The kfunc enables network policy enforcement programs to send proper ICMP unreachable notifications rather than silently dropping packets, improving network transparency. Selftests cover IPv4/IPv6 cgroup_skb scenarios, recursion protection to prevent ICMP storms, and no-route edge cases. A companion one-shot patch fixes an unused nskb compiler warning in the implementation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix vmlinux BTF prep race in bpf_get_btf_vmlinux",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260708211537.371874-2-daniel@iogearbox.net/",
+      "summary": "First patch in a four-patch series addressing BPF correctness issues surfaced by the sashiko fuzzer. This patch fixes a race condition in bpf_get_btf_vmlinux() during vmlinux BTF initialization, introducing a dedicated mutex so concurrent callers cannot race on the global BTF state. Other patches in the series fix insn_aux_data memory accounting in bpf_check(), add scratch buffer accounting in bpf_prog_calc_tag(), and fix security_bpf_map_create error handling.",
+      "related_links": []
+    },
+    {
+      "title": "netlink: specs: Add XDP RX checksum capability to XDP metadata specs",
+      "author": "Vladimir Vdovin",
+      "url": "https://lore.kernel.org/bpf/20260708203410.45121-2-deliran@verdict.gg/",
+      "summary": "First patch in Vladimir Vdovin's v4 series adding a bpf_xdp_metadata_rx_checksum() kfunc that lets XDP programs read hardware-offloaded RX checksum values from the NIC. The series adds XDP metadata specs for checksum capability via netlink, implements the xmo_rx_checksum callback in the veth and Intel ice drivers, adds selftest support for the new metadata path, and includes driver-net tests. This enables BPF-based packet processing to leverage hardware checksum offload without redundant software recalculation.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Mixing bpf2bpf and tailcalls",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260708064436.2971933-7-pulehui@huaweicloud.com/",
+      "summary": "The core patch in Pu Lehui's v6 series enabling mixed bpf2bpf subprogram calls and tail calls in the RISC-V 64-bit BPF JIT, bringing parity with x86 and ARM64. Pre-requisite patches in the series fix a memory leak in bpf_jit_free, a kernel stack corruption when using tail calls with CFI enabled, and a cache buffer allocation issue. A new RV_TAILCALL_OFFSET macro standardizes the offset calculation, and once the feature is wired up, affected tests are removed from the RISC-V deny list.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Unify helper and kfunc call argument meta",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260709230242.2003459-5-ameryhung@gmail.com/",
+      "summary": "Final patch in Amery Hung's four-patch series that unifies the argument metadata tracking structures for BPF helper calls and kfunc calls in the verifier. The series first removes a now-unnecessary dynptr check in check_stack_range_initialized(), extracts raw_mode-related fields from bpf_call_arg_meta into their own struct, unifies allocation-size argument handling between helpers and kfuncs, and finally merges the two call_arg_meta structures. This reduces duplication and simplifies future verifier work touching both helper and kfunc argument validation paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject callback subprogs invoke tailcall",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260711104727.4023420-2-pulehui@huaweicloud.com/",
+      "summary": "This verifier patch closes a correctness gap by explicitly rejecting BPF programs where a callback subprogram (passed to bpf_loop(), bpf_for_each_map_elem(), or similar helpers) attempts to invoke a tail call. Callback functions have a different execution context from regular subprograms, and tail calls within them can corrupt the call stack in ways the verifier cannot reason about safely. The patch adds the necessary check during verification with a clear error message, and a selftest covers both the rejected cases and the valid non-callback tail call patterns.",
+      "related_links": []
+    }
+  ]
+}
