@@ -1,0 +1,314 @@
+{
+  "period": "daily",
+  "period_start": "2026-07-14",
+  "period_end": "2026-07-15",
+  "fetched_at": "2026-07-15T10:53:19Z",
+  "patches": [
+    {
+      "title": "[bpf-next] selftests/bpf: Fix fib_lookup VLAN tests on hosts with forwarding on",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260715100349.2684391-1-avinash.duduskar@gmail.com/",
+      "date": "2026-07-15T10:03:49",
+      "series": [
+        {
+          "id": 1128047,
+          "url": "https://patchwork.kernel.org/api/series/1128047/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128047",
+          "date": "2026-07-15T10:03:49",
+          "name": "[bpf-next] selftests/bpf: Fix fib_lookup VLAN tests on hosts with forwarding on",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1128047/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,7/7] bpf: Unify helper and kfunc call argument meta",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260715064047.1793790-8-ameryhung@gmail.com/",
+      "date": "2026-07-15T06:40:47",
+      "series": [
+        {
+          "id": 1127916,
+          "url": "https://patchwork.kernel.org/api/series/1127916/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1127916",
+          "date": "2026-07-15T06:40:40",
+          "name": "Unify helper and kfunc call_arg_meta",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1127916/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,6/7] bpf: Drop redundant pkt_access from bpf_call_arg_meta",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260715064047.1793790-7-ameryhung@gmail.com/",
+      "date": "2026-07-15T06:40:46",
+      "series": [
+        {
+          "id": 1127916,
+          "url": "https://patchwork.kernel.org/api/series/1127916/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1127916",
+          "date": "2026-07-15T06:40:40",
+          "name": "Unify helper and kfunc call_arg_meta",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1127916/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/7] selftests/bpf: Test kfunc returning zero-sized allocation buffer",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260715064047.1793790-6-ameryhung@gmail.com/",
+      "date": "2026-07-15T06:40:45",
+      "series": [
+        {
+          "id": 1127916,
+          "url": "https://patchwork.kernel.org/api/series/1127916/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1127916",
+          "date": "2026-07-15T06:40:40",
+          "name": "Unify helper and kfunc call_arg_meta",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1127916/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/7] bpf: Unify helper and kfunc allocation-size argument handling",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260715064047.1793790-5-ameryhung@gmail.com/",
+      "date": "2026-07-15T06:40:44",
+      "series": [
+        {
+          "id": 1127916,
+          "url": "https://patchwork.kernel.org/api/series/1127916/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1127916",
+          "date": "2026-07-15T06:40:40",
+          "name": "Unify helper and kfunc call_arg_meta",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1127916/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/7] bpf: Pass argno to callees in check_func_arg() instead of argno_from_reg(regno)",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260715064047.1793790-4-ameryhung@gmail.com/",
+      "date": "2026-07-15T06:40:43",
+      "series": [
+        {
+          "id": 1127916,
+          "url": "https://patchwork.kernel.org/api/series/1127916/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1127916",
+          "date": "2026-07-15T06:40:40",
+          "name": "Unify helper and kfunc call_arg_meta",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1127916/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/7] bpf: Factor out raw_mode-related fields in bpf_call_arg_meta",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260715064047.1793790-3-ameryhung@gmail.com/",
+      "date": "2026-07-15T06:40:42",
+      "series": [
+        {
+          "id": 1127916,
+          "url": "https://patchwork.kernel.org/api/series/1127916/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1127916",
+          "date": "2026-07-15T06:40:40",
+          "name": "Unify helper and kfunc call_arg_meta",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1127916/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/7] bpf: Remove dynptr check in check_stack_range_initialized()",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260715064047.1793790-2-ameryhung@gmail.com/",
+      "date": "2026-07-15T06:40:41",
+      "series": [
+        {
+          "id": 1127916,
+          "url": "https://patchwork.kernel.org/api/series/1127916/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1127916",
+          "date": "2026-07-15T06:40:40",
+          "name": "Unify helper and kfunc call_arg_meta",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1127916/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: Test bpf_strcat,bpf_strncat kfuncs",
+      "author": "Rong Tao",
+      "url": "https://lore.kernel.org/bpf/tencent_DB0510330C3A8574B3C62E6154165FCB4709@qq.com/",
+      "date": "2026-07-15T01:27:27",
+      "series": [
+        {
+          "id": 1127811,
+          "url": "https://patchwork.kernel.org/api/series/1127811/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1127811",
+          "date": "2026-07-15T01:27:25",
+          "name": "bpf: add bpf_strcat,bpf_strncat kfunc",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1127811/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: add bpf_strcat,bpf_strncat kfunc",
+      "author": "Rong Tao",
+      "url": "https://lore.kernel.org/bpf/tencent_9EC04DC824CBF5124305E73564341511C405@qq.com/",
+      "date": "2026-07-15T01:27:26",
+      "series": [
+        {
+          "id": 1127811,
+          "url": "https://patchwork.kernel.org/api/series/1127811/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1127811",
+          "date": "2026-07-15T01:27:25",
+          "name": "bpf: add bpf_strcat,bpf_strncat kfunc",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1127811/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Test bpf_strcat,bpf_strncat kfuncs",
+      "author": "Rong Tao",
+      "url": "https://lore.kernel.org/bpf/tencent_FB0E71C06045E8278BE9B254A5E7756D7405@qq.com/",
+      "date": "2026-07-14T09:36:00",
+      "series": [
+        {
+          "id": 1127280,
+          "url": "https://patchwork.kernel.org/api/series/1127280/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1127280",
+          "date": "2026-07-14T09:35:58",
+          "name": "bpf: add bpf_strcat,bpf_strncat kfunc",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1127280/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: add bpf_strcat,bpf_strncat kfunc",
+      "author": "Rong Tao",
+      "url": "https://lore.kernel.org/bpf/tencent_59689407B1C3204B08362BEEF244A5FE5505@qq.com/",
+      "date": "2026-07-14T09:35:59",
+      "series": [
+        {
+          "id": 1127280,
+          "url": "https://patchwork.kernel.org/api/series/1127280/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1127280",
+          "date": "2026-07-14T09:35:58",
+          "name": "bpf: add bpf_strcat,bpf_strncat kfunc",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1127280/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: Add testcase for callback with tailcall",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260714024459.420075-3-pulehui@huaweicloud.com/",
+      "date": "2026-07-14T02:44:59",
+      "series": [
+        {
+          "id": 1127027,
+          "url": "https://patchwork.kernel.org/api/series/1127027/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1127027",
+          "date": "2026-07-14T02:44:57",
+          "name": "Reject callback subprogs invoke tailcall",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1127027/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: Reject callback subprogs invoke tailcall",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260714024459.420075-2-pulehui@huaweicloud.com/",
+      "date": "2026-07-14T02:44:58",
+      "series": [
+        {
+          "id": 1127027,
+          "url": "https://patchwork.kernel.org/api/series/1127027/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1127027",
+          "date": "2026-07-14T02:44:57",
+          "name": "Reject callback subprogs invoke tailcall",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1127027/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] bpf, x86: Add support for BPF_SDIV and BPF_SMOD in the i386 JIT",
+      "author": "Admin",
+      "url": "https://lore.kernel.org/bpf/20260714023939.616686-1-main.kalliope@gmail.com/",
+      "date": "2026-07-14T02:39:39",
+      "series": [
+        {
+          "id": 1127026,
+          "url": "https://patchwork.kernel.org/api/series/1127026/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1127026",
+          "date": "2026-07-14T02:39:39",
+          "name": "[bpf-next,v2] bpf, x86: Add support for BPF_SDIV and BPF_SMOD in the i386 JIT",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1127026/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,3/3] riscv, bpf: Add 32 bit atomic operations to RV32 JIT",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260714002451.4091139-4-visitorckw@gmail.com/",
+      "date": "2026-07-14T00:24:51",
+      "series": [
+        {
+          "id": 1126966,
+          "url": "https://patchwork.kernel.org/api/series/1126966/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1126966",
+          "date": "2026-07-14T00:24:48",
+          "name": "riscv, bpf: Add support for signed operations and 32-bit atomics",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1126966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/3] riscv, bpf: Add support for BPF_MOVSX in RV32 JIT",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260714002451.4091139-3-visitorckw@gmail.com/",
+      "date": "2026-07-14T00:24:50",
+      "series": [
+        {
+          "id": 1126966,
+          "url": "https://patchwork.kernel.org/api/series/1126966/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1126966",
+          "date": "2026-07-14T00:24:48",
+          "name": "riscv, bpf: Add support for signed operations and 32-bit atomics",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1126966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/3] riscv, bpf: Add support for BPF_SDIV and BPF_SMOD in RV32 JIT",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260714002451.4091139-2-visitorckw@gmail.com/",
+      "date": "2026-07-14T00:24:49",
+      "series": [
+        {
+          "id": 1126966,
+          "url": "https://patchwork.kernel.org/api/series/1126966/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1126966",
+          "date": "2026-07-14T00:24:48",
+          "name": "riscv, bpf: Add support for signed operations and 32-bit atomics",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1126966/mbox/"
+        }
+      ]
+    }
+  ]
+}
