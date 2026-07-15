@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-07-15T00:00:00Z",
+  "period_start": "2026-07-13",
+  "period_end": "2026-07-14",
+  "patch_count": 38,
+  "thread_count": 8,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Leon Hwang", "Avinash Duduskar", "Kuan-Wei Chiu"],
+  "key_topics": ["verifier", "kfuncs", "jit", "percpu", "fib-lookup", "tailcall"],
+  "overview": "A busy two-day window on bpf-next with 38 patches across 8 series. The headline is a sweeping 17-patch redesign of BPF verifier error reporting by Kumar Kartikeya Dwivedi, introducing structured diagnostic events organized by category to make rejection messages far more actionable. Leon Hwang's global percpu data series reached v9, and JIT improvements landed for both x86 i386 and RISC-V 32-bit covering signed division, modulo, and atomic operations.",
+  "patches": [
+    {
+      "title": "bpf: Add verifier diagnostics report helpers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260713153910.2556007-2-memxor@gmail.com/",
+      "summary": "First patch in a 17-patch series (v3) that completely redesigns how the BPF verifier reports errors. The series introduces a structured diagnostic event system categorizing failures by type — register safety, memory bounds, resource lifetime, CFG errors, call-type argument errors, and more — rather than emitting ad-hoc log lines. Each error category gets its own reporting infrastructure, making messages more informative and actionable for BPF program authors. Log-level gating is also added so verbose diagnostics can be controlled. This is among the most significant improvements to the BPF developer experience in recent memory.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260713154024.30851-3-leon.hwang@linux.dev/",
+      "summary": "Core kernel patch in a 9-patch series (v9) adding support for global per-CPU variables in BPF programs, removing the need for explicit per-CPU map lookups for simple per-CPU state. Companion patches add libbpf feature probing and API support, bpftool skeleton generation for global percpu data, and a BPF iterator for introspecting live values. Read-only percpu_array map semantics are also refined to allow direct reading. After nine revisions this series is a mature addition that simplifies BPF programs needing per-CPU counters or per-CPU scratch space.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_strcat,bpf_strncat kfunc",
+      "author": "Rong Tao",
+      "url": "https://lore.kernel.org/bpf/tencent_59689407B1C3204B08362BEEF244A5FE5505@qq.com/",
+      "summary": "Adds two new kfuncs, `bpf_strcat` and `bpf_strncat`, giving BPF programs in-kernel string concatenation capabilities that mirror their standard C library counterparts. Previously BPF programs had to implement string appending manually with byte-by-byte loops or helper workarounds. These kfuncs are useful for BPF programs constructing dynamic log strings, packet metadata, or other textual content in the kernel. A companion patch adds selftests exercising both functions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject callback subprogs invoke tailcall",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260714024459.420075-2-pulehui@huaweicloud.com/",
+      "summary": "This verifier patch (v2) rejects BPF programs where callback subprograms attempt to invoke tail calls, a combination that is semantically invalid and can corrupt the call stack. BPF-to-BPF callbacks and tail calls have conflicting stack frame assumptions: tail calls replace the current frame, while callbacks expect to return. The fix adds a verifier check that catches this at load time and emits a clear error message. A selftest is included to document and verify the rejection behavior.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Add support for BPF_SDIV and BPF_SMOD in the i386 JIT",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260714023939.616686-1-main.kalliope@gmail.com/",
+      "summary": "Extends the x86 32-bit (i386) BPF JIT to natively compile `BPF_SDIV` (signed division) and `BPF_SMOD` (signed modulo) instructions, which previously fell back to the interpreter. Signed division requires special care around the `idiv` instruction's use of the `edx:eax` pair and the INT_MIN / -1 overflow edge case. This is v2, addressing feedback from the initial submission. Completing JIT coverage for these instructions improves performance for BPF programs using signed arithmetic on 32-bit x86 hosts.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Add support for BPF_SDIV and BPF_SMOD in RV32 JIT",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260714002451.4091139-2-visitorckw@gmail.com/",
+      "summary": "Lead patch in a 3-patch series (v4) bringing signed division/modulo, sign-extending moves (BPF_MOVSX), and 32-bit atomic operations to the RISC-V 32-bit BPF JIT. Signed division requires handling divide-by-zero and INT_MIN/-1 edge cases that unsigned variants avoid. BPF_MOVSX enables efficient sign extension of 8/16/32-bit values into 64-bit registers. The atomic operations provide SMP-safe read-modify-write primitives for shared data. This series substantially closes the feature gap between the RV32 and RV64 JIT backends.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BPF_FIB_LOOKUP_VLAN flag to bpf_fib_lookup() helper",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260713162305.1237211-2-avinash.duduskar@gmail.com/",
+      "summary": "First patch in a 3-patch series (v7) adding bidirectional VLAN support to the `bpf_fib_lookup()` helper. The new `BPF_FIB_LOOKUP_VLAN` flag lets callers embed VLAN information in the lookup, enabling correct routing decisions for tagged traffic that the current interface-only lookup misses. A second flag, `BPF_FIB_LOOKUP_VLAN_INPUT`, handles VLAN context present on the ingress side. After seven revisions the API surface is clean and the series is ready to support BPF programs implementing VLAN-aware packet forwarding at line rate.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Check byte type when validating helper stack reads",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/855140e07cebafa6770d577ed107b2541b92f95e.1783920884.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "Verifier correctness fix that adds byte-type validation when a BPF helper reads from stack memory. Previously the verifier could permit helpers to read stack slots whose sibling bytes had invalid or uninitialized types — spill siblings that were never properly written. The fix checks each byte's type against the allowed set before granting read access, tightening the verifier's memory safety guarantees. A companion selftest covers the invalid spill sibling scenario to prevent regressions.",
+      "related_links": []
+    }
+  ]
+}
