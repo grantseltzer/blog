@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-07-16T10:01:51Z",
+  "period_start": "2026-07-14",
+  "period_end": "2026-07-15",
+  "patch_count": 19,
+  "thread_count": 7,
+  "top_contributors": ["Amery Hung", "Rong Tao", "Kuan-Wei Chiu"],
+  "key_topics": ["verifier", "kfuncs", "jit", "selftests", "x86", "riscv"],
+  "overview": "Activity over July 14-15 centered on verifier and JIT improvements. The most substantial work is Amery Hung's 7-patch series unifying helper and kfunc argument metadata in the verifier, reducing code duplication and establishing a cleaner internal interface. JIT backends also saw attention, with new signed division/modulo and atomic operation support landing for both the i386 and RV32 BPF JITs.",
+  "patches": [
+    {
+      "title": "bpf: Unify helper and kfunc call argument meta",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260715064047.1793790-8-ameryhung@gmail.com/",
+      "summary": "The final patch in a 7-part v2 series that consolidates the argument metadata structures used when the BPF verifier validates helper calls and kfunc calls. Previously, helpers and kfuncs maintained separate bookkeeping for things like raw-mode access and allocation size, leading to duplicated logic across check_func_arg() paths. The series factors out raw-mode fields, drops redundant pkt_access tracking, unifies allocation-size argument handling, and culminates in merging the two metadata types into one. This refactor makes it easier to add new argument annotations without needing to duplicate them in both code paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_strcat,bpf_strncat kfunc",
+      "author": "Rong Tao",
+      "url": "https://lore.kernel.org/bpf/tencent_9EC04DC824CBF5124305E73564341511C405@qq.com/",
+      "summary": "Adds two new string-manipulation kfuncs, bpf_strcat and bpf_strncat, to the BPF kernel function library. These kfuncs allow BPF programs to append one string to another within a bounds-checked destination buffer, mirroring standard C library semantics while operating under BPF's memory safety guarantees. The accompanying selftest patch (2/2) exercises both kfuncs to confirm correct behavior and verifier acceptance. This is the v2 revision, addressing review feedback on the v1 series posted the previous day.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject callback subprogs invoke tailcall",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260714024459.420075-2-pulehui@huaweicloud.com/",
+      "summary": "Teaches the BPF verifier to reject programs where a callback subprogram attempts to invoke a tail call. Mixing callbacks with tail calls creates difficult-to-reason-about control flow and can result in stack corruption or incorrect program behavior; previously, such combinations were either silently mishandled or triggered unexpected runtime failures. The fix adds an explicit check in the verifier's callback analysis path and is paired with a selftest that confirms the rejection and documents the expected error message.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Add support for BPF_SDIV and BPF_SMOD in the i386 JIT",
+      "author": "Admin",
+      "url": "https://lore.kernel.org/bpf/20260714023939.616686-1-main.kalliope@gmail.com/",
+      "summary": "Extends the x86 32-bit (i386) BPF JIT to emit native signed division and signed modulo instructions for BPF_SDIV and BPF_SMOD opcodes. Prior to this patch, the i386 JIT lacked signed arithmetic support, so signed division/modulo operations would fall back to the interpreter or be rejected. The v2 revision follows an earlier posting and brings i386 JIT parity with the signed-operation support already present in the x86_64 JIT.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Add support for BPF_SDIV and BPF_SMOD in RV32 JIT",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260714002451.4091139-2-visitorckw@gmail.com/",
+      "summary": "First patch in a v4 three-part series adding signed division, signed modulo, sign-extending move (BPF_MOVSX), and 32-bit atomic operations to the RISC-V 32-bit BPF JIT. The RV32 JIT previously lacked these instructions, requiring interpreter fallback for programs that use them. This series brings the RV32 JIT up to feature parity with more mature JIT backends for these instruction classes, improving performance on 32-bit RISC-V targets.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Fix fib_lookup VLAN tests on hosts with forwarding on",
+      "author": "Avinash Duduskar",
+      "url": "https://lore.kernel.org/bpf/20260715100349.2684391-1-avinash.duduskar@gmail.com/",
+      "summary": "Fixes flaky failures in the bpf_fib_lookup VLAN selftests when run on hosts that have IP forwarding enabled. The tests were constructing network conditions that assumed forwarding was disabled, causing unexpected routing decisions that caused lookups to return results inconsistent with test expectations. The fix adjusts the test setup to either disable forwarding for the test namespace or account for the forwarding behavior, making the tests reliable across a wider range of host configurations.",
+      "related_links": []
+    }
+  ]
+}
