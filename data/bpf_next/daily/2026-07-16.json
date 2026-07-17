@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-07-17T00:00:00Z",
+  "period_start": "2026-07-15",
+  "period_end": "2026-07-16",
+  "patch_count": 59,
+  "thread_count": 14,
+  "top_contributors": ["Leon Hwang", "Amery Hung", "Kumar Kartikeya Dwivedi", "Lorenzo Bianconi", "Mike Rapoport"],
+  "key_topics": ["kfuncs", "arena", "trampoline", "verifier", "xdp", "percpu", "jit"],
+  "overview": "A productive two-day window on bpf-next featured significant new features alongside bug fixes and cleanups. Headline work includes adding arena argument support for kfuncs and struct_ops, global percpu data reaching its 10th revision, and ROX memory caching for x86 BPF allocations. Several trampoline UAF fixes and a verifier call-argument-meta unification series round out the activity.",
+  "patches": [
+    {
+      "title": "bpf: Support __arena and __arena_nullable kfunc argument suffixes",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260715220052.1590783-2-memxor@gmail.com/",
+      "summary": "Introduces support for __arena and __arena_nullable argument suffixes on kfunc parameters, allowing kfuncs to receive arena pointers that the verifier will automatically rebase before the call. This is the first patch in a 9-patch series that also extends the same support to struct_ops stub arguments and fixes stack-passed argument handling for indirect trampolines on x86. The feature enables kfuncs and struct_ops implementations to work seamlessly with BPF arena memory, which uses a shared address-space region that requires pointer translation. Comprehensive selftests covering both kfunc and struct_ops arena argument paths are included.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260715153254.92010-3-leon.hwang@linux.dev/",
+      "summary": "Adds a new BPF_ADDR_PERCPU instruction and kernel-side infrastructure so that BPF programs can access globally-defined per-CPU variables without going through a map lookup. This is the v10 iteration of the series, indicating substantial refinement over many review cycles. The patchset also updates libbpf to probe and load global percpu data, extends bpftool to generate skeleton support, and adds verifier log messages and selftests covering direct reads, writes, and bpf_iter iteration. Per-CPU data access without map overhead is useful for high-performance tracing and networking programs that need per-core state.",
+      "related_links": []
+    },
+    {
+      "title": "x86/bpf: enable EXECMEM_ROX_CACHE for BPF allocations",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260716-execmem-x86-rox-bpf-v0-v3-5-4e76158c01c5@kernel.org/",
+      "summary": "Enables the EXECMEM_ROX_CACHE allocator for BPF JIT-compiled code on x86, replacing the previous bpf_jit_alloc_exec()/bpf_jit_free_exec() approach with a read-only executable memory cache that improves security and reduces overhead. The 5-patch series removes the __weak attribute from the old alloc/free hooks so the cache implementation takes precedence, skips redundant ROX management for memory already in the ROX state, and ensures the trampoline size calculation uses writable memory. The ROX cache avoids repeated mprotect()/mmap() cycles during JIT compilation, which is particularly beneficial on systems that compile many BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_strcat,bpf_strncat kfunc",
+      "author": "Rong Tao",
+      "url": "https://lore.kernel.org/bpf/tencent_7B0E22F21BB4086D66815C86AA5CBC5E8E0A@qq.com/",
+      "summary": "Adds bpf_strcat() and bpf_strncat() as new string-manipulation kfuncs, enabling BPF programs to concatenate strings in kernel memory without requiring helpers. This is the v3 of the series, addressing review feedback from earlier versions. The companion patch adds selftests exercising both kfuncs under various boundary conditions. String manipulation kfuncs are commonly requested for use in tracing programs that need to build formatted output or combine identifiers.",
+      "related_links": []
+    },
+    {
+      "title": "net: add bpf_skb_rx_checksum kfunc to read skb checksum metadata",
+      "author": "Lorenzo Bianconi",
+      "url": "https://lore.kernel.org/bpf/20260715-bpf-xdp-meta-rxcksum-v5-6-623d5c0d0ab7@kernel.org/",
+      "summary": "Introduces the bpf_skb_rx_checksum() kfunc so that tc/skb BPF programs can read hardware-offloaded RX checksum metadata from the XDP metadata area after XDP_PASS transitions. This is patch 6 of an 8-patch series (v5) that also adds the xmo_rx_checksum callback to the veth and ice drivers, updates netlink specs, and provides comprehensive selftests. Exposing HW checksum offload status to BPF programs eliminates redundant software checksum verification in scenarios where the NIC has already validated the packet.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Unify helper and kfunc call argument meta",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260715064047.1793790-8-ameryhung@gmail.com/",
+      "summary": "The concluding patch of a 7-patch verifier refactoring series that merges the previously separate bpf_call_arg_meta structures used for BPF helpers and kfuncs into a single unified structure. Earlier patches in the series factor out raw-mode fields, fix argno threading through check_func_arg(), and unify allocation-size argument handling. Unifying the meta structures removes significant code duplication in the verifier and makes it easier to apply consistent validation rules to both call paths going forward.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix stale old_image UAF on trampoline update failure",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/76dfd8edea81af878f52739431a218cd1d214ab2.1784191209.git.zhuhui@kylinos.cn/",
+      "summary": "Fixes a use-after-free bug where a stale old_image pointer could be accessed after the trampoline image had been freed when an ftrace update failed mid-flight. The companion patch in the same series addresses a related UAF in bpf_trampoline_multi_detach() itself. Both bugs could be triggered by concurrent BPF program attachment/detachment under specific failure conditions, potentially leading to kernel memory corruption.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Inline bpf_iter_num_new() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260715130430.318421-2-puranjay@kernel.org/",
+      "summary": "Begins a 4-patch series that inlines the three numeric open-coded iterator kfuncs (bpf_iter_num_new, bpf_iter_num_next, bpf_iter_num_destroy) directly into JIT-compiled BPF code, eliminating the overhead of kfunc call setup for the common bpf_for() loop pattern. An accompanying benchmark selftest quantifies the performance gain. Inlining these frequently-used iteration primitives is particularly impactful for tight loops in XDP and tracing programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Disallow interpreter fallback for arena-related insns",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260715141122.15783-2-leon.hwang@linux.dev/",
+      "summary": "Prevents the BPF interpreter from being used as a fallback for programs containing arena-related instructions, which require JIT-only pointer rebasing that the interpreter cannot perform. The v2 series extends this restriction to cover gotox and BPF_ADDR_PERCPU instructions as well. This is a correctness and safety fix: allowing interpreter fallback for these instruction classes would silently produce wrong results or crashes rather than failing with a clear error.",
+      "related_links": []
+    }
+  ]
+}
