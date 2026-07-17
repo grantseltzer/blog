@@ -1,0 +1,348 @@
+{
+  "period": "daily",
+  "period_start": "2026-07-16",
+  "period_end": "2026-07-17",
+  "fetched_at": "2026-07-17T10:49:40Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: Cover helper reads of invalid spill siblings",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/4cacb17794793237658cf039d7df5e14f2aab335.1784280493.git.chenyy23@mails.tsinghua.edu.cn/",
+      "date": "2026-07-17T10:05:45",
+      "series": [
+        {
+          "id": 1129490,
+          "url": "https://patchwork.kernel.org/api/series/1129490/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129490",
+          "date": "2026-07-17T10:05:43",
+          "name": "bpf: Validate byte type for helper stack reads",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1129490/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: Check byte type when validating helper stack reads",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/aa470c883419417b06a7fcd63afc9f05eef29f5a.1784280493.git.chenyy23@mails.tsinghua.edu.cn/",
+      "date": "2026-07-17T10:05:44",
+      "series": [
+        {
+          "id": 1129490,
+          "url": "https://patchwork.kernel.org/api/series/1129490/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129490",
+          "date": "2026-07-17T10:05:43",
+          "name": "bpf: Validate byte type for helper stack reads",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1129490/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf, mips: Add support for BPF_SDIV and BPF_SMOD in the mips JIT",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260716211055.2569433-1-main.kalliope@gmail.com/",
+      "date": "2026-07-16T21:10:55",
+      "series": [
+        {
+          "id": 1129101,
+          "url": "https://patchwork.kernel.org/api/series/1129101/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129101",
+          "date": "2026-07-16T21:10:55",
+          "name": "[bpf-next] bpf, mips: Add support for BPF_SDIV and BPF_SMOD in the mips JIT",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1129101/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf, sparc: Add support for BPF_SDIV and BPF_SMOD in the sparc64 JIT",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260716151110.1716607-1-main.kalliope@gmail.com/",
+      "date": "2026-07-16T15:11:10",
+      "series": [
+        {
+          "id": 1128937,
+          "url": "https://patchwork.kernel.org/api/series/1128937/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128937",
+          "date": "2026-07-16T15:11:10",
+          "name": "[bpf-next] bpf, sparc: Add support for BPF_SDIV and BPF_SMOD in the sparc64 JIT",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1128937/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] selftests/bpf: Add tests for memory usage for arena",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260716142746.8794-3-jiayuan.chen@linux.dev/",
+      "date": "2026-07-16T14:25:00",
+      "series": [
+        {
+          "id": 1128902,
+          "url": "https://patchwork.kernel.org/api/series/1128902/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128902",
+          "date": "2026-07-16T14:24:58",
+          "name": "[bpf-next,1/3] bpf: Add memory usage for arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1128902/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] selftests/bpf: Run arena tests serially",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260716142746.8794-2-jiayuan.chen@linux.dev/",
+      "date": "2026-07-16T14:24:59",
+      "series": [
+        {
+          "id": 1128902,
+          "url": "https://patchwork.kernel.org/api/series/1128902/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128902",
+          "date": "2026-07-16T14:24:58",
+          "name": "[bpf-next,1/3] bpf: Add memory usage for arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1128902/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] bpf: Add memory usage for arena",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260716142746.8794-1-jiayuan.chen@linux.dev/",
+      "date": "2026-07-16T14:24:58",
+      "series": [
+        {
+          "id": 1128902,
+          "url": "https://patchwork.kernel.org/api/series/1128902/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128902",
+          "date": "2026-07-16T14:24:58",
+          "name": "[bpf-next,1/3] bpf: Add memory usage for arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1128902/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/3] selftests/bpf: Add testcases for callback with tailcall",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260716120157.835937-4-pulehui@huaweicloud.com/",
+      "date": "2026-07-16T12:01:57",
+      "series": [
+        {
+          "id": 1128798,
+          "url": "https://patchwork.kernel.org/api/series/1128798/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128798",
+          "date": "2026-07-16T12:01:57",
+          "name": "Fixes for tailcall with subprog and callback",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1128798/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/3] bpf: Reject callback subprogs invoke tailcall",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260716120157.835937-3-pulehui@huaweicloud.com/",
+      "date": "2026-07-16T12:01:56",
+      "series": [
+        {
+          "id": 1128798,
+          "url": "https://patchwork.kernel.org/api/series/1128798/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128798",
+          "date": "2026-07-16T12:01:57",
+          "name": "Fixes for tailcall with subprog and callback",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1128798/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/3] bpf: Sync tail_call_reachable with callee state on entry",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260716120157.835937-2-pulehui@huaweicloud.com/",
+      "date": "2026-07-16T12:01:55",
+      "series": [
+        {
+          "id": 1128798,
+          "url": "https://patchwork.kernel.org/api/series/1128798/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128798",
+          "date": "2026-07-16T12:01:57",
+          "name": "Fixes for tailcall with subprog and callback",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1128798/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/2] selftests/bpf: Test bpf_strcat,bpf_strncat kfuncs",
+      "author": "Rong Tao",
+      "url": "https://lore.kernel.org/bpf/tencent_C7A5E27560540491DBE052682ACBE1F24405@qq.com/",
+      "date": "2026-07-16T09:34:51",
+      "series": [
+        {
+          "id": 1128693,
+          "url": "https://patchwork.kernel.org/api/series/1128693/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128693",
+          "date": "2026-07-16T09:34:49",
+          "name": "bpf: add bpf_strcat,bpf_strncat kfunc",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1128693/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/2] bpf: add bpf_strcat,bpf_strncat kfunc",
+      "author": "Rong Tao",
+      "url": "https://lore.kernel.org/bpf/tencent_7B0E22F21BB4086D66815C86AA5CBC5E8E0A@qq.com/",
+      "date": "2026-07-16T09:34:50",
+      "series": [
+        {
+          "id": 1128693,
+          "url": "https://patchwork.kernel.org/api/series/1128693/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128693",
+          "date": "2026-07-16T09:34:49",
+          "name": "bpf: add bpf_strcat,bpf_strncat kfunc",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1128693/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] bpf: Fix UAF in bpf_trampoline_multi_detach when ftrace update fails",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/d1fcbede8f311db5cfa7cbe34371de7b63186ce5.1784191209.git.zhuhui@kylinos.cn/",
+      "date": "2026-07-16T08:43:39",
+      "series": [
+        {
+          "id": 1128651,
+          "url": "https://patchwork.kernel.org/api/series/1128651/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128651",
+          "date": "2026-07-16T08:43:37",
+          "name": "bpf: Fix two trampoline image UAFs in bpf_trampoline_multi_detach()",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1128651/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Fix stale old_image UAF on trampoline update failure",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/76dfd8edea81af878f52739431a218cd1d214ab2.1784191209.git.zhuhui@kylinos.cn/",
+      "date": "2026-07-16T08:43:38",
+      "series": [
+        {
+          "id": 1128651,
+          "url": "https://patchwork.kernel.org/api/series/1128651/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128651",
+          "date": "2026-07-16T08:43:37",
+          "name": "bpf: Fix two trampoline image UAFs in bpf_trampoline_multi_detach()",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1128651/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,5/5] x86/bpf: enable EXECMEM_ROX_CACHE for BPF allocations",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260716-execmem-x86-rox-bpf-v0-v3-5-4e76158c01c5@kernel.org/",
+      "date": "2026-07-16T07:51:39",
+      "series": [
+        {
+          "id": 1128610,
+          "url": "https://patchwork.kernel.org/api/series/1128610/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128610",
+          "date": "2026-07-16T07:51:34",
+          "name": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1128610/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,4/5] bpf, x86: make sure allocation in arch_bpf_trampoline_size() is writable",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260716-execmem-x86-rox-bpf-v0-v3-4-4e76158c01c5@kernel.org/",
+      "date": "2026-07-16T07:51:38",
+      "series": [
+        {
+          "id": 1128610,
+          "url": "https://patchwork.kernel.org/api/series/1128610/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128610",
+          "date": "2026-07-16T07:51:34",
+          "name": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1128610/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/5] bpf: alloc_prog_pack(): skip ROX management for already ROX memory",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260716-execmem-x86-rox-bpf-v0-v3-3-4e76158c01c5@kernel.org/",
+      "date": "2026-07-16T07:51:37",
+      "series": [
+        {
+          "id": 1128610,
+          "url": "https://patchwork.kernel.org/api/series/1128610/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128610",
+          "date": "2026-07-16T07:51:34",
+          "name": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1128610/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/5] bpf: drop __weak from bpf_jit_alloc_exec() and bpf_jit_free_exec()",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260716-execmem-x86-rox-bpf-v0-v3-2-4e76158c01c5@kernel.org/",
+      "date": "2026-07-16T07:51:36",
+      "series": [
+        {
+          "id": 1128610,
+          "url": "https://patchwork.kernel.org/api/series/1128610/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128610",
+          "date": "2026-07-16T07:51:34",
+          "name": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1128610/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/5] bpf: dispatcher: allocate bpf_dispatcher->rw_image with vzalloc()",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260716-execmem-x86-rox-bpf-v0-v3-1-4e76158c01c5@kernel.org/",
+      "date": "2026-07-16T07:51:35",
+      "series": [
+        {
+          "id": 1128610,
+          "url": "https://patchwork.kernel.org/api/series/1128610/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128610",
+          "date": "2026-07-16T07:51:34",
+          "name": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1128610/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf:syscall: Log error code on trampoline unlink failure",
+      "author": "",
+      "url": "https://lore.kernel.org/bpf/20260716113419588y6Ycmo7pzva8buwne9yWZ@zte.com.cn/",
+      "date": "2026-07-16T03:34:19",
+      "series": [
+        {
+          "id": 1128515,
+          "url": "https://patchwork.kernel.org/api/series/1128515/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1128515",
+          "date": "2026-07-16T03:34:19",
+          "name": "[bpf-next] bpf:syscall: Log error code on trampoline unlink failure",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1128515/mbox/"
+        }
+      ]
+    }
+  ]
+}
