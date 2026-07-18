@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-07-17T10:49:40Z",
+  "period_start": "2026-07-16",
+  "period_end": "2026-07-17",
+  "patch_count": 21,
+  "thread_count": 9,
+  "top_contributors": ["Mike Rapoport", "Jiayuan Chen", "Pu Lehui", "Nicholas Dudar"],
+  "key_topics": ["verifier", "jit", "kfuncs", "trampoline", "arena", "tailcall", "memory"],
+  "overview": "The bpf-next mailing list received 21 patches across 9 series on July 16-17. Highlights include Mike Rapoport's multi-part series enabling EXECMEM_ROX_CACHE for BPF JIT allocations on x86, improving memory security, and Hui Zhu's fixes for two use-after-free bugs in bpf_trampoline_multi_detach(). Additional notable work covers new bpf_strcat and bpf_strncat kfuncs, arena memory usage tracking, verifier improvements for helper stack reads, and tailcall/callback correctness fixes.",
+  "patches": [
+    {
+      "title": "x86/bpf: enable EXECMEM_ROX_CACHE for BPF allocations",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260716-execmem-x86-rox-bpf-v0-v3-1-4e76158c01c5@kernel.org/",
+      "summary": "This 5-patch series (v3) enables the EXECMEM_ROX_CACHE allocator for BPF JIT code on x86, replacing the existing bpf_jit_alloc_exec/bpf_jit_free_exec weak hooks. ROX (read-only execute) memory caching improves security by keeping JIT-emitted code pages non-writable except during brief patching windows, and reduces TLB pressure through cache reuse. Supporting patches drop the __weak attribute from the JIT allocator functions, fix alloc_prog_pack() to avoid redundant ROX management, and ensure trampoline size calculations use writable memory. This is an important hardening step for BPF on x86.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix stale old_image UAF on trampoline update failure",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/76dfd8edea81af878f52739431a218cd1d214ab2.1784191209.git.zhuhui@kylinos.cn/",
+      "summary": "This 2-patch series fixes two use-after-free (UAF) bugs in the BPF trampoline subsystem. The first patch addresses a stale old_image pointer that can be freed while still referenced during a trampoline update failure path. The second patch fixes a UAF in bpf_trampoline_multi_detach() when the ftrace update fails mid-operation. Both issues could be triggered under error conditions and pose potential memory safety hazards in tracing and fentry/fexit attachment scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Sync tail_call_reachable with callee state on entry",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260716120157.835937-2-pulehui@huaweicloud.com/",
+      "summary": "This v3 series (3 patches) fixes two distinct issues involving tailcalls interacting with subprograms and callbacks in the BPF verifier. The first patch corrects the propagation of tail_call_reachable state when entering callee subprograms, preventing missed frame setup. The second patch explicitly rejects callback subprograms that attempt to invoke tailcalls, which is an unsupported combination that could lead to incorrect behavior. The series includes new selftests covering both scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Check byte type when validating helper stack reads",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/aa470c883419417b06a7fcd63afc9f05eef29f5a.1784280493.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "This v2 series (2 patches) tightens the BPF verifier's validation of stack memory passed to helpers. Previously, the verifier could allow a helper to read from stack slots that were part of a spilled register but had an invalid or mismatched byte type for sibling slots. The fix checks the byte type of each slot during helper stack read validation, rejecting invalid spill siblings. A companion selftest patch covers the newly rejected cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_strcat,bpf_strncat kfunc",
+      "author": "Rong Tao",
+      "url": "https://lore.kernel.org/bpf/tencent_7B0E22F21BB4086D66815C86AA5CBC5E8E0A@qq.com/",
+      "summary": "This v3 series (2 patches) adds bpf_strcat and bpf_strncat as new kfuncs available to BPF programs for string concatenation. These kfuncs mirror the semantics of the standard C library functions and are intended for use with dynptr-based or fixed string buffers in BPF programs. The addition expands the set of string manipulation primitives available without requiring custom helper implementations. A selftest patch validates both kfuncs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add memory usage for arena",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260716142746.8794-1-jiayuan.chen@linux.dev/",
+      "summary": "This 3-patch series adds memory usage accounting and reporting for BPF arena maps. Arenas are a relatively new BPF map type used for large, shared memory regions, and this change wires them into the existing memory tracking infrastructure so their footprint is visible via standard interfaces. The series also runs arena selftests serially to avoid concurrency issues, and adds new test cases specifically covering memory usage measurement for arenas.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, mips: Add support for BPF_SDIV and BPF_SMOD in the mips JIT",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260716211055.2569433-1-main.kalliope@gmail.com/",
+      "summary": "This single patch adds JIT support for the BPF_SDIV (signed division) and BPF_SMOD (signed modulo) instructions to the MIPS BPF JIT compiler. These signed arithmetic operations were added to the BPF ISA but lacked architecture-specific JIT lowering on MIPS, causing fallback to the interpreter. The same author also submitted an equivalent patch for the sparc64 JIT (series 1128937), extending coverage of the signed arithmetic instructions to two more architectures.",
+      "related_links": []
+    }
+  ]
+}
