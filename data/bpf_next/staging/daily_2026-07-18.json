@@ -1,0 +1,280 @@
+{
+  "period": "daily",
+  "period_start": "2026-07-17",
+  "period_end": "2026-07-18",
+  "fetched_at": "2026-07-18T10:20:16Z",
+  "patches": [
+    {
+      "title": "[bpf-next,2/2] bpf, parisc: Add support for BPF_SDIV and BPF_SMOD in the parisc32 JIT",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260717190544.257306-3-main.kalliope@gmail.com/",
+      "date": "2026-07-17T19:05:44",
+      "series": [
+        {
+          "id": 1129807,
+          "url": "https://patchwork.kernel.org/api/series/1129807/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129807",
+          "date": "2026-07-17T19:05:42",
+          "name": "bpf, parisc: Add support for BPF_SDIV and BPF_SMOD in the parisc JITs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1129807/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf, parisc: Add support for BPF_SDIV and BPF_SMOD in the parisc64 JIT",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260717190544.257306-2-main.kalliope@gmail.com/",
+      "date": "2026-07-17T19:05:43",
+      "series": [
+        {
+          "id": 1129807,
+          "url": "https://patchwork.kernel.org/api/series/1129807/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129807",
+          "date": "2026-07-17T19:05:42",
+          "name": "bpf, parisc: Add support for BPF_SDIV and BPF_SMOD in the parisc JITs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1129807/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf, arm64: Fix stack-passed arguments for indirect trampolines",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260717141737.4090962-1-puranjay@kernel.org/",
+      "date": "2026-07-17T14:17:36",
+      "series": [
+        {
+          "id": 1129639,
+          "url": "https://patchwork.kernel.org/api/series/1129639/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129639",
+          "date": "2026-07-17T14:17:36",
+          "name": "[bpf-next] bpf, arm64: Fix stack-passed arguments for indirect trampolines",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1129639/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf, arm64: Optimize cast_user code generation",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260717134817.2868291-1-puranjay@kernel.org/",
+      "date": "2026-07-17T13:48:15",
+      "series": [
+        {
+          "id": 1129623,
+          "url": "https://patchwork.kernel.org/api/series/1129623/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129623",
+          "date": "2026-07-17T13:48:15",
+          "name": "[bpf-next] bpf, arm64: Optimize cast_user code generation",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1129623/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: Cover scalar arena frees below the base",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/20260717-c10-031-public-bpf-next-v2-b4-v2-2-54b555443a7c@mails.tsinghua.edu.cn/",
+      "date": "2026-07-17T12:53:48",
+      "series": [
+        {
+          "id": 1129591,
+          "url": "https://patchwork.kernel.org/api/series/1129591/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129591",
+          "date": "2026-07-17T12:53:46",
+          "name": "bpf: Reject arena frees below the arena base",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1129591/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: Reject arena frees below the arena base",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/20260717-c10-031-public-bpf-next-v2-b4-v2-1-54b555443a7c@mails.tsinghua.edu.cn/",
+      "date": "2026-07-17T12:53:47",
+      "series": [
+        {
+          "id": 1129591,
+          "url": "https://patchwork.kernel.org/api/series/1129591/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129591",
+          "date": "2026-07-17T12:53:46",
+          "name": "bpf: Reject arena frees below the arena base",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1129591/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/4] selftests/bpf: Add bpf_for() benchmark",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260717120215.2171057-5-puranjay@kernel.org/",
+      "date": "2026-07-17T12:02:12",
+      "series": [
+        {
+          "id": 1129568,
+          "url": "https://patchwork.kernel.org/api/series/1129568/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129568",
+          "date": "2026-07-17T12:02:08",
+          "name": "bpf: Inline the numeric open-coded iterator kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1129568/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/4] bpf: Inline bpf_iter_num_destroy() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260717120215.2171057-4-puranjay@kernel.org/",
+      "date": "2026-07-17T12:02:11",
+      "series": [
+        {
+          "id": 1129568,
+          "url": "https://patchwork.kernel.org/api/series/1129568/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129568",
+          "date": "2026-07-17T12:02:08",
+          "name": "bpf: Inline the numeric open-coded iterator kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1129568/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/4] bpf: Inline bpf_iter_num_next() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260717120215.2171057-3-puranjay@kernel.org/",
+      "date": "2026-07-17T12:02:10",
+      "series": [
+        {
+          "id": 1129568,
+          "url": "https://patchwork.kernel.org/api/series/1129568/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129568",
+          "date": "2026-07-17T12:02:08",
+          "name": "bpf: Inline the numeric open-coded iterator kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1129568/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/4] bpf: Inline bpf_iter_num_new() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260717120215.2171057-2-puranjay@kernel.org/",
+      "date": "2026-07-17T12:02:09",
+      "series": [
+        {
+          "id": 1129568,
+          "url": "https://patchwork.kernel.org/api/series/1129568/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129568",
+          "date": "2026-07-17T12:02:08",
+          "name": "bpf: Inline the numeric open-coded iterator kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1129568/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/4] selftests/bpf: Add tests for memory usage for arena",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260717114117.350851-5-jiayuan.chen@linux.dev/",
+      "date": "2026-07-17T11:37:04",
+      "series": [
+        {
+          "id": 1129554,
+          "url": "https://patchwork.kernel.org/api/series/1129554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129554",
+          "date": "2026-07-17T11:37:00",
+          "name": "bpf: Add memory usage for arena and selftest",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1129554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/4] selftests/bpf: Run arena tests serially",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260717114117.350851-4-jiayuan.chen@linux.dev/",
+      "date": "2026-07-17T11:37:03",
+      "series": [
+        {
+          "id": 1129554,
+          "url": "https://patchwork.kernel.org/api/series/1129554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129554",
+          "date": "2026-07-17T11:37:00",
+          "name": "bpf: Add memory usage for arena and selftest",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1129554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/4] bpf: Add memory usage for arena",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260717114117.350851-3-jiayuan.chen@linux.dev/",
+      "date": "2026-07-17T11:37:02",
+      "series": [
+        {
+          "id": 1129554,
+          "url": "https://patchwork.kernel.org/api/series/1129554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129554",
+          "date": "2026-07-17T11:37:00",
+          "name": "bpf: Add memory usage for arena and selftest",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1129554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/4] bpf: Pass arena instead of scratch_page to the pte callbacks",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260717114117.350851-2-jiayuan.chen@linux.dev/",
+      "date": "2026-07-17T11:37:01",
+      "series": [
+        {
+          "id": 1129554,
+          "url": "https://patchwork.kernel.org/api/series/1129554/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129554",
+          "date": "2026-07-17T11:37:00",
+          "name": "bpf: Add memory usage for arena and selftest",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1129554/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: Cover helper reads of invalid spill siblings",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/4cacb17794793237658cf039d7df5e14f2aab335.1784280493.git.chenyy23@mails.tsinghua.edu.cn/",
+      "date": "2026-07-17T10:05:45",
+      "series": [
+        {
+          "id": 1129490,
+          "url": "https://patchwork.kernel.org/api/series/1129490/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129490",
+          "date": "2026-07-17T10:05:43",
+          "name": "bpf: Validate byte type for helper stack reads",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1129490/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: Check byte type when validating helper stack reads",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/aa470c883419417b06a7fcd63afc9f05eef29f5a.1784280493.git.chenyy23@mails.tsinghua.edu.cn/",
+      "date": "2026-07-17T10:05:44",
+      "series": [
+        {
+          "id": 1129490,
+          "url": "https://patchwork.kernel.org/api/series/1129490/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1129490",
+          "date": "2026-07-17T10:05:43",
+          "name": "bpf: Validate byte type for helper stack reads",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1129490/mbox/"
+        }
+      ]
+    }
+  ]
+}
