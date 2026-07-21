@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-07-21T00:00:00Z",
+  "period_start": "2026-07-19",
+  "period_end": "2026-07-20",
+  "patch_count": 24,
+  "thread_count": 9,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Jiri Olsa", "Rong Tao", "Jiayuan Chen", "Jianlin Shi"],
+  "key_topics": ["stack-map", "kfuncs", "btf", "spin-lock", "bpftool", "verifier"],
+  "overview": "Activity on July 19-20 was dominated by two themes: Jiri Olsa's 9-patch series refactoring stack map code to properly disable preemption in bpf_get_stackid and __bpf_get_stack, and Kumar Kartikeya Dwivedi continuing a sweep of correctness fixes spanning BTF unique-field logic, res_spin_lock availability for tracing programs, and zeroing queue/stack outputs on lock failure. Additional contributions included a fourth revision of the bpf_strcat/bpf_strncat kfunc pair and a bpftool robustness fix for transiently disappearing programs and maps.",
+  "patches": [
+    {
+      "title": "bpf: Factor stackid_init function from __bpf_get_stackid",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260720085351.655075-2-jolsa@kernel.org/",
+      "summary": "This is the first patch of a 9-patch series titled 'bpf: Disable preemption in stack map code'. The series refactors __bpf_get_stackid by extracting helper functions (stackid_init, stackid_fastpath, stackid_new_bucket, callchain_store, callchain_finalize) before adding explicit preemption disabling. Preemption disabling is required for correctness when stack map operations can race on per-CPU data structures. The cleanup also removes the now-redundant trace_in argument from __bpf_get_stack.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_strcat,bpf_strncat kfunc",
+      "author": "Rong Tao",
+      "url": "https://lore.kernel.org/bpf/tencent_AFC1869057D6C3E59E0AF86BD7A80AA29A06@qq.com/",
+      "summary": "Fourth revision of a 2-patch series adding bpf_strcat and bpf_strncat as BPF kfuncs, mirroring the standard C string concatenation functions. These kfuncs allow BPF programs to perform in-kernel string concatenation without helper overhead. The companion patch adds selftests verifying correct behavior. This series has been iterating since earlier versions to address reviewer feedback on safety and argument type handling.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Skip prog/map that disappears while looking it up by name",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260720071520.396363-1-jiayuan.chen@linux.dev/",
+      "summary": "Fixes a race in bpftool where a program or map can be removed between the time bpftool iterates the list and the time it attempts to look it up by name, causing a spurious error. The fix gracefully skips entries that have disappeared rather than failing the operation. This addresses a real-world reliability issue when bpftool is used in scripted environments where BPF objects are short-lived.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: roll back stream capacity when allocation fails",
+      "author": "Jianlin Shi",
+      "url": "https://lore.kernel.org/bpf/tencent_C919BB32458A4DAD645A68F441345B971E05@qq.com/",
+      "summary": "Second revision of a fix for BPF stream handling: when an allocation fails during stream expansion, the stream capacity counter must be rolled back to prevent accounting divergence from actual allocated memory. Without this fix, a failed allocation could leave the stream believing it has more capacity than it does, leading to potential out-of-bounds access on subsequent writes. The patch restores the invariant that capacity accurately reflects allocated backing storage.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow bpf_res_spin_lock() in all contexts",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260719113551.1294284-2-memxor@gmail.com/",
+      "summary": "First patch of a 2-patch series opening bpf_res_spin_lock to tracing program types (fentry, fexit, fmod_ret). Previously, res_spin_lock was restricted to a narrower set of contexts due to an overly conservative check in is_tracing_prog_type(). The companion patch fixes is_tracing_prog_type() to correctly cover all tracing program types. This expands the usability of the resilient spin lock primitive for kernel tracing workflows.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Zero queue and stack outputs on lock failure",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260719125419.1782196-1-memxor@gmail.com/",
+      "summary": "Fixes a correctness issue where BPF queue and stack map pop/peek helpers could return uninitialized data in the output buffer when a spin lock acquisition fails. The kernel already returns an error code in such cases, but the output buffer was left containing stale stack or heap data, leaking kernel memory to BPF programs. This patch zeroes the output on the lock-failure path to close the information leak.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix offset warn check for bpf_res_spin_lock",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260719153634.2908692-2-memxor@gmail.com/",
+      "summary": "First patch of the v2 'Fix unique field logic in BTF' series (5 patches). This particular patch corrects a faulty offset warning check in the verifier's bpf_res_spin_lock handling, where the check compared the wrong field offsets. Additional patches in the series fix the BTF verifier's unique-field propagation logic for nested structs and mark bpf_refcount as a unique field, preventing programs from embedding duplicate reference count fields.",
+      "related_links": []
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-07-21T00:00:00Z",
+  "period_start": "2026-07-13",
+  "period_end": "2026-07-20",
+  "patch_count": 105,
+  "thread_count": 33,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Leon Hwang", "Jiri Olsa", "Puranjay Mohan", "Lorenzo Bianconi", "Jiayuan Chen"],
+  "key_topics": ["arena", "kfuncs", "btf", "verifier", "xdp", "stack-map", "jit", "percpu", "trampoline"],
+  "overview": "The week of July 13-20 saw broad BPF development with several major feature series landing. Kumar Kartikeya Dwivedi posted a large 9-patch series adding arena argument support to kfuncs and struct_ops methods, enabling arena-resident pointers to be passed across the user/kernel boundary with proper JIT-level rebasing, alongside BTF uniqueness fixes and res_spin_lock availability for tracing programs. Leon Hwang's global percpu data series reached version 10, while Lorenzo Bianconi's hardware RX checksum support for XDP programs hit its fifth revision with ice and veth driver callbacks. Also notable this week: Mike Rapoport's series enabling EXECMEM_ROX_CACHE for BPF JIT allocations on x86 (a security hardening measure), Puranjay Mohan inlining the numeric open-coded iterator kfuncs for reduced overhead, and Nicholas Dudar extending BPF_SDIV and BPF_SMOD support to parisc, mips, and sparc JITs.",
+  "patches": [
+    {
+      "title": "bpf: Support __arena and __arena_nullable kfunc argument suffixes",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260715220052.1590783-2-memxor@gmail.com/",
+      "summary": "Lead patch of a 9-part series adding arena argument support to kfuncs and struct_ops. BPF arena pointers use a different address space than kernel pointers; kfuncs annotated with __arena or __arena_nullable suffixes on pointer arguments now have those arguments automatically rebased from the userspace arena view to the kernel view at the JIT level. The series adds verifier support for the new annotations, x86 JIT code generation for the argument rebasing, struct_ops stub support, and comprehensive selftests. This significantly expands the usability of BPF arenas for zero-copy data sharing scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260715153254.92010-3-leon.hwang@linux.dev/",
+      "summary": "Tenth revision of the global percpu data series, which introduces a new BPF_ADDR_PERCPU pseudo-instruction allowing BPF programs to declare and access per-CPU global variables directly, analogous to C-language __percpu declarations. The series spans 9 patches covering the core kernel support, libbpf feature probing and API, bpftool skeleton generation, and selftests. A companion patch series (v2) disallows interpreter fallback for the new instruction class since it is JIT-only by design.",
+      "related_links": []
+    },
+    {
+      "title": "netlink: specs: add XDP RX checksum capability to XDP metadata specs",
+      "author": "Lorenzo Bianconi",
+      "url": "https://lore.kernel.org/bpf/20260715-bpf-xdp-meta-rxcksum-v5-1-623d5c0d0ab7@kernel.org/",
+      "summary": "First patch of an 8-part series (v5) adding hardware RX checksum offload information to XDP metadata, accessible via a new bpf_xdp_metadata_rx_checksum kfunc. Drivers expose the checksum result through a new xmo_rx_checksum callback; this series implements the callback for veth and Intel ice. A companion bpf_skb_rx_checksum kfunc allows SKB-based programs to read the same information after XDP_PASS. This enables BPF programs to skip redundant software checksum verification when hardware has already validated incoming packets.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: enable EXECMEM_ROX_CACHE for BPF allocations",
+      "author": "Mike Rapoport",
+      "url": "https://lore.kernel.org/bpf/20260716-execmem-x86-rox-bpf-v0-v3-1-4e76158c01c5@kernel.org/",
+      "summary": "Third revision of a 5-patch series that switches the BPF JIT allocator on x86 to use EXECMEM_ROX_CACHE, a read-only-execute memory region managed by the execmem subsystem. This replaces the current approach where JIT memory is briefly made writable during patching; with ROX cache, memory is allocated read-only/executable and writing is done through a separate writable alias, reducing the window during which executable pages are writable. The series also drops the __weak qualifiers from bpf_jit_alloc_exec() and handles ROX-aware trampoline sizing.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Inline bpf_iter_num_new() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260717120215.2171057-2-puranjay@kernel.org/",
+      "summary": "First patch of a 4-part series (v2) that inlines the three numeric open-coded iterator kfuncs—bpf_iter_num_new(), bpf_iter_num_next(), and bpf_iter_num_destroy()—directly into the JIT output rather than emitting a call. These kfuncs implement the bpf_for() loop primitive and are called on every iteration; inlining eliminates call overhead and enables the compiler to optimize across loop boundaries. A benchmark patch demonstrates the performance improvement.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject callback subprogs invoke tailcall",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260716120157.835937-3-pulehui@huaweicloud.com/",
+      "summary": "Key patch of a 3-patch series (v3) fixing verifier correctness around tailcalls used inside callback subprograms. A BPF program using bpf_loop() or similar callback helpers must not invoke tailcalls within the callback, as the JIT's tail_call_reachable tracking is not propagated into callback subprog frames, leading to incorrect stack layout. This patch adds an explicit verifier rejection for this pattern, while a companion patch synchronizes tail_call_reachable state on subprog entry.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Factor stackid_init function from __bpf_get_stackid",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260720085351.655075-2-jolsa@kernel.org/",
+      "summary": "First patch of a 9-patch series refactoring the BPF stack map implementation to properly disable preemption around stack ID and stack walk operations. The series extracts several helper functions from the monolithic __bpf_get_stackid to make the structure clear before adding preemption disable/enable around the critical sections. Without preemption disabling, concurrent access to per-CPU state in stack maps can produce corrupted results on preemptible kernels.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix offset warn check for bpf_res_spin_lock",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260719153634.2908692-2-memxor@gmail.com/",
+      "summary": "First patch of the v2 'Fix unique field logic in BTF' series (5 patches total). The patch corrects a wrong offset comparison in the verifier's bpf_res_spin_lock handling. Subsequent patches in the series fix the BTF verifier's unique-field propagation across nested struct types and mark bpf_refcount as a unique field, preventing BPF programs from embedding multiple reference count fields in a single allocation type.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow bpf_res_spin_lock() in all contexts",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260719113551.1294284-2-memxor@gmail.com/",
+      "summary": "Opens bpf_res_spin_lock() for use in tracing program types (fentry, fexit, fmod_ret). Previously an overly restrictive is_tracing_prog_type() check excluded these program types. The companion patch fixes is_tracing_prog_type() to correctly enumerate all tracing program types. This allows tracing programs to use the resilient spin lock for protecting shared state accessed from multiple attach points.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject arena frees below the arena base",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/20260717-c10-031-public-bpf-next-v2-b4-v2-1-54b555443a7c@mails.tsinghua.edu.cn/",
+      "summary": "Second revision of a 2-patch series adding a verifier check that rejects BPF programs attempting to free arena memory at addresses below the arena's base address. Such frees are invalid—the arena allocator derives object metadata from the offset above the base—and allowing them could corrupt allocator internals. The companion selftest covers scalar-typed arena pointers that underflow via arithmetic before being passed to free.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, parisc: Add support for BPF_SDIV and BPF_SMOD in the parisc64 JIT",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260717190544.257306-2-main.kalliope@gmail.com/",
+      "summary": "Part of a multi-architecture campaign by Nicholas Dudar to implement BPF_SDIV (signed division) and BPF_SMOD (signed modulo) in JIT compilers that previously lacked them. This week's contributions cover parisc64, parisc32, mips, and sparc64. These operations were added to the BPF ISA to support signed integer arithmetic without requiring BPF programs to emulate sign extension and division in software.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_strcat,bpf_strncat kfunc",
+      "author": "Rong Tao",
+      "url": "https://lore.kernel.org/bpf/tencent_AFC1869057D6C3E59E0AF86BD7A80AA29A06@qq.com/",
+      "summary": "Fourth revision of a 2-patch series adding bpf_strcat and bpf_strncat as BPF kfuncs, enabling in-kernel string concatenation from BPF programs. These kfuncs mirror standard C library semantics: bpf_strcat appends a source string to a destination buffer, and bpf_strncat limits the copy to n bytes. The series includes selftests verifying correct behavior and boundary handling.",
+      "related_links": []
+    }
+  ]
+}
