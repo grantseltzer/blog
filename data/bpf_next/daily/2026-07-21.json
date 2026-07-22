@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-07-22T00:00:00Z",
+  "period_start": "2026-07-20",
+  "period_end": "2026-07-21",
+  "patch_count": 17,
+  "thread_count": 7,
+  "top_contributors": ["Jiri Olsa", "Rong Tao", "Yiyang Chen"],
+  "key_topics": ["kfuncs", "stack-map", "verifier", "arm64", "bpftool"],
+  "overview": "The bpf-next mailing list saw 17 patches across 7 series on July 20-21. Highlights include a new string concatenation kfunc series at v4, a 9-patch series from Jiri Olsa refactoring and hardening the stack map code with preemption disabling, and a verifier fix preserving stack frame numbers through commuted arithmetic.",
+  "patches": [
+    {
+      "title": "bpf: add bpf_strcat,bpf_strncat kfunc",
+      "author": "Rong Tao",
+      "url": "https://lore.kernel.org/bpf/tencent_AFC1869057D6C3E59E0AF86BD7A80AA29A06@qq.com/",
+      "summary": "Adds two new kfuncs, bpf_strcat and bpf_strncat, enabling BPF programs to perform safe string concatenation operations within the kernel. This is the fourth revision of the series, indicating the implementation has been reviewed and refined through community feedback. These string kfuncs expand the set of string manipulation primitives available to BPF programs, reducing the need for manual byte-by-byte operations. A companion selftest patch validates the new kfuncs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Optimize cast_user code generation",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260721105921.1070501-1-puranjay@kernel.org/",
+      "summary": "Optimizes the JIT code generation for cast_user operations on the arm64 architecture, reducing the number of instructions emitted for user pointer casts. This is a v2 submission addressing review feedback from the initial version. Improved code generation for user pointer casts can benefit BPF programs that frequently interact with user-space memory, particularly in tracing and networking contexts on arm64 hardware.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Factor stackid_init function from __bpf_get_stackid",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260720085351.655075-2-jolsa@kernel.org/",
+      "summary": "First patch in a 9-patch series that refactors and hardens the BPF stack map code by disabling preemption around critical sections. The series decomposes the monolithic __bpf_get_stackid function into focused helpers (stackid_init, stackid_fastpath, stackid_new_bucket, callchain_store, callchain_finalize) before adding preemption-disabling to bpf_get_stackid and __bpf_get_stack. Properly disabling preemption prevents race conditions when stack maps are accessed on preemptible kernels, improving correctness on RT-enabled and SMP systems.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Preserve stack frame number for commuted arithmetic",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/fee8d44c3c792e29b8898951a68c8313d9d2da53.1784563939.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "Fixes a verifier issue where commuting a scalar+fp (frame pointer) arithmetic expression could cause the stack frame number to be dropped from the resulting register state. When the BPF verifier normalizes expressions by swapping operands, it must preserve the frame number associated with the frame pointer register. Without this fix, the verifier may incorrectly track stack accesses in programs that compute offsets via fp+scalar expressions, potentially leading to false rejections or missed safety checks. A selftest covering the regression scenario is included in the second patch of the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Skip prog/map that disappears while looking it up by name",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260720071520.396363-1-jiayuan.chen@linux.dev/",
+      "summary": "Fixes a robustness issue in bpftool where a program or map that is unloaded between enumeration and name lookup causes an unexpected error. The fix silently skips entries that disappear during the lookup window rather than treating the transient absence as a hard failure. This improves reliability when using bpftool in environments with dynamic BPF program lifecycles, such as during rapid load/unload cycles or when other tools are concurrently managing BPF objects.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: roll back stream capacity when allocation fails",
+      "author": "Jianlin Shi",
+      "url": "https://lore.kernel.org/bpf/tencent_C919BB32458A4DAD645A68F441345B971E05@qq.com/",
+      "summary": "Fixes a resource accounting bug where stream capacity is not rolled back on a memory allocation failure, leaving the capacity counter in an inconsistent state. This is a v2 submission addressing the issue first identified in an earlier revision. Incorrect capacity tracking after allocation failure could lead to unexpected behavior in BPF streams under memory pressure, and the fix ensures the counter is properly restored on the error path.",
+      "related_links": []
+    }
+  ]
+}
