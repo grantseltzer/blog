@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-07-23T00:00:00Z",
+  "period_start": "2026-07-21",
+  "period_end": "2026-07-22",
+  "patch_count": 40,
+  "thread_count": 19,
+  "top_contributors": ["Mykola Lysenko", "Feng Yang", "Mahe Tardy", "Yiyang Chen", "Feng Jiang"],
+  "key_topics": ["kfuncs", "maps", "verifier", "selftests", "riscv", "arm64", "libarena", "lsm", "jit"],
+  "overview": "The bpf-next mailing list saw 40 patches across 19 series on July 21-22, 2026, headlined by the introduction of bpf_ksock — a new set of kfuncs enabling BPF programs to create and manage kernel-side socket connections, including LSM hook integration and async callback guards. Additional notable work included lazy memory population for mmap-able BPF array maps, verifier fixes for pointer state preservation across commuted arithmetic operations, and new bpf_strcat/bpf_strncat string kfuncs.",
+  "patches": [
+    {
+      "title": "bpf: Add ksock kfuncs",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260722104454.165911-3-mahe.tardy@gmail.com/",
+      "summary": "Part of the v2 'Introduce bpf_ksock' series (5 patches), this patch adds kernel socket kfuncs that allow BPF programs to programmatically create, connect, and manage sockets within the kernel. The series also introduces a __sys_connect_socket() helper in the networking stack, LSM recursion guards, and async callback safety mechanisms. This is a significant capability expansion, enabling BPF programs to drive socket-level interactions without returning to userspace.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Populate mmap-able array map memory lazily",
+      "author": "Song Liu",
+      "url": "https://lore.kernel.org/bpf/20260722065308.4116186-2-song@kernel.org/",
+      "summary": "This patch changes the memory allocation strategy for mmap-able BPF array maps from eager to lazy, deferring physical page allocation until the memory is actually accessed. This reduces the upfront cost of creating large mmap-able array maps, which is particularly valuable when maps are pre-allocated but sparsely used. A companion benchmark patch (2/2) adds mmap/munmap microbenchmarks to selftests to validate and quantify the improvement.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Preserve pointer state for commuted arithmetic",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/004a83de52a36e9f3acd6c3fa2d0dfd0a013460d.1784696372.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "This v3 series (3 patches) fixes a verifier correctness issue where pointer state was being lost for arithmetic operations in commuted form (e.g., imm + ptr vs ptr + imm). The verifier previously failed to propagate untrusted pointer state when the operand order was swapped, potentially allowing unsafe programs to pass verification. The fix ensures symmetric handling of commuted arithmetic, with a selftest covering the corrected state propagation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_strcat,bpf_strncat kfunc",
+      "author": "Rong Tao",
+      "url": "https://lore.kernel.org/bpf/tencent_60882E4BE4F247C5F6D564F41BF1C3004805@qq.com/",
+      "summary": "This v5 series (2 patches) introduces bpf_strcat() and bpf_strncat() as new kfuncs, extending the BPF string manipulation library to cover concatenation operations. These complement existing string kfuncs and allow BPF programs to build up strings in-kernel without unsafe manual byte manipulation. The series includes selftests exercising both functions under various boundary conditions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, riscv: add support for timed may_goto",
+      "author": "Feng Jiang",
+      "url": "https://lore.kernel.org/bpf/20260722-riscv-bpf-timed-may-goto-v4-1-e117e6337bc7@kylinos.cn/",
+      "summary": "This v4 series (3 patches) implements JIT support for the timed may_goto instruction on RISC-V, bringing the architecture to parity with x86/arm64 for this loop-bounding primitive. The timed variant uses a hardware counter to bound loop iterations rather than a software decrement counter, enabling more deterministic loop termination. Selftests verify correct register preservation (R0-R5) around the instruction and enable the timed may_goto test suite for riscv64.",
+      "related_links": []
+    },
+    {
+      "title": "libarena: Use compiler load-acquire/store-release in bpf_atomic.h",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260721185705.1365329-1-memxor@gmail.com/",
+      "summary": "This patch updates libarena's bpf_atomic.h to use compiler-intrinsic load-acquire and store-release operations instead of explicit barrier sequences. Using these compiler primitives produces tighter code sequences on architectures that natively support acquire/release memory ordering (e.g., arm64, RISC-V), and makes the memory ordering intent clearer to both the compiler and readers. This is a correctness and code-quality improvement for the arena allocator used by BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix mmap_lock leak in irq_work path",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260722023004.1497923-2-sanghyun.park.cnu@gmail.com/",
+      "summary": "This fix addresses an mmap_lock acquisition that was not being released in an error path within the BPF irq_work handler. A leaked mmap_lock would cause subsequent mmap_read_lock() calls to deadlock, manifesting as a hang when BPF programs trigger the affected code path under error conditions. The fix adds the missing unlock to the early-exit path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Optimize cast_user code generation",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260721105921.1070501-1-puranjay@kernel.org/",
+      "summary": "This v2 patch improves the arm64 JIT's code generation for the BPF cast_user instruction, which is used to truncate pointer values for user-space address tagging (MTE/PAC). The optimization reduces the number of instructions emitted for this operation by taking advantage of arm64's bitfield manipulation instructions, shrinking JIT output size and improving cache utilization for programs that perform frequent user pointer casts.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix WARNING in bpf_tracing_link_release",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260721133036.49265-2-leon.hwang@linux.dev/",
+      "summary": "This 2-patch series fixes a kernel WARNING triggered when closing a fexit BPF link via bpf_tracing_link_release(). The warning was caused by improper ordering of cleanup steps in the release path, leading to a lockdep or reference-count assertion being hit after the underlying trampoline had already been detached. A selftest patch verifies that closing a fexit link no longer produces the warning.",
+      "related_links": []
+    }
+  ]
+}
