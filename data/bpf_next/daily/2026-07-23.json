@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-07-24T00:00:00Z",
+  "period_start": "2026-07-22",
+  "period_end": "2026-07-23",
+  "patch_count": 84,
+  "thread_count": 23,
+  "top_contributors": ["Amery Hung", "Ihor Solodrai", "Puranjay Mohan", "Varun R Mallya", "Mahe Tardy"],
+  "key_topics": ["kfuncs", "verifier", "riscv", "btf", "maps", "jit", "selftests", "libarena"],
+  "overview": "Today's bpf-next activity was dominated by a sweeping 18-patch series from Amery Hung that generates bpf_func_proto for kfuncs at call time, unifying argument validation between classic BPF helpers and kfuncs through BTF introspection. Alongside this, RISC-V gained support for both BPF exceptions and timed may_goto, while resolve_btfids was extended to discover kfuncs directly from BTF ID sets. Other highlights include new bpf_ksock kfuncs for in-kernel socket access, lazy mmap-able array map population, and inlining of numeric open-coded iterator kfuncs.",
+  "patches": [
+    {
+      "title": "bpf: Generate kfunc argument prototype at add-call time",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260723050806.1158442-19-ameryhung@gmail.com/",
+      "summary": "The capstone patch of an 18-patch series that generates a bpf_func_proto for kfuncs at the point a call is added, derived from BTF rather than hand-authored C structs. The series unifies helper and kfunc argument checking paths, renames ARG_CONST_SIZE to ARG_MEM_SIZE for consistency, and teaches the verifier to classify scalar, pointer, and memory-size kfunc arguments directly from BTF annotations such as __sz, __szk, and __nullable. This eliminates much of the per-kfunc boilerplate and makes the verifier's view of kfunc arguments as first-class as that of classic BPF helpers.",
+      "related_links": []
+    },
+    {
+      "title": "resolve_btfids: Discover kfuncs from BTF ID sets",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260722233518.778854-8-ihor.solodrai@linux.dev/",
+      "summary": "Part of an 8-patch series extending the resolve_btfids build tool to discover kfunc definitions by scanning BTF ID sets in compiled objects, rather than requiring explicit registration. Earlier patches in the series index BTF ID symbols by address and keep collected kfuncs in a red-black tree for efficient deduplication. An accompanying patch fixes HID-BPF syscall kfunc flags to match their struct_ops counterparts, and a new libbpf export (btf__find_by_name_kind_own) provides the lookup primitive needed by the tool.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add ksock kfuncs",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260722104454.165911-3-mahe.tardy@gmail.com/",
+      "summary": "Part of a 5-patch series introducing bpf_ksock, a new set of kfuncs that let BPF programs perform kernel-side socket operations such as connect without going through the full syscall path. A companion patch adds __sys_connect_socket() to the networking layer as the underlying helper. The series also includes tests for the kfunc API, an LSM recursion test, and an async-callback guard test covering the new socket handle type.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Add support for BPF exceptions",
+      "author": "Varun R Mallya",
+      "url": "https://lore.kernel.org/bpf/20260722140015.1982158-6-varunrmallya@gmail.com/",
+      "summary": "Part of a 6-patch series (v3) that ports BPF exceptions to the RISC-V JIT, bringing parity with x86 and arm64. The series first migrates the RISC-V kernel to use arch_stack_walk(), passes sp and fp through the stacktrace callback, and implements arch_bpf_stack_walk() so the exception unwinder can traverse BPF frames. Prologue and epilogue generation are refactored into helper functions to cleanly share code with the exception path, and the BPF exceptions denylist entry for riscv64 is removed.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Inline bpf_iter_num_new() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260722132424.450230-2-puranjay@kernel.org/",
+      "summary": "First patch of a 6-patch series (v3) that inlines all three numeric open-coded iterator kfuncs — bpf_iter_num_new, bpf_iter_num_next, and bpf_iter_num_destroy — directly into the BPF bytecode at verification time, eliminating the kfunc call overhead on hot loop paths. A fourth patch elides range checks when bounds are compile-time constants, and a fifth verifies the inlined shape using __xlated annotations. The series also adds a bpf_for() macro benchmark to measure the speedup.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Populate mmap-able array map memory lazily",
+      "author": "Song Liu",
+      "url": "https://lore.kernel.org/bpf/20260722205032.1245094-2-song@kernel.org/",
+      "summary": "Changes array map backing memory allocation to be deferred until first access rather than eagerly allocated at map creation time, reducing memory overhead for large mmap-able maps that are sparsely accessed. The companion patch adds a microbenchmark measuring mmap/munmap latency on array maps so the trade-off can be quantified. This is v2 of the series; the change is straightforward but has meaningful impact for users who create large preallocated maps.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Preserve pointer state for commuted arithmetic",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/004a83de52a36e9f3acd6c3fa2d0dfd0a013460d.1784696372.git.chenyy23@mails.tsinghua.edu.cn/",
+      "summary": "Fixes a verifier correctness issue where commuted arithmetic operations (e.g. const+ptr instead of ptr+const) caused the pointer register's type and id metadata to be lost, resulting in the result being treated as a scalar. The fix ensures the verifier propagates untrusted pointer state symmetrically regardless of operand order. A third patch adds selftest coverage that exercises commuted pointer arithmetic to catch regressions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, riscv: add support for timed may_goto",
+      "author": "Feng Jiang",
+      "url": "https://lore.kernel.org/bpf/20260723-riscv-bpf-timed-may-goto-v5-1-86acb54e5642@kylinos.cn/",
+      "summary": "Implements the timed variant of may_goto for the RISC-V BPF JIT (v5), allowing BPF programs to use time-bounded loops that automatically expire after a deadline rather than requiring a fixed iteration count. The series also tests that the timed may_goto implementation correctly preserves caller-saved registers R0–R5 across the deadline check, and enables the previously skipped timed may_goto selftests on riscv64.",
+      "related_links": []
+    }
+  ]
+}
