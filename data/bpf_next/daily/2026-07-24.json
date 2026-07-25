@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-07-25T00:00:00Z",
+  "period_start": "2026-07-23",
+  "period_end": "2026-07-24",
+  "patch_count": 33,
+  "thread_count": 7,
+  "top_contributors": ["Amery Hung", "Maxim Khmelevskii", "Feng Yang", "Feng Jiang", "Mykola Lysenko"],
+  "key_topics": ["kfuncs", "verifier", "btf", "s390", "riscv", "atomics", "may_goto", "selftests"],
+  "overview": "The bpf-next mailing list saw significant activity on July 23-24, dominated by an 18-patch series from Amery Hung that unifies argument handling between kfuncs and classic helpers by generating `bpf_func_proto` from BTF at call-add time — a major step toward a single verification path for both calling conventions. Alongside that, Maxim Khmelevskii contributed load-acquire and store-release atomic instruction support for the s390 JIT backend, and Feng Jiang landed timed `may_goto` support for RISC-V, further expanding hardware coverage of BPF loop-control primitives.",
+  "patches": [
+    {
+      "title": "bpf: Drop process_timer_func wrappers",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260723050806.1158442-2-ameryhung@gmail.com/",
+      "summary": "This is the first patch in an 18-part series titled 'Generate bpf_func_proto for kfunc', which aims to unify argument checking for kfuncs and classic BPF helpers by deriving a `bpf_func_proto` struct from BTF at the point a kfunc call is added. The series progressively refactors verifier internals — starting here by removing `process_timer_func` wrappers — and ends with the core generator that produces per-call argument prototypes, allowing kfunc pointer, memory, and scalar arguments to be verified through the same code paths as helpers. This effort reduces long-term maintenance burden and closes consistency gaps where kfuncs and helpers behaved differently under the verifier. It also introduces finer-grained argument annotations such as `PTR_MAYBE_NULL` and `MEM_FIXED_SIZE` flags derived directly from BTF type information.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, riscv: add support for timed may_goto",
+      "author": "Feng Jiang",
+      "url": "https://lore.kernel.org/bpf/20260723-riscv-bpf-timed-may-goto-v5-1-86acb54e5642@kylinos.cn/",
+      "summary": "This patch (v5, part of a 3-patch series) adds timed `may_goto` support to the RISC-V BPF JIT backend, extending the loop-termination primitive already present on x86 and arm64. Timed `may_goto` uses a hardware cycle counter to bound loop iterations rather than relying on a fixed-count decrement, enabling more flexible and efficient bounded loops in BPF programs. The series also adds a selftest verifying that timed `may_goto` correctly preserves registers R0-R5 on RISC-V and enables the existing timed may_goto test suite for that architecture. This is the fifth revision, reflecting steady maturation of the implementation.",
+      "related_links": []
+    },
+    {
+      "title": "s390/bpf: Add emit_ldx and emit_stx functions",
+      "author": "Maxim Khmelevskii",
+      "url": "https://lore.kernel.org/bpf/20260723140648.583055-6-max@linux.ibm.com/",
+      "summary": "This is the first patch in a 3-part series adding load-acquire and store-release atomic instruction support to the s390 BPF JIT. The series introduces `emit_ldx` and `emit_stx` helper functions for the s390 backend, then wires up the new `BPF_LOAD_ACQ` and `BPF_STORE_REL` instructions (which provide sequentially-consistent atomics), and finally enables the corresponding selftests on s390. These instructions were added to the BPF ISA to support concurrent data structure access without requiring full barriers, and this series brings s390 to parity with x86 and arm64 on that front.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: extract BPF skeleton generation into a helper script",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260724042600.175440-2-nickolay.lysenko@gmail.com/",
+      "summary": "This RFC (v4, 3-patch series) restructures the BPF selftests Makefile into a layered build system, beginning by extracting BPF skeleton generation into a standalone helper script. Subsequent patches move shared build definitions into a `Makefile.buildvars` include file and make each test-runner instance build in its own sub-make invocation, enabling better parallelism and isolation. The motivation is to address long build times and fragile dependency tracking in the existing monolithic Makefile. Being an RFC, the series is still seeking feedback on the approach before final submission.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Fix double free of subtest_state->name",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20260723085100.482147-2-yangfeng59949@163.com/",
+      "summary": "This is the first patch of a 5-part series (v3) fixing several memory-safety and correctness issues in `test_progs.c`, the main BPF selftest runner. Issues addressed across the series include a double-free of `subtest_state->name`, incorrect error checking for `pthread_create`, missing null checks after allocation calls, and a memory leak on `subtest_states` reallocation. These fixes improve reliability and correctness of the selftest infrastructure, particularly when running tests under memory error detectors like AddressSanitizer.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Fix flaky refcount asserts in map_kptr_race",
+      "author": "Maxim Khmelevskii",
+      "url": "https://lore.kernel.org/bpf/20260723114042.559926-2-max@linux.ibm.com/",
+      "summary": "This standalone patch addresses intermittent test failures in the `map_kptr_race` selftest caused by racy refcount assertions. The test exercises concurrent map access with kptr-referenced objects, and the refcount checks were written assuming a specific interleaving that doesn't always hold under load. The fix relaxes or restructures the assertions to tolerate valid concurrent outcomes, making the test deterministically pass without masking real bugs.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Report the real error from libarena parallel workers",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260723061347.398591-1-jiayuan.chen@linux.dev/",
+      "summary": "This v2 standalone patch improves error reporting in the libarena parallel worker tests by surfacing the actual errno or failure reason from worker threads rather than a generic failure code. Previously, when a parallel arena worker failed, only a top-level error was reported, making it difficult to diagnose which specific operation failed and why. The fix propagates the real error through the worker result structure, improving debuggability of arena-related test failures.",
+      "related_links": []
+    }
+  ]
+}
