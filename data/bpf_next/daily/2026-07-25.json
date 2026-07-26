@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-07-26T00:00:00Z",
+  "period_start": "2026-07-24",
+  "period_end": "2026-07-25",
+  "patch_count": 33,
+  "thread_count": 6,
+  "top_contributors": ["Amery Hung", "Pu Lehui", "Mykola Lysenko", "Kumar Kartikeya Dwivedi", "Leon Hwang"],
+  "key_topics": ["kfuncs", "verifier", "jit", "locking", "tracing", "selftests"],
+  "overview": "The day's activity was dominated by a large 18-patch series from Amery Hung aimed at generating bpf_func_proto descriptors for kfuncs at call-add time, unifying how helpers and kfuncs validate their arguments inside the verifier. Several bug-fix series also landed, including cross-architecture memory-leak and double-free fixes in bpf_jit_free, a CFI mismatch correction in the task-work callback, and a fix to sleepable checks for tracing programs. Kumar Kartikeya Dwivedi contributed a feature opening bpf_res_spin_lock() to all BPF program contexts.",
+  "patches": [
+    {
+      "title": "bpf: Generate kfunc argument prototype at add-call time",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260724190813.1458271-19-ameryhung@gmail.com/",
+      "summary": "The culminating patch of an 18-part series that reworks how the BPF verifier validates kfunc call arguments. Instead of ad-hoc kfunc-specific logic, this patch generates a bpf_func_proto struct for each kfunc at call-add time, fully unifying the validation path between kfuncs and helpers. The approach classifies kfunc arguments directly from BTF type information, allowing the existing helper-argument checker to handle kfuncs without special cases. This significantly simplifies the verifier and establishes a cleaner foundation for future kfunc enhancements.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Unify const map ptr argument checking for helpers and kfuncs",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260724190813.1458271-3-ameryhung@gmail.com/",
+      "summary": "An early foundational patch in the kfunc proto-generation series that routes both helpers and kfuncs through a single validator for constant map pointer arguments. Previously, kfuncs had divergent code for __const_map arguments that could produce subtle inconsistencies with the helper path. Unifying the logic here reduces duplication and is a prerequisite for the broader argument-classification work later in the series. The patch also splits the __const_map and __map kfunc argument tags to make the intent explicit.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow bpf_res_spin_lock() in all contexts",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260724201634.3025247-2-memxor@gmail.com/",
+      "summary": "Lifts the overly conservative restriction that bpf_res_spin_lock() could only be called from sleepable BPF programs. Resilient spin locks are designed to be safe across all BPF program types because they avoid deadlocks even in non-preemptible contexts, so the sleepable-only constraint was unnecessary. The change enables non-sleepable programs such as kprobes and fentry/fexit hooks to use resilient spin locks for synchronization. An accompanying selftest verifies correct acceptance and rejection behavior in tracing programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix double-free RO header in bpf_jit_free",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260725102020.2287770-8-pulehui@huaweicloud.com/",
+      "summary": "The final patch of a 7-part series fixing memory management bugs in bpf_jit_free() across multiple architectures. This patch addresses the root-level bug where the read-only JIT program header could be freed twice — once directly and once via bpf_prog_unlock_free — leading to a double-free. Earlier patches in the series fix architecture-specific memory leaks in arm64, s390, parisc, sparc64, ARC, and RISC-V JIT backends, and a RISC-V patch adjusts the bpf_func pointer to account for the CFI offset.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix CFI mismatch in task work callback",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260724-task_work_cfi-v1-1-2616691781ed@meta.com/",
+      "summary": "A standalone fix for a CFI (Control Flow Integrity) type mismatch in the BPF task-work completion callback. The callback function signature did not match the prototype expected by the task-work infrastructure, causing CFI violations at runtime on kernels built with CFI enforcement. The fix aligns the function signature to the correct prototype, preventing potential crashes or security enforcement failures on affected kernels.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix sleepable check for tracing prog",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260724141422.10463-2-leon.hwang@linux.dev/",
+      "summary": "Corrects a bug in how the BPF verifier determines whether a tracing program is sleepable when attaching to a target function. The check was using incorrect criteria in certain attachment scenarios, potentially allowing a tracing program marked sleepable to attach where it should not, or incorrectly blocking valid attachments. An accompanying selftest verifies that improperly marked sleepable tracing programs are properly rejected by the verifier.",
+      "related_links": []
+    }
+  ]
+}
