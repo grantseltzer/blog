@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-07-27T00:00:00Z",
+  "period_start": "2026-07-25",
+  "period_end": "2026-07-26",
+  "patch_count": 27,
+  "thread_count": 4,
+  "top_contributors": ["Pu Lehui", "Kumar Kartikeya Dwivedi", "Leon Hwang"],
+  "key_topics": ["kfuncs", "struct_ops", "arena", "jit", "trampoline", "sleepable"],
+  "overview": "Today's bpf-next activity was dominated by two major patch series. Kumar Kartikeya Dwivedi posted a 9-patch v2 series adding __arena and __arena_nullable argument annotation support to kfuncs and struct_ops, along with corresponding x86 JIT rebasing and trampoline fixes. Pu Lehui continued refining cross-architecture bpf_jit_free fixes (now at v3), addressing memory leaks and a double-free on RO headers across arm64, s390, parisc, sparc64, ARC, and RISC-V JITs, while Leon Hwang submitted a two-patch fix for an incorrect sleepable check in tracing programs.",
+  "patches": [
+    {
+      "title": "bpf: Support __arena and __arena_nullable kfunc argument suffixes",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260726013105.3689867-2-memxor@gmail.com/",
+      "summary": "This patch introduces support for __arena and __arena_nullable tag suffixes on kfunc pointer arguments in the BPF verifier. When a kfunc argument is annotated with __arena, the verifier ensures the pointer originates from a BPF arena and performs the necessary offset rebasing before the call. The __arena_nullable variant additionally allows a NULL pointer to be passed. This enables kfuncs to safely receive arena-backed pointers with full verifier-enforced provenance, opening the door to more expressive kfunc APIs that operate on arena memory.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support __arena and __arena_nullable on struct_ops arguments",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260726013105.3689867-3-memxor@gmail.com/",
+      "summary": "Extending the arena argument support from kfuncs to struct_ops, this patch teaches the verifier to recognize __arena and __arena_nullable annotations on struct_ops method arguments. Struct_ops programs can now pass arena-backed pointers through their registered callbacks with the same safety guarantees as kfuncs. This is a prerequisite for struct_ops implementations that manage arena memory and need to expose it via their callback interfaces.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: JIT __arena kfunc argument rebasing",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260726013105.3689867-4-memxor@gmail.com/",
+      "summary": "This patch implements the x86-64 JIT changes needed to rebase arena pointer arguments before kfunc calls. When a kfunc is called with an __arena-annotated argument, the JIT must add the arena's base address to the BPF pointer value so the kernel-side kfunc receives a valid virtual address. The patch adds code generation for the rebasing sequence and handles the case where the base is stored in a register to avoid repeated memory loads.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Extract the bpf_jit_binary_hdr helper",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260725154915.2488611-2-pulehui@huaweicloud.com/",
+      "summary": "This foundational patch in the bpf_jit_free cleanup series extracts a new bpf_jit_binary_hdr() helper that recovers the JIT binary header from a compiled BPF function pointer. Currently each architecture duplicates this pointer arithmetic inline, leading to divergent implementations and bugs when accounting for CFI or private stack offsets. Centralising the logic in a helper makes subsequent per-architecture leak and double-free fixes simpler and more consistent.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix double-free RO header in bpf_jit_free",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260725154915.2488611-10-pulehui@huaweicloud.com/",
+      "summary": "The final patch in the v3 bpf_jit_free series fixes a double-free of the read-only (RO) JIT header that occurs when bpf_jit_free is called on a program whose RO header has already been freed by an earlier error path. The bug can be triggered when JIT compilation partially succeeds before failing, leaving the RO header in a freed state while the main prog struct still holds a pointer to it. The fix tracks header ownership correctly so bpf_jit_free only frees the RO header once.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix sleepable check for tracing prog",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260725132624.78373-2-leon.hwang@linux.dev/",
+      "summary": "This patch corrects a logic error in the verifier's sleepable classification for tracing programs. The existing check incorrectly allowed certain tracing programs to be marked sleepable when they attach to non-sleepable kernel functions, potentially enabling blocking operations in contexts where they are not safe. The fix tightens the check to reject such programs at load time, with a companion selftest patch verifying that the corrected rejection is enforced.",
+      "related_links": []
+    }
+  ]
+}
