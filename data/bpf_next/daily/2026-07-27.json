@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-07-28T00:00:00Z",
+  "period_start": "2026-07-26",
+  "period_end": "2026-07-27",
+  "patch_count": 16,
+  "thread_count": 5,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Jiayuan Chen", "Nuoqi Gui"],
+  "key_topics": ["arena", "kfuncs", "struct_ops", "maps", "trampoline"],
+  "overview": "Activity on July 26-27 was dominated by two significant series: Kumar Kartikeya Dwivedi's v2 adding arena pointer argument support to kfuncs and struct_ops (including x86 JIT rebasing), and Jiayuan Chen's work to make BPF arena fault-in robust under cgroup memory.max limits. A handful of smaller fixes rounded out the day.",
+  "patches": [
+    {
+      "title": "bpf: Support __arena and __arena_nullable kfunc argument suffixes",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260726013105.3689867-2-memxor@gmail.com/",
+      "summary": "This patch (1/9 of the series) introduces verifier support for `__arena` and `__arena_nullable` suffix annotations on kfunc pointer arguments, allowing kfuncs to accept pointers into BPF arena memory regions. The verifier is taught to recognize and translate these argument types, building the foundation for subsequent patches that wire up x86 JIT rebasing and struct_ops trampoline conversion. This is a meaningful ergonomics and expressiveness improvement for programs using the arena allocator alongside kfuncs. The series also fixes a pre-existing bug in x86 stack-passed argument handling for indirect trampolines.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: JIT __arena kfunc argument rebasing",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260726013105.3689867-4-memxor@gmail.com/",
+      "summary": "Implements the x86 JIT side of arena argument support for kfuncs: when a kfunc argument is annotated `__arena`, the JIT emits code to rebase the arena-relative pointer to an absolute address before the call. This is necessary because BPF arena pointers are stored as offsets relative to the arena base, but kernel kfuncs expect absolute virtual addresses. The patch handles both register-passed and stack-passed arguments, and distinguishes nullable vs. non-nullable arena pointers.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support __arena and __arena_nullable on struct_ops arguments",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260726013105.3689867-3-memxor@gmail.com/",
+      "summary": "Extends the arena argument annotation support from kfuncs to struct_ops callback arguments, so that struct_ops implementations can also receive arena-relative pointers. The trampoline generated for struct_ops must perform the same arena-to-absolute rebasing that kfunc calls require. This patch updates the verifier's struct_ops argument handling and lays groundwork for the x86 trampoline changes in 4/9.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a sleepable page allocator for map memory",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260727062521.376231-2-jiayuan.chen@linux.dev/",
+      "summary": "Introduces a new sleepable page allocation path for BPF arena fault-in to handle cgroup `memory.max` pressure correctly. Previously, arena fault-in held a lock while allocating pages, which could deadlock or behave incorrectly when reclaim or OOM was triggered by cgroup memory limits. This patch factors out a sleepable allocator so that page allocation can block on reclaim without holding the arena lock, fixing a correctness issue for workloads running inside memory-constrained cgroups.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add __bpfcall attribute to bpf_task_work_callback()",
+      "author": "Heiko Carstens",
+      "url": "https://lore.kernel.org/bpf/20260727093834.2178900-1-hca@linux.ibm.com/",
+      "summary": "Adds the `__bpfcall` function attribute to `bpf_task_work_callback()`, which is the callback invoked when a BPF program enqueues work via `bpf_task_work_add()`. Without this attribute, CFI (Control Flow Integrity) type checks can fail on architectures that enforce strict indirect-call type matching, since the callback's actual signature may differ from what CFI expects at the call site. This is a small but important correctness fix for CFI-enabled kernels.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Cancel RHash special fields on value recycle",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260726-f01-23-rhash-cancel-bpf-next-v1-1-6e5e1131d885@mails.tsinghua.edu.cn/",
+      "summary": "Fixes a bug in BPF RHash (reuseport hash) maps where special fields—such as spin locks or timers embedded in map values—were not properly cancelled when a value slot was recycled for a new entry. Failing to cancel these fields on recycle can leave stale state (e.g., a timer still armed, a lock still held) in the recycled slot, leading to use-after-free or incorrect behavior. The companion patch adds a selftest to cover this scenario.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Log error code on trampoline unlink failure",
+      "author": "",
+      "url": "https://lore.kernel.org/bpf/20260726230724742Z4CDN9ntFInEofAf2YxME@zte.com.cn/",
+      "summary": "A small debugging improvement (v2) that adds the specific error code to the kernel log message emitted when unlinking a BPF trampoline fails. Previously the log only indicated that unlinking failed without providing the error value, making it difficult to diagnose root causes in production. With this patch the error is included, making failure analysis significantly easier.",
+      "related_links": []
+    }
+  ]
+}

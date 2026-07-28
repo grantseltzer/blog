@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-07-28T00:00:00Z",
+  "period_start": "2026-07-20",
+  "period_end": "2026-07-27",
+  "patch_count": 100,
+  "thread_count": 21,
+  "top_contributors": ["Amery Hung", "Kumar Kartikeya Dwivedi", "Pu Lehui", "Ihor Solodrai"],
+  "key_topics": ["kfuncs", "verifier", "arena", "jit", "struct_ops", "maps", "btf", "riscv", "s390"],
+  "overview": "The week of July 20-27 saw heavy activity across several major subsystems. The biggest series was Amery Hung's 18-patch effort to generate `bpf_func_proto` from BTF for kfuncs, unifying how the verifier validates helper and kfunc arguments. Kumar Kartikeya Dwivedi contributed two significant series: arena pointer support for kfuncs and struct_ops, and expanding `bpf_res_spin_lock()` availability to all contexts. Pu Lehui posted a comprehensive v3 series fixing memory leaks and double-free bugs in `bpf_jit_free` across six architectures. Additional notable work included Ihor Solodrai's resolve_btfids improvements for kfunc discovery, Maxim Khmelevskii's s390 JIT support for load-acquire/store-release atomics, and Feng Jiang's RISC-V timed `may_goto` implementation reaching v5.",
+  "patches": [
+    {
+      "title": "bpf: Generate kfunc argument prototype at add-call time",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260724190813.1458271-19-ameryhung@gmail.com/",
+      "summary": "The culminating patch (18/18) of a major series that teaches the BPF verifier to generate a `bpf_func_proto`-equivalent description of kfunc arguments directly from BTF at the time a kfunc call is added. Previously, kfunc argument validation used a bespoke path divergent from the helper validation path, making it hard to apply consistent checks. By generating a prototype from BTF, kfunc and helper mem+size checks, nullable pointer handling, and scalar argument classification can all use the same verifier machinery. This significantly reduces code duplication and lays groundwork for future kfunc expressiveness improvements.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support __arena and __arena_nullable kfunc argument suffixes",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260726013105.3689867-2-memxor@gmail.com/",
+      "summary": "Introduces verifier support for `__arena` and `__arena_nullable` argument suffix annotations on kfuncs, enabling kfuncs to accept pointers into BPF arena memory. The 9-patch series builds from verifier changes through x86 JIT rebasing logic (teaching the JIT to translate arena-relative offsets to absolute addresses at call time) to struct_ops trampoline conversion, with extensive selftests. This significantly expands the usefulness of the BPF arena allocator for kernel-facing code paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow bpf_res_spin_lock() in all contexts",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260724201634.3025247-2-memxor@gmail.com/",
+      "summary": "Removes the restriction that `bpf_res_spin_lock()` (the restartable spinlock kfunc) can only be called from specific BPF program types, opening it up for use in all contexts including tracing programs. The restartable spin lock design guarantees forward progress even when interrupted, so the usual concerns about holding locks across sleepable operations do not apply. The companion selftest covers acquisition in tracing programs where the restriction previously blocked usage.",
+      "related_links": []
+    },
+    {
+      "title": "resolve_btfids: Discover kfuncs from BTF ID sets",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260722233518.778854-8-ihor.solodrai@linux.dev/",
+      "summary": "Extends the `resolve_btfids` build tool (which resolves BTF IDs at link time) to automatically discover kfuncs declared in `BTF_SET8` ID sets, rather than requiring them to be listed separately. This reduces the chance of kfuncs being omitted from the ID resolution pass and enforces that kfunc flags are consistent across related sets. The series also refactors the tool's internal data structures to use rbtrees for efficient lookup and fixes an existing `_impl` lookup bug for module BTF.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Extract the bpf_jit_binary_hdr helper",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260725154915.2488611-2-pulehui@huaweicloud.com/",
+      "summary": "First patch (1/9) of a v3 series that fixes memory leaks and a double-free bug in `bpf_jit_free()` across six architectures (arm64, s390, sparc64, parisc, ARC, RISC-V). The series extracts a shared `bpf_jit_binary_hdr()` helper to consistently locate the JIT binary header regardless of architecture-specific layout differences, then uses it to fix each architecture's cleanup path. A separate patch fixes a RISC-V CFI offset accounting issue in `bpf_jit_free`.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a sleepable page allocator for map memory",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260727062521.376231-2-jiayuan.chen@linux.dev/",
+      "summary": "Adds a sleepable page allocation path for BPF arena fault-in so that cgroup `memory.max` limits that trigger reclaim or OOM no longer deadlock against the arena lock. Previously, fault-in allocated pages while holding a lock, which could block on reclaim in a way that violated the lock's non-sleepable invariants. The fix restructures fault-in to allocate the page before acquiring the lock, with a selftest verifying behavior under a tight `memory.max` constraint.",
+      "related_links": []
+    },
+    {
+      "title": "s390/bpf: Support load-acquire and store-release instructions",
+      "author": "Maxim Khmelevskii",
+      "url": "https://lore.kernel.org/bpf/20260723140648.583055-7-max@linux.ibm.com/",
+      "summary": "Implements JIT support for BPF load-acquire and store-release atomic memory access instructions on the s390 architecture. These instructions provide sequentially consistent single-register atomic loads and stores required by programs using the BPF memory model for lock-free synchronization. The series adds `emit_ldx` and `emit_stx` helper functions to the s390 JIT and enables the corresponding selftests that were previously skipped on s390.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, riscv: add support for timed may_goto",
+      "author": "Feng Jiang",
+      "url": "https://lore.kernel.org/bpf/20260723-riscv-bpf-timed-may-goto-v5-1-86acb54e5642@kylinos.cn/",
+      "summary": "Fifth revision of the RISC-V JIT implementation for timed `may_goto`, a BPF loop termination mechanism that uses a hardware timer tick rather than a fixed iteration count to bound loop execution time. The patch adds the RISC-V-specific instruction emission for reading the cycle counter and performing the timer-based early-exit check. Accompanying selftests verify that R0-R5 are correctly preserved across the timed `may_goto` sequence and that timer-bounded tests pass on riscv64.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix sleepable check for tracing prog",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260725132624.78373-2-leon.hwang@linux.dev/",
+      "summary": "Fixes a verifier bug where the sleepable check for tracing programs (fentry/fexit/fmod_ret) was not correctly enforced, allowing programs marked sleepable to attach to non-sleepable contexts in certain cases. The v2 also adds a selftest that verifies the verifier correctly rejects a sleepable tracing program trying to attach to a non-sleepable function, ensuring the fix is regression-tested.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Populate mmap-able array maps lazily",
+      "author": "Song Liu",
+      "url": "https://lore.kernel.org/bpf/20260722205032.1245094-3-song@kernel.org/",
+      "summary": "Changes BPF array map memory allocation to be lazy for maps that support mmap, deferring page allocation until pages are actually accessed rather than eagerly allocating the full map at creation time. This reduces memory consumption for large mmap-able array maps that are only partially used, which is common in observability and tracing use cases that pre-allocate large maps as a worst-case budget. A benchmark selftest measuring mmap/munmap throughput is included to characterize the performance trade-offs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add __bpfcall attribute to bpf_task_work_callback()",
+      "author": "Heiko Carstens",
+      "url": "https://lore.kernel.org/bpf/20260727093834.2178900-1-hca@linux.ibm.com/",
+      "summary": "Annotates `bpf_task_work_callback()` with the `__bpfcall` attribute to satisfy CFI type-checking requirements on architectures that enforce strict indirect-call type matching. Without the attribute, CFI can reject the indirect call to this callback because its true signature does not match what CFI infers at the call site. This is a targeted fix for CFI-enabled kernels, particularly relevant on s390 where CFI enforcement is strict.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Cancel RHash special fields on value recycle",
+      "author": "Nuoqi Gui",
+      "url": "https://lore.kernel.org/bpf/20260726-f01-23-rhash-cancel-bpf-next-v1-1-6e5e1131d885@mails.tsinghua.edu.cn/",
+      "summary": "Fixes a correctness bug in BPF RHash (reuseport hash) maps where special fields embedded in map values—such as spin locks or timers—were not cancelled when a value slot was recycled for a new entry. Stale special-field state in a recycled slot can cause use-after-free for timers or incorrect lock state. The fix calls the appropriate cancellation helpers on recycle, with a selftest covering the scenario.",
+      "related_links": []
+    }
+  ]
+}
