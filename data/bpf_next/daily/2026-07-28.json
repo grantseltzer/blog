@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-07-29T00:00:00Z",
+  "period_start": "2026-07-27",
+  "period_end": "2026-07-28",
+  "patch_count": 17,
+  "thread_count": 7,
+  "top_contributors": ["Imran Khan", "Jiayuan Chen", "Yonghong Song", "Vinicius Sampaio"],
+  "key_topics": ["workqueue", "iterators", "trampoline", "arena", "verifier"],
+  "overview": "Activity on July 27-28 was dominated by a notable 6-patch series from Imran Khan introducing BPF iterators for the Linux workqueue subsystem, enabling BPF programs to introspect workqueues, worker pools, and pending work items. Additional notable work included two series from Jiayuan Chen fixing BPF arena memory handling under cgroup pressure and a deadlock scenario, plus a v4 series from Yonghong Song correcting trampoline behavior for 128-bit arguments on x86.",
+  "patches": [
+    {
+      "title": "workqueue: introduce a BPF open-coded iterator for traversing workqueues list",
+      "author": "Imran Khan",
+      "url": "https://lore.kernel.org/bpf/20260728065525.653171-2-imran.f.khan@oracle.com/",
+      "summary": "First patch in a 6-patch series introducing BPF iterators for the Linux workqueue subsystem. This patch adds an open-coded BPF iterator that allows BPF programs to traverse the global list of workqueues. The series also adds a seq_file form of the workqueue iterator, open-coded and seq_file iterators for worker pools, an iterator for pending work items, and selftests covering all three iterator types. This is a significant observability addition enabling BPF-based introspection of kernel work scheduling infrastructure.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a sleepable page allocator for map memory",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260727062521.376231-2-jiayuan.chen@linux.dev/",
+      "summary": "First patch in a 3-patch series addressing BPF arena memory handling under cgroup memory limits. This patch introduces a sleepable page allocator for map memory so that fault-in page allocation can occur in sleepable context, outside of spinlocks. The series continues by moving the fault-in allocation outside of the arena lock and adds a selftest verifying arena behavior under memory.max constraints with reclaim and OOM scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: arena: fix mmap_lock deadlock on arena lock failure",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260728060517.95183-1-jiayuan.chen@linux.dev/",
+      "summary": "Standalone fix for a deadlock in the BPF arena implementation. When acquiring the arena lock fails while mmap_lock is already held, the error path did not properly release locks, leading to a deadlock. The fix ensures the mmap_lock is correctly released before returning on arena lock failure, restoring proper lock ordering semantics in the arena fault handler.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject >8 byte return values on return-reading trampoline paths",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260728035442.3008329-1-yonghong.song@linux.dev/",
+      "summary": "First patch in a v4 3-patch series fixing BPF trampoline handling of 128-bit values on x86. This patch adds a verifier check rejecting programs that attempt to read return values larger than 8 bytes through return-reading trampoline paths, which the current trampoline infrastructure cannot safely support. A companion patch fixes the x86 JIT trampoline stack size calculation for 128-bit function arguments, and the series includes selftests for both the rejection and the corrected stack layout.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: log error code on trampoline unlink failure",
+      "author": "",
+      "url": "https://lore.kernel.org/bpf/20260728142621001Ee2lrcnZpeNuxtxRES69Z@zte.com.cn/",
+      "summary": "A v3 single-patch submission improving BPF trampoline debugging by logging the error code when a trampoline unlink operation fails. Currently the failure is silent, making it difficult to diagnose lifecycle issues with BPF trampolines. Adding the error code to the kernel log gives developers actionable information when trampoline teardown encounters errors.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Simplify cnum contains() and normalize() implementation",
+      "author": "Vinicius Sampaio",
+      "url": "https://lore.kernel.org/bpf/20260728015601.1567098-2-vldsampaio@pm.me/",
+      "summary": "First of a 2-patch series cleaning up the verifier's concrete-number (cnum) range implementation. This patch simplifies the contains() and normalize() helper functions used in constraint tracking, removing unnecessary complexity. The second patch avoids redundant min()/max() calls in signed bounds calculations. Together they improve the maintainability of the verifier's scalar value range tracking without changing semantics.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add __bpfcall attribute to bpf_task_work_callback()",
+      "author": "Heiko Carstens",
+      "url": "https://lore.kernel.org/bpf/20260727093834.2178900-1-hca@linux.ibm.com/",
+      "summary": "Adds the __bpfcall calling convention attribute to bpf_task_work_callback(), ensuring it uses the correct BPF-specific register conventions on architectures such as s390 where the default and BPF calling conventions differ. Without this attribute the callback risks being invoked with mismatched register expectations, potentially causing incorrect behavior on non-x86 platforms. This is an architecture correctness fix particularly relevant for s390/IBM mainframe BPF support.",
+      "related_links": []
+    }
+  ]
+}
