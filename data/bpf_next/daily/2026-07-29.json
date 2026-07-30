@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-07-30T00:00:00Z",
+  "period_start": "2026-07-28",
+  "period_end": "2026-07-29",
+  "patch_count": 41,
+  "thread_count": 13,
+  "top_contributors": ["Jiri Olsa", "Leon Hwang", "Imran Khan", "Yonghong Song"],
+  "key_topics": ["stack-maps", "trampoline", "kfuncs", "maps", "workqueue", "jit", "verifier", "arena"],
+  "overview": "The bpf-next mailing list saw active development during July 28–29 spanning multiple BPF subsystems. Standout submissions include an initial BPF JIT compiler for the m68k architecture, new BPF open-coded iterators for Linux workqueues, and a lazy memory population strategy for mmap-able array maps. Additional notable work covers a large stack map preemption refactor from Jiri Olsa, trampoline fixes for 128-bit value handling, RFC patches to optimize string kfuncs using word-at-a-time techniques, and an arena mmap_lock deadlock fix.",
+  "patches": [
+    {
+      "title": "m68k, bpf: Add initial BPF JIT compiler support",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260729002737.1008358-1-visitorckw@gmail.com/",
+      "summary": "This patch (v4 resend) adds an initial BPF JIT compiler for the Motorola m68k architecture. It brings native BPF execution to the m68k family rather than falling back to the BPF interpreter, improving performance for BPF programs running on m68k hardware. The implementation covers the core JIT infrastructure needed to translate BPF bytecode to m68k machine instructions. Adding JIT support to a new architecture is a significant milestone that makes BPF programs usable in production on m68k Linux systems.",
+      "related_links": []
+    },
+    {
+      "title": "workqueue: introduce a BPF open-coded iterator for traversing workqueues list",
+      "author": "Imran Khan",
+      "url": "https://lore.kernel.org/bpf/20260728065525.653171-2-imran.f.khan@oracle.com/",
+      "summary": "This is the first patch in a 6-part series introducing BPF open-coded iterators for the Linux workqueue subsystem. The series adds iterators for traversing workqueues, worker pools, and pending work items, enabling BPF programs to inspect kernel workqueue state at runtime. Accompanying patches add seq_file forms of the iterators and selftests. This capability is valuable for debugging and observability of deferred kernel work without needing dedicated tracing tools.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Populate mmap-able array map memory lazily",
+      "author": "Song Liu",
+      "url": "https://lore.kernel.org/bpf/20260729001033.3433328-2-song@kernel.org/",
+      "summary": "This v3 patch changes BPF array maps backed by mmap-able memory to allocate pages lazily on first access rather than upfront at map creation time. Previously, creating a large mmap-able array map would immediately commit physical memory for the entire map. The new approach defers allocation until pages are actually touched, reducing memory pressure for workloads that create large maps but use only a subset of them. This is particularly useful for BPF programs that allocate conservatively large maps as scratch space.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject >8 byte return values on return-reading trampoline paths",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260729050159.2585809-1-yonghong.song@linux.dev/",
+      "summary": "This is the first patch of a v5 3-patch series fixing BPF trampoline handling of 128-bit values on x86. Patch 1 adds a verifier check that rejects programs with return values larger than 8 bytes on trampoline paths that read the return value, preventing silent data corruption. Patch 2 fixes the x86 trampoline stack frame size calculation to correctly account for 128-bit (16-byte) arguments passed in XMM registers. Patch 3 adds selftests covering both the rejection of oversized return values and correct handling of 128-bit arguments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Factor stackid_init function from __bpf_get_stackid",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260729083807.1588544-2-jolsa@kernel.org/",
+      "summary": "This is the first patch of an 11-patch v2 series that refactors BPF stack map code to properly disable preemption during stack lookups and insertions. The series factors out several helper functions from the monolithic __bpf_get_stackid (stackid_init, stackid_fastpath, stackid_new_bucket, callchain_store, callchain_finalize), removes now-redundant arguments, and then adds preemption-disabling around the critical sections. A final patch clears the output buffer on error in __bpf_get_task_stack. The refactor improves correctness on preemptible kernels where stack map operations could race with preemption.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Optimize string scan kfuncs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260728145727.45153-2-leon.hwang@linux.dev/",
+      "summary": "This RFC is the first patch of a 6-part series optimizing BPF string kfuncs using word-at-a-time techniques borrowed from the kernel's lib/string.c. The series covers scan, comparison, span, and substring kfuncs, replacing byte-by-byte loops with wider word-sized operations that process multiple characters simultaneously. Accompanying patches add selftests and benchmarks demonstrating the performance improvement. Using word-at-a-time operations for string kfuncs can significantly reduce instruction counts for string-heavy BPF programs such as those doing network packet parsing or log processing.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: mark trampoline ftrace_ops permanent",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20260729005959.3853865-2-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "This RFC proposes marking BPF trampoline ftrace_ops as permanent so they are never unregistered from the ftrace subsystem, only disabled. The series also marks kprobe ftrace_ops permanent for the same reason. The motivation is to avoid races and overhead during repeated attach/detach cycles on hot paths, where unregistering and re-registering ftrace callbacks can cause latency spikes. A selftest for the ftrace_permanent behavior is included as the third patch in the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: arena: fix mmap_lock deadlock on arena lock failure",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260728060517.95183-1-jiayuan.chen@linux.dev/",
+      "summary": "This patch fixes a deadlock in the BPF arena implementation where the mmap_lock could be held while attempting to acquire the arena's internal lock. If the arena lock acquisition fails and the error path tries to manipulate the mm's VMA structures, a deadlock occurs because the mmap_lock is already held. The fix reorders the locking or adjusts the error path to avoid holding mmap_lock when arena lock is needed, resolving a potential system hang in arena-using BPF programs.",
+      "related_links": []
+    }
+  ]
+}
