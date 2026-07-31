@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-07-31T00:00:00Z",
+  "period_start": "2026-07-29",
+  "period_end": "2026-07-30",
+  "patch_count": 39,
+  "thread_count": 13,
+  "top_contributors": ["Jiri Olsa", "Vinicius Sampaio", "Puranjay Mohan"],
+  "key_topics": ["verifier", "kfuncs", "trampoline", "stack-map", "maps", "jit", "mips", "m68k"],
+  "overview": "Activity on July 29-30 was dominated by verifier cleanup work (Vinicius Sampaio's cnum simplification series reaching v4), iterator performance improvements from Puranjay Mohan inlining the numeric open-coded iterator kfuncs, and an 11-patch series from Jiri Olsa hardening stack map code by disabling preemption at critical points. Highlights also include Kuan-Wei Chiu's m68k BPF JIT port, Song Liu's lazy memory population for mmap-able array maps (v4), and Yonghong Song's fixes to trampoline handling of 128-bit arguments.",
+  "patches": [
+    {
+      "title": "bpf: Disable preemption in stack map code",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260729083807.1588544-2-jolsa@kernel.org/",
+      "summary": "This 11-patch series refactors the BPF stack map implementation to disable preemption at the appropriate call sites, fixing potential correctness issues on preemptible kernels. The work factors out several helper functions (stackid_init, stackid_fastpath, stackid_new_bucket, callchain_store, callchain_finalize) from the monolithic __bpf_get_stackid to make the preemption scope clearer. Additional fixes include restoring trace->nr properly in bpf_get_stack_pe and clearing the output buffer on error in __bpf_get_task_stack. The refactoring improves maintainability while closing subtle races in stack collection helpers.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Inline the numeric open-coded iterator kfuncs",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260729203633.213973-2-puranjay@kernel.org/",
+      "summary": "This 6-patch series (v4) teaches the BPF verifier to inline the three numeric iterator kfuncs — bpf_iter_num_new(), bpf_iter_num_next(), and bpf_iter_num_destroy() — directly into the generated BPF program rather than emitting calls. Inlining eliminates per-iteration kfunc call overhead for bpf_for() loops, which is the primary consumer. bpf_iter_num_destroy() becomes a no-op after inlining since the iterator lives on the stack. Selftests verify the expected translated instruction shape and a new benchmark quantifies the performance improvement.",
+      "related_links": []
+    },
+    {
+      "title": "m68k, bpf: Add initial BPF JIT compiler support",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260729002737.1008358-1-visitorckw@gmail.com/",
+      "summary": "This patch (v4 resend) introduces the first BPF JIT compiler for the Motorola 68000 architecture, extending native BPF execution to another classic CPU family. The JIT handles the full BPF instruction set including ALU ops, memory accesses, branches, and calls, mapping BPF registers to m68k registers and the stack. Adding JIT support eliminates the interpreter overhead for BPF programs running on m68k systems. This follows the pattern of other architecture JIT ports and enables eBPF workloads on embedded m68k targets.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Populate mmap-able array map memory lazily",
+      "author": "Song Liu",
+      "url": "https://lore.kernel.org/bpf/20260729192419.41331-2-song@kernel.org/",
+      "summary": "This patch (v4) defers allocation of the backing memory for mmap-able BPF array maps until the memory is actually accessed, rather than allocating the full map at creation time. The change reduces memory waste for programs that create large mmap-able arrays but only touch a subset of entries. It leverages the VM's demand-paging mechanism to populate pages on first access. The optimization is transparent to BPF programs and user-space consumers that mmap the array.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject >8 byte return values on return-reading trampoline paths",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260729050159.2585809-1-yonghong.song@linux.dev/",
+      "summary": "This 3-patch series (v5) fixes BPF trampoline handling when the instrumented function uses 128-bit arguments or returns a value larger than 8 bytes. The first patch adds an explicit rejection in the verifier for fexit/fmod_ret programs attached to functions with oversized return values, preventing silent data corruption. The second patch corrects the x86 trampoline's stack size calculation for 128-bit arguments, which was previously under-allocating space. Selftests cover both the new rejection path and the corrected 128-bit argument stack layout.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Simplify cnum contains() by removing redundant branches",
+      "author": "Vinicius Sampaio",
+      "url": "https://lore.kernel.org/bpf/20260730102129.15209-2-vldsampaio@pm.me/",
+      "summary": "This is the first patch of a 3-patch v4 series that simplifies the constraint-number (cnum) helper functions used by the BPF verifier's signed range tracking. The series removes redundant branches from cnum contains(), drops unnecessary comparisons from cnum normalize(), and eliminates redundant min()/max() calls in the signed bounds update path. The cleanups make the verifier's interval arithmetic easier to audit without changing observable behavior. This is a pure code-quality improvement targeting the verifier's scalar value tracking internals.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, mips: Factor out div/mod emission helpers",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260729162931.2369353-2-main.kalliope@gmail.com/",
+      "summary": "This 2-patch series (v2) adds support for the BPF_SDIV and BPF_SMOD signed division and modulo instructions in the MIPS BPF JIT. The first patch refactors the existing unsigned div/mod emission code into shared helper functions to reduce duplication. The second patch builds on those helpers to implement the signed variants, handling the necessary sign-extension and MIPS-specific division semantics. This brings MIPS JIT support in line with other architectures that already handle the signed division opcodes introduced in BPF ISA v4.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: mark trampoline ftrace_ops permanent",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20260729005959.3853865-2-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "This RFC series (3 patches) proposes marking BPF trampoline and kprobe ftrace_ops as permanent so they cannot be unregistered while active, preventing a class of use-after-free bugs that can occur during module unload. The first patch marks the BPF trampoline's ftrace_ops permanent, the second extends the same treatment to ftrace-based kprobes, and the third adds a selftest exercising the permanent flag. The RFC targets scenarios where a module providing a traced function is unloaded while BPF programs remain attached.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix mmap_lock leak in irq_work path",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260730054858.209807-2-sanghyun.park.cnu@gmail.com/",
+      "summary": "This single patch (v2) fixes a mmap_lock leak that occurs when BPF programs trigger memory faults via the irq_work path. When the fault handling code acquires mmap_lock and then encounters an error, a missing unlock leaves the lock held, causing subsequent operations to deadlock. The fix adds the missing mmap_read_unlock() call on the error path. The bug is a straightforward lock-accounting fix with no behavioral changes on the success path.",
+      "related_links": []
+    }
+  ]
+}
