@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-08-01T00:00:00Z",
+  "period_start": "2026-07-30",
+  "period_end": "2026-07-31",
+  "patch_count": 31,
+  "thread_count": 9,
+  "top_contributors": ["Justin Suess", "Vinicius Sampaio", "David Windsor"],
+  "key_topics": ["lsm", "landlock", "kfuncs", "security", "maps", "verifier", "jit", "btf", "ftrace"],
+  "overview": "The most significant submission of the period is a 13-patch series from Justin Suess introducing a BPF kfunc interface for applying Landlock security rulesets from within BPF LSM programs, enabling kernel-level policy enforcement at exec time. Additional notable work includes David Windsor's v6 series adding an atomic inode xattr labeling kfunc, T.J. Mercier's hash map memory reduction refactor, and a v3 i386 JIT patch for signed division and modulo instructions.",
+  "patches": [
+    {
+      "title": "bpf: Add the LSM policy kfunc infrastructure",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260731022047.189137-8-utilityemal77@gmail.com/",
+      "summary": "Part of a 13-patch series titled 'BPF interface for applying Landlock rulesets', this patch establishes the core kfunc infrastructure allowing BPF LSM programs to hold and apply Landlock policy objects as kernel pointers. The series adds three new LSM hooks—security_policy_kptr_from_fd, security_policy_kptr_put, and security_bprm_enforce_policy_kptr—that let BPF programs obtain a Landlock ruleset reference from a file descriptor and enforce it on processes at exec time. This is a substantial new capability enabling dynamic, programmable security policy enforcement at the kernel level without requiring the target process to call landlock_restrict_self() itself.",
+      "related_links": []
+    },
+    {
+      "title": "lsm: Add LSM hook security_policy_kptr_from_fd",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260731022047.189137-2-utilityemal77@gmail.com/",
+      "summary": "The first patch in the Landlock BPF interface series, this introduces the security_policy_kptr_from_fd LSM hook that allows a security module to convert a file descriptor referencing a policy object into an opaque kernel pointer. This abstraction is the foundation for BPF programs to safely acquire references to Landlock rulesets across the BPF-LSM boundary. The hook follows existing kptr ownership semantics, ensuring proper reference counting and lifetime management.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_init_inode_xattr kfunc for atomic inode labeling",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260730234533.1912709-4-dwindsor@gmail.com/",
+      "summary": "This v6 series adds a new bpf_init_inode_xattr kfunc enabling BPF LSM programs to atomically set extended attributes on inodes at creation time. It introduces a struct lsm_xattrs abstraction and a new security_lsmxattr_add() LSM hook to coordinate attribute initialization across multiple LSMs. The kfunc allows BPF-based security modules to label newly created files and directories with xattrs during inode creation, an important capability for implementing SELinux- or AppArmor-style mandatory access control from BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: htab: Reduce elem_size by 8 bytes for small key sizes",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20260731010645.3965783-3-tjmercier@google.com/",
+      "summary": "This v2 series reduces memory consumption in BPF hash maps through two complementary changes: first splitting the internal htab_elem struct into separate specialized types for LRU and per-CPU variants to eliminate unused fields, then further shrinking elem_size by 8 bytes for small key sizes by avoiding alignment padding. For deployments with large hash maps holding many entries—common in networking and observability use cases—these savings can be substantial. The changes are purely structural and maintain identical runtime semantics.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Add support for BPF_SDIV and BPF_SMOD in the i386 JIT",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260731002950.179573-1-main.kalliope@gmail.com/",
+      "summary": "This v3 patch adds native JIT compilation of the signed division (BPF_SDIV) and signed modulo (BPF_SMOD) instructions to the 32-bit x86 (i386) BPF JIT compiler. Prior to this patch, these instructions would fall back to the interpreter on i386 systems, imposing a performance penalty. The implementation correctly handles edge cases required by the BPF spec, including division by zero and the INT_MIN/-1 signed overflow case.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Simplify cnum contains() by removing redundant branches",
+      "author": "Vinicius Sampaio",
+      "url": "https://lore.kernel.org/bpf/20260730102129.15209-2-vldsampaio@pm.me/",
+      "summary": "This v4 series refactors the BPF verifier's concrete number (cnum) range-tracking implementation to remove redundant branches in contains(), simplify the normalize() function by dropping unnecessary comparisons, and eliminate redundant min()/max() calls in signed bounds operations. The changes are purely correctness-preserving code quality improvements that make the verifier's range arithmetic easier to read and audit. This follows earlier v3 submissions of the same series.",
+      "related_links": []
+    },
+    {
+      "title": "tracing: Make per-template BTF id lists file-local",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260730-b4-fix_btf_tracefs-v1-1-5f10b728f51e@meta.com/",
+      "summary": "This single-patch change marks per-template BTF ID lists in the tracing subsystem as static (file-local), preventing accidental symbol visibility and potential link-time conflicts in the kernel build. It is a targeted hygiene fix for the BPF tracing infrastructure that has no behavioral impact at runtime but improves the correctness of the kernel's exported symbol namespace.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix mmap_lock leak in irq_work path",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260730054858.209807-2-sanghyun.park.cnu@gmail.com/",
+      "summary": "This v2 patch fixes a lock leak where mmap_lock could be left held in a BPF irq_work callback under certain error conditions. A leaked mmap_lock would cause deadlocks or incorrect behavior in subsequent memory management operations on the affected task. The fix ensures proper lock release across all exit paths in the irq_work handler.",
+      "related_links": []
+    }
+  ]
+}
