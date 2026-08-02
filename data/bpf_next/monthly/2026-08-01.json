@@ -1,0 +1,103 @@
+{
+  "generated_at": "2026-08-02T00:00:00Z",
+  "period_start": "2026-07-02",
+  "period_end": "2026-08-01",
+  "patch_count": 89,
+  "thread_count": 26,
+  "top_contributors": ["Justin Suess", "Amery Hung", "Jiri Olsa", "Puranjay Mohan", "Eduard Zingerman"],
+  "key_topics": ["kfuncs", "verifier", "jit", "maps", "lsm", "landlock", "btf", "trampoline", "iterators"],
+  "overview": "The July 2026 bpf-next window saw a rich set of contributions spanning new features, performance improvements, and correctness fixes across the entire BPF subsystem. The headline feature was Justin Suess's 13-patch series adding a BPF kfunc interface for applying Landlock security rulesets from BPF programs, enabling dynamic per-process sandboxing via kernel policy pointers stored in BPF maps. Amery Hung landed a sweeping 18-patch refactor that generates bpf_func_proto prototypes for kfuncs at add-call time, unifying kfunc argument verification with the existing helper infrastructure and cleaning up years of divergent code paths. Architecture support expanded with a new BPF JIT for m68k from Kuan-Wei Chiu and signed division/modulo additions to both the i386 and MIPS JITs from Nicholas Dudar. Performance was addressed by Song Liu's lazy array map memory allocation, Leon Hwang's word-at-a-time string kfunc optimizations, and Puranjay Mohan's inlining of numeric open-coded iterator kfuncs directly into the JIT output. Correctness and cleanup contributions included Jiri Olsa's preemption-disabling fixes in stack map code, Yonghong Song's trampoline stack size fixes for 128-bit arguments, Eduard Zingerman's static liveness-based inference of zext_dst annotations, and David Windsor's new bpf_init_inode_xattr kfunc for atomic inode labeling in security LSMs.",
+  "patches": [
+    {
+      "title": "Add the LSM policy kfunc infrastructure",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260731022047.189137-8-utilityemal77@gmail.com/",
+      "summary": "The centerpiece of a 13-patch series titled 'BPF interface for applying Landlock rulesets', this patch adds the core LSM policy kfunc infrastructure that allows BPF programs to acquire Landlock ruleset handles from file descriptors, store them as typed kernel pointers (kptrs) in BPF maps, and later apply them to restrict a process at execve time via the new bpf_landlock_restrict_binprm kfunc. Three new LSM hooks (security_policy_kptr_from_fd, security_policy_kptr_put, security_bprm_enforce_policy_kptr) are added and implemented by Landlock. This is a significant new capability enabling fine-grained, BPF-driven sandboxing integrated with the kernel's LSM framework.",
+      "related_links": []
+    },
+    {
+      "title": "Generate kfunc argument prototype at add-call time",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260801074633.1595644-19-ameryhung@gmail.com/",
+      "summary": "The culminating patch in an 18-patch series ('Generate bpf_func_proto for kfunc'), this change makes the verifier generate a bpf_func_proto struct for kfuncs at call-add time, routing their argument checking through the same unified path as classic BPF helpers. The series renames ARG_CONST_SIZE to ARG_MEM_SIZE, unifies const-map pointer and mem+size pair checking, classifies kfunc pointer and scalar arguments directly from BTF, and handles nullable pointer args without a special sentinel type. The result is a substantially cleaner verifier and a foundation for future kfunc argument features that previously required bespoke logic.",
+      "related_links": []
+    },
+    {
+      "title": "Inline bpf_iter_num_next() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260729203633.213973-4-puranjay@kernel.org/",
+      "summary": "Part of a 6-patch series ('bpf: Inline the numeric open-coded iterator kfuncs'), this patch teaches the BPF JIT to inline the bpf_iter_num_next() call site directly into the generated machine code rather than emitting an actual function call. Companion patches do the same for bpf_iter_num_new() and make bpf_iter_num_destroy() a no-op. The series includes a benchmark showing measurable throughput improvements for bpf_for() loops, which are common in BPF programs performing counted iteration, and verifies the expected instruction shapes using __xlated annotations.",
+      "related_links": []
+    },
+    {
+      "title": "add bpf_init_inode_xattr kfunc for atomic inode labeling",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260730234533.1912709-4-dwindsor@gmail.com/",
+      "summary": "The core patch in a 4-patch series (v6), this adds a new kfunc allowing BPF LSM programs to atomically set security xattrs on inodes during their creation, before the inode is exposed to userspace. The series also introduces a struct lsm_xattrs abstraction and a security_lsmxattr_add() LSM hook to let LSMs participate in the xattr initialization path. This fills a gap where BPF LSM programs could observe inode creation but could not safely label the new inode with security attributes in a race-free manner.",
+      "related_links": []
+    },
+    {
+      "title": "m68k, bpf: Add initial BPF JIT compiler support",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260729002737.1008358-1-visitorckw@gmail.com/",
+      "summary": "This standalone patch (v4 resend) introduces the first BPF JIT backend for the Motorola 68000 (m68k) architecture, bringing hardware-accelerated BPF execution to a classic 32-bit ISA still used in embedded systems. The JIT covers the full BPF instruction set including ALU operations, memory access, branches, and calls, with appropriate handling for m68k's register-poor calling convention. The addition follows the established pattern of architecture-specific JIT backends and expands BPF's reach beyond the mainstream x86/ARM/RISC-V targets.",
+      "related_links": []
+    },
+    {
+      "title": "Populate mmap-able array map memory lazily",
+      "author": "Song Liu",
+      "url": "https://lore.kernel.org/bpf/20260729192419.41331-2-song@kernel.org/",
+      "summary": "This patch (v4) changes BPF array maps that support mmap to allocate their backing memory lazily on first access rather than eagerly at map creation time. This matters for programs that create large mmap-able arrays but only touch a small subset of the address space, a common pattern in profiling and tracing tools that pre-size maps conservatively. The change reduces peak RSS and avoids pinning pages in memory unnecessarily without altering observable map semantics.",
+      "related_links": []
+    },
+    {
+      "title": "x86: Fix trampoline stack size for 128-bit arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260729050204.2586457-1-yonghong.song@linux.dev/",
+      "summary": "Part of a 3-patch series ('bpf: Fix trampoline handling of 128-bit values'), this patch fixes the x86 BPF trampoline's stack frame calculation to account for 128-bit (16-byte) function arguments that are passed in two consecutive registers. Previously the trampoline underestimated the required stack space, leading to potential stack corruption when hooking functions that take 128-bit arguments. A companion patch rejects >8-byte return values on return-reading trampoline paths where they cannot be correctly handled, and selftests verify both restrictions.",
+      "related_links": []
+    },
+    {
+      "title": "Disable preemption in __bpf_get_stack",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260729083807.1588544-11-jolsa@kernel.org/",
+      "summary": "Part of an 11-patch series ('bpf: Disable preemption in stack map code'), this patch fixes a latent correctness bug by disabling preemption around the core stack walking in __bpf_get_stack(), preventing a task migration between CPUs during unwinding. The series also refactors the stack map helper internals by factoring out stackid_fastpath, stackid_new_bucket, callchain_store, and callchain_finalize functions from the monolithic __bpf_get_stackid(), and ensures trace->nr is restored correctly on error paths. These changes are prerequisites for future work enabling stack maps under PREEMPT_RT.",
+      "related_links": []
+    },
+    {
+      "title": "Optimize string span kfuncs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260728145727.45153-4-leon.hwang@linux.dev/",
+      "summary": "Part of an RFC series ('bpf: Optimize string kfuncs'), this patch rewrites the BPF string span kfuncs (bpf_strspn, bpf_strcspn) to use a word-at-a-time algorithm operating on machine-word-sized chunks instead of byte-by-byte iteration. Companion patches apply the same optimization to substring kfuncs. The series includes benchmarks demonstrating significant throughput improvements for string-heavy BPF programs such as those used in network packet field parsing or log processing.",
+      "related_links": []
+    },
+    {
+      "title": "infer zext_dst based on static register liveness analysis",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260731-static-zext-v2-3-da4aa161e8c5@gmail.com/",
+      "summary": "The core patch in a 5-patch series (v2), this change makes the BPF verifier infer the zext_dst annotation for instructions using a backward static liveness analysis over the program's register halves, rather than a conservative per-instruction heuristic. A companion patch extends compute_live_registers() to track the upper 32-bit halves of registers independently. The result is fewer unnecessary zero-extension instructions emitted by JIT backends, reducing code size and improving performance for programs with many 32-bit register operations.",
+      "related_links": []
+    },
+    {
+      "title": "htab: Reduce elem_size by 8 bytes for small key sizes",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20260731010645.3965783-3-tjmercier@google.com/",
+      "summary": "Second patch in a 2-patch series reducing hash map memory use, this change shrinks per-element allocation by 8 bytes for maps whose keys fit within the inline key field without extra padding. The first patch splits htab_elem_lru and htab_elem_pcpu off of htab_elem to eliminate unused per-element overhead for non-LRU and non-percpu hash maps. Together the series meaningfully reduces peak memory for large hash tables with small keys, a very common pattern in XDP and tc BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "x86: Add support for BPF_SDIV and BPF_SMOD in the i386 JIT",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260731002950.179573-1-main.kalliope@gmail.com/",
+      "summary": "This standalone patch (v3) adds native code generation for BPF_SDIV and BPF_SMOD signed integer division and modulo to the 32-bit x86 JIT, which previously fell back to the interpreter for these opcodes. A separate 2-patch series from the same author (series 1136808) adds the equivalent support to the MIPS JIT, covering both scalar and 64-bit division paths. These changes complete arithmetic parity for BPF signed division across two additional JIT backends.",
+      "related_links": []
+    },
+    {
+      "title": "Eliminate dup/restore of insn_aux_data",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/5a4528f019c8d2638c019a2f37475cccc16a9503.1785240296.git.xukuohai@huawei.com/",
+      "summary": "First patch in a 2-patch series eliminating unnecessary data duplication during BPF program preparation, this change removes the save/restore of insn_aux_data and subprog_starts around the constants blinding pass. Previously the verifier cloned these arrays defensively before blinding and restored them afterward; the patch shows these saves are redundant because blinding does not alter the information they track. The second patch removes the program clone step itself, reducing memory allocation overhead during BPF program load.",
+      "related_links": []
+    }
+  ]
+}

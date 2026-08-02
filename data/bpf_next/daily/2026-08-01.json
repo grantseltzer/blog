@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-08-02T00:00:00Z",
+  "period_start": "2026-07-31",
+  "period_end": "2026-08-01",
+  "patch_count": 37,
+  "thread_count": 8,
+  "top_contributors": ["Justin Suess", "Amery Hung", "Eduard Zingerman"],
+  "key_topics": ["kfuncs", "verifier", "landlock", "lsm", "maps", "jit", "btf"],
+  "overview": "Activity on bpf-next was dominated by two major patchsets: Justin Suess's 13-patch series adding a BPF kfunc interface for applying Landlock security rulesets, and Amery Hung's 18-patch series that unifies helper and kfunc argument checking by generating bpf_func_proto prototypes from BTF at add-call time. Eduard Zingerman posted a v2 of his static register liveness analysis for inferring zext_dst annotations, reducing unnecessary zero-extension instructions in emitted code. Rounding out the day were hash map memory reduction, signed division support in the i386 JIT, new IP_TRANSPARENT socket option coverage, and an RFC proposing deprecation of the ftrace_enabled sysctl kill-switch.",
+  "patches": [
+    {
+      "title": "Add the LSM policy kfunc infrastructure",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260731022047.189137-8-utilityemal77@gmail.com/",
+      "summary": "Part of a 13-patch series titled 'BPF interface for applying Landlock rulesets', this patch adds the core LSM policy kfunc infrastructure that allows BPF programs to acquire, store, and apply Landlock security policy objects via kernel pointers. It introduces new LSM hooks (security_policy_kptr_from_fd, security_policy_kptr_put, security_bprm_enforce_policy_kptr) and corresponding kfuncs that Landlock implements. This enables BPF programs to dynamically enforce Landlock access-control rulesets on a per-task basis at program execution time. The feature is a significant new capability bridging BPF's observability and policy-enforcement machinery with Landlock's sandboxing model.",
+      "related_links": []
+    },
+    {
+      "title": "Generate kfunc argument prototype at add-call time",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260801074633.1595644-19-ameryhung@gmail.com/",
+      "summary": "The culminating patch in an 18-patch series titled 'Generate bpf_func_proto for kfunc', this change makes the verifier generate a bpf_func_proto struct for kfuncs at the point a call is added, enabling argument checking to use the same unified path as classic BPF helpers. The series renames ARG_CONST_SIZE to ARG_MEM_SIZE, unifies const-map pointer checking, classifies kfunc pointer and scalar arguments directly from BTF, and handles nullable pointer args without a special KF_ARG_PTR_TO_NULL sentinel. The end result is a much cleaner verifier code path and a foundation for future kfunc features that previously required bespoke checking logic.",
+      "related_links": []
+    },
+    {
+      "title": "infer zext_dst based on static register liveness analysis",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260731-static-zext-v2-3-da4aa161e8c5@gmail.com/",
+      "summary": "This is the core patch in a 5-patch series (v2) that infers the zext_dst annotation for BPF instructions using a backward static liveness analysis rather than a conservative per-instruction heuristic. By tracking whether the upper 32-bit half of a register is live at each point in the program, the verifier can avoid inserting unnecessary zero-extension instructions after 32-bit writes. A companion patch also simplifies bpf_is_reg64() and another fixes a stray newline in the verbose disassembler output.",
+      "related_links": []
+    },
+    {
+      "title": "Allow IP_TRANSPARENT and IPV6_TRANSPARENT in bpf_{set,get}sockopt()",
+      "author": "Shivaji Kant",
+      "url": "https://lore.kernel.org/bpf/20260801051307.478469-1-shivajikant@google.com/",
+      "summary": "This patch (v2, 1/2) extends the BPF sockopt helper allowlist to include IP_TRANSPARENT and IPV6_TRANSPARENT socket options, which are used for transparent proxy setups. Previously these options were silently rejected by the BPF sockopt infrastructure despite being safe and useful for load-balancing and proxy BPF programs. The companion patch adds corresponding selftests to the setget_sockopt test suite.",
+      "related_links": []
+    },
+    {
+      "title": "htab: Reduce elem_size by 8 bytes for small key sizes",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20260731010645.3965783-3-tjmercier@google.com/",
+      "summary": "The second patch in a 2-patch series reducing hash map memory use, this change shrinks the per-element allocation by 8 bytes for hash maps whose keys fit within the element's key field without needing extra padding. The first patch restructures htab_elem by splitting out htab_elem_lru and htab_elem_pcpu variants to avoid carrying unnecessary fields. Together the series meaningfully reduces memory consumption for large hash tables with small keys, a common pattern in XDP and tc BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "x86: Add support for BPF_SDIV and BPF_SMOD in the i386 JIT",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260731002950.179573-1-main.kalliope@gmail.com/",
+      "summary": "This standalone patch (v3) adds native code generation for the BPF_SDIV and BPF_SMOD signed division and modulo instructions to the 32-bit x86 JIT backend. The i386 JIT previously fell back to the interpreter for these opcodes; this change completes BPF arithmetic parity for the architecture. The implementation follows the same pattern used for unsigned division, emitting idiv/cdq sequences with appropriate sign-extension.",
+      "related_links": []
+    },
+    {
+      "title": "ftrace: deprecate disabling via ftrace_enabled sysctl",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20260731175358.3542156-2-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "This RFC patch (v2, 1/2) proposes deprecating the ability to disable all ftrace tracing globally via the ftrace_enabled sysctl, a mechanism that conflicts with BPF trampolines and kprobes that register permanent ftrace_ops. The companion patch updates the livepatch selftests to reflect the changed behavior. The series targets the broader problem of security tools (BPF, kprobes, livepatch) being silently broken by a global ftrace kill-switch that cannot account for permanent registrations.",
+      "related_links": []
+    }
+  ]
+}
