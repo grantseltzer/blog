@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-08-03T00:00:00Z",
+  "period_start": "2026-08-01",
+  "period_end": "2026-08-02",
+  "patch_count": 28,
+  "thread_count": 4,
+  "top_contributors": ["Amery Hung", "Eduard Zingerman", "Kumar Kartikeya Dwivedi", "Shivaji Kant"],
+  "key_topics": ["kfuncs", "btf", "verifier", "selftests", "setsockopt"],
+  "overview": "Activity on August 1-2 was dominated by Amery Hung's 18-patch v3 series to auto-generate bpf_func_proto for kfuncs directly from BTF, a significant step toward unifying how the verifier handles helpers and kfuncs. Eduard Zingerman contributed a 5-patch series leveraging static register liveness analysis to infer zero-extension requirements, reducing unnecessary JIT overhead.",
+  "patches": [
+    {
+      "title": "bpf: Generate kfunc argument prototype at add-call time",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260801074633.1595644-19-ameryhung@gmail.com/",
+      "summary": "The culminating patch in an 18-part series that teaches the BPF verifier to derive a bpf_func_proto for kfuncs automatically from BTF when the kfunc call is resolved at verification time. Previously, kfunc authors had to manually write bpf_func_proto structures, creating maintenance overhead and causing argument-checking paths for kfuncs and helpers to diverge. With BTF-driven prototype generation, the verifier can validate kfunc arguments using the same machinery as regular BPF helpers, reducing boilerplate and making the two extension mechanisms more consistent. This is a long-desired unification that lowers the barrier to writing new kfuncs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Classify scalar kfunc arguments from BTF",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260801074633.1595644-18-ameryhung@gmail.com/",
+      "summary": "Part of the 'Generate bpf_func_proto for kfunc' series, this patch extends BTF-based argument classification to scalar (integer and pointer-sized) kfunc arguments. Rather than requiring explicit per-kfunc annotations, the verifier can now infer expected argument types directly from kernel BTF, reducing the manual annotation burden on kfunc authors. This aligns scalar argument handling for kfuncs more closely with the existing BPF helper model and lays groundwork for further verifier unification.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Check helper and kfunc mem+size arguments identically",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260801074633.1595644-7-ameryhung@gmail.com/",
+      "summary": "Unifies the BPF verifier's handling of memory-buffer and accompanying size arguments for both classic BPF helpers and kfuncs, replacing two divergent codepaths with a single shared implementation. Previously the differing logic could lead to subtle behavioral differences and required maintaining parallel validation rules. Sharing the same verification logic ensures consistent safety semantics and means future improvements to mem+size checking apply uniformly to both extension mechanisms.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Show more useful info in stack depth stats",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260801230400.850271-2-memxor@gmail.com/",
+      "summary": "Improves the verifier's stack depth statistics output to surface clearer per-subprogram information, especially for programs whose subprograms lack BTF names. Stack depth stats are a critical debugging aid when BPF programs approach the 512-byte stack limit, but the previous output was difficult to parse when subprograms were unnamed. The patch is the first in a 3-patch series that also adjusts veristat stack depth parsing and adds selftests covering the no-BTF-name case.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: infer zext_dst based on static register liveness analysis",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260731-static-zext-v2-3-da4aa161e8c5@gmail.com/",
+      "summary": "Introduces a static register liveness analysis pass to determine precisely when zero-extension of the destination register is required after a 32-bit BPF instruction, replacing the current conservative over-approximation. The previous approach emitted unnecessary zero-extension instructions for registers whose upper 32 bits were never subsequently read, adding dead code to the JIT output. By using accurate liveness information, this patch reduces generated instruction count and avoids wasted cycles, particularly in loops and hot paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow IP_TRANSPARENT and IPV6_TRANSPARENT in bpf_{set,get}sockopt()",
+      "author": "Shivaji Kant",
+      "url": "https://lore.kernel.org/bpf/20260801051307.478469-1-shivajikant@google.com/",
+      "summary": "Extends the BPF setsockopt and getsockopt helpers to support the IP_TRANSPARENT and IPV6_TRANSPARENT socket options, which are required for transparent proxying scenarios where a socket must bind to a non-local address. This gap previously made it impossible for BPF cgroup hooks to fully configure transparent proxy sockets without dropping to userspace. The two-patch series also adds the new options to the setget_sockopt selftest to verify correct behavior.",
+      "related_links": []
+    }
+  ]
+}
