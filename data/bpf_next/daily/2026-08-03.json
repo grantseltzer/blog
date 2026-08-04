@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-08-04T00:00:00Z",
+  "period_start": "2026-08-02",
+  "period_end": "2026-08-03",
+  "patch_count": 19,
+  "thread_count": 8,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Eduard Zingerman", "Ning Ding"],
+  "key_topics": ["verifier", "btf", "links", "rcu", "liveness-analysis"],
+  "overview": "Activity on August 3rd centered on BPF verifier improvements and subsystem housekeeping. Kumar Kartikeya Dwivedi's series improving stack depth statistics output reached its fourth revision, while Eduard Zingerman's static zero-extension inference work advanced to v3. New patches arrived proposing sealed BPF links at creation time and fixing RCU pointer invalidation after spin unlock.",
+  "patches": [
+    {
+      "title": "bpf: add BPF_F_SEALED flag to seal BPF links at creation",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260803021643.2189641-1-dwindsor@gmail.com/",
+      "summary": "Introduces a BPF_F_SEALED flag that can be passed at link creation time to make the link immediately immutable after creation. Sealed links cannot be updated, pinned, or otherwise modified, extending the existing BPF object sealing model to the link creation path. This is particularly useful for security-sensitive use cases where a program attachment must be tamper-proof after setup, preventing any future modification of which programs are attached.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: infer zext_dst based on static register liveness analysis",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260802-static-zext-v3-3-3456b2604574@gmail.com/",
+      "summary": "Changes the BPF verifier to use static liveness analysis to determine whether zero-extension of a destination register is actually needed after 32-bit writes, rather than conservatively marking all such writes. The preceding patch in this series adds tracking of upper 32-bit register half liveness through compute_live_registers(), which this patch consults to set the zext_dst flag only when the upper half will be read. The result is fewer unnecessary zero-extension instructions in generated code, improving runtime performance.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Invalidate RCU pointers after final spin unlock",
+      "author": "Ning Ding",
+      "url": "https://lore.kernel.org/bpf/20260803112615.3362122-2-dingning04@gmail.com/",
+      "summary": "Fixes a verifier correctness issue where RCU-protected pointers retained their valid status after the final bpf_spin_unlock() call, even though spin lock holding was the basis for RCU read-side critical section membership. After the last unlock, any pointer whose safety depended on being within an RCU read-side section must be invalidated to prevent unsafe dereferences. The companion selftest verifies the new invalidation behavior.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Show more useful info in stack depth stats",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260803072733.191502-2-memxor@gmail.com/",
+      "summary": "Enhances the BPF verifier's stack depth statistics to include per-subprogram breakdown rather than only aggregate totals, making it easier to identify which subprograms contribute most to stack consumption. This is the first patch in a three-patch series (v4) that also updates veristat to parse the new format and adds selftests covering programs without BTF subprogram names. Useful for optimizing complex BPF programs that approach the 512-byte stack limit across call chains.",
+      "related_links": []
+    },
+    {
+      "title": "btf: Remove the dependency on BPF_SYSCALL",
+      "author": "Thomas Weißschuh (Schneider Electric)",
+      "url": "https://lore.kernel.org/bpf/20260803-btf-dep-bpf-syscall-v1-1-a03291e27888@linutronix.de/",
+      "summary": "Removes the Kconfig dependency that required BPF_SYSCALL to be enabled whenever BTF was compiled in. BTF type information is useful for kernel debugging and tooling (e.g., bpftool, perf) independently of whether the BPF syscall is exposed to userspace. Decoupling the two options allows embedded or hardened configurations to include BTF without opening the full BPF syscall API surface.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Remove unused BTF_FMODEL_STRUCT_ARG",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260803052726.2821447-1-yonghong.song@linux.dev/",
+      "summary": "Removes the BTF_FMODEL_STRUCT_ARG flag from the BPF function model, which was added to the codebase but never referenced or used anywhere. Dead flag bits in the function model add confusion when working on kfunc argument classification and related BTF infrastructure, so this cleanup patch removes it entirely.",
+      "related_links": []
+    }
+  ]
+}

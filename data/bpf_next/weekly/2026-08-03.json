@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-08-04T00:00:00Z",
+  "period_start": "2026-07-27",
+  "period_end": "2026-08-03",
+  "patch_count": 100,
+  "thread_count": 28,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Eduard Zingerman", "Amery Hung", "Justin Suess"],
+  "key_topics": ["verifier", "kfuncs", "lsm", "landlock", "btf", "maps", "iterators", "jit"],
+  "overview": "This week saw major activity across the BPF verifier, kfunc infrastructure, and security integration subsystems. The headline work is Amery Hung's 18-patch series generating bpf_func_proto for kfuncs directly from BTF, unifying argument validation between helpers and kfuncs and allowing the verifier to derive type information at add-call time rather than from hand-maintained tables. Eduard Zingerman iterated through three versions of a series adding static register liveness analysis to infer zero-extension requirements, eliminating unnecessary zext instructions in compiled BPF programs. Security integration was a strong theme, with Justin Suess posting a 13-patch BPF interface for Landlock rulesets and David Windsor continuing work on atomic inode labeling via a bpf_init_inode_xattr kfunc.",
+  "patches": [
+    {
+      "title": "bpf: Generate kfunc argument prototype at add-call time",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260801074633.1595644-19-ameryhung@gmail.com/",
+      "summary": "The culminating patch of an 18-patch series that restructures kfunc argument checking to generate a bpf_func_proto from BTF at the time a kfunc call is added to the program, rather than relying on per-kfunc hand-written proto tables. Earlier patches in the series unify mem+size argument checking between helpers and kfuncs, resolve map lookup result types at lookup time, and classify pointer and scalar arguments from BTF. The result is that kfuncs and helpers are checked through a common path, reducing code duplication and making it easier to add new kfuncs without writing boilerplate argument descriptors.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add the LSM policy kfunc infrastructure",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260731022047.189137-8-utilityemal77@gmail.com/",
+      "summary": "Part of a 13-patch series introducing a BPF interface for applying Landlock rulesets, this patch adds the core LSM policy kptr infrastructure that enables BPF programs to hold and apply LSM policy objects as kernel pointers. The series also adds new LSM hooks (security_policy_kptr_from_fd, security_policy_kptr_put, security_bprm_enforce_policy_kptr), a bpf_landlock_get_ruleset_from_fd kfunc, and a bpf_landlock_restrict_binprm kfunc that allows BPF programs to apply Landlock sandboxing to processes at exec time. This opens up powerful policy composition opportunities between eBPF and Landlock.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: infer zext_dst based on static register liveness analysis",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260802-static-zext-v3-3-3456b2604574@gmail.com/",
+      "summary": "This is the core patch of a 5-patch series (at v3) that teaches the BPF verifier to statically infer whether zero-extension is needed for 32-bit register writes. By extending compute_live_registers() to track the liveness of the upper 32-bit half of each register separately, the verifier can set zext_dst only when the upper half will actually be read, eliminating unnecessary extension instructions. The series also simplifies bpf_is_reg64() and adds comprehensive selftests verifying correct annotation of various instruction types.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add BPF_F_SEALED flag to seal BPF links at creation",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260803021643.2189641-1-dwindsor@gmail.com/",
+      "summary": "Proposes a new BPF_F_SEALED flag for the link creation syscall that makes the resulting link immediately immutable — no updates, pins, or modifications permitted after creation. This extends the BPF object sealing model to the link path, complementing existing map and prog sealing. The primary use case is security-sensitive deployments where program attachments must be locked down at setup time to prevent later tampering.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_init_inode_xattr kfunc for atomic inode labeling",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260730234533.1912709-4-dwindsor@gmail.com/",
+      "summary": "The core patch of a 4-patch series (v6) adding a bpf_init_inode_xattr kfunc that allows BPF LSM programs to atomically set extended attributes on an inode during its initialization. The series introduces a struct lsm_xattrs type and a security_lsmxattr_add() hook to support multi-LSM xattr composition. This enables BPF programs implementing file-based security policies to label new inodes at creation time without a separate setxattr call that would create a window of unlabeled state.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Inline bpf_iter_num_next() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260729203633.213973-4-puranjay@kernel.org/",
+      "summary": "Part of a 6-patch series (v4) that inlines the numeric open-coded iterator kfuncs (bpf_iter_num_new, bpf_iter_num_next, bpf_iter_num_destroy) directly into the BPF program during verification, eliminating the kfunc call overhead for the common bpf_for() loop pattern. This patch handles the next() step, which is the hot path called on every iteration. The series includes a benchmark showing meaningful speedup for tight loops and selftests verifying the inlined instruction shape via __xlated annotations.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Populate mmap-able array map memory lazily",
+      "author": "Song Liu",
+      "url": "https://lore.kernel.org/bpf/20260729192419.41331-2-song@kernel.org/",
+      "summary": "Changes BPF array maps that support mmap to allocate their backing memory lazily on first access rather than eagerly at map creation time. Large mmap-able array maps can consume significant memory even when only a small fraction of the address space is ever touched; lazy population via page faults allows the kernel to avoid this waste. The patch handles the interaction with the existing mmap infrastructure and ensures correctness when maps are shared across multiple processes.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: htab: Reduce elem_size by 8 bytes for small key sizes",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20260731010645.3965783-3-tjmercier@google.com/",
+      "summary": "The second patch in a 2-patch series that reduces the per-element memory overhead of BPF hash maps. The first patch splits htab_elem_lru and htab_elem_pcpu into separate structs so that per-CPU and LRU maps don't pay the cost of fields they don't use. This patch then eliminates 8 bytes from each element for maps with small key sizes by packing the key inline rather than storing a separate pointer. Hash maps with millions of entries see meaningful total memory savings.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Invalidate RCU pointers after final spin unlock",
+      "author": "Ning Ding",
+      "url": "https://lore.kernel.org/bpf/20260803112615.3362122-2-dingning04@gmail.com/",
+      "summary": "Fixes a verifier correctness bug where RCU-protected pointers remained considered valid after the final bpf_spin_unlock() in a BPF program, even though the lock was what kept the program in an RCU read-side critical section. Without the lock, dereferencing those pointers is unsafe, so the verifier must invalidate them at the point of the last unlock. A companion selftest verifies the new behavior.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Show more useful info in stack depth stats",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260803072733.191502-2-memxor@gmail.com/",
+      "summary": "Updates the BPF verifier's stack depth statistics output to include a per-subprogram breakdown, making it easier for developers to identify which functions consume the most stack in a complex program. The three-patch series (v4) also updates veristat's stack depth parsing and adds selftests covering programs where BTF subprogram names are unavailable. Useful for debugging programs near the 512-byte BPF stack limit.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Add support for BPF_SDIV and BPF_SMOD in the i386 JIT",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260731002950.179573-1-main.kalliope@gmail.com/",
+      "summary": "Adds JIT support for the BPF_SDIV (signed division) and BPF_SMOD (signed modulo) instructions in the 32-bit x86 JIT backend. These signed arithmetic instructions were added to the BPF ISA but the i386 JIT lacked an implementation, causing programs using them to fall back to the interpreter on 32-bit x86 targets. A companion series also adds MIPS support for the same instructions.",
+      "related_links": []
+    },
+    {
+      "title": "btf: Remove the dependency on BPF_SYSCALL",
+      "author": "Thomas Weißschuh (Schneider Electric)",
+      "url": "https://lore.kernel.org/bpf/20260803-btf-dep-bpf-syscall-v1-1-a03291e27888@linutronix.de/",
+      "summary": "Removes the Kconfig dependency requiring BPF_SYSCALL to be selected whenever BTF is enabled. BTF is independently useful for kernel introspection tools and live patching without needing to expose the BPF syscall to userspace. This change benefits hardened or embedded configurations that want BTF type information in the kernel image without enabling the full BPF program loading interface.",
+      "related_links": []
+    }
+  ]
+}
