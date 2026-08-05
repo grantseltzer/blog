@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-08-05T00:00:00Z",
+  "period_start": "2026-08-03",
+  "period_end": "2026-08-04",
+  "patch_count": 38,
+  "thread_count": 10,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Jiri Olsa", "Vineet Gupta"],
+  "key_topics": ["verifier", "kfuncs", "arena", "stack-maps", "btf", "selftests"],
+  "overview": "Activity on August 3-4 was dominated by two major series from Kumar Kartikeya Dwivedi: adding arena argument support to kfuncs and struct_ops, and iterating on improved stack depth verification stats output (reaching v5). Jiri Olsa sent a substantial 12-patch series addressing preemption correctness and code factoring in the stack map subsystem. Smaller patches rounded out the day, including a new BPF_F_SEALED flag for link creation, an RCU pointer invalidation verifier fix, and BTF cleanups.",
+  "patches": [
+    {
+      "title": "bpf: add BPF_F_SEALED flag to seal BPF links at creation",
+      "author": "David Windsor",
+      "url": "https://lore.kernel.org/bpf/20260803021643.2189641-1-dwindsor@gmail.com/",
+      "summary": "Introduces a BPF_F_SEALED flag that allows a BPF link to be permanently sealed at creation time, preventing any subsequent modifications to the link. This security-oriented feature is useful in hardened environments where immutability of BPF program attachments is required after setup. It complements existing fd-based sealing mechanisms and gives callers a simple way to enforce that no further link updates or detachments can occur.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support __arena and __arena_nullable kfunc argument suffixes",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260803125115.2264733-2-memxor@gmail.com/",
+      "summary": "Extends the BPF verifier and JIT to recognize __arena and __arena_nullable argument suffixes on kfunc parameters, indicating that a pointer argument refers to memory within a BPF arena. The x86 JIT is updated to automatically rebase such pointers from the user-space arena view to the corresponding kernel address before the kfunc call, eliminating the need for manual translation. This first patch of the 9-patch v3 series lays the verifier groundwork, with subsequent patches adding x86 JIT support and extending the mechanism to struct_ops callbacks.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Show more useful info in stack depth stats",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260804081114.3871564-2-memxor@gmail.com/",
+      "summary": "Improves the BPF verifier's stack depth statistics output to include subprogram names when they are available from BTF, making veristat output significantly more readable for programs with complex call graphs. Without BTF names, the verifier previously emitted only opaque subprogram indices, which made it hard to correlate stack depth reports with source code. This v5 of the series also updates veristat's parser and the accompanying selftests to handle the new output format.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Convert struct_ops arena arguments in the trampoline",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260803125115.2264733-5-memxor@gmail.com/",
+      "summary": "Extends the x86 struct_ops trampoline to perform arena pointer rebasing for struct_ops callbacks that are annotated with __arena or __arena_nullable argument suffixes. This mirrors the kfunc arena argument support and allows struct_ops implementations to receive kernel-side pointers to arena memory without any manual conversion by the BPF program. The patch is part of the broader v3 series adding arena argument support to kfuncs and struct_ops.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Invalidate RCU pointers after final spin unlock",
+      "author": "Ning Ding",
+      "url": "https://lore.kernel.org/bpf/20260803112615.3362122-2-dingning04@gmail.com/",
+      "summary": "Fixes a verifier soundness bug where RCU-protected pointers were not invalidated when a spin_unlock call is the last lock release in a BPF program path, potentially allowing unsafe access to RCU-protected memory after leaving the critical section. The fix tracks whether any spin locks remain held after an unlock and, if none do, invalidates all RCU pointer registers at that point. A selftest in the accompanying patch verifies that programs attempting to use RCU pointers after the final unlock are correctly rejected.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Factor stackid_init function from __bpf_get_stackid",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260803210149.296496-2-jolsa@kernel.org/",
+      "summary": "First patch of a 12-patch v3 series that refactors the stack map code to fix preemption and correctness issues in __bpf_get_stackid and __bpf_get_stack. The series progressively factors out helper functions (stackid_init, stackid_fastpath, stackid_new_bucket, callchain_store, callchain_finalize) before adding explicit preemption disabling to prevent races during stack ID lookups. Later patches also fix callchain mutation bugs in the perf-event variants bpf_get_stack_pe and bpf_get_stackid_pe, which could corrupt stack traces captured under preemption.",
+      "related_links": []
+    },
+    {
+      "title": "btf: Remove the dependency on BPF_SYSCALL",
+      "author": "Thomas Weißschuh (Schneider Electric)",
+      "url": "https://lore.kernel.org/bpf/20260803-btf-dep-bpf-syscall-v1-1-a03291e27888@linutronix.de/",
+      "summary": "Decouples the BTF subsystem from the BPF_SYSCALL Kconfig option so that BTF can be compiled in without also enabling the full BPF user-space syscall interface. Certain embedded and security-hardened kernel configurations benefit from BTF for type introspection and tracing while wanting to minimize the BPF attack surface by not exposing the syscall. This improves the modularity of the BPF and BTF subsystems and makes it easier to use BTF in minimal kernel builds.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Remove unused BTF_FMODEL_STRUCT_ARG",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260803052726.2821447-1-yonghong.song@linux.dev/",
+      "summary": "Removes the BTF_FMODEL_STRUCT_ARG flag from the BPF function model infrastructure, which was added to track struct-typed arguments but is no longer needed following recent refactoring of struct and arena argument handling in kfuncs. Removing the dead flag reduces potential confusion for developers working on BPF function model code and keeps the flag namespace clean. This is a straightforward one-patch cleanup.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: map_kptr: force BPF_STX for the scalar store to kptr",
+      "author": "Vineet Gupta",
+      "url": "https://lore.kernel.org/bpf/20260803170251.1898102-2-vineet.gupta@linux.dev/",
+      "summary": "First patch in a 4-patch selftest fixes series that addresses a mix of test correctness and usability issues in the BPF selftest infrastructure. This patch forces the map_kptr test to use BPF_STX instructions for scalar stores to kptrs, fixing a test that was previously using the wrong instruction encoding. The remaining patches in the series add a --no-error-summary flag to suppress the end-of-run error dump, report the failed subtest count in the test_progs summary line, and fix command quoting in vmtest.sh when running tests inside a VM.",
+      "related_links": []
+    }
+  ]
+}
