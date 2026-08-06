@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-08-06T00:00:00Z",
+  "period_start": "2026-08-04",
+  "period_end": "2026-08-05",
+  "patch_count": 76,
+  "thread_count": 16,
+  "top_contributors": ["Yonghong Song", "Jiri Olsa", "Kumar Kartikeya Dwivedi", "Alexis Lothoré", "Mykola Lysenko"],
+  "key_topics": ["kfuncs", "verifier", "jit", "arena", "stack", "trampoline", "selftests"],
+  "overview": "August 5 was a busy day on bpf-next with 76 patches across 16 series. Yonghong Song's 13-patch series to support 16-byte aggregate return values from kfuncs via the R0:R2 register pair was the headline, requiring coordinated changes across the verifier, JIT backends, and precision backtracking. Alexis Lothoré's long-running KASAN-in-JIT series reached v6 with x86 support, bringing memory-safety instrumentation directly into JIT-compiled BPF programs.",
+  "patches": [
+    {
+      "title": "bpf: Enable aggregate return types up to 16 bytes",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260804203608.1875444-1-yonghong.song@linux.dev/",
+      "summary": "This is the core patch in a 13-patch series (v2) that extends BPF kfuncs to return aggregate values up to 16 bytes using the R0:R2 register pair, matching the System V AMD64 ABI calling convention for structs. The series adds verifier support to track R2 alongside R0 in precision backtracking and live-register analysis, wires up JIT support, and enforces that callbacks are restricted to 8-byte returns. This significantly expands the range of kernel data structures that kfuncs can return by value without resorting to pointer output parameters.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add BPF_JIT_KASAN for KASAN instrumentation of JITed programs",
+      "author": "Alexis Lothoré",
+      "url": "https://lore.kernel.org/bpf/20260804-kasan-v6-2-549ef845f491@bootlin.com/",
+      "summary": "Part of a 9-patch series (v6) introducing KASAN memory-safety checks into x86 JIT-compiled BPF programs. The series adds a new BPF_JIT_KASAN Kconfig option, marks verifier-tracked stack-accessing instructions, emits KASAN shadow checks in the x86 JIT's do_jit() path, and ships selftests that validate out-of-bounds detection in JIT output. This brings the memory-error detection tooling already available for interpreted BPF into JIT mode, making it easier to catch stack overflows and out-of-bounds accesses during development and CI.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add ksock kfuncs",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260804164652.296919-3-mahe.tardy@gmail.com/",
+      "summary": "Second patch in a 5-patch series (v3) introducing bpf_ksock, a new kernel socket abstraction exposed to BPF programs via kfuncs. The series adds a __sys_connect_socket() helper to the networking stack and builds the ksock kfunc set on top of it, allowing BPF programs to initiate kernel-side connections. LSM recursion safety and an async callback guard are included, along with three selftest suites covering the basic kfunc path, LSM interaction, and the guard mechanism.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Inline bpf_iter_num_next() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260804134601.2305303-4-puranjay@kernel.org/",
+      "summary": "Core patch in a 6-patch series (v5) that inlines the three numeric open-coded iterator kfuncs—bpf_iter_num_new(), bpf_iter_num_next(), and bpf_iter_num_destroy()—directly into the BPF program at verification time, eliminating the kfunc call overhead for the common bpf_for() loop pattern. bpf_iter_num_destroy() becomes a no-op, and a benchmark selftest is included to quantify the improvement. This is a pure optimization with no semantic changes.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Disable preemption in bpf_get_stackid",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260805092843.516315-6-jolsa@kernel.org/",
+      "summary": "One of 12 patches (v4) in a series that fixes missing preemption-disable guards throughout the BPF stack map code. Without these guards, perf event-triggered stack collection could be preempted mid-operation and re-enter the same map bucket, causing data corruption. The series also refactors __bpf_get_stackid() into smaller helper functions (stackid_init, stackid_fastpath, stackid_new_bucket) and fixes a related bug where callchain data could be mutated by bpf_get_stack/bpf_get_stackid on perf events.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a sleepable page allocator for map memory",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260805091720.139924-2-jiayuan.chen@linux.dev/",
+      "summary": "First patch in a 4-patch series (v2) addressing arena fault-in behavior when a cgroup memory.max limit is in effect. The series introduces a sleepable page allocator for BPF map memory so that fault-in paths can trigger reclaim or OOM rather than failing silently, allocates the fault-in page outside the arena spinlock to allow sleeping, and adds a selftest that validates correct behavior under memory pressure.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix UAF in bpf_trampoline_multi_detach on update failure",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/0276810360a8c0e57aab95a292ff6453242b969c.1785902527.git.zhuhui@kylinos.cn/",
+      "summary": "First of a 3-patch series (v2) fixing use-after-free bugs in the BPF trampoline's multi-attach/detach paths triggered when a trampoline update fails partway through. The series covers three distinct rollback scenarios: detach failure cleanup in bpf_trampoline_multi_detach, register-path rollback in bpf_trampoline_multi_attach, and prog reference handling in __bpf_trampoline_unlink_prog. Each fix ensures the prog reference is dropped correctly before the error path returns.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Track verifier instruction stats for each subprogram",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260805011517.1717238-2-memxor@gmail.com/",
+      "summary": "First patch in a 6-patch series (v6) improving the BPF verifier's stack-depth statistics output to report per-subprogram instruction counts alongside stack depth, with BTF-derived subprogram names where available. A second patch propagates async callback instruction counts to their scheduling subprograms so the stats reflect true resource usage. The series also updates veristat to parse the new format and adds selftests for both the named and anonymous subprogram cases.",
+      "related_links": []
+    }
+  ]
+}
