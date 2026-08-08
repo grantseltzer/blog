@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-08-08T09:45:00Z",
+  "period_start": "2026-08-07",
+  "period_end": "2026-08-08",
+  "patch_count": 48,
+  "thread_count": 8,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Eduard Zingerman", "Ihor Solodrai", "Mahe Tardy"],
+  "key_topics": ["verifier", "arena", "kfuncs", "struct-ops", "zext", "btf", "selftests"],
+  "overview": "Activity on 2026-08-08 was dominated by Kumar Kartikeya Dwivedi with two large series: improved per-subprogram verifier statistics (v7) and arena argument support for kfuncs and struct_ops (v5). Eduard Zingerman contributed a static liveness analysis to eliminate redundant zero-extension instructions in the JIT output. The ksock kfuncs series reached v5 and several earlier series continued to iterate.",
+  "patches": [
+    {
+      "title": "bpf: Track verifier instruction stats for each subprogram",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260808062601.1070988-2-memxor@gmail.com/",
+      "summary": "This patch (v7, part 1 of 6) extends the BPF verifier to accumulate instruction statistics per subprogram rather than only at the top-level program. Developers working on complex programs with many subprograms can now see exactly which subprogram is consuming the most verifier complexity budget, making performance analysis and optimization much more actionable. Async callback statistics are attributed to their verification roots rather than lumped together, and the stack depth stats output format is improved to expose this granularity. Veristat is updated to parse the new output format.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support __arena and __arena__nullable kfunc argument suffixes",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260808003938.3486067-5-memxor@gmail.com/",
+      "summary": "This patch (v5, part 4 of 14) adds verifier support for __arena and __arena__nullable annotations on kfunc pointer arguments, allowing kfunc authors to declare that a parameter expects an arena-backed pointer. The verifier validates that the BPF program passes an arena pointer and the x86 JIT emits the necessary address rebasing instructions before calling the kfunc. Companion patches extend the same mechanism to struct_ops methods and fix stack-passed argument handling in the trampoline. Tracing and freplace programs are rejected for struct_ops that use arena args.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: infer zext_dst based on static register liveness analysis",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260807-static-zext-v4-5-b6c270013c77@gmail.com/",
+      "summary": "This patch (v4, part 5 of 7) replaces the conservative per-instruction zero-extension heuristic with a static register liveness analysis that precisely determines when the upper 32 bits of a destination register will actually be read. Instructions whose upper half is never consumed can skip the zero-extension fixup, reducing the number of spurious zero-extend sequences the JIT must emit. The liveness analysis tracks both 32- and 64-bit register halves, and bpf_is_reg64() is simplified as a follow-on cleanup.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add ksock kfuncs",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260807171532.125149-3-mahe.tardy@gmail.com/",
+      "summary": "This v5 revision of the ksock kfuncs series adds kernel-socket kfuncs that allow BPF programs to create connected sockets and send data from kernel context, paired with a connect_socket() networking helper. This revision refines the async callback guard mechanism based on review feedback from v4 and strengthens LSM enforcement to block bpf_ksock_send() from being attached in unsafe contexts. The series enables BPF-driven kernel-level network proxying and monitoring without needing userspace socket management.",
+      "related_links": []
+    },
+    {
+      "title": "resolve_btfids: Emit bpf_kfunc and bpf_fastcall decl tags",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260807032029.78092-5-ihor.solodrai@linux.dev/",
+      "summary": "This v3 patch (part 4 of 6) extends resolve_btfids to emit BTF declaration tags for functions marked bpf_kfunc and bpf_fastcall, making these annotations visible to BTF consumers like bpftool without requiring kernel source inspection. KF_ARENA_* flags are also processed and emitted as arena type tags. BTF deduplication is performed after btf2btf transformations to keep the output type graph clean. Documentation and selftests verify the new annotation emission behavior.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_thread_wq kthread-backed workqueue with cgroup placement",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/cfb06f2626062fa60efbbd9d34089819b1a34522.1786086076.git.zhuhui@kylinos.cn/",
+      "summary": "This patch introduces bpf_thread_wq, a kthread-backed BPF workqueue that executes work items within the memory context of a specific cgroup. Combined with the bpf_try_to_free_mem_cgroup_pages kfunc, it enables BPF programs to proactively trigger memory reclaim on behalf of a cgroup before the kernel's reactive reclaim kicks in. This is valuable in container environments where per-cgroup memory limits need active enforcement. Selftests verify both the async reclaim path and cgroup placement behavior.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Compare iterator types during state pruning",
+      "author": "Ning Ding",
+      "url": "https://lore.kernel.org/bpf/20260807004320.134069-2-dingning04@gmail.com/",
+      "summary": "This patch ensures the BPF verifier includes iterator types when comparing states during pruning, preventing unsound merges where states holding different iterator kinds (e.g., RCU-protected vs. plain) are treated as equivalent. Without the fix, the verifier could skip verification paths that differ only in iterator type, potentially accepting programs with incorrect control flow assumptions. A selftest exercises the RCU iterator state pruning path to confirm the fix.",
+      "related_links": []
+    }
+  ]
+}

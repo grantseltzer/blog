@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-08-08T09:45:00Z",
+  "period_start": "2026-08-06",
+  "period_end": "2026-08-07",
+  "patch_count": 49,
+  "thread_count": 12,
+  "top_contributors": ["Daniel Borkmann", "Leon Hwang", "Ihor Solodrai", "Mahe Tardy", "Hui Zhu"],
+  "key_topics": ["global-percpu", "kfuncs", "arena", "verifier", "btf", "memcg", "ksock", "libbpf"],
+  "overview": "A busy day on bpf-next featuring several significant new features: global per-CPU data support for BPF programs (v11 of that series), BPF-driven proactive cgroup memory reclaim via a new bpf_thread_wq workqueue type, and ksock kfuncs enabling BPF programs to create kernel sockets. Verifier improvements landed for sleepable context checks and iterator state pruning, while resolve_btfids gained support for emitting kfunc BTF decl tags.",
+  "patches": [
+    {
+      "title": "bpf: Introduce global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260806163125.11172-4-leon.hwang@linux.dev/",
+      "summary": "This patch (v11, part 3 of 10) introduces global per-CPU data support in the BPF subsystem, allowing BPF programs to declare per-CPU global variables that are accessed directly without map lookups. The verifier is extended to handle per-CPU data regions, and libbpf and bpftool receive companion patches to probe the feature and generate skeletons accordingly. This reduces overhead for workloads that require CPU-local state, providing an ergonomic alternative to per-CPU array maps. The series reached v11 after extensive review iterations addressing verifier correctness and libbpf API design.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_thread_wq kthread-backed workqueue with cgroup placement",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/cfb06f2626062fa60efbbd9d34089819b1a34522.1786086076.git.zhuhui@kylinos.cn/",
+      "summary": "This patch introduces bpf_thread_wq, a new kthread-backed workqueue type for BPF that supports cgroup placement, enabling work items to execute within the memory context of a specified cgroup. Together with the companion bpf_try_to_free_mem_cgroup_pages kfunc, this series enables BPF-driven proactive cgroup memory reclaim—programs can detect memory pressure and trigger reclaim in the correct cgroup context. This is particularly useful in cloud environments with strict per-cgroup memory limits. Selftests covering both the async reclaim and cgroup placement behavior are included.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add ksock kfuncs",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260806182234.380833-3-mahe.tardy@gmail.com/",
+      "summary": "This patch (v4 of 5) adds ksock kfuncs that allow BPF programs to create kernel sockets and send data from kernel context, building on a new connect_socket() helper added to the networking layer. The kfuncs are guarded by an async callback guard to prevent misuse, and LSM hooks are wired up to enforce access control on bpf_ksock_send(). This opens up BPF-driven network proxying and monitoring use cases that previously required userspace socket management. Selftests verify the kfunc behavior and the LSM attach restrictions.",
+      "related_links": []
+    },
+    {
+      "title": "resolve_btfids: Emit bpf_kfunc and bpf_fastcall decl tags",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260807032029.78092-5-ihor.solodrai@linux.dev/",
+      "summary": "This patch (v3, part 4 of 6) extends the resolve_btfids tool to emit BTF declaration tags for functions annotated with bpf_kfunc and bpf_fastcall macros, making kfunc properties introspectable through BTF consumers like bpftool without needing to consult kernel source. The series also processes KF_ARENA_* flags and emits arena type tags, and adds BTF deduplication after btf2btf transformations to avoid redundant type entries. Documentation and selftests for the new emission behavior are included.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix sleepable context checks and remove in_sleepable helper",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260806164049.3158887-2-memxor@gmail.com/",
+      "summary": "This patch fixes verifier sleepable context checks that were incorrectly classifying certain program execution contexts, and removes the in_sleepable helper in favor of more precise context tracking. The fix allows the verifier to correctly distinguish between different sleepable and non-sleepable contexts, preventing programs from incorrectly inheriting sleepable permissions from their call chain. A companion selftest patch verifies the various sleepable context distinctions that the verifier must enforce.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject load-acquire from pointers requiring fault protection",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260806201047.333389-1-daniel@iogearbox.net/",
+      "summary": "This patch (v2 of 6) makes the BPF verifier reject load-acquire instructions applied to pointers that require fault protection, such as arena and probe memory pointers where a page fault during the atomic load could corrupt state. The series also fixes exception table metadata generation for arena load-acquire on x86 and arm64 so that fault handlers correctly identify and handle faulting atomic loads. A shared bpf_atomic_is_load_acq() helper is extracted for RISC-V to reduce architecture-specific code duplication.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Compare iterator types during state pruning",
+      "author": "Ning Ding",
+      "url": "https://lore.kernel.org/bpf/20260807004320.134069-2-dingning04@gmail.com/",
+      "summary": "This patch fixes a verifier bug where iterator types were not included in the state comparison during pruning, allowing states holding different iterator types to be incorrectly merged. Without the fix, a state with an open RCU-protected iterator could be pruned using a cached state that held a different iterator type, potentially causing the verifier to accept programs that would behave incorrectly at runtime. A selftest is added to exercise the iterator state pruning path and confirm correct behavior.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: support selective kernel module BTF loading via .kmod_btfs section",
+      "author": "Fuyu Zhao",
+      "url": "https://lore.kernel.org/bpf/20260806042042.3239428-2-zhaofuyu@vivo.com/",
+      "summary": "This RFC patch proposes a new .kmod_btfs ELF section that BPF programs can use to declare which kernel module BTFs they require, allowing libbpf to load only those modules' BTFs instead of iterating over all loaded kernel modules. On systems with many loaded modules, this can significantly reduce BPF program load time. The companion patch adds selftests. The RFC status reflects that the BTF section naming and libbpf API are still open for discussion.",
+      "related_links": []
+    }
+  ]
+}
