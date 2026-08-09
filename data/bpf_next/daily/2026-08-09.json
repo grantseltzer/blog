@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-08-09T09:55:00Z",
+  "period_start": "2026-08-08",
+  "period_end": "2026-08-09",
+  "patch_count": 39,
+  "thread_count": 5,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Yonghong Song", "Jiayuan Chen"],
+  "key_topics": ["arena", "kfuncs", "verifier", "btf", "struct_ops", "jit", "maps"],
+  "overview": "Today's bpf-next activity was dominated by two major feature efforts: Kumar Kartikeya Dwivedi's 14-patch series adding arena argument support to kfuncs and struct_ops, enabling BPF programs to pass arena-backed pointers through kfunc interfaces with verifier validation and JIT-level address rebasing, and Yonghong Song's 13-patch series enabling aggregate return values up to 16 bytes via the R0:R2 register pair. Additional work landed improvements to per-subprogram verifier statistics, arena memory fault-in robustness under cgroup memory.max limits, and resolve_btfids tooling to emit arena parameter attributes at build time.",
+  "patches": [
+    {
+      "title": "bpf: Support __arena and __arena__nullable kfunc argument suffixes",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260808003938.3486067-5-memxor@gmail.com/",
+      "summary": "Adds support for __arena and __arena__nullable suffix annotations on kfunc parameters, declaring that a kfunc argument accepts an arena-backed pointer. The verifier is extended to validate arena pointer provenance when these suffixes are present and to enforce nullability rules. This is the core verifier-side change in a 14-patch series (v5) that adds full arena argument support to both kfuncs and struct_ops. It enables kfuncs to safely receive and operate on arena-relative memory, a key building block for zero-copy data sharing between BPF and user space.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: JIT __arena kfunc argument rebasing",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260808003938.3486067-7-memxor@gmail.com/",
+      "summary": "Implements x86 JIT code generation to convert arena-relative pointer arguments into kernel virtual addresses before they are passed to kfuncs. BPF arena pointers are stored as offsets relative to the arena base, but kfuncs in the kernel expect real virtual addresses, so the JIT emits instructions to add the arena base at each call site. This patch works in tandem with the verifier-side arena suffix tracking added earlier in the same series. A companion patch handles the same rebasing for struct_ops trampolines.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Enable aggregate return types up to 16 bytes",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260808190408.1901319-1-yonghong.song@linux.dev/",
+      "summary": "Enables BPF kfuncs and subprograms to return aggregate types up to 16 bytes using the R0:R2 register pair, matching the x86-64 System V ABI convention. Previously the BPF runtime only handled 8-byte (single-register) returns, preventing use of kfunc signatures that return small structs or pairs of values. This is the central patch in a 13-patch series (v3) that extends the verifier, JIT, precision backtracking, and live register analysis to handle 16-byte returns safely. Callbacks are explicitly rejected for this feature since their return values are used differently.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add verifier support for 16-byte returns in R0:R2",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260808190358.1899615-1-yonghong.song@linux.dev/",
+      "summary": "Teaches the BPF verifier to recognize and properly track the R0:R2 register pair when a kfunc or subprogram declares a 16-byte aggregate return type. Both registers must be treated as live after the call, with correct type information propagated to callers. The verifier also rejects programs where subprog BTF information is unavailable or unreliable, since the 16-byte return convention can only be confirmed via BTF type inspection. Companion patches in the same series handle precision backtracking and live register analysis for R2.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Track verifier instruction stats for each subprogram",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260808062601.1070988-2-memxor@gmail.com/",
+      "summary": "Adds per-subprogram instruction counting to the BPF verifier's statistics output, breaking down verification complexity by individual subprograms rather than reporting only a single program-wide total. This makes it much easier to identify which subprogram is responsible when a complex BPF program approaches the verification instruction limit or exhibits unexpectedly slow load times. It is the first patch in a 6-patch series (v7) that also improves stack depth stats display, attributes async callback instructions to their verification roots, and updates the veristat tool to parse the richer output format.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a sleepable page allocator for map memory",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260808140720.293604-2-jiayuan.chen@linux.dev/",
+      "summary": "Introduces a sleepable (GFP_KERNEL) page allocator for BPF map backing memory, allowing page allocation to block and trigger memory reclaim rather than failing outright under pressure. Arena fault-in paths previously used atomic allocation, which returns an error immediately when a cgroup memory.max limit is reached, causing spurious faults in BPF programs. By switching to a sleepable allocator the kernel can reclaim pages and retry, improving robustness for workloads that run BPF arenas inside memory-constrained cgroups. This is the foundational patch in a 4-patch series (v3) that also moves the fault-in allocation outside the arena lock to avoid holding it during potentially slow reclaim.",
+      "related_links": []
+    },
+    {
+      "title": "resolve_btfids: Emit arena attributes from kfunc parameter suffixes",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260809085155.3305519-2-memxor@gmail.com/",
+      "summary": "Extends the resolve_btfids build tool to recognize __arena and __arena__nullable kfunc parameter name suffixes and encode the corresponding attribute bits in the generated BTF ID list. The arena kfunc argument feature requires these attributes to be captured at build time so the verifier can read them efficiently at program load without scanning parameter name strings at runtime. This 2-patch series (v1) is a build-tooling companion to the arena kfunc argument verifier and JIT work, and includes a selftest verifying that the correct attribute bits are emitted for annotated parameters.",
+      "related_links": []
+    }
+  ]
+}
