@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-08-12T00:00:00Z",
+  "period_start": "2026-08-10",
+  "period_end": "2026-08-11",
+  "patch_count": 66,
+  "thread_count": 21,
+  "top_contributors": ["Yonghong Song", "Daniel Borkmann", "chenyuan", "Puranjay Mohan", "Darren Carreras"],
+  "key_topics": ["verifier", "kfuncs", "arena", "jit", "trampoline", "libbpf", "xdp", "bpftool"],
+  "overview": "The most significant activity on August 10-11 was Yonghong Song's 13-patch series (v4) enabling aggregate kfunc return values up to 16 bytes via the R0:R2 register pair, touching the verifier, JIT backends, precision backtracking, and live register analysis. Daniel Borkmann contributed a 6-patch series fixing fetch-destination register clearing on faulting arena atomics across x86, riscv, arm64, and s390, while Puranjay Mohan extended the arm64 JIT to support __arena-annotated kfunc and struct_ops arguments in trampolines. Additional work covered iterator state pruning in the verifier, a libbpf BTF.ext bounds-check overflow fix, trampoline UAF fixes, and multiple arena and bpftool bug fixes.",
+  "patches": [
+    {
+      "title": "bpf: Factor check_global_ret_scalar_reg() out of the global return check",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260811000916.2379316-1-yonghong.song@linux.dev/",
+      "summary": "This is patch 1 of a 13-patch series (v4) that adds support for aggregate BPF kfunc return values up to 16 bytes returned via the R0:R2 register pair. The series refactors the global-return scalar check, adds R0:R2 helper infrastructure, wires JIT support across architectures, extends the verifier with precision backtracking and live register analysis for R2, rejects callbacks returning more than 8 bytes, and enables the full feature with comprehensive selftests and documentation. This is a notable ABI extension enabling kfuncs to return small structs without resorting to pointer arguments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Derive the atomic load register in one place",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260810221811.481040-1-daniel@iogearbox.net/",
+      "summary": "This is the first patch of a 6-patch v2 series fixing a correctness bug in arena atomic operations across multiple JIT backends. When an arena atomic fetch operation faults, the destination register must be cleared to zero to avoid leaking stale data; this series first centralizes the atomic-load register derivation, then applies the clear on fault for riscv, x86, arm64, and s390, and adds selftests for the fault path. The v1 of this series was posted the same day, with v2 following promptly to address review feedback.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Fix stack-passed arguments for indirect trampolines",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260810190922.3408757-2-puranjay@kernel.org/",
+      "summary": "This 7-patch series adds arm64 JIT support for __arena-annotated kfunc arguments and struct_ops arena arguments, enabling BPF programs to pass arena pointers through the arm64 trampoline without manual address rebasing. The series starts with a stack-argument bug fix for indirect trampolines, adds an arm64 instruction encoder for extended-register ADD/SUB, implements __arena kfunc argument rebasing in the JIT, and converts struct_ops arena arguments in the trampoline, finishing with JIT-sequence tests and enabling the existing __arena argument selftests on arm64.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, tcx, netkit: reject offloaded programs",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260810050621.82035-2-jiayuan.chen@linux.dev/",
+      "summary": "This 3-patch v4 series prevents device-offloaded BPF programs from being accidentally attached to host network hooks such as tcx and netkit. The offload check is moved into dev_xdp_install() so that all XDP attachment paths enforce it uniformly, and the tcx/netkit paths are updated to reject offloaded programs explicitly. A selftest verifying that dev_xdp_install() correctly rejects device-bound programs completes the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Compare iterator types during state pruning",
+      "author": "Ning Ding",
+      "url": "https://lore.kernel.org/bpf/20260811035955.132989-2-dingning04@gmail.com/",
+      "summary": "This 2-patch v2 series fixes a verifier state-pruning bug where two states holding RCU-protected iterators of different types could be incorrectly considered equivalent, allowing unsound pruning. The fix adds iterator-type comparison to the state-equivalence check, closing the loophole. A selftest that triggers the precise pruning scenario is included in the second patch.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: avoid overflow in BTF.ext bounds check",
+      "author": "Darren Carreras",
+      "url": "https://lore.kernel.org/bpf/CAOZ_KyvEkVnT+jakLfeSfs0g5yq6t6YvVJ9humZfyQ-6OKSW6Q@mail.gmail.com/",
+      "summary": "This single patch (v5, the latest of five revisions posted on the same day) fixes an integer overflow in libbpf's BTF.ext section bounds checking. When section lengths are close to the 32-bit maximum, arithmetic on unsigned values can wrap around and cause the bounds check to pass erroneously, potentially leading to out-of-bounds reads. The fix casts operands to a wider type before comparison, preventing the overflow.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix UAF in bpf_trampoline_multi_attach_free on update failure",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/aaa3829e11e2e26bcd3bda9ee6df7a0101a718ac.1786412280.git.zhuhui@kylinos.cn/",
+      "summary": "This 2-patch v5 series fixes a use-after-free (UAF) in the BPF trampoline multi-attach path. When bpf_trampoline_multi_attach fails partway through updating attachments, the error path could free trampoline image memory that is still referenced, leading to a UAF. The companion patch makes bpf_trampoline_multi_detach return void, removing a misleading error return that previously obscured the real failure mode.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Cancel special fields in resizable hashtab on recycle",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260811095531.3294167-2-chenyuan_fl@163.com/",
+      "summary": "This 2-patch series fixes a bug in the resizable hashtable (rhtab) where kptr and other special fields are not properly cancelled when a bucket is recycled from NMI context. Without this cancellation, stale kptr values can persist in recycled entries, risking incorrect memory management. A selftest verifying kptr recycling from NMI context accompanies the fix.",
+      "related_links": []
+    }
+  ]
+}
