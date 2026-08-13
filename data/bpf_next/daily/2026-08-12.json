@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-08-13T00:00:00Z",
+  "period_start": "2026-08-11",
+  "period_end": "2026-08-12",
+  "patch_count": 40,
+  "thread_count": 11,
+  "top_contributors": ["Yonghong Song", "Daniel Borkmann", "Nick Hudson", "Anastasios Papagiannis", "Eduard Zingerman"],
+  "key_topics": ["kfuncs", "verifier", "jit", "arena", "xdp", "trampoline", "selftests"],
+  "overview": "Activity on bpf-next for August 11-12 centers on several significant feature and fix series. The largest contribution is Yonghong Song's 13-patch series enabling aggregate kfunc return values up to 16 bytes via a register pair (R0:R2), touching the verifier, JIT backends, and precision backtracking. Daniel Borkmann lands arena atomic fault-handling fixes across x86, arm64, riscv, and s390, while Anastasios Papagiannis proposes new kfuncs for reading user memory through mm_struct from BPF programs.",
+  "patches": [
+    {
+      "title": "bpf: Enable aggregate return types up to 16 bytes",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260811000957.2382783-1-yonghong.song@linux.dev/",
+      "summary": "This patch is the core enablement patch of a 13-patch series (v4) that allows kfuncs to return aggregate values of up to 16 bytes using the R0:R2 register pair. Previously, BPF kfuncs were limited to 8-byte return values, forcing callers to use pointer-based output arguments for larger structs. The change threads through the verifier (precision backtracking, live register analysis), JIT backends, and BTF validation, and adds extensive selftests covering C, inline asm, and callback scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add BPF_F_ADJ_ROOM_DECAP_* flags for tunnel decapsulation",
+      "author": "Nick Hudson",
+      "url": "https://lore.kernel.org/bpf/20260812083115.73100-4-nhudson@akamai.com/",
+      "summary": "Part of a 6-patch series (v7) introducing new BPF_F_ADJ_ROOM_DECAP_* flags to bpf_skb_adjust_room, enabling BPF TC programs to perform explicit tunnel decapsulation while correctly updating GSO state. The series also adds guard rails to reject invalid flag combinations and clears decap state on the skb_adjust_room shrink path to avoid stale metadata. A selftest validates both decap GSO and encapsulation state transitions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add user memory access kfuncs for mm_struct",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260811112154.94053-3-tasos.papagiannnis@gmail.com/",
+      "summary": "This patch in a 5-patch series adds new kfuncs that allow BPF programs to safely read user-space memory through a trusted mm_struct pointer, enabling introspection of process address spaces from contexts like exec hooks. A companion patch adds copy_remote_mm_str() to the mm layer, and another marks linux_binprm->mm as trusted-or-null so the verifier can accept it as a kfunc argument. Selftests exercise the new kfuncs in the context of linux_binprm.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Derive the atomic load register in one place",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260811131600.506721-1-daniel@iogearbox.net/",
+      "summary": "The first patch of a 6-patch series (v3) that refactors arena atomic fault handling by centralizing how the fetch destination register is derived. Subsequent patches in the series clear the fetch destination register on faulting arena atomics across x86, riscv, arm64, and s390 JIT backends, preventing stale values when an atomic-with-fetch operation faults in an arena region. A final selftest patch exercises the corrected behavior for atomic fetch operations.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Compare iterator types during state pruning",
+      "author": "Ning Ding",
+      "url": "https://lore.kernel.org/bpf/20260811035955.132989-2-dingning04@gmail.com/",
+      "summary": "This verifier fix (v2 of a 2-patch series) ensures that RCU iterator state is compared by iterator type during state pruning, preventing the verifier from incorrectly merging states from different iterator kinds. Without this fix, pruning could allow unsafe control-flow paths to appear valid. A companion selftest exercises the filtering logic to guard against regressions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix UAF in bpf_trampoline_multi_attach_free on update failure",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/aaa3829e11e2e26bcd3bda9ee6df7a0101a718ac.1786412280.git.zhuhui@kylinos.cn/",
+      "summary": "First patch of a 2-patch series (v5) fixing a use-after-free in the BPF trampoline subsystem that occurs when a multi-prog attach update fails partway through. The bug arises because the image allocated for the new trampoline can be freed while still referenced, leading to a UAF on the error path. A companion patch changes bpf_trampoline_multi_detach to return void to eliminate an ignored error return that was masking the issue.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, riscv: Add BPF stack arguments support for RV64 JIT",
+      "author": "Feng Jiang",
+      "url": "https://lore.kernel.org/bpf/20260812-bpf-riscv-stack-args-v1-1-67b246806e59@kylinos.cn/",
+      "summary": "This patch adds support for passing arguments via the stack in the BPF RISC-V 64-bit JIT, necessary when a kfunc call has more arguments than the available argument registers. The RISC-V calling convention pushes excess arguments onto the stack, and without JIT support these calls would be miscompiled. A companion selftest enables the existing stack argument test suite for RISC-V.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Cancel special fields in resizable hashtab on recycle",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260811095531.3294167-2-chenyuan_fl@163.com/",
+      "summary": "This fix (first patch of a 2-patch series) addresses a bug where special fields such as kptrs stored in resizable hashtable (rhtab) elements are not properly cancelled when an element is recycled from an NMI context. Without cancellation, stale kptr references can persist in recycled elements, leading to memory leaks or incorrect behavior. A selftest exercises kptr recycle from NMI context to catch regressions.",
+      "related_links": []
+    }
+  ]
+}
