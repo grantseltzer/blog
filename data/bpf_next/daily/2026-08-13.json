@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-08-14T00:00:00Z",
+  "period_start": "2026-08-12",
+  "period_end": "2026-08-13",
+  "patch_count": 48,
+  "thread_count": 18,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Hudson, Nick", "Mahe Tardy", "Thiébaud Weksteen"],
+  "key_topics": ["verifier", "kfuncs", "jit", "btf", "maps", "tc", "selftests", "libbpf"],
+  "overview": "August 12–13 saw heavy BPF activity dominated by Kumar Kartikeya Dwivedi's v4 redesign of verifier error reporting, which restructures diagnostics into typed, log-level-gated events across 16 patches. Other highlights include a new LOADER_LOAD_FD syscall command enabling SELinux-controlled program loading from a file descriptor, and the v6 introduction of bpf_ksock kfuncs for kernel socket operations from within BPF programs.",
+  "patches": [
+    {
+      "title": "bpf: Add verifier diagnostics report helpers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260812233326.3575958-2-memxor@gmail.com/",
+      "summary": "Part of a 16-patch v4 series that completely redesigns how the BPF verifier reports errors. The series introduces a structured diagnostic event log that tracks register, reference, and context errors as typed events during verification, then prunes stale diagnostics when switching code paths and gates final output on the configured log level. Categorized reports cover memory safety bounds, register type safety, resource lifetime leaks, call type safety, CFG structure, policy, and verifier limits. The rework makes verification failures far easier to diagnose by surfacing only the most relevant error for a given execution path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Track verifier instruction stats for each subprogram",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260812221925.3358041-2-memxor@gmail.com/",
+      "summary": "First patch in the v8 series improving verifier stack-depth statistics output. The series tracks per-subprogram instruction counts and attributes async callback instructions to their verification roots, then reformats the stats output to include BTF subprogram names where available. The veristat tool's stack-depth parsing is adjusted to handle the new format, and selftests cover both the named and unnamed subprogram cases. This gives developers much more actionable information when diagnosing programs that approach verifier complexity limits.",
+      "related_links": []
+    },
+    {
+      "title": "fs/kernel_read_file,selinux: Add BPF_LOADER constant",
+      "author": "Thiébaud Weksteen",
+      "url": "https://lore.kernel.org/bpf/20260813002618.3755631-2-tweek@google.com/",
+      "summary": "First patch in a 5-patch series introducing BPF_LOADER_LOAD_FD, a new bpf() syscall command that loads a BPF program from a file descriptor rather than a user-space buffer. A BPF_LOADER constant is added to kernel_read_file and SELinux so the LSM can enforce a dedicated BPF_LOADER_LOAD_FD permission on top of the existing BPF_PROG_LOAD checks. This enables deployment workflows that rely on file-based integrity verification and fine-grained MAC policy for BPF programs distributed as files.",
+      "related_links": []
+    },
+    {
+      "title": "net: Add connect_socket() helper",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260812154328.72834-2-mahe.tardy@gmail.com/",
+      "summary": "First patch in the v6 bpf_ksock series, which introduces kernel socket kfuncs allowing BPF programs to create and manage TCP/UDP connections. The net layer gains a connect_socket() helper used by bpf_ksock_send() to establish connections, and the series adds an async-callback guard to prevent calls from unsafe contexts. LSM attachment to bpf_ksock_send() is explicitly disallowed to avoid deadlocks, with selftests verifying both the functional path and the forbidden attach.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Populate mmap-able array map memory lazily",
+      "author": "Song Liu",
+      "url": "https://lore.kernel.org/bpf/20260812230248.2452103-1-song@kernel.org/",
+      "summary": "This v5 patch defers physical memory allocation for mmap-able BPF array maps until pages are actually faulted in, rather than pre-allocating the entire backing store at map creation time. For large maps that are sparsely accessed, this significantly reduces initial memory footprint and creation latency. The change uses vm_ops fault handling to populate pages on demand while keeping mmap semantics unchanged for user space.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: htab: Split htab_elem_lru and htab_elem_pcpu off of htab_elem",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20260812231905.2956588-2-tjmercier@google.com/",
+      "summary": "First of a v4 two-patch series reducing per-element memory overhead in BPF hash maps. Splitting the LRU and per-CPU variants into separate struct types shrinks the base htab_elem, and a follow-on patch eliminates inline key storage for small key sizes, saving 8 bytes per element. The reduction adds up meaningfully for maps with millions of entries common in production observability and networking workloads.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: support selective kernel module BTF loading via .kmod_btfs section",
+      "author": "Fuyu Zhao",
+      "url": "https://lore.kernel.org/bpf/20260813032613.2755-2-zhaofuyu@vivo.com/",
+      "summary": "RFC v2 teaching libbpf to load only the kernel module BTFs that a given BPF program actually references, via a new .kmod_btfs ELF section that declares dependencies. Previously libbpf enumerated and loaded all available kmod BTFs unconditionally. This reduces BPF program load latency on systems with many loaded kernel modules, which is a real bottleneck in production environments with large driver sets.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add user memory access kfuncs for linux_binprm",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260812111140.7762-3-tasos.papagiannnis@gmail.com/",
+      "summary": "Introduces kfuncs that let BPF programs read strings from the user-space address space of a process being exec'd, using the linux_binprm context available at LSM exec hooks. A new copy_remote_mm_str() helper in the mm layer safely reads a NUL-terminated string from a remote process's memory map. This enables security BPF programs to inspect program arguments at exec time without manually walking the argument vector, which is valuable for policy enforcement use cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: name the enum for BPF_FUNC_skb_adjust_room flags",
+      "author": "Hudson, Nick",
+      "url": "https://lore.kernel.org/bpf/20260812083115.73100-2-nhudson@akamai.com/",
+      "summary": "First patch of a v7 six-patch series adding BPF_F_ADJ_ROOM_DECAP_* flags to bpf_skb_adjust_room() for explicit tunnel decapsulation signaling. New flags indicate whether the stripped outer header is IPv4 or IPv6, the GSO state is updated to reflect the decapsulated packet geometry, and decap state is cleared on the shrink path. This closes a long-standing gap where tc BPF programs performing tunnel decap had no first-class way to communicate the decap to the network stack.",
+      "related_links": []
+    }
+  ]
+}
