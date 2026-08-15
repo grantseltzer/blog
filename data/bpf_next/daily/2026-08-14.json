@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-08-15T09:35:00Z",
+  "period_start": "2026-08-13",
+  "period_end": "2026-08-14",
+  "patch_count": 67,
+  "thread_count": 21,
+  "top_contributors": [
+    "Yonghong Song",
+    "Leon Hwang",
+    "Puranjay Mohan",
+    "Mahe Tardy",
+    "Thiébaud Weksteen"
+  ],
+  "key_topics": [
+    "verifier",
+    "kfuncs",
+    "jit",
+    "riscv",
+    "arm64",
+    "percpu",
+    "maps",
+    "libbpf"
+  ],
+  "overview": "A busy day on bpf-next dominated by major new feature series: support for aggregate return values up to 16 bytes via the R0:R2 register pair (Yonghong Song, v5), and the long-running global percpu data series reaching v12 (Leon Hwang). Architecture-specific JIT work continued with arm64 gaining __arena kfunc and struct_ops argument support (Puranjay Mohan), and RISC-V picking up BPF stack argument passing.",
+  "patches": [
+    {
+      "title": "bpf: Support aggregate return values up to 16 bytes",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260813200215.1993264-1-yonghong.song@linux.dev/",
+      "summary": "This 11-patch series (v5) extends the BPF verifier, JIT backends, and precision-backtracking machinery to handle kfunc return values that span two registers (R0:R2) for aggregates up to 16 bytes. It adds helper infrastructure to describe register pairs, wires up JIT support across x86/arm64/riscv, teaches the live-register and precision-backtracking passes to account for R2, and adds verifier enforcement when the subprog BTF is unreliable. The change unlocks a common C ABI pattern where large structs are returned in two registers, which was previously impossible from BPF kfuncs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce global percpu data",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260813152324.97937-2-leon.hwang@linux.dev/",
+      "summary": "This 10-patch series (v12) introduces a new percpu_array map variant that allows BPF programs to declare global per-CPU variables directly in their source, similar to how BSS/data sections work for regular globals. The kernel side adds the new map type, libbpf gains feature probing and loader support, bpftool generates skeleton accessors, and the verifier learns to handle direct reads/writes to the read-only variant. Multiple selftest patches verify verifier logs and bpf_iter-based enumeration of the new data.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: __arena kfunc and struct_ops arguments",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260813190356.335181-2-puranjay@kernel.org/",
+      "summary": "This 7-patch series (v2) teaches the arm64 BPF JIT to handle __arena-qualified kfunc arguments and struct_ops arena arguments in trampolines. It fixes a pre-existing bug with stack-passed arguments in indirect trampolines, adds an arm64 instruction encoder for ADD/SUB with extended register, implements __arena pointer rebasing in the JIT, and converts struct_ops arena arguments inside the trampoline. Selftests verify JIT instruction sequences and end-to-end correctness on arm64.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce LOADER_LOAD_FD",
+      "author": "Thiébaud Weksteen",
+      "url": "https://lore.kernel.org/bpf/20260813002618.3755631-2-tweek@google.com/",
+      "summary": "This 5-patch series introduces BPF_LOADER_LOAD_FD, a new bpf(2) command that allows a privileged loader process to load a BPF program from a file descriptor rather than inline bytes, enabling tighter SELinux integration. The series adds a BPF_LOADER constant to the kernel read-file abstraction, introduces the new command in the BPF syscall, updates SELinux to use the kernel SID when evaluating security_bpf_* hooks, and adds a dedicated SELinux permission for the new command. Selftests verify end-to-end behavior.",
+      "related_links": []
+    },
+    {
+      "title": "Introduce bpf_ksock",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20260813110540.103550-2-mahe.tardy@gmail.com/",
+      "summary": "This 5-patch series (v7) introduces the bpf_ksock abstraction, which gives BPF programs a safe, reference-counted handle to a kernel socket. A new connect_socket() helper is added to the networking core, followed by the ksock kfuncs that wrap it for BPF use. The series carefully guards against async-callback misuse by restricting bpf_ksock_send() from LSM attach points, and verifies behavior through targeted selftests including an async callback guard test.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Keep fault protection when merging pointer types",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260813204032.644949-1-daniel@iogearbox.net/",
+      "summary": "This 4-patch series fixes a verifier correctness issue where merging two PTR_TO_MEM pointer states at a shared load instruction could silently drop the fault-protection flag, leaving the resulting pointer without the necessary guard. The fix preserves fault protection across PTR_TO_MEM merges, enforces read-only semantics for untrusted PTR_TO_MEM under RCU invalidation, and extends the merge to handle cases where both sides are already PTR_TO_MEM. Selftests cover the new merge paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix refcount_acquire handling for borrowed kptrs",
+      "author": "Ning Ding",
+      "url": "https://lore.kernel.org/bpf/20260813211533.290256-2-dingning04@gmail.com/",
+      "summary": "This 4-patch series (v4) fixes the verifier's handling of bpf_refcount_acquire() on borrowed RCU kptrs: previously the return value was incorrectly treated as non-nullable even though the acquire can fail if the object is being freed. The series keeps the return nullable for borrowed RCU kptrs, adds verifier logic to reject untrusted allocated-object pointers, and provides selftests that cover both the correct nullability behavior and the rejection of untrusted pointers.",
+      "related_links": []
+    }
+  ]
+}

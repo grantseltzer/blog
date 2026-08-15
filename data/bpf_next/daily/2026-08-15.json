@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-08-15T09:35:00Z",
+  "period_start": "2026-08-14",
+  "period_end": "2026-08-15",
+  "patch_count": 42,
+  "thread_count": 10,
+  "top_contributors": [
+    "Kumar Kartikeya Dwivedi",
+    "Daniel Borkmann",
+    "Vineet Gupta",
+    "Leon Hwang",
+    "Jianlin Shi"
+  ],
+  "key_topics": [
+    "verifier",
+    "maps",
+    "btf",
+    "percpu",
+    "riscv",
+    "libbpf"
+  ],
+  "overview": "Today's bpf-next activity is headlined by Kumar Kartikeya Dwivedi's sweeping \"Redesign Verification Errors\" series (v5, 14 patches), which restructures how the verifier surfaces diagnostic information across register type, memory safety, resource lifetime, and CFG error categories. Daniel Borkmann posted v2 of his fault-prone pointer series with expanded coverage, and Vineet Gupta proposed RFC patches to track scalar equality across the low 32 bits of registers.",
+  "patches": [
+    {
+      "title": "Redesign Verification Errors",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260815064612.378577-2-memxor@gmail.com/",
+      "summary": "This ambitious 14-patch series (v5) overhauls the BPF verifier's error-reporting infrastructure so that diagnostic messages are categorized, structured, and pruned correctly when the verifier switches between program paths. It introduces a diagnostic event log and context-tracking for registers, references, and verifier state, then systematically reports distinct error categories including Register Type Safety, Memory Safety bounds, Resource Lifetime leaks, Call Type Safety arguments, Execution Context Safety, Program Structure CFG errors, and Policy helper/kfunc errors. The goal is to make verifier failures much more actionable for BPF developers by surfacing the actual root cause rather than a cascading chain of side effects.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Keep fault protection when merging pointer types",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260814215301.709827-1-daniel@iogearbox.net/",
+      "summary": "Version 2 of Daniel's pointer-merge safety series, expanded to 6 patches. Beyond preserving the fault-protection flag through PTR_TO_MEM merges, this revision adds logic to treat a fault-prone PTR_TO_MEM as a type mismatch, reject stores through fault-prone pointers, and rewrite any fault-prone load out of a mem or btf_id pointer into a safe form. New selftests cover fault-prone loads from RCU pointers and pointer-type merges at shared load sites.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: track scalar equality across the low 32 bits",
+      "author": "Vineet Gupta",
+      "url": "https://lore.kernel.org/bpf/20260814231945.3884596-2-vineet.gupta@linux.dev/",
+      "summary": "This 6-patch RFC proposes extending the verifier's scalar-linking mechanism to track equality between the low 32 bits of two registers across zero-extending and sign-extending moves. The series first refactors the existing precise flag into a flags field (NFC), moves linked-scalar flags there, then adds support for low-32 subreg scalar linking for both zero-extending and sign-extending movs. The motivation is to improve verifier precision for architectures like RISC-V and arm64 where 32-bit operations are common, reducing spurious rejections.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Populate mmap-able array map memory lazily",
+      "author": "Song Liu",
+      "url": "https://lore.kernel.org/bpf/20260814155623.111565-1-song@kernel.org/",
+      "summary": "Version 7 of Song Liu's patch to defer physical memory allocation for mmap-able BPF array maps until the memory is actually accessed. Previously, creating a large mmap-able array map would immediately fault in all pages, causing noticeable latency and memory pressure even if most of the map was never used. The lazy-population approach uses page-fault handling to allocate backing pages on demand, which improves load-time performance for programs that use sparse large maps.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: stream fixes series",
+      "author": "Jianlin Shi",
+      "url": "https://lore.kernel.org/bpf/tencent_6B540E4B95A9AD4DBF8C928942E95A23AB0A@qq.com/",
+      "summary": "This 5-patch series (v3) addresses several correctness issues in the BPF stream subsystem: rolling back stream capacity on allocation failure, fixing a capacity leak in the staging path, returning partial progress from bpf_stream_read on fault rather than failing entirely, and rejecting oversized bpf_stream_vprintk output with -E2BIG instead of silently truncating. Selftests cover stream capacity limits and partial-read edge cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Followups for global percpu data series",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260814173206.93082-2-leon.hwang@linux.dev/",
+      "summary": "A 5-patch follow-up series to the global percpu data work merged the previous day. It drops a duplicate blank line in the verifier, optimizes libbpf to avoid unnecessary mmap resize operations for percpu data maps, updates bpftool comments about skel data maps, and improves selftest stability by avoiding a flaky resize value test and improving readability in the bpf_iter test.",
+      "related_links": []
+    }
+  ]
+}
