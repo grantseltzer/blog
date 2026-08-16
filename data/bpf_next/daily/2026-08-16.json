@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-08-16T09:29:25Z",
+  "period_start": "2026-08-15",
+  "period_end": "2026-08-16",
+  "patch_count": 35,
+  "thread_count": 4,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Jianlin Shi", "Justin Suess"],
+  "key_topics": ["verifier", "diagnostics", "kfuncs", "lsm", "stream", "security"],
+  "overview": "Today's bpf-next activity was dominated by Kumar Kartikeya Dwivedi's ambitious redesign of BPF verifier error reporting, with both a v5 of the core 'Redesign Verification Errors' series and a companion v1 follow-up series that corrects diagnostic attribution and policy reporting. Jianlin Shi contributed a v3 series of stream reliability fixes covering capacity rollback, leak prevention, partial read handling, and oversized output rejection. Justin Suess added a new bpf_security_locked_down() kfunc giving BPF LSM programs the ability to query the kernel's lockdown state.",
+  "patches": [
+    {
+      "title": "bpf: Add verifier diagnostics report helpers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260815064612.378577-2-memxor@gmail.com/",
+      "summary": "This foundational patch introduces a new structured diagnostics reporting infrastructure for the BPF verifier, replacing ad-hoc verbose log messages with typed report helpers. The helpers emit categorized diagnostic events that carry source attribution, instruction context, and register/reference state at the point of failure. This is patch 1 of 14 in the v5 'Redesign Verification Errors' series, which aims to produce machine-readable, actionable error messages for BPF program authors. The structured approach enables tooling like bpftool and libbpf to surface rich, context-aware error output instead of raw log strings.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add verifier diagnostic event log",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260815064612.378577-4-memxor@gmail.com/",
+      "summary": "Introduces a diagnostic event log within the BPF verifier that records typed events (register state changes, reference acquisitions, context transitions) as verification proceeds. These events are pruned when the verifier switches to an alternative path, ensuring the log reflects only the failing execution trace. The event log is the backbone of the new error reporting system, feeding the categorized report helpers added earlier in the series. This design avoids re-deriving lost register and reference context at error time by capturing it incrementally during the verification pass.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Report Memory Safety bounds errors",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260815064612.378577-10-memxor@gmail.com/",
+      "summary": "Wires up the new diagnostic event log to emit structured 'Memory Safety' category errors for out-of-bounds access violations detected by the verifier. Instead of a flat log line, the report now includes the offending register's value range, the access size, and the bounds that were violated. This makes it significantly easier for developers to understand why the verifier rejected a memory access without manually correlating register state from the full verifier log. Part of the broader v5 verifier error redesign series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Correct verifier diagnostic attribution for stack reads",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260816015746.2632990-2-memxor@gmail.com/",
+      "summary": "Fixes incorrect source attribution in verifier diagnostics when the error originates from a stack read rather than the instruction that wrote the value. Previously, the diagnostic pointed to the wrong instruction, making it hard to correlate errors with source code. This is the first patch of the v1 'Follow ups for verifier errors set' series, which addresses attribution and policy diagnostic correctness issues discovered after the v5 redesign. The fix ensures the displayed source location matches the actual offending read instruction.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Distinguish function references in policy diagnostics",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260816015746.2632990-14-memxor@gmail.com/",
+      "summary": "Extends policy diagnostic output to differentiate between pseudo-function references and ordinary kfunc/helper references when reporting policy violations. Without this distinction, error messages treating all function references identically made it ambiguous whether a pseudo-function or a real kfunc was the source of a policy failure. This patch adds the necessary type information to the diagnostic context so the report can accurately describe the offending reference. It is patch 13 of 14 in the follow-up series and is paired with a corresponding selftest in patch 14.",
+      "related_links": []
+    },
+    {
+      "title": "lsm: add bpf_security_locked_down() kfunc",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260815112041.1248855-2-utilityemal77@gmail.com/",
+      "summary": "Adds a new kfunc bpf_security_locked_down() that allows BPF LSM programs to query whether a given feature is currently restricted by the kernel's lockdown security module. This fills a gap where BPF programs attached to LSM hooks could not programmatically react to the kernel's lockdown state, limiting their ability to implement complementary policy enforcement. The kfunc wraps security_locked_down() and exposes it safely to BPF programs with appropriate context checks. Paired with a selftest in patch 2/2.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: roll back stream capacity when allocation fails",
+      "author": "Jianlin Shi",
+      "url": "https://lore.kernel.org/bpf/tencent_6B540E4B95A9AD4DBF8C928942E95A23AB0A@qq.com/",
+      "summary": "Fixes a bug where BPF stream capacity was not rolled back on allocation failure, leaving the stream in an inconsistent state where subsequent operations could misinterpret available capacity. This is the first of a 5-patch v3 series addressing correctness issues in the BPF stream subsystem, which provides a buffered output channel for BPF programs. The series also covers a capacity leak in the staging path, partial read progress on fault, and rejection of oversized vprintk output with -E2BIG. Together these patches harden stream reliability for production use.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: reject oversized bpf_stream_vprintk output with -E2BIG",
+      "author": "Jianlin Shi",
+      "url": "https://lore.kernel.org/bpf/tencent_9B5B6A48CD61BA62744B144B970939A23205@qq.com/",
+      "summary": "Adds a check to bpf_stream_vprintk that rejects formatted output exceeding the stream's maximum capacity with -E2BIG, rather than silently truncating or producing undefined behavior. Previously, oversized output could overflow stream buffers or produce misleading partial writes without an error indicator. This patch gives callers a clear signal that their output was too large, enabling correct error handling in BPF programs that rely on stream output. Part of the v3 bpf-next stream reliability series.",
+      "related_links": []
+    }
+  ]
+}
