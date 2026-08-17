@@ -1,0 +1,113 @@
+{
+  "generated_at": "2026-08-17T10:00:00Z",
+  "period_start": "2026-08-10",
+  "period_end": "2026-08-17",
+  "patch_count": 100,
+  "thread_count": 23,
+  "top_contributors": [
+    "Kumar Kartikeya Dwivedi",
+    "Yonghong Song",
+    "Daniel Borkmann",
+    "Vineet Gupta",
+    "Puranjay Mohan"
+  ],
+  "key_topics": [
+    "verifier",
+    "kfuncs",
+    "arena",
+    "riscv",
+    "arm64",
+    "jit",
+    "maps",
+    "libbpf",
+    "lsm",
+    "diagnostics"
+  ],
+  "overview": "This week's bpf-next saw heavy activity across verifier diagnostics, architecture-specific JIT improvements, and core subsystem enhancements. Kumar Kartikeya Dwivedi dominated with two large series totaling 28 patches: a v5 redesign of how the verifier structures and reports errors, followed by a v1 follow-up series correcting attribution and context in those diagnostics. Yonghong Song iterated his 16-byte aggregate kfunc return value series to v6 with full verifier, JIT, precision backtracking, and documentation coverage, while Daniel Borkmann contributed improvements to fault protection during pointer type merges in the verifier. New platform support arrived via RISC-V stack argument passing and ARM64 arena kfunc argument rebasing, and a new bpf_security_locked_down() kfunc gives LSM BPF programs a way to query the kernel's lockdown state.",
+  "patches": [
+    {
+      "title": "bpf: Add verifier diagnostics report helpers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260815064612.378577-2-memxor@gmail.com/",
+      "summary": "Opens Kumar Kartikeya Dwivedi's 14-patch v5 series redesigning how the BPF verifier structures and emits error reports. This patch introduces helper functions that serve as the foundation for a new diagnostic event log, replacing the ad hoc approach of building error strings inline throughout the verifier. The redesign separates the concern of recording what went wrong from the concern of formatting and displaying it, enabling richer, more structured error output. Subsequent patches in the series layer specific error categories — register type safety, memory bounds, resource lifetimes, CFG, and call type safety — on top of this foundation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Correct verifier diagnostic attribution for stack reads",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260816015746.2632990-2-memxor@gmail.com/",
+      "summary": "Leads a 14-patch v1 follow-up series to the redesigned verification error framework, fixing a collection of attribution and context bugs exposed by the v5 redesign. This first patch corrects the source instruction reported when an error involves a stack read, pointing to the spill site instead of the read site. Further patches in the series fix kfunc argument diagnostics, policy diagnostic context, sleepability reporting, and pseudo-function reference identification — all improving the quality of error messages seen by BPF developers.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Enable aggregate return types up to 16 bytes",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260817042217.2294438-1-yonghong.song@linux.dev/",
+      "summary": "The central enabling patch in Yonghong Song's v6 ten-patch series that allows kfuncs to return aggregate values up to 16 bytes using the R0:R2 register pair. Prior to this work, BPF kfuncs were limited to returning scalars fitting in a single register; now kfuncs with appropriate BTF return types can return 16-byte structs split across R0 (low 64 bits) and R2 (high 64 bits). The series spans JIT wiring, verifier tracking, precision backtracking, live register analysis, and documentation, and reached v6 after several rounds of review.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Keep fault protection when merging pointer types",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260814215301.709827-1-daniel@iogearbox.net/",
+      "summary": "Fixes a verifier bug where the fault-protection flag on a pointer was silently dropped when two control-flow paths converged and the verifier merged their pointer types. A PTR_TO_MEM marked as fault-prone (requiring PROBE_MEM-style speculative load rewriting) would lose that annotation after a merge, causing the JIT to emit an unprotected load that could fault in the kernel. This v2 six-patch series also rejects stores through fault-prone pointers, rewrites any remaining fault-prone loads on affected pointer types, and adds targeted selftests for the pointer-merge and RCU invalidation cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: support low-32 subreg scalar linking for zero-extending movs",
+      "author": "Vineet Gupta",
+      "url": "https://lore.kernel.org/bpf/20260814231945.3884596-4-vineet.gupta@linux.dev/",
+      "summary": "Part of an RFC six-patch series teaching the BPF verifier to track scalar equality across the low 32 bits of registers, enabling it to share range information between a 64-bit register and its 32-bit subregister view after zero-extending moves. This improves the precision of scalar tracking after instruction sequences that zero-extend a 32-bit value into a 64-bit register, reducing false negatives in the verifier's range checks. Companion patches handle sign-extending moves and reorganize the register flags field to accommodate the new linking metadata.",
+      "related_links": []
+    },
+    {
+      "title": "lsm: add bpf_security_locked_down() kfunc",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260815112041.1248855-2-utilityemal77@gmail.com/",
+      "summary": "Introduces a new bpf_security_locked_down() kfunc that gives BPF LSM programs a way to query the kernel's lockdown state for a specific feature flag. The lockdown LSM controls which security-sensitive operations are permitted when the kernel is locked down (e.g., under Secure Boot), but BPF programs previously had no way to check that state programmatically. This two-patch series adds the kfunc and a selftest, enabling BPF LSM programs to gate their behavior based on whether the kernel has locked down a given feature.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Populate mmap-able array map memory lazily",
+      "author": "Song Liu",
+      "url": "https://lore.kernel.org/bpf/20260814155623.111565-1-song@kernel.org/",
+      "summary": "Changes mmap-able BPF array maps to allocate their backing pages lazily on first access rather than eagerly at map creation time. Large mmap-able array maps previously paid the full memory allocation cost at creation even when only a fraction of the map was ever accessed, wasting physical memory. This v7 single patch defers page allocation to fault time, reducing memory pressure for programs that create large sparse array maps. The approach follows the same demand-paging model used elsewhere in the kernel for large anonymous mappings.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Keep refcount_acquire nullable for borrowed RCU kptrs",
+      "author": "Ning Ding",
+      "url": "https://lore.kernel.org/bpf/20260813211533.290256-2-dingning04@gmail.com/",
+      "summary": "Fixes incorrect handling of refcount_acquire() return nullability for borrowed RCU kptrs, where the verifier was improperly treating the result as non-nullable and allowing unsafe dereferences without a null check. RCU kptrs can disappear between the borrow and the acquire, so the result must always be checked for null. This v4 four-patch series also rejects programs that pass untrusted allocated-object pointers to kfuncs expecting owned references, closing a related safety gap.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: JIT __arena kfunc argument rebasing",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260813190356.335181-4-puranjay@kernel.org/",
+      "summary": "Adds ARM64 JIT support for rebasing __arena-annotated kfunc arguments from their BPF-visible virtual address to the kernel-side arena base before the kfunc is called. Arena pointers passed to kfuncs need to be translated to the kernel mapping of the arena memory, and the x86_64 JIT already handled this; this patch brings the ARM64 JIT to parity. The v2 seven-patch series also converts struct_ops arena arguments in the ARM64 trampoline and enables the corresponding selftests on arm64.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: avoid overflow in BTF.ext bounds check",
+      "author": "Darren Carreras",
+      "url": "https://lore.kernel.org/bpf/20260813-b4-libbpf-v6-send-20260813-v6-1-56be61c52758@gmail.com/",
+      "summary": "Fixes an integer overflow in libbpf's bounds checking logic for BTF.ext sections, where a large section size could wrap a 32-bit counter and bypass the check, allowing subsequent code to read out of bounds. The fix promotes the relevant arithmetic to a wider type so the comparison is always safe. This v6 single-patch fix addresses a potential memory safety issue in any tool that uses libbpf to parse BTF.ext data from untrusted ELF objects.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, riscv: Add BPF stack arguments support for RV64 JIT",
+      "author": "Feng Jiang",
+      "url": "https://lore.kernel.org/bpf/20260814-bpf-riscv-stack-args-v3-1-2160de56fea3@kylinos.cn/",
+      "summary": "Implements stack-based argument passing for BPF subprograms and kfuncs in the RISC-V RV64 JIT, aligning it with x86_64 which already supported spilling extra arguments to the stack. When a BPF function has more than five arguments, the calling convention requires the extras to be passed on the stack; without JIT support for this, RISC-V programs using such functions would fail to load. This v3 two-patch series adds the stack spill/restore logic to the RV64 JIT and enables the corresponding selftests on that architecture.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: roll back stream capacity when allocation fails",
+      "author": "Jianlin Shi",
+      "url": "https://lore.kernel.org/bpf/tencent_6B540E4B95A9AD4DBF8C928942E95A23AB0A@qq.com/",
+      "summary": "Fixes a capacity accounting bug in the BPF stream subsystem where a failed allocation left the stream's reported capacity higher than the actual committed memory, causing subsequent writes to believe more space was available than existed. This v3 five-patch series also fixes a stream capacity leak in the staging path, makes bpf_stream_read() return partial progress on fault rather than failing entirely, rejects oversized bpf_stream_vprintk output with -E2BIG, and adds selftests for edge cases around capacity limits and partial reads.",
+      "related_links": []
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "generated_at": "2026-08-17T10:00:00Z",
+  "period_start": "2026-08-16",
+  "period_end": "2026-08-17",
+  "patch_count": 28,
+  "thread_count": 4,
+  "top_contributors": [
+    "Kumar Kartikeya Dwivedi",
+    "Yonghong Song",
+    "Chen Pei",
+    "Yiyang Chen"
+  ],
+  "key_topics": [
+    "verifier",
+    "kfuncs",
+    "arena",
+    "riscv",
+    "jit",
+    "diagnostics"
+  ],
+  "overview": "Today's bpf-next activity was dominated by two major series: Yonghong Song's v6 revision enabling 16-byte aggregate kfunc return values via the R0:R2 register pair, and Kumar Kartikeya Dwivedi's 14-patch follow-up series improving verifier error diagnostics attribution and context. Chen Pei added signed arena load support to the RISC-V JIT, and Yiyang Chen tightened verifier checks to reject mixed arena and ordinary atomic RMW paths.",
+  "patches": [
+    {
+      "title": "bpf, riscv: Add support for signed arena loads",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/3445fb0231f9c72496ae840e9dca675b15899433.1786708960.git.cp0613@linux.alibaba.com/",
+      "summary": "Extends the RISC-V BPF JIT to support sign-extended (LDSX) loads from arena memory, filling a gap that left RISC-V unable to perform signed byte, halfword, and word reads from BPF arena regions. Arena memory previously only supported unsigned loads on RISC-V, creating behavioral divergence from x86_64. This patch adds the necessary JIT emission logic, and a companion selftest enables the arena LDSX test cases for the riscv64 target, completing feature parity for signed arena accesses on that architecture.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Wire up JIT support for 16-byte kfunc returns",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260817042156.2287455-1-yonghong.song@linux.dev/",
+      "summary": "Adds JIT-level plumbing so that architectures can emit code to materialize kfunc return values that span two 64-bit registers (R0 and R2). This is part of Yonghong Song's v6 ten-patch series enabling aggregate kfunc return values up to 16 bytes. Without this patch the verifier's extended return type information has no JIT path to produce the combined value, making the feature incomplete. Subsequent patches in the series add verifier tracking and precision backtracking for the R2 return register.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add verifier support for 16-byte returns in R0:R2",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260817042212.2291498-1-yonghong.song@linux.dev/",
+      "summary": "Teaches the BPF verifier to recognize and track the R0:R2 register pair as a single 16-byte return value from kfuncs, enforcing correct type checking and preventing misuse of the split-register convention. The verifier now understands that R2 carries the high 64 bits of an aggregate return and maintains that invariant across state transitions. Companion patches in the same series handle precision backtracking and live-register analysis for R2 to preserve all existing verifier correctness guarantees.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Enable aggregate return types up to 16 bytes",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260817042217.2294438-1-yonghong.song@linux.dev/",
+      "summary": "The central enabling patch in Yonghong Song's v6 series that activates kfunc support for aggregate return values up to 16 bytes in the BPF runtime. Prior to this change, kfuncs were restricted to scalar returns fitting in a single register; with this patch, kfuncs annotated with an appropriate BTF return type can return 16-byte structs with the value split across R0 (low 64 bits) and R2 (high 64 bits). The series includes full verifier, JIT, and documentation coverage, and is now at v6 following multiple rounds of refinement.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Check pointer type for all atomic RMW paths",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/20260816-bpf-next-038-mixed-atomic-v1-v2-1-4644c1886dbc@mails.tsinghua.edu.cn/",
+      "summary": "Fixes a verifier gap where the type of the pointer operand was not consistently validated across all atomic read-modify-write (RMW) paths, allowing mixed arena and ordinary memory atomics to slip through. BPF arena atomics use a separate code path from regular memory atomics, and mixing pointer types can result in undefined behavior at the JIT level. This v2 patch adds uniform pointer-type checks to all atomic RMW paths, and a companion selftest exercises the mixed-pointer rejection for both stack and arena combinations.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Correct verifier diagnostic attribution for stack reads",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260816015746.2632990-2-memxor@gmail.com/",
+      "summary": "First patch in Kumar Kartikeya Dwivedi's 14-patch follow-up series refining verifier error attribution. This patch fixes incorrect source attribution when the verifier reports errors involving stack reads, ensuring the diagnostic points to where the problematic value was originally spilled rather than the later read site. Accurate attribution is critical for users debugging complex BPF programs that spill and restore registers across subprogram calls, and the series builds on Kumar's earlier Redesign Verification Errors work.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Distinguish function references in policy diagnostics",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260816015746.2632990-14-memxor@gmail.com/",
+      "summary": "Near the end of Kumar's diagnostic improvement series, this patch makes verifier policy error messages distinguish between direct function calls and pseudo-function references such as callback pointers. Previously the verifier emitted a generic 'function reference' diagnostic regardless of the calling convention, making it difficult to identify which code path triggered a policy failure in callback-heavy programs. Companion selftests in the series verify the new diagnostic output for pseudo-function scenarios across multiple program types.",
+      "related_links": []
+    }
+  ]
+}
