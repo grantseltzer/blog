@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-08-18T10:00:00Z",
+  "period_start": "2026-08-17",
+  "period_end": "2026-08-18",
+  "patch_count": 18,
+  "thread_count": 5,
+  "top_contributors": ["Yonghong Song", "Daniel Borkmann", "Hui Zhu", "Chen Pei"],
+  "key_topics": ["kfuncs", "verifier", "jit", "memcg", "arena", "riscv", "selftests", "cgroup"],
+  "overview": "Today's bpf-next activity was dominated by Yonghong Song's v6 series (10 patches) extending kfunc return conventions to support aggregate values up to 16 bytes via the R0:R2 register pair, touching the verifier, JIT backends, and precision backtracking. Hui Zhu posted v2 of a series introducing new kfuncs for BPF-driven proactive memcg reclaim, and Chen Pei extended the RISC-V JIT with signed arena load support. Daniel Borkmann contributed verifier selftests for pointer type merging edge cases, and Sanghyun Park fixed a stack out-of-bounds write in the cgroup link update path.",
+  "patches": [
+    {
+      "title": "bpf: Enable aggregate return types up to 16 bytes",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260817042217.2294438-1-yonghong.song@linux.dev/",
+      "summary": "This patch is the core enabling piece of a 10-patch v6 series that allows kfuncs to return aggregate values (structs or pairs) up to 16 bytes using the R0:R2 register pair. Previously kfuncs were limited to a single 64-bit return in R0, making it impossible to idiomatically return structs common in kernel APIs. The series adds verifier support for the new return convention, wires up JIT backends, updates precision backtracking and live register analysis, and adds both C and inline-asm selftests. Documentation is also updated to describe the R0:R2 return calling convention for kfuncs.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfuncs",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/ea02caf3118cfc34cb9845f75ac655abf04b7b9f.1787040082.git.zhuhui@kylinos.cn/",
+      "summary": "This patch introduces new BPF kfuncs that allow BPF programs to trigger proactive memory reclaim within a memcg cgroup, enabling fine-grained policy-driven memory management. It lets BPF-based daemons implement custom reclaim strategies without requiring privileged system calls, targeting workloads that need tighter control over memory pressure. The companion patch adds selftests covering asynchronous reclaim scenarios. This is v2, refining the kfunc interface and reclaim mechanics based on earlier review feedback.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix stack out-of-bounds write in cgroup link update",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260818061021.2551771-2-sanghyun.park.cnu@gmail.com/",
+      "summary": "This patch fixes a stack out-of-bounds write in the BPF cgroup link update path caused by an incorrect buffer size in the update logic. The bug could result in stack corruption when updating a BPF program attached via a cgroup link under certain conditions. This is v2 of the fix, incorporating review feedback from the first submission. The change is a targeted correction with no behavior impact beyond eliminating the unsafe write.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add tests for pointer type merge at a shared load",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260817141015.878071-1-daniel@iogearbox.net/",
+      "summary": "This patch adds BPF verifier selftests for pointer type merging at shared load instructions, covering cases where two control-flow branches load from the same pointer but produce different type annotations. The v3 series also includes tests for fault-prone loads out of RCU pointers and stores on fault-prone qdisc pointers, ensuring the verifier correctly handles these edge cases without false positives or missed errors. The tests help guard the verifier's type inference logic against regressions in complex pointer tracking scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, riscv: Add support for signed arena loads",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/3445fb0231f9c72496ae840e9dca675b15899433.1786708960.git.cp0613@linux.alibaba.com/",
+      "summary": "This patch adds JIT support for signed load instructions (LDSX) in the RISC-V 64-bit BPF backend for arena memory accesses. BPF arena signed loads are used for sign-extended reads from shared memory regions, and the missing RISC-V support was blocking certain arena BPF programs from running on RISC-V hardware. The companion patch enables the corresponding LDSX selftests for riscv64, bringing it to parity with other supported architectures.",
+      "related_links": []
+    }
+  ]
+}
