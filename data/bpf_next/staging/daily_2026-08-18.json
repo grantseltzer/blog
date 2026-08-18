@@ -1,0 +1,314 @@
+{
+  "period": "daily",
+  "period_start": "2026-08-17",
+  "period_end": "2026-08-18",
+  "fetched_at": "2026-08-18T09:36:33Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: add memcg async reclaim test",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/fbbeaf46501c66372d792c712349eac0205beea7.1787040082.git.zhuhui@kylinos.cn/",
+      "date": "2026-08-18T08:36:10",
+      "series": [
+        {
+          "id": 1147644,
+          "url": "https://patchwork.kernel.org/api/series/1147644/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1147644",
+          "date": "2026-08-18T08:36:09",
+          "name": "bpf: BPF-driven proactive memcg reclaim",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1147644/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] mm/bpf: Add bpf_proactive_reclaim kfuncs",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/ea02caf3118cfc34cb9845f75ac655abf04b7b9f.1787040082.git.zhuhui@kylinos.cn/",
+      "date": "2026-08-18T08:36:09",
+      "series": [
+        {
+          "id": 1147644,
+          "url": "https://patchwork.kernel.org/api/series/1147644/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1147644",
+          "date": "2026-08-18T08:36:09",
+          "name": "bpf: BPF-driven proactive memcg reclaim",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1147644/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] bpf: Fix stack out-of-bounds write in cgroup link update",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260818061021.2551771-2-sanghyun.park.cnu@gmail.com/",
+      "date": "2026-08-18T06:10:21",
+      "series": [
+        {
+          "id": 1147571,
+          "url": "https://patchwork.kernel.org/api/series/1147571/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1147571",
+          "date": "2026-08-18T06:10:21",
+          "name": "[bpf-next,v2] bpf: Fix stack out-of-bounds write in cgroup link update",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1147571/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/3] selftests/bpf: Add tests for a store on a fault prone qdisc pointer",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260817141015.878071-3-daniel@iogearbox.net/",
+      "date": "2026-08-17T14:10:15",
+      "series": [
+        {
+          "id": 1147248,
+          "url": "https://patchwork.kernel.org/api/series/1147248/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1147248",
+          "date": "2026-08-17T14:10:14",
+          "name": "[bpf-next,v3,1/3] selftests/bpf: Add tests for pointer type merge at a shared load",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1147248/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/3] selftests/bpf: Add tests for fault prone loads out of RCU pointers",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260817141015.878071-2-daniel@iogearbox.net/",
+      "date": "2026-08-17T14:10:14",
+      "series": [
+        {
+          "id": 1147248,
+          "url": "https://patchwork.kernel.org/api/series/1147248/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1147248",
+          "date": "2026-08-17T14:10:14",
+          "name": "[bpf-next,v3,1/3] selftests/bpf: Add tests for pointer type merge at a shared load",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1147248/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/3] selftests/bpf: Add tests for pointer type merge at a shared load",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260817141015.878071-1-daniel@iogearbox.net/",
+      "date": "2026-08-17T14:10:13",
+      "series": [
+        {
+          "id": 1147248,
+          "url": "https://patchwork.kernel.org/api/series/1147248/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1147248",
+          "date": "2026-08-17T14:10:14",
+          "name": "[bpf-next,v3,1/3] selftests/bpf: Add tests for pointer type merge at a shared load",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1147248/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Enable arena LDSX tests for riscv64",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/913f4fd8b3d0b7470428d9e6f0ed64f3a89e8a98.1786708960.git.cp0613@linux.alibaba.com/",
+      "date": "2026-08-17T07:24:33",
+      "series": [
+        {
+          "id": 1147004,
+          "url": "https://patchwork.kernel.org/api/series/1147004/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1147004",
+          "date": "2026-08-17T07:24:33",
+          "name": "bpf, riscv: Add support for signed arena loads",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1147004/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf, riscv: Add support for signed arena loads",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/3445fb0231f9c72496ae840e9dca675b15899433.1786708960.git.cp0613@linux.alibaba.com/",
+      "date": "2026-08-17T07:24:32",
+      "series": [
+        {
+          "id": 1147004,
+          "url": "https://patchwork.kernel.org/api/series/1147004/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1147004",
+          "date": "2026-08-17T07:24:33",
+          "name": "bpf, riscv: Add support for signed arena loads",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1147004/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,10/10] Documentation/bpf: Document up to 16-byte kfunc return values in R0:R2",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260817042232.2296860-1-yonghong.song@linux.dev/",
+      "date": "2026-08-17T04:22:32",
+      "series": [
+        {
+          "id": 1146925,
+          "url": "https://patchwork.kernel.org/api/series/1146925/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1146925",
+          "date": "2026-08-17T04:21:41",
+          "name": "bpf: Support aggregate return values up to 16 bytes",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1146925/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,09/10] selftests/bpf: Add inline-asm and subprog tests for R0:R2 returns",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260817042227.2296079-1-yonghong.song@linux.dev/",
+      "date": "2026-08-17T04:22:27",
+      "series": [
+        {
+          "id": 1146925,
+          "url": "https://patchwork.kernel.org/api/series/1146925/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1146925",
+          "date": "2026-08-17T04:21:41",
+          "name": "bpf: Support aggregate return values up to 16 bytes",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1146925/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,08/10] selftests/bpf: Add C tests for 16-byte returns in R0:R2",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260817042222.2295525-1-yonghong.song@linux.dev/",
+      "date": "2026-08-17T04:22:22",
+      "series": [
+        {
+          "id": 1146925,
+          "url": "https://patchwork.kernel.org/api/series/1146925/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1146925",
+          "date": "2026-08-17T04:21:41",
+          "name": "bpf: Support aggregate return values up to 16 bytes",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1146925/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,07/10] bpf: Enable aggregate return types up to 16 bytes",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260817042217.2294438-1-yonghong.song@linux.dev/",
+      "date": "2026-08-17T04:22:17",
+      "series": [
+        {
+          "id": 1146925,
+          "url": "https://patchwork.kernel.org/api/series/1146925/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1146925",
+          "date": "2026-08-17T04:21:41",
+          "name": "bpf: Support aggregate return values up to 16 bytes",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1146925/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,06/10] bpf: Add verifier support for 16-byte returns in R0:R2",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260817042212.2291498-1-yonghong.song@linux.dev/",
+      "date": "2026-08-17T04:22:12",
+      "series": [
+        {
+          "id": 1146925,
+          "url": "https://patchwork.kernel.org/api/series/1146925/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1146925",
+          "date": "2026-08-17T04:21:41",
+          "name": "bpf: Support aggregate return values up to 16 bytes",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1146925/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,05/10] bpf: Account R2 of register-pair returns in live register analysis",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260817042207.2289995-1-yonghong.song@linux.dev/",
+      "date": "2026-08-17T04:22:07",
+      "series": [
+        {
+          "id": 1146925,
+          "url": "https://patchwork.kernel.org/api/series/1146925/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1146925",
+          "date": "2026-08-17T04:21:41",
+          "name": "bpf: Support aggregate return values up to 16 bytes",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1146925/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,04/10] bpf: Handle R2 as a return register in precision backtracking",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260817042202.2288574-1-yonghong.song@linux.dev/",
+      "date": "2026-08-17T04:22:02",
+      "series": [
+        {
+          "id": 1146925,
+          "url": "https://patchwork.kernel.org/api/series/1146925/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1146925",
+          "date": "2026-08-17T04:21:41",
+          "name": "bpf: Support aggregate return values up to 16 bytes",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1146925/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,03/10] bpf: Wire up JIT support for 16-byte kfunc returns",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260817042156.2287455-1-yonghong.song@linux.dev/",
+      "date": "2026-08-17T04:21:56",
+      "series": [
+        {
+          "id": 1146925,
+          "url": "https://patchwork.kernel.org/api/series/1146925/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1146925",
+          "date": "2026-08-17T04:21:41",
+          "name": "bpf: Support aggregate return values up to 16 bytes",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1146925/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,02/10] bpf: Add helpers to describe the R0:R2 return register pair",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260817042151.2286855-1-yonghong.song@linux.dev/",
+      "date": "2026-08-17T04:21:51",
+      "series": [
+        {
+          "id": 1146925,
+          "url": "https://patchwork.kernel.org/api/series/1146925/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1146925",
+          "date": "2026-08-17T04:21:41",
+          "name": "bpf: Support aggregate return values up to 16 bytes",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1146925/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,01/10] bpf: Factor check_global_ret_scalar_reg() out of the global return check",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260817042146.2286672-1-yonghong.song@linux.dev/",
+      "date": "2026-08-17T04:21:46",
+      "series": [
+        {
+          "id": 1146925,
+          "url": "https://patchwork.kernel.org/api/series/1146925/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1146925",
+          "date": "2026-08-17T04:21:41",
+          "name": "bpf: Support aggregate return values up to 16 bytes",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1146925/mbox/"
+        }
+      ]
+    }
+  ]
+}
