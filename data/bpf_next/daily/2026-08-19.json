@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-08-19T09:36:36Z",
+  "period_start": "2026-08-18",
+  "period_end": "2026-08-19",
+  "patch_count": 23,
+  "thread_count": 9,
+  "top_contributors": ["Yonghong Song", "Hui Zhu", "Fuyu Zhao", "Chen Pei", "Nicholas Dudar"],
+  "key_topics": ["verifier", "kfuncs", "btf", "jit", "arena", "memcg", "dynptr", "libbpf"],
+  "overview": "August 19, 2026 brought a wide range of bpf-next activity. The most significant series is Yonghong Song's v7 effort to support aggregate kfunc return values up to 16 bytes via the R0:R2 register pair, touching the verifier, JITs, and precision backtracking across ten patches. Alongside that, Hui Zhu continued iteration on BPF-driven proactive memcg reclaim kfuncs, and Fuyu Zhao proposed RFC patches to accelerate BPF object loading by selectively loading only relevant kernel module BTFs.",
+  "patches": [
+    {
+      "title": "libbpf: support selective kernel module BTF loading via bpf_object_open_opts",
+      "author": "Fuyu Zhao",
+      "url": "https://lore.kernel.org/bpf/20260819090426.267-2-zhaofuyu@vivo.com/",
+      "summary": "This RFC patch (v3) extends libbpf's bpf_object_open_opts to allow callers to specify which kernel module BTFs should be loaded when opening a BPF object, rather than loading all available kmod BTFs unconditionally. The motivation is to reduce BPF program load latency on systems with many loaded kernel modules, since BTF parsing and merging for every module adds measurable overhead. The companion patch adds selftests covering the new opt-in mechanism. This is an important usability and performance improvement for libbpf users operating in module-heavy environments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, riscv: Add support for signed arena loads",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/a78cd29b238aa1aba87efeb2fc09d25a56c22f69.1787128322.git.cp0613@linux.alibaba.com/",
+      "summary": "This patch (v2) extends the RISC-V BPF JIT to emit correct sign-extending load instructions for BPF arena memory accesses that use LDSX semantics. Arena memory in BPF allows programs to operate on shared, bounds-checked memory regions, and sign-extended loads are required to correctly interpret signed integer types within those arenas. Without this support, RISC-V would misinterpret signed values as unsigned, producing incorrect program behavior. The accompanying selftest patch enables the arena LDSX test suite for riscv64, bringing the architecture to parity with x86 and arm64.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfuncs",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/0a2355a169c0900427b6e3c0d73ca6ae1be56f13.1787120833.git.zhuhui@kylinos.cn/",
+      "summary": "This patch (v3 of the series) introduces new kfuncs that allow BPF programs to trigger proactive memory reclaim on specific memory cgroups. The interface exposes bpf_proactive_reclaim() so that BPF-based memory management policies can shed memory from targeted cgroups before OOM pressure develops, enabling smarter and more responsive resource management than the kernel's default reactive reclaim. The feature is aimed at container runtimes and resource management daemons that already use BPF for observability and want to close the loop on enforcement. The companion selftest validates async reclaim behavior.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Factor check_global_ret_scalar_reg() out of the global return check",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260819055244.3294700-1-yonghong.song@linux.dev/",
+      "summary": "This is the first of a ten-patch v7 series that adds support for kfuncs to return aggregate values up to 16 bytes using the R0:R2 register pair, avoiding the need for callers to pass a pointer to stack-allocated output storage. This opening patch factors scalar return register validation into a helper function to prepare the verifier for handling a second return register (R2). Subsequent patches in the series wire up JIT support across architectures, extend precision backtracking and live register analysis to account for R2, and add comprehensive selftests and documentation. This is a significant verifier and ABI extension for the BPF ecosystem.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, mips: Add support for BPF_MOVSX in the JITs",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260819010523.1057789-3-main.kalliope@gmail.com/",
+      "summary": "This RFC patch adds BPF_MOVSX (sign-extending move) instruction support to the MIPS BPF JIT, completing the two-patch series that first refactors register move helpers for code reuse. BPF_MOVSX is used by the verifier and compiler backends to efficiently sign-extend values between different register widths without requiring separate load/store sequences. Adding this instruction to the MIPS JIT improves compatibility with programs generated by modern BPF compilers and is a prerequisite for running a wider class of BPF programs on MIPS-based systems.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, verifier: Invalidate dynptr slices on skb_ext COW reallocation",
+      "author": "Muhammad Bilal",
+      "url": "https://lore.kernel.org/bpf/20260818212448.60816-1-meatuni001@gmail.com/",
+      "summary": "This standalone verifier fix addresses a correctness issue where dynptr slices obtained from skb extension data could become dangling after a copy-on-write (COW) reallocation of skb_ext. When skb_ext data is reallocated, the underlying buffer may move, invalidating any pointers previously sliced from it via dynptr APIs. The patch teaches the verifier to mark such dynptr slices as invalid at the point where a COW reallocation can occur, preventing BPF programs from dereferencing stale pointers. This is an important safety fix for programs that process socket buffer extensions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix stack out-of-bounds write in cgroup link update",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260818061021.2551771-2-sanghyun.park.cnu@gmail.com/",
+      "summary": "This v2 patch fixes a stack out-of-bounds write that could occur during cgroup BPF link updates. The bug arises when the cgroup link update path copies program data onto a stack buffer without properly bounding the write, potentially corrupting adjacent stack variables. The fix adds the necessary bounds check before the copy, preventing the out-of-bounds access. Cgroup BPF links are widely used for attaching programs to cgroup hooks, so this correctness fix is relevant to any deployment using cgroup-based BPF policies.",
+      "related_links": []
+    }
+  ]
+}
