@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-08-20T09:38:00Z",
+  "period_start": "2026-08-19",
+  "period_end": "2026-08-20",
+  "patch_count": 30,
+  "thread_count": 11,
+  "top_contributors": ["Yonghong Song", "Hui Zhu", "Chen Pei", "Ihor Solodrai"],
+  "key_topics": ["verifier", "kfuncs", "jit", "btf", "sched_ext", "arena", "libbpf", "bpftool"],
+  "overview": "Today's bpf-next activity is headlined by Yonghong Song's v7 series enabling aggregate return values up to 16 bytes via the R0:R2 register pair, a significant kfunc capability that required verifier, JIT, and precision-backtracking changes across ten patches. Also notable are Hui Zhu's v4 BPF-driven proactive memcg reclaim kfuncs, Chen Pei's RISC-V signed arena load support, and verifier correctness fixes from both Song and Kumar Kartikeya Dwivedi.",
+  "patches": [
+    {
+      "title": "bpf: Enable aggregate return types up to 16 bytes",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260819055314.3298664-1-yonghong.song@linux.dev/",
+      "summary": "This is the key enablement patch in a 10-patch v7 series that allows kfuncs to return aggregate types (structs) up to 16 bytes using the R0:R2 register pair. The series touches the verifier, JIT backends, precision backtracking, and live register analysis to fully support the new calling convention. This is a long-awaited capability for kfuncs that return small structs by value, matching what the C ABI allows on most architectures. Supporting documentation and selftests are included in the series.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfuncs",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/e9b2a34418919f5c3ee2b80bcb4f9d80ce6ec422.1787205002.git.zhuhui@kylinos.cn/",
+      "summary": "Part of the v4 'BPF-driven proactive memcg reclaim' series, this patch introduces kfuncs that let BPF programs trigger proactive memory reclaim on cgroup memory controllers. It enables user-space policy engines to drive memory pressure relief from within the kernel based on custom heuristics, complementing the existing reactive reclaim paths. The companion patch adds selftests to verify async reclaim behavior under memcg pressure.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: sched_ext: Mark ops argument container pointer fields as trusted",
+      "author": "Tejun Heo",
+      "url": "https://lore.kernel.org/bpf/95d7ccc17681aa3a4a2eeb1b073f00f7@kernel.org/",
+      "summary": "This standalone patch fixes a sched_ext verifier issue where pointer fields inside ops argument containers were not being marked as trusted, causing the verifier to reject otherwise correct BPF scheduler programs. The fix aligns container pointer field trust semantics with the broader trusted-pointer model used throughout the BPF subsystem. This unblocks sched_ext programs that navigate nested structures in scheduling callbacks.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject invalid LDSX instruction in disassembly",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260820022020.3450479-2-memxor@gmail.com/",
+      "summary": "This patch adds validation in the BPF disassembler to reject LDSX instructions that encode invalid size or mode combinations. Without this, malformed LDSX encodings could pass through the disassembly path silently, making it harder to diagnose ill-formed programs. A selftest in the companion patch exercises the new diagnostic output for these invalid instruction forms.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Track linked scalars across a \"rX <<= 32; rX >>= 32\" zero extension",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260820013925.2515018-1-yonghong.song@linux.dev/",
+      "summary": "This verifier patch improves scalar tracking across the common 32-bit zero-extension idiom (left-shift 32 then right-shift 32) that compilers emit to clear the upper 32 bits of a register. Previously, linked scalar relationships between registers could be lost across this pattern, causing the verifier to lose precision and potentially reject valid programs. The fix preserves scalar links through the shift pair, improving verifier accuracy for common compiler-generated code.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, riscv: Add support for signed arena loads",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/67422a421852c3eed2269c6def7b5569e727617f.1787140923.git.cp0613@linux.alibaba.com/",
+      "summary": "This v3 patch adds RISC-V JIT support for LDSX (signed load with sign-extension) instructions targeting BPF arena memory. Arena-backed signed loads were previously only handled on x86 and arm64; this patch closes the gap for riscv64. A selftest in the companion patch re-enables the arena LDSX test cases that were previously skipped on RISC-V.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: support selective kernel module BTF loading via bpf_object_open_opts",
+      "author": "Fuyu Zhao",
+      "url": "https://lore.kernel.org/bpf/20260819090426.267-2-zhaofuyu@vivo.com/",
+      "summary": "This RFC v3 patch adds a new option to `bpf_object_open_opts` that allows callers to specify a list of kernel module BTFs to load rather than loading all available kmod BTFs. Loading every kmod BTF at open time can be expensive on systems with many modules; selective loading reduces overhead for programs that only reference types from a known subset of modules. Selftests in the companion patch validate the new API and verify that irrelevant modules are skipped.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Don't drop a type in the sorted C dump",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260820000627.3826188-4-ihor.solodrai@linux.dev/",
+      "summary": "This patch fixes a bug in bpftool's BTF C-format dump where sorting the type output could silently drop a type, resulting in incomplete dumps. The issue arose from an off-by-one or ordering error in the sorting pass that caused one type entry to be omitted from the final output. A selftest added in the series confirms the fix and guards against regressions in the sorted dump path.",
+      "related_links": []
+    }
+  ]
+}
