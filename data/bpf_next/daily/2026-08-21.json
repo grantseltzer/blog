@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-08-21T09:39:33Z",
+  "period_start": "2026-08-20",
+  "period_end": "2026-08-21",
+  "patch_count": 21,
+  "thread_count": 10,
+  "top_contributors": ["Jiayuan Chen", "Ihor Solodrai", "Anastasios Papagiannis"],
+  "key_topics": ["verifier", "arena", "kfuncs", "sched_ext", "bpftool", "memcg", "mips"],
+  "overview": "Today's bpf-next activity spans a wide range of subsystems with several notable feature additions and bug fixes. Highlights include a 4-patch series improving BPF arena fault-in handling under cgroup memory.max pressure, new kfuncs for proactive memcg reclaim and user memory access on linux_binprm, and verifier improvements to preserve linked scalars across zero-extension patterns.",
+  "patches": [
+    {
+      "title": "bpf: Fix stack out-of-bounds write in cgroup link update",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260821084726.3769957-2-sanghyun.park.cnu@gmail.com/",
+      "summary": "Fixes a stack out-of-bounds write bug triggered during cgroup BPF link updates. The corrupted write could destabilize the kernel or open a potential security surface in cgroup-based BPF program attachment. This is a targeted correctness fix with no functional behavior change beyond eliminating the memory safety violation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a sleepable page allocator for map memory",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260821050631.39784-1-jiayuan.chen@linux.dev/",
+      "summary": "First patch in a 4-patch series addressing BPF arena fault-in failures when a cgroup hits its memory.max limit. This patch introduces a sleepable page allocator for BPF map memory so that fault-in can sleep and retry under memory pressure rather than failing outright. Subsequent patches move page allocation outside the arena lock to avoid deadlocks and add selftests that verify fault-in behavior with active cgroup reclaim and OOM.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Rewrite \"rX <<= 32; rX >>= 32\" into \"wX = wX\" to keep linked scalars",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260821042837.2786719-1-yonghong.song@linux.dev/",
+      "summary": "Improves the BPF verifier to preserve scalar linking across a common 64-to-32-bit zero-extension pattern (left-shift 32 followed by right-shift 32). Previously this sequence broke the verifier's linked-scalar tracking, causing it to lose range or equivalence information and potentially reject valid programs. This v2 teaches the verifier to rewrite the two-instruction sequence as a single 32-bit register assign, keeping linked scalars intact.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, mips: Factor narrow loads out of emit_ldx()",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260821024640.1601299-2-main.kalliope@gmail.com/",
+      "summary": "RFC first patch in a 2-patch series to add BPF_MEMSX (sign-extending memory load) support to the MIPS BPF JIT. This patch refactors emit_ldx() by extracting narrow load emission into a dedicated helper, making the code easier to extend. The follow-on patch wires in actual BPF_MEMSX instruction handling, bringing the MIPS JIT to parity with architectures like arm64 and x86 that already support sign-extending loads.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add user memory access kfuncs for linux_binprm",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260820131801.68759-3-tasos.papagiannnis@gmail.com/",
+      "summary": "Adds kfuncs that let BPF programs safely read user-space memory from the linux_binprm structure at exec time, enabling tracing and security programs to inspect arguments or filenames of processes being launched. A new mm helper copy_remote_mm_str() is introduced to read NUL-terminated strings from another process's address space. The series includes a selftest covering the new kfuncs and expected failure modes.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfuncs",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/e9b2a34418919f5c3ee2b80bcb4f9d80ce6ec422.1787205002.git.zhuhui@kylinos.cn/",
+      "summary": "Introduces kfuncs for BPF-driven proactive memcg reclaim, allowing BPF programs to programmatically trigger memory reclaim for a cgroup before it hits its hard limit. This v4 series enables user-space memory management policy to be expressed in BPF, reducing OOM events and improving memory utilization in containerized environments. A selftest validates async reclaim behavior under cgroup memory constraints.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: sched_ext: Mark ops argument container pointer fields as trusted",
+      "author": "Tejun Heo",
+      "url": "https://lore.kernel.org/bpf/95d7ccc17681aa3a4a2eeb1b073f00f7@kernel.org/",
+      "summary": "Marks container pointer fields in sched_ext ops arguments as trusted pointers in the BPF verifier, allowing BPF-based schedulers to access scheduling context fields without incurring additional verification overhead or null checks. This is a correctness and ergonomics fix for the sched_ext framework, which enables fully custom CPU schedulers to be written in BPF. Without this marking, accessing these fields required workarounds that obscured scheduler logic.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject invalid LDSX instruction in disassembly",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260820022020.3450479-2-memxor@gmail.com/",
+      "summary": "Adds validation in the BPF disassembler to reject malformed LDSX (load sign-extended) instruction encodings and emit a clear diagnostic. Previously, invalid LDSX forms were silently accepted, producing confusing disassembly output and potentially masking encoding bugs in toolchains or JITs. The accompanying selftest verifies that the expected error messages are produced for each invalid encoding variant.",
+      "related_links": []
+    }
+  ]
+}
