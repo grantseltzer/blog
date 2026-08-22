@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-08-22T09:30:00Z",
+  "period_start": "2026-08-21",
+  "period_end": "2026-08-22",
+  "patch_count": 47,
+  "thread_count": 9,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Daniel Borkmann", "Alexis Lothoré"],
+  "key_topics": ["verifier", "kfuncs", "arena", "jit", "kasan", "security", "signed-programs"],
+  "overview": "Today's bpf-next activity was dominated by three large patch series spanning security, JIT infrastructure, and memory management. Daniel Borkmann submitted an 11-patch series introducing a dedicated BPF keyring with ML-DSA (post-quantum) signed program loader support, while Kumar Kartikeya Dwivedi sent a 14-patch series retiring the KF_ARENA_ARG kfunc flag in favor of naming suffixes across multiple JIT backends. Alexis Lothoré posted the seventh revision of KASAN instrumentation for JITed BPF programs on x86, and verifier fixes from Eduard Zingerman and Yonghong Song rounded out the day.",
+  "patches": [
+    {
+      "title": "bpf: Add a bpf keyring for program signature validation",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260821214111.1120748-2-daniel@iogearbox.net/",
+      "summary": "This patch introduces a dedicated BPF keyring for validating program signatures, the foundational piece of an 11-patch series adding ML-DSA (a NIST-standardized post-quantum signature algorithm) support to the BPF signed loader. It adds a sealed, kernel-managed keyring separate from any caller-supplied ones, preventing unprivileged callers from inserting their own keys. The series also extends bpftool to support ML-DSA program signing and raises the per-program signature size bound to accommodate the larger ML-DSA signatures. This is a significant step toward quantum-resistant integrity enforcement for BPF programs loaded into the kernel.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Split arena kfunc and struct_ops JIT capabilities",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260821233516.3426127-2-memxor@gmail.com/",
+      "summary": "This is the first patch in a 14-patch series retiring the KF_ARENA_ARG kfunc flag, replacing the flag-based mechanism with argument naming suffixes to identify arena pointer parameters. The series splits arena kfunc and struct_ops JIT capabilities into distinct flags, then updates the RISC-V, s390, LoongArch, and PowerPC JIT backends to perform arena kfunc argument rebasing using the new scheme. The resolve_btfids tool is updated to drop KF_ARENA_ARG support, and new selftests exercise arena arguments across all capable JITs. This refactor cleans up the kfunc annotation surface and makes arena argument handling more consistent across architectures.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: mark instructions accessing program stack",
+      "author": "Alexis Lothoré (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260822-kasan-v7-1-99afee6ef7fd@bootlin.com/",
+      "summary": "The first patch of a 9-patch series (version 7) that adds KASAN instrumentation support for JITed BPF programs. This patch marks BPF instructions that access the program stack as a prerequisite for the JIT to emit corresponding KASAN shadow-memory checks. Subsequent patches in the series add a BPF_JIT_KASAN Kconfig option, emit actual KASAN checks in the x86 JIT, and refactor BPF_ST handling in do_jit to support the new instrumentation. Selftests validating KASAN detection in JITed programs are included. This feature enables the same memory-error detection guarantees in JITed BPF code that KASAN already provides for interpreted execution.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a sleepable page allocator for map memory",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260821050631.39784-1-jiayuan.chen@linux.dev/",
+      "summary": "This patch introduces a sleepable page allocator for BPF map memory, the first part of a 4-patch series (v4) fixing arena fault-in behavior under cgroup memory.max constraints. The core issue is that BPF arena fault-in was previously done under a non-sleepable lock, preventing the kernel from reclaiming memory or invoking the OOM killer when a cgroup hit its memory limit. Subsequent patches move the page allocation outside the arena lock to allow sleeping, and add a selftest that triggers arena fault-in under memory.max to validate the fix. This improves BPF arena robustness in memory-constrained cgroup environments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: check_cond_jmp_op(): properly infer if register is null",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260821-bug-029-bad-non-null-inference-v1-1-45ddc0f7c308@gmail.com/",
+      "summary": "This patch fixes a correctness bug in the BPF verifier's null-pointer inference inside check_cond_jmp_op(), where the verifier could incorrectly infer that a register is non-null after a conditional jump. The bug can cause the verifier to accept programs that dereference potentially null pointers, bypassing the safety guarantees the verifier is meant to provide. A companion selftest (patch 2/2) demonstrates the problematic inference pattern as a regression demo. This is a targeted verifier correctness fix with no architectural changes.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Rewrite \"rX <<= 32; rX >>= 32\" into \"wX = wX\" to keep linked scalars",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260821042837.2786719-1-yonghong.song@linux.dev/",
+      "summary": "This patch (v2) adds a peephole optimization in the BPF verifier that rewrites the common 32-bit zero-extension pattern \"rX <<= 32; rX >>= 32\" into the equivalent subregister write \"wX = wX\". The motivation is that the shift-based form breaks scalar value linkage in the verifier, causing it to lose track of relationships between register values and producing less precise range information. By rewriting to a subregister assignment, the verifier can maintain linked scalar tracking across the zero-extension, improving subsequent analysis and potentially reducing unnecessary rejections.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, mips: Factor narrow loads out of emit_ldx()",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260821024640.1601299-2-main.kalliope@gmail.com/",
+      "summary": "This RFC patch refactors narrow load handling in the MIPS BPF JIT's emit_ldx() function as a prerequisite for the second patch, which adds BPF_MEMSX (sign-extended memory load) support to the MIPS JIT backends. BPF_MEMSX is an ISA extension that provides sign-extending variants of byte, halfword, and word loads, avoiding the need for explicit sign-extension instructions. Factoring out the narrow load code makes it straightforward to add the MEMSX variants alongside the existing zero-extending loads. Submitted as an RFC to gather feedback on the approach before finalization.",
+      "related_links": []
+    }
+  ]
+}
