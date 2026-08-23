@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-08-23T09:30:22Z",
+  "period_start": "2026-08-22",
+  "period_end": "2026-08-23",
+  "patch_count": 11,
+  "thread_count": 2,
+  "top_contributors": ["Eduard Zingerman", "Mykola Lysenko"],
+  "key_topics": ["verifier", "selftests", "build-system", "null-inference"],
+  "overview": "Today's bpf-next submissions featured a verifier bug fix and a build system overhaul. Eduard Zingerman submitted a two-patch series fixing incorrect null inference in check_cond_jmp_op(), a subtle verifier defect that could lead to unsound register state tracking. Mykola Lysenko posted v6 of a nine-patch series restructuring the selftests/bpf Makefile into a layered build, improving parallelism and build clarity.",
+  "patches": [
+    {
+      "title": "bpf: check_cond_jmp_op(): properly infer if register is null",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260821-bug-029-bad-non-null-inference-v1-1-45ddc0f7c308@gmail.com/",
+      "summary": "Fixes a bug in the BPF verifier's check_cond_jmp_op() where null inference for registers was performed incorrectly under certain conditional jump patterns. The verifier could incorrectly mark a register as non-null, leading to unsound state tracking and potentially allowing unsafe memory accesses to pass verification. This is a correctness fix in a critical verifier path that ensures conditional jumps produce accurate register liveness and nullness conclusions. The patch is accompanied by a companion selftest that reproduces the erroneous behavior.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: a demo for check_cond_jmp_op() non-null inference bug",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260821-bug-029-bad-non-null-inference-v1-2-45ddc0f7c308@gmail.com/",
+      "summary": "Adds a selftest that reproduces the null inference bug in the BPF verifier's check_cond_jmp_op() fixed by the companion kernel patch. The test constructs a BPF program that exercises the conditional jump path where the verifier previously made incorrect non-null assumptions about registers. It serves as both a regression guard and documentation of the precise scenario triggering the bug.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: keep headers off the generic link command line",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823010900.1730708-2-nickolay.lysenko@gmail.com/",
+      "summary": "First patch of a nine-patch v6 series restructuring the selftests/bpf Makefile as a layered build system. This patch removes header files from the generic linker command line as a prerequisite cleanup for the broader refactor. The full series introduces Makefile.buildvars for shared build definitions, extracts BPF skeleton generation into a helper script, and runs each test runner instance in its own sub-make to improve build parallelism and correctness.",
+      "related_links": []
+    }
+  ]
+}
