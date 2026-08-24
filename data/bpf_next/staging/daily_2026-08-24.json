@@ -1,0 +1,552 @@
+{
+  "period": "daily",
+  "period_start": "2026-08-23",
+  "period_end": "2026-08-24",
+  "fetched_at": "2026-08-24T09:50:58Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v5,4/4] selftests/bpf: Add a test for arena fault-in under memory.max",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260824093122.362135-5-jiayuan.chen@linux.dev/",
+      "date": "2026-08-24T09:29:55",
+      "series": [
+        {
+          "id": 1150752,
+          "url": "https://patchwork.kernel.org/api/series/1150752/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150752",
+          "date": "2026-08-24T09:29:51",
+          "name": "bpf: arena: handle memory.max on fault-in with reclaim/OOM",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1150752/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,3/4] selftests/bpf: Add read_cgroup_file() to cgroup_helpers",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260824093122.362135-4-jiayuan.chen@linux.dev/",
+      "date": "2026-08-24T09:29:54",
+      "series": [
+        {
+          "id": 1150752,
+          "url": "https://patchwork.kernel.org/api/series/1150752/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150752",
+          "date": "2026-08-24T09:29:51",
+          "name": "bpf: arena: handle memory.max on fault-in with reclaim/OOM",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1150752/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,2/4] bpf: arena: allocate the fault-in page outside the lock",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260824093122.362135-3-jiayuan.chen@linux.dev/",
+      "date": "2026-08-24T09:29:53",
+      "series": [
+        {
+          "id": 1150752,
+          "url": "https://patchwork.kernel.org/api/series/1150752/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150752",
+          "date": "2026-08-24T09:29:51",
+          "name": "bpf: arena: handle memory.max on fault-in with reclaim/OOM",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1150752/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,1/4] bpf: Add a sleepable page allocator for map memory",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260824093122.362135-2-jiayuan.chen@linux.dev/",
+      "date": "2026-08-24T09:29:52",
+      "series": [
+        {
+          "id": 1150752,
+          "url": "https://patchwork.kernel.org/api/series/1150752/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150752",
+          "date": "2026-08-24T09:29:51",
+          "name": "bpf: arena: handle memory.max on fault-in with reclaim/OOM",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1150752/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,2/2] bpftool: Fix bypass of the batch line length check by comments",
+      "author": "Yuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260824092657.1789956-3-chenyuan_fl@163.com/",
+      "date": "2026-08-24T09:26:57",
+      "series": [
+        {
+          "id": 1150746,
+          "url": "https://patchwork.kernel.org/api/series/1150746/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150746",
+          "date": "2026-08-24T09:26:57",
+          "name": null,
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1150746/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,1/2] bpftool: fix spurious batch file read error",
+      "author": "Yuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260824092657.1789956-2-chenyuan_fl@163.com/",
+      "date": "2026-08-24T09:26:56",
+      "series": [
+        {
+          "id": 1150744,
+          "url": "https://patchwork.kernel.org/api/series/1150744/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150744",
+          "date": "2026-08-24T09:26:56",
+          "name": "[bpf-next,v6,1/2] bpftool: fix spurious batch file read error",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1150744/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,9/9] selftests/bpf: build each test runner instance in its own sub-make",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823194241.3415152-10-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T19:42:41",
+      "series": [
+        {
+          "id": 1150503,
+          "url": "https://patchwork.kernel.org/api/series/1150503/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150503",
+          "date": "2026-08-23T19:42:32",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1150503/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,8/9] selftests/bpf: move shared build definitions into Makefile.buildvars",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823194241.3415152-9-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T19:42:40",
+      "series": [
+        {
+          "id": 1150503,
+          "url": "https://patchwork.kernel.org/api/series/1150503/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150503",
+          "date": "2026-08-23T19:42:32",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1150503/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,7/9] selftests/bpf: extract BPF skeleton generation into a helper script",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823194241.3415152-8-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T19:42:39",
+      "series": [
+        {
+          "id": 1150503,
+          "url": "https://patchwork.kernel.org/api/series/1150503/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150503",
+          "date": "2026-08-23T19:42:32",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1150503/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,6/9] selftests/bpf: derive the bench object list from the sources",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823194241.3415152-7-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T19:42:38",
+      "series": [
+        {
+          "id": 1150503,
+          "url": "https://patchwork.kernel.org/api/series/1150503/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150503",
+          "date": "2026-08-23T19:42:32",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1150503/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,5/9] selftests/bpf: generate verifier/tests.h in a regular recipe",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823194241.3415152-6-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T19:42:37",
+      "series": [
+        {
+          "id": 1150503,
+          "url": "https://patchwork.kernel.org/api/series/1150503/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150503",
+          "date": "2026-08-23T19:42:32",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1150503/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,4/9] selftests/bpf: generate the signing key and certificate once",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823194241.3415152-5-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T19:42:36",
+      "series": [
+        {
+          "id": 1150503,
+          "url": "https://patchwork.kernel.org/api/series/1150503/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150503",
+          "date": "2026-08-23T19:42:32",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1150503/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,3/9] selftests/bpf: factor the permissive-mode skip suffix into a helper",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823194241.3415152-4-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T19:42:35",
+      "series": [
+        {
+          "id": 1150503,
+          "url": "https://patchwork.kernel.org/api/series/1150503/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150503",
+          "date": "2026-08-23T19:42:32",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1150503/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,2/9] selftests/bpf: drop stale lines, restore two header dependencies",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823194241.3415152-3-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T19:42:34",
+      "series": [
+        {
+          "id": 1150503,
+          "url": "https://patchwork.kernel.org/api/series/1150503/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150503",
+          "date": "2026-08-23T19:42:32",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1150503/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,1/9] selftests/bpf: keep headers off the generic link command line",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823194241.3415152-2-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T19:42:33",
+      "series": [
+        {
+          "id": 1150503,
+          "url": "https://patchwork.kernel.org/api/series/1150503/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150503",
+          "date": "2026-08-23T19:42:32",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1150503/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,2/2] selftests/bpf: Cover oversized stream read buffers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260823193202.2389715-3-memxor@gmail.com/",
+      "date": "2026-08-23T19:32:01",
+      "series": [
+        {
+          "id": 1150496,
+          "url": "https://patchwork.kernel.org/api/series/1150496/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150496",
+          "date": "2026-08-23T19:31:59",
+          "name": "Reject oversized stream read buffers",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1150496/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,1/2] bpf: Reject oversized stream read buffers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260823193202.2389715-2-memxor@gmail.com/",
+      "date": "2026-08-23T19:32:00",
+      "series": [
+        {
+          "id": 1150496,
+          "url": "https://patchwork.kernel.org/api/series/1150496/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150496",
+          "date": "2026-08-23T19:31:59",
+          "name": "Reject oversized stream read buffers",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1150496/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5] m68k, bpf: Add initial BPF JIT compiler support",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260823163812.3024812-1-visitorckw@gmail.com/",
+      "date": "2026-08-23T16:38:12",
+      "series": [
+        {
+          "id": 1150467,
+          "url": "https://patchwork.kernel.org/api/series/1150467/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150467",
+          "date": "2026-08-23T16:38:12",
+          "name": "[bpf-next,v5] m68k, bpf: Add initial BPF JIT compiler support",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1150467/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,5/5] selftests/bpf: cover stream capacity and partial read edge cases",
+      "author": "Jianlin Shi",
+      "url": "https://lore.kernel.org/bpf/c5a79efbd3cb52cc0668ab50db5379c907cfe6a6.1787492521.git.shijianlin11@foxmail.com/",
+      "date": "2026-08-23T14:17:28",
+      "series": [
+        {
+          "id": 1150438,
+          "url": "https://patchwork.kernel.org/api/series/1150438/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150438",
+          "date": "2026-08-23T14:17:24",
+          "name": "[bpf-next,v4,1/5] bpf: roll back stream capacity when allocation fails",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1150438/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,4/5] bpf: reject oversized bpf_stream_vprintk output with -E2BIG",
+      "author": "Jianlin Shi",
+      "url": "https://lore.kernel.org/bpf/74387ae5024d7e2996095e97211430285095b525.1787492521.git.shijianlin11@foxmail.com/",
+      "date": "2026-08-23T14:17:27",
+      "series": [
+        {
+          "id": 1150438,
+          "url": "https://patchwork.kernel.org/api/series/1150438/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150438",
+          "date": "2026-08-23T14:17:24",
+          "name": "[bpf-next,v4,1/5] bpf: roll back stream capacity when allocation fails",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1150438/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,3/5] bpf: return partial progress from bpf_stream_read on fault",
+      "author": "Jianlin Shi",
+      "url": "https://lore.kernel.org/bpf/7668c5838c6beafeea719df8d55319e2fe08cfef.1787492521.git.shijianlin11@foxmail.com/",
+      "date": "2026-08-23T14:17:26",
+      "series": [
+        {
+          "id": 1150438,
+          "url": "https://patchwork.kernel.org/api/series/1150438/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150438",
+          "date": "2026-08-23T14:17:24",
+          "name": "[bpf-next,v4,1/5] bpf: roll back stream capacity when allocation fails",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1150438/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/5] bpf: fix stream capacity leak in staging path",
+      "author": "Jianlin Shi",
+      "url": "https://lore.kernel.org/bpf/46898fb1ae482b2f8b1da459922b187378dfdc1d.1787492521.git.shijianlin11@foxmail.com/",
+      "date": "2026-08-23T14:17:25",
+      "series": [
+        {
+          "id": 1150438,
+          "url": "https://patchwork.kernel.org/api/series/1150438/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150438",
+          "date": "2026-08-23T14:17:24",
+          "name": "[bpf-next,v4,1/5] bpf: roll back stream capacity when allocation fails",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1150438/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/5] bpf: roll back stream capacity when allocation fails",
+      "author": "Jianlin Shi",
+      "url": "https://lore.kernel.org/bpf/c0ad7b18c59be6695fcc9e4e1200b2f4d5cbbea2.1787492521.git.shijianlin11@foxmail.com/",
+      "date": "2026-08-23T14:17:24",
+      "series": [
+        {
+          "id": 1150438,
+          "url": "https://patchwork.kernel.org/api/series/1150438/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150438",
+          "date": "2026-08-23T14:17:24",
+          "name": "[bpf-next,v4,1/5] bpf: roll back stream capacity when allocation fails",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1150438/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,9/9] selftests/bpf: build each test runner instance in its own sub-make",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823010900.1730708-10-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T01:09:00",
+      "series": [
+        {
+          "id": 1150288,
+          "url": "https://patchwork.kernel.org/api/series/1150288/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150288",
+          "date": "2026-08-23T01:08:51",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1150288/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,8/9] selftests/bpf: move shared build definitions into Makefile.buildvars",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823010900.1730708-9-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T01:08:59",
+      "series": [
+        {
+          "id": 1150288,
+          "url": "https://patchwork.kernel.org/api/series/1150288/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150288",
+          "date": "2026-08-23T01:08:51",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1150288/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,7/9] selftests/bpf: extract BPF skeleton generation into a helper script",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823010900.1730708-8-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T01:08:58",
+      "series": [
+        {
+          "id": 1150288,
+          "url": "https://patchwork.kernel.org/api/series/1150288/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150288",
+          "date": "2026-08-23T01:08:51",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1150288/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,6/9] selftests/bpf: derive the bench object list from the sources",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823010900.1730708-7-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T01:08:57",
+      "series": [
+        {
+          "id": 1150288,
+          "url": "https://patchwork.kernel.org/api/series/1150288/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150288",
+          "date": "2026-08-23T01:08:51",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1150288/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,5/9] selftests/bpf: generate verifier/tests.h in a regular recipe",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823010900.1730708-6-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T01:08:56",
+      "series": [
+        {
+          "id": 1150288,
+          "url": "https://patchwork.kernel.org/api/series/1150288/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150288",
+          "date": "2026-08-23T01:08:51",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1150288/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,4/9] selftests/bpf: generate the signing key and certificate once",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823010900.1730708-5-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T01:08:55",
+      "series": [
+        {
+          "id": 1150288,
+          "url": "https://patchwork.kernel.org/api/series/1150288/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150288",
+          "date": "2026-08-23T01:08:51",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1150288/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,3/9] selftests/bpf: factor the permissive-mode skip suffix into a helper",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823010900.1730708-4-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T01:08:54",
+      "series": [
+        {
+          "id": 1150288,
+          "url": "https://patchwork.kernel.org/api/series/1150288/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150288",
+          "date": "2026-08-23T01:08:51",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1150288/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,2/9] selftests/bpf: drop stale and no-op lines",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823010900.1730708-3-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T01:08:53",
+      "series": [
+        {
+          "id": 1150288,
+          "url": "https://patchwork.kernel.org/api/series/1150288/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150288",
+          "date": "2026-08-23T01:08:51",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1150288/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,1/9] selftests/bpf: keep headers off the generic link command line",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823010900.1730708-2-nickolay.lysenko@gmail.com/",
+      "date": "2026-08-23T01:08:52",
+      "series": [
+        {
+          "id": 1150288,
+          "url": "https://patchwork.kernel.org/api/series/1150288/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1150288",
+          "date": "2026-08-23T01:08:51",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1150288/mbox/"
+        }
+      ]
+    }
+  ]
+}
