@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-08-24T09:51:00Z",
+  "period_start": "2026-08-17",
+  "period_end": "2026-08-24",
+  "patch_count": 101,
+  "thread_count": 27,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Mykola Lysenko", "Daniel Borkmann", "Alexis Lothoré", "Jiayuan Chen"],
+  "key_topics": ["arena", "kfuncs", "jit", "kasan", "security", "selftests", "verifier", "libbpf"],
+  "overview": "The week of 2026-08-17 to 2026-08-24 was headlined by Daniel Borkmann's BPF keyring and ML-DSA signed loader series, which introduces post-quantum-safe program signature validation and a dedicated BPF keyring for seal-controlled trust management. Alexis Lothoré's v7 series for KASAN instrumentation in x86 JITed programs landed, enabling AddressSanitizer-style memory safety checks inside compiled BPF programs. Kumar Kartikeya Dwivedi was highly active: retiring the KF_ARENA_ARG kfunc annotation in favor of name-suffix conventions across multiple JIT backends, adding verifier checks for invalid LDSX disassembly, and rejecting oversized stream read buffers. BPF arena continued to draw attention, with Jiayuan Chen refining memory.max fault-in handling and Chen Pei extending riscv64's arena support to signed loads.",
+  "patches": [
+    {
+      "title": "bpf: Add a bpf keyring for program signature validation",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260821214111.1120748-2-daniel@iogearbox.net/",
+      "summary": "First patch in an 11-patch series introducing a dedicated BPF keyring and ML-DSA (CRYSTALS-Dilithium post-quantum) signed loader support. The series adds a sealed BPF keyring that cannot be modified after boot, raises the signature size bound to accommodate ML-DSA signatures, extends bpftool with ML-DSA program signing support, and provides end-to-end selftests. This brings post-quantum-safe code signing to BPF, hardening against potential future key compromise scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add BPF_JIT_KASAN for KASAN instrumentation of JITed programs",
+      "author": "Alexis Lothoré (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260822-kasan-v7-2-99afee6ef7fd@bootlin.com/",
+      "summary": "Second patch of a 9-patch series (v7) integrating KASAN memory safety checks into the x86 BPF JIT. The series adds infrastructure for JITs to mark stack-accessing instructions, emits inline KASAN shadow checks in the x86 JIT's do_jit path, and provides a new BPF_JIT_KASAN Kconfig option to enable the feature. Accompanying selftests validate that KASAN detects out-of-bounds accesses from JITed BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Split arena kfunc and struct_ops JIT capabilities",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260821233516.3426127-2-memxor@gmail.com/",
+      "summary": "First of a 14-patch series retiring the KF_ARENA_ARG kfunc flag in favor of a simpler name-suffix convention for identifying arena-typed kfunc arguments. The series splits arena and struct_ops JIT capabilities, adds arena kfunc argument rebasing to the riscv, s390, loongarch, and powerpc JIT backends, and drops the KF_ARENA_ARG flag from resolve_btfids. This simplifies the kfunc annotation model and expands arena-aware JIT support across architectures.",
+      "related_links": []
+    },
+    {
+      "title": "m68k, bpf: Add initial BPF JIT compiler support",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260823163812.3024812-1-visitorckw@gmail.com/",
+      "summary": "A standalone patch (v5) adding the first BPF JIT compiler for the m68k architecture. BPF programs on m68k previously ran only through the interpreter; native JIT compilation eliminates that overhead and expands the set of architectures with full BPF JIT coverage. Five revisions indicate the patch has received sustained review.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: check_cond_jmp_op(): properly infer if register is null",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260821-bug-029-bad-non-null-inference-v1-1-45ddc0f7c308@gmail.com/",
+      "summary": "First of a 2-patch series fixing a bug in the BPF verifier's check_cond_jmp_op() where null inference for a register could be incorrect under certain conditional branch patterns. Incorrect null inference can cause the verifier to accept programs that dereference potentially null pointers, or to falsely reject safe programs. The companion patch adds a selftest that demonstrates the incorrect inference to prevent future regressions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a sleepable page allocator for map memory",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260824093122.362135-2-jiayuan.chen@linux.dev/",
+      "summary": "First patch in the v5 iteration of a 4-patch series handling arena fault-in under cgroup memory.max constraints. A new sleepable page allocator is introduced so that arena fault-in can trigger memory reclaim rather than failing immediately when a cgroup memory limit is reached. The series also allocates the fault-in page outside the arena lock and adds selftests for the OOM/reclaim behavior using a helper that reads cgroup memory files.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfuncs",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/e9b2a34418919f5c3ee2b80bcb4f9d80ce6ec422.1787205002.git.zhuhui@kylinos.cn/",
+      "summary": "First of a 2-patch series (v4) adding kfuncs that allow BPF programs to trigger proactive memory reclaim for a specific cgroup. This enables user-space workload managers to use BPF programs as a policy engine for preemptive memory management, reclaiming cgroup memory before OOM is reached. The companion patch adds selftests for the async reclaim behavior.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add user memory access kfuncs for linux_binprm",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260820131801.68759-3-tasos.papagiannnis@gmail.com/",
+      "summary": "Second of a 3-patch series (v2) adding kfuncs that allow BPF programs to safely read user-space memory from linux_binprm (binary program loading) context. The series adds a copy_remote_mm_str() helper in mm/ and exposes it through new BPF kfuncs, enabling security and observability programs to inspect program arguments and paths at exec time. Selftests verify the new kfunc interface.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, riscv: Add support for signed arena loads",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/67422a421852c3eed2269c6def7b5569e727617f.1787140923.git.cp0613@linux.alibaba.com/",
+      "summary": "First of a 2-patch series (v3) adding BPF arena LDSX (sign-extending load) support to the riscv64 JIT. Without this, BPF programs using signed arena loads on riscv64 fall back to the interpreter, losing JIT performance. The companion patch enables the previously blocked arena LDSX selftests for riscv64 to confirm correct behavior.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: keep headers off the generic link command line",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823194241.3415152-2-nickolay.lysenko@gmail.com/",
+      "summary": "First patch in the v7 iteration of a 9-patch series restructuring the selftests/bpf Makefile into a layered build. Major changes include building each test runner instance in its own sub-make, extracting BPF skeleton generation into a helper script, centralizing shared build definitions in Makefile.buildvars, and deriving the bench object list from sources automatically. This is the latest in a series that has seen seven revisions of sustained refinement.",
+      "related_links": []
+    }
+  ]
+}

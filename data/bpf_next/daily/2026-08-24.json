@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-08-24T09:51:00Z",
+  "period_start": "2026-08-23",
+  "period_end": "2026-08-24",
+  "patch_count": 32,
+  "thread_count": 8,
+  "top_contributors": ["Mykola Lysenko", "Jianlin Shi", "Jiayuan Chen", "Kumar Kartikeya Dwivedi", "Yuan Chen"],
+  "key_topics": ["arena", "jit", "selftests", "stream", "bpftool"],
+  "overview": "Activity on 2026-08-23 to 2026-08-24 was headlined by Kuan-Wei Chiu's v5 of initial BPF JIT support for the m68k architecture, a significant expansion of JIT coverage. The bulk of the patch volume came from Mykola Lysenko's ongoing selftests Makefile restructure (now at v7) and multiple concurrent efforts to harden BPF stream handling, including fixes from Jianlin Shi and a new check from Kumar Kartikeya Dwivedi to reject oversized stream read buffers.",
+  "patches": [
+    {
+      "title": "m68k, bpf: Add initial BPF JIT compiler support",
+      "author": "Kuan-Wei Chiu",
+      "url": "https://lore.kernel.org/bpf/20260823163812.3024812-1-visitorckw@gmail.com/",
+      "summary": "A standalone patch (v5) introducing the first BPF JIT compiler for the m68k (Motorola 68000) architecture. Adding native JIT support eliminates the overhead of the BPF interpreter on this platform and extends BPF's architecture coverage. The patch has been through five revisions, indicating sustained review attention from the community.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a sleepable page allocator for map memory",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260824093122.362135-2-jiayuan.chen@linux.dev/",
+      "summary": "First patch in a 4-patch series (v5) addressing arena fault-in behavior under cgroup memory limits. This patch introduces a sleepable page allocator for BPF map memory so that page allocation can block and trigger reclaim rather than failing outright. Subsequent patches in the series move fault-in page allocation outside the arena lock to avoid lock contention, and add selftests that verify correct behavior when a cgroup hits its memory.max limit during arena fault-in.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject oversized stream read buffers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260823193202.2389715-2-memxor@gmail.com/",
+      "summary": "First of a 2-patch series (v1) adding a verifier check that rejects BPF programs attempting to read into stream buffers that exceed the supported size. Without this check an oversized buffer could cause undefined behavior in the BPF stream read path. The companion patch adds selftests that exercise the boundary condition to prevent regressions.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: keep headers off the generic link command line",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260823194241.3415152-2-nickolay.lysenko@gmail.com/",
+      "summary": "First patch in a 9-patch series (v7) restructuring the selftests/bpf Makefile into a layered build system. Highlights include building each test runner instance in its own sub-make, extracting BPF skeleton generation into a dedicated helper script, and centralizing shared build definitions in a new Makefile.buildvars file. The restructure improves incremental build correctness and lays the groundwork for faster parallel test builds.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: roll back stream capacity when allocation fails",
+      "author": "Jianlin Shi",
+      "url": "https://lore.kernel.org/bpf/c0ad7b18c59be6695fcc9e4e1200b2f4d5cbbea2.1787492521.git.shijianlin11@foxmail.com/",
+      "summary": "First of a 5-patch series (v4) fixing multiple correctness issues in BPF stream handling. The series rolls back stream capacity on allocation failure, fixes a capacity leak in the staging path, ensures bpf_stream_read returns partial progress on fault rather than an error, and rejects oversized bpf_stream_vprintk output with -E2BIG. Selftests covering stream capacity accounting and partial read edge cases round out the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: fix spurious batch file read error",
+      "author": "Yuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260824092657.1789956-2-chenyuan_fl@163.com/",
+      "summary": "First of a 2-patch series (v6) fixing robustness issues in bpftool's batch command processing. The first patch addresses a spurious error surfaced when reading certain batch files, and the second patch closes a loophole where batch-file comments could bypass the line length check, potentially causing incorrect behavior. These fixes harden the bpftool batch execution path for real-world use cases.",
+      "related_links": []
+    }
+  ]
+}
