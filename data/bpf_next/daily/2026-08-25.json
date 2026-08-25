@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-08-25T09:38:05Z",
+  "period_start": "2026-08-24",
+  "period_end": "2026-08-25",
+  "patch_count": 17,
+  "thread_count": 7,
+  "top_contributors": ["Yuan Chen", "Jiayuan Chen", "Vineet Gupta", "Fuyu Zhao", "Yonghong Song"],
+  "key_topics": ["arena", "verifier", "libbpf", "btf", "selftests", "bpftool", "bpf-gcc"],
+  "overview": "Activity on the bpf-next mailing list for August 24-25 centered on BPF arena improvements, with Jiayuan Chen's series adding a sleepable page allocator for map memory and Yuan Chen fixing range_tree consistency bugs under allocation failure. Fuyu Zhao contributed a notable libbpf improvement enabling selective kernel module BTF loading to speed up program load times on large systems. Verifier diagnostics and selftest quality also saw attention from Yonghong Song and Vineet Gupta respectively.",
+  "patches": [
+    {
+      "title": "bpf: Add a sleepable page allocator for map memory",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260824093122.362135-2-jiayuan.chen@linux.dev/",
+      "summary": "This patch introduces a sleepable page allocator for BPF map memory, enabling arena fault-in operations to sleep under memory pressure rather than failing immediately. The series (v5, 4 patches) also moves fault-in page allocation outside of arena locks and adds cgroup memory boundary tests. These changes are important for workloads running BPF arenas in cgroup-controlled, memory-constrained environments, enabling proper OOM/reclaim handling during page faults. The companion patch adds a selftest that validates arena behavior when cgroup memory.max limits are hit.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: support selective kernel module BTF loading via bpf_object_open_opts",
+      "author": "Fuyu Zhao",
+      "url": "https://lore.kernel.org/bpf/20260824125310.1384-2-zhaofuyu@vivo.com/",
+      "summary": "This patch extends libbpf's bpf_object_open_opts to allow callers to specify a subset of kernel module BTFs to load, rather than unconditionally loading all available kmod BTFs at program open time. On systems with a large number of kernel modules, loading all BTFs adds measurable overhead to BPF program load times. The new option enables applications to opt-in to only the module BTFs their programs actually require. A companion selftest validates the selective loading behavior and error handling.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Record each half of a paired return value in verifier diagnostics",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260824144943.991316-1-yonghong.song@linux.dev/",
+      "summary": "This patch improves BPF verifier diagnostics by recording both halves of paired return values when reporting type errors, making it easier to understand failures involving kfuncs that return complex types. The companion patch (2/2) further extends diagnostics to identify which specific struct member causes a kfunc return type to be rejected as unsupported. Together these changes reduce guesswork when debugging verifier rejections related to kfunc return type constraints. The improvement is particularly valuable for developers writing programs that use kfuncs with struct pointer return types.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arena: fix range_tree_clear inconsistency on kmalloc_nolock failure",
+      "author": "Yuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260824134016.2006188-2-chenyuan_fl@163.com/",
+      "summary": "The first patch in a v4 three-patch series fixing correctness bugs in the BPF arena's range_tree implementation where kmalloc_nolock allocation failures could leave the tree in an inconsistent state. The series addresses three separate error paths: range_tree_clear, range_tree_set on kmalloc_nolock failure, and arena_free_pages/arena_free_worker not checking range_tree_set return values. These are defensive correctness fixes ensuring the arena's free-page tracking structure remains self-consistent even under memory pressure.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Enable some of the blocked cpuv4 instruction tests for bpf-gcc",
+      "author": "Vineet Gupta",
+      "url": "https://lore.kernel.org/bpf/20260824210142.3933580-4-vineet.gupta@linux.dev/",
+      "summary": "The third patch in a v2 three-patch series improving BPF GCC compiler test coverage by re-enabling cpuv4 instruction tests that were previously blocked for the bpf-gcc toolchain. The series first renames placeholder programs to make their purpose explicit, then changes placeholder tests to report SKIP rather than OK so results are not misleadingly counted as passing. Finally this patch re-enables the actual cpuv4 tests now that the bpf-gcc backend supports them. The changes improve test signal quality and expand coverage for the GCC-based BPF compiler.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Resolve bpftool through bpftool_helpers in core_reloc",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260824195746.3070450-1-memxor@gmail.com/",
+      "summary": "A targeted selftest fix updating the core_reloc test to locate bpftool through the bpftool_helpers abstraction rather than resolving it directly. This aligns core_reloc with the established pattern used by other selftests in the suite, improving consistency and making the test more robust to changes in how bpftool is found in different build environments. The change is a small but important infrastructure cleanup for the BPF selftest suite.",
+      "related_links": []
+    }
+  ]
+}
