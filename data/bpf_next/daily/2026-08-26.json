@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-08-26T09:50:00Z",
+  "period_start": "2026-08-25",
+  "period_end": "2026-08-26",
+  "patch_count": 27,
+  "thread_count": 5,
+  "top_contributors": ["Daniel Borkmann", "Yonghong Song", "Khawar Ahemad"],
+  "key_topics": ["verifier", "kfuncs", "arena", "btf", "xsk", "security", "maps"],
+  "overview": "Today's bpf-next activity was dominated by two major feature series: Daniel Borkmann's BPF keyring and ML-DSA post-quantum signing support for BPF programs (11 patches), and Yonghong Song's work allowing arena pointers to be returned by value from kfuncs and global functions (10 patches). Khawar Ahemad also contributed arena fault-in improvements to handle memory.max limits during OOM/reclaim scenarios, alongside fixes for a stream capacity leak and a circular locking issue in the AF_XDP bind path.",
+  "patches": [
+    {
+      "title": "bpf: Add a bpf keyring for program signature validation",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260825142530.1329706-2-daniel@iogearbox.net/",
+      "summary": "Introduces a dedicated BPF keyring that stores keys used for verifying BPF program signatures at load time. The keyring is sealed after initialization so that its contents cannot be modified at runtime, preventing tampering via userspace. This is the foundational patch of an 11-patch series that also adds ML-DSA (post-quantum lattice-based) signing support and bpftool integration. It strengthens the BPF signed loader model by giving the kernel a controlled, immutable root of trust for program verification.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Support ML-DSA program signing",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260825142530.1329706-5-daniel@iogearbox.net/",
+      "summary": "Extends bpftool's program signing command to support ML-DSA (Module-Lattice-Based Digital Signature Algorithm), a NIST-standardized post-quantum signature scheme. ML-DSA signatures are significantly larger than RSA/ECDSA, so a companion patch raises the kernel's bound on program signature size to accommodate them. This makes BPF program signing resistant to quantum cryptanalytic attacks, which is increasingly relevant for long-lived kernel infrastructure.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow a global function to return arena pointers by value",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260825205443.1323867-1-yonghong.song@linux.dev/",
+      "summary": "Teaches the BPF verifier to accept arena-tagged pointers embedded in structs that are returned by value from global BPF functions. Previously the verifier's by-value struct walk only recognized scalar members, causing valid arena-pointer-carrying structs to be rejected. This patch is part of a 10-patch series that adds analogous support for kfuncs (patch 07) and introduces btf_type_is_arena_ptr() as a shared type-checking helper. Improved verifier diagnostics in patch 01 make error messages for unsupported return types easier to debug.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow arena pointers in a by-value kfunc return",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260825205448.1324569-1-yonghong.song@linux.dev/",
+      "summary": "Extends the kfunc return-type verifier to permit structs containing arena pointers to be returned by value, mirroring the global-function change in patch 06 of the same series. The verifier now threads arena-pointer awareness through the by-value struct walk so that kfuncs acting as arena-aware allocators or accessors can return rich typed results without falling back to opaque pointer returns. Selftests in patches 08-10 validate both the happy path and the error messages for unsupported member types.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a sleepable page allocator for map memory",
+      "author": "Khawar Ahemad",
+      "url": "https://lore.kernel.org/bpf/20260825094955.83240-2-ahemadkhawar123@gmail.com/",
+      "summary": "Introduces a sleepable page allocator path for BPF map memory so that arena fault-in can call the memory reclaimer and block when the cgroup's memory.max limit is reached, rather than failing with ENOMEM immediately. Previously arena pages were allocated in an atomic context, making reclaim impossible and causing spurious allocation failures under cgroup memory pressure. This is the first patch in a v6 four-patch series; subsequent patches restructure the arena fault handler to allocate outside the spin-lock and add selftests that exercise the memory.max boundary.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix stream capacity leak and spurious -ENOSPC in bpf_stream_stage_commit",
+      "author": "Khawar Ahemad",
+      "url": "https://lore.kernel.org/bpf/20260825113948.85020-1-ahemadkhawar123@gmail.com/",
+      "summary": "Fixes two related bugs in bpf_stream_stage_commit: a capacity accounting leak that occurs when a staged write is discarded, and a spurious -ENOSPC return caused by the leaked capacity appearing to exhaust the stream's budget on the next commit. The fix ensures the reserved capacity is always returned to the stream when staging is rolled back. Without this fix, long-running programs using BPF streams could permanently lose writable capacity after any failed commit.",
+      "related_links": []
+    },
+    {
+      "title": "xsk: Fix circular locking dependency in xsk_bind",
+      "author": "Khawar Ahemad",
+      "url": "https://lore.kernel.org/bpf/20260825152152.86092-1-ahemadkhawar123@gmail.com/",
+      "summary": "Resolves a lockdep-reported circular dependency between the XDP socket (xsk) mutex and the netdev RTNL lock acquired during xsk_bind. The fix reorders the lock acquisition sequence to always take RTNL before the xsk mutex, matching the order used by other paths in the networking stack. Left unaddressed, the circular dependency could cause a deadlock when two threads concurrently bind an AF_XDP socket and modify the associated netdev.",
+      "related_links": []
+    }
+  ]
+}
