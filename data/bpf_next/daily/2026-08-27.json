@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-08-28T00:00:00Z",
+  "period_start": "2026-08-26",
+  "period_end": "2026-08-27",
+  "patch_count": 40,
+  "thread_count": 12,
+  "top_contributors": ["Daniel Borkmann", "Yonghong Song", "Andrey Grodzovsky"],
+  "key_topics": ["verifier", "keyring", "arena", "kfuncs", "btf", "libbpf", "xdp", "xsk", "bpftool"],
+  "overview": "The bpf-next mailing list saw active development on August 26-27, 2026, with 40 patches across 12 series. Daniel Borkmann's 11-patch series adds a dedicated BPF keyring and ML-DSA post-quantum signed loader support, while Yonghong Song's equally large series extends the verifier to allow arena-allocated pointers in by-value kfunc and global function returns. Other highlights include libbpf gaining dynamic BPF program loading, a new bpf_proactive_reclaim kfunc for BPF-driven memory management, and a verifier fix for incorrect null register inference.",
+  "patches": [
+    {
+      "title": "bpf, keys: Add a bpf keyring for program signature validation",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260826164136.1400997-2-daniel@iogearbox.net/",
+      "summary": "This patch introduces a dedicated BPF keyring for holding trusted public keys used to validate BPF program signatures, providing a more isolated key management path than the platform keyring. The 11-patch v3 series extends this keyring with ML-DSA support — a post-quantum digital signature algorithm — and updates bpftool to sign programs using ML-DSA keys. Additional patches add a sealed keyring variant that prevents unauthorized key additions after boot, comprehensive selftests, and documentation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow arena pointers in a by-value kfunc return",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260827061150.2518572-1-yonghong.song@linux.dev/",
+      "summary": "This patch, part of an 11-patch v3 series, extends the BPF verifier to permit arena-allocated pointers to appear as members in structs returned by value from kfuncs. Previously the verifier rejected any by-value return type containing arena pointers; this change introduces BTF type helpers like btf_type_is_arena_ptr(), refactors the by-value struct walk to carry a type-acceptability mask, and adds proper verifier tracking for the arena pointer members. Companion patches extend the same support to global BPF functions and include selftests and documentation.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: BPF programs dynamic loading and attaching",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20260826181825.1826541-3-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "This patch, part of a 5-patch v2 series, adds dynamic (lazy) BPF program loading support to libbpf so that programs can be loaded and attached at runtime rather than at bpf_object open time. The series introduces a new load-type enum replacing the boolean autoload flag, and adds a declarative BTF decl_tag annotation that instructs libbpf to load a program dynamically without requiring explicit API calls. Selftests validate the new dynamic loading path.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/5dfdc7800469eac4e9a240f2422ba65d4ef4c4ba.1787826402.git.zhuhui@kylinos.cn/",
+      "summary": "This patch (v5, 1/2) introduces the bpf_proactive_reclaim kfunc, which allows BPF programs to trigger proactive memory reclaim from a specified memory cgroup. This enables userspace BPF programs to implement custom memory pressure policies — such as reclaiming memory in anticipation of a workload spike — without requiring kernel modifications or privileged syscalls beyond the BPF program itself. A companion selftest exercises the async reclaim path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: check_cond_jmp_op(): properly infer if register is null",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260826-bug-029-bad-non-null-inference-v2-1-136789ace9e9@localhost/",
+      "summary": "This patch (v2, 1/2) fixes a verifier bug in check_cond_jmp_op() where register null-status was incorrectly inferred during conditional jump processing, potentially causing the verifier to treat a possibly-null register as definitely non-null. Such a misclassification could allow unsafe pointer dereferences to pass verification. A companion selftest demonstrates the specific control-flow pattern that triggered the incorrect inference.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Print average cycles per program run in profiler",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260827-bpftool_cyles_per_run-v1-1-77d7bfc3c065@meta.com/",
+      "summary": "This patch enhances the bpftool profiler to compute and display the average CPU cycles consumed per BPF program run, alongside the existing total cycle count. The new metric makes it straightforward to compare per-invocation performance across programs without manually dividing totals by run counts, improving the ergonomics of BPF program profiling.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: support selective kernel module BTF loading via bpf_object_open_opts",
+      "author": "Fuyu Zhao",
+      "url": "https://lore.kernel.org/bpf/20260826131428.302-2-zhaofuyu@vivo.com/",
+      "summary": "This patch (v5, 1/2) adds an option to bpf_object_open_opts allowing callers to specify which kernel modules' BTF should be loaded, rather than unconditionally loading BTF for all installed modules. On systems with many kernel modules this can substantially reduce BPF program load time by skipping BTF parsing for modules the program does not reference. A companion selftest validates the selective loading behavior.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Move XDP frags flag to prog_flags",
+      "author": "Toke Høiland-Jørgensen",
+      "url": "https://lore.kernel.org/bpf/20260827100214.169215-1-toke@redhat.com/",
+      "summary": "This patch moves the XDP multi-buffer (frags) flag in libbpf from attach-time flags into per-program prog_flags, better reflecting how the kernel tracks this program property. The change allows bpf_program__flags() to correctly report whether a program was compiled with XDP frags support. A companion selftest verifies the flag is properly set and visible via the API.",
+      "related_links": []
+    }
+  ]
+}
