@@ -1,0 +1,620 @@
+{
+  "period": "daily",
+  "period_start": "2026-08-27",
+  "period_end": "2026-08-28",
+  "fetched_at": "2026-08-28T20:45:41Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v4,11/11] Documentation/bpf: Document the bpf keyring and improve examples",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-12-daniel@iogearbox.net/",
+      "date": "2026-08-28T17:52:27",
+      "series": [
+        {
+          "id": 1153384,
+          "url": "https://patchwork.kernel.org/api/series/1153384/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153384",
+          "date": "2026-08-28T17:52:22",
+          "name": "BPF keyring and signed loader ML-DSA support",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153384/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,10/11] selftests/bpf: Add tests for bpf keyring in signed loader",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-11-daniel@iogearbox.net/",
+      "date": "2026-08-28T17:52:26",
+      "series": [
+        {
+          "id": 1153384,
+          "url": "https://patchwork.kernel.org/api/series/1153384/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153384",
+          "date": "2026-08-28T17:52:22",
+          "name": "BPF keyring and signed loader ML-DSA support",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153384/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,09/11] selftests/bpf: Allow appending to guest kernel cmdline in vmtest.sh",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-10-daniel@iogearbox.net/",
+      "date": "2026-08-28T17:52:25",
+      "series": [
+        {
+          "id": 1153384,
+          "url": "https://patchwork.kernel.org/api/series/1153384/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153384",
+          "date": "2026-08-28T17:52:22",
+          "name": "BPF keyring and signed loader ML-DSA support",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153384/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,08/11] selftests/bpf: Add an end-to-end ML-DSA signed loader test",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-9-daniel@iogearbox.net/",
+      "date": "2026-08-28T17:52:24",
+      "series": [
+        {
+          "id": 1153384,
+          "url": "https://patchwork.kernel.org/api/series/1153384/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153384",
+          "date": "2026-08-28T17:52:22",
+          "name": "BPF keyring and signed loader ML-DSA support",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153384/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,07/11] selftests/bpf: Rename the verify_sig_setup.sh setup into setup-rsa",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-8-daniel@iogearbox.net/",
+      "date": "2026-08-28T17:52:23",
+      "series": [
+        {
+          "id": 1153384,
+          "url": "https://patchwork.kernel.org/api/series/1153384/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153384",
+          "date": "2026-08-28T17:52:22",
+          "name": "BPF keyring and signed loader ML-DSA support",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153384/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,06/11] selftests/bpf: Rebuild signed lskels when signing key changes",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-7-daniel@iogearbox.net/",
+      "date": "2026-08-28T17:52:22",
+      "series": [
+        {
+          "id": 1153384,
+          "url": "https://patchwork.kernel.org/api/series/1153384/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153384",
+          "date": "2026-08-28T17:52:22",
+          "name": "BPF keyring and signed loader ML-DSA support",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153384/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,05/11] selftests/bpf: Add a test for the sealed bpf keyring",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-6-daniel@iogearbox.net/",
+      "date": "2026-08-28T17:52:21",
+      "series": [
+        {
+          "id": 1153384,
+          "url": "https://patchwork.kernel.org/api/series/1153384/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153384",
+          "date": "2026-08-28T17:52:22",
+          "name": "BPF keyring and signed loader ML-DSA support",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153384/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,04/11] bpftool: Support ML-DSA program signing",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-5-daniel@iogearbox.net/",
+      "date": "2026-08-28T17:52:20",
+      "series": [
+        {
+          "id": 1153384,
+          "url": "https://patchwork.kernel.org/api/series/1153384/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153384",
+          "date": "2026-08-28T17:52:22",
+          "name": "BPF keyring and signed loader ML-DSA support",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153384/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,03/11] bpf: Raise the bound on a program's signature size",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-4-daniel@iogearbox.net/",
+      "date": "2026-08-28T17:52:19",
+      "series": [
+        {
+          "id": 1153384,
+          "url": "https://patchwork.kernel.org/api/series/1153384/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153384",
+          "date": "2026-08-28T17:52:22",
+          "name": "BPF keyring and signed loader ML-DSA support",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153384/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,02/11] bpf: Refuse caller-supplied keyrings when the bpf one is active",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-3-daniel@iogearbox.net/",
+      "date": "2026-08-28T17:52:18",
+      "series": [
+        {
+          "id": 1153384,
+          "url": "https://patchwork.kernel.org/api/series/1153384/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153384",
+          "date": "2026-08-28T17:52:22",
+          "name": "BPF keyring and signed loader ML-DSA support",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153384/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,01/11] bpf, keys: Add a bpf keyring for program signature validation",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-2-daniel@iogearbox.net/",
+      "date": "2026-08-28T17:52:17",
+      "series": [
+        {
+          "id": 1153384,
+          "url": "https://patchwork.kernel.org/api/series/1153384/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153384",
+          "date": "2026-08-28T17:52:22",
+          "name": "BPF keyring and signed loader ML-DSA support",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153384/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,8/8] selftests/bpf: add tests to validate KASAN on JIT programs",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260828-kasan-v8-8-7c1c0fdb9d7f@bootlin.com/",
+      "date": "2026-08-28T09:21:16",
+      "series": [
+        {
+          "id": 1153119,
+          "url": "https://patchwork.kernel.org/api/series/1153119/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153119",
+          "date": "2026-08-28T09:21:08",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1153119/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,7/8] selftests/bpf: add helpers for KASAN in JIT testing",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260828-kasan-v8-7-7c1c0fdb9d7f@bootlin.com/",
+      "date": "2026-08-28T09:21:15",
+      "series": [
+        {
+          "id": 1153119,
+          "url": "https://patchwork.kernel.org/api/series/1153119/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153119",
+          "date": "2026-08-28T09:21:08",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1153119/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,6/8] selftests/bpf: make cmdline_contains stricter",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260828-kasan-v8-6-7c1c0fdb9d7f@bootlin.com/",
+      "date": "2026-08-28T09:21:14",
+      "series": [
+        {
+          "id": 1153119,
+          "url": "https://patchwork.kernel.org/api/series/1153119/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153119",
+          "date": "2026-08-28T09:21:08",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1153119/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,5/8] bpf, x86: enable KASAN for JITed programs on x86",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260828-kasan-v8-5-7c1c0fdb9d7f@bootlin.com/",
+      "date": "2026-08-28T09:21:13",
+      "series": [
+        {
+          "id": 1153119,
+          "url": "https://patchwork.kernel.org/api/series/1153119/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153119",
+          "date": "2026-08-28T09:21:08",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1153119/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,4/8] bpf, x86: emit KASAN checks in x86 JITed programs",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260828-kasan-v8-4-7c1c0fdb9d7f@bootlin.com/",
+      "date": "2026-08-28T09:21:12",
+      "series": [
+        {
+          "id": 1153119,
+          "url": "https://patchwork.kernel.org/api/series/1153119/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153119",
+          "date": "2026-08-28T09:21:08",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1153119/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,3/8] bpf, x86: refactor BPF_ST management in do_jit",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260828-kasan-v8-3-7c1c0fdb9d7f@bootlin.com/",
+      "date": "2026-08-28T09:21:11",
+      "series": [
+        {
+          "id": 1153119,
+          "url": "https://patchwork.kernel.org/api/series/1153119/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153119",
+          "date": "2026-08-28T09:21:08",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1153119/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,2/8] bpf: add BPF_JIT_KASAN for KASAN instrumentation of JITed programs",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260828-kasan-v8-2-7c1c0fdb9d7f@bootlin.com/",
+      "date": "2026-08-28T09:21:10",
+      "series": [
+        {
+          "id": 1153119,
+          "url": "https://patchwork.kernel.org/api/series/1153119/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153119",
+          "date": "2026-08-28T09:21:08",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1153119/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,1/8] bpf: mark instructions accessing program stack",
+      "author": "Alexis Lothor\u00e9",
+      "url": "https://lore.kernel.org/bpf/20260828-kasan-v8-1-7c1c0fdb9d7f@bootlin.com/",
+      "date": "2026-08-28T09:21:09",
+      "series": [
+        {
+          "id": 1153119,
+          "url": "https://patchwork.kernel.org/api/series/1153119/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153119",
+          "date": "2026-08-28T09:21:08",
+          "name": "bpf: add support for KASAN checks in JITed programs",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1153119/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1] selftests/bpf: Add test for indirect struct_ops trampoline",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260828042715.16546-1-yangtiezhu@loongson.cn/",
+      "date": "2026-08-28T04:27:15",
+      "series": [
+        {
+          "id": 1152957,
+          "url": "https://patchwork.kernel.org/api/series/1152957/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152957",
+          "date": "2026-08-28T04:27:15",
+          "name": "[bpf-next,v1] selftests/bpf: Add test for indirect struct_ops trampoline",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1152957/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpftool: Print average cycles per program run in profiler",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260827-bpftool_cyles_per_run-v1-1-77d7bfc3c065@meta.com/",
+      "date": "2026-08-27T15:29:44",
+      "series": [
+        {
+          "id": 1152711,
+          "url": "https://patchwork.kernel.org/api/series/1152711/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152711",
+          "date": "2026-08-27T15:29:44",
+          "name": "[bpf-next] bpftool: Print average cycles per program run in profiler",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1152711/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,2/2] selftests/bpf: Add memcg async reclaim test",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/eec9160b702fd6d65631a34f0945230e0845d12b.1787826402.git.zhuhui@kylinos.cn/",
+      "date": "2026-08-27T10:36:30",
+      "series": [
+        {
+          "id": 1152583,
+          "url": "https://patchwork.kernel.org/api/series/1152583/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152583",
+          "date": "2026-08-27T10:36:29",
+          "name": "bpf: BPF-driven proactive memcg reclaim",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1152583/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,1/2] mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/5dfdc7800469eac4e9a240f2422ba65d4ef4c4ba.1787826402.git.zhuhui@kylinos.cn/",
+      "date": "2026-08-27T10:36:29",
+      "series": [
+        {
+          "id": 1152583,
+          "url": "https://patchwork.kernel.org/api/series/1152583/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152583",
+          "date": "2026-08-27T10:36:29",
+          "name": "bpf: BPF-driven proactive memcg reclaim",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1152583/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] bpf: selftests: Check for XDP frags flag in bpf_program__flags()",
+      "author": "Toke H\u00f8iland-J\u00f8rgensen",
+      "url": "https://lore.kernel.org/bpf/20260827100214.169215-2-toke@redhat.com/",
+      "date": "2026-08-27T10:02:12",
+      "series": [
+        {
+          "id": 1152574,
+          "url": "https://patchwork.kernel.org/api/series/1152574/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152574",
+          "date": "2026-08-27T10:02:11",
+          "name": "[bpf-next,1/2] libbpf: Move XDP frags flag to prog_flags",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1152574/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] libbpf: Move XDP frags flag to prog_flags",
+      "author": "Toke H\u00f8iland-J\u00f8rgensen",
+      "url": "https://lore.kernel.org/bpf/20260827100214.169215-1-toke@redhat.com/",
+      "date": "2026-08-27T10:02:11",
+      "series": [
+        {
+          "id": 1152574,
+          "url": "https://patchwork.kernel.org/api/series/1152574/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152574",
+          "date": "2026-08-27T10:02:11",
+          "name": "[bpf-next,1/2] libbpf: Move XDP frags flag to prog_flags",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1152574/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,11/11] docs/bpf: Document arena pointers in a by-value return",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260827061211.2520959-1-yonghong.song@linux.dev/",
+      "date": "2026-08-27T06:12:11",
+      "series": [
+        {
+          "id": 1152434,
+          "url": "https://patchwork.kernel.org/api/series/1152434/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152434",
+          "date": "2026-08-27T06:11:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1152434/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,10/11] selftests/bpf: Test kfuncs returning arena pointers by value",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260827061206.2520351-1-yonghong.song@linux.dev/",
+      "date": "2026-08-27T06:12:06",
+      "series": [
+        {
+          "id": 1152434,
+          "url": "https://patchwork.kernel.org/api/series/1152434/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152434",
+          "date": "2026-08-27T06:11:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1152434/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,09/11] selftests/bpf: Test global functions returning arena pointers by value",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260827061200.2519335-1-yonghong.song@linux.dev/",
+      "date": "2026-08-27T06:12:00",
+      "series": [
+        {
+          "id": 1152434,
+          "url": "https://patchwork.kernel.org/api/series/1152434/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152434",
+          "date": "2026-08-27T06:11:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1152434/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,08/11] selftests/bpf: Check the member named for an unsupported kfunc return type",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260827061155.2518937-1-yonghong.song@linux.dev/",
+      "date": "2026-08-27T06:11:55",
+      "series": [
+        {
+          "id": 1152434,
+          "url": "https://patchwork.kernel.org/api/series/1152434/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152434",
+          "date": "2026-08-27T06:11:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1152434/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,07/11] bpf: Allow arena pointers in a by-value kfunc return",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260827061150.2518572-1-yonghong.song@linux.dev/",
+      "date": "2026-08-27T06:11:50",
+      "series": [
+        {
+          "id": 1152434,
+          "url": "https://patchwork.kernel.org/api/series/1152434/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152434",
+          "date": "2026-08-27T06:11:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1152434/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,06/11] bpf: Allow a global function to return arena pointers by value",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260827061145.2517714-1-yonghong.song@linux.dev/",
+      "date": "2026-08-27T06:11:45",
+      "series": [
+        {
+          "id": 1152434,
+          "url": "https://patchwork.kernel.org/api/series/1152434/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152434",
+          "date": "2026-08-27T06:11:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1152434/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,05/11] bpf: Report which member makes a kfunc return type unsupported",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260827061140.2516974-1-yonghong.song@linux.dev/",
+      "date": "2026-08-27T06:11:40",
+      "series": [
+        {
+          "id": 1152434,
+          "url": "https://patchwork.kernel.org/api/series/1152434/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152434",
+          "date": "2026-08-27T06:11:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1152434/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,04/11] bpf: Let the by-value struct walk take the kinds of member it accepts",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260827061135.2516614-1-yonghong.song@linux.dev/",
+      "date": "2026-08-27T06:11:35",
+      "series": [
+        {
+          "id": 1152434,
+          "url": "https://patchwork.kernel.org/api/series/1152434/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152434",
+          "date": "2026-08-27T06:11:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1152434/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,03/11] bpf: Add btf_type_is_arena_ptr()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260827061130.2516323-1-yonghong.song@linux.dev/",
+      "date": "2026-08-27T06:11:30",
+      "series": [
+        {
+          "id": 1152434,
+          "url": "https://patchwork.kernel.org/api/series/1152434/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152434",
+          "date": "2026-08-27T06:11:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1152434/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,02/11] bpf: Drop the recursion depth argument of btf_type_is_scalar_struct()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260827061125.2516013-1-yonghong.song@linux.dev/",
+      "date": "2026-08-27T06:11:25",
+      "series": [
+        {
+          "id": 1152434,
+          "url": "https://patchwork.kernel.org/api/series/1152434/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152434",
+          "date": "2026-08-27T06:11:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1152434/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,01/11] bpf: Record each half of a paired return value in verifier diagnostics",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260827061119.2515071-1-yonghong.song@linux.dev/",
+      "date": "2026-08-27T06:11:19",
+      "series": [
+        {
+          "id": 1152434,
+          "url": "https://patchwork.kernel.org/api/series/1152434/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1152434",
+          "date": "2026-08-27T06:11:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1152434/mbox/"
+        }
+      ]
+    }
+  ]
+}
