@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-08-29T00:00:00Z",
+  "period_start": "2026-08-27",
+  "period_end": "2026-08-28",
+  "patch_count": 30,
+  "thread_count": 7,
+  "top_contributors": ["Daniel Borkmann", "Yonghong Song", "Alexis Lothoré"],
+  "key_topics": ["keyring", "signing", "ml-dsa", "kasan", "jit", "kfuncs", "arena", "xdp", "libbpf", "bpftool"],
+  "overview": "Two major security and safety series dominated the day: Daniel Borkmann's BPF keyring and ML-DSA signed loader work reached v4, adding post-quantum cryptographic program signing; and Alexis Lothoré's KASAN-in-JIT series reached v8, enabling memory-safety checks inside x86 JIT-compiled BPF programs. Yonghong Song also posted v3 of arena-pointer support in by-value kfunc and global-function returns, extending the verifier's type system.",
+  "patches": [
+    {
+      "title": "bpf, keys: Add a bpf keyring for program signature validation",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-2-daniel@iogearbox.net/",
+      "summary": "Introduces a dedicated BPF keyring that holds trusted keys used to verify signatures on loaded BPF programs. The keyring is sealed after boot so that only keys present at startup are trusted, preventing runtime injection of signing keys. This is the foundational patch of the 11-patch 'BPF keyring and signed loader ML-DSA support' series (v4), which adds post-quantum ML-DSA algorithm support on top of the existing RSA infrastructure. It matters because it closes a privilege-escalation path where an attacker with CAP_SYS_ADMIN could supply an arbitrary keyring to bypass program signature enforcement.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refuse caller-supplied keyrings when the bpf one is active",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-3-daniel@iogearbox.net/",
+      "summary": "When the BPF keyring is active, this patch makes the loader reject any caller-provided keyring, ensuring that signature validation always uses the sealed BPF keyring rather than an attacker-controlled one. It is a security enforcement companion to the keyring creation patch in the same series. Without this guard, a privileged process could still supply a keyring that accepts unsigned or maliciously-signed programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add BPF_JIT_KASAN for KASAN instrumentation of JITed programs",
+      "author": "Alexis Lothoré",
+      "url": "https://lore.kernel.org/bpf/20260828-kasan-v8-2-7c1c0fdb9d7f@bootlin.com/",
+      "summary": "Adds a new Kconfig option BPF_JIT_KASAN that, when enabled together with KASAN, instruments JIT-compiled BPF programs with memory-safety shadow checks. The patch lays the groundwork for architecture-specific JIT backends to emit KASAN shadow store/load checks around BPF stack accesses. This is patch 2 of the 8-patch series reaching its eighth revision, reflecting significant review and refinement. It enables catching out-of-bounds stack accesses in JITed code paths that were previously invisible to KASAN.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: emit KASAN checks in x86 JITed programs",
+      "author": "Alexis Lothoré",
+      "url": "https://lore.kernel.org/bpf/20260828-kasan-v8-4-7c1c0fdb9d7f@bootlin.com/",
+      "summary": "The x86-64 JIT backend is extended to emit KASAN shadow-memory checks around BPF stack stores and loads when BPF_JIT_KASAN is enabled. For each memory access the JIT inserts inline checks against the KASAN shadow byte, mirroring what the C compiler would do for normal kernel code. This makes the x86 JIT the first architecture to gain full KASAN coverage for JITed BPF programs, and the companion patch 5/8 enables it in the x86 Kconfig.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Print average cycles per program run in profiler",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260827-bpftool_cyles_per_run-v1-1-77d7bfc3c065@meta.com/",
+      "summary": "Extends the bpftool profiler output with an 'average cycles per run' metric computed from the existing perf_event counters already collected during profiling sessions. This gives developers a quick, hardware-level performance number per program invocation without any extra overhead. The change is self-contained in bpftool and requires no kernel changes.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/5dfdc7800469eac4e9a240f2422ba65d4ef4c4ba.1787826402.git.zhuhui@kylinos.cn/",
+      "summary": "Introduces a new kfunc bpf_proactive_reclaim() that allows BPF programs to trigger proactive memory reclaim on a target memcg, enabling userspace-controlled memory pressure relief without a kernel process or a sysfs write. This is v5 of the 'BPF-driven proactive memcg reclaim' series. The motivation is enabling eBPF-based memory management agents that can react to application-level signals and proactively shrink cgroups before OOM pressure builds.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Move XDP frags flag to prog_flags",
+      "author": "Toke Høiland-Jørgensen",
+      "url": "https://lore.kernel.org/bpf/20260827100214.169215-1-toke@redhat.com/",
+      "summary": "Moves the XDP frags program flag from the attach-time flags into the program-level prog_flags field in libbpf, making it available through bpf_program__flags() for introspection. Previously the flag was only visible at attach time, making it impossible for tools to query whether a loaded program supports multi-buffer XDP. The companion selftest patch verifies the new accessor returns the correct value.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow arena pointers in a by-value kfunc return",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260827061150.2518572-1-yonghong.song@linux.dev/",
+      "summary": "Extends the BPF verifier to accept kfuncs that return structs containing arena pointers by value, where previously only scalar-typed struct members were allowed in by-value returns. This is patch 7/11 of the v3 'Allow arena pointers in by-value returns' series, which also extends the same capability to global BPF functions. The change involves teaching the verifier's struct-walking logic about arena-pointer BTF types and updating the paired-register return tracking to carry arena type information correctly.",
+      "related_links": []
+    }
+  ]
+}
