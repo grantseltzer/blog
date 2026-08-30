@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-08-30T00:00:00Z",
+  "period_start": "2026-08-28",
+  "period_end": "2026-08-29",
+  "patch_count": 37,
+  "thread_count": 5,
+  "top_contributors": ["Yonghong Song", "Daniel Borkmann", "Alexis Lothoré", "Ihor Solodrai"],
+  "key_topics": ["arena", "kfuncs", "verifier", "btf", "keyring", "kasan", "jit", "bpftool", "struct-ops"],
+  "overview": "Activity on bpf-next for August 28-29 was dominated by four notable patch series. Yonghong Song's v4 series extends the BPF verifier and kfunc infrastructure to permit arena pointers embedded in by-value struct returns, while Daniel Borkmann's v4 series introduces a dedicated BPF keyring and post-quantum ML-DSA program signing support. Alexis Lothoré posted a v8 series adding KASAN memory sanitization to x86 JIT-compiled BPF programs, and Ihor Solodrai refreshed the bpftool BTF C-dump test infrastructure with a bug fix for a dropped type.",
+  "patches": [
+    {
+      "title": "bpf, keys: Add a bpf keyring for program signature validation",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-2-daniel@iogearbox.net/",
+      "summary": "This patch introduces a dedicated BPF keyring within the kernel's key management subsystem for validating the signatures of BPF programs. The keyring provides an isolated, sealable store for trusted public keys used by the BPF signed loader, preventing untrusted user-supplied keyrings from interfering when the BPF-specific one is active. It is the foundational patch of an 11-patch series that also adds ML-DSA post-quantum signature support and bpftool signing tooling. The feature significantly strengthens BPF program integrity guarantees for security-conscious deployments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Raise the bound on a program's signature size",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-4-daniel@iogearbox.net/",
+      "summary": "This patch increases the maximum permitted signature size for BPF program signatures to accommodate the larger signatures produced by post-quantum algorithms like ML-DSA (CRYSTALS-Dilithium). The previous bound was sized for RSA signatures and would have rejected ML-DSA signatures outright. Raising the limit is a prerequisite for the ML-DSA signing support added later in the series. The change is backward compatible, as existing RSA-signed programs remain well within the new bound.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Support ML-DSA program signing",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-5-daniel@iogearbox.net/",
+      "summary": "This patch extends bpftool to support signing BPF programs with the ML-DSA (CRYSTALS-Dilithium) post-quantum cryptographic algorithm, complementing the BPF keyring and increased signature size limit introduced earlier in the series. Operators can generate ML-DSA key pairs and use bpftool to sign programs before loading, enabling quantum-resistant program authentication. The implementation integrates with the kernel's existing crypto subsystem and works alongside the RSA signing path. This is a significant step toward future-proofing BPF program integrity against quantum threats.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow a global function to return arena pointers by value",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061550.1696869-1-yonghong.song@linux.dev/",
+      "summary": "This patch extends the BPF verifier to permit global BPF subprograms to return arena pointers embedded in by-value structs. Previously, the verifier rejected such return types even when the pointer was a valid arena-tagged reference, limiting the expressiveness of BPF programs that use arena memory. The change required refactoring the by-value struct walk to accept configurable sets of member kinds, and adding a new BTF helper `btf_type_is_arena_ptr()`. It is part of the v4 series enabling arena pointers in by-value returns for both global functions and kfuncs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow arena pointers in a by-value kfunc return",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061555.1697503-1-yonghong.song@linux.dev/",
+      "summary": "This patch applies the same arena-pointer-in-by-value-struct support to kfunc return-type validation, completing the core verifier work for the series. Kfuncs can now expose structs containing arena pointer members to BPF programs without the verifier rejecting the return type. The patch mirrors the logic added for global functions, ensuring consistent behavior across both code paths. Together with the preceding patches, this makes arena pointers a first-class citizen in BPF by-value return conventions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add BPF_JIT_KASAN for KASAN instrumentation of JITed programs",
+      "author": "Alexis Lothoré",
+      "url": "https://lore.kernel.org/bpf/20260828-kasan-v8-2-7c1c0fdb9d7f@bootlin.com/",
+      "summary": "This patch (v8) introduces a new Kconfig option, BPF_JIT_KASAN, that enables KASAN shadow-memory instrumentation of JIT-compiled BPF programs on x86. When active, the JIT emitter wraps each memory access in the generated native code with KASAN checks, enabling detection of out-of-bounds and use-after-free bugs in JITed programs at runtime. The option is selectable independently of the generic KASAN configuration, allowing targeted BPF-focused sanitization without enabling system-wide KASAN overhead. An earlier patch in the series marks verifier-tracked stack instructions so the JIT can identify which accesses to instrument.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Don't drop a type in the sorted C dump",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260828215207.3105313-7-ihor.solodrai@linux.dev/",
+      "summary": "This patch fixes a bug in bpftool's BTF C-format dump where a type could be silently omitted from the output during topologically sorted emission. The issue arose when the sort placed a type in a position that the dump walker skipped, leaving it absent from the generated C header. The fix ensures every type in the BTF blob appears in the output, which is critical for users relying on `bpftool btf dump format c` to generate complete type definitions. Accompanying patches in the v2 series modernize the btf_dump test scaffolding and add regression tests covering this path.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add test for indirect struct_ops trampoline",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20260828042715.16546-1-yangtiezhu@loongson.cn/",
+      "summary": "This standalone v1 patch from Tiezhu Yang adds a selftest that exercises the indirect struct_ops trampoline dispatch path, covering a case where a struct_ops method is invoked through an indirect call rather than a direct trampoline entry. The test targets a code path that previously lacked coverage, helping catch regressions particularly on architectures like LoongArch where indirect trampoline behavior may differ from x86. Adding explicit coverage here guards against subtle correctness issues in future JIT and trampoline refactors.",
+      "related_links": []
+    }
+  ]
+}
