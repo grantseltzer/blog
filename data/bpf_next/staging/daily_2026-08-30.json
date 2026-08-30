@@ -1,0 +1,348 @@
+{
+  "period": "daily",
+  "period_start": "2026-08-29",
+  "period_end": "2026-08-30",
+  "fetched_at": "2026-08-30T14:19:39Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v1,6/6] selftests/bpf: Test program stream file descriptors",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260830093514.4105972-7-memxor@gmail.com/",
+      "date": "2026-08-30T09:35:11",
+      "series": [
+        {
+          "id": 1153805,
+          "url": "https://patchwork.kernel.org/api/series/1153805/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153805",
+          "date": "2026-08-30T09:35:05",
+          "name": "File descriptor interface for BPF streams",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1153805/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,5/6] bpftool: Read program streams through file descriptors",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260830093514.4105972-6-memxor@gmail.com/",
+      "date": "2026-08-30T09:35:10",
+      "series": [
+        {
+          "id": 1153805,
+          "url": "https://patchwork.kernel.org/api/series/1153805/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153805",
+          "date": "2026-08-30T09:35:05",
+          "name": "File descriptor interface for BPF streams",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1153805/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,4/6] libbpf: Add bpf_prog_stream_open()",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260830093514.4105972-5-memxor@gmail.com/",
+      "date": "2026-08-30T09:35:09",
+      "series": [
+        {
+          "id": 1153805,
+          "url": "https://patchwork.kernel.org/api/series/1153805/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153805",
+          "date": "2026-08-30T09:35:05",
+          "name": "File descriptor interface for BPF streams",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1153805/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,3/6] bpf: Separate stream readiness from capacity accounting",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260830093514.4105972-4-memxor@gmail.com/",
+      "date": "2026-08-30T09:35:08",
+      "series": [
+        {
+          "id": 1153805,
+          "url": "https://patchwork.kernel.org/api/series/1153805/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153805",
+          "date": "2026-08-30T09:35:05",
+          "name": "File descriptor interface for BPF streams",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1153805/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,2/6] bpf: Defer stream file notifications from NMI context",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260830093514.4105972-3-memxor@gmail.com/",
+      "date": "2026-08-30T09:35:07",
+      "series": [
+        {
+          "id": 1153805,
+          "url": "https://patchwork.kernel.org/api/series/1153805/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153805",
+          "date": "2026-08-30T09:35:05",
+          "name": "File descriptor interface for BPF streams",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1153805/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,1/6] bpf: Add file descriptor interface for program streams",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260830093514.4105972-2-memxor@gmail.com/",
+      "date": "2026-08-30T09:35:06",
+      "series": [
+        {
+          "id": 1153805,
+          "url": "https://patchwork.kernel.org/api/series/1153805/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153805",
+          "date": "2026-08-30T09:35:05",
+          "name": "File descriptor interface for BPF streams",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1153805/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,2/2] selftests/bpf: Add compiler-layout terminal gotox test",
+      "author": "Siddharth Chintamaneni",
+      "url": "https://lore.kernel.org/bpf/20260830073125.360934-2-sidchintamaneni@gmail.com/",
+      "date": "2026-08-30T07:31:25",
+      "series": [
+        {
+          "id": 1153781,
+          "url": "https://patchwork.kernel.org/api/series/1153781/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153781",
+          "date": "2026-08-30T07:31:24",
+          "name": "[bpf-next,v1,1/2] bpf: allow terminal gotox instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1153781/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,1/2] bpf: allow terminal gotox instructions",
+      "author": "Siddharth Chintamaneni",
+      "url": "https://lore.kernel.org/bpf/20260830073125.360934-1-sidchintamaneni@gmail.com/",
+      "date": "2026-08-30T07:31:24",
+      "series": [
+        {
+          "id": 1153781,
+          "url": "https://patchwork.kernel.org/api/series/1153781/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153781",
+          "date": "2026-08-30T07:31:24",
+          "name": "[bpf-next,v1,1/2] bpf: allow terminal gotox instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1153781/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,12/12] docs/bpf: Document arena pointers in a by-value return",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061615.1700421-1-yonghong.song@linux.dev/",
+      "date": "2026-08-29T06:16:15",
+      "series": [
+        {
+          "id": 1153537,
+          "url": "https://patchwork.kernel.org/api/series/1153537/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153537",
+          "date": "2026-08-29T06:15:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153537/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,11/12] selftests/bpf: Test kfuncs returning arena pointers by value",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061610.1699950-1-yonghong.song@linux.dev/",
+      "date": "2026-08-29T06:16:10",
+      "series": [
+        {
+          "id": 1153537,
+          "url": "https://patchwork.kernel.org/api/series/1153537/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153537",
+          "date": "2026-08-29T06:15:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153537/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,10/12] selftests/bpf: Test global functions returning arena pointers by value",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061605.1698601-1-yonghong.song@linux.dev/",
+      "date": "2026-08-29T06:16:05",
+      "series": [
+        {
+          "id": 1153537,
+          "url": "https://patchwork.kernel.org/api/series/1153537/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153537",
+          "date": "2026-08-29T06:15:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153537/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,09/12] selftests/bpf: Check the member named for an unsupported kfunc return type",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061600.1697800-1-yonghong.song@linux.dev/",
+      "date": "2026-08-29T06:16:00",
+      "series": [
+        {
+          "id": 1153537,
+          "url": "https://patchwork.kernel.org/api/series/1153537/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153537",
+          "date": "2026-08-29T06:15:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153537/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,08/12] bpf: Allow arena pointers in a by-value kfunc return",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061555.1697503-1-yonghong.song@linux.dev/",
+      "date": "2026-08-29T06:15:55",
+      "series": [
+        {
+          "id": 1153537,
+          "url": "https://patchwork.kernel.org/api/series/1153537/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153537",
+          "date": "2026-08-29T06:15:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153537/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,07/12] bpf: Allow a global function to return arena pointers by value",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061550.1696869-1-yonghong.song@linux.dev/",
+      "date": "2026-08-29T06:15:50",
+      "series": [
+        {
+          "id": 1153537,
+          "url": "https://patchwork.kernel.org/api/series/1153537/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153537",
+          "date": "2026-08-29T06:15:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153537/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,06/12] bpf: Report which member makes a kfunc return type unsupported",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061545.1695736-1-yonghong.song@linux.dev/",
+      "date": "2026-08-29T06:15:44",
+      "series": [
+        {
+          "id": 1153537,
+          "url": "https://patchwork.kernel.org/api/series/1153537/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153537",
+          "date": "2026-08-29T06:15:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153537/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,05/12] bpf: Let a by-value struct nest arrays and structs freely",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061539.1695015-1-yonghong.song@linux.dev/",
+      "date": "2026-08-29T06:15:39",
+      "series": [
+        {
+          "id": 1153537,
+          "url": "https://patchwork.kernel.org/api/series/1153537/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153537",
+          "date": "2026-08-29T06:15:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153537/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,04/12] bpf: Let the by-value struct walk take the kinds of member it accepts",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061534.1693789-1-yonghong.song@linux.dev/",
+      "date": "2026-08-29T06:15:34",
+      "series": [
+        {
+          "id": 1153537,
+          "url": "https://patchwork.kernel.org/api/series/1153537/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153537",
+          "date": "2026-08-29T06:15:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153537/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,03/12] bpf: Add btf_type_is_arena_ptr()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061529.1693266-1-yonghong.song@linux.dev/",
+      "date": "2026-08-29T06:15:29",
+      "series": [
+        {
+          "id": 1153537,
+          "url": "https://patchwork.kernel.org/api/series/1153537/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153537",
+          "date": "2026-08-29T06:15:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153537/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,02/12] bpf: Drop the recursion depth argument of btf_type_is_scalar_struct()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061524.1692957-1-yonghong.song@linux.dev/",
+      "date": "2026-08-29T06:15:24",
+      "series": [
+        {
+          "id": 1153537,
+          "url": "https://patchwork.kernel.org/api/series/1153537/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153537",
+          "date": "2026-08-29T06:15:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153537/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,01/12] bpf: Record each half of a paired return value in verifier diagnostics",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061519.1692270-1-yonghong.song@linux.dev/",
+      "date": "2026-08-29T06:15:19",
+      "series": [
+        {
+          "id": 1153537,
+          "url": "https://patchwork.kernel.org/api/series/1153537/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1153537",
+          "date": "2026-08-29T06:15:14",
+          "name": "bpf: Allow arena pointers in by-value returns",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1153537/mbox/"
+        }
+      ]
+    }
+  ]
+}
