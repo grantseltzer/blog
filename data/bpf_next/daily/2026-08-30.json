@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-08-31T10:02:10Z",
+  "period_start": "2026-08-29",
+  "period_end": "2026-08-30",
+  "patch_count": 20,
+  "thread_count": 3,
+  "top_contributors": ["Yonghong Song", "Kumar Kartikeya Dwivedi", "Siddharth Chintamaneni"],
+  "key_topics": ["streams", "arena", "kfuncs", "btf", "verifier", "libbpf"],
+  "overview": "The bpf-next mailing list saw three notable patch series on August 29-30, 2026. Kumar Kartikeya Dwivedi posted a 6-patch series introducing a file descriptor interface for BPF program streams, enabling userspace to consume stream output via standard poll/read semantics. Yonghong Song sent v4 of a 12-patch series extending the BPF verifier and kfunc infrastructure to allow arena pointers to be returned by value from global functions and kfuncs.",
+  "patches": [
+    {
+      "title": "bpf: Add file descriptor interface for program streams",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260830093514.4105972-2-memxor@gmail.com/",
+      "summary": "This patch introduces the core kernel-side implementation of a file descriptor interface for BPF program streams. It allows userspace to open a stream associated with a running BPF program and interact with it using standard file operations. The motivation is to give tools like bpftool and custom user daemons a structured, pollable interface to consume BPF stream output without polling shared maps. The patch wires up the new stream FD into the BPF syscall layer and defines the read/poll/release file operations backed by the stream ring buffer.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Defer stream file notifications from NMI context",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260830093514.4105972-3-memxor@gmail.com/",
+      "summary": "BPF streams can be written from NMI context, but file system wake-up notifications (used to wake poll waiters) are not safe to call from NMI. This patch defers those wake-up calls to a safe context using an irq_work mechanism, ensuring stream consumers receive timely notifications without triggering NMI-unsafe code paths. It is a prerequisite for the broader stream FD series to function correctly across all BPF program types, including those attached to perf events.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Add bpf_prog_stream_open()",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260830093514.4105972-5-memxor@gmail.com/",
+      "summary": "This patch adds a new libbpf API, bpf_prog_stream_open(), that lets userspace open a file descriptor for a BPF program's output stream. The function wraps the new BPF syscall command introduced in the kernel-side patches and returns an fd suitable for use with read(), poll(), and epoll(). It integrates cleanly with the existing libbpf object model, taking a bpf_program pointer and returning a raw fd.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: allow terminal gotox instructions",
+      "author": "Siddharth Chintamaneni",
+      "url": "https://lore.kernel.org/bpf/20260830073125.360934-1-sidchintamaneni@gmail.com/",
+      "summary": "The BPF verifier currently rejects programs where a gotox instruction appears as the last (terminal) instruction in a function, even when the jump target is valid. This patch relaxes that restriction to accommodate compiler-generated code patterns that legitimately use gotox at function exit. The change is confined to the verifier's instruction classification logic and does not affect the runtime semantics of gotox. A selftest in patch 2/2 exercises the newly allowed compiler-layout pattern.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow a global function to return arena pointers by value",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061550.1696869-1-yonghong.song@linux.dev/",
+      "summary": "Previously, global BPF functions could not return structs containing arena pointers as by-value returns because the verifier lacked the type-checking infrastructure to validate them. This patch extends the verifier's by-value struct walk to recognize arena pointer members, allowing functions that allocate from a BPF arena to hand back the result in a struct. It enables more ergonomic arena-based memory management patterns without requiring callers to pass output pointers.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow arena pointers in a by-value kfunc return",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061555.1697503-1-yonghong.song@linux.dev/",
+      "summary": "Complementing the global-function patch, this change extends support for arena pointers in by-value returns to kfuncs. Kfuncs that allocate arena memory and want to return it packed in a struct can now do so without triggering a verifier rejection. The implementation reuses the btf_type_is_arena_ptr() helper introduced earlier in the same series and hooks into the existing kfunc return-type validation path.",
+      "related_links": []
+    }
+  ]
+}
