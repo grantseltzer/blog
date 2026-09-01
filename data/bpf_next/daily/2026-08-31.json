@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-09-01T00:00:00Z",
+  "period_start": "2026-08-30",
+  "period_end": "2026-08-31",
+  "patch_count": 34,
+  "thread_count": 9,
+  "top_contributors": ["Anton Protopopov", "Anastasios Papagiannis", "Kumar Kartikeya Dwivedi"],
+  "key_topics": ["lsm", "kfuncs", "jit", "btf", "libbpf", "verifier", "struct-ops"],
+  "overview": "Activity on August 30-31 was headlined by two significant new feature series: Anton Protopopov's patches extending BPF LSM programs to attach to ethtool and generic netlink hooks, and Kumar Kartikeya Dwivedi's file descriptor interface for BPF program streams. Additional notable work includes new mm_struct user-memory kfuncs from Anastasios Papagiannis and Jiri Olsa's groundwork for a JIT dry-run mode on x86.",
+  "patches": [
+    {
+      "title": "bpf: Allow BPF LSM programs to attach to more hooks",
+      "author": "Anton Protopopov",
+      "url": "https://lore.kernel.org/bpf/20260831110934.241898-2-a.s.protopopov@gmail.com/",
+      "summary": "Extends the BPF LSM infrastructure to allow BPF programs to attach to a broader set of kernel hooks, specifically targeting the ethtool control path and generic netlink message-receive path. The series introduces new hook points so BPF security programs can observe and potentially control network device configuration events and generic netlink messages. Companion patches add a netdevsim helper library and comprehensive selftests for both new hook types.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add file descriptor interface for program streams",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260830093514.4105972-2-memxor@gmail.com/",
+      "summary": "Introduces a file descriptor interface for BPF program streams, letting userspace read stream output via standard file operations rather than polling. The series separates stream readiness from capacity accounting and defers file notifications from NMI context to avoid async-signal-safety issues. New libbpf API (`bpf_prog_stream_open()`) and bpftool support are included, with selftests covering the full FD lifecycle.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add user memory access kfuncs for mm_struct",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260831092305.42062-3-tasos.papagiannnis@gmail.com/",
+      "summary": "Adds BPF kfuncs that allow reading user memory from an arbitrary process's mm_struct, targeting security introspection of processes during exec. The series also introduces support for trusted-or-null BTF pointer reads in the verifier and fixes the annotation of linux_binprm->mm so BPF programs can safely access it. A new `copy_remote_mm_str()` helper is added to the mm subsystem to support the kfunc implementation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Split x86_call_depth_emit_accounting in two functions",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260831114614.157277-2-jolsa@kernel.org/",
+      "summary": "Begins a refactor of the x86 BPF JIT to support a dry-run emission mode, where instructions are encoded without bytes being written, enabling efficient code-size pre-calculation. The first patch splits call-depth accounting into two helpers to allow the dry-run path to reuse the same logic. Subsequent patches introduce a JIT emission context struct and wire up the actual dry-run support.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: support selective kernel module BTF loading via bpf_object_open_opts",
+      "author": "Fuyu Zhao",
+      "url": "https://lore.kernel.org/bpf/20260831133809.1161-2-zhaofuyu@vivo.com/",
+      "summary": "Adds an option to `bpf_object_open_opts` that allows callers to specify which kernel module BTFs libbpf should load at open time, skipping all others. This reduces BPF program load latency on systems with many loaded modules when the program only uses types from a small subset. Selftests verify both the allowlist and default (load-all) behaviors.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Validate program attach type during link update",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260831023918.1857658-1-sanghyun.park.cnu@gmail.com/",
+      "summary": "Closes a safety gap in `bpf_link_update` where a replacement BPF program was not checked for attach-type compatibility with the existing link. Without this fix, a program with a different attach type could be swapped in silently, leading to undefined behavior at attach time. The fix rejects mismatched types upfront during link update, consistent with how attach type is validated at link creation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: allow terminal gotox instructions",
+      "author": "Siddharth Chintamaneni",
+      "url": "https://lore.kernel.org/bpf/20260830073125.360934-1-sidchintamaneni@gmail.com/",
+      "summary": "Relaxes the BPF verifier to accept `gotox` (extended long-jump) instructions in the terminal position of a basic block, matching patterns that compilers can legally generate. Previously the verifier rejected such programs even when the semantics were sound, blocking compiler-optimized BPF binaries. A selftest is added that exercises the compiler-layout-generated terminal gotox pattern.",
+      "related_links": []
+    }
+  ]
+}
