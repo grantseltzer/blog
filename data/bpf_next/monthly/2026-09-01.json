@@ -1,0 +1,103 @@
+{
+  "generated_at": "2026-09-02T00:00:00Z",
+  "period_start": "2026-08-02",
+  "period_end": "2026-09-01",
+  "patch_count": 100,
+  "thread_count": 26,
+  "top_contributors": ["Yonghong Song", "Daniel Borkmann", "Toke Høiland-Jørgensen", "Alexis Lothoré", "Anton Protopopov", "Anastasios Papagiannis"],
+  "key_topics": ["verifier", "kfuncs", "jit", "lsm", "btf", "libbpf", "security", "arena", "crypto", "memcg"],
+  "overview": "August 2026 brought a rich crop of new capabilities to the BPF subsystem, with major work across security, memory management, and JIT infrastructure. The standout feature was Daniel Borkmann's 11-patch series adding a dedicated BPF keyring for program signature validation along with ML-DSA (post-quantum) signing support in bpftool, enabling cryptographically verified BPF program loading at scale. Kumar Kartikeya Dwivedi introduced a file descriptor interface for BPF program streams, allowing userspace to consume stream output via standard poll/read/select without busy-polling maps. Yonghong Song extended kfunc and global function calling conventions to allow returning arena-allocated pointers by value, while Alexis Lothoré added KASAN instrumentation support for x86 JITed programs to surface memory safety violations at JIT time. Anton Protopopov extended BPF LSM hooks to cover the ethtool and generic netlink control paths, Anastasios Papagiannis added kfuncs for safely accessing remote process memory via mm_struct, and Hui Zhu landed a kfunc for BPF-driven proactive memcg reclaim. The month rounded out with performance and tooling improvements including selective BTF module loading in libbpf, a bpftool profiler enhancement to display average cycles per run, and Jiri Olsa's x86 JIT dry-run mode.",
+  "patches": [
+    {
+      "title": "bpf, keys: Add a bpf keyring for program signature validation",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260828175227.1537793-2-daniel@iogearbox.net/",
+      "summary": "The first patch in an 11-part v4 series ('BPF keyring and signed loader ML-DSA support'), this adds a dedicated kernel keyring that the BPF subsystem uses to verify BPF program signatures at load time. The keyring is sealed at boot and cannot be modified at runtime, providing a tamper-resistant trust anchor for environments that require signed BPF programs. Subsequent patches in the series extend bpftool to generate ML-DSA (Dilithium) post-quantum signatures, raise the per-program signature size limit, and add an end-to-end test that signs a program with ML-DSA and verifies it loads cleanly through the new keyring path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add file descriptor interface for program streams",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260830093514.4105972-2-memxor@gmail.com/",
+      "summary": "The first patch in a 6-part v1 series ('File descriptor interface for BPF streams'), this adds a new BPF_PROG_STREAM_OPEN command that returns a file descriptor backed by a BPF stream object. The FD supports poll, read, and select so that userspace can block on new data rather than busy-polling a ring buffer map. A companion patch defers stream file notifications from NMI context to avoid sleeping in atomic regions, another separates readiness accounting from capacity accounting, and libbpf gains a bpf_prog_stream_open() API. The design makes BPF streams a first-class kernel object usable with standard UNIX I/O patterns.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: mark instructions accessing program stack",
+      "author": "Alexis Lothoré",
+      "url": "https://lore.kernel.org/bpf/20260828-kasan-v8-1-7c1c0fdb9d7f@bootlin.com/",
+      "summary": "The first patch in an 8-part v8 series ('bpf: add support for KASAN checks in JITed programs'), this teaches the BPF core to annotate each instruction that touches the BPF program stack with a new marker flag. Subsequent patches use those markers in the x86 JIT to emit KASAN shadow-check instrumentation around stack accesses, introduce a BPF_JIT_KASAN Kconfig option, and add selftests that deliberately trigger out-of-bounds stack accesses to verify KASAN fires. The series brings BPF JITed programs under the same memory safety checking that the rest of the kernel enjoys when KASAN is enabled.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Record each half of a paired return value in verifier diagnostics",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260829061519.1692270-1-yonghong.song@linux.dev/",
+      "summary": "The first patch in a 12-part v4 series ('bpf: Allow arena pointers in by-value returns'), this improves verifier diagnostic output when a kfunc returns a struct by value and one of its members has an unsupported type. Later patches in the series generalize the by-value struct walk to freely nest arrays and structs, add a btf_type_is_arena_ptr() predicate, and ultimately allow kfuncs and global BPF functions to return structs containing arena-allocated pointers by value. The change enables patterns like returning a {ptr, len} pair from a kfunc where the pointer is arena-backed, which was previously rejected by the verifier.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow BPF LSM programs to attach to more hooks",
+      "author": "Anton Protopopov",
+      "url": "https://lore.kernel.org/bpf/20260831110934.241898-2-a.s.protopopov@gmail.com/",
+      "summary": "The first patch in a 7-part series ('Add new way to add BPF LSM hooks'), this relaxes the BPF LSM attach restriction so that programs can attach to any tracepoint-style hook exported by a kernel subsystem, not just the existing hard-coded list. Subsequent patches add a generic netlink hook on msg_rcv and ethtool hooks covering the control path, both with accompanying selftests. This significantly extends BPF-based security policy enforcement into network control-plane operations without requiring a dedicated LSM implementation for each subsystem.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add user memory access kfuncs for mm_struct",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260831092305.42062-3-tasos.papagiannnis@gmail.com/",
+      "summary": "The core implementation patch in a 7-part v3 series, this adds kfuncs that allow BPF programs to safely read strings and data from another process's virtual address space given a trusted mm_struct pointer. The series adds copy_remote_mm_str() to the mm layer, teaches the verifier to track linux_binprm->mm as a trusted-or-null pointer, and relaxes BTF pointer reads under that annotation. The primary use case is BPF LSM programs attached to exec hooks that need to inspect the incoming process's memory before it runs.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/24726feaf836608d78986e2c565461cf809d8326.1788228773.git.zhuhui@kylinos.cn/",
+      "summary": "The first patch of a 2-part v6 series ('bpf: BPF-driven proactive memcg reclaim'), this adds bpf_proactive_reclaim(), a kfunc that allows BPF programs to trigger asynchronous memory reclaim against a target memcg. The design enables userspace-defined reclaim policy via BPF logic reacting to memory pressure events, complementing the kernel's built-in heuristics rather than replacing them. The companion patch adds a selftest exercising the async reclaim path under real allocation pressure including NMI-context reclaim scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Split x86_call_depth_emit_accounting in two functions",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260831114614.157277-2-jolsa@kernel.org/",
+      "summary": "The first patch in a 3-part series adding a JIT dry-run mode for x86 BPF programs. The series refactors call-depth accounting into separable emit and non-emit halves, introduces a JIT emission context struct that abstracts real versus dry-run passes, and wires up the dry-run path so the JIT can compute final instruction offsets without allocating executable memory. This enables exact-size program allocation and lays groundwork for more reliable JIT behavior in memory-constrained environments.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: support selective kernel module BTF loading via bpf_object_open_opts",
+      "author": "Fuyu Zhao",
+      "url": "https://lore.kernel.org/bpf/20260831133809.1161-2-zhaofuyu@vivo.com/",
+      "summary": "The first patch in a 2-part v6 series ('libbpf: Improve BPF load performance by selectively loading module BTFs'), this adds a kern_btf_module_allowlist field to bpf_object_open_opts that restricts which kernel module BTFs libbpf loads at open time. On systems with many loadable modules, the full BTF load was a measurable overhead even for programs that only use types from a handful of modules. The companion patch adds a selftest verifying that only the allowlisted modules are loaded when a list is provided.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: crypto: Use AES-CBC and AES-ECB libraries",
+      "author": "Eric Biggers",
+      "url": "https://lore.kernel.org/bpf/20260831192139.94895-1-ebiggers@kernel.org/",
+      "summary": "This single-patch change switches the BPF crypto helper implementation from the heavyweight crypto API scatterlist pipeline to the new lightweight AES-CBC and AES-ECB library interfaces. The library interfaces are faster for the small, synchronous, non-AEAD encryption that BPF crypto helpers perform and eliminate the overhead of allocating and managing crypto_skcipher objects. The change is a pure optimization with no user-visible behavioral difference for existing BPF programs using bpf_crypto_encrypt and bpf_crypto_decrypt.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: allow terminal gotox instructions",
+      "author": "Siddharth Chintamaneni",
+      "url": "https://lore.kernel.org/bpf/20260831223314.89787-1-sidchintamaneni@gmail.com/",
+      "summary": "The first patch in a 2-part v2 series, this relaxes the BPF verifier's dead-code elimination to allow gotox (32-bit offset goto) instructions whose target is a terminal instruction such as exit or a jump to exit. Modern compilers can emit such patterns when optimizing tail-call sequences and BPF programs with complex control flow, and the old restriction incorrectly rejected valid programs. The companion patch adds selftests covering compiler-generated terminal gotox patterns to prevent regressions.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Print average cycles per program run in profiler",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260827-bpftool_cyles_per_run-v1-1-77d7bfc3c065@meta.com/",
+      "summary": "This single patch adds a new 'avg_cycles' column to the output of bpftool prog profile, computing the ratio of total CPU cycles to total program runs sampled during the profiling window. Previously the profiler reported only total cycles and total runs separately, requiring manual division to derive the per-invocation cost. The change makes it easier to quickly spot performance regressions in BPF programs under load without post-processing the raw profiler output.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Move XDP frags flag to prog_flags",
+      "author": "Toke Høiland-Jørgensen",
+      "url": "https://lore.kernel.org/bpf/20260827100214.169215-1-toke@redhat.com/",
+      "summary": "The first patch in a 2-part series that begins the work of consolidating section-inferred BPF program flags into the libbpf prog_flags field, starting with BPF_F_XDP_HAS_FRAGS for xdp.frags programs. This is the initial step toward a broader cleanup (expanded in later v2 and v3 revisions) that moves all section-defined flags into prog_flags so they can be queried, combined non-destructively, and set independently of the section name. The change ensures that bpftool and applications using bpf_program__flags() can reliably inspect XDP fragment support without inspecting section names.",
+      "related_links": []
+    }
+  ]
+}
