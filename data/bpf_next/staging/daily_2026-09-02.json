@@ -1,0 +1,858 @@
+{
+  "period": "daily",
+  "period_start": "2026-09-01",
+  "period_end": "2026-09-02",
+  "fetched_at": "2026-09-02T13:24:28Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v5,3/3] bpf, arena: handle range_tree_set failures in alloc/free paths",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260902093740.2338724-4-chenyuan_fl@163.com/",
+      "date": "2026-09-02T09:37:40",
+      "series": [
+        {
+          "id": 1156010,
+          "url": "https://patchwork.kernel.org/api/series/1156010/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1156010",
+          "date": "2026-09-02T09:37:40",
+          "name": "bpf, arena: fix range_tree consistency on allocation failure",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1156010/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,2/3] bpf, arena: fix range_tree_set inconsistency on kmalloc_nolock failure",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260902093740.2338724-3-chenyuan_fl@163.com/",
+      "date": "2026-09-02T09:37:39",
+      "series": [
+        {
+          "id": 1156010,
+          "url": "https://patchwork.kernel.org/api/series/1156010/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1156010",
+          "date": "2026-09-02T09:37:40",
+          "name": "bpf, arena: fix range_tree consistency on allocation failure",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1156010/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,1/3] bpf, arena: fix range_tree_clear inconsistency on kmalloc_nolock failure",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260902093740.2338724-2-chenyuan_fl@163.com/",
+      "date": "2026-09-02T09:37:38",
+      "series": [
+        {
+          "id": 1156010,
+          "url": "https://patchwork.kernel.org/api/series/1156010/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1156010",
+          "date": "2026-09-02T09:37:40",
+          "name": "bpf, arena: fix range_tree consistency on allocation failure",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1156010/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] libbpf: Reject oversized unknown BTF type records",
+      "author": "Mark Amirkan",
+      "url": "https://lore.kernel.org/bpf/20260902091126.59281-1-markdamirkan@gmail.com/",
+      "date": "2026-09-02T09:11:26",
+      "series": [
+        {
+          "id": 1155986,
+          "url": "https://patchwork.kernel.org/api/series/1155986/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155986",
+          "date": "2026-09-02T09:11:26",
+          "name": "[bpf-next] libbpf: Reject oversized unknown BTF type records",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1155986/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,6/6] selftests/bpf: Add bytecode tests for UHMUL and SHMUL",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260902070534.2141812-7-tangyazhou@zju.edu.cn/",
+      "date": "2026-09-02T07:05:34",
+      "series": [
+        {
+          "id": 1155878,
+          "url": "https://patchwork.kernel.org/api/series/1155878/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155878",
+          "date": "2026-09-02T07:05:32",
+          "name": "bpf: Add UHMUL and SHMUL instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1155878/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,5/6] bpf: Add verifier support for UHMUL and SHMUL",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260902070534.2141812-6-tangyazhou@zju.edu.cn/",
+      "date": "2026-09-02T07:05:33",
+      "series": [
+        {
+          "id": 1155878,
+          "url": "https://patchwork.kernel.org/api/series/1155878/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155878",
+          "date": "2026-09-02T07:05:32",
+          "name": "bpf: Add UHMUL and SHMUL instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1155878/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,4/6] bpf: Refactor ALU instruction variant validation",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260902070534.2141812-5-tangyazhou@zju.edu.cn/",
+      "date": "2026-09-02T07:05:32",
+      "series": [
+        {
+          "id": 1155878,
+          "url": "https://patchwork.kernel.org/api/series/1155878/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155878",
+          "date": "2026-09-02T07:05:32",
+          "name": "bpf: Add UHMUL and SHMUL instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1155878/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,3/6] bpf: Reject UHMUL/SHMUL in unsupported JITs",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260902070534.2141812-4-tangyazhou@zju.edu.cn/",
+      "date": "2026-09-02T07:05:31",
+      "series": [
+        {
+          "id": 1155878,
+          "url": "https://patchwork.kernel.org/api/series/1155878/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155878",
+          "date": "2026-09-02T07:05:32",
+          "name": "bpf: Add UHMUL and SHMUL instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1155878/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,2/6] bpf, x86: JIT UHMUL and SHMUL on x86-64",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260902070534.2141812-3-tangyazhou@zju.edu.cn/",
+      "date": "2026-09-02T07:05:30",
+      "series": [
+        {
+          "id": 1155878,
+          "url": "https://patchwork.kernel.org/api/series/1155878/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155878",
+          "date": "2026-09-02T07:05:32",
+          "name": "bpf: Add UHMUL and SHMUL instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1155878/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,1/6] bpf: Add UHMUL and SHMUL instructions",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260902070534.2141812-2-tangyazhou@zju.edu.cn/",
+      "date": "2026-09-02T07:05:29",
+      "series": [
+        {
+          "id": 1155878,
+          "url": "https://patchwork.kernel.org/api/series/1155878/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155878",
+          "date": "2026-09-02T07:05:32",
+          "name": "bpf: Add UHMUL and SHMUL instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1155878/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,5/5] selftests/bpf: Add arena allocation race tests",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260902070239.16968-6-emil@etsalapatis.com/",
+      "date": "2026-09-02T07:02:39",
+      "series": [
+        {
+          "id": 1155875,
+          "url": "https://patchwork.kernel.org/api/series/1155875/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155875",
+          "date": "2026-09-02T07:02:34",
+          "name": "bpf: Fix arena memory incoherence",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1155875/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/5] bpf: Atomically update PTE and range tree in arena VM fault handler",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260902070239.16968-5-emil@etsalapatis.com/",
+      "date": "2026-09-02T07:02:38",
+      "series": [
+        {
+          "id": 1155875,
+          "url": "https://patchwork.kernel.org/api/series/1155875/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155875",
+          "date": "2026-09-02T07:02:34",
+          "name": "bpf: Fix arena memory incoherence",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1155875/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/5] bpf: Fix arena race between page free and alloc leading to incoherency",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260902070239.16968-4-emil@etsalapatis.com/",
+      "date": "2026-09-02T07:02:37",
+      "series": [
+        {
+          "id": 1155875,
+          "url": "https://patchwork.kernel.org/api/series/1155875/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155875",
+          "date": "2026-09-02T07:02:34",
+          "name": "bpf: Fix arena memory incoherence",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1155875/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/5] bpf: Track availability information for ranges in range tree",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260902070239.16968-3-emil@etsalapatis.com/",
+      "date": "2026-09-02T07:02:36",
+      "series": [
+        {
+          "id": 1155875,
+          "url": "https://patchwork.kernel.org/api/series/1155875/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155875",
+          "date": "2026-09-02T07:02:34",
+          "name": "bpf: Fix arena memory incoherence",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1155875/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/5] bpf: Update is_range_tree_set to work for consecutive ranges",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260902070239.16968-2-emil@etsalapatis.com/",
+      "date": "2026-09-02T07:02:35",
+      "series": [
+        {
+          "id": 1155875,
+          "url": "https://patchwork.kernel.org/api/series/1155875/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155875",
+          "date": "2026-09-02T07:02:34",
+          "name": "bpf: Fix arena memory incoherence",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1155875/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5] xsk: Fix circular locking dependency between &net->xdp.lock, &xs->mutex, and netdev_lock_ops",
+      "author": "Khawar Ahemad",
+      "url": "https://lore.kernel.org/bpf/20260902041257.58374-1-ahemadkhawar123@gmail.com/",
+      "date": "2026-09-02T04:12:57",
+      "series": [
+        {
+          "id": 1155801,
+          "url": "https://patchwork.kernel.org/api/series/1155801/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155801",
+          "date": "2026-09-02T04:12:57",
+          "name": "[bpf-next,v5] xsk: Fix circular locking dependency between &net->xdp.lock, &xs->mutex, and netdev_lock_ops",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1155801/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/2] selftests/bpf: Test terminal gotox instructions",
+      "author": "Siddharth Chintamaneni",
+      "url": "https://lore.kernel.org/bpf/20260901170144.70453-2-sidchintamaneni@gmail.com/",
+      "date": "2026-09-01T17:01:44",
+      "series": [
+        {
+          "id": 1155540,
+          "url": "https://patchwork.kernel.org/api/series/1155540/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155540",
+          "date": "2026-09-01T17:01:43",
+          "name": "[bpf-next,v3,1/2] bpf: Allow terminal gotox instructions",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1155540/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/2] bpf: Allow terminal gotox instructions",
+      "author": "Siddharth Chintamaneni",
+      "url": "https://lore.kernel.org/bpf/20260901170144.70453-1-sidchintamaneni@gmail.com/",
+      "date": "2026-09-01T17:01:43",
+      "series": [
+        {
+          "id": 1155540,
+          "url": "https://patchwork.kernel.org/api/series/1155540/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155540",
+          "date": "2026-09-01T17:01:43",
+          "name": "[bpf-next,v3,1/2] bpf: Allow terminal gotox instructions",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1155540/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,18/18] selftests/bpf: Add a test verifying inline information",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-19-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:57",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,17/18] selftests/bpf: Test BTF sysfs inline representations",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-18-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:56",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,16/18] btf: Relocate inline BTF for modules with distilled base BTF",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-17-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:55",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,15/18] btf: Support CONFIG_DEBUG_INFO_BTF_INLINE=m",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-16-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:54",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,14/18] btf: Make vmlinux, module inline info available in /sys/kernel/btf",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-15-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:53",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,13/18] kbuild: Add support for BTF inline information",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-14-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:52",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,12/18] resolve_btfids: Extract inline BTF",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-13-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:51",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,11/18] bpftool: Add ability to dump LOC_PARAM, LOC_PROTO and LOCSEC",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-12-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:50",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,10/18] bpftool: Document support for multi-split BTF",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-11-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:49",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,09/18] bpftool: Handle multi-split BTF by supporting multiple base BTFs",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-10-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:48",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,08/18] selftests/bpf: Validate that btf__permute transfer works",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-9-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:47",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,07/18] selftests/bpf: BTF distill tests to ensure LOC[_PARAM|_PROTO] add to split BTF",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-8-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:46",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,06/18] selftests/bpf: Add LOC_PARAM, LOC_PROTO, LOCSEC to dedup split tests",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-7-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:45",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,05/18] selftests/bpf: Add LOC_PARAM, LOC_PROTO, LOCSEC to field iter tests",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-6-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:44",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,04/18] selftests/bpf: Test helper support for BTF_KIND_LOC[_PARAM|_PROTO|SEC]",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-5-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:43",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,03/18] libbpf: Support moving permuted BTF types into split BTF",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-4-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:42",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,02/18] libbpf: Add support for BTF kinds LOC[_PARAM|_PROTO|SEC]",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-3-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:41",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,01/18] btf: Extend UAPI to support BTF location (inline site) info",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-2-alan.maguire@oracle.com/",
+      "date": "2026-09-01T16:57:40",
+      "series": [
+        {
+          "id": 1155538,
+          "url": "https://patchwork.kernel.org/api/series/1155538/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155538",
+          "date": "2026-09-01T16:57:39",
+          "name": "Support inline functions in BTF",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1155538/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf, riscv: Register extable entries at probe insn call sites",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20260901120013.16104-1-cp0613@linux.alibaba.com/",
+      "date": "2026-09-01T12:00:13",
+      "series": [
+        {
+          "id": 1155303,
+          "url": "https://patchwork.kernel.org/api/series/1155303/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155303",
+          "date": "2026-09-01T12:00:13",
+          "name": "[bpf-next] bpf, riscv: Register extable entries at probe insn call sites",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1155303/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] exec: Drop bprm loader before closing bprm->file",
+      "author": "sun jian",
+      "url": "https://lore.kernel.org/bpf/20260901114011.112375-1-sun.jian.kdev@gmail.com/",
+      "date": "2026-09-01T11:40:11",
+      "series": [
+        {
+          "id": 1155290,
+          "url": "https://patchwork.kernel.org/api/series/1155290/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155290",
+          "date": "2026-09-01T11:40:11",
+          "name": "[bpf-next] exec: Drop bprm loader before closing bprm->file",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1155290/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,4/4] selftests/bpf: Check for flag presence in bpf_program__flags()",
+      "author": "Toke H\u00f8iland-J\u00f8rgensen",
+      "url": "https://lore.kernel.org/bpf/20260901-libbpf-frags-flags-v3-4-4eb6f14968b0@redhat.com/",
+      "date": "2026-09-01T08:46:57",
+      "series": [
+        {
+          "id": 1155157,
+          "url": "https://patchwork.kernel.org/api/series/1155157/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155157",
+          "date": "2026-09-01T08:46:56",
+          "name": "libbpf: Move section-defined program flags to prog_flags",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1155157/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/4] libbpf: Move section-defined program flags to prog_flags",
+      "author": "Toke H\u00f8iland-J\u00f8rgensen",
+      "url": "https://lore.kernel.org/bpf/20260901-libbpf-frags-flags-v3-3-4eb6f14968b0@redhat.com/",
+      "date": "2026-09-01T08:46:56",
+      "series": [
+        {
+          "id": 1155157,
+          "url": "https://patchwork.kernel.org/api/series/1155157/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155157",
+          "date": "2026-09-01T08:46:56",
+          "name": "libbpf: Move section-defined program flags to prog_flags",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1155157/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/4] selftests/bpf: Set BPF program flags non-destructively",
+      "author": "Toke H\u00f8iland-J\u00f8rgensen",
+      "url": "https://lore.kernel.org/bpf/20260901-libbpf-frags-flags-v3-2-4eb6f14968b0@redhat.com/",
+      "date": "2026-09-01T08:46:55",
+      "series": [
+        {
+          "id": 1155157,
+          "url": "https://patchwork.kernel.org/api/series/1155157/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155157",
+          "date": "2026-09-01T08:46:56",
+          "name": "libbpf: Move section-defined program flags to prog_flags",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1155157/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/4] bpftool: Set BPF_F_XDP_DEV_BOUND_ONLY flag non-destructively",
+      "author": "Toke H\u00f8iland-J\u00f8rgensen",
+      "url": "https://lore.kernel.org/bpf/20260901-libbpf-frags-flags-v3-1-4eb6f14968b0@redhat.com/",
+      "date": "2026-09-01T08:46:54",
+      "series": [
+        {
+          "id": 1155157,
+          "url": "https://patchwork.kernel.org/api/series/1155157/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155157",
+          "date": "2026-09-01T08:46:56",
+          "name": "libbpf: Move section-defined program flags to prog_flags",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1155157/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,4/4] selftests/bpf: Test rhtab special-field combinations",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260901062845.1379760-5-chenyuan_fl@163.com/",
+      "date": "2026-09-01T06:28:45",
+      "series": [
+        {
+          "id": 1155050,
+          "url": "https://patchwork.kernel.org/api/series/1155050/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155050",
+          "date": "2026-09-01T06:28:45",
+          "name": "[bpf-next,v3,1/4] bpf: Cancel special fields in resizable hashtab on recycle",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1155050/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/4] selftests/bpf: Test rhtab kptr recycle from NMI context",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260901062845.1379760-4-chenyuan_fl@163.com/",
+      "date": "2026-09-01T06:28:44",
+      "series": [
+        {
+          "id": 1155050,
+          "url": "https://patchwork.kernel.org/api/series/1155050/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155050",
+          "date": "2026-09-01T06:28:45",
+          "name": "[bpf-next,v3,1/4] bpf: Cancel special fields in resizable hashtab on recycle",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1155050/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/4] bpf: Fix use-after-free of program BTF in mem-alloc destructor",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260901062845.1379760-3-chenyuan_fl@163.com/",
+      "date": "2026-09-01T06:28:43",
+      "series": [
+        {
+          "id": 1155050,
+          "url": "https://patchwork.kernel.org/api/series/1155050/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155050",
+          "date": "2026-09-01T06:28:45",
+          "name": "[bpf-next,v3,1/4] bpf: Cancel special fields in resizable hashtab on recycle",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1155050/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/4] bpf: Cancel special fields in resizable hashtab on recycle",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260901062845.1379760-2-chenyuan_fl@163.com/",
+      "date": "2026-09-01T06:28:42",
+      "series": [
+        {
+          "id": 1155050,
+          "url": "https://patchwork.kernel.org/api/series/1155050/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1155050",
+          "date": "2026-09-01T06:28:45",
+          "name": "[bpf-next,v3,1/4] bpf: Cancel special fields in resizable hashtab on recycle",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1155050/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,2/2] selftests/bpf: Add memcg async reclaim test",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/abe85ccba1c3e658d4f8dc25ef958214abaf362c.1788228773.git.zhuhui@kylinos.cn/",
+      "date": "2026-09-01T02:21:11",
+      "series": [
+        {
+          "id": 1154965,
+          "url": "https://patchwork.kernel.org/api/series/1154965/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1154965",
+          "date": "2026-09-01T02:21:09",
+          "name": "bpf: BPF-driven proactive memcg reclaim",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1154965/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,1/2] mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/24726feaf836608d78986e2c565461cf809d8326.1788228773.git.zhuhui@kylinos.cn/",
+      "date": "2026-09-01T02:21:10",
+      "series": [
+        {
+          "id": 1154965,
+          "url": "https://patchwork.kernel.org/api/series/1154965/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1154965",
+          "date": "2026-09-01T02:21:09",
+          "name": "bpf: BPF-driven proactive memcg reclaim",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1154965/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,2/2] selftests/bpf: Cover attach type checks in link update",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260901014713.3502900-4-sanghyun.park.cnu@gmail.com/",
+      "date": "2026-09-01T01:47:11",
+      "series": [
+        {
+          "id": 1154951,
+          "url": "https://patchwork.kernel.org/api/series/1154951/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1154951",
+          "date": "2026-09-01T01:47:09",
+          "name": "[bpf-next,v5,1/2] bpf: Validate program attach type during link update",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1154951/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,1/2] bpf: Validate program attach type during link update",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260901014713.3502900-2-sanghyun.park.cnu@gmail.com/",
+      "date": "2026-09-01T01:47:09",
+      "series": [
+        {
+          "id": 1154951,
+          "url": "https://patchwork.kernel.org/api/series/1154951/",
+          "web_url": "https://patchwork.kernel.org/project/netdevbpf/list/?series=1154951",
+          "date": "2026-09-01T01:47:09",
+          "name": "[bpf-next,v5,1/2] bpf: Validate program attach type during link update",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1154951/mbox/"
+        }
+      ]
+    }
+  ]
+}
