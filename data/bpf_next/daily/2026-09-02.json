@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-09-03T00:00:00Z",
+  "period_start": "2026-09-01",
+  "period_end": "2026-09-02",
+  "patch_count": 50,
+  "thread_count": 13,
+  "top_contributors": ["Alan Maguire", "chenyuan", "Yazhou Tang", "Emil Tsalapatis", "Toke Høiland-Jørgensen"],
+  "key_topics": ["btf", "arena", "verifier", "kfuncs", "xdp", "libbpf", "instructions", "maps"],
+  "overview": "The September 1-2 bpf-next window featured 50 patches across 13 series, with standout contributions including a major 18-patch BTF inline function series from Alan Maguire and a proposed RFC to add UHMUL/SHMUL multiply instructions to the BPF ISA. BPF arena memory safety received significant attention with two independent series from Emil Tsalapatis and chenyuan addressing incoherence and range tree consistency bugs respectively. Notable additions also include a new kfunc for BPF-driven proactive memcg reclaim and fixes for XDP socket locking dependencies.",
+  "patches": [
+    {
+      "title": "btf: Extend UAPI to support BTF location (inline site) info",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260901165757.801449-2-alan.maguire@oracle.com/",
+      "summary": "This large 18-patch series (v2) extends the BTF UAPI to support inline function location information, adding new BTF kinds LOC, LOC_PARAM, LOC_PROTO, and LOCSEC. These new kinds encode where compiler-inlined functions were originally defined, enabling better debugging and tracing of inlined code paths. The series includes libbpf support, bpftool changes for dumping location info, kbuild integration, sysfs exposure via /sys/kernel/btf, and module support with distilled base BTF relocation. This significantly improves the ability of BPF-based tools to reason about inlined kernel functions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add UHMUL and SHMUL instructions",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260902070534.2141812-2-tangyazhou@zju.edu.cn/",
+      "summary": "This RFC 6-patch series proposes two new BPF ISA instructions: UHMUL (unsigned high multiply) and SHMUL (signed high multiply), which return the upper 64 bits of a 128-bit multiplication result. The series includes x86-64 JIT support, verifier handling, rejection in unsupported JITs, and ALU instruction variant validation refactoring. High-word multiply operations are commonly needed in fixed-point arithmetic and hash functions, currently requiring workaround implementations in BPF programs. Selftests cover bytecode-level verification of both instructions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Update is_range_tree_set to work for consecutive ranges",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260902070239.16968-2-emil@etsalapatis.com/",
+      "summary": "This 5-patch series addresses a race condition in BPF arena memory management where concurrent page free and alloc operations could lead to memory incoherence. The fix atomically updates both the page table entry (PTE) and the range tree in the VM fault handler, and tracks availability information for ranges to prevent races between concurrent allocations. The series also corrects the is_range_tree_set() helper to properly handle consecutive ranges, and adds race condition tests in selftests to validate the fixes.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/24726feaf836608d78986e2c565461cf809d8326.1788228773.git.zhuhui@kylinos.cn/",
+      "summary": "This v6 2-patch series adds a new kfunc bpf_proactive_reclaim() that allows BPF programs to trigger proactive memory reclaim on a specified memcg cgroup. This enables fine-grained, policy-driven memory management from BPF programs, complementing the existing reactive reclaim mechanisms built into the kernel. The series includes a selftest that validates the async reclaim behavior triggered by BPF programs under memory pressure.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Cancel special fields in resizable hashtab on recycle",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260901062845.1379760-2-chenyuan_fl@163.com/",
+      "summary": "This v3 4-patch series fixes a bug where special fields (such as kptrs) in a resizable hashtable were not properly cancelled when map entries were recycled, potentially causing use-after-free issues. A companion patch fixes a use-after-free of program BTF in a mem-alloc destructor that could be triggered through the same code path. The series adds selftests covering kptr recycle from NMI context and various special-field combinations in the resizable hashtab.",
+      "related_links": []
+    },
+    {
+      "title": "xsk: Fix circular locking dependency between &net->xdp.lock, &xs->mutex, and netdev_lock_ops",
+      "author": "Khawar Ahemad",
+      "url": "https://lore.kernel.org/bpf/20260902041257.58374-1-ahemadkhawar123@gmail.com/",
+      "summary": "This v5 single patch resolves a circular locking dependency detected by lockdep in the XDP socket (xsk) subsystem involving three locks: &net->xdp.lock, &xs->mutex, and netdev_lock_ops. Circular lock ordering issues can lead to potential deadlocks in the XDP socket path under concurrent operations. This is the fifth revision of the fix, indicating careful iteration to find the correct lock ordering without breaking other XDP socket operations.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow terminal gotox instructions",
+      "author": "Siddharth Chintamaneni",
+      "url": "https://lore.kernel.org/bpf/20260901170144.70453-1-sidchintamaneni@gmail.com/",
+      "summary": "This v3 2-patch series extends the BPF verifier to allow gotox (64-bit goto with extended range) instructions to appear as terminal instructions in a BPF program. Previously the verifier rejected valid programs that used gotox as their final instruction, despite it being semantically equivalent to other accepted terminal branches. The fix includes a selftest exercising terminal gotox instructions to prevent future regressions.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Reject oversized unknown BTF type records",
+      "author": "Mark Amirkan",
+      "url": "https://lore.kernel.org/bpf/20260902091126.59281-1-markdamirkan@gmail.com/",
+      "summary": "This single patch adds a safety check in libbpf to reject BTF type records whose size exceeds reasonable bounds when the type kind is unknown. Without this guard, libbpf could potentially read past the end of the BTF data buffer when processing forward-compatible unknown type records from newer kernels. This is a defensive hardening fix to prevent potential out-of-bounds memory reads during BTF parsing.",
+      "related_links": []
+    }
+  ]
+}
