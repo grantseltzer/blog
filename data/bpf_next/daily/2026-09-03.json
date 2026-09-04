@@ -1,0 +1,74 @@
+{
+  "generated_at": "2026-09-04T00:00:00Z",
+  "period_start": "2026-09-02",
+  "period_end": "2026-09-03",
+  "patch_count": 29,
+  "thread_count": 11,
+  "top_contributors": [
+    "Yazhou Tang",
+    "Emil Tsalapatis",
+    "Toke Høiland-Jørgensen",
+    "Jiri Olsa",
+    "chenyuan"
+  ],
+  "key_topics": [
+    "jit",
+    "verifier",
+    "arena",
+    "libbpf",
+    "btf",
+    "xsk"
+  ],
+  "overview": "The bpf-next mailing list saw 29 patches across 11 series on September 2-3, 2026. The most notable submission is an RFC proposing two new BPF ISA instructions, UHMUL and SHMUL, which compute the upper 64 bits of a 128-bit multiplication and enable efficient fixed-point arithmetic. Several other series addressed arena memory correctness, JIT infrastructure improvements, and new libbpf APIs.",
+  "patches": [
+    {
+      "title": "bpf: Add UHMUL and SHMUL instructions",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260902070534.2141812-2-tangyazhou@zju.edu.cn/",
+      "summary": "This RFC proposes adding two new high-half multiplication instructions to the BPF ISA: UHMUL (unsigned) and SHMUL (signed), each returning the upper 64 bits of a 128-bit product. Such instructions are useful for fast fixed-point arithmetic and compiler-optimized division by constants. The series includes x86-64 JIT emission, verifier support with range tracking, ALU variant validation refactoring, and bytecode selftests. Unsupported JIT backends are explicitly rejected. Being an RFC, the series is seeking feedback on encoding and semantics before formal acceptance.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Split x86_call_depth_emit_accounting in two functions",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260903092039.477827-2-jolsa@kernel.org/",
+      "summary": "This v2 series adds a dry run mode to the x86-64 BPF JIT, enabling code size estimation without actually emitting instructions. The first patch refactors call-depth accounting to cleanly separate emit and no-emit paths, and the second introduces a structured JIT emission context to carry dry-run state. The final patch wires up the dry run capability itself, allowing callers such as the verifier to pre-calculate exact JIT output size before committing to a full emit pass, reducing re-JIT overhead.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Add bpf_program__add_flags() and bpf_program__clear_flags()",
+      "author": "Toke Høiland-Jørgensen",
+      "url": "https://lore.kernel.org/bpf/20260903092416.223294-1-toke@redhat.com/",
+      "summary": "This series introduces two new libbpf API functions, bpf_program__add_flags() and bpf_program__clear_flags(), that allow callers to incrementally set or unset individual BPF program flags without replacing the full flags value. The existing bpf_program__set_flags() forces callers to know all desired flags upfront, which is fragile when flags are applied by multiple independent code paths. Selftests are added to assert the new behavior, and bpftool is updated to use the helpers where applicable.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Update is_range_tree_set to work for consecutive ranges",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260902070239.16968-2-emil@etsalapatis.com/",
+      "summary": "This series fixes a memory incoherence bug in BPF arena allocation where a race between concurrent page-free and page-alloc operations could leave the page table entry and the range tree in an inconsistent state. The fix tracks availability metadata in the range tree and atomically updates both the PTE and the range tree within the VM fault handler, eliminating the window where two allocations could race for the same physical page. Race condition selftests are added to validate the fix under concurrent load.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow terminal gotox instructions",
+      "author": "Siddharth Chintamaneni",
+      "url": "https://lore.kernel.org/bpf/20260902171414.96165-1-sidchintamaneni@gmail.com/",
+      "summary": "This v4 patch teaches the BPF verifier to treat gotox instructions that unconditionally transfer control to the program exit as terminal instructions, similar to explicit exit and return opcodes. Without this, the verifier may consider subsequent dead code as reachable, leading to unnecessary verification work and potential false verification failures. The accompanying selftest exercises a range of gotox patterns, including those at the end of function bodies, to confirm correct terminal behavior.",
+      "related_links": []
+    },
+    {
+      "title": "xsk: Fix circular locking dependency between &net->xdp.lock, &xs->mutex, and netdev_lock_ops",
+      "author": "Khawar Ahemad",
+      "url": "https://lore.kernel.org/bpf/20260902041257.58374-1-ahemadkhawar123@gmail.com/",
+      "summary": "This v5 patch resolves a circular locking dependency among three locks in the AF_XDP socket path: &net->xdp.lock, &xs->mutex, and netdev_lock_ops, which lockdep detects as a potential deadlock. The fix reorganizes the lock acquisition order to break the cycle, ensuring a consistent nesting hierarchy is maintained across all code paths that touch XDP socket state. This prevents a deadlock that could be triggered by concurrent XDP socket bind, unbind, or configuration operations.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Reject oversized unknown BTF type records",
+      "author": "Mark Amirkan",
+      "url": "https://lore.kernel.org/bpf/20260902091126.59281-1-markdamirkan@gmail.com/",
+      "summary": "This patch adds a size validation check in libbpf when parsing unknown BTF type records, rejecting any entry whose declared size exceeds what the BTF wire format can legally represent. Previously, a malformed or deliberately crafted oversized unknown type record could cause out-of-bounds reads or undefined behavior during BTF parsing. The fix adds an explicit bounds check before processing such entries, improving the robustness of libbpf's BTF parser against malformed input.",
+      "related_links": []
+    }
+  ]
+}
