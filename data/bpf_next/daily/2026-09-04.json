@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-09-05T00:00:00Z",
+  "period_start": "2026-09-03",
+  "period_end": "2026-09-04",
+  "patch_count": 35,
+  "thread_count": 10,
+  "top_contributors": ["Yonghong Song", "Alexis Lothoré", "Toke Høiland-Jørgensen", "Jiri Olsa"],
+  "key_topics": ["kfuncs", "jit", "kasan", "x86", "mips", "libbpf", "bpftool", "memcg"],
+  "overview": "This period was dominated by JIT infrastructure and calling-convention work, led by Yonghong Song's 12-patch series enabling struct-by-value and __int128 arguments for kfuncs on x86 and arm64. Alexis Lothoré's long-running KASAN instrumentation series reached v9, adding memory error detection to JIT-compiled BPF programs on x86. Additional highlights include a new x86 JIT dry-run mode, BPF-driven proactive memcg reclaim via a new kfunc, and new libbpf APIs for managing program flags.",
+  "patches": [
+    {
+      "title": "bpf: Support by-value struct and __int128 kfunc arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260904051023.3979415-1-yonghong.song@linux.dev/",
+      "summary": "This patch is part of a 12-patch series extending the BPF kfunc calling convention to support struct arguments passed by value (up to 16 bytes) and __int128 integer arguments. Previously, kfunc arguments were limited to pointer types or 64-bit scalars; this change aligns BPF with standard C calling conventions on x86 and arm64. The series includes architecture-specific JIT changes to place arguments per the SysV ABI (x86) and AAPCS64 (arm64), along with a new JIT helper for managing the outgoing stack frame of kfunc calls. This significantly expands expressiveness for BPF programs interacting with kernel functions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add BPF_JIT_KASAN for KASAN instrumentation of JITed programs",
+      "author": "Alexis Lothoré (eBPF Foundation)",
+      "url": "https://lore.kernel.org/bpf/20260903-kasan-v9-2-2407fe99255a@bootlin.com/",
+      "summary": "This v9 8-patch series introduces KASAN (Kernel Address Sanitizer) support for BPF JIT-compiled programs on x86, adding a new BPF_JIT_KASAN Kconfig option. The series marks BPF instructions that access the program stack, then emits KASAN shadow checks in the x86 JIT emitter so that out-of-bounds stack accesses are caught at runtime. A refactor of BPF_ST handling in do_jit cleans up the JIT in preparation, and a selftest suite validates the error-detection behavior. This brings the same memory safety guarantees already available for interpreted BPF programs to the JIT path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Add support for jit dry run",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260903092039.477827-4-jolsa@kernel.org/",
+      "summary": "This v2 3-patch series adds a dry-run mode to the x86 BPF JIT, allowing the compiler to emit code and compute sizes without allocating executable memory. To enable this cleanly, the series first introduces a JIT emission context struct and refactors call-depth accounting into two focused helpers. A JIT dry run is useful for determining program size ahead of time and for tooling that needs to estimate code footprint without side effects.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/7d8b77dc99ffe99a7bef874a257472fdaaf07e1c.1788516769.git.zhuhui@kylinos.cn/",
+      "summary": "This v7 2-patch series adds a new bpf_proactive_reclaim kfunc that allows BPF programs to proactively trigger memory reclaim for a given memcg (memory control group). This enables BPF-driven memory management policies where programs can detect memory pressure and initiate reclaim before the kernel's reactive mechanisms engage. The companion selftest validates asynchronous reclaim behavior triggered through the new kfunc. This is the seventh revision of the series, reflecting substantial review iteration.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Add bpf_program__add_flags() and bpf_program__clear_flags()",
+      "author": "Toke Høiland-Jørgensen",
+      "url": "https://lore.kernel.org/bpf/20260903092416.223294-1-toke@redhat.com/",
+      "summary": "This 4-patch series adds two new libbpf API functions—bpf_program__add_flags() and bpf_program__clear_flags()—for incrementally setting or clearing individual flags on a BPF program object before loading. Previously users had to set the entire flags bitmask at once, making it awkward to modify individual bits without clobbering others. The series includes adoption patches for selftests and bpftool to use the new helpers, replacing open-coded bitmask manipulation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, mips: Add support for BPF_MOVSX in the JITs",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260904111731.673341-3-main.kalliope@gmail.com/",
+      "summary": "This v2 2-patch series extends the MIPS BPF JIT to support the BPF_MOVSX instruction, which performs a sign-extending move. The first patch refactors existing register move operations into shared helper functions to reduce duplication, and the second adds the actual BPF_MOVSX emission logic on top. This brings MIPS JIT closer to parity with x86 and arm64 for this instruction class.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Reject non-autoload programs for light skeletons",
+      "author": "Thiébaud Weksteen",
+      "url": "https://lore.kernel.org/bpf/20260904031912.2133476-2-tweek@google.com/",
+      "summary": "This patch makes bpftool emit an error when generating a light skeleton that would include BPF programs not marked for autoload. Light skeletons are stripped-down skeletons used in performance-sensitive or resource-constrained environments (such as Android), and silently including non-autoload programs could produce incorrect runtime behavior. The companion patch restructures verifier failure tests that were previously bundled inside test_global_percpu_data to make the test suite cleaner.",
+      "related_links": []
+    }
+  ]
+}
