@@ -1,0 +1,81 @@
+{
+  "generated_at": "2026-09-06T00:00:00Z",
+  "period_start": "2026-09-04",
+  "period_end": "2026-09-05",
+  "patch_count": 44,
+  "thread_count": 14,
+  "top_contributors": [
+    "Yonghong Song",
+    "Kumar Kartikeya Dwivedi",
+    "Siddharth Chintamaneni",
+    "Anastasios Papagiannis"
+  ],
+  "key_topics": [
+    "kfuncs",
+    "verifier",
+    "jit",
+    "btf",
+    "selftests",
+    "riscv",
+    "mips"
+  ],
+  "overview": "September 4-5 saw a productive burst of activity on bpf-next, with several significant feature series and verifier improvements. Highlights include a 12-patch series from Yonghong Song adding by-value struct and __int128 argument support for kfuncs across x86 and arm64 JITs, new user memory access kfuncs for mm_struct, and a BPF-driven proactive memcg reclaim kfunc. Kumar Kartikeya Dwivedi contributed two verifier fix series addressing global subprog sleepability context handling and acyclic ownership depth limits.",
+  "patches": [
+    {
+      "title": "bpf: Support by-value struct and __int128 kfunc arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260904051023.3979415-1-yonghong.song@linux.dev/",
+      "summary": "This 12-patch series introduces support for passing struct arguments by value (up to 16 bytes) and __int128 types to BPF kfuncs, expanding the calling conventions available to BPF programs. A JIT helper is added for managing outgoing stack frames, and both the x86 (SysV) and arm64 (AAPCS64) JIT backends are updated to handle the new argument types. This allows BPF programs to call kfuncs with complex struct arguments without pointer indirection, reducing overhead and enabling more natural kernel interfaces. Selftests cover inline assembly, C-level, and kfunc invocations for the new argument types.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add user memory access kfuncs for mm_struct",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260904145340.40212-4-tasos.papagiannnis@gmail.com/",
+      "summary": "This 7-patch series adds BPF kfuncs enabling safe access to user-space memory via an mm_struct pointer, useful for tracing and security programs that need to inspect process address spaces. It introduces copy_remote_mm_str() in mm/, adds trusted-or-null BTF pointer semantics to allow optional access through linux_binprm->mm, and provides kfuncs to read strings from a remote mm. The series also ensures bprm->mm is cleared before dropping its reference to prevent potential use-after-free. Selftests exercise the new kfuncs with linux_binprm-based hooks.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/7d8b77dc99ffe99a7bef874a257472fdaaf07e1c.1788516769.git.zhuhui@kylinos.cn/",
+      "summary": "This patch (v7) adds a bpf_proactive_reclaim() kfunc that allows BPF programs to trigger proactive memory reclaim on a specific memcg, enabling BPF-driven memory management policies. The kfunc enables user-defined reclaim strategies without requiring kernel patches tailored to each workload's specific needs, a significant capability for memory-constrained environments. A selftest validates the async reclaim behavior triggered from BPF.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Validate graph ownership with a bounded walk",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260905090750.4064411-2-memxor@gmail.com/",
+      "summary": "This 3-patch series fixes verifier checks for acyclic ownership graphs in BPF programs that use local kptrs with linked data structures. The core patch replaces the existing DFS-based cycle detection with a bounded iterative walk, preventing potential stack overflows from deeply nested ownership chains. A depth limit is added for local kptr ownership to bound the walk, and selftests verify the new depth-limiting behavior.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Verify global subprogs in each sleepability context",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260905051224.2325381-2-memxor@gmail.com/",
+      "summary": "This patch (v2) fixes a verifier bug where global subprograms were only verified in a single sleepability context, potentially allowing them to be called from programs with conflicting sleepability requirements. The fix ensures global subprogs are re-verified for each distinct sleepability context they may be invoked from, preventing incorrect assumptions about sleeping versus non-sleeping callsites. A selftest covers callback contexts to validate the corrected verification behavior.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix timed may_goto stack pointer for private stacks",
+      "author": "Siddharth Chintamaneni",
+      "url": "https://lore.kernel.org/bpf/20260904195132.141068-2-sidchintamaneni@gmail.com/",
+      "summary": "This 7-patch series fixes a bug in the timed may_goto implementation where the wrong stack pointer was used when BPF private stacks are enabled. The fix updates each JIT backend (x86, arm64, powerpc64, riscv, s390) to use the resolved private stack pointer rather than the default stack pointer when emitting timed may_goto instructions. A selftest validates the corrected behavior on systems with private stacks enabled.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Add BPF stack arguments support for RV64 JIT",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260905085857.14143-3-pulehui@huaweicloud.com/",
+      "summary": "This 3-patch series (v5) adds support for passing BPF function arguments via the stack on the RISC-V 64-bit JIT, enabling calls with more than 5 arguments to follow the RV64 calling convention. A prerequisite patch remaps BPF_REG_0 and RV_REG_TCC to resolve a register conflict before the stack argument mechanism is implemented. Selftests for stack-based argument passing are enabled for RV64 as part of this series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, mips: Add support for BPF_MOVSX in the JITs",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260904111731.673341-3-main.kalliope@gmail.com/",
+      "summary": "This 2-patch series adds support for the BPF_MOVSX (sign-extension move) instruction in the MIPS BPF JIT compilers, bringing MIPS into parity with other architectures. The series first refactors register moves into helper functions to reduce code duplication, then implements sign-extension moves for the supported MIPS variants. This completes MIPS JIT coverage for the BPF instruction set extension that enables efficient sign-extending moves between BPF registers.",
+      "related_links": []
+    }
+  ]
+}
