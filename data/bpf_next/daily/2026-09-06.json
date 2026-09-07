@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-09-07T00:00:00Z",
+  "period_start": "2026-09-05",
+  "period_end": "2026-09-06",
+  "patch_count": 38,
+  "thread_count": 8,
+  "top_contributors": ["Amery Hung", "Kumar Kartikeya Dwivedi", "Pu Lehui"],
+  "key_topics": ["verifier", "kfuncs", "btf", "jit", "riscv", "selftests"],
+  "overview": "The bpf mailing list saw significant verifier refactoring activity on September 5-6, 2026, dominated by a large 22-patch series from Amery Hung to unify helper and kfunc argument checking into a single verification path. Kumar Kartikeya Dwivedi contributed fixes for acyclic ownership validation and global subprog verification context, while Pu Lehui landed the fifth revision of BPF stack argument support for RISC-V 64-bit.",
+  "patches": [
+    {
+      "title": "bpf: Check helper and kfunc arguments in one path",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260905220117.922028-23-ameryhung@gmail.com/",
+      "summary": "This patch is the culmination of a 22-patch series (\"bpf: Unify helper and kfunc argument checks\") that merges the previously separate argument validation paths for BPF helpers and kfuncs into a single unified routine. Historically, check_func_arg() handled helpers while kfuncs had their own parallel logic, leading to subtle inconsistencies and duplicated code. By routing both through the same checks, the verifier gains consistent enforcement of argument constraints such as nullability, release semantics, and BTF pointer matching. This is a significant refactoring that reduces maintenance burden and closes potential divergence gaps between helper and kfunc validation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Validate graph ownership with a bounded walk",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260905090750.4064411-2-memxor@gmail.com/",
+      "summary": "This patch is the first in a 3-patch series (\"Fix acyclic ownership checks\") addressing correctness issues in BPF's local kptr ownership graph validation. The existing acyclicity checker could be confused by deep or complex ownership chains, potentially allowing graphs that violate ownership invariants. The fix replaces the existing approach with a bounded-depth walk, ensuring the validator terminates correctly and rejects ownership graphs that exceed a safe depth threshold. The companion patches add depth bounding for local kptr ownership and selftests to exercise the new limits.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Add BPF stack arguments support for RV64 JIT",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260905085857.14143-3-pulehui@huaweicloud.com/",
+      "summary": "This patch (v5, 2/3 of the \"Add bpf stack arguments support for RV64\" series) adds support for passing BPF function call arguments via the stack on the RISC-V 64-bit JIT. RISC-V has fewer argument registers than x86-64, so BPF programs with many arguments need stack-based argument passing to function correctly on this architecture. The accompanying patches remap register aliases and enable the relevant selftests for RV64. This is the fifth revision, incorporating feedback from earlier reviews.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Verify global subprogs in each sleepability context",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260905051224.2325381-2-memxor@gmail.com/",
+      "summary": "This patch (v2, 1/2 of \"Fix global subprog verification context\") corrects a verifier bug where global subprograms were only verified in one sleepability context even when called from both sleepable and non-sleepable programs. The verifier must check a global subprog's validity under each context in which it may be invoked to correctly enforce sleepability constraints (such as whether sleeping kfuncs may be called). Failing to do so could silently allow disallowed operations in non-sleepable contexts. A companion selftest validates the correct behavior across callback contexts.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, docs: Fix the struct btf_var name in btf.rst",
+      "author": "Karl Mehltretter",
+      "url": "https://lore.kernel.org/bpf/20260905095649.42351-1-kmehltretter@gmail.com/",
+      "summary": "A small documentation fix correcting an incorrect struct name reference in the BTF documentation (btf.rst). The struct was referred to by the wrong identifier, which could mislead developers reading the BTF format specification. This is a standalone patch with no code changes, accompanying a similar fix for an incorrect struct name in kfuncs.rst.",
+      "related_links": []
+    }
+  ]
+}
