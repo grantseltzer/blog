@@ -1,0 +1,89 @@
+{
+  "generated_at": "2026-09-08T00:00:00Z",
+  "period_start": "2026-08-31",
+  "period_end": "2026-09-07",
+  "patch_count": 100,
+  "thread_count": 31,
+  "top_contributors": ["Amery Hung", "Tianyi Chen", "Kumar Kartikeya Dwivedi", "Yonghong Song", "Siddharth Chintamaneni", "Anastasios Papagiannis"],
+  "key_topics": ["verifier", "kfuncs", "jit", "bpftool", "btf", "rcu", "memcg", "selftests"],
+  "overview": "The week of August 31 to September 7 brought major verifier infrastructure changes, with Amery Hung's 22-patch series to unify helper and kfunc argument validation under a single code path. Yonghong Song added support for passing structs by value and __int128 arguments to kfuncs, while Anastasios Papagiannis introduced user memory access kfuncs for mm_struct. Kumar Kartikeya Dwivedi landed two correctness fixes for the verifier: bounded ownership graph walks and proper global subprog sleepability context verification. On the JIT side, Pu Lehui added stack argument support for the RV64 JIT and Siddharth Chintamaneni fixed timed may_goto semantics with private stacks across multiple architectures.",
+  "patches": [
+    {
+      "title": "bpf: Pass call metadata through shared argument checks",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260905220117.922028-2-ameryhung@gmail.com/",
+      "summary": "The first patch of a 22-patch series aimed at unifying how the BPF verifier checks arguments for both helpers and kfuncs. Currently, the verifier has two parallel but divergent argument-checking code paths; this work threads call metadata through the shared check_func_arg() path as a foundation for consolidation. The series ultimately routes kfunc argument validation through the same checks as helpers, reducing duplicated logic and closing gaps where helper and kfunc semantics diverged unexpectedly.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Place kfunc arguments per the SysV calling convention",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260904051033.3979978-1-yonghong.song@linux.dev/",
+      "summary": "Part of a 12-patch series that adds support for passing struct arguments by value and __int128 integers to kfuncs. This patch updates the x86 JIT to lay out kfunc arguments according to the SysV ABI, enabling structs up to 16 bytes to be passed in register pairs without requiring a pointer indirection. Companion patches handle arm64 (AAPCS64) and update the verifier's function model to track 16-byte alignment requirements.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add user memory access kfuncs for mm_struct",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260904145340.40212-4-tasos.papagiannnis@gmail.com/",
+      "summary": "Introduces kfuncs that allow BPF programs to safely read strings from user-space virtual address spaces given an mm_struct pointer. This is part of a 7-patch series that also adds copy_remote_mm_str() to the mm subsystem, marks linux_binprm->mm as trusted-or-null so it can be used with these kfuncs, and adds verifier support for reading through trusted-or-null BTF pointers. The feature enables BPF programs attached to exec hooks to inspect process memory during program loading.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix timed may_goto stack pointer for private stacks",
+      "author": "Siddharth Chintamaneni",
+      "url": "https://lore.kernel.org/bpf/20260904195132.141068-2-sidchintamaneni@gmail.com/",
+      "summary": "Fixes a bug in the timed may_goto implementation where the stack pointer was not correctly resolved when private stacks are in use. With private stacks, the stack base is dynamic rather than fixed, so the JIT-emitted code for timed may_goto must use a resolved pointer rather than a compile-time offset. The fix is applied across x86, arm64, powerpc64, riscv, and s390 JITs in a single series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Verify global subprogs in each sleepability context",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260905051224.2325381-2-memxor@gmail.com/",
+      "summary": "Fixes a verifier bug where global subprograms were only verified once, in the sleepability context of the first caller, and reused for all other callers regardless of their sleepability. If a sleepable caller and a non-sleepable caller both invoke the same global subprog, the verifier could accept or reject calls incorrectly. This v2 patch ensures each distinct sleepability context triggers a fresh verification pass for the subprog.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Validate graph ownership with a bounded walk",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260905090750.4064411-2-memxor@gmail.com/",
+      "summary": "Replaces the unbounded recursive ownership graph walk used to verify acyclic kptr ownership chains with a depth-bounded iterative walk. The previous approach could stack-overflow on deeply nested local kptr graphs. The fix caps the walk depth and returns an error if the limit is exceeded, with the depth bound also enforced at runtime to prevent excessively deep ownership chains from being constructed.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Add BPF stack arguments support for RV64 JIT",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260905085857.14143-3-pulehui@huaweicloud.com/",
+      "summary": "Implements support for spilling kfunc arguments to the stack on RV64 when the argument count exceeds the number of available argument registers, following the RISC-V calling convention. This is required for kfuncs with more than eight arguments and for the by-value struct argument support being added in parallel. The series also remaps BPF_REG_0 and RV_REG_TCC to free up a register needed by the new calling convention support.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add bpf_call_rcu() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260907134552.1772405-2-puranjay@kernel.org/",
+      "summary": "Adds bpf_call_rcu() and bpf_call_rcu_tasks_trace() kfuncs that allow BPF programs to schedule callbacks to run after RCU and tasks-trace RCU grace periods respectively. This enables BPF programs to safely defer cleanup or notification work until after all readers have completed, following the same patterns used in kernel code. Selftests covering both kfuncs are included in the 4-patch series.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/0f1e2b5408aef7baaacf7306dff5f6d4fb91e441.1788764121.git.zhuhui@kylinos.cn/",
+      "summary": "This v8 submission adds bpf_proactive_reclaim(), enabling BPF programs to trigger proactive memory reclamation for a specified memcg. The kfunc allows workload-aware BPF programs running as schedulers or resource managers to preemptively free memory before pressure events occur. The series has gone through extensive revision to address locking concerns and ensure the reclaim path is safe to call from BPF context.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: support selective kernel module BTF loading via bpf_object_open_opts",
+      "author": "Fuyu Zhao",
+      "url": "https://lore.kernel.org/bpf/20260907053847.1115-2-zhaofuyu@vivo.com/",
+      "summary": "Adds a new option to bpf_object_open_opts that allows callers to provide an allowlist of kernel module names whose BTF should be loaded, skipping all others. On systems with large numbers of loaded modules, loading all module BTFs at BPF object open time can be a significant latency source. This v7 patch enables programs that only need BTF from specific modules to avoid that overhead.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, mips: Add support for BPF_MOVSX in the JITs",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260904111731.673341-3-main.kalliope@gmail.com/",
+      "summary": "Implements BPF_MOVSX (sign-extending move) instruction support in the MIPS BPF JIT compiler, bringing MIPS up to parity with other architectures for this instruction. The series first refactors register move operations into shared helpers to reduce duplication, then adds the MOVSX emission logic. BPF_MOVSX is used by the compiler backend to handle sign extension for various data type conversions.",
+      "related_links": []
+    }
+  ]
+}

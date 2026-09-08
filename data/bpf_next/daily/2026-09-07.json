@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-09-08T00:00:00Z",
+  "period_start": "2026-09-06",
+  "period_end": "2026-09-07",
+  "patch_count": 38,
+  "thread_count": 17,
+  "top_contributors": ["Tianyi Chen", "Puranjay Mohan", "Hemanth Selam", "Hui Zhu", "Fuyu Zhao"],
+  "key_topics": ["kfuncs", "bpftool", "rcu", "btf", "memcg", "ringbuf", "maps"],
+  "overview": "September 6-7 saw a flurry of bpftool improvements from Tianyi Chen, including recursive map dumping, ring buffer event_pipe support, batch hash map lookups, and symbolic map creation flags. Two notable new kfuncs also landed: bpf_call_rcu() and bpf_call_rcu_tasks_trace() from Puranjay Mohan enabling BPF programs to schedule RCU callbacks, and bpf_proactive_reclaim from Hui Zhu (v8) for BPF-driven memory reclamation.",
+  "patches": [
+    {
+      "title": "bpf: Add bpf_call_rcu() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260907134552.1772405-2-puranjay@kernel.org/",
+      "summary": "Adds a new kfunc bpf_call_rcu() that allows BPF programs to schedule a callback to be invoked after a grace period via the standard RCU mechanism. This is part of a 4-patch series that also adds bpf_call_rcu_tasks_trace() for the tasks-trace RCU flavor. The ability to defer work to after RCU grace periods opens up new patterns for safe object reclamation and deferred processing in BPF programs. Selftests covering both kfuncs are included in the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add bpf_call_rcu_tasks_trace() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260907134552.1772405-4-puranjay@kernel.org/",
+      "summary": "Introduces bpf_call_rcu_tasks_trace(), the tasks-trace RCU variant companion to bpf_call_rcu(). This kfunc allows BPF programs to schedule deferred callbacks via the tasks-trace RCU flavor, which is used in contexts where task-level RCU quiescent states are required. Together with bpf_call_rcu(), this gives BPF programs access to the full RCU callback scheduling API.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/0f1e2b5408aef7baaacf7306dff5f6d4fb91e441.1788764121.git.zhuhui@kylinos.cn/",
+      "summary": "This v8 patch adds bpf_proactive_reclaim(), a kfunc enabling BPF programs to proactively trigger memory reclamation for a memcg cgroup. It allows workload-aware BPF programs to preemptively reclaim memory before memory pressure becomes critical, giving fine-grained control over memory management policy. The accompanying selftest covers async reclaim scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: support selective kernel module BTF loading via bpf_object_open_opts",
+      "author": "Fuyu Zhao",
+      "url": "https://lore.kernel.org/bpf/20260907053847.1115-2-zhaofuyu@vivo.com/",
+      "summary": "This v7 patch extends bpf_object_open_opts with a new field allowing callers to specify which kernel module BTFs to load, rather than always loading all available module BTFs. Loading all module BTFs on startup can be a significant performance bottleneck, especially on systems with many kernel modules. By enabling selective loading, programs that only need BTF from specific modules can skip loading unneeded BTF data.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Validate program attach type during link update",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260907015003.65087-2-sanghyun.park.cnu@gmail.com/",
+      "summary": "This v6 patch adds validation of the program's attach type when updating a BPF link, ensuring the replacement program is compatible with the link's expected attach type. Previously, a link update could silently accept a program with a mismatched attach type, leading to undefined behavior at runtime. The fix adds an explicit type check in the link update path and includes a selftest covering the error cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Accept symbolic map creation flags",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/178874713816.1519295.12130500880299787860.flags-v3-1@tychen.cc/",
+      "summary": "This v3 patch adds support for symbolic flag names (e.g., BPF_F_NO_PREALLOC) when creating BPF maps via bpftool, rather than requiring raw numeric values. This improves usability and reduces errors from manually computing flag bitmasks. A corresponding selftest verifies that symbolic flags are correctly parsed and applied during map creation.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Add recursive map dumping",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/178874362960.1415955.17339804697296063298.recursive-v3-1@tychen.cc/",
+      "summary": "Adds a recursive dump mode to bpftool for maps that contain nested map-in-map structures, allowing the full hierarchy to be dumped in a single command. Previously, inspecting nested maps required multiple manual lookup steps. This simplifies debugging workflows involving complex map hierarchies such as hash-of-maps or array-of-maps.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Read ring buffer maps with event_pipe",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/178874362960.1415955.4802953891665661440.ringbuf-v2-1@tychen.cc/",
+      "summary": "Enables bpftool to read from ring buffer maps using the event_pipe mechanism, providing a convenient way to stream ring buffer events from the command line. This brings bpftool's ring buffer support on par with its existing perf buffer dumping capability, making ring buffers easier to introspect during development and debugging.",
+      "related_links": []
+    }
+  ]
+}
