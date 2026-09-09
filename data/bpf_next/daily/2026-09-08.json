@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-09-09T00:00:00Z",
+  "period_start": "2026-09-07",
+  "period_end": "2026-09-08",
+  "patch_count": 46,
+  "thread_count": 17,
+  "top_contributors": ["Tianyi Chen", "Anastasios Papagiannis", "Puranjay Mohan", "Hui Zhu"],
+  "key_topics": ["kfuncs", "memcg", "bpftool", "libbpf", "btf", "trampoline", "rcu", "struct-ops"],
+  "overview": "September 7-8 brought a wave of new kfuncs to bpf-next, with patches adding BPF-driven proactive memory reclaim, user memory reads via mm_struct, and RCU callback scheduling from BPF programs. bpftool also received several quality-of-life improvements including recursive map dumping, ring buffer event_pipe reads, and batch lookups for bounded hash maps.",
+  "patches": [
+    {
+      "title": "bpf: Add bpf_call_rcu() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260907134552.1772405-2-puranjay@kernel.org/",
+      "summary": "Introduces bpf_call_rcu(), a new kfunc that allows BPF programs to schedule a callback to run after an RCU grace period. This enables deferred, safe cleanup of RCU-protected data structures directly from BPF programs without requiring kernel patches. A companion patch in the same series adds bpf_call_rcu_tasks_trace() for the RCU tasks trace flavor, broadening applicability to tracing programs. The series includes selftests covering both kfuncs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add user memory access kfuncs for mm_struct",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260907165220.52431-4-tasos.papagiannnis@gmail.com/",
+      "summary": "Adds new kfuncs that allow BPF programs to read string data from a remote process's address space via its mm_struct, enabling richer introspection for security and observability tools. The series also teaches the verifier to allow reads through trusted-or-null BTF pointers and marks linux_binprm->mm as trusted-or-null so the kfuncs can be used from exec hooks. A new mm helper copy_remote_mm_str() in the mm layer underpins the implementation. Comprehensive selftests are included covering both the new pointer nullability rules and the kfuncs themselves.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/06452a0d7722c92a38fdfd117954d244c3e52d0e.1788857915.git.zhuhui@kylinos.cn/",
+      "summary": "Introduces bpf_proactive_reclaim(), a kfunc that allows BPF programs to trigger proactive memory reclaim on a specific memcg, giving userspace workload managers fine-grained control over memory pressure without sysfs knobs. This is version 9 of the series, indicating significant review iteration toward acceptance. The companion patch adds a selftest exercising async reclaim via this interface.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: support selective kernel module BTF loading via bpf_object_open_opts",
+      "author": "Fuyu Zhao",
+      "url": "https://lore.kernel.org/bpf/20260907053847.1115-2-zhaofuyu@vivo.com/",
+      "summary": "Extends bpf_object_open_opts with an allowlist of kernel module names whose BTF should be loaded, allowing callers to skip modules irrelevant to their program. This reduces BPF load latency on systems with many modules by avoiding unnecessary BTF parsing. The series is at version 7 and includes selftests for the new option.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Add recursive map dumping",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/178874362960.1415955.17339804697296063298.recursive-v3-1@tychen.cc/",
+      "summary": "Adds a recursive dump mode to bpftool that follows inner maps and map-of-maps structures, presenting their contents in a single traversal. Previously users had to manually cross-reference map IDs to inspect nested map hierarchies. This is part of a larger batch of bpftool improvements from the same author addressing usability gaps in map inspection.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Read ring buffer maps with event_pipe",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/178874362960.1415955.4802953891665661440.ringbuf-v2-1@tychen.cc/",
+      "summary": "Enables bpftool to consume ring buffer maps using the event_pipe interface, streaming events as they arrive rather than requiring a one-shot snapshot. This aligns bpftool's ring buffer support with how production consumers use the ring buffer API and makes it easier to inspect live event streams from the command line.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Use batch lookups for bounded hash map dumps",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/178874362960.1415955.206253160275144439.batch-v2-1@tychen.cc/",
+      "summary": "Switches bpftool's hash map dump path to use batch lookup syscalls when the map size is known and bounded, reducing the number of syscall round-trips required to dump large maps. This is a straightforward performance improvement that benefits any tooling or CI that inspects large BPF hash maps.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Validate program attach type during link update",
+      "author": "Sanghyun Park",
+      "url": "https://lore.kernel.org/bpf/20260907015003.65087-2-sanghyun.park.cnu@gmail.com/",
+      "summary": "Fixes a correctness gap where BPF_LINK_UPDATE could replace a program in a link with one of a mismatched attach type, which the kernel silently accepted. The patch adds an explicit attach type check in the link update path so only programs compatible with the link's established attach point are accepted. This is version 6, suggesting the patch has gone through substantial review.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Use global buffer for trampoline size generation",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260907160538.922450-1-jolsa@kernel.org/",
+      "summary": "Switches the x86 BPF trampoline size-estimation path to use a global scratch buffer instead of allocating a temporary one per call, reducing allocation overhead during trampoline generation. This is a targeted cleanup in the JIT backend that simplifies the size-probe logic without changing observable behavior.",
+      "related_links": []
+    }
+  ]
+}
