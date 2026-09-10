@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-09-10T00:00:00Z",
+  "period_start": "2026-09-08",
+  "period_end": "2026-09-09",
+  "patch_count": 35,
+  "thread_count": 9,
+  "top_contributors": [
+    "Yonghong Song",
+    "Anastasios Papagiannis",
+    "Mykyta Yatsenko",
+    "Thiébaud Weksteen"
+  ],
+  "key_topics": [
+    "kfuncs",
+    "by-value-args",
+    "mm",
+    "bpftool",
+    "libbpf",
+    "memcg",
+    "lskel",
+    "struct-ops"
+  ],
+  "overview": "The bpf-next mailing list saw significant activity on September 8-9, 2026, headlined by Yonghong Song's v2 series adding support for by-value struct and __int128 arguments to kfuncs, bringing BPF closer to standard C calling conventions on both x86-64 and arm64. Anastasios Papagiannis posted v6 of a series adding user memory access kfuncs for mm_struct, enabling BPF programs to safely read strings from another process's address space. Rounding out the day were improvements to bpftool's light skeleton generation, libbpf arena map handling, and a long-running series for BPF-driven proactive memory reclaim landing its ninth revision.",
+  "patches": [
+    {
+      "title": "bpf: Support by-value struct arguments up to 16 bytes",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260909062538.4003426-1-yonghong.song@linux.dev/",
+      "summary": "This patch is the core of a 12-patch v2 series that extends kfunc calling conventions to allow small structs (up to 16 bytes) to be passed by value rather than by pointer. Previously, kfunc arguments had to be passed as pointers, which was inconsistent with ordinary C function calls. The series also teaches the BPF verifier to recognize these by-value arguments, updates the JIT backends for x86-64 and arm64 to marshal them into the native ABI, and adds inline-asm and C selftests. A companion patch (04/12) extends the same support to __int128, covering the full range of types that fit in register pairs on 64-bit platforms.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add user memory access kfuncs for mm_struct",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260908135302.74963-4-tasos.papagiannnis@gmail.com/",
+      "summary": "This is the sixth revision of a series introducing kfuncs that allow BPF programs to safely read strings from the virtual address space of another process via its mm_struct. A new mm helper copy_remote_mm_str() is added to the core memory management layer, and bpf_copy_mm_user_str() and related kfuncs are exposed to BPF programs attached to LSM hooks. A companion patch marks linux_binprm->mm as trusted-or-null so the verifier can track its liveness correctly, and another clears bprm->mm before dropping its reference to avoid a stale pointer. The series enables use cases like reading argv/environment strings from within a BPF LSM hook at exec time without needing a kernel helper for each string field.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/06452a0d7722c92a38fdfd117954d244c3e52d0e.1788857915.git.zhuhui@kylinos.cn/",
+      "summary": "Now in its ninth revision, this patch introduces the bpf_proactive_reclaim kfunc that allows a BPF program to trigger synchronous memory reclaim on a specified memcg from within a BPF program. The intent is to give userspace policy engines (invoked via BPF) fine-grained control over per-cgroup memory pressure before the OOM killer fires. The companion selftest (2/2) exercises the kfunc under a realistic async reclaim workload. Reaching v9 indicates significant iteration around safety, locking, and the exact memcg interface exposed.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Skip non-autoload programs when generating light skeletons",
+      "author": "Thiébaud Weksteen",
+      "url": "https://lore.kernel.org/bpf/20260909042433.1775591-1-tweek@google.com/",
+      "summary": "This v2 series (3 patches) fixes a correctness issue in bpftool's light skeleton (lskel) generator where programs marked as non-autoload were still being included in the skeleton's program count and ctx.sz computation. The first patch skips non-autoload programs during generation, the second corrects the ctx.sz size calculation to avoid relying on link slots for non-loaded programs, and the third adds a selftest that verifies each program's file descriptor is valid after skeleton open. The bug could cause incorrect struct layouts and broken skeletons when a BPF object contains a mix of autoload and non-autoload programs.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: defer arena map size check to load time",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260908-libbpf_arena_thing-v1-1-0092c0e0d91b@meta.com/",
+      "summary": "This single-patch series moves the arena map size validation in libbpf from object open time to load time, allowing BPF objects to be opened successfully even when the kernel does not yet know the arena size (e.g., when the size is derived from a subsequent map operation). This improves composability of libbpf-based programs that configure arena sizes dynamically. The change is part of ongoing work to make libbpf arena support more flexible for large, runtime-sized BPF memory arenas.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Track perf counter snapshot state",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260908-bpftool_cyles_per_run-v3-1-60e86f325c35@meta.com/",
+      "summary": "The first of three patches in a v3 series improving bpftool's BPF program benchmarking output, this patch adds snapshot state tracking to perf BPF counters so that only valid counter readings are included in reported statistics. A companion patch in the perf subsystem ensures the BPF counter snapshot validity is propagated correctly, and a final bpftool patch scales raw cycle counts and reports a human-friendly cycles-per-run metric. Together the series makes bpftool prog profile output significantly more accurate and useful for micro-benchmarking BPF programs.",
+      "related_links": []
+    }
+  ]
+}
