@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-09-11T00:00:00Z",
+  "period_start": "2026-09-09",
+  "period_end": "2026-09-10",
+  "patch_count": 32,
+  "thread_count": 5,
+  "top_contributors": ["Justin Suess", "Yonghong Song", "Thiébaud Weksteen"],
+  "key_topics": ["lsm", "landlock", "kfuncs", "trampoline", "maps", "bpftool"],
+  "overview": "The September 9-10 window brought 32 patches across 5 series to bpf-next. The headline work is a 15-patch v3 series from Justin Suess that introduces a BPF interface for applying Landlock security rulesets, adding new LSM policy object kfuncs and a hook for enforcing policies at exec time. Yonghong Song's 12-patch v2 series adds support for passing structs by value and __int128 arguments to kfuncs, aligning the calling convention with standard C ABI on both x86-64 and arm64.",
+  "patches": [
+    {
+      "title": "lsm: Add the LSM policy object lifetime hooks",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20260909193719.518517-2-utilityemal77@gmail.com/",
+      "summary": "This is the opening patch of a 15-patch v3 series titled \"BPF interface for applying Landlock rulesets\". The series adds a new LSM policy object abstraction with a full set of kfuncs (bpf_lsm_policy_from_fd, bpf_lsm_policy_acquire, bpf_lsm_policy_release, bpf_lsm_policy_apply_bprm) that let BPF programs acquire and apply Landlock rulesets to processes at exec time. A new bprm_apply_policy_object LSM hook fires during bprm setup, and Landlock's reference counting is updated to free rulesets safely after an RCU grace period. Comprehensive selftests and documentation are included.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support by-value struct arguments up to 16 bytes",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260909062538.4003426-1-yonghong.song@linux.dev/",
+      "summary": "This is one of the core patches in a 12-patch v2 series that extends kfunc argument passing to support structs passed by value (up to 16 bytes) and __int128. Previously all aggregate kfunc arguments had to be passed by pointer; this change introduces an ABI description layer that the JIT consults when laying out call arguments, and updates both the x86-64 and arm64 backends to follow standard calling conventions for small structs. The verifier gains the ability to recognise and validate these new argument kinds, and an extensive set of C and inline-assembly selftests covers all cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Use global buffer for trampoline size generation",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260910094353.1256316-1-jolsa@kernel.org/",
+      "summary": "This single patch (v2) changes the x86 BPF trampoline JIT to use a pre-allocated global buffer when calculating the trampoline size, rather than allocating memory just for the dry-run measurement pass. Allocating and immediately freeing memory solely to count bytes is wasteful and can fail under memory pressure, so switching to a static scratch buffer makes size estimation cheaper and more reliable. The actual trampoline image is still allocated normally once the correct size is known.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Avoid soft lockup in __htab_map_lookup_and_delete_batch()",
+      "author": "Josef Bacik",
+      "url": "https://lore.kernel.org/bpf/20260909-b4-htab-batch-resched-v2-1-0cb529d8f95a@toxicpanda.com/",
+      "summary": "This single patch (v2) adds a cond_resched() call inside the batch delete loop of the hash-table map implementation. When iterating over a very large hash table to delete entries, the kernel held the CPU continuously for the entire operation, which could trigger the soft lockup watchdog on busy systems. Inserting a reschedule point allows other tasks to run during long batch operations without changing the correctness of the deletion logic.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Skip non-autoload programs when generating light skeletons",
+      "author": "Thiébaud Weksteen",
+      "url": "https://lore.kernel.org/bpf/20260909042433.1775591-1-tweek@google.com/",
+      "summary": "This 3-patch v2 series fixes bpftool's light skeleton (lskel) code generation when an object file contains programs marked as non-autoload. The generator was previously including such programs in the context size calculation and in the generated struct, producing invalid FDs and incorrectly sized contexts at runtime. The fix skips non-autoload programs during lskel generation, recomputes ctx.sz without relying on link counts, and adds selftests that verify the program FD is correct after non-autoload programs appear in the object.",
+      "related_links": []
+    }
+  ]
+}
