@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-09-12T00:00:00Z",
+  "period_start": "2026-09-10",
+  "period_end": "2026-09-11",
+  "patch_count": 37,
+  "thread_count": 13,
+  "top_contributors": ["Tianyi Chen", "Vineet Gupta", "Toke Høiland-Jørgensen"],
+  "key_topics": ["verifier", "libbpf", "bpftool", "btf", "ringbuf", "kfuncs", "maps", "trampoline"],
+  "overview": "September 10–11 brought a mix of verifier improvements, new kfuncs, and a wave of bpftool enhancements. Vineet Gupta's 13-patch series teaches the verifier to track scalar equality across the low 32 bits through zero- and sign-extending moves and narrowing stack spills, opening up better range propagation for 32-bit arithmetic. Tianyi Chen dominated the bpftool side with several concurrent series adding recursive map dumps, batch hash-map lookups, ring-buffer event piping, and symbolic map-creation flags.",
+  "patches": [
+    {
+      "title": "bpf: track low-32 scalar equality across zero-extending movs",
+      "author": "Vineet Gupta",
+      "url": "https://lore.kernel.org/bpf/20260910164635.459558-4-vineet.gupta@linux.dev/",
+      "summary": "Part of a 13-patch v2 series that extends the BPF verifier's linked-scalar tracking to cover the lower 32 bits of registers. When a zero-extending mov copies a value, the verifier can now record that the destination's low 32 bits are equal to the source's, allowing range information to propagate through operations that previously forced a conservative widening. The series also covers sign-extending movs and narrowing stack spills/fills with matching test coverage. This improves the verifier's ability to reason about 32-bit arithmetic common in eBPF programs targeting 32-bit architectures or using 32-bit kernel types.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/e00910f328c129fea716e9fd031dada328e60313.1789091855.git.zhuhui@kylinos.cn/",
+      "summary": "Introduces a new kfunc that allows BPF programs to trigger proactive memory reclaim on a cgroup's memory controller. This enables userspace BPF-based memory managers to shed memory pressure before the kernel's async reclaim kicks in, potentially reducing latency spikes under memory contention. The companion patch adds a selftest for the async reclaim path. At v10, this series has gone through extensive review and the interface is considered stable.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: support selective kernel module BTF loading via bpf_object_open_opts",
+      "author": "Fuyu Zhao",
+      "url": "https://lore.kernel.org/bpf/20260911120820.46900-2-zhaofuyu@vivo.com/",
+      "summary": "Adds a new field to bpf_object_open_opts that lets callers specify which kernel module BTFs libbpf should load when opening a BPF object. Currently libbpf loads BTF for every kernel module that the object references, which can be expensive on systems with many modules. By allowing selective loading, applications that know exactly which modules they care about can significantly reduce BPF load latency. The v8 iteration refines the API shape based on prior review feedback.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Add bpf_program__add_flags() and bpf_program__clear_flags()",
+      "author": "Toke Høiland-Jørgensen",
+      "url": "https://lore.kernel.org/bpf/20260910183222.307208-1-toke@redhat.com/",
+      "summary": "Introduces two new libbpf API functions for incrementally setting and clearing BPF program load flags without replacing the full flags word. The existing bpf_program__set_flags() is an all-or-nothing setter, which makes it awkward to toggle a single flag without knowing all others. The series migrates selftests and bpftool to use the new helpers as demonstration. This is a quality-of-life improvement for library consumers who compose program options from multiple code paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Add recursive map dumping",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260911051053.283421-2-diannaaav@gmail.com/",
+      "summary": "Extends bpftool's map dump command to follow inner-map references and display nested map contents in a single pass. Previously, dumping a map-of-maps required the user to manually identify inner map IDs from the outer dump and issue separate commands. With recursive mode enabled, bpftool traverses the nesting automatically and presents a unified view. The v6 iteration addresses review comments on the output format and error handling.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Read ring buffer maps with event_pipe",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260911025114.190899-2-diannaaav@gmail.com/",
+      "summary": "Adds an event_pipe subcommand to bpftool's map handling so ring buffer maps can be consumed and their events streamed to stdout. Ring buffers are a high-throughput BPF data channel, but bpftool previously had no native way to read them interactively. The new command sets up a ring buffer consumer and pipes events as they arrive, making it easier to debug BPF programs that produce ring buffer output without writing a dedicated reader.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Use global buffer for trampoline size generation",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20260910094353.1256316-1-jolsa@kernel.org/",
+      "summary": "Refactors the x86 BPF trampoline code to use a single global buffer when calculating trampoline size rather than allocating temporary memory per call. The size-calculation pass does a dry run of code generation to determine how many bytes the final trampoline will need; using a shared static buffer avoids repeated small allocations on the hot path. This is a low-risk cleanup that reduces memory churn during BPF program attachment on x86.",
+      "related_links": []
+    }
+  ]
+}
