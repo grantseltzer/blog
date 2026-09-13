@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-09-13T00:00:00Z",
+  "period_start": "2026-09-11",
+  "period_end": "2026-09-12",
+  "patch_count": 60,
+  "thread_count": 18,
+  "top_contributors": ["Amery Hung", "Tianyi Chen", "Yonghong Song", "Nicholas Dudar", "Toke Høiland-Jørgensen"],
+  "key_topics": ["verifier", "kfuncs", "libbpf", "bpftool", "jit", "mips", "btf", "ringbuf"],
+  "overview": "A busy day on the bpf-next mailing list with 60 patches across 18 series. The two largest efforts are Amery Hung's 23-patch series unifying helper and kfunc argument validation paths in the verifier, and Yonghong Song's 15-patch series adding by-value struct and __int128 argument support for kfuncs. Several bpftool improvements and MIPS JIT enhancements from Tianyi Chen and Nicholas Dudar round out the day.",
+  "patches": [
+    {
+      "title": "bpf: Pass call metadata through shared argument checks",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260911220415.1396439-2-ameryhung@gmail.com/",
+      "summary": "This is the first patch in a major 23-patch v2 series titled 'Unify helper and kfunc argument checks'. The series consolidates the verifier's separate argument validation paths for BPF helpers and kfuncs into a single shared code path. By threading call metadata through check_func_arg(), the verifier can apply consistent type checking, nullable argument handling, and BTF ID matching regardless of whether the call target is a helper or a kfunc. This reduces long-standing code duplication in the verifier and closes subtle behavioral gaps between the two call mechanisms.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Read a kfunc's __sz argument only when it is in a register",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260911154919.2004782-1-yonghong.song@linux.dev/",
+      "summary": "First patch in a 15-patch v3 series 'bpf: Support by-value struct and __int128 arguments'. The series extends kfunc calling conventions to allow passing structs up to 16 bytes and __int128 values directly by value rather than by pointer. It introduces ABI description machinery in the BPF core and updates the x86-64 and arm64 JITs to map these by-value arguments into native calling conventions. This is a significant kfunc enhancement that aligns BPF's calling model more closely with how C functions work on modern architectures.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/e00910f328c129fea716e9fd031dada328e60313.1789091855.git.zhuhui@kylinos.cn/",
+      "summary": "This v10 series adds a new kfunc, bpf_proactive_reclaim, that lets BPF programs trigger proactive memory reclaim on a specific memcg cgroup. The intent is to allow user-space policies, expressed as BPF programs, to preemptively free memory before the kernel's own reclaim pressure kicks in. This is particularly useful for workloads with bursty memory usage that want deterministic latency during allocation. The companion selftest patch validates the kfunc under async reclaim conditions.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: support selective kernel module BTF loading via bpf_object_open_opts",
+      "author": "Fuyu Zhao",
+      "url": "https://lore.kernel.org/bpf/20260911120820.46900-2-zhaofuyu@vivo.com/",
+      "summary": "This v8 series adds a new field to bpf_object_open_opts that allows callers to specify a whitelist of kernel modules whose BTF should be loaded when opening a BPF object. Currently libbpf loads BTF for all kernel modules, which can be slow on systems with many modules. Selective loading reduces startup overhead for programs that only need type information from a small number of modules. The selftests patch validates correct behavior when only a subset of module BTFs are loaded.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Add bpf_program__add_flags() and bpf_program__clear_flags()",
+      "author": "Toke Høiland-Jørgensen",
+      "url": "https://lore.kernel.org/bpf/20260912084109.432834-1-toke@redhat.com/",
+      "summary": "This v3 series introduces two new libbpf API functions for incrementally modifying BPF program load flags: bpf_program__add_flags() sets additional flags without clobbering existing ones, and bpf_program__clear_flags() removes specific flags. The subsequent patches update selftests and bpftool to use the new helpers in place of the existing set-only interface. This makes it easier for callers to add flags like BPF_F_SLEEPABLE or BPF_F_XDP_HAS_FRAGS without needing to read and rewrite the full flags word.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, mips: Factor register moves into helpers",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260912041220.444715-2-main.kalliope@gmail.com/",
+      "summary": "First patch of a v3 series adding BPF_MOVSX (sign-extending move) support to the MIPS BPF JIT. This preparatory patch refactors register move emission in the MIPS JIT into helper functions that the subsequent BPF_MOVSX implementation can reuse. BPF_MOVSX is part of the BPF ISA extension that enables efficient type narrowing and sign extension operations, and this series brings MIPS to parity with x86 and arm64 on this instruction.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, mips: Factor out div/mod emission helpers",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260911213340.3767930-2-main.kalliope@gmail.com/",
+      "summary": "First of a v4 three-patch series adding signed division and modulo (BPF_SDIV, BPF_SMOD) support to the MIPS BPF JIT. This patch factors existing unsigned div/mod emission into shared helpers. The second patch adds MIPS uasm emitters for signed div/mod and sign-extension instructions, and the third wires up BPF_SDIV and BPF_SMOD in the JIT proper. Signed arithmetic instructions are required to correctly handle signed integer operations in BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Add recursive map dumping",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260911051053.283421-2-diannaaav@gmail.com/",
+      "summary": "This v6 series adds recursive map dumping to bpftool, allowing it to follow map-in-map references and print nested map contents in a single command. Previously, users had to manually look up inner map IDs and issue separate dump commands. The feature is useful for introspecting complex data structures like hash-of-maps or array-of-maps that are common in networking and tracing programs. The companion selftest verifies correctness of the recursive dump output.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Read ring buffer maps with event_pipe",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260911025114.190899-2-diannaaav@gmail.com/",
+      "summary": "This v3 series adds an event_pipe subcommand to bpftool's map tooling that allows consuming ring buffer map events from the command line. Users can pipe the output to other tools for quick debugging of ringbuf-backed BPF programs without writing custom consumer code. The implementation uses the existing libbpf ring buffer polling API under the hood. The selftest verifies that event_pipe correctly reads and formats records written by a BPF program.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Compute map size of light skeletons at runtime",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260911145914.23676-1-leon.hwang@linux.dev/",
+      "summary": "This single-patch change fixes bpftool's light skeleton generator to compute map sizes at program load time rather than embedding them as compile-time constants. Map size can vary depending on kernel configuration and BTF, so hardcoding it leads to incorrect behavior when the light skeleton is compiled for one kernel but run on another. Computing it at runtime makes light skeletons more portable and robust across kernel versions.",
+      "related_links": []
+    }
+  ]
+}
