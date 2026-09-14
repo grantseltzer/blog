@@ -1,0 +1,76 @@
+{
+  "period": "daily",
+  "period_start": "2026-09-13",
+  "period_end": "2026-09-14",
+  "fetched_at": "2026-09-14T15:45:53Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v2] bpftool: Compute map size of light skeletons at runtime",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260914153326.72498-1-leon.hwang@linux.dev/",
+      "date": "2026-09-14T15:33:26",
+      "series": [
+        {
+          "id": 1164735,
+          "url": "https://patchwork.kernel.org/api/series/1164735/",
+          "web_url": "https://patchwork.kernel.org/series/1164735/",
+          "date": "2026-09-14T15:33:26",
+          "name": "[bpf-next,v2] bpftool: Compute map size of light skeletons at runtime",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1164735/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: Check local object ownership depth",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260914132444.2564218-3-memxor@gmail.com/",
+      "date": "2026-09-14T13:24:43",
+      "series": [
+        {
+          "id": 1164611,
+          "url": "https://patchwork.kernel.org/api/series/1164611/",
+          "web_url": "https://patchwork.kernel.org/series/1164611/",
+          "date": "2026-09-14T13:24:41",
+          "name": "Fix acyclic ownership checks",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1164611/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: Bound ownership depth through local kptrs and graph roots",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260914132444.2564218-2-memxor@gmail.com/",
+      "date": "2026-09-14T13:24:42",
+      "series": [
+        {
+          "id": 1164611,
+          "url": "https://patchwork.kernel.org/api/series/1164611/",
+          "web_url": "https://patchwork.kernel.org/series/1164611/",
+          "date": "2026-09-14T13:24:41",
+          "name": "Fix acyclic ownership checks",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1164611/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "linux-next: manual merge of the bpf-next tree with the bpf tree",
+      "author": "Mark Brown",
+      "url": "https://lore.kernel.org/bpf/aqfbLhfgFBNbluZe@sirena.co.uk/",
+      "date": "2026-09-14T11:31:58",
+      "series": [
+        {
+          "id": 1164470,
+          "url": "https://patchwork.kernel.org/api/series/1164470/",
+          "web_url": "https://patchwork.kernel.org/series/1164470/",
+          "date": "2026-09-14T11:31:58",
+          "name": "linux-next: manual merge of the bpf-next tree with the bpf tree",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1164470/mbox/"
+        }
+      ]
+    }
+  ]
+}
