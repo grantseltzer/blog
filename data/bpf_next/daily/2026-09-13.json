@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-09-14T00:00:00Z",
+  "period_start": "2026-09-12",
+  "period_end": "2026-09-13",
+  "patch_count": 23,
+  "thread_count": 4,
+  "top_contributors": ["Yonghong Song", "Toke Høiland-Jørgensen", "Nicholas Dudar"],
+  "key_topics": ["kfuncs", "jit", "mips", "libbpf", "verifier"],
+  "overview": "Activity for September 12-13 was dominated by a 15-patch series from Yonghong Song extending kfunc calling conventions to support by-value struct and __int128 arguments on both x86-64 and arm64. Alongside the kfunc work, Nicholas Dudar continued expanding MIPS JIT coverage with BPF_MEMSX and BPF_MOVSX sign-extension instructions, while Toke Høiland-Jørgensen added flag manipulation helpers to libbpf.",
+  "patches": [
+    {
+      "title": "bpf: Recognize by-value struct and __int128 kfunc arguments",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260912195237.988712-1-yonghong.song@linux.dev/",
+      "summary": "This patch teaches the BPF verifier to recognize by-value struct and __int128 types when validating kfunc call arguments. Previously, kfuncs could only receive pointer-typed arguments; this change allows small structs (up to 16 bytes) and 128-bit integers to be passed directly in registers following the native ABI. It is part of a 15-patch series (v4) that also updates the x86-64 and arm64 JITs to emit the correct calling-convention register assignments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support by-value struct arguments up to 16 bytes",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260912195221.987808-1-yonghong.song@linux.dev/",
+      "summary": "Adds verifier-level support for passing structs whose size is at most 16 bytes directly by value to kfuncs, leveraging the System V AMD64 and AArch64 calling conventions where such structs are split across two registers. The patch introduces the internal representation needed to describe these multi-register argument slots throughout the verifier and JIT layers. This significantly expands the expressiveness of kfunc interfaces without requiring callers to heap-allocate or take stack addresses.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support __int128 as a by-value function argument",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260912195227.987991-1-yonghong.song@linux.dev/",
+      "summary": "Extends BPF kfunc argument handling to support __int128 scalars passed by value, occupying two consecutive 64-bit argument registers per the x86-64 and arm64 ABIs. The verifier is updated to validate that the BTF type is __int128, and the JIT layers are taught to lower this into the appropriate two-register pair. This matters for cryptographic and numeric kernel helpers that naturally operate on 128-bit quantities.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Prepare kfunc arguments for the JIT from an ABI description",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260912195242.989416-1-yonghong.song@linux.dev/",
+      "summary": "Introduces a generic ABI-description layer that translates the verifier's logical kfunc argument list into a machine-specific register assignment table used by the JIT. Rather than each JIT encoding ABI rules independently, they now consume a shared bpf_call_summary ABI structure that maps each logical argument to one or two physical registers. This decouples ABI policy from JIT mechanics and makes adding future architectures or argument types straightforward.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, mips: Add BPF_MEMSX support to the JITs",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260912180643.1426488-1-main.kalliope@gmail.com/",
+      "summary": "Adds sign-extending memory load (BPF_MEMSX) support to both the MIPS32 and MIPS64 BPF JITs. BPF_MEMSX was introduced to allow programs to load narrower values from memory and sign-extend them to 64 bits in a single operation, which is important for correctness when reading signed fields from kernel structs. This v2 patch follows the earlier BPF_MOVSX series and rounds out sign-extension support for MIPS.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Add bpf_program__add_flags() and bpf_program__clear_flags()",
+      "author": "Toke Høiland-Jørgensen",
+      "url": "https://lore.kernel.org/bpf/20260912084109.432834-1-toke@redhat.com/",
+      "summary": "Adds two new libbpf API functions, bpf_program__add_flags() and bpf_program__clear_flags(), that allow individual flag bits to be set or cleared on a BPF program object without having to read-modify-write the full flags field. The existing bpf_program__set_flags() replaces all flags atomically, making it error-prone when only a subset needs changing. The series (v3, 4 patches) also updates bpftool and selftests to use the new helpers.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, mips: Add support for BPF_MOVSX in the JITs",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260912041220.444715-3-main.kalliope@gmail.com/",
+      "summary": "Implements the BPF_MOVSX (sign-extending move) instruction in the MIPS BPF JITs, which sign-extends 8-, 16-, or 32-bit register values to 64 bits. The companion patch in the same series first refactors register move emission into reusable helpers to reduce duplication. Together they bring MIPS JIT instruction coverage closer to parity with x86-64 and arm64.",
+      "related_links": []
+    }
+  ]
+}
