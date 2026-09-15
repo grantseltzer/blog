@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-09-15T00:00:00Z",
+  "period_start": "2026-09-07",
+  "period_end": "2026-09-14",
+  "patch_count": 98,
+  "thread_count": 25,
+  "top_contributors": ["Amery Hung", "Yonghong Song", "Tianyi Chen", "Nicholas Dudar", "Toke Høiland-Jørgensen"],
+  "key_topics": ["verifier", "kfuncs", "libbpf", "bpftool", "mips-jit", "btf", "memcg"],
+  "overview": "The week of September 7-14 on bpf-next saw substantial activity across the verifier, kfuncs, libbpf, bpftool, and JIT subsystems. The single largest effort was Amery Hung's 23-patch series to unify helper and kfunc argument validation into a single code path, a long-overdue architectural cleanup in the verifier. Yonghong Song continued iterating on support for passing structs and __int128 by value to kfuncs, reaching v4 with full x86-64 and arm64 JIT support. Multiple bpftool improvements from Tianyi Chen modernized map operations, while Nicholas Dudar extended the MIPS BPF JIT to cover several missing instruction variants.",
+  "patches": [
+    {
+      "title": "bpf: Pass call metadata through shared argument checks",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260911220415.1396439-2-ameryhung@gmail.com/",
+      "summary": "This is the foundation patch of a 23-patch series aiming to unify how the BPF verifier checks arguments for both classic helpers and kfuncs. Currently the two code paths duplicate a large amount of type-checking logic, making the verifier harder to maintain and audit. The series threads shared call metadata through common argument-checking functions so that helper calls and kfunc calls can eventually be validated by the same path. By the end of the series (patch 23), a single `check_func_arg()` call handles both kinds of calls, significantly reducing code duplication in the core verifier.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Read a kfunc's __sz argument only when it is in a register",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260912195201.982215-1-yonghong.song@linux.dev/",
+      "summary": "This is the first patch of a 15-patch series (v4) adding support for passing structs up to 16 bytes and __int128 values by value to BPF kfuncs, rather than requiring pointers. The series reworks the verifier to recognise by-value struct and __int128 argument kinds, introduces an ABI description abstraction for how the JIT must place such arguments, and updates both the x86-64 and arm64 JITs to follow native calling conventions for these types. This unlocks a broader class of kfunc signatures and brings BPF kfunc calling conventions closer to what C compilers naturally produce for kernel functions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Bound ownership depth through local kptrs and graph roots",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260914132444.2564218-2-memxor@gmail.com/",
+      "summary": "This patch adds a depth cap to the BPF verifier's acyclic-ownership check when traversing chains of local kptrs and graph root structures. Without such a bound, a deep or pathological ownership chain could cause the verifier to run very slowly or overflow its internal state. The fix is minimal: a new compile-time constant sets the maximum traversal depth, and exceeding it causes an immediate verification failure. Patch 2 of the series adds selftests that confirm acceptance of shallow chains and rejection of those that exceed the limit.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: track scalar equality across the low 32 bits",
+      "author": "Vineet Gupta",
+      "url": "https://lore.kernel.org/bpf/20260910164635.459558-9-vineet.gupta@linux.dev/",
+      "summary": "This patch is part of a 13-patch series teaching the BPF verifier to track scalar equality through the low 32 bits of a register across narrowing stack fills, spills, and sign-extending moves. Currently the verifier loses value-range and equality information when a 64-bit scalar is stored narrowed and reloaded, forcing programs to re-derive or re-check conditions already established before the spill. The series incrementally adds a 'low-32 link' mechanism that preserves this information, enabling the verifier to prove more programs safe without extra instructions and reducing false-positive rejections.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: support selective kernel module BTF loading via bpf_object_open_opts",
+      "author": "Fuyu Zhao",
+      "url": "https://lore.kernel.org/bpf/20260911120820.46900-2-zhaofuyu@vivo.com/",
+      "summary": "This patch (v8) adds a new `btf_module_allowlist` field to `bpf_object_open_opts` so that callers can specify exactly which kernel module BTFs libbpf should load during BPF object open. Systems with many loaded modules spend significant time loading and parsing BTF for modules that a given BPF program never references. By allowing the caller to supply an allowlist, startup latency for such programs can be substantially reduced. The companion selftest verifies that BTFs for non-listed modules are skipped while those on the allowlist are still correctly resolved.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/e00910f328c129fea716e9fd031dada328e60313.1789091855.git.zhuhui@kylinos.cn/",
+      "summary": "This patch (v10 of the series) introduces a new kfunc `bpf_proactive_reclaim` that lets BPF programs trigger proactive memory reclaim against a specified memcg from within a BPF program. It enables user-space-visible workload orchestrators or kernel schedulers implemented in BPF to proactively reclaim memory from memory-hungry cgroups before they hit hard limits, improving overall system memory pressure management. The kfunc wraps the kernel's internal try_to_free_mem_cgroup_pages() path with appropriate locking and permission checks, and the accompanying selftest validates async reclaim behavior triggered via this interface.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Add bpf_program__add_flags() and bpf_program__clear_flags()",
+      "author": "Toke Høiland-Jørgensen",
+      "url": "https://lore.kernel.org/bpf/20260912084109.432834-1-toke@redhat.com/",
+      "summary": "This patch (v3, first of 4) adds two new libbpf API functions: `bpf_program__add_flags()` to atomically OR flags into a program's load flags, and `bpf_program__clear_flags()` to mask them out. The existing `bpf_program__set_flags()` replaces the entire flags word, making it awkward for callers that want to toggle individual flags without hard-coding the full set. The new helpers are used in follow-on patches to simplify both bpftool and selftests. The series also adds assertion tests and an adoption patch for bpftool.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Add recursive map dumping",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260911051053.283421-2-diannaaav@gmail.com/",
+      "summary": "This patch (v6, first of 2) adds recursive map dump support to bpftool, allowing map values that themselves contain references to inner maps (e.g. maps-of-maps) to be pretty-printed by following the inner-map file descriptor and dumping nested contents. Previously bpftool would stop at the outer value and display the raw inner-map fd. The implementation handles reference cycles and depth limits to avoid infinite recursion. A companion selftest verifies the feature across several nested map configurations.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Compute map size of light skeletons at runtime",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20260914153326.72498-1-leon.hwang@linux.dev/",
+      "summary": "This standalone patch updates bpftool's light skeleton code generation to compute the required map size at runtime rather than embedding a pre-calculated value at generation time. The pre-calculated value can become stale if kernel map parameters change between when the skeleton was generated and when it is loaded. Computing the size at load time eliminates this class of stale-size bugs and makes light skeletons more portable. This is the second revision, addressing review feedback on the first submission.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, mips: Add BPF_MEMSX support to the JITs",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260912180643.1426488-1-main.kalliope@gmail.com/",
+      "summary": "This patch extends both the 32-bit and 64-bit MIPS BPF JITs to handle the BPF_MEMSX (sign-extending memory load) instruction, part of a broader effort to bring the MIPS JITs to feature parity with x86-64 and arm64. Without this support, programs using sign-extending loads would fall back to the BPF interpreter on MIPS, incurring a significant performance penalty. The patch is a companion to earlier v3 submissions adding BPF_MOVSX and BPF_SDIV/BPF_SMOD support to MIPS from the same author, collectively modernising the MIPS JIT for current BPF ISA features.",
+      "related_links": []
+    }
+  ]
+}
