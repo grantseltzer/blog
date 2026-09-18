@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-09-18T00:00:00Z",
+  "period_start": "2026-09-16",
+  "period_end": "2026-09-17",
+  "patch_count": 80,
+  "thread_count": 17,
+  "top_contributors": [
+    "Yonghong Song",
+    "Kumar Kartikeya Dwivedi",
+    "Alan Maguire",
+    "Yazhou Tang"
+  ],
+  "key_topics": [
+    "exception-handling",
+    "verifier",
+    "btf",
+    "kfuncs",
+    "dynptr",
+    "arena",
+    "libbpf",
+    "alu"
+  ],
+  "overview": "This period was dominated by a landmark 20-patch series from Yonghong Song that introduces exception cleanup landing pads into BPF, allowing programs compiled with C++ exception semantics to run cleanup code when bpf_throw() unwinds the call stack. Alongside that, Yazhou Tang proposed brand-new UHMUL and SHMUL multiply-high instructions for x86-64, arm64, and RISC-V JITs, and Alan Maguire continued refining BTF support for inline functions with new location-info kinds. Kumar Kartikeya Dwivedi landed a dense set of verifier correctness fixes covering CO-RE relocations, packet pointer pruning, and __uninit kfunc output buffers.",
+  "patches": [
+    {
+      "title": "bpf: Accept the compiler's exception cleanup table at program load",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260917055650.3927028-1-yonghong.song@linux.dev/",
+      "summary": "First patch of a 20-part series (\"bpf: Run exception cleanup landing pads when bpf_throw() unwinds\") that enables BPF programs to carry an exception cleanup table — a compiler-generated side table mapping call-site ranges to landing pad addresses. The kernel learns to accept this table at program load time via new fields in bpf_prog_load_opts, validate it through the verifier, and dispatch the appropriate cleanup pad whenever bpf_throw() unwinds. Subsequent patches wire up the x86-64 and arm64 JITs, extend libbpf and the static linker to handle .bpf_cleanup relocations, and add end-to-end selftests. This is the foundational piece that makes C++ exception-style resource cleanup safe inside BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add UHMUL and SHMUL instructions",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20260917041712.1860722-2-tangyazhou@zju.edu.cn/",
+      "summary": "Patch 1/8 of a series adding unsigned (UHMUL) and signed (SHMUL) multiply-high instructions to the BPF ISA, which return the upper half of a 64×64-bit product. JIT backends for x86-64, arm64, and RISC-V64 are implemented, with a verifier guard that rejects the opcodes on unsupported architectures. The series also refactors ALU variant validation and adds bytecode-level selftests. These instructions close a gap for BPF programs that need wide-multiply arithmetic without resorting to helper calls.",
+      "related_links": []
+    },
+    {
+      "title": "btf: Extend UAPI to support BTF location (inline site) info",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260916074118.1007116-2-alan.maguire@oracle.com/",
+      "summary": "First patch of an 11-part v3 series (\"Support inline functions in BTF\") that introduces three new BTF kinds — BTF_KIND_LOC, BTF_KIND_LOC_PARAM, and BTF_KIND_LOCSEC — to record inline-function call-site and parameter location info in the BTF format. libbpf gains full read/write support for these kinds, bpftool is extended to dump them, and the multi-split BTF machinery is updated to handle chains of base BTFs. The feature enables richer kernel debuggability and will eventually allow tracing tools to follow inlined callsites precisely.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Make post-verification instruction rewrites killable",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260916212102.597335-2-memxor@gmail.com/",
+      "summary": "Patch 1/10 of the fifth installment of Kumar's miscellaneous bug-fix series, this patch ensures that the post-verification instruction rewrite pass can be interrupted, preventing a potential denial-of-service if the rewrite loop runs too long. The series also fixes verifier state pruning for packet pointer class displacements, moves CO-RE relocations to before subprogram validation so the verifier sees final instructions, restricts CO-RE instruction poisoning to actually relocatable instructions, assigns lock identities to callback map values, and rejects truncated ldimm64 CO-RE relocations in libbpf.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Destroy callee-local dynptrs on subprog return",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20260917052000.1589643-2-xyx2021@mail.ustc.edu.cn/",
+      "summary": "Patch 1/2 of a v4 series teaching the BPF verifier to automatically release dynptr resources that a called subprogram holds when that subprogram returns. Previously, a callee that allocated a dynptr but failed to explicitly release it before returning would leave behind dangling resource state visible to the caller. The fix adds teardown logic at subprogram exit points and is accompanied by a selftest that covers the new behaviour.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Track iterator-owned BTF pointer lifetimes",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20260917051948.1588826-2-xyx2021@mail.ustc.edu.cn/",
+      "summary": "Patch 1/2 of a v4 series extending the verifier's BTF pointer lifetime tracking to account for iterators that own typed kernel objects. When an iterator holds a reference to a BTF-typed pointer, the verifier must ensure the pointer remains valid for the full duration of the iteration loop and is properly released on loop exit. The accompanying selftest exercises iterator BTF pointer lifetime edge cases including early loop breaks.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a sleepable page allocator for map memory",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260917015618.7488-2-jiayuan.chen@linux.dev/",
+      "summary": "Patch 1/4 of a v7 series fixing BPF arena behaviour when a cgroup's memory.max limit is reached during a fault-in. The series introduces a sleepable page allocator for map memory so that fault-in paths can block waiting for reclaim or OOM-kill rather than failing immediately, and moves the fault-in page allocation to happen outside the arena lock to avoid potential deadlocks. Selftests verify correct behaviour when memory is reclaimed under an active arena.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: btf: add btf=off boot parameter to disable and free vmlinux BTF",
+      "author": "Wang, Jay",
+      "url": "https://lore.kernel.org/bpf/20260917000201.25581-2-wanjay@amazon.com/",
+      "summary": "Adds a btf=off kernel command-line parameter that disables vmlinux BTF parsing at boot and frees the roughly 5 MiB of memory it occupies. This is aimed at highly memory-constrained environments (embedded, some cloud micro-VMs) where BTF-dependent features such as CO-RE and bpftrace are not needed. The patch is careful to make all BTF-consuming subsystems handle a NULL vmlinux BTF gracefully after the freeing step.",
+      "related_links": []
+    }
+  ]
+}
