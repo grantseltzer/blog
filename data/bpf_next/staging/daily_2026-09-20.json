@@ -1,0 +1,518 @@
+{
+  "period": "daily",
+  "period_start": "2026-09-19",
+  "period_end": "2026-09-20",
+  "fetched_at": "2026-09-20T13:30:07Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v3] selftests/bpf: Fix csum_partial() dropping trailing byte on odd length",
+      "author": "Madhav Khosla",
+      "url": "https://lore.kernel.org/bpf/20260920085549.867099-1-madhav.khoslaa@gmail.com/",
+      "date": "2026-09-20T08:55:49",
+      "series": [
+        {
+          "id": 1169673,
+          "url": "https://patchwork.kernel.org/api/series/1169673/",
+          "web_url": "https://patchwork.kernel.org/series/1169673/",
+          "date": "2026-09-20T08:55:49",
+          "name": "[bpf-next,v3] selftests/bpf: Fix csum_partial() dropping trailing byte on odd length",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169673/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Check bpf_skb_output() tracing restrictions",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20260920063442.499577-2-yangfeng59949@163.com/",
+      "date": "2026-09-20T06:34:42",
+      "series": [
+        {
+          "id": 1169626,
+          "url": "https://patchwork.kernel.org/api/series/1169626/",
+          "web_url": "https://patchwork.kernel.org/series/1169626/",
+          "date": "2026-09-20T06:34:41",
+          "name": "[bpf-next,1/2] bpf: Reject bpf_skb_output() from return-side tracing",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1169626/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Reject bpf_skb_output() from return-side tracing",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20260920063442.499577-1-yangfeng59949@163.com/",
+      "date": "2026-09-20T06:34:41",
+      "series": [
+        {
+          "id": 1169626,
+          "url": "https://patchwork.kernel.org/api/series/1169626/",
+          "web_url": "https://patchwork.kernel.org/series/1169626/",
+          "date": "2026-09-20T06:34:41",
+          "name": "[bpf-next,1/2] bpf: Reject bpf_skb_output() from return-side tracing",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1169626/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,20/20] selftests/bpf: Load an exception cleanup program from a light skeleton",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054408.875401-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:44:08",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,19/20] selftests/bpf: Cover the exception cleanup shapes the chain does not reach",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054403.874319-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:44:03",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,18/20] selftests/bpf: Add an end-to-end .bpf_cleanup exception test",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054358.872840-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:58",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,17/20] libbpf: Let the static linker carry .bpf_cleanup relocations",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054353.872669-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:53",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,16/20] libbpf: Carry the exception cleanup table through the light skeleton",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054347.872462-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:47",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,15/20] libbpf: Collect .bpf_cleanup records and pass them to the kernel",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054342.872143-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:42",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,14/20] libbpf: Add cleanup_info to bpf_prog_load_opts",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054337.871564-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:37",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,13/20] libbpf: Resolve the compiler's _Unwind_Resume to the kernel's kfunc",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054332.871309-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:32",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,12/20] bpf, arm64: Dispatch exception cleanup pads at run time",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054327.871010-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:27",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,11/20] bpf, x86: Dispatch exception cleanup pads at run time",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054322.870313-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:22",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,10/20] bpf: Dispatch exception cleanup pads from bpf_throw()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054317.870021-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:17",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,09/20] bpf: Refuse a private stack for a program with an exception cleanup table",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054312.869165-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:12",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,08/20] bpf: Walk the exception unwind in the verifier",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054307.868442-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:07",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,07/20] bpf: Refuse exception cleanup shapes bpf_throw() cannot dispatch",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054301.867768-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:01",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,06/20] bpf: Explore the landing pads no call site reaches",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054256.867417-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:42:56",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,05/20] bpf: Make exception landing pads reachable in the CFG",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054251.867140-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:42:51",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,04/20] bpf: Prepare for an exception cleanup table before the CFG walk",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054246.866704-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:42:46",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,03/20] bpf: Add lookups for exception cleanup resumes and landing pads",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054241.866442-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:42:41",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,02/20] bpf: Add the bpf_unwind_resume() kfunc",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054236.865966-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:42:36",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,01/20] bpf: Accept the compiler's exception cleanup table at program load",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054231.865520-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:42:31",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] libbpf: Check for unknown type ID in btf__align_of()",
+      "author": "Abhinav Madake",
+      "url": "https://lore.kernel.org/bpf/20260919174532.25407-1-abhinavmadake@gmail.com/",
+      "date": "2026-09-19T17:45:32",
+      "series": [
+        {
+          "id": 1169349,
+          "url": "https://patchwork.kernel.org/api/series/1169349/",
+          "web_url": "https://patchwork.kernel.org/series/1169349/",
+          "date": "2026-09-19T17:45:32",
+          "name": "[bpf-next,v2] libbpf: Check for unknown type ID in btf__align_of()",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1169349/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] libbpf: Return -EINVAL from btf__align_of() for unknown type ID",
+      "author": "Abhinav Madake",
+      "url": "https://lore.kernel.org/bpf/20260919164229.95154-1-abhinavmadake@gmail.com/",
+      "date": "2026-09-19T16:42:29",
+      "series": [
+        {
+          "id": 1169329,
+          "url": "https://patchwork.kernel.org/api/series/1169329/",
+          "web_url": "https://patchwork.kernel.org/series/1169329/",
+          "date": "2026-09-19T16:42:29",
+          "name": "[bpf-next] libbpf: Return -EINVAL from btf__align_of() for unknown type ID",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1169329/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/2] selftests/bpf: Cover bpftool ring buffer event_pipe",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260919110721.1230756-3-hi@tychen.cc/",
+      "date": "2026-09-19T11:07:21",
+      "series": [
+        {
+          "id": 1169229,
+          "url": "https://patchwork.kernel.org/api/series/1169229/",
+          "web_url": "https://patchwork.kernel.org/series/1169229/",
+          "date": "2026-09-19T11:07:19",
+          "name": "bpftool: Consume ring buffer maps with event_pipe",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1169229/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/2] bpftool: Read ring buffer maps with event_pipe",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260919110721.1230756-2-hi@tychen.cc/",
+      "date": "2026-09-19T11:07:20",
+      "series": [
+        {
+          "id": 1169229,
+          "url": "https://patchwork.kernel.org/api/series/1169229/",
+          "web_url": "https://patchwork.kernel.org/series/1169229/",
+          "date": "2026-09-19T11:07:19",
+          "name": "bpftool: Consume ring buffer maps with event_pipe",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1169229/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/3] bpftool: Add support for BPF_F_PREORDER cgroup attach flag",
+      "author": "Hui Su",
+      "url": "https://lore.kernel.org/bpf/20260919094400.600585-4-sh_def@163.com/",
+      "date": "2026-09-19T09:44:00",
+      "series": [
+        {
+          "id": 1169196,
+          "url": "https://patchwork.kernel.org/api/series/1169196/",
+          "web_url": "https://patchwork.kernel.org/series/1169196/",
+          "date": "2026-09-19T09:43:58",
+          "name": "bpf: expose cgroup preorder attachment state to userspace",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1169196/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/3] selftests/bpf: Test querying BPF_F_PREORDER cgroup attachments",
+      "author": "Hui Su",
+      "url": "https://lore.kernel.org/bpf/20260919094400.600585-3-sh_def@163.com/",
+      "date": "2026-09-19T09:43:59",
+      "series": [
+        {
+          "id": 1169196,
+          "url": "https://patchwork.kernel.org/api/series/1169196/",
+          "web_url": "https://patchwork.kernel.org/series/1169196/",
+          "date": "2026-09-19T09:43:58",
+          "name": "bpf: expose cgroup preorder attachment state to userspace",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1169196/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/3] bpf: Report BPF_F_PREORDER in cgroup program queries",
+      "author": "Hui Su",
+      "url": "https://lore.kernel.org/bpf/20260919094400.600585-2-sh_def@163.com/",
+      "date": "2026-09-19T09:43:58",
+      "series": [
+        {
+          "id": 1169196,
+          "url": "https://patchwork.kernel.org/api/series/1169196/",
+          "web_url": "https://patchwork.kernel.org/series/1169196/",
+          "date": "2026-09-19T09:43:58",
+          "name": "bpf: expose cgroup preorder attachment state to userspace",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1169196/mbox/"
+        }
+      ]
+    }
+  ]
+}
