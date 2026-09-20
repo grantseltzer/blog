@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-09-20T10:18:15Z",
+  "period_start": "2026-09-18",
+  "period_end": "2026-09-19",
+  "patch_count": 57,
+  "thread_count": 14,
+  "top_contributors": ["Yonghong Song", "Anastasios Papagiannis", "Kumar Kartikeya Dwivedi"],
+  "key_topics": ["exceptions", "kfuncs", "verifier", "ringbuf", "arena", "cgroup", "bpftool", "memcg"],
+  "overview": "A busy two-day window dominated by exception handling infrastructure, kfunc additions, and verifier improvements. Yonghong Song's 20-patch series bringing compiler-generated exception cleanup landing pads to BPF is the headline, joined by Anastasios Papagiannis's long-running mm_struct user memory kfunc work reaching v9. Kumar Kartikeya Dwivedi rounds out the verifier work with fixes for __uninit kfunc output buffer handling.",
+  "patches": [
+    {
+      "title": "bpf: Accept the compiler's exception cleanup table at program load",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260918044201.3284339-1-yonghong.song@linux.dev/",
+      "summary": "This large 20-patch series (v2) implements support for C++ exception-style cleanup landing pads in BPF programs, enabling compiler-generated `.bpf_cleanup` tables to be registered at program load time. When `bpf_throw()` unwinds the call stack, registered cleanup handlers are now dispatched at runtime on both x86 and arm64 JIT backends via a new `bpf_unwind_resume()` kfunc. The series spans the kernel verifier, JIT compilers, libbpf (static linker, light skeleton, and load opts), and bpftool. This enables BPF programs to safely release resources when exceptions occur, bringing structured error handling closer to what compiled languages already expect.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add user memory access kfuncs for mm_struct",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260918131757.42802-4-tasos.papagiannnis@gmail.com/",
+      "summary": "This 5-patch series (v9) adds kfuncs that allow BPF programs to read strings and data from a process's user-space memory via an `mm_struct` pointer. A new `copy_remote_mm_str()` helper is introduced in the mm subsystem, and `linux_binprm->mm` is annotated as trusted-or-null so the BPF verifier can track it safely. The exec subsystem is also updated to clear `bprm->mm` before dropping its reference to avoid use-after-free scenarios. This enables security and observability programs to inspect process address spaces from BPF without requiring ptrace privileges.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix generic __uninit kfunc output buffers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260918052906.12226-6-memxor@gmail.com/",
+      "summary": "This 8-patch series (v4) fixes verifier handling of kfunc arguments annotated with `__uninit`, where the buffer is an uninitialized output and must not require initialization on the caller side. The fix correctly records raw memory arguments during argument checking, enforces read access only for already-initialized writable memory, and extends support to kfuncs with multiple `__uninit` output arguments. Additional selftests cover helper memory access permissions and the new multi-uninit-argument path.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Read ring buffer maps with event_pipe",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260919110721.1230756-2-hi@tychen.cc/",
+      "summary": "This 2-patch series (v4) adds an `event_pipe` mode to bpftool's map subcommand for consuming ring buffer maps, streaming events as newline-delimited JSON to stdout. This makes it easy to observe ring buffer output from BPF programs without writing a custom userspace consumer. A selftest exercises the new functionality end-to-end.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/02f0a8dc45a840d7801ec17e0c1168f7dacf9b73.1789714023.git.zhuhui@kylinos.cn/",
+      "summary": "This 2-patch series (v12) introduces a `bpf_proactive_reclaim()` kfunc that lets BPF programs trigger proactive memory reclaim on a memcg, enabling workload-aware memory management policies written in BPF. BPF programs can monitor memory pressure signals and call this kfunc to reclaim memory before the kernel's reactive OOM path kicks in. Selftest coverage for the async reclaim path is included.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Report BPF_F_PREORDER in cgroup program queries",
+      "author": "Hui Su",
+      "url": "https://lore.kernel.org/bpf/20260919094400.600585-2-sh_def@163.com/",
+      "summary": "This 3-patch series (v2) exposes the `BPF_F_PREORDER` cgroup attach flag through BPF program query results, allowing userspace tools to determine whether attached cgroup programs run with pre-order traversal semantics. A matching bpftool update surfaces the flag in human-readable output. Selftests verify the end-to-end query behavior for pre-order attachments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: arena: allocate the fault-in page outside the lock",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260918084123.39477-2-jiayuan.chen@linux.dev/",
+      "summary": "This 3-patch series (v8) fixes a potential deadlock in BPF arena fault-in handling by moving page allocation outside the arena lock. Under cgroup `memory.max` limits, allocating while holding the lock could trigger direct reclaim, which itself might need the arena lock, causing a deadlock. The fix pre-allocates the page before acquiring the lock and handles the case where a concurrent fault already filled the slot. A new selftest validates the fix under actual `memory.max` constraints.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: crypto: Use AES-CBC and AES-ECB libraries",
+      "author": "Eric Biggers",
+      "url": "https://lore.kernel.org/bpf/20260918021744.18772-1-ebiggers@kernel.org/",
+      "summary": "This patch (v2) switches the BPF crypto subsystem from the generic scatterlist-based crypto API to the optimized AES-CBC and AES-ECB library implementations, reducing overhead for BPF programs that use crypto helpers. The library APIs are simpler, faster, and avoid the request-allocation overhead of the full crypto API. This is a maintenance and performance improvement for the BPF crypto feature introduced in recent kernel versions.",
+      "related_links": []
+    }
+  ]
+}
