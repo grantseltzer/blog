@@ -1,0 +1,1708 @@
+{
+  "period": "weekly",
+  "period_start": "2026-09-14",
+  "period_end": "2026-09-21",
+  "fetched_at": "2026-09-21T15:45:21Z",
+  "patches": [
+    {
+      "title": "[bpf-next] bpf: Speed up htab hashing for u32/u64 keys",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260921-hashtab_fast_hashfn-v1-1-f92ae72cefcd@meta.com/",
+      "date": "2026-09-21T15:28:05",
+      "series": [
+        {
+          "id": 1170509,
+          "url": "https://patchwork.kernel.org/api/series/1170509/",
+          "web_url": "https://patchwork.kernel.org/series/1170509/",
+          "date": "2026-09-21T15:28:05",
+          "name": "[bpf-next] bpf: Speed up htab hashing for u32/u64 keys",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1170509/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: Add task work scheduling race test",
+      "author": "luyun",
+      "url": "https://lore.kernel.org/bpf/20260921101453.69273-3-luyun_611@163.com/",
+      "date": "2026-09-21T10:14:53",
+      "series": [
+        {
+          "id": 1170248,
+          "url": "https://patchwork.kernel.org/api/series/1170248/",
+          "web_url": "https://patchwork.kernel.org/series/1170248/",
+          "date": "2026-09-21T10:14:52",
+          "name": "bpf: Fix task work scheduling race",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1170248/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: Fix task work scheduling and callback race",
+      "author": "luyun",
+      "url": "https://lore.kernel.org/bpf/20260921101453.69273-2-luyun_611@163.com/",
+      "date": "2026-09-21T10:14:52",
+      "series": [
+        {
+          "id": 1170248,
+          "url": "https://patchwork.kernel.org/api/series/1170248/",
+          "web_url": "https://patchwork.kernel.org/series/1170248/",
+          "date": "2026-09-21T10:14:52",
+          "name": "bpf: Fix task work scheduling race",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1170248/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "linux-next: manual merge of the bpf-next tree with the bpf tree",
+      "author": "Mark Brown",
+      "url": "https://lore.kernel.org/bpf/arD9pUBavrJQ8TRT@sirena.co.uk/",
+      "date": "2026-09-21T09:49:25",
+      "series": [
+        {
+          "id": 1170224,
+          "url": "https://patchwork.kernel.org/api/series/1170224/",
+          "web_url": "https://patchwork.kernel.org/series/1170224/",
+          "date": "2026-09-21T09:49:25",
+          "name": "linux-next: manual merge of the bpf-next tree with the bpf tree",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1170224/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "linux-next: manual merge of the bpf-next tree with the mm tree",
+      "author": "Mark Brown",
+      "url": "https://lore.kernel.org/bpf/arD9mGTj9upScb9t@sirena.co.uk/",
+      "date": "2026-09-21T09:49:12",
+      "series": [
+        {
+          "id": 1170223,
+          "url": "https://patchwork.kernel.org/api/series/1170223/",
+          "web_url": "https://patchwork.kernel.org/series/1170223/",
+          "date": "2026-09-21T09:49:12",
+          "name": "linux-next: manual merge of the bpf-next tree with the mm tree",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1170223/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,9/9] selftests/bpf: build each test runner instance in its own sub-make",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260921075855.2065871-10-nickolay.lysenko@gmail.com/",
+      "date": "2026-09-21T07:58:55",
+      "series": [
+        {
+          "id": 1170145,
+          "url": "https://patchwork.kernel.org/api/series/1170145/",
+          "web_url": "https://patchwork.kernel.org/series/1170145/",
+          "date": "2026-09-21T07:58:47",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1170145/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,8/9] selftests/bpf: move shared build definitions into Makefile.buildvars",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260921075855.2065871-9-nickolay.lysenko@gmail.com/",
+      "date": "2026-09-21T07:58:54",
+      "series": [
+        {
+          "id": 1170145,
+          "url": "https://patchwork.kernel.org/api/series/1170145/",
+          "web_url": "https://patchwork.kernel.org/series/1170145/",
+          "date": "2026-09-21T07:58:47",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1170145/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,7/9] selftests/bpf: extract BPF skeleton generation into a helper script",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260921075855.2065871-8-nickolay.lysenko@gmail.com/",
+      "date": "2026-09-21T07:58:53",
+      "series": [
+        {
+          "id": 1170145,
+          "url": "https://patchwork.kernel.org/api/series/1170145/",
+          "web_url": "https://patchwork.kernel.org/series/1170145/",
+          "date": "2026-09-21T07:58:47",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1170145/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,6/9] selftests/bpf: derive the bench object list from the sources",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260921075855.2065871-7-nickolay.lysenko@gmail.com/",
+      "date": "2026-09-21T07:58:52",
+      "series": [
+        {
+          "id": 1170145,
+          "url": "https://patchwork.kernel.org/api/series/1170145/",
+          "web_url": "https://patchwork.kernel.org/series/1170145/",
+          "date": "2026-09-21T07:58:47",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1170145/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,5/9] selftests/bpf: generate verifier/tests.h in a regular recipe",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260921075855.2065871-6-nickolay.lysenko@gmail.com/",
+      "date": "2026-09-21T07:58:51",
+      "series": [
+        {
+          "id": 1170145,
+          "url": "https://patchwork.kernel.org/api/series/1170145/",
+          "web_url": "https://patchwork.kernel.org/series/1170145/",
+          "date": "2026-09-21T07:58:47",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1170145/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,4/9] selftests/bpf: generate the signing key and certificate once",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260921075855.2065871-5-nickolay.lysenko@gmail.com/",
+      "date": "2026-09-21T07:58:50",
+      "series": [
+        {
+          "id": 1170145,
+          "url": "https://patchwork.kernel.org/api/series/1170145/",
+          "web_url": "https://patchwork.kernel.org/series/1170145/",
+          "date": "2026-09-21T07:58:47",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1170145/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,3/9] selftests/bpf: factor the permissive-mode skip suffix into a helper",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260921075855.2065871-4-nickolay.lysenko@gmail.com/",
+      "date": "2026-09-21T07:58:49",
+      "series": [
+        {
+          "id": 1170145,
+          "url": "https://patchwork.kernel.org/api/series/1170145/",
+          "web_url": "https://patchwork.kernel.org/series/1170145/",
+          "date": "2026-09-21T07:58:47",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1170145/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,2/9] selftests/bpf: drop stale lines, restore two header dependencies",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260921075855.2065871-3-nickolay.lysenko@gmail.com/",
+      "date": "2026-09-21T07:58:48",
+      "series": [
+        {
+          "id": 1170145,
+          "url": "https://patchwork.kernel.org/api/series/1170145/",
+          "web_url": "https://patchwork.kernel.org/series/1170145/",
+          "date": "2026-09-21T07:58:47",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1170145/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,1/9] selftests/bpf: keep headers off the generic link command line",
+      "author": "Mykola Lysenko",
+      "url": "https://lore.kernel.org/bpf/20260921075855.2065871-2-nickolay.lysenko@gmail.com/",
+      "date": "2026-09-21T07:58:47",
+      "series": [
+        {
+          "id": 1170145,
+          "url": "https://patchwork.kernel.org/api/series/1170145/",
+          "web_url": "https://patchwork.kernel.org/series/1170145/",
+          "date": "2026-09-21T07:58:47",
+          "name": "selftests/bpf: restructure the Makefile as a layered build",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1170145/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,2/2] selftests/bpf: Cover bpftool ring buffer event_pipe",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260921073556.99421-3-hi@tychen.cc/",
+      "date": "2026-09-21T07:35:56",
+      "series": [
+        {
+          "id": 1170125,
+          "url": "https://patchwork.kernel.org/api/series/1170125/",
+          "web_url": "https://patchwork.kernel.org/series/1170125/",
+          "date": "2026-09-21T07:35:54",
+          "name": "bpftool: Consume ring buffer maps with event_pipe",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1170125/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,1/2] bpftool: Read ring buffer maps with event_pipe",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260921073556.99421-2-hi@tychen.cc/",
+      "date": "2026-09-21T07:35:55",
+      "series": [
+        {
+          "id": 1170125,
+          "url": "https://patchwork.kernel.org/api/series/1170125/",
+          "web_url": "https://patchwork.kernel.org/series/1170125/",
+          "date": "2026-09-21T07:35:54",
+          "name": "bpftool: Consume ring buffer maps with event_pipe",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1170125/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,11/11] selftests/bpf: Cover helper memory access permissions",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260921023843.411943-12-memxor@gmail.com/",
+      "date": "2026-09-21T02:38:35",
+      "series": [
+        {
+          "id": 1169963,
+          "url": "https://patchwork.kernel.org/api/series/1169963/",
+          "web_url": "https://patchwork.kernel.org/series/1169963/",
+          "date": "2026-09-21T02:38:24",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169963/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,10/11] bpf: Check read access for helper input/output buffers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260921023843.411943-11-memxor@gmail.com/",
+      "date": "2026-09-21T02:38:34",
+      "series": [
+        {
+          "id": 1169963,
+          "url": "https://patchwork.kernel.org/api/series/1169963/",
+          "web_url": "https://patchwork.kernel.org/series/1169963/",
+          "date": "2026-09-21T02:38:24",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169963/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,09/11] selftests/bpf: Cover generic output stack initialization",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260921023843.411943-10-memxor@gmail.com/",
+      "date": "2026-09-21T02:38:33",
+      "series": [
+        {
+          "id": 1169963,
+          "url": "https://patchwork.kernel.org/api/series/1169963/",
+          "web_url": "https://patchwork.kernel.org/series/1169963/",
+          "date": "2026-09-21T02:38:24",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169963/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,08/11] bpf: Preserve stack initialization for generic output buffers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260921023843.411943-9-memxor@gmail.com/",
+      "date": "2026-09-21T02:38:32",
+      "series": [
+        {
+          "id": 1169963,
+          "url": "https://patchwork.kernel.org/api/series/1169963/",
+          "web_url": "https://patchwork.kernel.org/series/1169963/",
+          "date": "2026-09-21T02:38:24",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169963/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,07/11] selftests/bpf: Cover __uninit kfunc output argument slots",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260921023843.411943-8-memxor@gmail.com/",
+      "date": "2026-09-21T02:38:31",
+      "series": [
+        {
+          "id": 1169963,
+          "url": "https://patchwork.kernel.org/api/series/1169963/",
+          "web_url": "https://patchwork.kernel.org/series/1169963/",
+          "date": "2026-09-21T02:38:24",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169963/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,06/11] bpf: Support multiple __uninit kfunc output arguments",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260921023843.411943-7-memxor@gmail.com/",
+      "date": "2026-09-21T02:38:30",
+      "series": [
+        {
+          "id": 1169963,
+          "url": "https://patchwork.kernel.org/api/series/1169963/",
+          "web_url": "https://patchwork.kernel.org/series/1169963/",
+          "date": "2026-09-21T02:38:24",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169963/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,05/11] selftests/bpf: Cover generic __uninit output initialization",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260921023843.411943-6-memxor@gmail.com/",
+      "date": "2026-09-21T02:38:29",
+      "series": [
+        {
+          "id": 1169963,
+          "url": "https://patchwork.kernel.org/api/series/1169963/",
+          "web_url": "https://patchwork.kernel.org/series/1169963/",
+          "date": "2026-09-21T02:38:24",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169963/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,04/11] bpf: Fix generic __uninit kfunc output buffers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260921023843.411943-5-memxor@gmail.com/",
+      "date": "2026-09-21T02:38:28",
+      "series": [
+        {
+          "id": 1169963,
+          "url": "https://patchwork.kernel.org/api/series/1169963/",
+          "web_url": "https://patchwork.kernel.org/series/1169963/",
+          "date": "2026-09-21T02:38:24",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169963/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,03/11] bpf: Check __uninit kfunc output buffers as write-only",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260921023843.411943-4-memxor@gmail.com/",
+      "date": "2026-09-21T02:38:27",
+      "series": [
+        {
+          "id": 1169963,
+          "url": "https://patchwork.kernel.org/api/series/1169963/",
+          "web_url": "https://patchwork.kernel.org/series/1169963/",
+          "date": "2026-09-21T02:38:24",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169963/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,02/11] bpf: Record raw memory arguments during argument checking",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260921023843.411943-3-memxor@gmail.com/",
+      "date": "2026-09-21T02:38:26",
+      "series": [
+        {
+          "id": 1169963,
+          "url": "https://patchwork.kernel.org/api/series/1169963/",
+          "web_url": "https://patchwork.kernel.org/series/1169963/",
+          "date": "2026-09-21T02:38:24",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169963/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,01/11] selftests/bpf: Allow privileged preparation for capability tests",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260921023843.411943-2-memxor@gmail.com/",
+      "date": "2026-09-21T02:38:25",
+      "series": [
+        {
+          "id": 1169963,
+          "url": "https://patchwork.kernel.org/api/series/1169963/",
+          "web_url": "https://patchwork.kernel.org/series/1169963/",
+          "date": "2026-09-21T02:38:24",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169963/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,2/2] bpf: htab: Reduce elem_size by 8 bytes for small key sizes",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20260921002206.184660-3-tjmercier@google.com/",
+      "date": "2026-09-21T00:22:04",
+      "series": [
+        {
+          "id": 1169929,
+          "url": "https://patchwork.kernel.org/api/series/1169929/",
+          "web_url": "https://patchwork.kernel.org/series/1169929/",
+          "date": "2026-09-21T00:22:02",
+          "name": "bpf: htab: Reduce memory use of hash maps",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169929/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,1/2] bpf: htab: Split htab_elem_lru and htab_elem_pcpu off of htab_elem",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20260921002206.184660-2-tjmercier@google.com/",
+      "date": "2026-09-21T00:22:03",
+      "series": [
+        {
+          "id": 1169929,
+          "url": "https://patchwork.kernel.org/api/series/1169929/",
+          "web_url": "https://patchwork.kernel.org/series/1169929/",
+          "date": "2026-09-21T00:22:02",
+          "name": "bpf: htab: Reduce memory use of hash maps",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169929/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,2/2] selftests/bpf: Test dynptr teardown on subprog return",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20260920210438.345847-3-xyx2021@mail.ustc.edu.cn/",
+      "date": "2026-09-20T21:04:38",
+      "series": [
+        {
+          "id": 1169899,
+          "url": "https://patchwork.kernel.org/api/series/1169899/",
+          "web_url": "https://patchwork.kernel.org/series/1169899/",
+          "date": "2026-09-20T21:04:36",
+          "name": "bpf: Destroy callee-local dynptrs on subprog return",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169899/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,1/2] bpf: Destroy callee-local dynptrs on subprog return",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20260920210438.345847-2-xyx2021@mail.ustc.edu.cn/",
+      "date": "2026-09-20T21:04:37",
+      "series": [
+        {
+          "id": 1169900,
+          "url": "https://patchwork.kernel.org/api/series/1169900/",
+          "web_url": "https://patchwork.kernel.org/series/1169900/",
+          "date": "2026-09-20T21:04:37",
+          "name": "[bpf-next,v5,1/2] bpf: Destroy callee-local dynptrs on subprog return",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169900/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,2/2] selftests/bpf: Test iterator BTF pointer lifetimes",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20260920210432.345758-3-xyx2021@mail.ustc.edu.cn/",
+      "date": "2026-09-20T21:04:32",
+      "series": [
+        {
+          "id": 1169900,
+          "url": "https://patchwork.kernel.org/api/series/1169900/",
+          "web_url": "https://patchwork.kernel.org/series/1169900/",
+          "date": "2026-09-20T21:04:37",
+          "name": "[bpf-next,v5,1/2] bpf: Destroy callee-local dynptrs on subprog return",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169900/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,1/2] bpf: Track iterator-owned BTF pointer lifetimes",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20260920210432.345758-2-xyx2021@mail.ustc.edu.cn/",
+      "date": "2026-09-20T21:04:31",
+      "series": [
+        {
+          "id": 1169899,
+          "url": "https://patchwork.kernel.org/api/series/1169899/",
+          "web_url": "https://patchwork.kernel.org/series/1169899/",
+          "date": "2026-09-20T21:04:36",
+          "name": "bpf: Destroy callee-local dynptrs on subprog return",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1169899/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,7/7] selftest: bpf: Add test for bpf_tcp_ops.{enqueue,dequeue}_rcvq().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260920195633.3033620-8-kuniyu@google.com/",
+      "date": "2026-09-20T19:56:16",
+      "series": [
+        {
+          "id": 1169888,
+          "url": "https://patchwork.kernel.org/api/series/1169888/",
+          "web_url": "https://patchwork.kernel.org/series/1169888/",
+          "date": "2026-09-20T19:56:09",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1169888/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,6/7] bpf: tcp: Add kfunc to adjust sk->sk_rcvlowat.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260920195633.3033620-7-kuniyu@google.com/",
+      "date": "2026-09-20T19:56:15",
+      "series": [
+        {
+          "id": 1169888,
+          "url": "https://patchwork.kernel.org/api/series/1169888/",
+          "web_url": "https://patchwork.kernel.org/series/1169888/",
+          "date": "2026-09-20T19:56:09",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1169888/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,5/7] bpf: mptcp: Don't support BPF_SOCK_OPS_RCVQ_CB_FLAG.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260920195633.3033620-6-kuniyu@google.com/",
+      "date": "2026-09-20T19:56:14",
+      "series": [
+        {
+          "id": 1169888,
+          "url": "https://patchwork.kernel.org/api/series/1169888/",
+          "web_url": "https://patchwork.kernel.org/series/1169888/",
+          "date": "2026-09-20T19:56:09",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1169888/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/7] tcp: Split out __tcp_set_rcvlowat().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260920195633.3033620-5-kuniyu@google.com/",
+      "date": "2026-09-20T19:56:13",
+      "series": [
+        {
+          "id": 1169888,
+          "url": "https://patchwork.kernel.org/api/series/1169888/",
+          "web_url": "https://patchwork.kernel.org/series/1169888/",
+          "date": "2026-09-20T19:56:09",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1169888/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/7] bpf: tcp: Support bpf_sock_ops_cb_flags_set() for bpf_tcp_ops.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260920195633.3033620-4-kuniyu@google.com/",
+      "date": "2026-09-20T19:56:12",
+      "series": [
+        {
+          "id": 1169888,
+          "url": "https://patchwork.kernel.org/api/series/1169888/",
+          "web_url": "https://patchwork.kernel.org/series/1169888/",
+          "date": "2026-09-20T19:56:09",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1169888/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/7] bpf: tcp: Introduce bpf_tcp_ops.{enqueue,dequeue}_rcvq().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260920195633.3033620-3-kuniyu@google.com/",
+      "date": "2026-09-20T19:56:11",
+      "series": [
+        {
+          "id": 1169888,
+          "url": "https://patchwork.kernel.org/api/series/1169888/",
+          "web_url": "https://patchwork.kernel.org/series/1169888/",
+          "date": "2026-09-20T19:56:09",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1169888/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/7] selftest: bpf: Use BPF_SOCK_OPS_ALL_CB_FLAGS + 1 for bad_cb_test_rv.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260920195633.3033620-2-kuniyu@google.com/",
+      "date": "2026-09-20T19:56:10",
+      "series": [
+        {
+          "id": 1169888,
+          "url": "https://patchwork.kernel.org/api/series/1169888/",
+          "web_url": "https://patchwork.kernel.org/series/1169888/",
+          "date": "2026-09-20T19:56:09",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1169888/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3] selftests/bpf: Fix csum_partial() dropping trailing byte on odd length",
+      "author": "Madhav Khosla",
+      "url": "https://lore.kernel.org/bpf/20260920085549.867099-1-madhav.khoslaa@gmail.com/",
+      "date": "2026-09-20T08:55:49",
+      "series": [
+        {
+          "id": 1169673,
+          "url": "https://patchwork.kernel.org/api/series/1169673/",
+          "web_url": "https://patchwork.kernel.org/series/1169673/",
+          "date": "2026-09-20T08:55:49",
+          "name": "[bpf-next,v3] selftests/bpf: Fix csum_partial() dropping trailing byte on odd length",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169673/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Check bpf_skb_output() tracing restrictions",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20260920063442.499577-2-yangfeng59949@163.com/",
+      "date": "2026-09-20T06:34:42",
+      "series": [
+        {
+          "id": 1169626,
+          "url": "https://patchwork.kernel.org/api/series/1169626/",
+          "web_url": "https://patchwork.kernel.org/series/1169626/",
+          "date": "2026-09-20T06:34:41",
+          "name": "[bpf-next,1/2] bpf: Reject bpf_skb_output() from return-side tracing",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1169626/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Reject bpf_skb_output() from return-side tracing",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20260920063442.499577-1-yangfeng59949@163.com/",
+      "date": "2026-09-20T06:34:41",
+      "series": [
+        {
+          "id": 1169626,
+          "url": "https://patchwork.kernel.org/api/series/1169626/",
+          "web_url": "https://patchwork.kernel.org/series/1169626/",
+          "date": "2026-09-20T06:34:41",
+          "name": "[bpf-next,1/2] bpf: Reject bpf_skb_output() from return-side tracing",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1169626/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,20/20] selftests/bpf: Load an exception cleanup program from a light skeleton",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054408.875401-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:44:08",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,19/20] selftests/bpf: Cover the exception cleanup shapes the chain does not reach",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054403.874319-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:44:03",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,18/20] selftests/bpf: Add an end-to-end .bpf_cleanup exception test",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054358.872840-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:58",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,17/20] libbpf: Let the static linker carry .bpf_cleanup relocations",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054353.872669-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:53",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,16/20] libbpf: Carry the exception cleanup table through the light skeleton",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054347.872462-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:47",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,15/20] libbpf: Collect .bpf_cleanup records and pass them to the kernel",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054342.872143-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:42",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,14/20] libbpf: Add cleanup_info to bpf_prog_load_opts",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054337.871564-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:37",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,13/20] libbpf: Resolve the compiler's _Unwind_Resume to the kernel's kfunc",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054332.871309-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:32",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,12/20] bpf, arm64: Dispatch exception cleanup pads at run time",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054327.871010-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:27",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,11/20] bpf, x86: Dispatch exception cleanup pads at run time",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054322.870313-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:22",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,10/20] bpf: Dispatch exception cleanup pads from bpf_throw()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054317.870021-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:17",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,09/20] bpf: Refuse a private stack for a program with an exception cleanup table",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054312.869165-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:12",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,08/20] bpf: Walk the exception unwind in the verifier",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054307.868442-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:07",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,07/20] bpf: Refuse exception cleanup shapes bpf_throw() cannot dispatch",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054301.867768-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:43:01",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,06/20] bpf: Explore the landing pads no call site reaches",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054256.867417-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:42:56",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,05/20] bpf: Make exception landing pads reachable in the CFG",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054251.867140-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:42:51",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,04/20] bpf: Prepare for an exception cleanup table before the CFG walk",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054246.866704-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:42:46",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,03/20] bpf: Add lookups for exception cleanup resumes and landing pads",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054241.866442-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:42:41",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,02/20] bpf: Add the bpf_unwind_resume() kfunc",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054236.865966-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:42:36",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,01/20] bpf: Accept the compiler's exception cleanup table at program load",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054231.865520-1-yonghong.song@linux.dev/",
+      "date": "2026-09-20T05:42:31",
+      "series": [
+        {
+          "id": 1169612,
+          "url": "https://patchwork.kernel.org/api/series/1169612/",
+          "web_url": "https://patchwork.kernel.org/series/1169612/",
+          "date": "2026-09-20T05:42:25",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1169612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] libbpf: Check for unknown type ID in btf__align_of()",
+      "author": "Abhinav Madake",
+      "url": "https://lore.kernel.org/bpf/20260919174532.25407-1-abhinavmadake@gmail.com/",
+      "date": "2026-09-19T17:45:32",
+      "series": [
+        {
+          "id": 1169349,
+          "url": "https://patchwork.kernel.org/api/series/1169349/",
+          "web_url": "https://patchwork.kernel.org/series/1169349/",
+          "date": "2026-09-19T17:45:32",
+          "name": "[bpf-next,v2] libbpf: Check for unknown type ID in btf__align_of()",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1169349/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] libbpf: Return -EINVAL from btf__align_of() for unknown type ID",
+      "author": "Abhinav Madake",
+      "url": "https://lore.kernel.org/bpf/20260919164229.95154-1-abhinavmadake@gmail.com/",
+      "date": "2026-09-19T16:42:29",
+      "series": [
+        {
+          "id": 1169329,
+          "url": "https://patchwork.kernel.org/api/series/1169329/",
+          "web_url": "https://patchwork.kernel.org/series/1169329/",
+          "date": "2026-09-19T16:42:29",
+          "name": "[bpf-next] libbpf: Return -EINVAL from btf__align_of() for unknown type ID",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1169329/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/2] selftests/bpf: Cover bpftool ring buffer event_pipe",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260919110721.1230756-3-hi@tychen.cc/",
+      "date": "2026-09-19T11:07:21",
+      "series": [
+        {
+          "id": 1169229,
+          "url": "https://patchwork.kernel.org/api/series/1169229/",
+          "web_url": "https://patchwork.kernel.org/series/1169229/",
+          "date": "2026-09-19T11:07:19",
+          "name": "bpftool: Consume ring buffer maps with event_pipe",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1169229/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/2] bpftool: Read ring buffer maps with event_pipe",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260919110721.1230756-2-hi@tychen.cc/",
+      "date": "2026-09-19T11:07:20",
+      "series": [
+        {
+          "id": 1169229,
+          "url": "https://patchwork.kernel.org/api/series/1169229/",
+          "web_url": "https://patchwork.kernel.org/series/1169229/",
+          "date": "2026-09-19T11:07:19",
+          "name": "bpftool: Consume ring buffer maps with event_pipe",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1169229/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/3] bpftool: Add support for BPF_F_PREORDER cgroup attach flag",
+      "author": "Hui Su",
+      "url": "https://lore.kernel.org/bpf/20260919094400.600585-4-sh_def@163.com/",
+      "date": "2026-09-19T09:44:00",
+      "series": [
+        {
+          "id": 1169196,
+          "url": "https://patchwork.kernel.org/api/series/1169196/",
+          "web_url": "https://patchwork.kernel.org/series/1169196/",
+          "date": "2026-09-19T09:43:58",
+          "name": "bpf: expose cgroup preorder attachment state to userspace",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1169196/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/3] selftests/bpf: Test querying BPF_F_PREORDER cgroup attachments",
+      "author": "Hui Su",
+      "url": "https://lore.kernel.org/bpf/20260919094400.600585-3-sh_def@163.com/",
+      "date": "2026-09-19T09:43:59",
+      "series": [
+        {
+          "id": 1169196,
+          "url": "https://patchwork.kernel.org/api/series/1169196/",
+          "web_url": "https://patchwork.kernel.org/series/1169196/",
+          "date": "2026-09-19T09:43:58",
+          "name": "bpf: expose cgroup preorder attachment state to userspace",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1169196/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/3] bpf: Report BPF_F_PREORDER in cgroup program queries",
+      "author": "Hui Su",
+      "url": "https://lore.kernel.org/bpf/20260919094400.600585-2-sh_def@163.com/",
+      "date": "2026-09-19T09:43:58",
+      "series": [
+        {
+          "id": 1169196,
+          "url": "https://patchwork.kernel.org/api/series/1169196/",
+          "web_url": "https://patchwork.kernel.org/series/1169196/",
+          "date": "2026-09-19T09:43:58",
+          "name": "bpf: expose cgroup preorder attachment state to userspace",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1169196/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,5/5] selftests/bpf: Test mm_struct user memory kfuncs with linux_binprm",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260918131757.42802-6-tasos.papagiannnis@gmail.com/",
+      "date": "2026-09-18T13:17:57",
+      "series": [
+        {
+          "id": 1168660,
+          "url": "https://patchwork.kernel.org/api/series/1168660/",
+          "web_url": "https://patchwork.kernel.org/series/1168660/",
+          "date": "2026-09-18T13:17:52",
+          "name": "bpf: Add user memory access kfuncs for mm_struct",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1168660/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,4/5] bpf: Mark linux_binprm->mm as trusted-or-null",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260918131757.42802-5-tasos.papagiannnis@gmail.com/",
+      "date": "2026-09-18T13:17:56",
+      "series": [
+        {
+          "id": 1168660,
+          "url": "https://patchwork.kernel.org/api/series/1168660/",
+          "web_url": "https://patchwork.kernel.org/series/1168660/",
+          "date": "2026-09-18T13:17:52",
+          "name": "bpf: Add user memory access kfuncs for mm_struct",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1168660/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,3/5] bpf: Add user memory access kfuncs for mm_struct",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260918131757.42802-4-tasos.papagiannnis@gmail.com/",
+      "date": "2026-09-18T13:17:55",
+      "series": [
+        {
+          "id": 1168660,
+          "url": "https://patchwork.kernel.org/api/series/1168660/",
+          "web_url": "https://patchwork.kernel.org/series/1168660/",
+          "date": "2026-09-18T13:17:52",
+          "name": "bpf: Add user memory access kfuncs for mm_struct",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1168660/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,2/5] exec: Clear bprm->mm before dropping its reference",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260918131757.42802-3-tasos.papagiannnis@gmail.com/",
+      "date": "2026-09-18T13:17:54",
+      "series": [
+        {
+          "id": 1168660,
+          "url": "https://patchwork.kernel.org/api/series/1168660/",
+          "web_url": "https://patchwork.kernel.org/series/1168660/",
+          "date": "2026-09-18T13:17:52",
+          "name": "bpf: Add user memory access kfuncs for mm_struct",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1168660/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,1/5] mm: Add copy_remote_mm_str()",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260918131757.42802-2-tasos.papagiannnis@gmail.com/",
+      "date": "2026-09-18T13:17:53",
+      "series": [
+        {
+          "id": 1168660,
+          "url": "https://patchwork.kernel.org/api/series/1168660/",
+          "web_url": "https://patchwork.kernel.org/series/1168660/",
+          "date": "2026-09-18T13:17:52",
+          "name": "bpf: Add user memory access kfuncs for mm_struct",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1168660/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "linux-next: manual merge of the bpf-next tree with the bpf tree",
+      "author": "Mark Brown",
+      "url": "https://lore.kernel.org/bpf/aq0bDIzGl-LblcLL@sirena.org.uk/",
+      "date": "2026-09-18T11:05:48",
+      "series": [
+        {
+          "id": 1168569,
+          "url": "https://patchwork.kernel.org/api/series/1168569/",
+          "web_url": "https://patchwork.kernel.org/series/1168569/",
+          "date": "2026-09-18T11:05:48",
+          "name": "linux-next: manual merge of the bpf-next tree with the bpf tree",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1168569/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next] selftests/bpf: Use %p for pointer formatting",
+      "author": "Sebastian Andrzej Siewior",
+      "url": "https://lore.kernel.org/bpf/20260918102610.gxA3km8_@linutronix.de/",
+      "date": "2026-09-18T10:26:10",
+      "series": [
+        {
+          "id": 1168530,
+          "url": "https://patchwork.kernel.org/api/series/1168530/",
+          "web_url": "https://patchwork.kernel.org/series/1168530/",
+          "date": "2026-09-18T10:26:10",
+          "name": "[v2,bpf-next] selftests/bpf: Use %p for pointer formatting",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1168530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,5/5] selftests/bpf: Test mm_struct user memory kfuncs with linux_binprm",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260918091058.297740-6-tasos.papagiannnis@gmail.com/",
+      "date": "2026-09-18T09:10:58",
+      "series": [
+        {
+          "id": 1168450,
+          "url": "https://patchwork.kernel.org/api/series/1168450/",
+          "web_url": "https://patchwork.kernel.org/series/1168450/",
+          "date": "2026-09-18T09:10:53",
+          "name": "bpf: Add user memory access kfuncs for mm_struct",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1168450/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,4/5] bpf: Mark linux_binprm->mm as trusted-or-null",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260918091058.297740-5-tasos.papagiannnis@gmail.com/",
+      "date": "2026-09-18T09:10:57",
+      "series": [
+        {
+          "id": 1168450,
+          "url": "https://patchwork.kernel.org/api/series/1168450/",
+          "web_url": "https://patchwork.kernel.org/series/1168450/",
+          "date": "2026-09-18T09:10:53",
+          "name": "bpf: Add user memory access kfuncs for mm_struct",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1168450/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,3/5] bpf: Add user memory access kfuncs for mm_struct",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260918091058.297740-4-tasos.papagiannnis@gmail.com/",
+      "date": "2026-09-18T09:10:56",
+      "series": [
+        {
+          "id": 1168450,
+          "url": "https://patchwork.kernel.org/api/series/1168450/",
+          "web_url": "https://patchwork.kernel.org/series/1168450/",
+          "date": "2026-09-18T09:10:53",
+          "name": "bpf: Add user memory access kfuncs for mm_struct",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1168450/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,2/5] exec: Clear bprm->mm before dropping its reference",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260918091058.297740-3-tasos.papagiannnis@gmail.com/",
+      "date": "2026-09-18T09:10:55",
+      "series": [
+        {
+          "id": 1168450,
+          "url": "https://patchwork.kernel.org/api/series/1168450/",
+          "web_url": "https://patchwork.kernel.org/series/1168450/",
+          "date": "2026-09-18T09:10:53",
+          "name": "bpf: Add user memory access kfuncs for mm_struct",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1168450/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,1/5] mm: Add copy_remote_mm_str()",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260918091058.297740-2-tasos.papagiannnis@gmail.com/",
+      "date": "2026-09-18T09:10:54",
+      "series": [
+        {
+          "id": 1168450,
+          "url": "https://patchwork.kernel.org/api/series/1168450/",
+          "web_url": "https://patchwork.kernel.org/series/1168450/",
+          "date": "2026-09-18T09:10:53",
+          "name": "bpf: Add user memory access kfuncs for mm_struct",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1168450/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,3/3] selftests/bpf: Add a test for arena fault-in under memory.max",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260918084123.39477-4-jiayuan.chen@linux.dev/",
+      "date": "2026-09-18T08:40:27",
+      "series": [
+        {
+          "id": 1168427,
+          "url": "https://patchwork.kernel.org/api/series/1168427/",
+          "web_url": "https://patchwork.kernel.org/series/1168427/",
+          "date": "2026-09-18T08:40:24",
+          "name": "bpf: arena: handle memory.max on fault-in with reclaim",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1168427/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,2/3] selftests/bpf: Add read_cgroup_file() to cgroup_helpers",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260918084123.39477-3-jiayuan.chen@linux.dev/",
+      "date": "2026-09-18T08:40:26",
+      "series": [
+        {
+          "id": 1168427,
+          "url": "https://patchwork.kernel.org/api/series/1168427/",
+          "web_url": "https://patchwork.kernel.org/series/1168427/",
+          "date": "2026-09-18T08:40:24",
+          "name": "bpf: arena: handle memory.max on fault-in with reclaim",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1168427/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,1/3] bpf: arena: allocate the fault-in page outside the lock",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260918084123.39477-2-jiayuan.chen@linux.dev/",
+      "date": "2026-09-18T08:40:25",
+      "series": [
+        {
+          "id": 1168427,
+          "url": "https://patchwork.kernel.org/api/series/1168427/",
+          "web_url": "https://patchwork.kernel.org/series/1168427/",
+          "date": "2026-09-18T08:40:24",
+          "name": "bpf: arena: handle memory.max on fault-in with reclaim",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1168427/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Add task work round ownership race test",
+      "author": "luyun",
+      "url": "https://lore.kernel.org/bpf/20260918080014.54012-3-luyun_611@163.com/",
+      "date": "2026-09-18T08:00:14",
+      "series": [
+        {
+          "id": 1168408,
+          "url": "https://patchwork.kernel.org/api/series/1168408/",
+          "web_url": "https://patchwork.kernel.org/series/1168408/",
+          "date": "2026-09-18T08:00:14",
+          "name": "bpf: Fix task work round ownership race",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1168408/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Fix task work round ownership during cancellation",
+      "author": "luyun",
+      "url": "https://lore.kernel.org/bpf/20260918080014.54012-2-luyun_611@163.com/",
+      "date": "2026-09-18T08:00:13",
+      "series": [
+        {
+          "id": 1168408,
+          "url": "https://patchwork.kernel.org/api/series/1168408/",
+          "web_url": "https://patchwork.kernel.org/series/1168408/",
+          "date": "2026-09-18T08:00:14",
+          "name": "bpf: Fix task work round ownership race",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1168408/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v12,2/2] selftests/bpf: Add memcg async reclaim test",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/44f7fcfafd5f33072dd2b9abc31aa9bf5eacd9bb.1789714023.git.zhuhui@kylinos.cn/",
+      "date": "2026-09-18T06:58:54",
+      "series": [
+        {
+          "id": 1168360,
+          "url": "https://patchwork.kernel.org/api/series/1168360/",
+          "web_url": "https://patchwork.kernel.org/series/1168360/",
+          "date": "2026-09-18T06:58:52",
+          "name": "bpf: BPF-driven proactive memcg reclaim",
+          "version": 12,
+          "mbox": "https://patchwork.kernel.org/series/1168360/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v12,1/2] mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/02f0a8dc45a840d7801ec17e0c1168f7dacf9b73.1789714023.git.zhuhui@kylinos.cn/",
+      "date": "2026-09-18T06:58:53",
+      "series": [
+        {
+          "id": 1168360,
+          "url": "https://patchwork.kernel.org/api/series/1168360/",
+          "web_url": "https://patchwork.kernel.org/series/1168360/",
+          "date": "2026-09-18T06:58:52",
+          "name": "bpf: BPF-driven proactive memcg reclaim",
+          "version": 12,
+          "mbox": "https://patchwork.kernel.org/series/1168360/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,8/8] selftests/bpf: Cover __uninit kfunc output argument slots",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260918052906.12226-9-memxor@gmail.com/",
+      "date": "2026-09-18T05:29:02",
+      "series": [
+        {
+          "id": 1168309,
+          "url": "https://patchwork.kernel.org/api/series/1168309/",
+          "web_url": "https://patchwork.kernel.org/series/1168309/",
+          "date": "2026-09-18T05:28:54",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1168309/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,7/8] bpf: Support multiple __uninit kfunc output arguments",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260918052906.12226-8-memxor@gmail.com/",
+      "date": "2026-09-18T05:29:01",
+      "series": [
+        {
+          "id": 1168309,
+          "url": "https://patchwork.kernel.org/api/series/1168309/",
+          "web_url": "https://patchwork.kernel.org/series/1168309/",
+          "date": "2026-09-18T05:28:54",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1168309/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,6/8] selftests/bpf: Cover generic __uninit output initialization",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260918052906.12226-7-memxor@gmail.com/",
+      "date": "2026-09-18T05:29:00",
+      "series": [
+        {
+          "id": 1168309,
+          "url": "https://patchwork.kernel.org/api/series/1168309/",
+          "web_url": "https://patchwork.kernel.org/series/1168309/",
+          "date": "2026-09-18T05:28:54",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1168309/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,5/8] bpf: Fix generic __uninit kfunc output buffers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260918052906.12226-6-memxor@gmail.com/",
+      "date": "2026-09-18T05:28:59",
+      "series": [
+        {
+          "id": 1168309,
+          "url": "https://patchwork.kernel.org/api/series/1168309/",
+          "web_url": "https://patchwork.kernel.org/series/1168309/",
+          "date": "2026-09-18T05:28:54",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1168309/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,4/8] selftests/bpf: Cover helper memory access permissions",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260918052906.12226-5-memxor@gmail.com/",
+      "date": "2026-09-18T05:28:58",
+      "series": [
+        {
+          "id": 1168309,
+          "url": "https://patchwork.kernel.org/api/series/1168309/",
+          "web_url": "https://patchwork.kernel.org/series/1168309/",
+          "date": "2026-09-18T05:28:54",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1168309/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,3/8] bpf: Check read access for initialized writable memory arguments",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260918052906.12226-4-memxor@gmail.com/",
+      "date": "2026-09-18T05:28:57",
+      "series": [
+        {
+          "id": 1168309,
+          "url": "https://patchwork.kernel.org/api/series/1168309/",
+          "web_url": "https://patchwork.kernel.org/series/1168309/",
+          "date": "2026-09-18T05:28:54",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1168309/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/8] bpf: Record raw memory arguments during argument checking",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260918052906.12226-3-memxor@gmail.com/",
+      "date": "2026-09-18T05:28:56",
+      "series": [
+        {
+          "id": 1168309,
+          "url": "https://patchwork.kernel.org/api/series/1168309/",
+          "web_url": "https://patchwork.kernel.org/series/1168309/",
+          "date": "2026-09-18T05:28:54",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1168309/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/8] selftests/bpf: Allow privileged preparation for capability tests",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260918052906.12226-2-memxor@gmail.com/",
+      "date": "2026-09-18T05:28:55",
+      "series": [
+        {
+          "id": 1168309,
+          "url": "https://patchwork.kernel.org/api/series/1168309/",
+          "web_url": "https://patchwork.kernel.org/series/1168309/",
+          "date": "2026-09-18T05:28:54",
+          "name": "Fix generic __uninit kfunc output buffers",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1168309/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,20/20] selftests/bpf: Load an exception cleanup program from a light skeleton",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260918044342.3294235-1-yonghong.song@linux.dev/",
+      "date": "2026-09-18T04:43:42",
+      "series": [
+        {
+          "id": 1168285,
+          "url": "https://patchwork.kernel.org/api/series/1168285/",
+          "web_url": "https://patchwork.kernel.org/series/1168285/",
+          "date": "2026-09-18T04:42:06",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1168285/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,19/20] selftests/bpf: Cover the exception cleanup shapes the chain does not reach",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260918044337.3293731-1-yonghong.song@linux.dev/",
+      "date": "2026-09-18T04:43:37",
+      "series": [
+        {
+          "id": 1168285,
+          "url": "https://patchwork.kernel.org/api/series/1168285/",
+          "web_url": "https://patchwork.kernel.org/series/1168285/",
+          "date": "2026-09-18T04:42:06",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1168285/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,18/20] selftests/bpf: Add an end-to-end .bpf_cleanup exception test",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260918044332.3293447-1-yonghong.song@linux.dev/",
+      "date": "2026-09-18T04:43:32",
+      "series": [
+        {
+          "id": 1168285,
+          "url": "https://patchwork.kernel.org/api/series/1168285/",
+          "web_url": "https://patchwork.kernel.org/series/1168285/",
+          "date": "2026-09-18T04:42:06",
+          "name": "bpf: Run exception cleanup landing pads when bpf_throw() unwinds",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1168285/mbox/"
+        }
+      ]
+    }
+  ]
+}
