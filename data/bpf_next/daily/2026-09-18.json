@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-09-19T00:00:00Z",
+  "period_start": "2026-09-17",
+  "period_end": "2026-09-18",
+  "patch_count": 100,
+  "thread_count": 20,
+  "top_contributors": ["Yonghong Song", "Amery Hung", "Anastasios Papagiannis", "Kumar Kartikeya Dwivedi"],
+  "key_topics": ["exception-handling", "kfuncs", "struct-ops", "verifier", "libbpf", "arena", "memcg", "dynptr", "bpftool", "btf"],
+  "overview": "Activity on September 17-18 was dominated by a major new BPF exception handling feature from Yonghong Song, enabling C++-style cleanup landing pads to run when bpf_throw() unwinds, submitted in both v1 and an updated v2 of a 20-patch series. Amery Hung's 15-patch series adding a common infrastructure for attaching struct_ops to cgroups (including TCP header option hooks via bpf_tcp_ops) also saw significant revision. Additional notable work includes user memory access kfuncs for mm_struct, verifier fixes for generic __uninit kfunc output buffers, BPF-driven proactive memcg reclaim, and libbpf support for manual BPF program loading.",
+  "patches": [
+    {
+      "title": "bpf: Accept the compiler's exception cleanup table at program load",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260918044201.3284339-1-yonghong.song@linux.dev/",
+      "summary": "This is the first patch in a 20-patch v2 series (\"bpf: Run exception cleanup landing pads when bpf_throw() unwinds\") that brings C++-style exception cleanup semantics to BPF programs. It extends the program load path to accept a compiler-generated exception cleanup table (.bpf_cleanup section), establishing the foundation for running cleanup code when bpf_throw() unwinds the call stack. The series adds a new bpf_unwind_resume() kfunc, verifier support for walking exception cleanup paths, JIT dispatch on both x86 and arm64, and libbpf integration to pass cleanup tables at load time. This enables BPF programs to safely clean up resources (e.g., release locks or dynptrs) even when an exception is thrown mid-execution.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add infrastructure to support attaching struct_ops to cgroups",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260917200542.3689605-10-ameryhung@gmail.com/",
+      "summary": "Part of a 15-patch v4 series (\"bpf: A common way to attach struct_ops to a cgroup\") that adds a general mechanism for attaching BPF struct_ops implementations to cgroups, similar to how BPF programs are attached today. This core patch adds the internal infrastructure for storing struct_ops links in the cgroup BPF storage and iterating over them. The series also introduces bpf_tcp_ops as a new struct_ops type exposing selected sock_ops callbacks including TCP header option parse/write hooks, and adds libbpf and bpftool support for the new attachment type.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add user memory access kfuncs for mm_struct",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260918131757.42802-4-tasos.papagiannnis@gmail.com/",
+      "summary": "Part of a 5-patch v9 series that adds kfuncs allowing BPF programs to read strings from the virtual address space of a remote process's mm_struct. A new copy_remote_mm_str() helper is added to the mm subsystem, the BPF verifier is taught to treat linux_binprm->mm as trusted-or-null, and new kfuncs wrap the remote string copy operation in a safe BPF-callable form. This enables tracing and security programs to inspect process memory (e.g., reading argv/envp strings) without risking faults in the BPF context.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix generic __uninit kfunc output buffers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260918052906.12226-6-memxor@gmail.com/",
+      "summary": "This is the core fix in an 8-patch v4 series addressing incorrect verifier handling of generic __uninit-annotated kfunc output arguments. The verifier was not properly zeroing or tracking uninitialized output buffer slots, which could allow a kfunc to write into memory the verifier still considered uninitialized, leading to unsafe state. The series also records raw memory arguments during argument checking, fixes read access verification for initialized writable arguments, and extends support to multiple __uninit output args per kfunc.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/02f0a8dc45a840d7801ec17e0c1168f7dacf9b73.1789714023.git.zhuhui@kylinos.cn/",
+      "summary": "Part of a 2-patch v12 series (\"bpf: BPF-driven proactive memcg reclaim\") that adds a new kfunc enabling BPF programs to trigger proactive memory reclaim on a specified memcg. This allows BPF-based memory management policies to preemptively free memory before pressure triggers the OOM killer. The companion patch adds a selftest exercising async memcg reclaim behavior from BPF.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: BPF programs manual loading and attaching",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20260917203040.3150212-3-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "Core patch in a 6-patch v3 series (\"libbpf: BPF program manual loading\") that gives libbpf users fine-grained control over when individual BPF programs within an object are loaded and attached. A new load strategy enum is introduced, and programs can be marked for manual control via the SEC(\"!...\") declarative prefix, allowing tools to defer or skip autoloading specific programs. This is particularly useful for security tools that need to conditionally load programs based on runtime feature detection.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Destroy callee-local dynptrs on subprog return",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20260917052000.1589643-2-xyx2021@mail.ustc.edu.cn/",
+      "summary": "First patch in a 2-patch v4 series that fixes a verifier bug where dynptrs created inside a subprog and held in callee-saved registers were not properly destroyed upon subprog return. Without this fix, the parent prog's state could see dangling dynptr references, potentially causing use-after-free or incorrect verifier tracking. The fix teaches the verifier to call the dynptr release path when unwinding callee-saved slots on subprog exit.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: arena: allocate the fault-in page outside the lock",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260918084123.39477-2-jiayuan.chen@linux.dev/",
+      "summary": "First patch in a 3-patch v8 series (\"bpf: arena: handle memory.max on fault-in with reclaim\") that fixes a potential deadlock in BPF arena page fault handling by moving page allocation outside the arena spin lock. The series also handles the case where arena fault-in fails due to cgroup memory.max limits by attempting reclaim, with a new selftest verifying correct behavior under cgroup memory pressure. This improves arena robustness in memory-constrained environments.",
+      "related_links": []
+    }
+  ]
+}

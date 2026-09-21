@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-09-17T00:00:00Z",
+  "period_start": "2026-09-15",
+  "period_end": "2026-09-16",
+  "patch_count": 54,
+  "thread_count": 15,
+  "top_contributors": ["Alan Maguire", "Daniel Borkmann", "Puranjay Mohan", "Nicholas Dudar", "Anastasios Papagiannis"],
+  "key_topics": ["btf", "kfuncs", "lsm", "libbpf", "jit", "verifier", "memory"],
+  "overview": "This was a busy day on the bpf-next mailing list, dominated by a significant 11-patch series from Alan Maguire extending BTF with new location-aware kinds to support inline function introspection. Daniel Borkmann submitted a notable series enabling BPF LSM programs to set xattrs at inode creation time, along with verifier-level support for passing context output arguments to kfuncs. Several other patches advanced the kfuncs ecosystem, including new RCU callback kfuncs from Puranjay Mohan, user memory access kfuncs for mm_struct from Anastasios Papagiannis, and a proactive memcg reclaim kfunc reaching its eleventh revision.",
+  "patches": [
+    {
+      "title": "btf: Extend UAPI to support BTF location (inline site) info",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260916074118.1007116-2-alan.maguire@oracle.com/",
+      "summary": "This patch extends the BTF UAPI with three new BTF kinds — BTF_KIND_LOC, BTF_KIND_LOC_PARAM, and BTF_KIND_LOC_PROTO — to represent the location of inline functions within their parent contexts. It is the kernel-side anchor of an 11-patch v3 series that also touches libbpf, bpftool, and selftests to fully enable inline site introspection. The motivation is to let debuggers and tracing tools reason about inlined code accurately, without guessing from DWARF or line tables alone. Companion patches add deduplication, field iteration, and bpftool dump support for the new kinds.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, lsm: Let BPF LSM provide xattrs at inode creation",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260915150739.284189-5-daniel@iogearbox.net/",
+      "summary": "This patch hooks into the inode initialization path so that a BPF LSM program can supply extended attributes at the moment an inode is created, rather than having to write them afterward in a separate step. It relies on a new verifier constraint — enforced in patch 2/8 — that makes the BPF LSM hook context read-only, preventing accidental corruption of the security subsystem's state. A companion patch adds support for passing context output arguments to kfuncs, which is the mechanism used to return the xattr list. Together with the ocfs2 preparatory fix in patch 1/8, this series represents a meaningful expansion of what BPF LSM can express at inode lifecycle events.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support passing context output arguments to kfuncs",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260915150739.284189-4-daniel@iogearbox.net/",
+      "summary": "This verifier patch introduces a new annotation, __ctx_out, allowing kfuncs to accept pointer arguments that are written by the kernel and read back by the BPF program after the call returns. Previously, kfunc output was limited to return values; this change makes it possible for kfuncs to fill in structured data much like a kernel helper can. The patch teaches the verifier to track such arguments correctly through register liveness and pointer-permission checks. It is a prerequisite for the BPF LSM xattr-at-inode-creation work in the same series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add bpf_call_rcu() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260915154248.3612028-2-puranjay@kernel.org/",
+      "summary": "This patch (v4) introduces bpf_call_rcu(), a new kfunc that lets a BPF program schedule a callback to run after an RCU grace period, mirroring the kernel's call_rcu() API. It is paired with bpf_call_rcu_tasks_trace() in the same series for the tasks-trace flavor of RCU. The callbacks are expressed as BPF programs of a new program type, enabling deferred cleanup of RCU-protected data structures from BPF without returning to user space. Selftests covering both kfuncs are included in the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add user memory access kfuncs for mm_struct",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260915080255.48929-4-tasos.papagiannnis@gmail.com/",
+      "summary": "This patch (v7, 3/5) adds kfuncs that let BPF programs read strings and data from the virtual address space of a target process, using its mm_struct as the anchor. A companion patch marks linux_binprm->mm as trusted-or-null so that exec-path programs can safely pass the mm to these kfuncs. The series also fixes an exec-layer bug where bprm->mm was not cleared before its reference was dropped. Selftests exercise the new kfuncs via the linux_binprm hook to read program arguments from user memory at exec time.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/ee6bcf945910babab2200f05040975492aed21b3.1789475073.git.zhuhui@kylinos.cn/",
+      "summary": "This patch (v11) introduces bpf_proactive_reclaim(), a kfunc that allows BPF programs to trigger proactive page reclaim for a specific memcg cgroup, giving policy-aware user space code fine-grained control over memory pressure without requiring a privileged sysfs write. The eleventh revision reflects significant iteration on safety constraints, verifier annotations, and the kfunc's interaction with the memory subsystem's reclaim path. It enables workload-aware memory management scenarios where a BPF program monitoring memory metrics can preemptively reclaim before the kernel's reactive OOM path kicks in.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: support selective kernel module BTF loading via bpf_object_open_opts",
+      "author": "Fuyu Zhao",
+      "url": "https://lore.kernel.org/bpf/20260915124104.77287-2-zhaofuyu@vivo.com/",
+      "summary": "This patch (v9) adds a new bpf_object_open_opts field that allows callers to specify a list of kernel modules whose BTF should be loaded, rather than loading all available module BTFs eagerly at program open time. On systems with many modules this avoids significant unnecessary work, improving BPF program load latency noticeably. The accompanying selftest validates that selective loading produces the same type resolution results as the full load for the specified modules.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix generic __uninit kfunc output buffers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260915141004.1196460-2-memxor@gmail.com/",
+      "summary": "This verifier fix addresses a bug where the __uninit annotation on kfunc output buffer arguments was not being handled correctly in the generic (non-type-specific) code path, potentially allowing stale register state to propagate past the kfunc call. The fix ensures that registers associated with __uninit output buffers are properly marked as written and not readable until the kfunc has had a chance to initialize them. Selftests covering the affected code path are added, along with a privileged-preparation helper for capability tests in the selftest infrastructure.",
+      "related_links": []
+    }
+  ]
+}
