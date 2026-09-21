@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-09-21T00:00:00Z",
+  "period_start": "2026-09-14",
+  "period_end": "2026-09-15",
+  "patch_count": 29,
+  "thread_count": 12,
+  "top_contributors": ["Nicholas Dudar", "Kumar Kartikeya Dwivedi", "Anastasios Papagiannis", "Puranjay Mohan", "Hui Zhu"],
+  "key_topics": ["kfuncs", "jit", "libbpf", "btf", "verifier", "xdp", "mm", "rcu"],
+  "overview": "The bpf-next list received 29 patches across 12 series on September 14-15, 2026. New kfuncs dominate the most notable submissions: user memory access kfuncs for mm_struct, bpf_call_rcu() and bpf_call_rcu_tasks_trace() for deferred RCU callbacks from BPF programs, and bpf_proactive_reclaim() for BPF-driven memory reclaim. Other highlights include CPUv4 instruction support for the x86 i386 JIT, improved libbpf load performance via selective module BTF loading, and a verifier fix bounding ownership depth through local kptrs.",
+  "patches": [
+    {
+      "title": "bpf: Add user memory access kfuncs for mm_struct",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260915080255.48929-4-tasos.papagiannnis@gmail.com/",
+      "summary": "Third patch in a 5-patch v7 series adding kfuncs that allow BPF programs to safely read strings and memory from a remote process's address space via its mm_struct. The series adds copy_remote_mm_str() to the mm layer, marks linux_binprm->mm as trusted-or-null so BPF can hold a reference, and exposes the actual kfuncs for reading user memory. This enables BPF tracing programs to inspect the arguments and environment of a process being exec'd without unsafe manual pointer dereferencing, a capability previously unavailable to BPF.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add bpf_call_rcu() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260915114240.3269184-2-puranjay@kernel.org/",
+      "summary": "First patch in a 4-patch v2 series adding bpf_call_rcu() and bpf_call_rcu_tasks_trace() kfuncs that let BPF programs schedule deferred work to run after an RCU grace period. Currently BPF programs that free RCU-protected objects must rely on userspace to orchestrate cleanup; these kfuncs bring the standard kernel call_rcu() pattern directly into BPF. The series includes selftests for both kfuncs covering typical deferred-free patterns.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/ee6bcf945910babab2200f05040975492aed21b3.1789475073.git.zhuhui@kylinos.cn/",
+      "summary": "First patch in a 2-patch v11 series adding a bpf_proactive_reclaim() kfunc that allows BPF programs to trigger proactive memory reclaim on a specific cgroup. The kfunc gives BPF-based resource management policies direct control over memory pressure without requiring privileged userspace daemons. The companion selftest verifies asynchronous reclaim behavior by monitoring memcg watermarks before and after the kfunc is invoked.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: support selective kernel module BTF loading via bpf_object_open_opts",
+      "author": "Fuyu Zhao",
+      "url": "https://lore.kernel.org/bpf/20260915124104.77287-2-zhaofuyu@vivo.com/",
+      "summary": "First patch in a 2-patch v9 series that adds a new bpf_object_open_opts field to let callers specify which kernel module BTFs libbpf should load instead of always loading all available modules. On systems with many loaded modules, the existing behavior causes noticeable latency during BPF object open because every module's BTF is parsed. Selective loading eliminates that overhead for programs that only need a small subset of module types.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Bound ownership depth through local kptrs and graph roots",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260914132444.2564218-2-memxor@gmail.com/",
+      "summary": "First patch in a 2-patch v2 series fixing the verifier's acyclic ownership checks to impose a maximum depth when following ownership chains through local kptrs and graph roots. Without a depth bound, a pathological BPF program constructing a deeply nested ownership graph could cause the verifier to spend unbounded time on the ownership-cycle check. The fix adds a depth counter and rejects programs that exceed the limit, with the companion selftest verifying the rejection threshold.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Add support for BPF_MOVSX in the i386 JIT",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20260915021338.1520964-2-main.kalliope@gmail.com/",
+      "summary": "First patch in a 5-patch series extending CPUv4 BPF instruction support in the x86 i386 JIT. The series adds BPF_MOVSX for sign-extending loads, BPF_MEMSX for sign-extending memory reads, BPF_JMP32 | BPF_JA for 32-bit unconditional jumps, and unconditional byte-swap instructions. A companion v2 series adds BPF_SDIV and BPF_SMOD for signed division and modulo to the parisc32 and parisc64 JITs, continuing a broader effort to bring all architectures to full CPUv4 parity.",
+      "related_links": []
+    },
+    {
+      "title": "xsk: Fix circular locking dependency between &net->xdp.lock, &xs->mutex, and netdev_lock_ops",
+      "author": "Khawar Ahemad",
+      "url": "https://lore.kernel.org/bpf/20260915081023.7433-1-ahemadkhawar123@gmail.com/",
+      "summary": "This v6 single patch resolves a lockdep-reported circular dependency in the AF_XDP socket path involving net->xdp.lock, xs->mutex, and netdev_lock_ops. The cycle could lead to deadlocks when XDP sockets and netdev locking interact during socket setup or teardown. The fix reorders the lock acquisition sequence and is on its sixth revision, indicating careful review to avoid introducing new ordering issues.",
+      "related_links": []
+    }
+  ]
+}

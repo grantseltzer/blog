@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-09-21T00:00:00Z",
+  "period_start": "2026-09-19",
+  "period_end": "2026-09-20",
+  "patch_count": 30,
+  "thread_count": 7,
+  "top_contributors": ["Yonghong Song", "Hui Su", "Feng Yang", "Tianyi Chen", "Abhinav Madake"],
+  "key_topics": ["exception-handling", "kfuncs", "verifier", "libbpf", "btf", "bpftool", "ringbuf", "cgroup"],
+  "overview": "The bpf-next list received 30 patches across 7 series on September 19-20, 2026. The dominant submission is Yonghong Song's 20-patch v3 series adding exception cleanup landing pads triggered by bpf_throw(), a significant addition enabling structured exception handling in BPF programs with full verifier integration and JIT support on x86 and arm64. Other highlights include a correctness fix restricting bpf_skb_output() in return-side tracing, cgroup preorder flag exposure in userspace queries, and new bpftool ring buffer event_pipe support.",
+  "patches": [
+    {
+      "title": "bpf: Accept the compiler's exception cleanup table at program load",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054231.865520-1-yonghong.song@linux.dev/",
+      "summary": "First patch in a 20-patch v3 series that adds support for running exception cleanup landing pads when bpf_throw() unwinds the BPF call chain. The series introduces a new .bpf_cleanup ELF section and extends the program load path to accept a compiler-generated exception cleanup table mapping call sites to cleanup handlers. Subsequent patches wire up the bpf_unwind_resume() kfunc, extend the verifier's CFG walk to track cleanup reachability, and add JIT-level dispatch on both x86 and arm64. The feature enables structured C++-style exception handling patterns in BPF programs without compromising the verifier's safety guarantees.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject bpf_skb_output() from return-side tracing",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20260920063442.499577-1-yangfeng59949@163.com/",
+      "summary": "This patch prevents bpf_skb_output() from being called in return-side tracing programs such as fexit and fmod_ret. On the return side of a traced function the SKB pointer may already have been freed, so allowing bpf_skb_output() there risks a use-after-free. The fix adds a program-type check in the helper's allowed-context table and is paired with a selftest in patch 2/2 that verifies the rejection is enforced by the verifier.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Report BPF_F_PREORDER in cgroup program queries",
+      "author": "Hui Su",
+      "url": "https://lore.kernel.org/bpf/20260919094400.600585-2-sh_def@163.com/",
+      "summary": "First patch in a 3-patch v2 series that exposes the BPF_F_PREORDER cgroup attachment flag in userspace program queries. Without this change, tools have no way to determine whether an attached cgroup program was loaded with preorder semantics, making introspection incomplete. The series adds the flag to BPF_PROG_QUERY results, adds a selftest to verify the reported value, and extends bpftool to display the preorder flag in its cgroup output.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Read ring buffer maps with event_pipe",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260919110721.1230756-2-hi@tychen.cc/",
+      "summary": "First patch in a 2-patch v4 series adding an event_pipe subcommand to bpftool's map tooling for consuming BPF ring buffer maps. The new command attaches to a ring buffer map and streams events to stdout, enabling shell-script integration and quick debugging without writing custom userspace consumers. The companion patch adds selftest coverage verifying that event_pipe correctly reads data written by a BPF program into a ring buffer map.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Check for unknown type ID in btf__align_of()",
+      "author": "Abhinav Madake",
+      "url": "https://lore.kernel.org/bpf/20260919174532.25407-1-abhinavmadake@gmail.com/",
+      "summary": "This v2 patch adds input validation to btf__align_of() so that passing an out-of-range or unknown type ID returns -EINVAL instead of silently dereferencing an invalid BTF type entry. Previously, callers with a stale or fabricated type ID could receive a garbage alignment value, leading to subtle memory layout bugs. The fix is a straightforward bounds check against the BTF object's type count before any type lookup proceeds.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Fix csum_partial() dropping trailing byte on odd length",
+      "author": "Madhav Khosla",
+      "url": "https://lore.kernel.org/bpf/20260920085549.867099-1-madhav.khoslaa@gmail.com/",
+      "summary": "This v3 selftest patch corrects a bug in the csum_partial() test where the trailing byte of an odd-length input buffer was silently excluded from the expected checksum, causing the test to pass even if the kernel implementation dropped the final byte. The fix adjusts the reference checksum computation to fold in the partial trailing byte, ensuring the test accurately validates odd-length behavior of the BPF checksum helper.",
+      "related_links": []
+    }
+  ]
+}
