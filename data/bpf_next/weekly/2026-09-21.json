@@ -1,0 +1,115 @@
+{
+  "generated_at": "2026-09-22T10:21:03Z",
+  "period_start": "2026-09-14",
+  "period_end": "2026-09-21",
+  "patch_count": 100,
+  "thread_count": 27,
+  "top_contributors": [
+    "Yonghong Song",
+    "Kumar Kartikeya Dwivedi",
+    "Anastasios Papagiannis",
+    "Mykola Lysenko",
+    "Kuniyuki Iwashima"
+  ],
+  "key_topics": [
+    "exceptions",
+    "verifier",
+    "kfuncs",
+    "hashtab",
+    "maps",
+    "arena",
+    "tcp",
+    "ringbuf",
+    "cgroup",
+    "btf",
+    "libbpf",
+    "selftests"
+  ],
+  "overview": "The week of September 14–21 saw a rich mix of new features and correctness fixes across core BPF subsystems. The headline work is Yonghong Song's 20-patch series enabling C++-style exception cleanup landing pads on bpf_throw() unwind, which touches the verifier, x86/arm64 JITs, libbpf, and bpftool. New kfuncs arrived for user memory access via mm_struct (Anastasios Papagiannis, v9), BPF-driven proactive memcg reclaim (Hui Zhu, v12), and TCP AutoLOWAT receive-queue management (Kuniyuki Iwashima). On the correctness side, Kumar Kartikeya Dwivedi continued tightening verifier handling of __uninit kfunc output buffers and memory argument access permissions, while hash-map memory layout was restructured to cut per-element overhead.",
+  "patches": [
+    {
+      "title": "bpf: Accept the compiler's exception cleanup table at program load",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260920054231.865520-1-yonghong.song@linux.dev/",
+      "summary": "First patch in a 20-part series (v3) enabling BPF programs to register a compiler-generated exception cleanup table. When bpf_throw() unwinds the BPF call stack, the kernel dispatches cleanup landing-pad subprograms to release resources such as ring buffer reservations or locks before the exception propagates. The series spans verifier CFG analysis, x86 and arm64 JIT dispatchers, libbpf static linker and skeleton support, and bpftool. It enables robust structured error handling in BPF without resource leaks on abnormal exit paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add user memory access kfuncs for mm_struct",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20260918131757.42802-4-tasos.papagiannnis@gmail.com/",
+      "summary": "Introduces kfuncs that allow BPF programs to safely read strings from user-space virtual addresses in an arbitrary process's address space, using the process's own mm_struct. This is particularly useful for tracing programs attached to exec hooks that need to inspect argv or environment strings without requiring a bpf_probe_read_user() per byte. The series also marks linux_binprm->mm as trusted-or-null so verifier type-checking allows it to be passed to these kfuncs, and adds a helper copy_remote_mm_str() at the mm layer.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Introduce bpf_tcp_ops.{enqueue,dequeue}_rcvq().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260920195633.3033620-3-kuniyu@google.com/",
+      "summary": "Introduces two new bpf_tcp_ops callbacks that fire when data is enqueued onto or dequeued from the TCP receive queue, enabling BPF programs to implement TCP AutoLOWAT (automatic sk_rcvlowat tuning). A companion kfunc bpf_tcp_set_rcvlowat() allows programs to adjust the wakeup watermark, controlled by a new BPF_SOCK_OPS_RCVQ_CB_FLAG opt-in. Applications that benefit from precise receive-buffer wakeup control — high-frequency trading, network proxies — can now implement adaptive policies entirely in BPF.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix generic __uninit kfunc output buffers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260921023843.411943-5-memxor@gmail.com/",
+      "summary": "Fixes a verifier correctness issue where kfuncs annotated __uninit on output buffer arguments incorrectly inherited initialization state from prior uses of the same stack slot, risking uninitialized data exposure to callers. The patch records raw memory arguments during argument checking and ensures __uninit output slots are always treated as write-only uninitialized targets. The 11-patch series (v5) also extends support for multiple __uninit output arguments and tightens read-access enforcement for all helper input/output buffer types.",
+      "related_links": []
+    },
+    {
+      "title": "mm/bpf: Add bpf_proactive_reclaim kfunc",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/02f0a8dc45a840d7801ec17e0c1168f7dacf9b73.1789714023.git.zhuhui@kylinos.cn/",
+      "summary": "Adds a new kfunc bpf_proactive_reclaim() that lets BPF programs trigger memory reclaim on a specific memcg, enabling BPF-driven proactive memory management policies. Programs can attach to scheduling or memory pressure hooks and call this kfunc to reclaim pages from a target cgroup before the OOM killer activates, allowing smoother memory pressure handling in containerized workloads. This is the v12 iteration of the series, with the kfunc living in mm/bpf.c and behind appropriate access controls.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: arena: allocate the fault-in page outside the lock",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260918084123.39477-2-jiayuan.chen@linux.dev/",
+      "summary": "Fixes a potential deadlock in BPF arena fault handling when memory.max is hit under cgroup memory reclaim: the previous code called alloc_page() while holding the arena's mmap_lock, which could deadlock if the allocation triggered direct reclaim that tried to acquire the same lock. The fix moves the page allocation outside the lock and uses a retry loop to handle the race. A companion selftest exercises arena fault-in under a cgroup memory.max constraint.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Report BPF_F_PREORDER in cgroup program queries",
+      "author": "Hui Su",
+      "url": "https://lore.kernel.org/bpf/20260919094400.600585-2-sh_def@163.com/",
+      "summary": "Exposes the BPF_F_PREORDER attach flag through the BPF_PROG_QUERY interface so user-space tools can determine whether a cgroup program was attached with preorder semantics. Previously this flag was write-only, making it impossible to audit or replicate the attachment state of a running system. The series also adds bpftool support for displaying the flag and includes a selftest that attaches a program with BPF_F_PREORDER and verifies it is visible in the query output.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Speed up htab hashing for u32/u64 keys",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260921-hashtab_fast_hashfn-v1-1-f92ae72cefcd@meta.com/",
+      "summary": "Replaces the generic jhash path in BPF hash maps with dedicated integer hash routines when the key size is exactly 4 or 8 bytes. The common case of maps keyed by PID, socket cookie, or other scalar integers benefits directly, reducing hashing overhead on hot lookup paths. The optimization is applied at map creation time based on key_size and does not affect correctness or compatibility for wider keys.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: htab: Split htab_elem_lru and htab_elem_pcpu off of htab_elem",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20260921002206.184660-2-tjmercier@google.com/",
+      "summary": "Refactors the hash-map element structure to move LRU and per-CPU fields into separate types, avoiding 8 bytes of padding in non-LRU non-pcpu maps. A follow-up patch further reduces elem_size for small-key maps by eliminating the duplicated key stored alongside the value. Together these changes shrink the memory footprint of large hash maps, which matters at the scale of millions of entries typical in XDP or socket-lookup scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Read ring buffer maps with event_pipe",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260921073556.99421-2-hi@tychen.cc/",
+      "summary": "Adds an event_pipe subcommand to bpftool's map interface enabling ring buffer maps to be consumed from the command line and piped to external tools. Each sample is written to stdout in a configurable format, making BPF ring buffer output accessible to shell scripts and monitoring pipelines without writing a dedicated consumer. This is v5 of the series, incorporating review feedback on buffer handling and output formatting.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Check for unknown type ID in btf__align_of()",
+      "author": "Abhinav Madake",
+      "url": "https://lore.kernel.org/bpf/20260919174532.25407-1-abhinavmadake@gmail.com/",
+      "summary": "Fixes btf__align_of() to return -EINVAL instead of silently returning 0 when passed an invalid or out-of-range type ID, making error propagation consistent with the rest of the libbpf BTF API. Without the fix, callers that pass the wrong type ID receive a plausible-looking zero alignment that can cause silent data layout bugs in skeleton-generated code. The v2 patch also adds a test case covering the invalid-ID path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Destroy callee-local dynptrs on subprog return",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20260920210438.345847-2-xyx2021@mail.ustc.edu.cn/",
+      "summary": "Closes a verifier gap where dynptrs allocated on a subprog's stack and not explicitly released could leave dangling references visible to the caller after the subprog returned. The fix implicitly destroys any callee-local dynptrs at subprog return, consistent with the existing treatment of iterators. A sibling patch extends the verifier to correctly track BTF pointer lifetimes for iterator-owned pointers, and both are covered by dedicated selftests.",
+      "related_links": []
+    }
+  ]
+}
