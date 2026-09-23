@@ -1,83 +1,60 @@
 {
-  "generated_at": "2026-09-22T10:21:03Z",
+  "generated_at": "2026-09-23T00:00:00Z",
   "period_start": "2026-09-20",
   "period_end": "2026-09-21",
   "patch_count": 63,
   "thread_count": 14,
-  "top_contributors": [
-    "Yonghong Song",
-    "Kumar Kartikeya Dwivedi",
-    "Mykola Lysenko",
-    "Kuniyuki Iwashima",
-    "Xu Yunxiang"
-  ],
-  "key_topics": [
-    "exceptions",
-    "verifier",
-    "kfuncs",
-    "hashtab",
-    "maps",
-    "dynptr",
-    "tcp",
-    "ringbuf",
-    "selftests"
-  ],
-  "overview": "The two-day period was dominated by Yonghong Song's 20-patch series (v3) enabling exception cleanup landing pads to run when bpf_throw() unwinds, a major step toward C++-style resource cleanup in BPF programs spanning the verifier, x86/arm64 JITs, libbpf, and bpftool. Kuniyuki Iwashima introduced new bpf_tcp_ops hooks for TCP AutoLOWAT receive-queue management, while Kumar Kartikeya Dwivedi continued refining the verifier's handling of generic __uninit kfunc output buffers. Hash map performance and memory footprint also improved via independent submissions from Meta and Google engineers.",
+  "top_contributors": ["Yonghong Song", "Kumar Kartikeya Dwivedi", "Mykola Lysenko", "Kuniyuki Iwashima"],
+  "key_topics": ["verifier", "exception-handling", "kfuncs", "maps", "tcp", "ringbuf", "dynptr", "selftests"],
+  "overview": "A busy day on bpf-next dominated by two large series: Yonghong Song's 20-patch v3 series adding exception cleanup landing pads to bpf_throw() unwind support, and Kumar Kartikeya Dwivedi's 11-patch v5 series fixing __uninit kfunc output buffer handling in the verifier. Several hash-map optimizations and a new set of TCP AutoLOWAT hooks for bpf_tcp_ops also landed.",
   "patches": [
     {
       "title": "bpf: Accept the compiler's exception cleanup table at program load",
       "author": "Yonghong Song",
       "url": "https://lore.kernel.org/bpf/20260920054231.865520-1-yonghong.song@linux.dev/",
-      "summary": "First patch in a 20-part series (v3) that teaches the BPF loader to accept a compiler-generated exception cleanup table alongside a program. When bpf_throw() unwinds the BPF call stack, the kernel can now dispatch designated landing-pad subprograms to release resources such as ring buffer reservations or locks before the exception propagates. The series requires changes across the verifier (CFG walking, landing-pad reachability), the x86 and arm64 JITs, libbpf (static linker, light skeleton), and bpftool. This enables reliable structured error handling in BPF without leaking in-flight resources.",
-      "related_links": []
-    },
-    {
-      "title": "bpf: tcp: Introduce bpf_tcp_ops.{enqueue,dequeue}_rcvq().",
-      "author": "Kuniyuki Iwashima",
-      "url": "https://lore.kernel.org/bpf/20260920195633.3033620-3-kuniyu@google.com/",
-      "summary": "Introduces two new bpf_tcp_ops callbacks — enqueue_rcvq and dequeue_rcvq — that fire when data is placed on or removed from the TCP receive queue, enabling BPF programs to implement TCP AutoLOWAT (automatic sk_rcvlowat adjustment). A companion kfunc bpf_tcp_set_rcvlowat() allows programs to adjust the watermark directly, and a new BPF_SOCK_OPS_RCVQ_CB_FLAG opt-in controls the callbacks. This allows latency-sensitive applications to tune receive-buffer wakeup behavior without kernel modifications, benefiting workloads like high-frequency trading or network proxies.",
+      "summary": "First patch of a 20-patch v3 series implementing exception cleanup landing pads for bpf_throw(). The series teaches the BPF loader to accept a compiler-generated .bpf_cleanup section, adds a new bpf_unwind_resume() kfunc, wires the landing pads into the verifier's CFG walk, and adds JIT support on both x86 and arm64. This enables BPF programs compiled with C++ exception semantics to run proper destructors when bpf_throw() unwinds the stack, closing a longstanding gap in BPF exception handling.",
       "related_links": []
     },
     {
       "title": "bpf: Fix generic __uninit kfunc output buffers",
       "author": "Kumar Kartikeya Dwivedi",
       "url": "https://lore.kernel.org/bpf/20260921023843.411943-5-memxor@gmail.com/",
-      "summary": "Fixes a verifier bug where kfuncs annotated with __uninit on their output buffer arguments were incorrectly inheriting initialization state from previous uses of the same stack slot, potentially allowing uninitialized data to escape. The fix tracks raw memory arguments recorded during argument checking and ensures __uninit output slots are always treated as uninitialized write targets. The 11-patch series also adds support for multiple __uninit output arguments per kfunc and tightens read-access checks for helper input/output buffers.",
+      "summary": "Core fix in an 11-patch v5 series addressing incorrect verifier handling of kfunc arguments annotated __uninit. The patch corrects the verifier to treat such output buffers as write-only during argument checking, fixing a bug where uninitialized stack slots could be presented as readable memory. The series also adds support for multiple __uninit output arguments per kfunc call and ensures stack initialization is preserved for generic output buffers.",
       "related_links": []
     },
     {
-      "title": "bpf: Speed up htab hashing for u32/u64 keys",
-      "author": "Mykyta Yatsenko",
-      "url": "https://lore.kernel.org/bpf/20260921-hashtab_fast_hashfn-v1-1-f92ae72cefcd@meta.com/",
-      "summary": "Optimizes the hash function used by BPF hash maps when the key size is exactly 4 or 8 bytes by using dedicated integer-hashing routines instead of the generic jhash path. For common map patterns that use u32 or u64 keys (e.g., PID lookups, socket cookie maps), this removes multi-word hashing overhead and improves throughput on hot lookup paths. The change is safe because the optimization is gated on exact key-size checks at map creation time.",
+      "title": "bpf: tcp: Introduce bpf_tcp_ops.{enqueue,dequeue}_rcvq()",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260920195633.3033620-3-kuniyu@google.com/",
+      "summary": "Second patch of a 7-patch series adding bpf_tcp_ops hooks for TCP AutoLOWAT, which allows BPF programs to dynamically adjust sk->sk_rcvlowat based on receive queue depth. The series introduces enqueue/dequeue callbacks for the receive queue, adds a new kfunc to adjust the lowat threshold, and wires up BPF_SOCK_OPS callback flags. This enables userspace-transparent receive buffering policies without kernel modifications.",
       "related_links": []
     },
     {
       "title": "bpf: htab: Split htab_elem_lru and htab_elem_pcpu off of htab_elem",
       "author": "T.J. Mercier",
       "url": "https://lore.kernel.org/bpf/20260921002206.184660-2-tjmercier@google.com/",
-      "summary": "Refactors the htab_elem structure to separate LRU-specific and per-CPU-specific fields into distinct types, reducing per-element memory overhead for non-LRU non-pcpu hash maps by 8 bytes. A follow-up patch further shrinks elem_size for maps with small keys by omitting the redundant key copy stored alongside the value. At scale, with millions of hash-map entries, this yields measurable memory savings without any change in observable semantics.",
-      "related_links": []
-    },
-    {
-      "title": "bpftool: Read ring buffer maps with event_pipe",
-      "author": "Tianyi Chen",
-      "url": "https://lore.kernel.org/bpf/20260921073556.99421-2-hi@tychen.cc/",
-      "summary": "Adds an event_pipe subcommand to bpftool's map handling so ring buffer maps can be consumed directly from the command line and piped to other tools. Each sample is written to stdout as a hexdump or binary blob, making it straightforward to integrate BPF ring buffer output into shell pipelines or monitoring scripts without writing a custom consumer program. A companion selftest validates the new mode end-to-end.",
+      "summary": "First patch of a 2-patch v5 series reducing memory consumption of BPF hash maps. By splitting the rarely-used LRU and per-CPU variants into separate structs, the series enables the second patch to shave 8 bytes off elem_size for hash maps with small keys, yielding meaningful memory savings at scale. This is the fifth iteration of a performance-focused series targeting large deployments with many map entries.",
       "related_links": []
     },
     {
       "title": "bpf: Destroy callee-local dynptrs on subprog return",
       "author": "Xu Yunxiang",
       "url": "https://lore.kernel.org/bpf/20260920210438.345847-2-xyx2021@mail.ustc.edu.cn/",
-      "summary": "Fixes a verifier correctness bug where dynptrs created in a subprog and not explicitly released could silently outlive the subprog's stack frame, leaving dangling references visible to the caller. The fix teaches the verifier to implicitly destroy callee-local dynptrs upon subprog return, consistent with the existing treatment of iterators and other frame-local objects. A sibling patch extends BTF pointer lifetime tracking for iterator-owned pointers, and both changes are covered by new selftests.",
+      "summary": "Part of a 2-patch v5 series fixing verifier lifetime tracking for dynptrs local to a called subprogram. Previously, a dynptr created inside a subprog and not explicitly released would silently escape its scope; this patch teaches the verifier to synthesize teardown on subprog return. A companion patch in the same series fixes BTF pointer lifetime tracking for iterators.",
       "related_links": []
     },
     {
-      "title": "bpf: Reject bpf_skb_output() from return-side tracing",
-      "author": "Feng Yang",
-      "url": "https://lore.kernel.org/bpf/20260920063442.499577-1-yangfeng59949@163.com/",
-      "summary": "Prevents bpf_skb_output() from being called in fexit or fretprobe contexts where the attached function may have already freed or invalidated the skb argument, which would allow out-of-bounds reads when sampling packet data into a perf/ring buffer event. The fix adds a context check in the helper's kernel-side implementation and is paired with a selftest that verifies the restriction is enforced at load time.",
+      "title": "bpftool: Read ring buffer maps with event_pipe",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260921073556.99421-2-hi@tychen.cc/",
+      "summary": "First patch of a 2-patch v5 series adding event_pipe support to bpftool's ring buffer consumer. The patch lets bpftool read from a BPF ring buffer map and feed events into a named pipe, enabling integration with external log consumers without writing a dedicated BPF userspace program. This is the fifth revision, addressing review feedback on error handling and pipe lifecycle management.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Speed up htab hashing for u32/u64 keys",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260921-hashtab_fast_hashfn-v1-1-f92ae72cefcd@meta.com/",
+      "summary": "Optimizes the BPF hash table lookup path for the common case of 32-bit and 64-bit integer keys by bypassing the generic jhash path in favor of a faster direct multiplication hash. At Meta, hash maps with u32/u64 keys are extremely common, and this specialization reduces lookup latency measurably on hot paths. This is the initial v1 posting of the patch.",
       "related_links": []
     }
   ]

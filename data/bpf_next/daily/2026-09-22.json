@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-09-23T00:00:00Z",
+  "period_start": "2026-09-21",
+  "period_end": "2026-09-22",
+  "patch_count": 103,
+  "thread_count": 22,
+  "top_contributors": ["Alexei Starovoitov", "Yonghong Song", "Andrey Grodzovsky", "Ihor Solodrai"],
+  "key_topics": ["verifier", "callx", "kfuncs", "exception-handling", "libbpf", "arena", "crypto", "cgroup", "ringbuf"],
+  "overview": "An exceptionally active day headlined by Alexei Starovoitov's 17-patch series introducing callx, a new BPF instruction for indirect calls to BPF subprograms via function pointers stored in read-only maps. This long-requested feature enables table-driven dispatch patterns in BPF programs. Alongside callx, Ihor Solodrai posted a 6-patch series scoping callback arguments to their call frame, and Andrey Grodzovsky's libbpf manual-loading series reached v4.",
+  "patches": [
+    {
+      "title": "bpf: Add callx instruction to call bpf subprogs indirectly",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260922011323.1298619-6-alexei.starovoitov@gmail.com/",
+      "summary": "Core patch in a 17-patch series introducing the callx BPF instruction, which performs an indirect call to a BPF subprogram whose address is loaded from a read-only map (e.g. .rodata). This enables function-pointer dispatch tables and virtual-dispatch patterns inside BPF programs, a capability previously impossible. The series adds verifier support, JIT emission on x86 and arm64, libbpf relocation handling for .data.rel.ro sections, and comprehensive selftests. Alexei also fixed an infinite loop in check_max_stack_depth() as a prerequisite.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce REF_TYPE_FRAME in the verifier",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260922010333.1226537-2-ihor.solodrai@linux.dev/",
+      "summary": "First patch of a 6-patch v1 series scoping callback arguments to the frame in which the callback is invoked. By introducing a new REF_TYPE_FRAME reference kind, the verifier can enforce that callback-provided objects—such as the dynptr passed to bpf_user_ringbuf_drain() or the map key passed to bpf_for_each_map_elem()—do not escape their callback frame. This prevents a class of use-after-frame bugs and improves verifier diagnostics for frame-release errors.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: BPF programs manual loading and attaching",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20260921223937.3203093-3-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "Core patch in a 7-patch v4 series adding explicit manual-load control to libbpf. Programs can now be marked for manual loading via a new load strategy enum or the SEC(\"!...\") prefix, decoupling program loading from bpf_object__load() and allowing security software to inspect or modify the program between load and attach. The series versions the bpf_program__set_autoattach() ABI change appropriately and adds thorough selftests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add bpf_call_rcu() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260921191407.1742386-2-puranjay@kernel.org/",
+      "summary": "First patch of a 4-patch v5 series adding bpf_call_rcu() and bpf_call_rcu_tasks_trace() kfuncs that allow BPF programs to register deferred callbacks to run after an RCU grace period. This brings RCU-deferred cleanup to BPF programs, enabling safe deallocation of objects that may still be referenced by concurrent readers. The series includes a companion bpf_call_rcu_tasks_trace() variant for the tasks-trace flavor and comprehensive selftests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: crypto: Use AES-CBC and AES-ECB libraries",
+      "author": "Eric Biggers",
+      "url": "https://lore.kernel.org/bpf/20260922040413.28885-1-ebiggers@kernel.org/",
+      "summary": "v3 patch switching the BPF crypto kfuncs from the generic kernel crypto API to the new AES-CBC and AES-ECB library interfaces introduced for in-kernel use. This eliminates the crypto API request/tfm allocation overhead for the common AES modes, making BPF crypto operations faster and simpler. The change also removes the dependency on CONFIG_CRYPTO_AES_ARM64_CE and equivalent configs, improving portability.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: arena: allocate the fault-in page outside the lock",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20260922101831.192102-2-jiayuan.chen@linux.dev/",
+      "summary": "First patch of a 3-patch v9 series fixing a deadlock in the BPF arena fault-in path when the cgroup memory limit (memory.max) is exceeded during page reclaim. By moving the page allocation outside the arena lock, the fix prevents a lock-order inversion between the arena spinlock and the memory reclaim path. The series adds a selftest that exercises arena fault-in under memory.max pressure using cgroup helpers.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Report BPF_F_PREORDER in cgroup program queries",
+      "author": "Hui Su",
+      "url": "https://lore.kernel.org/bpf/20260922025442.3176057-2-sh_def@163.com/",
+      "summary": "First patch of a 3-patch v3 series exposing the BPF_F_PREORDER cgroup attach flag through BPF_PROG_QUERY, allowing userspace to discover whether a cgroup program was attached with preorder semantics. Previously this flag was write-only, making it impossible to audit cgroup hook ordering from userspace. The series also adds bpftool support for displaying the flag in cgroup program listings.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Speed up htab lookups for u32/u64 keys",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260921-hashtab_fast_hashfn-v2-1-79aa962ec56b@meta.com/",
+      "summary": "v2 revision of the htab hash-function specialization for 32-bit and 64-bit keys, incorporating review feedback from v1. The patch replaces the generic jhash path with a faster multiplication-based hash for the two most common key sizes in production BPF deployments, reducing lookup latency on hot map paths at Meta scale.",
+      "related_links": []
+    }
+  ]
+}
