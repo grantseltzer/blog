@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-09-24T00:07:00Z",
+  "period_start": "2026-09-22",
+  "period_end": "2026-09-23",
+  "patch_count": 92,
+  "thread_count": 22,
+  "top_contributors": [
+    "Yonghong Song",
+    "Alexei Starovoitov",
+    "Emil Tsalapatis",
+    "Wang, Jay",
+    "Ihor Solodrai",
+    "Puranjay Mohan"
+  ],
+  "key_topics": [
+    "verifier",
+    "arena",
+    "btf",
+    "kfuncs",
+    "jit",
+    "exceptions",
+    "maps",
+    "rcu"
+  ],
+  "overview": "Heavy patch activity on September 22-23 with two landmark feature series landing: Alexei Starovoitov's 17-patch callx series adding indirect BPF subprogram calls via function pointers in read-only data, and Yonghong Song's 21-patch exception cleanup series enabling bpf_throw() to invoke compiler-generated cleanup landing pads. Alongside these major features, significant work targeted BPF arena correctness through multiple series fixing memory incoherence and range-tree consistency races, while Wang Jay proposed making the vmlinux BTF loadable as an on-demand kernel module to save approximately 5.4 MB of runtime memory.",
+  "patches": [
+    {
+      "title": "bpf: Add callx instruction to call bpf subprogs indirectly",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260922011323.1298619-6-alexei.starovoitov@gmail.com/",
+      "summary": "Introduces the callx BPF instruction, which performs an indirect call to a BPF subprogram through a function pointer loaded from a register. The instruction is validated by the verifier to ensure the target pointer refers to a known BPF subprog discovered via func_info, preventing arbitrary code redirection. This is the core patch in a 17-patch series that also adds x86 and arm64 JIT support, libbpf changes to resolve function pointers in read-only data, and selftests. It enables C-style virtual dispatch and table-driven patterns inside BPF programs that were previously impossible.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Dispatch exception cleanup pads from bpf_throw()",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260923045943.2420109-1-yonghong.song@linux.dev/",
+      "summary": "Implements the runtime dispatch mechanism that runs exception cleanup landing pads when bpf_throw() unwinds the BPF call stack, enabling C++-style RAII cleanup semantics in BPF programs. When a program calls bpf_throw(), the kernel now consults the program's exception cleanup table (loaded at program load time) to find and execute any cleanup pads registered for frames being unwound. This is part of a 21-patch v5 series that also adds verifier support for walking exception unwind paths, libbpf changes to pass the cleanup table to the kernel, and x86/arm64 JIT support for dispatching cleanup pads at runtime.",
+      "related_links": []
+    },
+    {
+      "title": "kbuild, bpf: allow building the vmlinux BTF as a module",
+      "author": "Wang, Jay",
+      "url": "https://lore.kernel.org/bpf/20260923053948.30617-7-wanjay@amazon.com/",
+      "summary": "Adds CONFIG_DEBUG_INFO_BTF=m support so the vmlinux BTF can be built and loaded as a kernel module rather than always being embedded in the kernel image, saving approximately 5.4 MB of memory on systems that do not need BTF at boot. The series introduces deferred registration of kfuncs, destructors, and struct_ops until after the btf_vmlinux module is loaded, and restructures how the kernel fetches the vmlinux BTF when kernel types enter a BPF program. This is a significant memory-footprint improvement for production deployments that load BTF only when BPF programs are actually used.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix arena race between page free and alloc leading to incoherency",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260923061425.7045-4-emil@etsalapatis.com/",
+      "summary": "Fixes a race condition in BPF arena memory management where a concurrent page free and allocation could leave the range tree and page table in an inconsistent state, potentially causing memory incoherence or double-frees. The fix introduces an explicit state machine for free spans and atomically updates the PTE and range tree together in the VM fault handler. This is part of a 7-patch v2 series that also adds range availability tracking, avoids unavailable-range leakage during arena_free_pages(), and includes race-condition selftests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add bpf_call_rcu() kfunc",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260922200208.3203834-2-puranjay@kernel.org/",
+      "summary": "Adds the bpf_call_rcu() kfunc that allows BPF programs to schedule a BPF callback to run after an RCU grace period, analogous to the kernel's call_rcu(). A companion patch adds bpf_call_rcu_tasks_trace() for the tasks-trace flavor needed when tracing programs hold references to task structures. These kfuncs fill a long-standing gap where BPF programs managing reference-counted objects had no safe deferred-free primitive; combined, they enable lock-free, RCU-protected resource management patterns directly from BPF. This is the v6 revision of the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Introduce REF_TYPE_FRAME in the verifier",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260922010333.1226537-2-ihor.solodrai@linux.dev/",
+      "summary": "Introduces a new reference type REF_TYPE_FRAME in the BPF verifier to represent objects whose lifetime is scoped to a specific call frame, rather than the entire program. This foundational change allows the verifier to enforce that callback arguments such as dynptrs and map keys passed to bpf_user_ringbuf_drain() and bpf_for_each_map_elem() cannot escape their callback frame, preventing use-after-return bugs. Subsequent patches in the 6-patch series use this primitive to scope the user ringbuf dynptr and the array map key to the callback frame.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Speed up htab lookups for u32/u64 keys",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20260922-hashtab_fast_hashfn-v3-1-b7b0e9bc33ac@meta.com/",
+      "summary": "Optimizes BPF hash map (htab) lookups for the common case of 4-byte or 8-byte integer keys by substituting a cheaper direct hash function instead of the generic jhash path. For u32 and u64 keys the generic hash involves unnecessary byte-by-byte processing; the optimized path reduces instruction count and improves cache behavior for high-frequency map lookups. This is the v3 revision, addressing feedback on the initial approach from Meta's BPF infrastructure team.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Check fastcall contract for helper and kfunc stack buffers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260923084201.2437625-2-memxor@gmail.com/",
+      "summary": "Fixes the BPF verifier's fastcall rewrite logic to correctly handle indirect stack accesses, where a helper or kfunc receives a stack buffer whose base address is computed dynamically rather than as a direct frame-pointer offset. The verifier previously did not check whether the fastcall contract (which allows the callee to clobber the stack buffer) was respected when the buffer was accessed indirectly, potentially allowing incorrect rewrites. This is the first patch of a 3-patch series that also tightens contract checking for cross-frame stack reads and adds selftests covering the fixed scenarios.",
+      "related_links": []
+    }
+  ]
+}
