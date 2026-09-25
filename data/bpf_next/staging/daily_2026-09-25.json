@@ -1,0 +1,1708 @@
+{
+  "period": "daily",
+  "period_start": "2026-09-24",
+  "period_end": "2026-09-25",
+  "fetched_at": "2026-09-25T14:29:14Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v3,3/3] sched_ext: Use fetching atomics for cmask instead of a cmpxchg loop",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260925134828.2012199-4-puranjay@kernel.org/",
+      "date": "2026-09-25T13:48:22",
+      "series": [
+        {
+          "id": 1173806,
+          "url": "https://patchwork.kernel.org/api/series/1173806/",
+          "web_url": "https://patchwork.kernel.org/series/1173806/",
+          "date": "2026-09-25T13:48:19",
+          "name": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173806/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/3] selftests/bpf: Test fetching AND/OR/XOR atomics in arena",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260925134828.2012199-3-puranjay@kernel.org/",
+      "date": "2026-09-25T13:48:21",
+      "series": [
+        {
+          "id": 1173806,
+          "url": "https://patchwork.kernel.org/api/series/1173806/",
+          "web_url": "https://patchwork.kernel.org/series/1173806/",
+          "date": "2026-09-25T13:48:19",
+          "name": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173806/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/3] bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260925134828.2012199-2-puranjay@kernel.org/",
+      "date": "2026-09-25T13:48:20",
+      "series": [
+        {
+          "id": 1173806,
+          "url": "https://patchwork.kernel.org/api/series/1173806/",
+          "web_url": "https://patchwork.kernel.org/series/1173806/",
+          "date": "2026-09-25T13:48:19",
+          "name": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173806/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] selftests/bpf: Fix up bpftool btf dump test for signatures",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260925095231.879708-4-alan.maguire@oracle.com/",
+      "date": "2026-09-25T09:52:31",
+      "series": [
+        {
+          "id": 1173689,
+          "url": "https://patchwork.kernel.org/api/series/1173689/",
+          "web_url": "https://patchwork.kernel.org/series/1173689/",
+          "date": "2026-09-25T09:52:28",
+          "name": "BTF inline functionality followups",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173689/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] bpftool: Update func representation to include function signature",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260925095231.879708-3-alan.maguire@oracle.com/",
+      "date": "2026-09-25T09:52:30",
+      "series": [
+        {
+          "id": 1173689,
+          "url": "https://patchwork.kernel.org/api/series/1173689/",
+          "web_url": "https://patchwork.kernel.org/series/1173689/",
+          "date": "2026-09-25T09:52:28",
+          "name": "BTF inline functionality followups",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173689/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] bpf: Verify BTF_KIND_LOC_PARAM vlen, flags",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260925095231.879708-2-alan.maguire@oracle.com/",
+      "date": "2026-09-25T09:52:29",
+      "series": [
+        {
+          "id": 1173689,
+          "url": "https://patchwork.kernel.org/api/series/1173689/",
+          "web_url": "https://patchwork.kernel.org/series/1173689/",
+          "date": "2026-09-25T09:52:28",
+          "name": "BTF inline functionality followups",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173689/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Test helper read of a narrow stack spill",
+      "author": "Hao Sun",
+      "url": "https://lore.kernel.org/bpf/20260925082814.1554771-2-sunhao.th@gmail.com/",
+      "date": "2026-09-25T08:28:14",
+      "series": [
+        {
+          "id": 1173639,
+          "url": "https://patchwork.kernel.org/api/series/1173639/",
+          "web_url": "https://patchwork.kernel.org/series/1173639/",
+          "date": "2026-09-25T08:28:13",
+          "name": "[bpf-next,1/2] bpf: Fix uninit read for helper mem args on partially spilled slots",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173639/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Fix uninit read for helper mem args on partially spilled slots",
+      "author": "Hao Sun",
+      "url": "https://lore.kernel.org/bpf/20260925082814.1554771-1-sunhao.th@gmail.com/",
+      "date": "2026-09-25T08:28:13",
+      "series": [
+        {
+          "id": 1173639,
+          "url": "https://patchwork.kernel.org/api/series/1173639/",
+          "web_url": "https://patchwork.kernel.org/series/1173639/",
+          "date": "2026-09-25T08:28:13",
+          "name": "[bpf-next,1/2] bpf: Fix uninit read for helper mem args on partially spilled slots",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173639/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Check callx operand before requiring JIT support",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260925060945.1993547-1-memxor@gmail.com/",
+      "date": "2026-09-25T06:09:44",
+      "series": [
+        {
+          "id": 1173553,
+          "url": "https://patchwork.kernel.org/api/series/1173553/",
+          "web_url": "https://patchwork.kernel.org/series/1173553/",
+          "date": "2026-09-25T06:09:44",
+          "name": "[bpf-next] bpf: Check callx operand before requiring JIT support",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173553/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,5/5] selftests/bpf: Test program stream file descriptors",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260925045536.1480933-6-memxor@gmail.com/",
+      "date": "2026-09-25T04:55:32",
+      "series": [
+        {
+          "id": 1173526,
+          "url": "https://patchwork.kernel.org/api/series/1173526/",
+          "web_url": "https://patchwork.kernel.org/series/1173526/",
+          "date": "2026-09-25T04:55:27",
+          "name": "File descriptor interface for BPF streams",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173526/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,4/5] bpftool: Add option to wait for program stream output",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260925045536.1480933-5-memxor@gmail.com/",
+      "date": "2026-09-25T04:55:31",
+      "series": [
+        {
+          "id": 1173526,
+          "url": "https://patchwork.kernel.org/api/series/1173526/",
+          "web_url": "https://patchwork.kernel.org/series/1173526/",
+          "date": "2026-09-25T04:55:27",
+          "name": "File descriptor interface for BPF streams",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173526/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/5] libbpf: Add bpf_prog_stream_open()",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260925045536.1480933-4-memxor@gmail.com/",
+      "date": "2026-09-25T04:55:30",
+      "series": [
+        {
+          "id": 1173526,
+          "url": "https://patchwork.kernel.org/api/series/1173526/",
+          "web_url": "https://patchwork.kernel.org/series/1173526/",
+          "date": "2026-09-25T04:55:27",
+          "name": "File descriptor interface for BPF streams",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173526/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/5] bpf: Add file descriptor interface for program streams",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260925045536.1480933-3-memxor@gmail.com/",
+      "date": "2026-09-25T04:55:29",
+      "series": [
+        {
+          "id": 1173526,
+          "url": "https://patchwork.kernel.org/api/series/1173526/",
+          "web_url": "https://patchwork.kernel.org/series/1173526/",
+          "date": "2026-09-25T04:55:27",
+          "name": "File descriptor interface for BPF streams",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173526/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/5] bpf: Skip zero-length stream writes",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260925045536.1480933-2-memxor@gmail.com/",
+      "date": "2026-09-25T04:55:28",
+      "series": [
+        {
+          "id": 1173526,
+          "url": "https://patchwork.kernel.org/api/series/1173526/",
+          "web_url": "https://patchwork.kernel.org/series/1173526/",
+          "date": "2026-09-25T04:55:27",
+          "name": "File descriptor interface for BPF streams",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173526/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Roll back freplace link state when bpf_arch_text_poke() fails",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260925043500.28030-1-chenyuan_fl@163.com/",
+      "date": "2026-09-25T04:35:00",
+      "series": [
+        {
+          "id": 1173518,
+          "url": "https://patchwork.kernel.org/api/series/1173518/",
+          "web_url": "https://patchwork.kernel.org/series/1173518/",
+          "date": "2026-09-25T04:35:00",
+          "name": "[bpf-next] bpf: Roll back freplace link state when bpf_arch_text_poke() fails",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173518/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,8/8] selftests/bpf: Add tests for iterator created anew in its loop",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260924233130.1213812-9-alexei.starovoitov@gmail.com/",
+      "date": "2026-09-24T23:31:30",
+      "series": [
+        {
+          "id": 1173466,
+          "url": "https://patchwork.kernel.org/api/series/1173466/",
+          "web_url": "https://patchwork.kernel.org/series/1173466/",
+          "date": "2026-09-24T23:31:22",
+          "name": "bpf: Fixes for may_goto, insn patching and iterator loops",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173466/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,7/8] bpf: Don't converge a loop on an iterator that was created anew",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260924233130.1213812-8-alexei.starovoitov@gmail.com/",
+      "date": "2026-09-24T23:31:29",
+      "series": [
+        {
+          "id": 1173466,
+          "url": "https://patchwork.kernel.org/api/series/1173466/",
+          "web_url": "https://patchwork.kernel.org/series/1173466/",
+          "date": "2026-09-24T23:31:22",
+          "name": "bpf: Fixes for may_goto, insn patching and iterator loops",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173466/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,6/8] selftests/bpf: Add tests for may_goto with far target",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260924233130.1213812-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-09-24T23:31:28",
+      "series": [
+        {
+          "id": 1173466,
+          "url": "https://patchwork.kernel.org/api/series/1173466/",
+          "web_url": "https://patchwork.kernel.org/series/1173466/",
+          "date": "2026-09-24T23:31:22",
+          "name": "bpf: Fixes for may_goto, insn patching and iterator loops",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173466/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,5/8] bpf: Fix overflow of jump offset in may_goto expansion",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260924233130.1213812-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-09-24T23:31:27",
+      "series": [
+        {
+          "id": 1173466,
+          "url": "https://patchwork.kernel.org/api/series/1173466/",
+          "web_url": "https://patchwork.kernel.org/series/1173466/",
+          "date": "2026-09-24T23:31:22",
+          "name": "bpf: Fixes for may_goto, insn patching and iterator loops",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173466/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/8] selftests/bpf: Add tests for pc-relative insn copied into its own patch",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260924233130.1213812-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-09-24T23:31:26",
+      "series": [
+        {
+          "id": 1173466,
+          "url": "https://patchwork.kernel.org/api/series/1173466/",
+          "web_url": "https://patchwork.kernel.org/series/1173466/",
+          "date": "2026-09-24T23:31:22",
+          "name": "bpf: Fixes for may_goto, insn patching and iterator loops",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173466/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/8] bpf: Adjust pc-relative insn copied into its own patch",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260924233130.1213812-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-09-24T23:31:25",
+      "series": [
+        {
+          "id": 1173466,
+          "url": "https://patchwork.kernel.org/api/series/1173466/",
+          "web_url": "https://patchwork.kernel.org/series/1173466/",
+          "date": "2026-09-24T23:31:22",
+          "name": "bpf: Fixes for may_goto, insn patching and iterator loops",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173466/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/8] selftests/bpf: Add test for timed may_goto with private stack",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260924233130.1213812-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-09-24T23:31:24",
+      "series": [
+        {
+          "id": 1173466,
+          "url": "https://patchwork.kernel.org/api/series/1173466/",
+          "web_url": "https://patchwork.kernel.org/series/1173466/",
+          "date": "2026-09-24T23:31:22",
+          "name": "bpf: Fixes for may_goto, insn patching and iterator loops",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173466/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/8] bpf, x86: Fix timed may_goto with private stack",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260924233130.1213812-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-09-24T23:31:23",
+      "series": [
+        {
+          "id": 1173466,
+          "url": "https://patchwork.kernel.org/api/series/1173466/",
+          "web_url": "https://patchwork.kernel.org/series/1173466/",
+          "date": "2026-09-24T23:31:22",
+          "name": "bpf: Fixes for may_goto, insn patching and iterator loops",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173466/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Return the id scratch to a fixed array sized for the stack budget",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924193403.3032037-1-memxor@gmail.com/",
+      "date": "2026-09-24T19:34:01",
+      "series": [
+        {
+          "id": 1173380,
+          "url": "https://patchwork.kernel.org/api/series/1173380/",
+          "web_url": "https://patchwork.kernel.org/series/1173380/",
+          "date": "2026-09-24T19:34:01",
+          "name": "[bpf-next] bpf: Return the id scratch to a fixed array sized for the stack budget",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173380/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5] bpf: crypto: Use AES-CBC and AES-ECB libraries",
+      "author": "Eric Biggers",
+      "url": "https://lore.kernel.org/bpf/20260924184254.142720-1-ebiggers@kernel.org/",
+      "date": "2026-09-24T18:42:54",
+      "series": [
+        {
+          "id": 1173355,
+          "url": "https://patchwork.kernel.org/api/series/1173355/",
+          "web_url": "https://patchwork.kernel.org/series/1173355/",
+          "date": "2026-09-24T18:42:54",
+          "name": "[bpf-next,v5] bpf: crypto: Use AES-CBC and AES-ECB libraries",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1173355/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: Run callx prog_tests once",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260924182533.281399-1-alexei.starovoitov@gmail.com/",
+      "date": "2026-09-24T18:25:33",
+      "series": [
+        {
+          "id": 1173344,
+          "url": "https://patchwork.kernel.org/api/series/1173344/",
+          "web_url": "https://patchwork.kernel.org/series/1173344/",
+          "date": "2026-09-24T18:25:33",
+          "name": "[bpf-next] selftests/bpf: Run callx prog_tests once",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173344/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: Fix build of callx tests with GCC",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260924182104.261823-1-alexei.starovoitov@gmail.com/",
+      "date": "2026-09-24T18:21:04",
+      "series": [
+        {
+          "id": 1173342,
+          "url": "https://patchwork.kernel.org/api/series/1173342/",
+          "web_url": "https://patchwork.kernel.org/series/1173342/",
+          "date": "2026-09-24T18:21:04",
+          "name": "[bpf-next] selftests/bpf: Fix build of callx tests with GCC",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173342/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,7/7] selftests/bpf: Test Program Structure diagnostic context",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924170646.2366016-8-memxor@gmail.com/",
+      "date": "2026-09-24T17:06:41",
+      "series": [
+        {
+          "id": 1173303,
+          "url": "https://patchwork.kernel.org/api/series/1173303/",
+          "web_url": "https://patchwork.kernel.org/series/1173303/",
+          "date": "2026-09-24T17:06:34",
+          "name": "Follow ups for verifier errors set",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173303/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,6/7] bpf: Correct Program Structure diagnostic context",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924170646.2366016-7-memxor@gmail.com/",
+      "date": "2026-09-24T17:06:40",
+      "series": [
+        {
+          "id": 1173303,
+          "url": "https://patchwork.kernel.org/api/series/1173303/",
+          "web_url": "https://patchwork.kernel.org/series/1173303/",
+          "date": "2026-09-24T17:06:34",
+          "name": "Follow ups for verifier errors set",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173303/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,5/7] selftests/bpf: Test non-sleepable kfunc context",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924170646.2366016-6-memxor@gmail.com/",
+      "date": "2026-09-24T17:06:39",
+      "series": [
+        {
+          "id": 1173303,
+          "url": "https://patchwork.kernel.org/api/series/1173303/",
+          "web_url": "https://patchwork.kernel.org/series/1173303/",
+          "date": "2026-09-24T17:06:34",
+          "name": "Follow ups for verifier errors set",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173303/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,4/7] bpf: Report non-sleepable kfunc programs accurately",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924170646.2366016-5-memxor@gmail.com/",
+      "date": "2026-09-24T17:06:38",
+      "series": [
+        {
+          "id": 1173303,
+          "url": "https://patchwork.kernel.org/api/series/1173303/",
+          "web_url": "https://patchwork.kernel.org/series/1173303/",
+          "date": "2026-09-24T17:06:34",
+          "name": "Follow ups for verifier errors set",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173303/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/7] bpf: Drop dead spill diagnostic condition",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924170646.2366016-4-memxor@gmail.com/",
+      "date": "2026-09-24T17:06:37",
+      "series": [
+        {
+          "id": 1173303,
+          "url": "https://patchwork.kernel.org/api/series/1173303/",
+          "web_url": "https://patchwork.kernel.org/series/1173303/",
+          "date": "2026-09-24T17:06:34",
+          "name": "Follow ups for verifier errors set",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173303/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/7] selftests/bpf: Test verifier stack-read diagnostic attribution",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924170646.2366016-3-memxor@gmail.com/",
+      "date": "2026-09-24T17:06:36",
+      "series": [
+        {
+          "id": 1173303,
+          "url": "https://patchwork.kernel.org/api/series/1173303/",
+          "web_url": "https://patchwork.kernel.org/series/1173303/",
+          "date": "2026-09-24T17:06:34",
+          "name": "Follow ups for verifier errors set",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173303/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/7] bpf: Correct verifier diagnostic attribution for stack reads",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924170646.2366016-2-memxor@gmail.com/",
+      "date": "2026-09-24T17:06:35",
+      "series": [
+        {
+          "id": 1173303,
+          "url": "https://patchwork.kernel.org/api/series/1173303/",
+          "web_url": "https://patchwork.kernel.org/series/1173303/",
+          "date": "2026-09-24T17:06:34",
+          "name": "Follow ups for verifier errors set",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173303/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,18/18] selftests/bpf: Test the 2 KiB stack budget",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-19-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:19",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,17/18] bpf, arm64: Allow programs 2 KiB of stack",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-18-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:18",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,16/18] bpf, x86: Allow programs 2 KiB of stack",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-17-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:17",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,15/18] selftests/bpf: Give the 512-byte stack boundary tests a 2 KiB twin",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-16-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:16",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,14/18] selftests/bpf: Add load conditions on the program stack limit",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-15-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:15",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,13/18] bpf: Bound program stack use by a per-program limit",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-14-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:14",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,12/18] bpf: Size the per-frame verifier structures for a 2 KiB stack",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-13-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:13",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,11/18] selftests/bpf: Check liveness merge of masks with different widths",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-12-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:12",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,10/18] selftests/bpf: Check that narrow stack stores define no slot",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-11-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:11",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,09/18] selftests/bpf: Cover the tail call caller stack depth limit",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-10-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:10",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,08/18] bpf: Grow the verifier id scratch on demand",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-9-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:09",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,07/18] bpf: Size liveness stack masks by the stack each frame uses",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-8-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:08",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,06/18] bpf: Treat unknown-size stack reads as reaching the frame top",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-7-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:07",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,05/18] bpf: Track scratched stack slots with a bitmap",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-6-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:06",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,04/18] bpf: Track backtracking stack slots with bitmaps",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-5-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:05",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,03/18] bpf: Store linked registers in the jump history as an array",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-4-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:04",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,02/18] bpf: Widen the stack slot index in the jump history",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-3-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:03",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,01/18] bpf: Add accessors for verifier stack slots",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-2-memxor@gmail.com/",
+      "date": "2026-09-24T16:57:02",
+      "series": [
+        {
+          "id": 1173301,
+          "url": "https://patchwork.kernel.org/api/series/1173301/",
+          "web_url": "https://patchwork.kernel.org/series/1173301/",
+          "date": "2026-09-24T16:57:01",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173301/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,2/2] selftests/bpf: Check bpftool batch map dump contents",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260924163403.203491-3-hi@tychen.cc/",
+      "date": "2026-09-24T16:34:03",
+      "series": [
+        {
+          "id": 1173294,
+          "url": "https://patchwork.kernel.org/api/series/1173294/",
+          "web_url": "https://patchwork.kernel.org/series/1173294/",
+          "date": "2026-09-24T16:34:02",
+          "name": "bpftool: Batch bounded hash map dumps",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1173294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,1/2] bpftool: Use batch lookups for bounded hash map dumps",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260924163403.203491-2-hi@tychen.cc/",
+      "date": "2026-09-24T16:34:02",
+      "series": [
+        {
+          "id": 1173294,
+          "url": "https://patchwork.kernel.org/api/series/1173294/",
+          "web_url": "https://patchwork.kernel.org/series/1173294/",
+          "date": "2026-09-24T16:34:02",
+          "name": "bpftool: Batch bounded hash map dumps",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1173294/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,18/18] selftests/bpf: Test the 2 KiB stack budget",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-19-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:32",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,17/18] bpf, arm64: Allow programs 2 KiB of stack",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-18-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:31",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,16/18] bpf, x86: Allow programs 2 KiB of stack",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-17-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:30",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,15/18] selftests/bpf: Give the 512-byte stack boundary tests a 2 KiB twin",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-16-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:29",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,14/18] selftests/bpf: Add load conditions on the program stack limit",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-15-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:28",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,13/18] bpf: Bound program stack use by a per-program limit",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-14-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:27",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,12/18] bpf: Size the per-frame verifier structures for a 2 KiB stack",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-13-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:26",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,11/18] selftests/bpf: Check liveness merge of masks with different widths",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-12-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:25",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,10/18] selftests/bpf: Check that narrow stack stores define no slot",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-11-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:24",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,09/18] selftests/bpf: Cover the tail call caller stack depth limit",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-10-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:23",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,08/18] bpf: Grow the verifier id scratch on demand",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-9-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:22",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,07/18] bpf: Size liveness stack masks by the stack each frame uses",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-8-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:21",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,06/18] bpf: Treat unknown-size stack reads as reaching the frame top",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-7-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:20",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,05/18] bpf: Track scratched stack slots with a bitmap",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-6-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:19",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,04/18] bpf: Track backtracking stack slots with bitmaps",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-5-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:18",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,03/18] bpf: Store linked registers in the jump history as an array",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-4-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:17",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,02/18] bpf: Widen the stack slot index in the jump history",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-3-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:16",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,01/18] bpf: Add accessors for verifier stack slots",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924163144.1945455-2-memxor@gmail.com/",
+      "date": "2026-09-24T16:31:15",
+      "series": [
+        {
+          "id": 1173291,
+          "url": "https://patchwork.kernel.org/api/series/1173291/",
+          "web_url": "https://patchwork.kernel.org/series/1173291/",
+          "date": "2026-09-24T16:31:14",
+          "name": "Raise BPF program stack size to 2KiB",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173291/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Add bpf_call_rcu tests for hash and LRU hash maps",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260924162858.2435106-3-puranjay@kernel.org/",
+      "date": "2026-09-24T16:28:57",
+      "series": [
+        {
+          "id": 1173290,
+          "url": "https://patchwork.kernel.org/api/series/1173290/",
+          "web_url": "https://patchwork.kernel.org/series/1173290/",
+          "date": "2026-09-24T16:28:55",
+          "name": "bpf: Support bpf_rcu_head in hash and LRU hash maps",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173290/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Support bpf_rcu_head in hash and LRU hash maps",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260924162858.2435106-2-puranjay@kernel.org/",
+      "date": "2026-09-24T16:28:56",
+      "series": [
+        {
+          "id": 1173290,
+          "url": "https://patchwork.kernel.org/api/series/1173290/",
+          "web_url": "https://patchwork.kernel.org/series/1173290/",
+          "date": "2026-09-24T16:28:55",
+          "name": "bpf: Support bpf_rcu_head in hash and LRU hash maps",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173290/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/5] selftests/bpf: Test program stream file descriptors",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924162641.1922423-6-memxor@gmail.com/",
+      "date": "2026-09-24T16:26:37",
+      "series": [
+        {
+          "id": 1173283,
+          "url": "https://patchwork.kernel.org/api/series/1173283/",
+          "web_url": "https://patchwork.kernel.org/series/1173283/",
+          "date": "2026-09-24T16:26:32",
+          "name": "File descriptor interface for BPF streams",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1173283/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/5] bpftool: Read program streams through file descriptors",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924162641.1922423-5-memxor@gmail.com/",
+      "date": "2026-09-24T16:26:36",
+      "series": [
+        {
+          "id": 1173283,
+          "url": "https://patchwork.kernel.org/api/series/1173283/",
+          "web_url": "https://patchwork.kernel.org/series/1173283/",
+          "date": "2026-09-24T16:26:32",
+          "name": "File descriptor interface for BPF streams",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1173283/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/5] libbpf: Add bpf_prog_stream_open()",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924162641.1922423-4-memxor@gmail.com/",
+      "date": "2026-09-24T16:26:35",
+      "series": [
+        {
+          "id": 1173283,
+          "url": "https://patchwork.kernel.org/api/series/1173283/",
+          "web_url": "https://patchwork.kernel.org/series/1173283/",
+          "date": "2026-09-24T16:26:32",
+          "name": "File descriptor interface for BPF streams",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1173283/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/5] bpf: Add file descriptor interface for program streams",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924162641.1922423-3-memxor@gmail.com/",
+      "date": "2026-09-24T16:26:34",
+      "series": [
+        {
+          "id": 1173283,
+          "url": "https://patchwork.kernel.org/api/series/1173283/",
+          "web_url": "https://patchwork.kernel.org/series/1173283/",
+          "date": "2026-09-24T16:26:32",
+          "name": "File descriptor interface for BPF streams",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1173283/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/5] bpf: Skip zero-length stream writes",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924162641.1922423-2-memxor@gmail.com/",
+      "date": "2026-09-24T16:26:33",
+      "series": [
+        {
+          "id": 1173283,
+          "url": "https://patchwork.kernel.org/api/series/1173283/",
+          "web_url": "https://patchwork.kernel.org/series/1173283/",
+          "date": "2026-09-24T16:26:32",
+          "name": "File descriptor interface for BPF streams",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1173283/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: Add timer tests for a re-arming callback with a loop",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260924162609.1746610-3-puranjay@kernel.org/",
+      "date": "2026-09-24T16:26:07",
+      "series": [
+        {
+          "id": 1173282,
+          "url": "https://patchwork.kernel.org/api/series/1173282/",
+          "web_url": "https://patchwork.kernel.org/series/1173282/",
+          "date": "2026-09-24T16:26:05",
+          "name": "bpf: Fix loop detection for re-arming async callbacks",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1173282/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: Look at frame 0 when telling async callback entries apart",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260924162609.1746610-2-puranjay@kernel.org/",
+      "date": "2026-09-24T16:26:06",
+      "series": [
+        {
+          "id": 1173282,
+          "url": "https://patchwork.kernel.org/api/series/1173282/",
+          "web_url": "https://patchwork.kernel.org/series/1173282/",
+          "date": "2026-09-24T16:26:05",
+          "name": "bpf: Fix loop detection for re-arming async callbacks",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1173282/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,2/2] selftests/bpf: Cover recursive bpftool map dumps",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260924161434.95116-3-hi@tychen.cc/",
+      "date": "2026-09-24T16:14:34",
+      "series": [
+        {
+          "id": 1173277,
+          "url": "https://patchwork.kernel.org/api/series/1173277/",
+          "web_url": "https://patchwork.kernel.org/series/1173277/",
+          "date": "2026-09-24T16:14:32",
+          "name": "bpftool: Add recursive map dumping",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1173277/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,1/2] bpftool: Add recursive map dumping",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260924161434.95116-2-hi@tychen.cc/",
+      "date": "2026-09-24T16:14:33",
+      "series": [
+        {
+          "id": 1173277,
+          "url": "https://patchwork.kernel.org/api/series/1173277/",
+          "web_url": "https://patchwork.kernel.org/series/1173277/",
+          "date": "2026-09-24T16:14:32",
+          "name": "bpftool: Add recursive map dumping",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1173277/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Check that bpftool reports a map it can't dump",
+      "author": "Maxim Skokov",
+      "url": "https://lore.kernel.org/bpf/20260924160732.485650-3-skokovmaksimevg@gmail.com/",
+      "date": "2026-09-24T16:07:20",
+      "series": [
+        {
+          "id": 1173267,
+          "url": "https://patchwork.kernel.org/api/series/1173267/",
+          "web_url": "https://patchwork.kernel.org/series/1173267/",
+          "date": "2026-09-24T16:07:18",
+          "name": "bpftool: Don't report an empty map when key iteration fails",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173267/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpftool: Don't report an empty map when key iteration fails",
+      "author": "Maxim Skokov",
+      "url": "https://lore.kernel.org/bpf/20260924160732.485650-2-skokovmaksimevg@gmail.com/",
+      "date": "2026-09-24T16:07:19",
+      "series": [
+        {
+          "id": 1173267,
+          "url": "https://patchwork.kernel.org/api/series/1173267/",
+          "web_url": "https://patchwork.kernel.org/series/1173267/",
+          "date": "2026-09-24T16:07:18",
+          "name": "bpftool: Don't report an empty map when key iteration fails",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173267/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/3] sched_ext: Stop citing the x86 JIT for the cmask cmpxchg loop",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260924160354.531101-4-puranjay@kernel.org/",
+      "date": "2026-09-24T16:03:49",
+      "series": [
+        {
+          "id": 1173262,
+          "url": "https://patchwork.kernel.org/api/series/1173262/",
+          "web_url": "https://patchwork.kernel.org/series/1173262/",
+          "date": "2026-09-24T16:03:46",
+          "name": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1173262/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/3] selftests/bpf: Test fetching AND/OR/XOR atomics in arena",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260924160354.531101-3-puranjay@kernel.org/",
+      "date": "2026-09-24T16:03:48",
+      "series": [
+        {
+          "id": 1173262,
+          "url": "https://patchwork.kernel.org/api/series/1173262/",
+          "web_url": "https://patchwork.kernel.org/series/1173262/",
+          "date": "2026-09-24T16:03:46",
+          "name": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1173262/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/3] bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260924160354.531101-2-puranjay@kernel.org/",
+      "date": "2026-09-24T16:03:47",
+      "series": [
+        {
+          "id": 1173262,
+          "url": "https://patchwork.kernel.org/api/series/1173262/",
+          "web_url": "https://patchwork.kernel.org/series/1173262/",
+          "date": "2026-09-24T16:03:46",
+          "name": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1173262/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next] selftests/bpf: Replace %pK output with 0",
+      "author": "Sebastian Andrzej Siewior",
+      "url": "https://lore.kernel.org/bpf/20260924153153.tlErkAb5@linutronix.de/",
+      "date": "2026-09-24T15:31:53",
+      "series": [
+        {
+          "id": 1173242,
+          "url": "https://patchwork.kernel.org/api/series/1173242/",
+          "web_url": "https://patchwork.kernel.org/series/1173242/",
+          "date": "2026-09-24T15:31:53",
+          "name": "[v3,bpf-next] selftests/bpf: Replace %pK output with 0",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173242/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v4,bpf-next,11/11] Documentation/bpf: Describe new location-related BTF kinds",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260924111428.75957-12-alan.maguire@oracle.com/",
+      "date": "2026-09-24T11:14:28",
+      "series": [
+        {
+          "id": 1173043,
+          "url": "https://patchwork.kernel.org/api/series/1173043/",
+          "web_url": "https://patchwork.kernel.org/series/1173043/",
+          "date": "2026-09-24T11:14:17",
+          "name": "Support inline functions in BTF",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173043/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v4,bpf-next,10/11] selftests/bpf: Test bpftool dump of BTF location info",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260924111428.75957-11-alan.maguire@oracle.com/",
+      "date": "2026-09-24T11:14:27",
+      "series": [
+        {
+          "id": 1173043,
+          "url": "https://patchwork.kernel.org/api/series/1173043/",
+          "web_url": "https://patchwork.kernel.org/series/1173043/",
+          "date": "2026-09-24T11:14:17",
+          "name": "Support inline functions in BTF",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173043/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v4,bpf-next,09/11] bpftool: Add ability to dump LOC_PARAM, LOC_PROTO and LOCSEC",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260924111428.75957-10-alan.maguire@oracle.com/",
+      "date": "2026-09-24T11:14:26",
+      "series": [
+        {
+          "id": 1173043,
+          "url": "https://patchwork.kernel.org/api/series/1173043/",
+          "web_url": "https://patchwork.kernel.org/series/1173043/",
+          "date": "2026-09-24T11:14:17",
+          "name": "Support inline functions in BTF",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173043/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v4,bpf-next,08/11] bpftool: Document support for multi-split BTF",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260924111428.75957-9-alan.maguire@oracle.com/",
+      "date": "2026-09-24T11:14:25",
+      "series": [
+        {
+          "id": 1173043,
+          "url": "https://patchwork.kernel.org/api/series/1173043/",
+          "web_url": "https://patchwork.kernel.org/series/1173043/",
+          "date": "2026-09-24T11:14:17",
+          "name": "Support inline functions in BTF",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173043/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v4,bpf-next,07/11] bpftool: Handle multi-split BTF by supporting multiple base BTFs",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260924111428.75957-8-alan.maguire@oracle.com/",
+      "date": "2026-09-24T11:14:24",
+      "series": [
+        {
+          "id": 1173043,
+          "url": "https://patchwork.kernel.org/api/series/1173043/",
+          "web_url": "https://patchwork.kernel.org/series/1173043/",
+          "date": "2026-09-24T11:14:17",
+          "name": "Support inline functions in BTF",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173043/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v4,bpf-next,06/11] selftests/bpf: BTF distill tests to ensure LOC[_PARAM|_PROTO] add to split BTF",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260924111428.75957-7-alan.maguire@oracle.com/",
+      "date": "2026-09-24T11:14:23",
+      "series": [
+        {
+          "id": 1173043,
+          "url": "https://patchwork.kernel.org/api/series/1173043/",
+          "web_url": "https://patchwork.kernel.org/series/1173043/",
+          "date": "2026-09-24T11:14:17",
+          "name": "Support inline functions in BTF",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173043/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v4,bpf-next,05/11] selftests/bpf: Add LOC_PARAM, LOC_PROTO, LOCSEC to dedup split tests",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260924111428.75957-6-alan.maguire@oracle.com/",
+      "date": "2026-09-24T11:14:22",
+      "series": [
+        {
+          "id": 1173043,
+          "url": "https://patchwork.kernel.org/api/series/1173043/",
+          "web_url": "https://patchwork.kernel.org/series/1173043/",
+          "date": "2026-09-24T11:14:17",
+          "name": "Support inline functions in BTF",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173043/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v4,bpf-next,04/11] selftests/bpf: Add LOC_PARAM, LOC_PROTO, LOCSEC to field iter tests",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260924111428.75957-5-alan.maguire@oracle.com/",
+      "date": "2026-09-24T11:14:21",
+      "series": [
+        {
+          "id": 1173043,
+          "url": "https://patchwork.kernel.org/api/series/1173043/",
+          "web_url": "https://patchwork.kernel.org/series/1173043/",
+          "date": "2026-09-24T11:14:17",
+          "name": "Support inline functions in BTF",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173043/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v4,bpf-next,03/11] selftests/bpf: Test helper support for BTF_KIND_LOC[_PARAM|_PROTO|SEC]",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260924111428.75957-4-alan.maguire@oracle.com/",
+      "date": "2026-09-24T11:14:20",
+      "series": [
+        {
+          "id": 1173043,
+          "url": "https://patchwork.kernel.org/api/series/1173043/",
+          "web_url": "https://patchwork.kernel.org/series/1173043/",
+          "date": "2026-09-24T11:14:17",
+          "name": "Support inline functions in BTF",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173043/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v4,bpf-next,02/11] libbpf: Add support for BTF kinds LOC[_PARAM|_PROTO|SEC]",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260924111428.75957-3-alan.maguire@oracle.com/",
+      "date": "2026-09-24T11:14:19",
+      "series": [
+        {
+          "id": 1173043,
+          "url": "https://patchwork.kernel.org/api/series/1173043/",
+          "web_url": "https://patchwork.kernel.org/series/1173043/",
+          "date": "2026-09-24T11:14:17",
+          "name": "Support inline functions in BTF",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173043/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v4,bpf-next,01/11] btf: Extend UAPI to support BTF location (inline site) info",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260924111428.75957-2-alan.maguire@oracle.com/",
+      "date": "2026-09-24T11:14:18",
+      "series": [
+        {
+          "id": 1173043,
+          "url": "https://patchwork.kernel.org/api/series/1173043/",
+          "web_url": "https://patchwork.kernel.org/series/1173043/",
+          "date": "2026-09-24T11:14:17",
+          "name": "Support inline functions in BTF",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1173043/mbox/"
+        }
+      ]
+    }
+  ]
+}
