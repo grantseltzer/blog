@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-09-25T00:00:00Z",
+  "period_start": "2026-09-23",
+  "period_end": "2026-09-24",
+  "patch_count": 100,
+  "thread_count": 13,
+  "top_contributors": [
+    "Kumar Kartikeya Dwivedi",
+    "Alexei Starovoitov",
+    "Alan Maguire",
+    "Kuniyuki Iwashima",
+    "Andrey Grodzovsky"
+  ],
+  "key_topics": [
+    "verifier",
+    "btf",
+    "callx",
+    "stack",
+    "kfuncs",
+    "arena",
+    "libbpf",
+    "tcp"
+  ],
+  "overview": "A remarkably active day on bpf-next dominated by two landmark series: Alexei Starovoitov posted both a new indirect call instruction (callx) enabling function-pointer-style dispatch between BPF subprograms, and a verifier overhaul that verifies loops by widening scalars at loop heads rather than walking every iteration. Kumar Kartikeya Dwivedi followed with a v2 of his 18-patch series raising the BPF program stack limit from 512 bytes to 2 KiB.",
+  "patches": [
+    {
+      "title": "bpf: Add callx instruction to call bpf subprogs indirectly",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260924031042.1690890-6-alexei.starovoitov@gmail.com/",
+      "summary": "Introduces the new BPF callx instruction, which dispatches to a BPF subprogram through a register containing a function pointer. This enables C-style indirect calls and virtual-dispatch patterns inside BPF programs, a capability that was previously impossible without helper indirection. The series accompanies callx with x86 and arm64 JIT backends, verifier recognition of read-only map pointers to functions, and libbpf support for resolving function pointers in read-only data sections. Documentation for the new ISA instruction is included as the final patch.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Widen scalars at loop heads",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260923223554.562379-4-alexei.starovoitov@gmail.com/",
+      "summary": "Core patch in an 8-patch series that fundamentally changes how the BPF verifier handles loops by widening scalar ranges at detected loop-head instructions instead of re-walking every iteration. This eliminates the exponential blow-up that forced many programs to use bpf_loop() or may_goto workarounds and dramatically reduces verification time for programs with bounded iterator patterns. Companion patches detect loop heads during check_cfg(), handle loops that never exit, and automatically insert may_goto annotations for loops that cannot be fully bounded.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Allow programs 2 KiB of stack",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924082607.2695649-17-memxor@gmail.com/",
+      "summary": "Part of a v2 18-patch series raising the BPF program stack limit from the historical 512-byte ceiling to 2 KiB on both x86 and arm64 JIT backends. To support this safely the series reworks the verifier to track scratched and backtracking stack slots with bitmaps (replacing fixed-width arrays), dynamically sizes liveness masks per frame, and introduces a per-program stack budget enforced at load time. The size increase unlocks more complex BPF programs that previously required map-based scratch space.",
+      "related_links": []
+    },
+    {
+      "title": "btf: Extend UAPI to support BTF location (inline site) info",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260924111428.75957-2-alan.maguire@oracle.com/",
+      "summary": "First patch in a v4 11-patch series that adds three new BTF kinds — BTF_KIND_LOC, BTF_KIND_LOC_PARAM, and BTF_KIND_LOCSEC — encoding the source location (file, line, column) and call-site context of inlined functions. This fills a longstanding gap where BPF stack traces and error messages could not name the inline frames responsible for a given instruction. The series adds libbpf encoding and decoding support, bpftool dump commands, distill/dedup handling, and kernel documentation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Introduce bpf_tcp_ops.{enqueue,dequeue}_rcvq()",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20260923213719.224838-4-kuniyu@google.com/",
+      "summary": "Core patch in the v2 TCP AutoLOWAT series, adding two new BPF struct-ops hooks that fire when data is enqueued to or dequeued from a TCP socket's receive queue. Combined with a new bpf_tcp_set_rcvlowat() kfunc (patch 7/8) this lets a BPF program dynamically tune sk_rcvlowat per-socket, reducing unnecessary epoll wakeups under bursty workloads. The series also converts the bpf_{get,set}sockopt() deny-list to an allow-list for better safety.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix arena race between page free and alloc leading to incoherency",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260923191125.5311-4-emil@etsalapatis.com/",
+      "summary": "Addresses a race in the BPF arena VM fault handler where a concurrent free and allocation of the same page could leave the range tree and the PTE in inconsistent states, causing silent memory corruption. The fix makes PTE installation and range-tree updates atomic and introduces an explicit state machine for free spans. Two earlier patches in the series (v3) improve range-tree availability tracking and fix the is_range_tree_set helper for consecutive-range checks.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: BPF programs manual loading and attaching",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20260923232939.1886328-3-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "Key patch in a v5 8-patch libbpf series adding a BPF_PROG_LOAD_STRATEGY_MANUAL mode that defers a program's kernel load and attachment to user-controlled calls, rather than having bpf_object__load() do it automatically. This is useful for tools like veristat that need to control load order or inspect programs before loading. The series also introduces a declarative SEC(\"!...\") prefix syntax, versions the bpf_program__set_autoattach() ABI change, and converts veristat to the new API.",
+      "related_links": []
+    }
+  ]
+}
