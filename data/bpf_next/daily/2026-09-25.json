@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-09-26T00:00:00Z",
+  "period_start": "2026-09-24",
+  "period_end": "2026-09-25",
+  "patch_count": 101,
+  "thread_count": 23,
+  "top_contributors": [
+    "Kumar Kartikeya Dwivedi",
+    "Alan Maguire",
+    "Alexei Starovoitov",
+    "Puranjay Mohan"
+  ],
+  "key_topics": [
+    "verifier",
+    "btf",
+    "stack",
+    "streams",
+    "arena",
+    "atomics",
+    "maps",
+    "bpftool"
+  ],
+  "overview": "A very active day on bpf-next, dominated by Kumar Kartikeya Dwivedi's v4 series raising the BPF program stack from 512 bytes to 2 KiB — a major milestone requiring deep changes to the verifier, JIT backends for x86 and arm64, and liveness tracking. Alongside that, a file descriptor interface for BPF program streams and Alan Maguire's BTF inline function location support (v4) round out the day's most significant feature work.",
+  "patches": [
+    {
+      "title": "bpf: Add accessors for verifier stack slots",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260924165740.2146806-2-memxor@gmail.com/",
+      "summary": "First patch in the 18-patch v4 series raising the BPF program stack size to 2 KiB. It introduces clean accessor helpers for verifier per-frame stack slot arrays, decoupling the internal representation from the fixed 512-byte limit. This groundwork is necessary before widening the stack index types and bitmaps in subsequent patches. The series also updates both the x86 and arm64 JITs to allocate the larger frame, and adds an 18-patch selftest suite covering tail calls, narrow stores, and liveness edge cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Skip zero-length stream writes",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260925045536.1480933-2-memxor@gmail.com/",
+      "summary": "First patch in the v3 five-patch series adding a file descriptor interface for BPF program streams, allowing user space to consume stream data through standard read() on an fd rather than polling a map. The series includes kernel-side stream fd infrastructure, a new libbpf bpf_prog_stream_open() API, a bpftool subcommand to wait for and print stream output, and selftests. This provides a more ergonomic and composable way to consume bpf_printk / trace-style output from BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "btf: Extend UAPI to support BTF location (inline site) info",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260924111428.75957-2-alan.maguire@oracle.com/",
+      "summary": "First patch in the v4 eleven-patch series adding BTF support for inline function locations, introducing new BTF kinds BTF_KIND_LOC, BTF_KIND_LOC_PARAM, BTF_KIND_LOC_PROTO, and LOCSEC to encode where inlined functions originate. This enables debuggers and tracing tools to correctly attribute inlined code back to its source function, which is important for accurate BPF CO-RE and stack unwinding. The series extends libbpf, bpftool dump, dedup, and split BTF handling, with extensive selftests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Fix timed may_goto with private stack",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260924233130.1213812-2-alexei.starovoitov@gmail.com/",
+      "summary": "First patch in an eight-patch fix series for may_goto, instruction patching, and iterator loop handling in the verifier and x86 JIT. It corrects timed may_goto behavior when a BPF program uses a private stack, where the timeout counter was incorrectly placed. Subsequent patches fix a jump offset overflow in may_goto expansion for large programs, adjust PC-relative instructions that get copied into their own patch buffer, and prevent the verifier from incorrectly converging loops that contain freshly-created iterators.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260925134828.2012199-2-puranjay@kernel.org/",
+      "summary": "First patch in the v3 three-patch series adding fetch variants of AND, OR, and XOR atomic operations for BPF arena memory on x86. Previously only XCHG and CMPXCHG had fetch semantics in the x86 JIT for arena accesses; this patch wires up FETCH|AND, FETCH|OR, and FETCH|XOR using the appropriate x86 lock prefix forms. A third patch in the series replaces an equivalent cmpxchg loop in sched_ext with the new fetching atomic, demonstrating a real consumer.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support bpf_rcu_head in hash and LRU hash maps",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260924162858.2435106-2-puranjay@kernel.org/",
+      "summary": "Extends BPF map RCU freeing support to hash and LRU hash map value types that embed a bpf_rcu_head. This allows map values to be freed via RCU callback rather than synchronous kfree, important for performance-sensitive paths where blocking on a grace period is unacceptable. The patch teaches the hash and LRU hash map free paths to detect the bpf_rcu_head field and schedule deferred freeing accordingly, with a companion selftest patch.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: crypto: Use AES-CBC and AES-ECB libraries",
+      "author": "Eric Biggers",
+      "url": "https://lore.kernel.org/bpf/20260924184254.142720-1-ebiggers@kernel.org/",
+      "summary": "Fifth revision of a patch replacing the BPF crypto helper's use of the kernel crypto API skcipher interface for AES-CBC and AES-ECB with the newer direct AES library functions. The crypto API path carries significant overhead from request allocation and algorithm lookup that is unnecessary for these simple block cipher modes. The library interface is also safer for BPF's non-sleepable context constraints and reduces code complexity in the helper implementation.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Add recursive map dumping",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260924161434.95116-2-hi@tychen.cc/",
+      "summary": "Seventh revision of a patch adding recursive inner-map dumping to bpftool map dump output. When a map-of-maps value is a reference to another map, bpftool will now follow the reference and inline the referenced map's contents in the output rather than printing an opaque map ID. This makes map-of-maps structures much easier to inspect from the command line without requiring a separate lookup step per inner map id.",
+      "related_links": []
+    }
+  ]
+}
