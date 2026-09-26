@@ -1,0 +1,1487 @@
+{
+  "period": "daily",
+  "period_start": "2026-09-25",
+  "period_end": "2026-09-26",
+  "fetched_at": "2026-09-26T13:39:51Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v9,2/2] selftests/bpf: Cover recursive bpftool map dumps",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260926014208.24773-3-hi@tychen.cc/",
+      "date": "2026-09-26T01:42:08",
+      "series": [
+        {
+          "id": 1174167,
+          "url": "https://patchwork.kernel.org/api/series/1174167/",
+          "web_url": "https://patchwork.kernel.org/series/1174167/",
+          "date": "2026-09-26T01:42:06",
+          "name": "bpftool: Add recursive map dumping",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1174167/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,1/2] bpftool: Add recursive map dumping",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260926014208.24773-2-hi@tychen.cc/",
+      "date": "2026-09-26T01:42:07",
+      "series": [
+        {
+          "id": 1174167,
+          "url": "https://patchwork.kernel.org/api/series/1174167/",
+          "web_url": "https://patchwork.kernel.org/series/1174167/",
+          "date": "2026-09-26T01:42:06",
+          "name": "bpftool: Add recursive map dumping",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1174167/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,2/2] selftests/bpf: Add linked_externs test for externs in allocated sections",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20260926000243.2830819-2-andrii@kernel.org/",
+      "date": "2026-09-26T00:02:43",
+      "series": [
+        {
+          "id": 1174143,
+          "url": "https://patchwork.kernel.org/api/series/1174143/",
+          "web_url": "https://patchwork.kernel.org/series/1174143/",
+          "date": "2026-09-26T00:02:42",
+          "name": "[v2,bpf-next,1/2] libbpf: Fix static linking of externs placed in allocated sections",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174143/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,1/2] libbpf: Fix static linking of externs placed in allocated sections",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20260926000243.2830819-1-andrii@kernel.org/",
+      "date": "2026-09-26T00:02:42",
+      "series": [
+        {
+          "id": 1174143,
+          "url": "https://patchwork.kernel.org/api/series/1174143/",
+          "web_url": "https://patchwork.kernel.org/series/1174143/",
+          "date": "2026-09-26T00:02:42",
+          "name": "[v2,bpf-next,1/2] libbpf: Fix static linking of externs placed in allocated sections",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174143/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,7/7] selftests/bpf: Test per-call site function specialization",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260925233538.5708-8-emil@etsalapatis.com/",
+      "date": "2026-09-25T23:35:38",
+      "series": [
+        {
+          "id": 1174139,
+          "url": "https://patchwork.kernel.org/api/series/1174139/",
+          "web_url": "https://patchwork.kernel.org/series/1174139/",
+          "date": "2026-09-25T23:35:31",
+          "name": "Make sleepable arena paths use sleepable alloc_pages",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1174139/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,6/7] bpf: Support call-site kfunc specialization for far calls",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260925233538.5708-7-emil@etsalapatis.com/",
+      "date": "2026-09-25T23:35:37",
+      "series": [
+        {
+          "id": 1174139,
+          "url": "https://patchwork.kernel.org/api/series/1174139/",
+          "web_url": "https://patchwork.kernel.org/series/1174139/",
+          "date": "2026-09-25T23:35:31",
+          "name": "Make sleepable arena paths use sleepable alloc_pages",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1174139/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,5/7] bpf: Support call-site kfunc specialization for near calls",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260925233538.5708-6-emil@etsalapatis.com/",
+      "date": "2026-09-25T23:35:36",
+      "series": [
+        {
+          "id": 1174139,
+          "url": "https://patchwork.kernel.org/api/series/1174139/",
+          "web_url": "https://patchwork.kernel.org/series/1174139/",
+          "date": "2026-09-25T23:35:31",
+          "name": "Make sleepable arena paths use sleepable alloc_pages",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1174139/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,4/7] selftests/bpf: Test large allocations for both sleepable/nonsleepable arena users",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260925233538.5708-5-emil@etsalapatis.com/",
+      "date": "2026-09-25T23:35:35",
+      "series": [
+        {
+          "id": 1174139,
+          "url": "https://patchwork.kernel.org/api/series/1174139/",
+          "web_url": "https://patchwork.kernel.org/series/1174139/",
+          "date": "2026-09-25T23:35:31",
+          "name": "Make sleepable arena paths use sleepable alloc_pages",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1174139/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,3/7] bpf: Add sleepable arena page allocation path",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260925233538.5708-4-emil@etsalapatis.com/",
+      "date": "2026-09-25T23:35:34",
+      "series": [
+        {
+          "id": 1174139,
+          "url": "https://patchwork.kernel.org/api/series/1174139/",
+          "web_url": "https://patchwork.kernel.org/series/1174139/",
+          "date": "2026-09-25T23:35:31",
+          "name": "Make sleepable arena paths use sleepable alloc_pages",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1174139/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/7] bpf: Add sleepable argument to bpf_alloc_pages()",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260925233538.5708-3-emil@etsalapatis.com/",
+      "date": "2026-09-25T23:35:33",
+      "series": [
+        {
+          "id": 1174139,
+          "url": "https://patchwork.kernel.org/api/series/1174139/",
+          "web_url": "https://patchwork.kernel.org/series/1174139/",
+          "date": "2026-09-25T23:35:31",
+          "name": "Make sleepable arena paths use sleepable alloc_pages",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1174139/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/7] bpf: Use an llist for page allocations",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260925233538.5708-2-emil@etsalapatis.com/",
+      "date": "2026-09-25T23:35:32",
+      "series": [
+        {
+          "id": 1174139,
+          "url": "https://patchwork.kernel.org/api/series/1174139/",
+          "web_url": "https://patchwork.kernel.org/series/1174139/",
+          "date": "2026-09-25T23:35:31",
+          "name": "Make sleepable arena paths use sleepable alloc_pages",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1174139/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] bpf, mips: Add JIT support for JMP32_JA",
+      "author": "Johan Almbladh",
+      "url": "https://lore.kernel.org/bpf/20260925231932.1063678-3-johan.almbladh@anyfinetworks.com/",
+      "date": "2026-09-25T23:19:32",
+      "series": [
+        {
+          "id": 1174137,
+          "url": "https://patchwork.kernel.org/api/series/1174137/",
+          "web_url": "https://patchwork.kernel.org/series/1174137/",
+          "date": "2026-09-25T23:19:30",
+          "name": "bpf, mips: Add JIT support for v4 instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174137/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf, mips: Add JIT support for unconditional BSWAP",
+      "author": "Johan Almbladh",
+      "url": "https://lore.kernel.org/bpf/20260925231932.1063678-2-johan.almbladh@anyfinetworks.com/",
+      "date": "2026-09-25T23:19:31",
+      "series": [
+        {
+          "id": 1174137,
+          "url": "https://patchwork.kernel.org/api/series/1174137/",
+          "web_url": "https://patchwork.kernel.org/series/1174137/",
+          "date": "2026-09-25T23:19:30",
+          "name": "bpf, mips: Add JIT support for v4 instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174137/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Add linked_externs test for externs in allocated sections",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20260925224631.1490488-2-andrii@kernel.org/",
+      "date": "2026-09-25T22:46:31",
+      "series": [
+        {
+          "id": 1174126,
+          "url": "https://patchwork.kernel.org/api/series/1174126/",
+          "web_url": "https://patchwork.kernel.org/series/1174126/",
+          "date": "2026-09-25T22:46:30",
+          "name": "[bpf-next,1/2] libbpf: Fix static linking of externs placed in allocated sections",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174126/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] libbpf: Fix static linking of externs placed in allocated sections",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20260925224631.1490488-1-andrii@kernel.org/",
+      "date": "2026-09-25T22:46:30",
+      "series": [
+        {
+          "id": 1174126,
+          "url": "https://patchwork.kernel.org/api/series/1174126/",
+          "web_url": "https://patchwork.kernel.org/series/1174126/",
+          "date": "2026-09-25T22:46:30",
+          "name": "[bpf-next,1/2] libbpf: Fix static linking of externs placed in allocated sections",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174126/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,9/9] kbuild, bpf: allow building the vmlinux BTF as a module",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925224229.1850-10-wanjay@amazon.com/",
+      "date": "2026-09-25T22:42:29",
+      "series": [
+        {
+          "id": 1174125,
+          "url": "https://patchwork.kernel.org/api/series/1174125/",
+          "web_url": "https://patchwork.kernel.org/series/1174125/",
+          "date": "2026-09-25T22:42:20",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1174125/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,8/9] bpf, trace, net: prepare CONFIG_DEBUG_INFO_BTF checks for a tristate",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925224229.1850-9-wanjay@amazon.com/",
+      "date": "2026-09-25T22:42:28",
+      "series": [
+        {
+          "id": 1174125,
+          "url": "https://patchwork.kernel.org/api/series/1174125/",
+          "web_url": "https://patchwork.kernel.org/series/1174125/",
+          "date": "2026-09-25T22:42:20",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1174125/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,7/9] bpf: expose deferred .BTF.base module BTF in sysfs from module load",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925224229.1850-8-wanjay@amazon.com/",
+      "date": "2026-09-25T22:42:27",
+      "series": [
+        {
+          "id": 1174125,
+          "url": "https://patchwork.kernel.org/api/series/1174125/",
+          "web_url": "https://patchwork.kernel.org/series/1174125/",
+          "date": "2026-09-25T22:42:20",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1174125/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,6/9] bpf: keep module BTF until the vmlinux BTF is available",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925224229.1850-7-wanjay@amazon.com/",
+      "date": "2026-09-25T22:42:26",
+      "series": [
+        {
+          "id": 1174125,
+          "url": "https://patchwork.kernel.org/api/series/1174125/",
+          "web_url": "https://patchwork.kernel.org/series/1174125/",
+          "date": "2026-09-25T22:42:20",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1174125/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,5/9] bpf: defer vmlinux kfunc and struct_ops registrations",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925224229.1850-6-wanjay@amazon.com/",
+      "date": "2026-09-25T22:42:25",
+      "series": [
+        {
+          "id": 1174125,
+          "url": "https://patchwork.kernel.org/api/series/1174125/",
+          "web_url": "https://patchwork.kernel.org/series/1174125/",
+          "date": "2026-09-25T22:42:20",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1174125/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,4/9] bpf: take the vmlinux BTF from the btf_vmlinux module",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925224229.1850-5-wanjay@amazon.com/",
+      "date": "2026-09-25T22:42:24",
+      "series": [
+        {
+          "id": 1174125,
+          "url": "https://patchwork.kernel.org/api/series/1174125/",
+          "web_url": "https://patchwork.kernel.org/series/1174125/",
+          "date": "2026-09-25T22:42:20",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1174125/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/9] bpf: fetch the vmlinux BTF where kernel types enter a program",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925224229.1850-4-wanjay@amazon.com/",
+      "date": "2026-09-25T22:42:23",
+      "series": [
+        {
+          "id": 1174125,
+          "url": "https://patchwork.kernel.org/api/series/1174125/",
+          "web_url": "https://patchwork.kernel.org/series/1174125/",
+          "date": "2026-09-25T22:42:20",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1174125/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/9] bpf: split the kfunc, dtor kfunc and struct_ops registration bodies",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925224229.1850-3-wanjay@amazon.com/",
+      "date": "2026-09-25T22:42:22",
+      "series": [
+        {
+          "id": 1174125,
+          "url": "https://patchwork.kernel.org/api/series/1174125/",
+          "web_url": "https://patchwork.kernel.org/series/1174125/",
+          "date": "2026-09-25T22:42:20",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1174125/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/9] bpf: pass the vmlinux BTF to btf_parse_module() and let it adopt the data",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925224229.1850-2-wanjay@amazon.com/",
+      "date": "2026-09-25T22:42:21",
+      "series": [
+        {
+          "id": 1174125,
+          "url": "https://patchwork.kernel.org/api/series/1174125/",
+          "web_url": "https://patchwork.kernel.org/series/1174125/",
+          "date": "2026-09-25T22:42:20",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1174125/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,9/9] kbuild, bpf: allow building the vmlinux BTF as a module",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925211314.5118-10-wanjay@amazon.com/",
+      "date": "2026-09-25T21:13:14",
+      "series": [
+        {
+          "id": 1174076,
+          "url": "https://patchwork.kernel.org/api/series/1174076/",
+          "web_url": "https://patchwork.kernel.org/series/1174076/",
+          "date": "2026-09-25T21:13:05",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174076/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,8/9] bpf, trace, net: prepare CONFIG_DEBUG_INFO_BTF checks for a tristate",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925211314.5118-9-wanjay@amazon.com/",
+      "date": "2026-09-25T21:13:13",
+      "series": [
+        {
+          "id": 1174076,
+          "url": "https://patchwork.kernel.org/api/series/1174076/",
+          "web_url": "https://patchwork.kernel.org/series/1174076/",
+          "date": "2026-09-25T21:13:05",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174076/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,7/9] bpf: expose deferred .BTF.base module BTF in sysfs from module load",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925211314.5118-8-wanjay@amazon.com/",
+      "date": "2026-09-25T21:13:12",
+      "series": [
+        {
+          "id": 1174076,
+          "url": "https://patchwork.kernel.org/api/series/1174076/",
+          "web_url": "https://patchwork.kernel.org/series/1174076/",
+          "date": "2026-09-25T21:13:05",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174076/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,6/9] bpf: keep module BTF until the vmlinux BTF is available",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925211314.5118-7-wanjay@amazon.com/",
+      "date": "2026-09-25T21:13:11",
+      "series": [
+        {
+          "id": 1174076,
+          "url": "https://patchwork.kernel.org/api/series/1174076/",
+          "web_url": "https://patchwork.kernel.org/series/1174076/",
+          "date": "2026-09-25T21:13:05",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174076/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/9] bpf: defer vmlinux kfunc and struct_ops registrations",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925211314.5118-6-wanjay@amazon.com/",
+      "date": "2026-09-25T21:13:10",
+      "series": [
+        {
+          "id": 1174076,
+          "url": "https://patchwork.kernel.org/api/series/1174076/",
+          "web_url": "https://patchwork.kernel.org/series/1174076/",
+          "date": "2026-09-25T21:13:05",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174076/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/9] bpf: take the vmlinux BTF from the btf_vmlinux module",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925211314.5118-5-wanjay@amazon.com/",
+      "date": "2026-09-25T21:13:09",
+      "series": [
+        {
+          "id": 1174076,
+          "url": "https://patchwork.kernel.org/api/series/1174076/",
+          "web_url": "https://patchwork.kernel.org/series/1174076/",
+          "date": "2026-09-25T21:13:05",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174076/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/9] bpf: fetch the vmlinux BTF where kernel types enter a program",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925211314.5118-4-wanjay@amazon.com/",
+      "date": "2026-09-25T21:13:08",
+      "series": [
+        {
+          "id": 1174076,
+          "url": "https://patchwork.kernel.org/api/series/1174076/",
+          "web_url": "https://patchwork.kernel.org/series/1174076/",
+          "date": "2026-09-25T21:13:05",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174076/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/9] bpf: split the kfunc, dtor kfunc and struct_ops registration bodies",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925211314.5118-3-wanjay@amazon.com/",
+      "date": "2026-09-25T21:13:07",
+      "series": [
+        {
+          "id": 1174076,
+          "url": "https://patchwork.kernel.org/api/series/1174076/",
+          "web_url": "https://patchwork.kernel.org/series/1174076/",
+          "date": "2026-09-25T21:13:05",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174076/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/9] bpf: pass the vmlinux BTF to btf_parse_module() and let it adopt the data",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925211314.5118-2-wanjay@amazon.com/",
+      "date": "2026-09-25T21:13:06",
+      "series": [
+        {
+          "id": 1174076,
+          "url": "https://patchwork.kernel.org/api/series/1174076/",
+          "web_url": "https://patchwork.kernel.org/series/1174076/",
+          "date": "2026-09-25T21:13:05",
+          "name": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174076/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,12/12] bpf: Check all subprog arguments in the common path",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260925211256.1834061-13-ameryhung@gmail.com/",
+      "date": "2026-09-25T21:12:56",
+      "series": [
+        {
+          "id": 1174075,
+          "url": "https://patchwork.kernel.org/api/series/1174075/",
+          "web_url": "https://patchwork.kernel.org/series/1174075/",
+          "date": "2026-09-25T21:12:44",
+          "name": "Unify subprog argument checks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174075/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,11/12] bpf: Check global subprog memory arguments in the common path",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260925211256.1834061-12-ameryhung@gmail.com/",
+      "date": "2026-09-25T21:12:55",
+      "series": [
+        {
+          "id": 1174075,
+          "url": "https://patchwork.kernel.org/api/series/1174075/",
+          "web_url": "https://patchwork.kernel.org/series/1174075/",
+          "date": "2026-09-25T21:12:44",
+          "name": "Unify subprog argument checks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174075/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,10/12] bpf: Track packet changes in call metadata",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260925211256.1834061-11-ameryhung@gmail.com/",
+      "date": "2026-09-25T21:12:54",
+      "series": [
+        {
+          "id": 1174075,
+          "url": "https://patchwork.kernel.org/api/series/1174075/",
+          "web_url": "https://patchwork.kernel.org/series/1174075/",
+          "date": "2026-09-25T21:12:44",
+          "name": "Unify subprog argument checks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174075/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,09/12] bpf: Check global subprog BTF-ID arguments in the common path",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260925211256.1834061-10-ameryhung@gmail.com/",
+      "date": "2026-09-25T21:12:53",
+      "series": [
+        {
+          "id": 1174075,
+          "url": "https://patchwork.kernel.org/api/series/1174075/",
+          "web_url": "https://patchwork.kernel.org/series/1174075/",
+          "date": "2026-09-25T21:12:44",
+          "name": "Unify subprog argument checks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174075/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,08/12] bpf: Check subprog dynptr arguments in the common path",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260925211256.1834061-9-ameryhung@gmail.com/",
+      "date": "2026-09-25T21:12:52",
+      "series": [
+        {
+          "id": 1174075,
+          "url": "https://patchwork.kernel.org/api/series/1174075/",
+          "web_url": "https://patchwork.kernel.org/series/1174075/",
+          "date": "2026-09-25T21:12:44",
+          "name": "Unify subprog argument checks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174075/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,07/12] bpf: Check subprog arena arguments in the common path",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260925211256.1834061-8-ameryhung@gmail.com/",
+      "date": "2026-09-25T21:12:51",
+      "series": [
+        {
+          "id": 1174075,
+          "url": "https://patchwork.kernel.org/api/series/1174075/",
+          "web_url": "https://patchwork.kernel.org/series/1174075/",
+          "date": "2026-09-25T21:12:44",
+          "name": "Unify subprog argument checks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174075/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,06/12] bpf: Check subprog context arguments in the common path",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260925211256.1834061-7-ameryhung@gmail.com/",
+      "date": "2026-09-25T21:12:50",
+      "series": [
+        {
+          "id": 1174075,
+          "url": "https://patchwork.kernel.org/api/series/1174075/",
+          "web_url": "https://patchwork.kernel.org/series/1174075/",
+          "date": "2026-09-25T21:12:44",
+          "name": "Unify subprog argument checks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174075/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,05/12] bpf: Check global subprog untrusted arguments in the common path",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260925211256.1834061-6-ameryhung@gmail.com/",
+      "date": "2026-09-25T21:12:49",
+      "series": [
+        {
+          "id": 1174075,
+          "url": "https://patchwork.kernel.org/api/series/1174075/",
+          "web_url": "https://patchwork.kernel.org/series/1174075/",
+          "date": "2026-09-25T21:12:44",
+          "name": "Unify subprog argument checks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174075/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,04/12] bpf: Check subprog scalar arguments in the common path",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260925211256.1834061-5-ameryhung@gmail.com/",
+      "date": "2026-09-25T21:12:48",
+      "series": [
+        {
+          "id": 1174075,
+          "url": "https://patchwork.kernel.org/api/series/1174075/",
+          "web_url": "https://patchwork.kernel.org/series/1174075/",
+          "date": "2026-09-25T21:12:44",
+          "name": "Unify subprog argument checks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174075/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,03/12] bpf: Build argument prototypes for subprog calls",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260925211256.1834061-4-ameryhung@gmail.com/",
+      "date": "2026-09-25T21:12:47",
+      "series": [
+        {
+          "id": 1174075,
+          "url": "https://patchwork.kernel.org/api/series/1174075/",
+          "web_url": "https://patchwork.kernel.org/series/1174075/",
+          "date": "2026-09-25T21:12:44",
+          "name": "Unify subprog argument checks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174075/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,02/12] bpf: Identify subprog calls in argument metadata",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260925211256.1834061-3-ameryhung@gmail.com/",
+      "date": "2026-09-25T21:12:46",
+      "series": [
+        {
+          "id": 1174075,
+          "url": "https://patchwork.kernel.org/api/series/1174075/",
+          "web_url": "https://patchwork.kernel.org/series/1174075/",
+          "date": "2026-09-25T21:12:44",
+          "name": "Unify subprog argument checks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174075/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,01/12] bpf: Fix kfunc nullability diagnostics after wide arguments",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260925211256.1834061-2-ameryhung@gmail.com/",
+      "date": "2026-09-25T21:12:45",
+      "series": [
+        {
+          "id": 1174075,
+          "url": "https://patchwork.kernel.org/api/series/1174075/",
+          "web_url": "https://patchwork.kernel.org/series/1174075/",
+          "date": "2026-09-25T21:12:44",
+          "name": "Unify subprog argument checks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174075/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,16/16] selftests/bpf: Add a test for an exception callback behind a dead subprog",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-17-daniel@iogearbox.net/",
+      "date": "2026-09-25T17:52:43",
+      "series": [
+        {
+          "id": 1173958,
+          "url": "https://patchwork.kernel.org/api/series/1173958/",
+          "web_url": "https://patchwork.kernel.org/series/1173958/",
+          "date": "2026-09-25T17:52:36",
+          "name": "Misc BPF gotox fixes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,15/16] selftests/bpf: Add tests for gotox targets across prologue prepends",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-16-daniel@iogearbox.net/",
+      "date": "2026-09-25T17:52:42",
+      "series": [
+        {
+          "id": 1173958,
+          "url": "https://patchwork.kernel.org/api/series/1173958/",
+          "web_url": "https://patchwork.kernel.org/series/1173958/",
+          "date": "2026-09-25T17:52:36",
+          "name": "Misc BPF gotox fixes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,14/16] selftests/bpf: Add a test for gotox nop targets",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-15-daniel@iogearbox.net/",
+      "date": "2026-09-25T17:52:41",
+      "series": [
+        {
+          "id": 1173958,
+          "url": "https://patchwork.kernel.org/api/series/1173958/",
+          "web_url": "https://patchwork.kernel.org/series/1173958/",
+          "date": "2026-09-25T17:52:36",
+          "name": "Misc BPF gotox fixes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,13/16] selftests/bpf: Add tests for indirect jumps across subprograms",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-14-daniel@iogearbox.net/",
+      "date": "2026-09-25T17:52:40",
+      "series": [
+        {
+          "id": 1173958,
+          "url": "https://patchwork.kernel.org/api/series/1173958/",
+          "web_url": "https://patchwork.kernel.org/series/1173958/",
+          "date": "2026-09-25T17:52:36",
+          "name": "Misc BPF gotox fixes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,12/16] selftests/bpf: Add a test for a tail call in a subprogram without an exit",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-13-daniel@iogearbox.net/",
+      "date": "2026-09-25T17:52:39",
+      "series": [
+        {
+          "id": 1173958,
+          "url": "https://patchwork.kernel.org/api/series/1173958/",
+          "web_url": "https://patchwork.kernel.org/series/1173958/",
+          "date": "2026-09-25T17:52:36",
+          "name": "Misc BPF gotox fixes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,11/16] selftests/bpf: Add tests for the indirect jump edge limit",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-12-daniel@iogearbox.net/",
+      "date": "2026-09-25T17:52:38",
+      "series": [
+        {
+          "id": 1173958,
+          "url": "https://patchwork.kernel.org/api/series/1173958/",
+          "web_url": "https://patchwork.kernel.org/series/1173958/",
+          "date": "2026-09-25T17:52:36",
+          "name": "Misc BPF gotox fixes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,10/16] bpf: Retarget indirect jump targets across prologue prepends",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-11-daniel@iogearbox.net/",
+      "date": "2026-09-25T17:52:37",
+      "series": [
+        {
+          "id": 1173958,
+          "url": "https://patchwork.kernel.org/api/series/1173958/",
+          "web_url": "https://patchwork.kernel.org/series/1173958/",
+          "date": "2026-09-25T17:52:36",
+          "name": "Misc BPF gotox fixes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,09/16] bpf: Clear the insn array used flag with release semantics",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-10-daniel@iogearbox.net/",
+      "date": "2026-09-25T17:52:36",
+      "series": [
+        {
+          "id": 1173958,
+          "url": "https://patchwork.kernel.org/api/series/1173958/",
+          "web_url": "https://patchwork.kernel.org/series/1173958/",
+          "date": "2026-09-25T17:52:36",
+          "name": "Misc BPF gotox fixes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,08/16] bpf: Clear insn array jitted pointers on map reuse",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-9-daniel@iogearbox.net/",
+      "date": "2026-09-25T17:52:35",
+      "series": [
+        {
+          "id": 1173958,
+          "url": "https://patchwork.kernel.org/api/series/1173958/",
+          "web_url": "https://patchwork.kernel.org/series/1173958/",
+          "date": "2026-09-25T17:52:36",
+          "name": "Misc BPF gotox fixes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,07/16] bpf: Don't remove indirect jump targets in the nop removal pass",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-8-daniel@iogearbox.net/",
+      "date": "2026-09-25T17:52:34",
+      "series": [
+        {
+          "id": 1173958,
+          "url": "https://patchwork.kernel.org/api/series/1173958/",
+          "web_url": "https://patchwork.kernel.org/series/1173958/",
+          "date": "2026-09-25T17:52:36",
+          "name": "Misc BPF gotox fixes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,06/16] bpf: Reject indirect jumps that leave their subprogram",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-7-daniel@iogearbox.net/",
+      "date": "2026-09-25T17:52:33",
+      "series": [
+        {
+          "id": 1173958,
+          "url": "https://patchwork.kernel.org/api/series/1173958/",
+          "web_url": "https://patchwork.kernel.org/series/1173958/",
+          "date": "2026-09-25T17:52:36",
+          "name": "Misc BPF gotox fixes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,05/16] bpf: Cache the jump table of a subprogram during CFG discovery",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-6-daniel@iogearbox.net/",
+      "date": "2026-09-25T17:52:32",
+      "series": [
+        {
+          "id": 1173958,
+          "url": "https://patchwork.kernel.org/api/series/1173958/",
+          "web_url": "https://patchwork.kernel.org/series/1173958/",
+          "date": "2026-09-25T17:52:36",
+          "name": "Misc BPF gotox fixes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,04/16] bpf: Leave out the hidden exit edge of a subprogram without an exit",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-5-daniel@iogearbox.net/",
+      "date": "2026-09-25T17:52:31",
+      "series": [
+        {
+          "id": 1173958,
+          "url": "https://patchwork.kernel.org/api/series/1173958/",
+          "web_url": "https://patchwork.kernel.org/series/1173958/",
+          "date": "2026-09-25T17:52:36",
+          "name": "Misc BPF gotox fixes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,03/16] bpf: Rebase the exception callback subprog when dead subprogs are removed",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-4-daniel@iogearbox.net/",
+      "date": "2026-09-25T17:52:30",
+      "series": [
+        {
+          "id": 1173958,
+          "url": "https://patchwork.kernel.org/api/series/1173958/",
+          "web_url": "https://patchwork.kernel.org/series/1173958/",
+          "date": "2026-09-25T17:52:36",
+          "name": "Misc BPF gotox fixes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,02/16] bpf: Bound the number of indirect jump edges in a program",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-3-daniel@iogearbox.net/",
+      "date": "2026-09-25T17:52:29",
+      "series": [
+        {
+          "id": 1173958,
+          "url": "https://patchwork.kernel.org/api/series/1173958/",
+          "web_url": "https://patchwork.kernel.org/series/1173958/",
+          "date": "2026-09-25T17:52:36",
+          "name": "Misc BPF gotox fixes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,01/16] bpf: Avoid quadratic successor rescan in bpf_compute_scc",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-2-daniel@iogearbox.net/",
+      "date": "2026-09-25T17:52:28",
+      "series": [
+        {
+          "id": 1173958,
+          "url": "https://patchwork.kernel.org/api/series/1173958/",
+          "web_url": "https://patchwork.kernel.org/series/1173958/",
+          "date": "2026-09-25T17:52:36",
+          "name": "Misc BPF gotox fixes",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173958/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,2/2] selftests/bpf: Check bpftool batch map dump contents",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260925174412.2028749-3-hi@tychen.cc/",
+      "date": "2026-09-25T17:44:12",
+      "series": [
+        {
+          "id": 1173954,
+          "url": "https://patchwork.kernel.org/api/series/1173954/",
+          "web_url": "https://patchwork.kernel.org/series/1173954/",
+          "date": "2026-09-25T17:44:10",
+          "name": "bpftool: Batch hash map dumps with bounded buffers",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1173954/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,1/2] bpftool: Use batch lookups for hash map dumps",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260925174412.2028749-2-hi@tychen.cc/",
+      "date": "2026-09-25T17:44:11",
+      "series": [
+        {
+          "id": 1173954,
+          "url": "https://patchwork.kernel.org/api/series/1173954/",
+          "web_url": "https://patchwork.kernel.org/series/1173954/",
+          "date": "2026-09-25T17:44:10",
+          "name": "bpftool: Batch hash map dumps with bounded buffers",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1173954/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,2/2] selftests/bpf: Cover recursive bpftool map dumps",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260925174402.2028649-3-hi@tychen.cc/",
+      "date": "2026-09-25T17:44:02",
+      "series": [
+        {
+          "id": 1173953,
+          "url": "https://patchwork.kernel.org/api/series/1173953/",
+          "web_url": "https://patchwork.kernel.org/series/1173953/",
+          "date": "2026-09-25T17:44:00",
+          "name": "bpftool: Add recursive map dumping",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1173953/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,1/2] bpftool: Add recursive map dumping",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260925174402.2028649-2-hi@tychen.cc/",
+      "date": "2026-09-25T17:44:01",
+      "series": [
+        {
+          "id": 1173953,
+          "url": "https://patchwork.kernel.org/api/series/1173953/",
+          "web_url": "https://patchwork.kernel.org/series/1173953/",
+          "date": "2026-09-25T17:44:00",
+          "name": "bpftool: Add recursive map dumping",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1173953/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,3/3] selftests/bpf: Fix up bpftool btf dump test for signatures",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260925170854.1240637-4-alan.maguire@oracle.com/",
+      "date": "2026-09-25T17:08:54",
+      "series": [
+        {
+          "id": 1173942,
+          "url": "https://patchwork.kernel.org/api/series/1173942/",
+          "web_url": "https://patchwork.kernel.org/series/1173942/",
+          "date": "2026-09-25T17:08:51",
+          "name": "BTF inline functionality followups",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1173942/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,2/3] bpftool: Update func representation to include function signature",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260925170854.1240637-3-alan.maguire@oracle.com/",
+      "date": "2026-09-25T17:08:53",
+      "series": [
+        {
+          "id": 1173942,
+          "url": "https://patchwork.kernel.org/api/series/1173942/",
+          "web_url": "https://patchwork.kernel.org/series/1173942/",
+          "date": "2026-09-25T17:08:51",
+          "name": "BTF inline functionality followups",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1173942/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,1/3] bpf: Verify BTF_KIND_LOC_PARAM vlen, flags",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260925170854.1240637-2-alan.maguire@oracle.com/",
+      "date": "2026-09-25T17:08:52",
+      "series": [
+        {
+          "id": 1173942,
+          "url": "https://patchwork.kernel.org/api/series/1173942/",
+          "web_url": "https://patchwork.kernel.org/series/1173942/",
+          "date": "2026-09-25T17:08:51",
+          "name": "BTF inline functionality followups",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1173942/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: Check that bpftool map dump fails for socket storage",
+      "author": "Maxim Skokov",
+      "url": "https://lore.kernel.org/bpf/20260925162031.27259-3-skokovmaksimevg@gmail.com/",
+      "date": "2026-09-25T16:20:02",
+      "series": [
+        {
+          "id": 1173917,
+          "url": "https://patchwork.kernel.org/api/series/1173917/",
+          "web_url": "https://patchwork.kernel.org/series/1173917/",
+          "date": "2026-09-25T16:20:00",
+          "name": "bpftool: Fail map dump for maps that can't be iterated",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1173917/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpftool: Fail map dump for maps that can't be iterated",
+      "author": "Maxim Skokov",
+      "url": "https://lore.kernel.org/bpf/20260925162031.27259-2-skokovmaksimevg@gmail.com/",
+      "date": "2026-09-25T16:20:01",
+      "series": [
+        {
+          "id": 1173917,
+          "url": "https://patchwork.kernel.org/api/series/1173917/",
+          "web_url": "https://patchwork.kernel.org/series/1173917/",
+          "date": "2026-09-25T16:20:00",
+          "name": "bpftool: Fail map dump for maps that can't be iterated",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1173917/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] samples/bpf: build the BPF programs with -fms-extensions",
+      "author": "Eva Kurchatova",
+      "url": "https://lore.kernel.org/bpf/20260925154937.3677406-1-eva.kurchatova@virtuozzo.com/",
+      "date": "2026-09-25T15:49:19",
+      "series": [
+        {
+          "id": 1173885,
+          "url": "https://patchwork.kernel.org/api/series/1173885/",
+          "web_url": "https://patchwork.kernel.org/series/1173885/",
+          "date": "2026-09-25T15:49:19",
+          "name": "[bpf-next] samples/bpf: build the BPF programs with -fms-extensions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173885/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/1] selftests: bpf: size the map in test_lru_sanity3 to whole refills",
+      "author": "Eva Kurchatova",
+      "url": "https://lore.kernel.org/bpf/20260925154029.3673513-2-eva.kurchatova@virtuozzo.com/",
+      "date": "2026-09-25T15:38:13",
+      "series": [
+        {
+          "id": 1173879,
+          "url": "https://patchwork.kernel.org/api/series/1173879/",
+          "web_url": "https://patchwork.kernel.org/series/1173879/",
+          "date": "2026-09-25T15:38:12",
+          "name": "selftests: bpf: fix test_lru_sanity3",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1173879/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/3] sched_ext: Use fetching atomics for cmask instead of a cmpxchg loop",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260925134828.2012199-4-puranjay@kernel.org/",
+      "date": "2026-09-25T13:48:22",
+      "series": [
+        {
+          "id": 1173806,
+          "url": "https://patchwork.kernel.org/api/series/1173806/",
+          "web_url": "https://patchwork.kernel.org/series/1173806/",
+          "date": "2026-09-25T13:48:19",
+          "name": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173806/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/3] selftests/bpf: Test fetching AND/OR/XOR atomics in arena",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260925134828.2012199-3-puranjay@kernel.org/",
+      "date": "2026-09-25T13:48:21",
+      "series": [
+        {
+          "id": 1173806,
+          "url": "https://patchwork.kernel.org/api/series/1173806/",
+          "web_url": "https://patchwork.kernel.org/series/1173806/",
+          "date": "2026-09-25T13:48:19",
+          "name": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173806/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/3] bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260925134828.2012199-2-puranjay@kernel.org/",
+      "date": "2026-09-25T13:48:20",
+      "series": [
+        {
+          "id": 1173806,
+          "url": "https://patchwork.kernel.org/api/series/1173806/",
+          "web_url": "https://patchwork.kernel.org/series/1173806/",
+          "date": "2026-09-25T13:48:19",
+          "name": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173806/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] selftests/bpf: Fix up bpftool btf dump test for signatures",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260925095231.879708-4-alan.maguire@oracle.com/",
+      "date": "2026-09-25T09:52:31",
+      "series": [
+        {
+          "id": 1173689,
+          "url": "https://patchwork.kernel.org/api/series/1173689/",
+          "web_url": "https://patchwork.kernel.org/series/1173689/",
+          "date": "2026-09-25T09:52:28",
+          "name": "BTF inline functionality followups",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173689/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] bpftool: Update func representation to include function signature",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260925095231.879708-3-alan.maguire@oracle.com/",
+      "date": "2026-09-25T09:52:30",
+      "series": [
+        {
+          "id": 1173689,
+          "url": "https://patchwork.kernel.org/api/series/1173689/",
+          "web_url": "https://patchwork.kernel.org/series/1173689/",
+          "date": "2026-09-25T09:52:28",
+          "name": "BTF inline functionality followups",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173689/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] bpf: Verify BTF_KIND_LOC_PARAM vlen, flags",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260925095231.879708-2-alan.maguire@oracle.com/",
+      "date": "2026-09-25T09:52:29",
+      "series": [
+        {
+          "id": 1173689,
+          "url": "https://patchwork.kernel.org/api/series/1173689/",
+          "web_url": "https://patchwork.kernel.org/series/1173689/",
+          "date": "2026-09-25T09:52:28",
+          "name": "BTF inline functionality followups",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173689/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Test helper read of a narrow stack spill",
+      "author": "Hao Sun",
+      "url": "https://lore.kernel.org/bpf/20260925082814.1554771-2-sunhao.th@gmail.com/",
+      "date": "2026-09-25T08:28:14",
+      "series": [
+        {
+          "id": 1173639,
+          "url": "https://patchwork.kernel.org/api/series/1173639/",
+          "web_url": "https://patchwork.kernel.org/series/1173639/",
+          "date": "2026-09-25T08:28:13",
+          "name": "[bpf-next,1/2] bpf: Fix uninit read for helper mem args on partially spilled slots",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173639/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Fix uninit read for helper mem args on partially spilled slots",
+      "author": "Hao Sun",
+      "url": "https://lore.kernel.org/bpf/20260925082814.1554771-1-sunhao.th@gmail.com/",
+      "date": "2026-09-25T08:28:13",
+      "series": [
+        {
+          "id": 1173639,
+          "url": "https://patchwork.kernel.org/api/series/1173639/",
+          "web_url": "https://patchwork.kernel.org/series/1173639/",
+          "date": "2026-09-25T08:28:13",
+          "name": "[bpf-next,1/2] bpf: Fix uninit read for helper mem args on partially spilled slots",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173639/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Check callx operand before requiring JIT support",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260925060945.1993547-1-memxor@gmail.com/",
+      "date": "2026-09-25T06:09:44",
+      "series": [
+        {
+          "id": 1173553,
+          "url": "https://patchwork.kernel.org/api/series/1173553/",
+          "web_url": "https://patchwork.kernel.org/series/1173553/",
+          "date": "2026-09-25T06:09:44",
+          "name": "[bpf-next] bpf: Check callx operand before requiring JIT support",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173553/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,5/5] selftests/bpf: Test program stream file descriptors",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260925045536.1480933-6-memxor@gmail.com/",
+      "date": "2026-09-25T04:55:32",
+      "series": [
+        {
+          "id": 1173526,
+          "url": "https://patchwork.kernel.org/api/series/1173526/",
+          "web_url": "https://patchwork.kernel.org/series/1173526/",
+          "date": "2026-09-25T04:55:27",
+          "name": "File descriptor interface for BPF streams",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173526/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,4/5] bpftool: Add option to wait for program stream output",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260925045536.1480933-5-memxor@gmail.com/",
+      "date": "2026-09-25T04:55:31",
+      "series": [
+        {
+          "id": 1173526,
+          "url": "https://patchwork.kernel.org/api/series/1173526/",
+          "web_url": "https://patchwork.kernel.org/series/1173526/",
+          "date": "2026-09-25T04:55:27",
+          "name": "File descriptor interface for BPF streams",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173526/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/5] libbpf: Add bpf_prog_stream_open()",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260925045536.1480933-4-memxor@gmail.com/",
+      "date": "2026-09-25T04:55:30",
+      "series": [
+        {
+          "id": 1173526,
+          "url": "https://patchwork.kernel.org/api/series/1173526/",
+          "web_url": "https://patchwork.kernel.org/series/1173526/",
+          "date": "2026-09-25T04:55:27",
+          "name": "File descriptor interface for BPF streams",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173526/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/5] bpf: Add file descriptor interface for program streams",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260925045536.1480933-3-memxor@gmail.com/",
+      "date": "2026-09-25T04:55:29",
+      "series": [
+        {
+          "id": 1173526,
+          "url": "https://patchwork.kernel.org/api/series/1173526/",
+          "web_url": "https://patchwork.kernel.org/series/1173526/",
+          "date": "2026-09-25T04:55:27",
+          "name": "File descriptor interface for BPF streams",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173526/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/5] bpf: Skip zero-length stream writes",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260925045536.1480933-2-memxor@gmail.com/",
+      "date": "2026-09-25T04:55:28",
+      "series": [
+        {
+          "id": 1173526,
+          "url": "https://patchwork.kernel.org/api/series/1173526/",
+          "web_url": "https://patchwork.kernel.org/series/1173526/",
+          "date": "2026-09-25T04:55:27",
+          "name": "File descriptor interface for BPF streams",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1173526/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Roll back freplace link state when bpf_arch_text_poke() fails",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260925043500.28030-1-chenyuan_fl@163.com/",
+      "date": "2026-09-25T04:35:00",
+      "series": [
+        {
+          "id": 1173518,
+          "url": "https://patchwork.kernel.org/api/series/1173518/",
+          "web_url": "https://patchwork.kernel.org/series/1173518/",
+          "date": "2026-09-25T04:35:00",
+          "name": "[bpf-next] bpf: Roll back freplace link state when bpf_arch_text_poke() fails",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1173518/mbox/"
+        }
+      ]
+    }
+  ]
+}
