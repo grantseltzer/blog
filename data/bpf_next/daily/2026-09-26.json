@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-09-27T00:00:00Z",
+  "period_start": "2026-09-25",
+  "period_end": "2026-09-26",
+  "patch_count": 87,
+  "thread_count": 21,
+  "top_contributors": [
+    "Daniel Borkmann",
+    "Jay Wang",
+    "Amery Hung",
+    "Emil Tsalapatis",
+    "Kumar Kartikeya Dwivedi",
+    "Tianyi Chen"
+  ],
+  "key_topics": [
+    "verifier",
+    "btf",
+    "kfuncs",
+    "arena",
+    "bpftool",
+    "jit",
+    "libbpf",
+    "streams"
+  ],
+  "overview": "A busy day on bpf-next with significant activity across verifier improvements, BTF infrastructure, bpftool enhancements, and JIT fixes. Highlights include a new file descriptor interface for BPF program streams, a proposal to make the vmlinux BTF an on-demand loadable kernel module to save ~5.4 MB of memory, and a large series unifying subprogram argument validation in the verifier.",
+  "patches": [
+    {
+      "title": "File descriptor interface for BPF streams",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260925045536.1480933-3-memxor@gmail.com/",
+      "summary": "This 5-patch series (v3) adds a file descriptor interface for BPF program streams, allowing userspace to read stream output from BPF programs via a standard file descriptor. The series adds the kernel-side fd interface, libbpf support via bpf_prog_stream_open(), a bpftool option to wait on stream output, and corresponding selftests. This provides a much more ergonomic alternative to ringbuf or perf events for programs that emit structured output streams.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: make the vmlinux BTF an on-demand loadable module (CONFIG_DEBUG_INFO_BTF=m) to save ~5.4 MB memory",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20260925224229.1850-2-wanjay@amazon.com/",
+      "summary": "This 9-patch v3 series from Amazon enables the vmlinux BTF to be built as an on-demand loadable kernel module rather than always being linked into the kernel image, saving approximately 5.4 MB of memory on systems that don't need BPF introspection. The work involves refactoring kfunc and struct_ops registrations to be deferred until the BTF module loads, exposing the BTF from sysfs, and converting CONFIG_DEBUG_INFO_BTF from a bool to a tristate. This is a significant memory optimization for resource-constrained environments.",
+      "related_links": []
+    },
+    {
+      "title": "Misc BPF gotox fixes",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20260925175244.1136329-2-daniel@iogearbox.net/",
+      "summary": "A comprehensive 16-patch v3 series addressing correctness bugs in the BPF JIT related to gotox (goto-with-exception) targets and indirect jumps. Fixes include avoiding quadratic complexity in bpf_compute_scc(), bounding indirect jump edges, correctly rebasing exception callback subprogs when dead subprogs are removed, and retargeting indirect jump targets across prologue prepends. The series also adds extensive selftests covering edge cases like gotox nop targets, indirect jumps across subprograms, and tail calls in subprograms without exits.",
+      "related_links": []
+    },
+    {
+      "title": "Unify subprog argument checks",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260925211256.1834061-2-ameryhung@gmail.com/",
+      "summary": "This 12-patch v1 series refactors the BPF verifier to unify argument checking for subprogram calls through a common code path. Currently, subprog argument validation is scattered across different code paths depending on argument type (scalar, context, arena, dynptr, BTF-ID, memory, etc.). The series builds unified argument prototype metadata for subprog calls and then consolidates type-specific checks, including tracking packet changes in call metadata. This improves verifier maintainability and consistency.",
+      "related_links": []
+    },
+    {
+      "title": "Make sleepable arena paths use sleepable alloc_pages",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260925233538.5708-2-emil@etsalapatis.com/",
+      "summary": "A 7-patch v4 series that adds a sleepable page allocation path for BPF arenas, enabling arena memory allocation to use GFP_KERNEL (sleepable) semantics rather than GFP_ATOMIC when running in a sleepable BPF program context. The series also adds per-call-site kfunc specialization for both near and far calls, allowing the JIT to emit different kfunc call sequences depending on whether the call site is in a sleepable context. This improves reliability of large allocations in sleepable programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Add recursive map dumping",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260926014208.24773-2-hi@tychen.cc/",
+      "summary": "The v9 iteration of a series adding recursive map dumping to bpftool, enabling users to dump BPF maps that contain references to other maps (e.g., maps of maps). Previously bpftool would fail or produce incomplete output for such nested structures. The companion selftest covers correctness of the recursive dump output. Reaching v9 suggests this series has undergone significant review and refinement.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix static linking of externs placed in allocated sections",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20260926000243.2830819-1-andrii@kernel.org/",
+      "summary": "A v2 2-patch fix from libbpf maintainer Andrii Nakryiko addressing a bug where externs declared in allocated (non-BSS) ELF sections were not correctly resolved during static BPF program linking. This caused programs using extern variables in unusual section placements to fail to link properly. The fix ensures libbpf's static linker handles these cases correctly, with an added selftest in the linked_externs test suite.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20260925134828.2012199-2-puranjay@kernel.org/",
+      "summary": "A 3-patch v3 series extending the x86-64 BPF JIT to support fetch variants of AND, OR, and XOR atomic operations (FETCH_AND, FETCH_OR, FETCH_XOR) for BPF arena memory. These atomic fetch operations return the old value before the operation, which is needed for correct implementation of certain lock-free algorithms. The series also updates sched_ext to use these fetching atomics instead of a more expensive cmpxchg loop.",
+      "related_links": []
+    }
+  ]
+}
