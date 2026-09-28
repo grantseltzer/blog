@@ -1,0 +1,416 @@
+{
+  "period": "daily",
+  "period_start": "2026-09-27",
+  "period_end": "2026-09-28",
+  "fetched_at": "2026-09-28T17:28:15Z",
+  "patches": [
+    {
+      "title": "[bpf-next,1/2] bpftool: Reset map info before each query in show and dump loops",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/14f8779c59411e88bc320f1064a94aa580ca5be8.1790615923.git.hi@tychen.cc/",
+      "date": "2026-09-28T17:13:21",
+      "series": [
+        {
+          "id": 1175442,
+          "url": "https://patchwork.kernel.org/api/series/1175442/",
+          "web_url": "https://patchwork.kernel.org/series/1175442/",
+          "date": "2026-09-28T17:13:21",
+          "name": "[bpf-next,1/2] bpftool: Reset map info before each query in show and dump loops",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1175442/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,2/2] bpf: htab: Reduce elem_size by 8 bytes for small key sizes",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20260928150121.1712559-3-tjmercier@google.com/",
+      "date": "2026-09-28T15:01:20",
+      "series": [
+        {
+          "id": 1175349,
+          "url": "https://patchwork.kernel.org/api/series/1175349/",
+          "web_url": "https://patchwork.kernel.org/series/1175349/",
+          "date": "2026-09-28T15:01:18",
+          "name": "bpf: htab: Reduce memory use of hash maps",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1175349/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,1/2] bpf: htab: Split htab_elem_lru and htab_elem_pcpu off of htab_elem",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20260928150121.1712559-2-tjmercier@google.com/",
+      "date": "2026-09-28T15:01:19",
+      "series": [
+        {
+          "id": 1175349,
+          "url": "https://patchwork.kernel.org/api/series/1175349/",
+          "web_url": "https://patchwork.kernel.org/series/1175349/",
+          "date": "2026-09-28T15:01:18",
+          "name": "bpf: htab: Reduce memory use of hash maps",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1175349/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] bpf: Roll back freplace link state when bpf_arch_text_poke() fails",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260928091121.219333-1-chenyuan_fl@163.com/",
+      "date": "2026-09-28T09:11:21",
+      "series": [
+        {
+          "id": 1175112,
+          "url": "https://patchwork.kernel.org/api/series/1175112/",
+          "web_url": "https://patchwork.kernel.org/series/1175112/",
+          "date": "2026-09-28T09:11:21",
+          "name": "[bpf-next,v2] bpf: Roll back freplace link state when bpf_arch_text_poke() fails",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1175112/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,4/4] selftests/bpf: Enable instruction array test for riscv64",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20260928071845.2432-5-cp0613@linux.alibaba.com/",
+      "date": "2026-09-28T07:18:45",
+      "series": [
+        {
+          "id": 1175002,
+          "url": "https://patchwork.kernel.org/api/series/1175002/",
+          "web_url": "https://patchwork.kernel.org/series/1175002/",
+          "date": "2026-09-28T07:18:43",
+          "name": "bpf, riscv: Add support for indirect jumps",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1175002/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/4] selftests/bpf: Enable gotox liveness test for riscv64",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20260928071845.2432-4-cp0613@linux.alibaba.com/",
+      "date": "2026-09-28T07:18:44",
+      "series": [
+        {
+          "id": 1175002,
+          "url": "https://patchwork.kernel.org/api/series/1175002/",
+          "web_url": "https://patchwork.kernel.org/series/1175002/",
+          "date": "2026-09-28T07:18:43",
+          "name": "bpf, riscv: Add support for indirect jumps",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1175002/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/4] selftests/bpf: Enable gotox tests for riscv64",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20260928071845.2432-3-cp0613@linux.alibaba.com/",
+      "date": "2026-09-28T07:18:43",
+      "series": [
+        {
+          "id": 1175002,
+          "url": "https://patchwork.kernel.org/api/series/1175002/",
+          "web_url": "https://patchwork.kernel.org/series/1175002/",
+          "date": "2026-09-28T07:18:43",
+          "name": "bpf, riscv: Add support for indirect jumps",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1175002/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/4] bpf, riscv: Add support for indirect jumps",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20260928071845.2432-2-cp0613@linux.alibaba.com/",
+      "date": "2026-09-28T07:18:42",
+      "series": [
+        {
+          "id": 1175002,
+          "url": "https://patchwork.kernel.org/api/series/1175002/",
+          "web_url": "https://patchwork.kernel.org/series/1175002/",
+          "date": "2026-09-28T07:18:43",
+          "name": "bpf, riscv: Add support for indirect jumps",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1175002/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,2/2] bpf: htab: Reduce elem_size by 8 bytes for small key sizes",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20260928064021.1433277-3-tjmercier@google.com/",
+      "date": "2026-09-28T06:40:19",
+      "series": [
+        {
+          "id": 1174979,
+          "url": "https://patchwork.kernel.org/api/series/1174979/",
+          "web_url": "https://patchwork.kernel.org/series/1174979/",
+          "date": "2026-09-28T06:40:17",
+          "name": "bpf: htab: Reduce memory use of hash maps",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1174979/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,1/2] bpf: htab: Split htab_elem_lru and htab_elem_pcpu off of htab_elem",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20260928064021.1433277-2-tjmercier@google.com/",
+      "date": "2026-09-28T06:40:18",
+      "series": [
+        {
+          "id": 1174979,
+          "url": "https://patchwork.kernel.org/api/series/1174979/",
+          "web_url": "https://patchwork.kernel.org/series/1174979/",
+          "date": "2026-09-28T06:40:17",
+          "name": "bpf: htab: Reduce memory use of hash maps",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1174979/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] selftests/bpf: Add bpf_proactive_reclaim test",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/20260928063724.24008-1-hui.zhu@linux.dev/",
+      "date": "2026-09-28T06:37:24",
+      "series": [
+        {
+          "id": 1174974,
+          "url": "https://patchwork.kernel.org/api/series/1174974/",
+          "web_url": "https://patchwork.kernel.org/series/1174974/",
+          "date": "2026-09-28T06:37:24",
+          "name": "[bpf-next,v2] selftests/bpf: Add bpf_proactive_reclaim test",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174974/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] libbpf: Fix struct and union zero detection in BTF dumper",
+      "author": "Luis Vieira",
+      "url": "https://lore.kernel.org/bpf/20260928-libbpf-btf-enodata-fix-v1-1-56dae4cab778@gmail.com/",
+      "date": "2026-09-28T03:47:07",
+      "series": [
+        {
+          "id": 1174898,
+          "url": "https://patchwork.kernel.org/api/series/1174898/",
+          "web_url": "https://patchwork.kernel.org/series/1174898/",
+          "date": "2026-09-28T03:47:07",
+          "name": "[bpf-next] libbpf: Fix struct and union zero detection in BTF dumper",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174898/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: Enable gotox tests for riscv64",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20260928022109.1093-3-cp0613@linux.alibaba.com/",
+      "date": "2026-09-28T02:21:09",
+      "series": [
+        {
+          "id": 1174872,
+          "url": "https://patchwork.kernel.org/api/series/1174872/",
+          "web_url": "https://patchwork.kernel.org/series/1174872/",
+          "date": "2026-09-28T02:21:07",
+          "name": "bpf, riscv: Add support for indirect jumps",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174872/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf, riscv: Add support for indirect jumps",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20260928022109.1093-2-cp0613@linux.alibaba.com/",
+      "date": "2026-09-28T02:21:08",
+      "series": [
+        {
+          "id": 1174872,
+          "url": "https://patchwork.kernel.org/api/series/1174872/",
+          "web_url": "https://patchwork.kernel.org/series/1174872/",
+          "date": "2026-09-28T02:21:07",
+          "name": "bpf, riscv: Add support for indirect jumps",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174872/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] bpf: Fix bpf_loop() depth check to use 32-bit max for nr_loops",
+      "author": "\u00d6mer Mete Kaya",
+      "url": "https://lore.kernel.org/bpf/20260928001609.429840-1-omermetekaya0@gmail.com/",
+      "date": "2026-09-28T00:15:42",
+      "series": [
+        {
+          "id": 1174851,
+          "url": "https://patchwork.kernel.org/api/series/1174851/",
+          "web_url": "https://patchwork.kernel.org/series/1174851/",
+          "date": "2026-09-28T00:15:42",
+          "name": "[bpf-next,v2] bpf: Fix bpf_loop() depth check to use 32-bit max for nr_loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174851/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/2] selftests/bpf: Test bpftool map dump on maps that can't be iterated",
+      "author": "Maxim Skokov",
+      "url": "https://lore.kernel.org/bpf/20260928001513.7072-3-skokovmaksimevg@gmail.com/",
+      "date": "2026-09-28T00:15:08",
+      "series": [
+        {
+          "id": 1174850,
+          "url": "https://patchwork.kernel.org/api/series/1174850/",
+          "web_url": "https://patchwork.kernel.org/series/1174850/",
+          "date": "2026-09-28T00:15:06",
+          "name": "bpftool: Fail map dump for maps that can't be iterated",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1174850/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/2] bpftool: Fail map dump for maps that can't be iterated",
+      "author": "Maxim Skokov",
+      "url": "https://lore.kernel.org/bpf/20260928001513.7072-2-skokovmaksimevg@gmail.com/",
+      "date": "2026-09-28T00:15:07",
+      "series": [
+        {
+          "id": 1174850,
+          "url": "https://patchwork.kernel.org/api/series/1174850/",
+          "web_url": "https://patchwork.kernel.org/series/1174850/",
+          "date": "2026-09-28T00:15:06",
+          "name": "bpftool: Fail map dump for maps that can't be iterated",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1174850/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] bpf: Skip redundant destroy_if_dynptr_stack_slot calls in check_stack_write_var_off",
+      "author": "\u00d6mer Mete Kaya",
+      "url": "https://lore.kernel.org/bpf/20260927233653.424163-1-omermetekaya0@gmail.com/",
+      "date": "2026-09-27T23:35:59",
+      "series": [
+        {
+          "id": 1174841,
+          "url": "https://patchwork.kernel.org/api/series/1174841/",
+          "web_url": "https://patchwork.kernel.org/series/1174841/",
+          "date": "2026-09-27T23:35:59",
+          "name": "[bpf-next,v2] bpf: Skip redundant destroy_if_dynptr_stack_slot calls in check_stack_write_var_off",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174841/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Fix bpf_loop() depth check to use 32-bit max for nr_loops",
+      "author": "\u00d6mer Mete Kaya",
+      "url": "https://lore.kernel.org/bpf/20260927230822.417683-1-omermetekaya0@gmail.com/",
+      "date": "2026-09-27T23:07:26",
+      "series": [
+        {
+          "id": 1174839,
+          "url": "https://patchwork.kernel.org/api/series/1174839/",
+          "web_url": "https://patchwork.kernel.org/series/1174839/",
+          "date": "2026-09-27T23:07:26",
+          "name": "[bpf-next] bpf: Fix bpf_loop() depth check to use 32-bit max for nr_loops",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174839/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Skip redundant destroy_if_dynptr_stack_slot calls in check_stack_write_var_off",
+      "author": "\u00d6mer Mete Kaya",
+      "url": "https://lore.kernel.org/bpf/20260927230511.417420-1-omermetekaya0@gmail.com/",
+      "date": "2026-09-27T23:04:28",
+      "series": [
+        {
+          "id": 1174838,
+          "url": "https://patchwork.kernel.org/api/series/1174838/",
+          "web_url": "https://patchwork.kernel.org/series/1174838/",
+          "date": "2026-09-27T23:04:28",
+          "name": "[bpf-next] bpf: Skip redundant destroy_if_dynptr_stack_slot calls in check_stack_write_var_off",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1174838/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,2/2] selftests/bpf: Test dynptr teardown on subprog return",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20260927120422.1042107-3-xyx2021@mail.ustc.edu.cn/",
+      "date": "2026-09-27T12:04:22",
+      "series": [
+        {
+          "id": 1174317,
+          "url": "https://patchwork.kernel.org/api/series/1174317/",
+          "web_url": "https://patchwork.kernel.org/series/1174317/",
+          "date": "2026-09-27T12:04:20",
+          "name": "bpf: Destroy callee-local dynptrs on subprog return",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1174317/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,1/2] bpf: Destroy callee-local dynptrs on subprog return",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20260927120422.1042107-2-xyx2021@mail.ustc.edu.cn/",
+      "date": "2026-09-27T12:04:21",
+      "series": [
+        {
+          "id": 1174318,
+          "url": "https://patchwork.kernel.org/api/series/1174318/",
+          "web_url": "https://patchwork.kernel.org/series/1174318/",
+          "date": "2026-09-27T12:04:21",
+          "name": "[bpf-next,v6,1/2] bpf: Destroy callee-local dynptrs on subprog return",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1174318/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,2/2] selftests/bpf: Test borrowed iterator result lifetimes",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20260927120406.1041915-3-xyx2021@mail.ustc.edu.cn/",
+      "date": "2026-09-27T12:04:06",
+      "series": [
+        {
+          "id": 1174319,
+          "url": "https://patchwork.kernel.org/api/series/1174319/",
+          "web_url": "https://patchwork.kernel.org/series/1174319/",
+          "date": "2026-09-27T12:04:04",
+          "name": "bpf: Track borrowed iterator result lifetimes",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1174319/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,1/2] bpf: Track borrowed iterator results by default",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20260927120406.1041915-2-xyx2021@mail.ustc.edu.cn/",
+      "date": "2026-09-27T12:04:05",
+      "series": [
+        {
+          "id": 1174317,
+          "url": "https://patchwork.kernel.org/api/series/1174317/",
+          "web_url": "https://patchwork.kernel.org/series/1174317/",
+          "date": "2026-09-27T12:04:20",
+          "name": "bpf: Destroy callee-local dynptrs on subprog return",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1174317/mbox/"
+        }
+      ]
+    }
+  ]
+}
