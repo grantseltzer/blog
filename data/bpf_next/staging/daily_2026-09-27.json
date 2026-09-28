@@ -1,0 +1,76 @@
+{
+  "period": "daily",
+  "period_start": "2026-09-26",
+  "period_end": "2026-09-27",
+  "fetched_at": "2026-09-27T14:36:20Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v9,2/2] selftests/bpf: Cover recursive bpftool map dumps",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260926014208.24773-3-hi@tychen.cc/",
+      "date": "2026-09-26T01:42:08",
+      "series": [
+        {
+          "id": 1174167,
+          "url": "https://patchwork.kernel.org/api/series/1174167/",
+          "web_url": "https://patchwork.kernel.org/series/1174167/",
+          "date": "2026-09-26T01:42:06",
+          "name": "bpftool: Add recursive map dumping",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1174167/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v9,1/2] bpftool: Add recursive map dumping",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260926014208.24773-2-hi@tychen.cc/",
+      "date": "2026-09-26T01:42:07",
+      "series": [
+        {
+          "id": 1174167,
+          "url": "https://patchwork.kernel.org/api/series/1174167/",
+          "web_url": "https://patchwork.kernel.org/series/1174167/",
+          "date": "2026-09-26T01:42:06",
+          "name": "bpftool: Add recursive map dumping",
+          "version": 9,
+          "mbox": "https://patchwork.kernel.org/series/1174167/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,2/2] selftests/bpf: Add linked_externs test for externs in allocated sections",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20260926000243.2830819-2-andrii@kernel.org/",
+      "date": "2026-09-26T00:02:43",
+      "series": [
+        {
+          "id": 1174143,
+          "url": "https://patchwork.kernel.org/api/series/1174143/",
+          "web_url": "https://patchwork.kernel.org/series/1174143/",
+          "date": "2026-09-26T00:02:42",
+          "name": "[v2,bpf-next,1/2] libbpf: Fix static linking of externs placed in allocated sections",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174143/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,1/2] libbpf: Fix static linking of externs placed in allocated sections",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20260926000243.2830819-1-andrii@kernel.org/",
+      "date": "2026-09-26T00:02:42",
+      "series": [
+        {
+          "id": 1174143,
+          "url": "https://patchwork.kernel.org/api/series/1174143/",
+          "web_url": "https://patchwork.kernel.org/series/1174143/",
+          "date": "2026-09-26T00:02:42",
+          "name": "[v2,bpf-next,1/2] libbpf: Fix static linking of externs placed in allocated sections",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1174143/mbox/"
+        }
+      ]
+    }
+  ]
+}
