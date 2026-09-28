@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-09-28T00:00:00Z",
+  "period_start": "2026-09-26",
+  "period_end": "2026-09-27",
+  "patch_count": 4,
+  "thread_count": 2,
+  "top_contributors": ["Andrii Nakryiko", "Tianyi Chen"],
+  "key_topics": ["bpftool", "libbpf", "selftests", "static-linking"],
+  "overview": "A light day on bpf-next with two series. Tianyi Chen's long-running bpftool recursive map dumping series reached v9, and Andrii Nakryiko posted a v2 fix for libbpf's static linker handling of externs in allocated ELF sections.",
+  "patches": [
+    {
+      "title": "bpftool: Add recursive map dumping",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260926014208.24773-2-hi@tychen.cc/",
+      "summary": "This patch (v9, 1/2) adds support for recursive map dumping to bpftool, allowing users to dump nested BPF maps that reference other maps as values. Previously, bpftool would only show inner map IDs without resolving them; with this change, the tool recursively follows map-in-map references and pretty-prints the full nested structure. This is a usability improvement for programs that use BPF_MAP_TYPE_ARRAY_OF_MAPS or BPF_MAP_TYPE_HASH_OF_MAPS. The feature is guarded against infinite loops via a depth limit.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Cover recursive bpftool map dumps",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/20260926014208.24773-3-hi@tychen.cc/",
+      "summary": "This is the selftest companion (2/2) to the recursive bpftool map dump feature. It adds test cases that construct nested BPF maps and verify that bpftool correctly recurses into and displays inner map contents. The tests cover both array-of-maps and hash-of-maps variants and ensure the depth-limiting logic prevents infinite recursion on circular references.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix static linking of externs placed in allocated sections",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20260926000243.2830819-1-andrii@kernel.org/",
+      "summary": "This patch (v2, 1/2) fixes a bug in libbpf's static linker where extern variables placed in allocated ELF sections (sections with the SHF_ALLOC flag) were not resolved correctly during BPF object file linking. The static linker was skipping such externs during symbol resolution, leading to link failures or silent mismatches when users placed externs in custom sections. The fix ensures allocated-section externs are treated the same as those in non-allocated sections during the resolution pass.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add linked_externs test for externs in allocated sections",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20260926000243.2830819-2-andrii@kernel.org/",
+      "summary": "This is the selftest (2/2) for the libbpf static linker extern fix. It extends the linked_externs test suite with a case that places extern declarations in an allocated ELF section and verifies that libbpf's static linker correctly resolves them when linking multiple BPF object files together. The test ensures the fix holds across both 32-bit and 64-bit extern types.",
+      "related_links": []
+    }
+  ]
+}
