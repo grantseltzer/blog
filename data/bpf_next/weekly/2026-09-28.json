@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-09-29T00:00:00Z",
+  "period_start": "2026-09-21",
+  "period_end": "2026-09-28",
+  "patch_count": 100,
+  "thread_count": 26,
+  "top_contributors": ["Eduard Zingerman", "Kumar Kartikeya Dwivedi", "Yonghong Song", "Chen Pei"],
+  "key_topics": ["verifier", "arenas", "maps", "dynptr", "riscv", "btf", "exception-handling", "libbpf", "bpftool"],
+  "overview": "The week of September 21–28 on bpf-next was dominated by two landmark series: Kumar Kartikeya Dwivedi's RFC introducing BPF typed arenas, which adds type-safe memory allocation semantics to BPF's arena map infrastructure, and Eduard Zingerman's 36-patch series implementing scalar evolution (SCEV) analysis in the verifier to intelligently widen bounded loops and dramatically reduce verification complexity for loop-heavy programs. Yonghong Song's v6 exception cleanup landing pad series continued to mature, enabling BPF programs to run DWARF-style cleanup handlers when bpf_unwind() unwinds the call stack. Additional notable work included T.J. Mercier's hash map memory reduction, Chen Pei's RISC-V indirect jump support, Xu Yunxiang's dynptr lifetime tracking improvements, and Alan Maguire's BTF inline functionality followups adding function signature representation.",
+  "patches": [
+    {
+      "title": "bpf: Introduce BPF typed arenas",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20260926233503.3114147-3-memxor@gmail.com/",
+      "summary": "Introduces BPF typed arenas, a new abstraction that layers type-safety guarantees on top of the existing BPF arena map. Programs can allocate typed objects within an arena and the verifier enforces that pointer accesses respect the declared type layout. The RFC series (16 patches) includes a new typed_arena_cast instruction, kfuncs for page allocation and release, support for kptrs and typed pointer fields within arena objects, libbpf support, and compiler integration via automatically-inserted casts. This significantly improves safety for BPF programs that use arena-based memory allocation for data structures.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: track may_write flags in liveness",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20260926-scev-minimal-rebase-v1-1-c8e5ab5ba79f@gmail.com/",
+      "summary": "First patch in a 36-patch series implementing scalar evolution (SCEV) analysis for the BPF verifier to widen bounded loops. The overall series addresses one of the most common sources of 'BPF program is too complex' errors by teaching the verifier to compute induction variable ranges analytically rather than through iterative state enumeration. Key components include immediate dominator computation, loop hierarchy analysis, a min-heap for ordered analysis worklists, SCEV expression computation, and a new loop-widening pass that uses SCEV to prove loop termination bounds and prune redundant verification states.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Dispatch exception cleanup pads at run time",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260926050107.2218786-1-yonghong.song@linux.dev/",
+      "summary": "Part of a 21-patch v6 series enabling BPF exception cleanup landing pads to run when bpf_unwind() unwinds the call stack. The series implements a .bpf_cleanup ELF section carrying cleanup handlers, libbpf support for collecting and passing cleanup records to the kernel, light skeleton support, and arm64 JIT dispatch of cleanup pads at runtime. This brings DWARF-style exception handling semantics to BPF programs, allowing safe resource cleanup on abnormal program termination paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: htab: Split htab_elem_lru and htab_elem_pcpu off of htab_elem",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20260928150121.1712559-2-tjmercier@google.com/",
+      "summary": "Splits the htab_elem struct into separate types for LRU and per-CPU hash map variants, removing fields irrelevant to each case. This is part of a v7 two-patch series that also shrinks elem_size by 8 bytes for maps with small keys. The change reduces per-element memory overhead for BPF hash maps, improving cache efficiency for maps with high cardinality or tight memory budgets.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, riscv: Add support for indirect jumps",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20260928071845.2432-2-cp0613@linux.alibaba.com/",
+      "summary": "Adds gotox (indirect jump) support to the BPF JIT for RISC-V 64-bit, enabling spectre-style indirect branch mitigation on that architecture. The v3 four-patch series also enables gotox, gotox liveness, and instruction array selftests for riscv64. The change brings the riscv64 BPF backend to parity with x86_64 and arm64 for indirect jump handling.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Destroy callee-local dynptrs on subprog return",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20260927120422.1042107-2-xyx2021@mail.ustc.edu.cn/",
+      "summary": "Adds verifier logic to track dynptrs that are local to a callee subprogram and ensure they are destroyed on subprogram return, preventing resource leaks and use-after-return bugs. This v6 patch is part of a two-patch series that also adds a selftest verifying correct teardown behavior. The change is a correctness improvement to BPF's dynamic pointer subsystem for programs that use dynptrs across subprogram call boundaries.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add PPPoE encap support to bpf_skb_adjust_room",
+      "author": "Sean zhang",
+      "url": "https://lore.kernel.org/bpf/20260926210757.2152159-2-thisseanzhang@gmail.com/",
+      "summary": "Extends the bpf_skb_adjust_room() helper to support PPPoE header encapsulation and decapsulation in TC BPF programs. The RFC three-patch series adds two new flags: one for PPPoE encap (prepending the PPPoE and Ethernet headers) and one for decap (stripping them). A selftest exercises both encap and decap paths. This enables BPF-based PPPoE termination use cases without requiring custom user-space header manipulation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Verify BTF_KIND_LOC_PARAM vlen, flags",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20260926175113.2368566-2-alan.maguire@oracle.com/",
+      "summary": "Adds validation of BTF_KIND_LOC_PARAM vlen and flags fields in the BTF verifier, preventing malformed BTF from being accepted. This v3 three-patch series also updates bpftool to include full function signature representation (parameter names and types) in BTF dump output, and fixes a corresponding selftest. Together these patches improve the completeness and correctness of BTF inline parameter information.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Track borrowed iterator results by default",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20260927120406.1041915-2-xyx2021@mail.ustc.edu.cn/",
+      "summary": "Extends the BPF verifier to track lifetimes of objects returned from borrowed iterators by default, ensuring references do not escape the iterator's valid scope. This v6 patch addresses a correctness gap that could allow use-after-free bugs with iterator-based patterns. The accompanying selftest covers borrowed iterator result lifetime edge cases.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix struct and union zero detection in BTF dumper",
+      "author": "Luis Vieira",
+      "url": "https://lore.kernel.org/bpf/20260928-libbpf-btf-enodata-fix-v1-1-56dae4cab778@gmail.com/",
+      "summary": "Fixes a bug in libbpf's BTF dumper where structs and unions whose members are all zero-valued were incorrectly identified as empty types, causing a spurious ENODATA error. The fix adds proper logic to distinguish zero-valued members from absent ones. This affects any tool relying on libbpf's BTF dump path, including bpftool type display and BTF-based CO-RE workflows.",
+      "related_links": []
+    }
+  ]
+}

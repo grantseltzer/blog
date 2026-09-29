@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-09-29T00:00:00Z",
+  "period_start": "2026-09-27",
+  "period_end": "2026-09-28",
+  "patch_count": 24,
+  "thread_count": 16,
+  "top_contributors": ["Chen Pei", "T.J. Mercier", "Ömer Mete Kaya", "Xu Yunxiang"],
+  "key_topics": ["maps", "htab", "riscv", "dynptr", "verifier", "bpftool", "btf", "libbpf"],
+  "overview": "September 28 on bpf-next saw active development across several subsystems, highlighted by T.J. Mercier's v7 memory-reduction series for BPF hash maps, Chen Pei's RISC-V indirect jump support reaching v3, and Xu Yunxiang's dynptr lifetime tracking improvements. Additional fixes addressed a freplace link state rollback bug on JIT patching failure, a bpf_loop() iteration limit type mismatch, and a libbpf BTF dumper zero-value detection error.",
+  "patches": [
+    {
+      "title": "bpf: htab: Split htab_elem_lru and htab_elem_pcpu off of htab_elem",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20260928150121.1712559-2-tjmercier@google.com/",
+      "summary": "Splits the htab_elem structure into separate types for LRU and per-CPU hash map elements, eliminating fields that are unused for certain map types. This is patch 1 of a v7 two-patch series aimed at reducing BPF hash map memory usage. By separating struct variants, the change reduces per-element overhead and improves cache efficiency for high-cardinality maps. The second patch exploits the new layout to further shrink elem_size by 8 bytes for small key sizes.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, riscv: Add support for indirect jumps",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20260928071845.2432-2-cp0613@linux.alibaba.com/",
+      "summary": "Adds indirect jump (gotox) support to the BPF JIT for the RISC-V 64-bit architecture, enabling spectre-style indirect branch mitigation on that platform. This v3 series also enables gotox, gotox liveness, and instruction array selftests for riscv64. The change closes a gap between the riscv64 BPF backend and other architectures that already support indirect jump instructions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Destroy callee-local dynptrs on subprog return",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20260927120422.1042107-2-xyx2021@mail.ustc.edu.cn/",
+      "summary": "Ensures that dynamic pointers (dynptrs) local to a callee subprogram are properly destroyed when the subprogram returns, preventing resource leaks and use-after-return bugs. This v6 patch adds verifier logic to track callee-owned dynptrs and insert teardown at subprog exit boundaries. The accompanying selftest verifies correct teardown behavior on subprog return.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Track borrowed iterator results by default",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20260927120406.1041915-2-xyx2021@mail.ustc.edu.cn/",
+      "summary": "Extends the BPF verifier to track the lifetime of objects returned from borrowed iterators, ensuring such results are not used beyond the lifetime of the owning iterator. This v6 patch addresses a correctness gap where iterator-borrowed references could escape their valid scope. The selftest covers various borrowed iterator result lifetime patterns to validate the new tracking.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Roll back freplace link state when bpf_arch_text_poke() fails",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260928091121.219333-1-chenyuan_fl@163.com/",
+      "summary": "Fixes a bug where a failed bpf_arch_text_poke() call during freplace program attachment leaves the link in an inconsistent state. The v2 fix rolls back the link state atomically on failure, restoring the previous call target. This improves robustness of the freplace mechanism, which is used to swap BPF program implementations at runtime without reloading.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix struct and union zero detection in BTF dumper",
+      "author": "Luis Vieira",
+      "url": "https://lore.kernel.org/bpf/20260928-libbpf-btf-enodata-fix-v1-1-56dae4cab778@gmail.com/",
+      "summary": "Corrects a bug in libbpf's BTF dumper where structs and unions with all-zero member values were incorrectly flagged as having no data, triggering a spurious ENODATA error. The fix properly distinguishes between empty types and types whose fields happen to be zero-valued. This affects any tooling using libbpf's BTF dump path, including bpftool type introspection.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix bpf_loop() depth check to use 32-bit max for nr_loops",
+      "author": "Ömer Mete Kaya",
+      "url": "https://lore.kernel.org/bpf/20260928001609.429840-1-omermetekaya0@gmail.com/",
+      "summary": "Fixes a type mismatch in the bpf_loop() helper's depth check, ensuring the maximum allowed nr_loops value correctly uses the 32-bit integer maximum rather than a narrower limit. This v2 patch prevents potential integer overflow issues when programs request very large loop counts. The change aligns bpf_loop() behavior with its documented semantics.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Fail map dump for maps that can't be iterated",
+      "author": "Maxim Skokov",
+      "url": "https://lore.kernel.org/bpf/20260928001513.7072-2-skokovmaksimevg@gmail.com/",
+      "summary": "Makes bpftool exit with an error when attempting to dump a map type that does not support iteration (such as socket storage maps) rather than silently producing empty output. This v4 series also adds a selftest confirming that bpftool map dump fails for non-iterable maps. The change improves usability by surfacing unsupported operations as explicit errors.",
+      "related_links": []
+    }
+  ]
+}
