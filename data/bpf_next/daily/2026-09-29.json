@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-09-30T00:00:00Z",
+  "period_start": "2026-09-28",
+  "period_end": "2026-09-29",
+  "patch_count": 85,
+  "thread_count": 22,
+  "top_contributors": ["Yonghong Song", "Amery Hung", "Pu Lehui", "Emil Tsalapatis"],
+  "key_topics": ["exception-handling", "verifier", "kfuncs", "riscv", "arena", "sockmap", "maps", "libbpf", "bpftool"],
+  "overview": "A busy day for bpf-next with several significant series across multiple subsystems. The headline contribution is Yonghong Song's v7 of exception cleanup landing pad support (22 patches), enabling C++-style stack unwinding in BPF programs via new bpf_unwind() kfuncs and a compiler-supplied exception cleanup table. Alongside this, major verifier refactoring from Amery Hung to unify subprogram argument checks, RISC-V JIT improvements for indirect calls and jumps, and memory optimizations for hash maps round out the day's activity.",
+  "patches": [
+    {
+      "title": "bpf: Pack bpf_insn_aux_data flags into bit fields",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260929001607.3244971-1-yonghong.song@linux.dev/",
+      "summary": "First patch in a 22-patch series (v7) implementing exception cleanup landing pads for BPF programs. The series adds bpf_unwind() and bpf_unwind_resume() kfuncs so that BPF programs can propagate exceptions C++-style, dispatching to compiler-annotated .bpf_cleanup landing pads at runtime. The kernel accepts an exception cleanup table at program load time, libbpf is extended to carry it through the light skeleton, and both x86 and arm64 JITs are taught to rewrite return addresses for cleanup dispatch. The verifier gains new CFG reachability checks and stack-frame invariant enforcement for unwind paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix kfunc BTF parameter lookups after wide arguments",
+      "author": "Amery Hung",
+      "url": "https://lore.kernel.org/bpf/20260928185334.1004200-2-ameryhung@gmail.com/",
+      "summary": "First patch in an 11-patch series (v3) that unifies subprogram argument checking in the BPF verifier. Currently, argument validation is split across per-type helpers for global, static, and dynamic subprog calls; this series consolidates all checks through a single common path using newly constructed argument prototype descriptors. Scalar, context, arena, dynptr, BTF-ID, memory, and untrusted pointer arguments are all migrated. The lead patch also fixes an off-by-one in kfunc BTF parameter lookups that occurs after wide (64-bit-register-consuming) arguments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Use an llist for page allocations",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260928202643.9114-2-emil@etsalapatis.com/",
+      "summary": "First patch in a 7-patch series (v5) that adds a sleepable page allocation path for BPF arenas and introduces per-call-site kfunc specialization. Arenas currently use a non-sleepable alloc_pages() which can fail under memory pressure in sleepable programs; this series adds a sleepable variant and routes arena faults through it. Patch 6 builds on the refactored kfunc descriptor indexing to allow the verifier to emit different JIT code for the same kfunc depending on call-site properties, enabling context-aware specialization without a separate kfunc registration.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Support indirect calls to bpf subprogs (callx)",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260929085450.1852617-2-pulehui@huaweicloud.com/",
+      "summary": "Two-patch series adding callx (indirect subprogram call) support to the RISC-V BPF JIT. The BPF ISA has long supported BPF_CALL with an indirect target register via callx, but the RISC-V backend lacked the corresponding JIT lowering; programs relying on it would fail to load. The companion patch enables the related selftests for riscv64 now that the instruction is properly handled.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: htab: Split htab_elem_lru and htab_elem_pcpu off of htab_elem",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20260928150121.1712559-2-tjmercier@google.com/",
+      "summary": "Two-patch series (v7) reducing memory use of BPF hash maps by splitting the monolithic htab_elem struct into separate base, LRU, and per-CPU variants. Previously all hash map elements carried LRU and per-CPU fields even when the map type didn't need them, wasting 8 bytes per element. The second patch additionally shrinks elem_size by 8 bytes for maps with small keys by eliminating a now-unnecessary inline key copy.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: Fix udp_bpf_recvmsg() spinning on backlog-only ingress",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260929083447.558818-2-chenyuan_fl@163.com/",
+      "summary": "Two-patch series fixing a livelock in udp_bpf_recvmsg() when ingress data is queued only on the socket backlog and the sk_psock ingress queue is empty. The receive path would repeatedly check the psock queue, find it empty, and loop without ever processing the backlog, causing the caller to spin indefinitely. The fix drains the backlog before returning -EAGAIN when no psock data is present. A selftest is added to reproduce the stuck-backlog scenario.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix NULL task dereference in task work cancellation",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20260929072800.113129-2-luyun_611@163.com/",
+      "summary": "Three-patch series (v4) fixing race conditions in BPF task work scheduling. The first patch addresses a NULL dereference that can occur during task work cancellation when the associated task has already exited. The second prevents reuse of a task work context while its irq_work is still executing, closing a use-after-free window. A selftest exercising the scheduling race is added in the third patch.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, riscv: Add support for indirect jumps",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20260928071845.2432-2-cp0613@linux.alibaba.com/",
+      "summary": "Four-patch series (v3) adding gotox (computed indirect jump) support to the RISC-V BPF JIT, which is required for jump table lowering and certain tail-call patterns. The implementation emits a jalr-based indirect branch using a temporary register. Three additional patches enable the gotox selftest suite and liveness tests for riscv64, expanding CI coverage for the architecture.",
+      "related_links": []
+    }
+  ]
+}
