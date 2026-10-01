@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-01T00:00:00Z",
+  "period_start": "2026-09-29",
+  "period_end": "2026-09-30",
+  "patch_count": 55,
+  "thread_count": 15,
+  "top_contributors": ["Yonghong Song", "Pu Lehui", "Emil Tsalapatis", "Ihor Solodrai", "Yun Lu"],
+  "key_topics": ["kfuncs", "exception-handling", "riscv", "libbpf", "btf", "arena", "sockmap", "task-work"],
+  "overview": "Activity on Sept 29-30 was dominated by a major 22-patch series from Yonghong Song adding structured exception cleanup support to BPF, introducing bpf_unwind() kfuncs and .bpf_cleanup landing pads for C++-style exception handling in BPF programs. Emil Tsalapatis continued iterating on sleepable arena allocations with per-call-site kfunc specialization. Pu Lehui posted multiple revisions adding RISC-V callx support for indirect BPF subprogram calls and preparing the architecture for daily CI coverage.",
+  "patches": [
+    {
+      "title": "bpf: Add the bpf_unwind() and bpf_unwind_resume() kfuncs",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20260929001617.3246997-1-yonghong.song@linux.dev/",
+      "summary": "Introduces two new kfuncs, bpf_unwind() and bpf_unwind_resume(), as the core primitives of a 22-patch series enabling C++-style structured exception handling in BPF programs. bpf_unwind() initiates stack unwinding from a BPF program when an exceptional condition is detected, while bpf_unwind_resume() allows cleanup landing pads to continue propagating the unwind. The series allows programs to annotate call sites with .bpf_cleanup sections that are invoked during unwinding in a manner analogous to C++ destructors, providing deterministic resource cleanup semantics. Both x86 and arm64 JIT backends are updated to dispatch exception cleanup pads at run time, and libbpf is updated to collect and pass .bpf_cleanup records to the kernel at program load.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add sleepable arena page allocation path",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260929183928.4896-4-emil@etsalapatis.com/",
+      "summary": "Adds a dedicated sleepable page allocation path for BPF arena memory so that arena-backed programs running in sleepable context can call into the allocator without hitting the non-sleepable restriction. The patch is part of a 7-patch series that also introduces per-call-site kfunc specialization, letting the verifier pick between sleepable and non-sleepable kfunc variants depending on the calling context rather than requiring a single variant for all callers. A new bpf_alloc_pages() parameter signals whether the caller can sleep, and the arena plumbing is updated to pass this flag through. Selftests verify both large and small allocations work correctly for both sleepable and non-sleepable arena users.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support per-call-site kfunc specialization",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260929183928.4896-7-emil@etsalapatis.com/",
+      "summary": "Extends the BPF verifier to support per-call-site kfunc specialization, enabling a single kfunc call instruction to resolve to different implementations depending on the context at the call site. This is motivated by the need to select sleepable vs. non-sleepable kfunc variants for arena allocation without duplicating user-facing APIs. The kfunc descriptor index is stored directly in the instruction's off field to make the per-site selection efficient at JIT time. A companion selftest verifies that specialization is applied correctly across different calling contexts within the same program.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Render decl_tags in btf_dump",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260929234608.48503-3-ihor.solodrai@linux.dev/",
+      "summary": "Extends libbpf's btf_dump API to render BTF_KIND_DECL_TAG annotations in the textual type dump, so that declaration tags (which carry attribute metadata like __attribute__((btf_decl_tag(...)))) appear in the output alongside the types they annotate. Previously btf_dump silently skipped decl_tag kinds, making round-trip fidelity incomplete for annotated kernel types. The series also refactors the type-walking logic in btf_dump_resize() and adds an ASSERT_TEXT_EQ() helper for precise textual assertion in selftests.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Support indirect calls to bpf subprogs (callx)",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260930064928.1909085-2-pulehui@huaweicloud.com/",
+      "summary": "Implements BPF_CALL with indirect call targets (callx) in the RISC-V 64-bit JIT compiler, allowing BPF programs that use function pointers or tail-call-like indirect dispatch to BPF subprograms to run on riscv64. Prior to this patch, the riscv64 JIT lacked callx support, causing such programs to fail to load on that architecture. The series also enables the related selftest cases for RV64 that were previously blocked by a DENYLIST entry.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix NULL task dereference in task work cancellation",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20260930085417.186729-2-luyun_611@163.com/",
+      "summary": "Fixes a potential NULL pointer dereference in BPF's async task work infrastructure where the task pointer could become NULL between the check and the dereference during task exit, leading to a kernel crash. This is the first patch in a three-part series (v5) that also prevents task work context reuse while irq_work is still pending, closing a related race. A new selftest exercises the scheduling race scenarios to prevent regressions.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix cleanup on invalid CO-RE relocation offsets",
+      "author": "Luis Vieira",
+      "url": "https://lore.kernel.org/bpf/20260929-libbpf-core-relo-cleanup-v1-1-c9cd0b5775a9@gmail.com/",
+      "summary": "Fixes a memory leak in libbpf's CO-RE (Compile Once Run Everywhere) relocation processing path triggered when an invalid relocation offset is encountered. The cleanup code incorrectly skipped freeing allocated resources on this error path, causing a small but consistent leak for programs that fail CO-RE relocation. The fix ensures all allocated structures are freed regardless of which error branch is taken during relocation validation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: Fix udp_bpf_recvmsg() spinning on backlog-only ingress",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260929083447.558818-2-chenyuan_fl@163.com/",
+      "summary": "Fixes a live-lock in the BPF sockmap UDP receive path where udp_bpf_recvmsg() would spin indefinitely when data was present only in the socket's backlog queue and not in the normal receive queue. The normal dequeue path would find nothing and retry in a tight loop without draining the backlog, starving progress. The fix adds proper handling for the backlog-only case so the receive function correctly processes queued data and returns to the caller.",
+      "related_links": []
+    }
+  ]
+}
