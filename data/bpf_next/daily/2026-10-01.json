@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-10-02T00:00:00Z",
+  "period_start": "2026-09-30",
+  "period_end": "2026-10-01",
+  "patch_count": 46,
+  "thread_count": 12,
+  "top_contributors": ["Yonghong Song", "Alexei Starovoitov", "Pu Lehui", "Qiliang Yuan"],
+  "key_topics": ["kfuncs", "exception-handling", "verifier", "rust-bpf", "btf", "libbpf", "riscv", "cgroup"],
+  "overview": "The October 1st bpf-next window was dominated by two major series: Yonghong Song's v8 of exception cleanup landing pads introducing bpf_unwind() kfuncs for structured exception handling in BPF programs, and Alexei Starovoitov's first posting of Rust BPF program support spanning 14 patches. Qiliang Yuan contributed a verifier improvement to batch bpf_do_misc_fixups() rewrites atomically, and Pu Lehui continued iterating on RISC-V callx support.",
+  "patches": [
+    {
+      "title": "bpf: Pack bpf_insn_aux_data flags into bit fields",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261001133011.1336611-1-yonghong.song@linux.dev/",
+      "summary": "First patch of a 22-patch v8 series (\"bpf: Run exception cleanup landing pads when bpf_unwind() unwinds\") introducing structured exception handling for BPF programs. The series adds bpf_unwind() and bpf_unwind_resume() kfuncs, an exception cleanup table passed at program load time, and verifier support for landing pads defined in a .bpf_cleanup ELF section. JIT backends for x86 and arm64 are updated to dispatch cleanup pads at runtime by rewriting return addresses, and libbpf gains full support for collecting and linking cleanup records through both the static linker and light skeleton.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow bitwise ops, shifts and mul/div on pointers with CAP_PERFMON",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260930193127.2181684-2-alexei.starovoitov@gmail.com/",
+      "summary": "First patch of a 14-patch series adding support for BPF programs compiled by the rust-bpf toolchain. The series relaxes several verifier constraints required by Rust's code generation model: bitwise/shift/mul/div ALU on pointers with CAP_PERFMON, arena memory access through numeric registers, BTF names with Rust mangling, anonymous function arguments, and variables smaller than their declared type in DATASEC. libbpf is extended to keep global data in arenas when an .arena.data section is present and to preserve bpf_printk() format strings in .rodata.str sections.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a list of deferred instruction patches",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261001-bpf-verifier-patch-batch-v1-1-a12df8a09160@gmail.com/",
+      "summary": "First of a 4-patch series refactoring bpf_do_misc_fixups() to collect all instruction rewrites into a deferred list and apply them in a single pass at the end. Currently each rewrite adjusts a running delta that downstream patches must account for, which is fragile; batching eliminates the delta entirely. The series adds the deferred-patch list, queues all existing rewrites, drops the constant delta, and adds a selftest verifying that jumps over patched regions remain correct.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, cgroup: fix cgroup struct_ops query for a second attach type",
+      "author": "Shakeel Butt",
+      "url": "https://lore.kernel.org/bpf/20261001141901.3225830-1-shakeel.butt@linux.dev/",
+      "summary": "Fixes a bug in the cgroup struct_ops query path where querying programs attached via a second attach type would return incorrect results. The cgroup struct_ops implementation reuses the same bpf_link for multiple attach types, but the query code was not accounting for the second type when iterating attached programs. This is v2 of the fix.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Remove nmi_uaccess_okay() check in bpf_send_signal_common()",
+      "author": "Aditya Sharma",
+      "url": "https://lore.kernel.org/bpf/20261001072449.1377267-2-adi.sharma@zohomail.in/",
+      "summary": "First of a 2-patch series fixing bpf_send_signal_task() when called from kernel thread context. The nmi_uaccess_okay() guard in bpf_send_signal_common() was incorrectly rejecting calls from kernel threads (which have no user address space), even though sending a signal to another task's PID is valid from that context. The fix removes the guard and a companion selftest verifies the scenario.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix struct and union zero detection in BTF dumper",
+      "author": "Luis Vieira",
+      "url": "https://lore.kernel.org/bpf/20261001-libbpf-btf-enodata-fix-v2-1-89f6e8a0240e@gmail.com/",
+      "summary": "Fixes a bug in btf_dump where an empty struct or union (zero size, zero members) was incorrectly reported as having no type information (ENODATA), causing btf__dump_type() callers to treat valid zero-size types as errors. The fix corrects the zero-size detection heuristic, and a regression test is included as the second patch.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Support indirect calls to bpf subprogs (callx)",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260930064928.1909085-2-pulehui@huaweicloud.com/",
+      "summary": "Adds callx (indirect BPF subprogram call) support to the RISC-V BPF JIT, enabling programs that use runtime-computed call targets to run on RV64. The RISC-V backend lacked this instruction class, causing verifier rejections for valid programs. The companion patch enables the previously skipped callx selftests for RV64.",
+      "related_links": []
+    }
+  ]
+}

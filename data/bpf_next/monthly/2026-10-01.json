@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-10-02T00:00:00Z",
+  "period_start": "2026-09-01",
+  "period_end": "2026-10-01",
+  "patch_count": 86,
+  "thread_count": 21,
+  "top_contributors": ["Yonghong Song", "Alexei Starovoitov", "Pu Lehui", "Emil Tsalapatis", "Ihor Solodrai"],
+  "key_topics": ["kfuncs", "exception-handling", "verifier", "rust-bpf", "btf", "libbpf", "arena", "riscv", "cgroup", "sockmap"],
+  "overview": "September 2026 on the bpf-next mailing list saw sustained work on two flagship features: Yonghong Song's exception cleanup mechanism reached v8 by month end, introducing bpf_unwind() and bpf_unwind_resume() kfuncs so BPF programs can perform structured exception handling with compiler-generated landing pads. Alexei Starovoitov posted the first version of Rust BPF program support, relaxing several verifier constraints (pointer arithmetic, anonymous args, undersized DATASEC variables) required by the Rust code generator. Emil Tsalapatis contributed a series making arena page allocation sleepable via per-call-site kfunc specialization, enabling large arena allocations from sleepable BPF programs without blocking non-sleepable paths. RISC-V received multiple improvements from Pu Lehui including callx (indirect BPF subprogram calls) and daily CI infrastructure. The libbpf library saw several correctness fixes covering BTF decl_tag rendering, struct/union zero detection in the dumper, and CO-RE relocation cleanup on error paths; chenyuan fixed a sockmap regression causing udp_bpf_recvmsg() to spin indefinitely on a backlog-only ingress queue.",
+  "patches": [
+    {
+      "title": "bpf: Add the bpf_unwind() and bpf_unwind_resume() kfuncs",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261001133022.1337350-1-yonghong.song@linux.dev/",
+      "summary": "Central patch of a 22-patch v8 series adding structured exception handling to BPF. bpf_unwind() initiates an exception unwind and bpf_unwind_resume() is the kfunc version of _Unwind_Resume used in compiler-generated landing pads. The series also adds an exception cleanup table submitted at program load, verifier CFG reachability for landing pads, return-address rewriting in the JIT to dispatch cleanup pads, and full libbpf support for the .bpf_cleanup ELF section through the static linker and light skeleton.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow bitwise ops, shifts and mul/div on pointers with CAP_PERFMON",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20260930193127.2181684-2-alexei.starovoitov@gmail.com/",
+      "summary": "First patch of a 14-patch series enabling BPF programs compiled by rust-bpf. Rust's code generator uses pointer arithmetic patterns the BPF verifier previously rejected; this series relaxes those constraints gated on CAP_PERFMON. Subsequent patches add arena access via numeric registers, Rust-mangled BTF names, anonymous function arguments, undersized DATASEC variables, and libbpf changes to handle .arena.data and .rodata.str sections.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add sleepable arena page allocation path",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20260929183928.4896-4-emil@etsalapatis.com/",
+      "summary": "Third of a 7-patch v6 series making arena allocations usable from sleepable BPF programs. The series adds a sleepable argument to bpf_alloc_pages(), uses an llist for lock-free page tracking, and introduces per-call-site kfunc specialization so the JIT can emit a sleepable or non-sleepable allocation depending on the call context. Selftests verify large allocation behaviour for both sleepable and non-sleepable arena users.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Render decl_tags in btf_dump",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20260929234608.48503-3-ihor.solodrai@linux.dev/",
+      "summary": "Second of a 5-patch v2 series teaching btf_dump to emit BTF_KIND_DECL_TAG annotations in C-like output. Previously decl_tags were silently dropped during type dumping, making roundtrip reconstruction of annotated kernel types impossible. The series also refactors btf_dump_resize() to walk types rather than mark-referenced, adds an ASSERT_TEXT_EQ() helper for selftests, and includes a test covering the new tag kflag in raw BTF dump output.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Queue the rewrites of bpf_do_misc_fixups() and apply them at once",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261001-bpf-verifier-patch-batch-v1-2-a12df8a09160@gmail.com/",
+      "summary": "Core patch of a 4-patch series refactoring bpf_do_misc_fixups() to batch instruction rewrites. The current implementation applies each rewrite immediately and propagates a running delta that all subsequent patches must offset; queuing all rewrites and applying them in one pass eliminates the delta and makes the fixup logic easier to reason about. The series drops the delta tracking and adds a selftest for jump targets across patched regions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, cgroup: fix cgroup struct_ops query for a second attach type",
+      "author": "Shakeel Butt",
+      "url": "https://lore.kernel.org/bpf/20261001141901.3225830-1-shakeel.butt@linux.dev/",
+      "summary": "Fixes a bug where querying cgroup programs attached via a second struct_ops attach type returns wrong results. The cgroup struct_ops path reuses a single bpf_link for multiple attach types but the query iterator was not correctly enumerating the second type's programs, leading to silent omissions or incorrect program counts.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Remove nmi_uaccess_okay() check in bpf_send_signal_common()",
+      "author": "Aditya Sharma",
+      "url": "https://lore.kernel.org/bpf/20261001072449.1377267-2-adi.sharma@zohomail.in/",
+      "summary": "Fixes bpf_send_signal_task() failing when invoked from a kernel thread context. The nmi_uaccess_okay() guard was intended for uaccess safety but incorrectly blocked signal delivery to arbitrary PIDs from kernel threads, which is a valid and useful operation. Removing the guard restores the expected behaviour; a selftest exercises the kernel-thread call path.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix struct and union zero detection in BTF dumper",
+      "author": "Luis Vieira",
+      "url": "https://lore.kernel.org/bpf/20261001-libbpf-btf-enodata-fix-v2-1-89f6e8a0240e@gmail.com/",
+      "summary": "Corrects a false-positive ENODATA return from btf__dump_type() for zero-size structs and unions. The btf_dump internals checked size==0 and vlen==0 as a proxy for \"no type info\", but this is a valid state for legitimately empty aggregate types. The fix tightens the heuristic; a regression test is added as the second patch.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix cleanup on invalid CO-RE relocation offsets",
+      "author": "Luis Vieira",
+      "url": "https://lore.kernel.org/bpf/20260929-libbpf-core-relo-cleanup-v1-1-c9cd0b5775a9@gmail.com/",
+      "summary": "Fixes a memory leak in the CO-RE relocation path when an invalid offset is encountered. When bpf_core_apply() returns an error for a bad relocation offset, the associated candidate list was not freed before returning, leaving a small allocation dangling. The fix adds the missing free on the error path.",
+      "related_links": []
+    },
+    {
+      "title": "riscv, bpf: Support indirect calls to bpf subprogs (callx)",
+      "author": "Pu Lehui",
+      "url": "https://lore.kernel.org/bpf/20260929085450.1852617-2-pulehui@huaweicloud.com/",
+      "summary": "Implements callx (indirect BPF subprogram call via a register) in the RISC-V BPF JIT. callx is required for programs that compute call targets at runtime; its absence caused those programs to be rejected on RV64 despite passing the verifier. The companion patch enables the previously DENYLIST'd callx selftests for RV64.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix NULL task dereference in task work cancellation",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20260930085417.186729-2-luyun_611@163.com/",
+      "summary": "First of a 3-patch v5 series fixing task work scheduling races. A NULL dereference was possible in the task work cancellation path when the task pointer had already been cleared before the cancellation check. The series also prevents task work context reuse while irq_work is busy, closing a second race window. A dedicated race-condition selftest is included as the third patch.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: Fix udp_bpf_recvmsg() spinning on backlog-only ingress",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20260929083447.558818-2-chenyuan_fl@163.com/",
+      "summary": "Fixes an infinite loop in udp_bpf_recvmsg() when the ingress queue contains only backlog entries and no strparser-processed data. The receive path would repeatedly check for available data, find none in the psock queue, and retry without making progress. The fix adds a check for the backlog-only condition and falls through to the regular UDP receive path in that case.",
+      "related_links": []
+    }
+  ]
+}
