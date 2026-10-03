@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-03T00:00:00Z",
+  "period_start": "2026-10-01",
+  "period_end": "2026-10-02",
+  "patch_count": 67,
+  "thread_count": 10,
+  "top_contributors": ["Yonghong Song", "Alexei Starovoitov", "Jay Wang", "Emil Tsalapatis", "Qiliang Yuan"],
+  "key_topics": ["rust-bpf", "exception-handling", "btf", "verifier", "arena", "kfuncs", "libbpf", "xdp"],
+  "overview": "A high-volume day on bpf-next with four major feature series landing simultaneously. Highlights include Alexei Starovoitov's 15-patch series to support BPF programs compiled by rust-bpf, Yonghong Song's 22-patch series implementing exception cleanup landing pads via bpf_unwind(), and Jay Wang's 12-patch series to make the vmlinux BTF loadable as an on-demand kernel module to save ~5.4 MB of memory.",
+  "patches": [
+    {
+      "title": "bpf: Allow bitwise ops, shifts and mul/div on pointers with CAP_PERFMON",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-2-alexei.starovoitov@gmail.com/",
+      "summary": "First patch in a 15-patch v2 series adding support for BPF programs compiled by the rust-bpf toolchain. This entry relaxes verifier restrictions to allow bitwise operations, shifts, and multiplication/division on pointers when the caller holds CAP_PERFMON, which is needed because Rust's memory model expresses pointer arithmetic differently than C. The series collectively adds BTF support for Rust type and function naming conventions, extends arena handling for Rust global data, and updates libbpf and bpftool to understand the resulting object format.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Pack bpf_insn_aux_data flags into bit fields",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261001133011.1336611-1-yonghong.song@linux.dev/",
+      "summary": "Opening patch of a 22-patch v8 series implementing exception cleanup landing pads triggered when bpf_unwind() unwinds the BPF call stack. This preparatory change packs the per-instruction auxiliary flags into bit fields to free up space for the new cleanup-table tracking fields. The full series introduces bpf_unwind() and bpf_unwind_resume() kfuncs, teaches the verifier to follow unwinds to their cleanup pads, implements runtime dispatch on x86 and arm64, and extends libbpf and the light skeleton to carry the compiler-generated exception cleanup table through to the kernel.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: pass the vmlinux BTF to btf_parse_module() and let it adopt the data",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261001225214.12351-2-wanjay@amazon.com/",
+      "summary": "First patch in a 12-patch v4 series from Amazon that makes the vmlinux BTF loadable as an on-demand kernel module (CONFIG_DEBUG_INFO_BTF=m), saving approximately 5.4 MB of kernel memory on systems that do not use BPF. The series restructures how kfunc and struct_ops registrations are deferred until the BTF module is loaded, exposes the .BTF.base module BTF in sysfs, extends resolve_btfids with a --btf_link mode, and updates tooling to locate vmlinux BTF from the unstripped image first.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Use an llist for page allocations",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261002105218.6171-2-emil@etsalapatis.com/",
+      "summary": "First patch in a resent 7-patch v6 series making sleepable BPF arena paths use a sleepable allocator for page allocations. The series adds a sleepable argument to bpf_alloc_pages(), introduces a dedicated sleepable arena page allocation path, and implements per-call-site kfunc specialization so the verifier can select the correct allocator at each call site based on the program's sleepable context. An llist replaces the previous data structure to enable lock-free page list manipulation needed by the new path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a list of deferred instruction patches",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261001-bpf-verifier-patch-batch-v1-1-a12df8a09160@gmail.com/",
+      "summary": "First patch in a 4-patch v1 series refactoring bpf_do_misc_fixups() to queue all instruction rewrites and apply them in a single batched pass rather than one at a time. The current incremental approach requires adjusting instruction offsets for every preceding rewrite, which is O(n^2) in the number of patched instructions. By collecting all patches first and applying them together, the series removes the per-patch offset delta tracking and simplifies jump adjustment around the patch sites.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, cgroup: fix cgroup struct_ops query for a second attach type",
+      "author": "Shakeel Butt",
+      "url": "https://lore.kernel.org/bpf/20261001141901.3225830-1-shakeel.butt@linux.dev/",
+      "summary": "Single-patch v2 bug fix correcting the cgroup struct_ops query logic when a struct_ops implementation covers more than one cgroup attach type. The previous code incorrectly handled the second and subsequent attach types, causing queries to return stale or incorrect results. This is a targeted correctness fix with no structural changes to the cgroup BPF subsystem.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Remove nmi_uaccess_okay() check in bpf_send_signal_common()",
+      "author": "Aditya Sharma",
+      "url": "https://lore.kernel.org/bpf/20261001072449.1377267-2-adi.sharma@zohomail.in/",
+      "summary": "First patch in a 2-patch v2 series fixing bpf_send_signal_task() when called from kernel thread context. The nmi_uaccess_okay() guard was overly restrictive and incorrectly rejected signal delivery attempts from kernel threads, which do not perform user memory accesses. The companion patch adds a selftest to prevent regression in this path.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix struct and union zero detection in BTF dumper",
+      "author": "Luis Vieira",
+      "url": "https://lore.kernel.org/bpf/20261001-libbpf-btf-enodata-fix-v2-1-89f6e8a0240e@gmail.com/",
+      "summary": "Fix in libbpf's BTF dumper where structs and unions whose members are all zero were incorrectly detected as empty (ENODATA) rather than being dumped as zero-initialized aggregates. The v2 revision also adds a dedicated regression test. This is a correctness fix for tools and programs that rely on BTF-based type introspection.",
+      "related_links": []
+    }
+  ]
+}
