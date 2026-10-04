@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-10-04T00:00:00Z",
+  "period_start": "2026-10-02",
+  "period_end": "2026-10-03",
+  "patch_count": 28,
+  "thread_count": 7,
+  "top_contributors": ["Alexei Starovoitov", "Emil Tsalapatis", "T.J. Mercier"],
+  "key_topics": ["rust-bpf", "btf", "arena", "kfuncs", "verifier", "maps", "xdp"],
+  "overview": "Activity on October 2-3 was dominated by Alexei Starovoitov's 15-patch v2 series adding Rust BPF program support, extending the verifier and BTF to handle Rust-specific type names, unnamed arguments, numeric pointer arithmetic for arena access, and libbpf handling of Rust data sections. Emil Tsalapatis resent a 7-patch v6 series that adds a sleepable page allocation path for BPF arenas and introduces per-call-site kfunc specialization. T.J. Mercier posted a v8 of hash map memory optimizations splitting the htab_elem structure to reduce per-element overhead.",
+  "patches": [
+    {
+      "title": "bpf: Allow bitwise ops, shifts and mul/div on pointers with CAP_PERFMON",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-2-alexei.starovoitov@gmail.com/",
+      "summary": "Extends the BPF verifier to permit bitwise operations, shifts, and multiply/divide on pointer-typed registers when the program holds CAP_PERFMON. This is a prerequisite for supporting programs compiled by rust-bpf, which generates pointer arithmetic patterns that C-based BPF programs do not produce. The change is gated behind the capability to avoid broadening the attack surface for unprivileged BPF. It is the first patch of a 15-patch series that collectively adds first-class Rust BPF program support.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Treat load and store through a number as arena access",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-4-alexei.starovoitov@gmail.com/",
+      "summary": "Teaches the BPF verifier to recognize loads and stores through an integer-typed register as BPF arena memory accesses, provided the value originated from a pointer to arena memory. Rust-compiled BPF programs frequently store arena pointers as plain integers and later cast them back; without this change the verifier rejects such accesses as unsafe. The patch enables Rust code to store global data in arenas, a pattern that the later patches in the series depend on.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow names of Rust types and functions in BTF",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-6-alexei.starovoitov@gmail.com/",
+      "summary": "Relaxes BTF name validation to accept the mangled identifiers that the Rust compiler emits, such as names containing colons, angle brackets, and other characters not present in C identifiers. Previously, loading a BPF object compiled by rust-bpf would fail BTF validation at program load time. This is a BTF subsystem change that is intentionally kept narrow: only the additional characters the Rust mangling scheme requires are accepted.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow arguments without names in static functions in BTF",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-8-alexei.starovoitov@gmail.com/",
+      "summary": "Allows BTF function prototypes for static BPF functions to omit parameter names, which the Rust compiler does when it optimizes away unused parameters. The existing BTF verifier required all static function arguments to carry names, causing verification failures for rust-bpf-compiled objects. The fix is a targeted relaxation that does not affect non-static functions, where argument names are needed for CO-RE and tracing use cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support per-call-site kfunc specialization",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261002105218.6171-7-emil@etsalapatis.com/",
+      "summary": "Introduces a mechanism that lets the BPF JIT emit different kfunc implementations depending on the calling context, starting with the sleepable/non-sleepable distinction for arena page allocation. The previous design called a single kfunc regardless of whether the caller could sleep, requiring conservative non-sleepable allocations even from sleepable programs. Per-call-site specialization stores the selected kfunc descriptor index directly in the instruction's offset field, avoiding a runtime dispatch. This is the headline feature of the v6 resend series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add sleepable arena page allocation path",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261002105218.6171-4-emil@etsalapatis.com/",
+      "summary": "Adds a second arena page-allocation kfunc variant that may sleep, allowing sleepable BPF programs to avoid the GFP_ATOMIC pressure of the existing non-sleepable allocator. Large arena allocations from sleepable programs previously fell back to atomic allocation and could fail under memory pressure. The patch uses the per-call-site specialization mechanism introduced elsewhere in the series so that the correct allocator is chosen at JIT time rather than at run time.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: htab: Split htab_elem_lru and htab_elem_pcpu off of htab_elem",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20261002161738.621133-2-tjmercier@google.com/",
+      "summary": "Refactors the BPF hash map element structure by separating the LRU and per-CPU variants into their own types, removing fields from the base htab_elem that are unused in the common case. This structural split is the prerequisite for the companion patch that trims 8 bytes from each element when keys are small enough. The change is a pure refactor with no behavioral difference; it is part of a v8 series targeting reduced per-element memory overhead in hash maps.",
+      "related_links": []
+    }
+  ]
+}
