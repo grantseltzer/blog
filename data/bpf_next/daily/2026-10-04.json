@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-10-05T00:00:00Z",
+  "period_start": "2026-10-03",
+  "period_end": "2026-10-04",
+  "patch_count": 55,
+  "thread_count": 5,
+  "top_contributors": ["Eduard Zingerman", "Alan Maguire", "ThisSeanZhang", "Alexei Starovoitov"],
+  "key_topics": ["verifier", "scev", "loops", "btf", "networking"],
+  "overview": "The bpf-next mailing list on October 3-4, 2026 was dominated by Eduard Zingerman's substantial 43-patch series (v2) introducing Scalar Evolution (SCEV) analysis to the BPF verifier to intelligently widen bounded loops, enabling more programs to pass verification. Alan Maguire simultaneously posted a 7-patch series adding inline BTF support to kbuild, allowing both vmlinux and kernel module inline BTF to be relocated and exposed through sysfs.",
+  "patches": [
+    {
+      "title": "bpf: use SCEV to widen bounded loops",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-29-f6254e29fdf2@gmail.com/",
+      "summary": "This patch is the core of Eduard Zingerman's large SCEV series and wires the new Scalar Evolution analysis into the BPF verifier's loop-widening pass. Instead of falling back to conservative widening when a loop counter's range is uncertain, the verifier now computes the loop's induction variable evolution and can prove termination for a significantly wider class of bounded loops. This allows programs that previously hit the verifier's complexity limit to be accepted without sacrificing safety guarantees. It builds on a series of prerequisite patches that add loop-hierarchy computation, immediate dominator analysis, and new register arithmetic primitives.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: compute scalar evolution expressions for loops",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-28-f6254e29fdf2@gmail.com/",
+      "summary": "This patch implements the actual SCEV expression computation over the loop CFG, tracking how induction variables change across back-edges in a loop nest. It works by walking the loop hierarchy (established by earlier patches) and characterizing each register's evolution as a base-plus-step affine expression where possible. The result is stored alongside the existing per-instruction analysis data and feeds directly into the loop-widening logic introduced in patch 29/43. Accurate SCEV data is what allows the verifier to determine an upper bound on iteration count rather than giving up.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: varying offset access support for PTR_TO_BTF_ID pointers",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-15-f6254e29fdf2@gmail.com/",
+      "summary": "This patch extends the verifier to track varying (non-constant) offsets from PTR_TO_BTF_ID-typed pointers, which is a prerequisite for SCEV-aided loop analysis over structured kernel objects. Previously, any non-constant access to a BTF-typed pointer would be rejected; now the verifier can reason about access patterns whose offset is a loop induction variable within known bounds. This unlocks idiomatic iteration patterns over embedded arrays inside kernel structs from BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "kbuild, btf: Expose vmlinux inline BTF through sysfs",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261003194323.817885-4-alan.maguire@oracle.com/",
+      "summary": "Part of Alan Maguire's 7-patch series adding inline BTF support to kbuild, this patch adds the kbuild machinery to extract inline BTF from the linked vmlinux image and expose it under sysfs so that tools can consume it without needing the full vmlinux binary. Inline BTF captures type information embedded alongside debug sections during compilation and allows more precise CO-RE relocation. The sysfs exposure makes this accessible to both BPF loaders and debuggers on running systems.",
+      "related_links": []
+    },
+    {
+      "title": "btf: Relocate and expose module inline BTF",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261003194323.817885-6-alan.maguire@oracle.com/",
+      "summary": "This patch extends the inline BTF work to kernel modules, handling the relocation step necessary to merge split BTF from modules with the base vmlinux BTF. Module inline BTF is then also exposed through sysfs alongside the vmlinux version, giving BPF loaders a consistent interface regardless of whether a type originates in the core kernel or a loadable module. This is important for CO-RE-based programs that need accurate type layout for out-of-tree modules.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add PPPoE encap support to bpf_skb_adjust_room",
+      "author": "ThisSeanZhang",
+      "url": "https://lore.kernel.org/bpf/20261003193347.1137527-2-thisseanzhang@gmail.com/",
+      "summary": "This RFC patch (v2) adds PPPoE encapsulation support to the bpf_skb_adjust_room helper, extending the set of encapsulation protocols BPF tc programs can apply without dropping to userspace. PPPoE is widely used in broadband access networks and being able to encapsulate or strip it inline in the fast path enables BPF-based broadband gateway implementations. The series also adds a corresponding decapsulation flag and selftests.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Fix data_in_arena test with GCC",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261003150456.168903-1-alexei.starovoitov@gmail.com/",
+      "summary": "A standalone fix from Alexei Starovoitov addressing a compilation failure in the data_in_arena selftest when built with GCC instead of Clang. The test exercises BPF arena memory, and the fix adjusts the test code to be compatible with GCC's stricter handling of certain constructs. A companion patch also reformats the related Rust source file with rustfmt to keep the code tidy.",
+      "related_links": []
+    }
+  ]
+}
