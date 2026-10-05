@@ -1,0 +1,1028 @@
+{
+  "period": "daily",
+  "period_start": "2026-10-04",
+  "period_end": "2026-10-05",
+  "fetched_at": "2026-10-05T18:08:16Z",
+  "patches": [
+    {
+      "title": "[v3,bpf-next,9/9] selftest: bpf: Add test for bpf_tcp_ops.{enqueue,dequeue}_rcvq().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-10-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:51",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,8/9] bpf: tcp: Add kfunc to adjust sk->sk_rcvlowat.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-9-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:50",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,7/9] bpf: mptcp: Don't support BPF_TCP_OPS_FLAG_RCVQ.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-8-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:49",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,6/9] tcp: Split out __tcp_set_rcvlowat().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-7-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:48",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,5/9] bpf: tcp: Introduce bpf_tcp_ops.{enqueue,dequeue}_rcvq().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-6-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:47",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,4/9] bpf: tcp: Guard fast-path bpf_tcp_ops_call() under per-socket flag.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-5-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:46",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,3/9] selftest: bpf: Use bpf_tcp_ops_set_flags() in bpf_tcp_ops_hdr.c.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-4-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:45",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,2/9] bpf: tcp: Add a new per-socket flag and kfunc for bpf_tcp_ops.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-3-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:44",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,1/9] bpf: tcp: Convert deny-list for bpf_{get,set}sockopt() to allow-list.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-2-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:43",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,7/7] Documentation/bpf: Describe inline kfuncs",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-8-yunwei356@gmail.com/",
+      "date": "2026-10-05T14:22:19",
+      "series": [
+        {
+          "id": 1179693,
+          "url": "https://patchwork.kernel.org/api/series/1179693/",
+          "web_url": "https://patchwork.kernel.org/series/1179693/",
+          "date": "2026-10-05T14:22:15",
+          "name": "bpf: Inline kfuncs that have a BPF body",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1179693/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,6/7] selftests/bpf: Test inline kfuncs",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-7-yunwei356@gmail.com/",
+      "date": "2026-10-05T14:22:18",
+      "series": [
+        {
+          "id": 1179693,
+          "url": "https://patchwork.kernel.org/api/series/1179693/",
+          "web_url": "https://patchwork.kernel.org/series/1179693/",
+          "date": "2026-10-05T14:22:15",
+          "name": "bpf: Inline kfuncs that have a BPF body",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1179693/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,5/7] bpf, x86: Add native code for some inline kfuncs",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-6-yunwei356@gmail.com/",
+      "date": "2026-10-05T14:22:17",
+      "series": [
+        {
+          "id": 1179693,
+          "url": "https://patchwork.kernel.org/api/series/1179693/",
+          "web_url": "https://patchwork.kernel.org/series/1179693/",
+          "date": "2026-10-05T14:22:15",
+          "name": "bpf: Inline kfuncs that have a BPF body",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1179693/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,4/7] bpf: Add kfuncs with bodies for common operations",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-5-yunwei356@gmail.com/",
+      "date": "2026-10-05T14:22:16",
+      "series": [
+        {
+          "id": 1179693,
+          "url": "https://patchwork.kernel.org/api/series/1179693/",
+          "web_url": "https://patchwork.kernel.org/series/1179693/",
+          "date": "2026-10-05T14:22:15",
+          "name": "bpf: Inline kfuncs that have a BPF body",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1179693/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,3/7] bpf, x86: Inline native code for kfuncs that have a body",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-4-yunwei356@gmail.com/",
+      "date": "2026-10-05T14:22:15",
+      "series": [
+        {
+          "id": 1179693,
+          "url": "https://patchwork.kernel.org/api/series/1179693/",
+          "web_url": "https://patchwork.kernel.org/series/1179693/",
+          "date": "2026-10-05T14:22:15",
+          "name": "bpf: Inline kfuncs that have a BPF body",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1179693/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,2/7] bpf: Verify calls of kfuncs with a body through the body",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-3-yunwei356@gmail.com/",
+      "date": "2026-10-05T14:22:14",
+      "series": [
+        {
+          "id": 1179693,
+          "url": "https://patchwork.kernel.org/api/series/1179693/",
+          "web_url": "https://patchwork.kernel.org/series/1179693/",
+          "date": "2026-10-05T14:22:15",
+          "name": "bpf: Inline kfuncs that have a BPF body",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1179693/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,1/7] bpf: Let kfunc sets give kfuncs a BPF body",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-2-yunwei356@gmail.com/",
+      "date": "2026-10-05T14:22:13",
+      "series": [
+        {
+          "id": 1179693,
+          "url": "https://patchwork.kernel.org/api/series/1179693/",
+          "web_url": "https://patchwork.kernel.org/series/1179693/",
+          "date": "2026-10-05T14:22:15",
+          "name": "bpf: Inline kfuncs that have a BPF body",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1179693/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: Fix wq test by changing 50us sleep to polling over 1s",
+      "author": "Jonathan Bastari Thamrin",
+      "url": "https://lore.kernel.org/bpf/20261005-wq-poll-fix-v1-1-99ce4bac59f4@gmail.com/",
+      "date": "2026-10-05T09:37:40",
+      "series": [
+        {
+          "id": 1179492,
+          "url": "https://patchwork.kernel.org/api/series/1179492/",
+          "web_url": "https://patchwork.kernel.org/series/1179492/",
+          "date": "2026-10-05T09:37:40",
+          "name": "[bpf-next] selftests/bpf: Fix wq test by changing 50us sleep to polling over 1s",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1179492/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,43/43] selftests/bpf: tests for SCEV analysis and loop widening",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-43-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:25",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,42/43] selftests/bpf: tests for immediate dominator computation",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-42-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:24",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,41/43] selftests/bpf: tests for loop hierarchy computation",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-41-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:23",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,40/43] selftests/bpf: tests for varying offset access to PTR_TO_BTF_ID",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-40-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:22",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,39/43] selftests/bpf: tests for register base/step state pruning",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-39-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:21",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,38/43] selftests/bpf: tests for register base/step arithmetic",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-38-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:20",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,37/43] selftests/bpf: tests for map special cases in bpf_helper_stack_access_bytes()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-37-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:19",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,36/43] selftests/bpf: tests for may_def marks of atomic RMW operations",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-36-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:18",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,35/43] selftests/bpf: tests for may_write stack-liveness tracking",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-35-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:17",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,34/43] selftests/bpf: test for stack-pointer subrange pruning",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-34-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:16",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,33/43] selftests/bpf: bound UNIX socket path loops by sun_path size",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-33-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:15",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,32/43] selftests/bpf: __msg_next tag for matching messages on consecutive lines",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-32-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:14",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,31/43] bpf: bpf_func_state size optimization",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-31-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:13",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,30/43] bpf: avoid widening registers that hinder exact stack-slot tracking",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-30-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:12",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,29/43] bpf: use SCEV to widen bounded loops",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-29-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:11",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,28/43] bpf: compute scalar evolution expressions for loops",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-28-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:10",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,27/43] bpf: allow precision backtracking between overlapping checkpoints",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-27-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:09",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,26/43] bpf: add bpf_same_memory_origin()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-26-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:08",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,25/43] bpf: add bpf_split_cur_state()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-25-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:07",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,24/43] bpf: record basic-block ends in insn_aux_data",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-24-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:06",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,23/43] bpf: add a min-heap for ordered analysis worklists",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-23-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:05",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,22/43] bpf: add bpf_reg_union()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-22-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:04",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,21/43] bpf: add bpf_mark_reg_known_scalar()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-21-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:03",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,20/43] bpf: add bpf_set_reg_range()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-20-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:02",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,19/43] bpf: compute loop hierarchy",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-19-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:01",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,18/43] bpf: compute immediate dominators",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-18-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:00",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,17/43] bpf: move the live-register and SCC printout to a standalone function",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-17-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:59",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,16/43] bpf: save DFS postorder numbers for program instructions",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-16-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:58",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,15/43] bpf: varying offset access support for PTR_TO_BTF_ID pointers",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-15-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:57",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,14/43] bpf: representation for intervals with steps",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-14-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:56",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,13/43] bpf: allow subrange relations for PTR_TO_STACK in regsafe()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-13-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:55",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,12/43] bpf: expose comparison opcode transformations",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-12-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:54",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,11/43] bpf: add cnum64_intersect_linear()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-11-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:53",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,10/43] bpf: add cnum{32,64}_union()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-10-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:52",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,09/43] bpf: add tnum_alignment()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-9-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:51",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,08/43] bpf: record write effects for atomic operations in liveness.c",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-8-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:50",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,07/43] bpf: summarize regs that may hold a frame pointer in insn_aux_data",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-7-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:49",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,06/43] bpf: summarize live stack slots in insn_aux_data",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-6-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:48",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,05/43] bpf: summarize may write stack slots in insn_aux_data",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-5-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:47",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,04/43] bpf: track may_write flags in liveness",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-4-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:46",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,03/43] bpf: describe kfunc stack accesses with arg_access_info",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-3-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:45",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,02/43] bpf: describe helper stack accesses with arg_access_info",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-2-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:44",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,01/43] bpf: represent stack access effects with arg_access_info",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-1-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:43",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1708 @@
+{
+  "period": "weekly",
+  "period_start": "2026-09-28",
+  "period_end": "2026-10-05",
+  "fetched_at": "2026-10-05T18:08:16Z",
+  "patches": [
+    {
+      "title": "[v3,bpf-next,9/9] selftest: bpf: Add test for bpf_tcp_ops.{enqueue,dequeue}_rcvq().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-10-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:51",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,8/9] bpf: tcp: Add kfunc to adjust sk->sk_rcvlowat.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-9-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:50",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,7/9] bpf: mptcp: Don't support BPF_TCP_OPS_FLAG_RCVQ.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-8-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:49",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,6/9] tcp: Split out __tcp_set_rcvlowat().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-7-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:48",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,5/9] bpf: tcp: Introduce bpf_tcp_ops.{enqueue,dequeue}_rcvq().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-6-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:47",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,4/9] bpf: tcp: Guard fast-path bpf_tcp_ops_call() under per-socket flag.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-5-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:46",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,3/9] selftest: bpf: Use bpf_tcp_ops_set_flags() in bpf_tcp_ops_hdr.c.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-4-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:45",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,2/9] bpf: tcp: Add a new per-socket flag and kfunc for bpf_tcp_ops.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-3-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:44",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,1/9] bpf: tcp: Convert deny-list for bpf_{get,set}sockopt() to allow-list.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-2-kuniyu@google.com/",
+      "date": "2026-10-05T15:40:43",
+      "series": [
+        {
+          "id": 1179741,
+          "url": "https://patchwork.kernel.org/api/series/1179741/",
+          "web_url": "https://patchwork.kernel.org/series/1179741/",
+          "date": "2026-10-05T15:40:42",
+          "name": "bpf: Add bpf_tcp_ops hooks for TCP AutoLOWAT.",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1179741/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,7/7] Documentation/bpf: Describe inline kfuncs",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-8-yunwei356@gmail.com/",
+      "date": "2026-10-05T14:22:19",
+      "series": [
+        {
+          "id": 1179693,
+          "url": "https://patchwork.kernel.org/api/series/1179693/",
+          "web_url": "https://patchwork.kernel.org/series/1179693/",
+          "date": "2026-10-05T14:22:15",
+          "name": "bpf: Inline kfuncs that have a BPF body",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1179693/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,6/7] selftests/bpf: Test inline kfuncs",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-7-yunwei356@gmail.com/",
+      "date": "2026-10-05T14:22:18",
+      "series": [
+        {
+          "id": 1179693,
+          "url": "https://patchwork.kernel.org/api/series/1179693/",
+          "web_url": "https://patchwork.kernel.org/series/1179693/",
+          "date": "2026-10-05T14:22:15",
+          "name": "bpf: Inline kfuncs that have a BPF body",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1179693/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,5/7] bpf, x86: Add native code for some inline kfuncs",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-6-yunwei356@gmail.com/",
+      "date": "2026-10-05T14:22:17",
+      "series": [
+        {
+          "id": 1179693,
+          "url": "https://patchwork.kernel.org/api/series/1179693/",
+          "web_url": "https://patchwork.kernel.org/series/1179693/",
+          "date": "2026-10-05T14:22:15",
+          "name": "bpf: Inline kfuncs that have a BPF body",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1179693/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,4/7] bpf: Add kfuncs with bodies for common operations",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-5-yunwei356@gmail.com/",
+      "date": "2026-10-05T14:22:16",
+      "series": [
+        {
+          "id": 1179693,
+          "url": "https://patchwork.kernel.org/api/series/1179693/",
+          "web_url": "https://patchwork.kernel.org/series/1179693/",
+          "date": "2026-10-05T14:22:15",
+          "name": "bpf: Inline kfuncs that have a BPF body",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1179693/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,3/7] bpf, x86: Inline native code for kfuncs that have a body",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-4-yunwei356@gmail.com/",
+      "date": "2026-10-05T14:22:15",
+      "series": [
+        {
+          "id": 1179693,
+          "url": "https://patchwork.kernel.org/api/series/1179693/",
+          "web_url": "https://patchwork.kernel.org/series/1179693/",
+          "date": "2026-10-05T14:22:15",
+          "name": "bpf: Inline kfuncs that have a BPF body",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1179693/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,2/7] bpf: Verify calls of kfuncs with a body through the body",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-3-yunwei356@gmail.com/",
+      "date": "2026-10-05T14:22:14",
+      "series": [
+        {
+          "id": 1179693,
+          "url": "https://patchwork.kernel.org/api/series/1179693/",
+          "web_url": "https://patchwork.kernel.org/series/1179693/",
+          "date": "2026-10-05T14:22:15",
+          "name": "bpf: Inline kfuncs that have a BPF body",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1179693/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,1/7] bpf: Let kfunc sets give kfuncs a BPF body",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-2-yunwei356@gmail.com/",
+      "date": "2026-10-05T14:22:13",
+      "series": [
+        {
+          "id": 1179693,
+          "url": "https://patchwork.kernel.org/api/series/1179693/",
+          "web_url": "https://patchwork.kernel.org/series/1179693/",
+          "date": "2026-10-05T14:22:15",
+          "name": "bpf: Inline kfuncs that have a BPF body",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1179693/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: Fix wq test by changing 50us sleep to polling over 1s",
+      "author": "Jonathan Bastari Thamrin",
+      "url": "https://lore.kernel.org/bpf/20261005-wq-poll-fix-v1-1-99ce4bac59f4@gmail.com/",
+      "date": "2026-10-05T09:37:40",
+      "series": [
+        {
+          "id": 1179492,
+          "url": "https://patchwork.kernel.org/api/series/1179492/",
+          "web_url": "https://patchwork.kernel.org/series/1179492/",
+          "date": "2026-10-05T09:37:40",
+          "name": "[bpf-next] selftests/bpf: Fix wq test by changing 50us sleep to polling over 1s",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1179492/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,43/43] selftests/bpf: tests for SCEV analysis and loop widening",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-43-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:25",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,42/43] selftests/bpf: tests for immediate dominator computation",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-42-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:24",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,41/43] selftests/bpf: tests for loop hierarchy computation",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-41-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:23",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,40/43] selftests/bpf: tests for varying offset access to PTR_TO_BTF_ID",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-40-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:22",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,39/43] selftests/bpf: tests for register base/step state pruning",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-39-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:21",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,38/43] selftests/bpf: tests for register base/step arithmetic",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-38-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:20",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,37/43] selftests/bpf: tests for map special cases in bpf_helper_stack_access_bytes()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-37-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:19",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,36/43] selftests/bpf: tests for may_def marks of atomic RMW operations",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-36-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:18",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,35/43] selftests/bpf: tests for may_write stack-liveness tracking",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-35-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:17",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,34/43] selftests/bpf: test for stack-pointer subrange pruning",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-34-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:16",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,33/43] selftests/bpf: bound UNIX socket path loops by sun_path size",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-33-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:15",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,32/43] selftests/bpf: __msg_next tag for matching messages on consecutive lines",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-32-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:14",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,31/43] bpf: bpf_func_state size optimization",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-31-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:13",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,30/43] bpf: avoid widening registers that hinder exact stack-slot tracking",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-30-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:12",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,29/43] bpf: use SCEV to widen bounded loops",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-29-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:11",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,28/43] bpf: compute scalar evolution expressions for loops",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-28-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:10",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,27/43] bpf: allow precision backtracking between overlapping checkpoints",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-27-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:09",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,26/43] bpf: add bpf_same_memory_origin()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-26-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:08",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,25/43] bpf: add bpf_split_cur_state()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-25-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:07",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,24/43] bpf: record basic-block ends in insn_aux_data",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-24-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:06",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,23/43] bpf: add a min-heap for ordered analysis worklists",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-23-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:05",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,22/43] bpf: add bpf_reg_union()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-22-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:04",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,21/43] bpf: add bpf_mark_reg_known_scalar()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-21-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:03",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,20/43] bpf: add bpf_set_reg_range()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-20-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:02",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,19/43] bpf: compute loop hierarchy",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-19-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:01",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,18/43] bpf: compute immediate dominators",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-18-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:38:00",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,17/43] bpf: move the live-register and SCC printout to a standalone function",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-17-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:59",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,16/43] bpf: save DFS postorder numbers for program instructions",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-16-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:58",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,15/43] bpf: varying offset access support for PTR_TO_BTF_ID pointers",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-15-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:57",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,14/43] bpf: representation for intervals with steps",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-14-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:56",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,13/43] bpf: allow subrange relations for PTR_TO_STACK in regsafe()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-13-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:55",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,12/43] bpf: expose comparison opcode transformations",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-12-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:54",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,11/43] bpf: add cnum64_intersect_linear()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-11-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:53",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,10/43] bpf: add cnum{32,64}_union()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-10-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:52",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,09/43] bpf: add tnum_alignment()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-9-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:51",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,08/43] bpf: record write effects for atomic operations in liveness.c",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-8-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:50",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,07/43] bpf: summarize regs that may hold a frame pointer in insn_aux_data",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-7-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:49",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,06/43] bpf: summarize live stack slots in insn_aux_data",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-6-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:48",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,05/43] bpf: summarize may write stack slots in insn_aux_data",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-5-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:47",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,04/43] bpf: track may_write flags in liveness",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-4-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:46",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,03/43] bpf: describe kfunc stack accesses with arg_access_info",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-3-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:45",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,02/43] bpf: describe helper stack accesses with arg_access_info",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-2-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:44",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,01/43] bpf: represent stack access effects with arg_access_info",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-1-f6254e29fdf2@gmail.com/",
+      "date": "2026-10-04T13:37:43",
+      "series": [
+        {
+          "id": 1179132,
+          "url": "https://patchwork.kernel.org/api/series/1179132/",
+          "web_url": "https://patchwork.kernel.org/series/1179132/",
+          "date": "2026-10-04T13:37:42",
+          "name": "bpf: use scalar evolution to widen bounded loops",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1179132/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: Format data_in_arena_rust.rs with rustfmt",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261003203326.1086454-1-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-03T20:33:26",
+      "series": [
+        {
+          "id": 1178969,
+          "url": "https://patchwork.kernel.org/api/series/1178969/",
+          "web_url": "https://patchwork.kernel.org/series/1178969/",
+          "date": "2026-10-03T20:33:26",
+          "name": "[bpf-next] selftests/bpf: Format data_in_arena_rust.rs with rustfmt",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1178969/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,7/7] selftests/bpf: Add a test verifying inline information",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261003194323.817885-8-alan.maguire@oracle.com/",
+      "date": "2026-10-03T19:43:23",
+      "series": [
+        {
+          "id": 1178944,
+          "url": "https://patchwork.kernel.org/api/series/1178944/",
+          "web_url": "https://patchwork.kernel.org/series/1178944/",
+          "date": "2026-10-03T19:43:16",
+          "name": "kbuild, bpf: Support inline info in BTF",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1178944/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,6/7] selftests/bpf: Test BTF sysfs inline representations",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261003194323.817885-7-alan.maguire@oracle.com/",
+      "date": "2026-10-03T19:43:22",
+      "series": [
+        {
+          "id": 1178944,
+          "url": "https://patchwork.kernel.org/api/series/1178944/",
+          "web_url": "https://patchwork.kernel.org/series/1178944/",
+          "date": "2026-10-03T19:43:16",
+          "name": "kbuild, bpf: Support inline info in BTF",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1178944/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,5/7] btf: Relocate and expose module inline BTF",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261003194323.817885-6-alan.maguire@oracle.com/",
+      "date": "2026-10-03T19:43:21",
+      "series": [
+        {
+          "id": 1178944,
+          "url": "https://patchwork.kernel.org/api/series/1178944/",
+          "web_url": "https://patchwork.kernel.org/series/1178944/",
+          "date": "2026-10-03T19:43:16",
+          "name": "kbuild, bpf: Support inline info in BTF",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1178944/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,4/7] btf: Preserve string relocation maps for split BTF",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261003194323.817885-5-alan.maguire@oracle.com/",
+      "date": "2026-10-03T19:43:20",
+      "series": [
+        {
+          "id": 1178944,
+          "url": "https://patchwork.kernel.org/api/series/1178944/",
+          "web_url": "https://patchwork.kernel.org/series/1178944/",
+          "date": "2026-10-03T19:43:16",
+          "name": "kbuild, bpf: Support inline info in BTF",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1178944/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,3/7] kbuild, btf: Expose vmlinux inline BTF through sysfs",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261003194323.817885-4-alan.maguire@oracle.com/",
+      "date": "2026-10-03T19:43:19",
+      "series": [
+        {
+          "id": 1178944,
+          "url": "https://patchwork.kernel.org/api/series/1178944/",
+          "web_url": "https://patchwork.kernel.org/series/1178944/",
+          "date": "2026-10-03T19:43:16",
+          "name": "kbuild, bpf: Support inline info in BTF",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1178944/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,2/7] resolve_btfids: Populate BTF link section",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261003194323.817885-3-alan.maguire@oracle.com/",
+      "date": "2026-10-03T19:43:18",
+      "series": [
+        {
+          "id": 1178944,
+          "url": "https://patchwork.kernel.org/api/series/1178944/",
+          "web_url": "https://patchwork.kernel.org/series/1178944/",
+          "date": "2026-10-03T19:43:16",
+          "name": "kbuild, bpf: Support inline info in BTF",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1178944/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,1/7] resolve_btfids: Build separate main and inline BTF objects",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261003194323.817885-2-alan.maguire@oracle.com/",
+      "date": "2026-10-03T19:43:17",
+      "series": [
+        {
+          "id": 1178944,
+          "url": "https://patchwork.kernel.org/api/series/1178944/",
+          "web_url": "https://patchwork.kernel.org/series/1178944/",
+          "date": "2026-10-03T19:43:16",
+          "name": "kbuild, bpf: Support inline info in BTF",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1178944/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v2,3/3] selftests/bpf: Add a test for the PPPoE encap/decap adjust_room flags",
+      "author": "ThisSeanZhang",
+      "url": "https://lore.kernel.org/bpf/20261003193347.1137527-4-thisseanzhang@gmail.com/",
+      "date": "2026-10-03T19:33:47",
+      "series": [
+        {
+          "id": 1178940,
+          "url": "https://patchwork.kernel.org/api/series/1178940/",
+          "web_url": "https://patchwork.kernel.org/series/1178940/",
+          "date": "2026-10-03T19:33:44",
+          "name": "bpf: Add PPPoE encap/decap support to bpf_skb_adjust_room",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178940/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v2,2/3] bpf: Add PPPoE decap support to bpf_skb_adjust_room",
+      "author": "ThisSeanZhang",
+      "url": "https://lore.kernel.org/bpf/20261003193347.1137527-3-thisseanzhang@gmail.com/",
+      "date": "2026-10-03T19:33:46",
+      "series": [
+        {
+          "id": 1178940,
+          "url": "https://patchwork.kernel.org/api/series/1178940/",
+          "web_url": "https://patchwork.kernel.org/series/1178940/",
+          "date": "2026-10-03T19:33:44",
+          "name": "bpf: Add PPPoE encap/decap support to bpf_skb_adjust_room",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178940/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v2,1/3] bpf: Add PPPoE encap support to bpf_skb_adjust_room",
+      "author": "ThisSeanZhang",
+      "url": "https://lore.kernel.org/bpf/20261003193347.1137527-2-thisseanzhang@gmail.com/",
+      "date": "2026-10-03T19:33:45",
+      "series": [
+        {
+          "id": 1178940,
+          "url": "https://patchwork.kernel.org/api/series/1178940/",
+          "web_url": "https://patchwork.kernel.org/series/1178940/",
+          "date": "2026-10-03T19:33:44",
+          "name": "bpf: Add PPPoE encap/decap support to bpf_skb_adjust_room",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178940/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: Fix data_in_arena test with GCC",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261003150456.168903-1-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-03T15:04:56",
+      "series": [
+        {
+          "id": 1178868,
+          "url": "https://patchwork.kernel.org/api/series/1178868/",
+          "web_url": "https://patchwork.kernel.org/series/1178868/",
+          "date": "2026-10-03T15:04:56",
+          "name": "[bpf-next] selftests/bpf: Fix data_in_arena test with GCC",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1178868/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "linux-next: manual merge of the bpf-next tree with the kbuild tree",
+      "author": "Mark Brown",
+      "url": "https://lore.kernel.org/bpf/asAzcgDsbNEFIfKV@sirena.co.uk/",
+      "date": "2026-10-02T22:42:58",
+      "series": [
+        {
+          "id": 1178656,
+          "url": "https://patchwork.kernel.org/api/series/1178656/",
+          "web_url": "https://patchwork.kernel.org/series/1178656/",
+          "date": "2026-10-02T22:42:58",
+          "name": "linux-next: manual merge of the bpf-next tree with the kbuild tree",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1178656/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "linux-next: manual merge of the bpf-next tree with the pci-current tree",
+      "author": "Mark Brown",
+      "url": "https://lore.kernel.org/bpf/asAylbswc5WRADZ2@sirena.co.uk/",
+      "date": "2026-10-02T22:39:17",
+      "series": [
+        {
+          "id": 1178649,
+          "url": "https://patchwork.kernel.org/api/series/1178649/",
+          "web_url": "https://patchwork.kernel.org/series/1178649/",
+          "date": "2026-10-02T22:39:17",
+          "name": "linux-next: manual merge of the bpf-next tree with the pci-current tree",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1178649/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,2/2] bpf: htab: Reduce elem_size by 8 bytes for small key sizes",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20261002161738.621133-3-tjmercier@google.com/",
+      "date": "2026-10-02T16:17:35",
+      "series": [
+        {
+          "id": 1178468,
+          "url": "https://patchwork.kernel.org/api/series/1178468/",
+          "web_url": "https://patchwork.kernel.org/series/1178468/",
+          "date": "2026-10-02T16:17:33",
+          "name": "bpf: htab: Reduce memory use of hash maps",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1178468/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v8,1/2] bpf: htab: Split htab_elem_lru and htab_elem_pcpu off of htab_elem",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20261002161738.621133-2-tjmercier@google.com/",
+      "date": "2026-10-02T16:17:34",
+      "series": [
+        {
+          "id": 1178468,
+          "url": "https://patchwork.kernel.org/api/series/1178468/",
+          "web_url": "https://patchwork.kernel.org/series/1178468/",
+          "date": "2026-10-02T16:17:33",
+          "name": "bpf: htab: Reduce memory use of hash maps",
+          "version": 8,
+          "mbox": "https://patchwork.kernel.org/series/1178468/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,15/15] selftests/bpf: Add test for global data of a program in Rust",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-16-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-02T12:47:14",
+      "series": [
+        {
+          "id": 1178332,
+          "url": "https://patchwork.kernel.org/api/series/1178332/",
+          "web_url": "https://patchwork.kernel.org/series/1178332/",
+          "date": "2026-10-02T12:46:59",
+          "name": "bpf: Support programs compiled by rust-bpf",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178332/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,14/15] selftests/bpf: Add test for global data in arena",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-15-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-02T12:47:13",
+      "series": [
+        {
+          "id": 1178332,
+          "url": "https://patchwork.kernel.org/api/series/1178332/",
+          "web_url": "https://patchwork.kernel.org/series/1178332/",
+          "date": "2026-10-02T12:46:59",
+          "name": "bpf: Support programs compiled by rust-bpf",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178332/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,13/15] libbpf: Keep format strings of bpf_printk() in .rodata.str",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-14-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-02T12:47:12",
+      "series": [
+        {
+          "id": 1178332,
+          "url": "https://patchwork.kernel.org/api/series/1178332/",
+          "web_url": "https://patchwork.kernel.org/series/1178332/",
+          "date": "2026-10-02T12:46:59",
+          "name": "bpf: Support programs compiled by rust-bpf",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178332/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,12/15] libbpf: Keep global data in arena when the object has .arena.data",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-13-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-02T12:47:11",
+      "series": [
+        {
+          "id": 1178332,
+          "url": "https://patchwork.kernel.org/api/series/1178332/",
+          "web_url": "https://patchwork.kernel.org/series/1178332/",
+          "date": "2026-10-02T12:46:59",
+          "name": "bpf: Support programs compiled by rust-bpf",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178332/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,11/15] selftests/bpf: Add tests for a variable that is smaller than its type",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-12-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-02T12:47:10",
+      "series": [
+        {
+          "id": 1178332,
+          "url": "https://patchwork.kernel.org/api/series/1178332/",
+          "web_url": "https://patchwork.kernel.org/series/1178332/",
+          "date": "2026-10-02T12:46:59",
+          "name": "bpf: Support programs compiled by rust-bpf",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178332/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,10/15] bpftool: Skip pieces of variables in DATASEC",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-11-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-02T12:47:09",
+      "series": [
+        {
+          "id": 1178332,
+          "url": "https://patchwork.kernel.org/api/series/1178332/",
+          "web_url": "https://patchwork.kernel.org/series/1178332/",
+          "date": "2026-10-02T12:46:59",
+          "name": "bpf: Support programs compiled by rust-bpf",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178332/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,09/15] bpf: Allow a variable in DATASEC that is smaller than its type",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-10-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-02T12:47:08",
+      "series": [
+        {
+          "id": 1178332,
+          "url": "https://patchwork.kernel.org/api/series/1178332/",
+          "web_url": "https://patchwork.kernel.org/series/1178332/",
+          "date": "2026-10-02T12:46:59",
+          "name": "bpf: Support programs compiled by rust-bpf",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178332/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,08/15] selftests/bpf: Add test for arguments without names in static functions",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-9-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-02T12:47:07",
+      "series": [
+        {
+          "id": 1178332,
+          "url": "https://patchwork.kernel.org/api/series/1178332/",
+          "web_url": "https://patchwork.kernel.org/series/1178332/",
+          "date": "2026-10-02T12:46:59",
+          "name": "bpf: Support programs compiled by rust-bpf",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178332/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,07/15] bpf: Allow arguments without names in static functions in BTF",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-8-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-02T12:47:06",
+      "series": [
+        {
+          "id": 1178332,
+          "url": "https://patchwork.kernel.org/api/series/1178332/",
+          "web_url": "https://patchwork.kernel.org/series/1178332/",
+          "date": "2026-10-02T12:46:59",
+          "name": "bpf: Support programs compiled by rust-bpf",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178332/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,06/15] selftests/bpf: Add tests for names of Rust types and functions in BTF",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-02T12:47:05",
+      "series": [
+        {
+          "id": 1178332,
+          "url": "https://patchwork.kernel.org/api/series/1178332/",
+          "web_url": "https://patchwork.kernel.org/series/1178332/",
+          "date": "2026-10-02T12:46:59",
+          "name": "bpf: Support programs compiled by rust-bpf",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178332/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,05/15] bpf: Allow names of Rust types and functions in BTF",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-02T12:47:04",
+      "series": [
+        {
+          "id": 1178332,
+          "url": "https://patchwork.kernel.org/api/series/1178332/",
+          "web_url": "https://patchwork.kernel.org/series/1178332/",
+          "date": "2026-10-02T12:46:59",
+          "name": "bpf: Support programs compiled by rust-bpf",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178332/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,04/15] selftests/bpf: Add tests for arena access through numbers",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-02T12:47:03",
+      "series": [
+        {
+          "id": 1178332,
+          "url": "https://patchwork.kernel.org/api/series/1178332/",
+          "web_url": "https://patchwork.kernel.org/series/1178332/",
+          "date": "2026-10-02T12:46:59",
+          "name": "bpf: Support programs compiled by rust-bpf",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178332/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,03/15] bpf: Treat load and store through a number as arena access",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-02T12:47:02",
+      "series": [
+        {
+          "id": 1178332,
+          "url": "https://patchwork.kernel.org/api/series/1178332/",
+          "web_url": "https://patchwork.kernel.org/series/1178332/",
+          "date": "2026-10-02T12:46:59",
+          "name": "bpf: Support programs compiled by rust-bpf",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178332/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,02/15] selftests/bpf: Add tests for ALU on pointers with CAP_PERFMON",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-02T12:47:01",
+      "series": [
+        {
+          "id": 1178332,
+          "url": "https://patchwork.kernel.org/api/series/1178332/",
+          "web_url": "https://patchwork.kernel.org/series/1178332/",
+          "date": "2026-10-02T12:46:59",
+          "name": "bpf: Support programs compiled by rust-bpf",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178332/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,01/15] bpf: Allow bitwise ops, shifts and mul/div on pointers with CAP_PERFMON",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-02T12:47:00",
+      "series": [
+        {
+          "id": 1178332,
+          "url": "https://patchwork.kernel.org/api/series/1178332/",
+          "web_url": "https://patchwork.kernel.org/series/1178332/",
+          "date": "2026-10-02T12:46:59",
+          "name": "bpf: Support programs compiled by rust-bpf",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178332/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RESEND,bpf-next,v6,7/7] selftests/bpf: Test per-call site function specialization",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261002105218.6171-8-emil@etsalapatis.com/",
+      "date": "2026-10-02T10:52:18",
+      "series": [
+        {
+          "id": 1178258,
+          "url": "https://patchwork.kernel.org/api/series/1178258/",
+          "web_url": "https://patchwork.kernel.org/series/1178258/",
+          "date": "2026-10-02T10:52:11",
+          "name": "Make sleepable arena paths use sleepable alloc_pages",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1178258/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RESEND,bpf-next,v6,6/7] bpf: Support per-call-site kfunc specialization",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261002105218.6171-7-emil@etsalapatis.com/",
+      "date": "2026-10-02T10:52:17",
+      "series": [
+        {
+          "id": 1178258,
+          "url": "https://patchwork.kernel.org/api/series/1178258/",
+          "web_url": "https://patchwork.kernel.org/series/1178258/",
+          "date": "2026-10-02T10:52:11",
+          "name": "Make sleepable arena paths use sleepable alloc_pages",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1178258/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RESEND,bpf-next,v6,5/7] bpf: Directly store kfunc desc index in instruction off field",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261002105218.6171-6-emil@etsalapatis.com/",
+      "date": "2026-10-02T10:52:16",
+      "series": [
+        {
+          "id": 1178258,
+          "url": "https://patchwork.kernel.org/api/series/1178258/",
+          "web_url": "https://patchwork.kernel.org/series/1178258/",
+          "date": "2026-10-02T10:52:11",
+          "name": "Make sleepable arena paths use sleepable alloc_pages",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1178258/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RESEND,bpf-next,v6,4/7] selftests/bpf: Test large allocations for both sleepable/nonsleepable arena users",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261002105218.6171-5-emil@etsalapatis.com/",
+      "date": "2026-10-02T10:52:15",
+      "series": [
+        {
+          "id": 1178258,
+          "url": "https://patchwork.kernel.org/api/series/1178258/",
+          "web_url": "https://patchwork.kernel.org/series/1178258/",
+          "date": "2026-10-02T10:52:11",
+          "name": "Make sleepable arena paths use sleepable alloc_pages",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1178258/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RESEND,bpf-next,v6,3/7] bpf: Add sleepable arena page allocation path",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261002105218.6171-4-emil@etsalapatis.com/",
+      "date": "2026-10-02T10:52:14",
+      "series": [
+        {
+          "id": 1178258,
+          "url": "https://patchwork.kernel.org/api/series/1178258/",
+          "web_url": "https://patchwork.kernel.org/series/1178258/",
+          "date": "2026-10-02T10:52:11",
+          "name": "Make sleepable arena paths use sleepable alloc_pages",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1178258/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RESEND,bpf-next,v6,2/7] bpf: Add sleepable argument to bpf_alloc_pages()",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261002105218.6171-3-emil@etsalapatis.com/",
+      "date": "2026-10-02T10:52:13",
+      "series": [
+        {
+          "id": 1178258,
+          "url": "https://patchwork.kernel.org/api/series/1178258/",
+          "web_url": "https://patchwork.kernel.org/series/1178258/",
+          "date": "2026-10-02T10:52:11",
+          "name": "Make sleepable arena paths use sleepable alloc_pages",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1178258/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RESEND,bpf-next,v6,1/7] bpf: Use an llist for page allocations",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261002105218.6171-2-emil@etsalapatis.com/",
+      "date": "2026-10-02T10:52:12",
+      "series": [
+        {
+          "id": 1178258,
+          "url": "https://patchwork.kernel.org/api/series/1178258/",
+          "web_url": "https://patchwork.kernel.org/series/1178258/",
+          "date": "2026-10-02T10:52:11",
+          "name": "Make sleepable arena paths use sleepable alloc_pages",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1178258/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3] selftests/bpf: add XDP test for per-flow LRU_HASH window updates",
+      "author": "Anil Kaushik",
+      "url": "https://lore.kernel.org/bpf/20261002053837.3494918-1-anilkaushikwireless@gmail.com/",
+      "date": "2026-10-02T05:38:37",
+      "series": [
+        {
+          "id": 1178072,
+          "url": "https://patchwork.kernel.org/api/series/1178072/",
+          "web_url": "https://patchwork.kernel.org/series/1178072/",
+          "date": "2026-10-02T05:38:37",
+          "name": "[bpf-next,v3] selftests/bpf: add XDP test for per-flow LRU_HASH window updates",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1178072/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] selftests/bpf: add XDP test for per-flow LRU_HASH window updates",
+      "author": "Anil Kaushik",
+      "url": "https://lore.kernel.org/bpf/20261002042201.3483076-1-anilkaushikwireless@gmail.com/",
+      "date": "2026-10-02T04:22:01",
+      "series": [
+        {
+          "id": 1178048,
+          "url": "https://patchwork.kernel.org/api/series/1178048/",
+          "web_url": "https://patchwork.kernel.org/series/1178048/",
+          "date": "2026-10-02T04:22:01",
+          "name": "[bpf-next,v2] selftests/bpf: add XDP test for per-flow LRU_HASH window updates",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1178048/mbox/"
+        }
+      ]
+    }
+  ]
+}
