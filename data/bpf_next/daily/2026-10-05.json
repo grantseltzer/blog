@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-06T00:00:00Z",
+  "period_start": "2026-10-04",
+  "period_end": "2026-10-05",
+  "patch_count": 60,
+  "thread_count": 4,
+  "top_contributors": ["Eduard Zingerman", "Kuniyuki Iwashima", "Yusheng Zheng"],
+  "key_topics": ["verifier", "kfuncs", "tcp", "loops", "selftest"],
+  "overview": "Two major series dominated the bpf-next list on October 4-5: Eduard Zingerman posted v2 of a sweeping 43-patch series introducing scalar evolution (SCEV) analysis to the BPF verifier, enabling more precise bounded-loop handling without manual workarounds. Kuniyuki Iwashima followed with v3 of a 9-patch series adding bpf_tcp_ops hooks for TCP AutoLOWAT, allowing BPF programs to dynamically adjust per-socket receive-buffer low-water marks. Yusheng Zheng also sent an RFC proposing that kfuncs with BPF bodies be inlined at call sites for reduced overhead.",
+  "patches": [
+    {
+      "title": "bpf: use SCEV to widen bounded loops",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-29-f6254e29fdf2@gmail.com/",
+      "summary": "The core patch of the 43-patch scalar evolution series: the BPF verifier can now use SCEV (Scalar Evolution) to automatically compute a widened range for loop induction variables, allowing programs with bounded loops to pass verification without the programmer manually bounding the iterator. SCEV analysis tracks how a value changes across iterations and determines a safe upper bound, dramatically reducing false negatives for common loop patterns. This builds on the preceding infrastructure patches that add loop hierarchy computation, immediate dominator analysis, and interval-with-steps representations. Together with the liveness and stack-tracking improvements in the series, this should eliminate many cases where developers had to insert manual bounds checks to satisfy the verifier.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: compute scalar evolution expressions for loops",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-28-f6254e29fdf2@gmail.com/",
+      "summary": "Implements the SCEV expression computation phase: for each back-edge in the CFG the verifier now computes affine recurrences (base + step * n) for integer registers, enabling the subsequent widening step to derive tight bounds. This patch introduces the core algorithm that traverses the loop body, identifying which registers are updated by a constant step per iteration. It serves as a prerequisite for the widening patch and provides the symbolic representation that powers the new interval-with-steps pruning used elsewhere in the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: represent stack access effects with arg_access_info",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-1-f6254e29fdf2@gmail.com/",
+      "summary": "The foundational patch of the 43-patch SCEV series: introduces arg_access_info, a compact structure that describes which stack bytes a helper or kfunc reads or writes. Previously the verifier used ad-hoc logic scattered across multiple call paths to reason about stack slot liveness; this patch centralizes that reasoning into a single representation. The change enables later patches in the series to perform precise may-write and liveness tracking per instruction, which is necessary for the loop widening and state pruning improvements.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Introduce bpf_tcp_ops.{enqueue,dequeue}_rcvq().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-6-kuniyu@google.com/",
+      "summary": "Adds two new bpf_tcp_ops callbacks — enqueue_rcvq and dequeue_rcvq — that fire when TCP places data into or removes data from the receive queue. BPF programs attached to these hooks can inspect socket state and call a new kfunc to adjust sk_rcvlowat on the fly, implementing TCP AutoLOWAT: dynamically sizing the minimum receive threshold to reduce unnecessary wakeups for applications that process data in large bursts. This is the central functional patch of the 9-patch v3 series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Convert deny-list for bpf_{get,set}sockopt() to allow-list.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-2-kuniyu@google.com/",
+      "summary": "Preparatory patch for the TCP AutoLOWAT series: converts the existing deny-list approach for controlling which socket options bpf_tcp_ops programs may get/set into an allow-list. The allow-list model is safer and easier to audit; it ensures that as new sockopt operations are added they are explicitly permitted for bpf_tcp_ops contexts rather than accidentally allowed by default. This is patch 1/9 of the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Add kfunc to adjust sk->sk_rcvlowat.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-9-kuniyu@google.com/",
+      "summary": "Introduces the bpf_tcp_set_rcvlowat() kfunc callable from bpf_tcp_ops hooks, allowing BPF programs to directly adjust the per-socket receive low-water mark. Combined with the enqueue/dequeue_rcvq callbacks, this kfunc is the user-facing API for the AutoLOWAT feature. The implementation reuses the refactored __tcp_set_rcvlowat() helper introduced earlier in the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Let kfunc sets give kfuncs a BPF body",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-2-yunwei356@gmail.com/",
+      "summary": "An RFC proposing that kfunc registration allow attaching a BPF program as a 'body' for a kfunc, so that calls from BPF programs can be resolved directly to that BPF body rather than making a kernel function call. This is patch 1/7 of the inline kfuncs RFC series. The motivation is performance: common utility kfuncs (e.g. lightweight map helpers) incur unnecessary function-call overhead; inlining their BPF body eliminates that cost while keeping the clean kfunc API.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Fix wq test by changing 50us sleep to polling over 1s",
+      "author": "Jonathan Bastari Thamrin",
+      "url": "https://lore.kernel.org/bpf/20261005-wq-poll-fix-v1-1-99ce4bac59f4@gmail.com/",
+      "summary": "A targeted selftest fix: the bpf work-queue test used a hard-coded 50 microsecond sleep to wait for async work to complete, which proved too short on slower or loaded systems and caused flaky failures. This patch replaces the sleep with a polling loop that retries for up to 1 second, making the test robust across a wider range of hardware and CI environments.",
+      "related_links": []
+    }
+  ]
+}
