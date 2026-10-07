@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-07T00:00:00Z",
+  "period_start": "2026-09-28",
+  "period_end": "2026-10-05",
+  "patch_count": 91,
+  "thread_count": 12,
+  "top_contributors": ["Eduard Zingerman", "Alexei Starovoitov", "Kuniyuki Iwashima", "Alan Maguire"],
+  "key_topics": ["verifier", "loops", "btf", "kfuncs", "tcp", "maps", "rust"],
+  "overview": "The week of September 28 – October 5 brought a wave of significant new features and infrastructure work across the BPF subsystem. The biggest contribution was Eduard Zingerman's 43-patch v2 series introducing scalar evolution (SCEV) analysis to the verifier, a foundational change for accepting bounded loops that previously forced worst-case widening. On the networking side, Kuniyuki Iwashima posted a v3 of TCP AutoLOWAT BPF hooks, while Alan Maguire landed a v3 series exposing inline BTF through sysfs. Alexei Starovoitov's rust-bpf series (v2, 15 patches) rounded out the week with support for programs compiled from Rust, alongside hash-map memory optimizations and new helpers.",
+  "patches": [
+    {
+      "title": "bpf: use SCEV to widen bounded loops",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-29-f6254e29fdf2@gmail.com/",
+      "summary": "The headline patch in Zingerman's 43-patch SCEV series: uses scalar-evolution expressions computed for loop induction variables to widen register ranges precisely, allowing the BPF verifier to accept bounded loops that were previously rejected. The verifier previously widened all loop-carried registers to their worst-case range after a fixed iteration count, causing many programs with provably bounded loops to fail verification. With SCEV, the verifier derives exact exit conditions and widens only as far as the bound requires, dramatically reducing false rejections. The series also refactors liveness tracking, adds dominator and loop-hierarchy analysis, and includes an extensive selftest suite covering the new behavior.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: represent stack access effects with arg_access_info",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-1-f6254e29fdf2@gmail.com/",
+      "summary": "The foundational patch of the SCEV series, introducing `arg_access_info` to unify how helper and kfunc stack accesses are described in the verifier. Replacing scattered per-call ad-hoc logic with a single structure makes it possible to compute precise per-instruction stack liveness summaries, which subsequent SCEV patches rely on. The refactoring also benefits precision backtracking and state pruning independently of SCEV. This patch alone is a meaningful cleanup of the verifier's stack-access bookkeeping.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Introduce bpf_tcp_ops.{enqueue,dequeue}_rcvq()",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-6-kuniyu@google.com/",
+      "summary": "Adds `enqueue_rcvq()` and `dequeue_rcvq()` hooks to `bpf_tcp_ops`, letting BPF programs intercept TCP's receive queue operations to implement AutoLOWAT — dynamic adjustment of the `sk_rcvlowat` receive-buffer threshold. Applications that want precise wake-up control (avoiding spurious or late wakeups) can use this to set the threshold exactly when enough data is present. A per-socket opt-in flag (patch 4/9) keeps the fast path zero-cost when the hooks are not loaded. This is the v3, addressing review comments from earlier rounds.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Let kfunc sets give kfuncs a BPF body",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-2-yunwei356@gmail.com/",
+      "summary": "RFC proposing that kfunc registration sets carry an optional BPF program body, giving the verifier an inlinable implementation of each kfunc. The body is verified and then inlined by the JIT (with x86 native-code support in patch 5/7), eliminating call overhead for simple utility kfuncs. Patch 4/7 populates a set of common BPF operations as inline kfuncs. If accepted, this mechanism could serve as a general BPF standard library with transparent, verifiable implementations, and would reduce the need for special-casing in the verifier.",
+      "related_links": []
+    },
+    {
+      "title": "btf: Relocate and expose module inline BTF",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261003194323.817885-6-alan.maguire@oracle.com/",
+      "summary": "Part of a 7-patch v3 series (\"kbuild, bpf: Support inline info in BTF\") that builds and exposes inline BTF — type information derived from DWARF debug data — through sysfs for both vmlinux and kernel modules. Inline BTF allows richer CO-RE (Compile Once, Run Everywhere) relocations and improves BPF program portability across kernel versions that differ in inlined function shapes. The series extends `resolve_btfids` to build separate main and inline BTF objects, and adds support for BTF link sections. Earlier patches preserve string relocation maps for split BTF to keep module BTF consistent with vmlinux BTF.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add PPPoE encap support to bpf_skb_adjust_room",
+      "author": "ThisSeanZhang",
+      "url": "https://lore.kernel.org/bpf/20261003193347.1137527-2-thisseanzhang@gmail.com/",
+      "summary": "Extends `bpf_skb_adjust_room()` with two new flags for PPPoE encapsulation and decapsulation, enabling TC BPF programs to process PPPoE traffic without needing a separate kernel helper. This RFC v2 adds `BPF_ADJ_ROOM_ENCAP_L2_PPPOE` for wrapping Ethernet frames with a PPPoE header and a companion decap flag. PPPoE is widely used in broadband access networks, and having native BPF support for encap/decap enables stateless forwarding offloads without kernel PPPoE module involvement. The series includes selftests verifying both directions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: htab: Split htab_elem_lru and htab_elem_pcpu off of htab_elem",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20261002161738.621133-2-tjmercier@google.com/",
+      "summary": "Refactors the `htab_elem` structure to split LRU-specific and per-CPU-specific fields into their own sub-structures, enabling a subsequent patch (2/2) to shrink `elem_size` by 8 bytes for small-key hash maps. Hash maps are among the most widely used BPF data structures, and reducing per-element overhead directly lowers memory consumption in large production deployments. This v8 addresses prior review feedback and is a preparatory refactoring that should be safe to merge independently of the size-reduction patch.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add a test for global data of a program in Rust",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-16-alexei.starovoitov@gmail.com/",
+      "summary": "The final selftest in Starovoitov's 15-patch v2 series \"bpf: Support programs compiled by rust-bpf\", which enables BPF programs written in Rust to be loaded and verified alongside C-compiled programs. The series teaches libbpf to handle Rust's `.rodata.str` placement for `bpf_printk()` format strings and adds global-data and arena support for Rust BPF programs. Having first-class Rust support in the BPF toolchain broadens the ecosystem and enables safer, more expressive BPF programs with Rust's ownership model. Earlier patches include arena support and GCC compatibility fixes for the data_in_arena test.",
+      "related_links": []
+    }
+  ]
+}

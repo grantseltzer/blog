@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-10-07T00:00:00Z",
+  "period_start": "2026-10-04",
+  "period_end": "2026-10-05",
+  "patch_count": 60,
+  "thread_count": 4,
+  "top_contributors": ["Eduard Zingerman", "Kuniyuki Iwashima", "Yusheng Zheng"],
+  "key_topics": ["verifier", "loops", "kfuncs", "tcp"],
+  "overview": "October 4-5 was dominated by Eduard Zingerman's massive 43-patch v2 series introducing scalar evolution (SCEV) analysis to the BPF verifier for widening bounded loops. Alongside it, Kuniyuki Iwashima posted a v3 TCP AutoLOWAT series adding BPF hooks to TCP's receive queue path, and Yusheng Zheng proposed an RFC for inlining kfuncs with BPF bodies.",
+  "patches": [
+    {
+      "title": "bpf: represent stack access effects with arg_access_info",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-1-f6254e29fdf2@gmail.com/",
+      "summary": "Introduces the `arg_access_info` abstraction to describe how BPF helpers and kfuncs access the stack, replacing ad-hoc logic spread across the verifier. This is the first patch in a 43-patch v2 series that culminates in using scalar evolution (SCEV) to widen bounded loops in the verifier. The refactoring consolidates stack-access bookkeeping into a single structure, making it easier to track liveness and produce the precise per-instruction summaries that SCEV analysis requires. Subsequent patches in the series build the loop hierarchy, dominator computation, and SCEV expressions on top of this foundation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: compute scalar evolution expressions for loops",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-28-f6254e29fdf2@gmail.com/",
+      "summary": "Implements the core SCEV analysis pass that computes induction variable expressions for each loop in a BPF program. Given a loop's header and back-edge structure, the verifier can now derive how register values change on each iteration as linear recurrences. This information is the prerequisite for the widening step added in patch 29, which uses those expressions to widen register ranges and allow the verifier to accept bounded loops that were previously rejected as possibly infinite. The analysis integrates with the existing interval arithmetic (`cnum` types) and the loop hierarchy computed earlier in the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: use SCEV to widen bounded loops",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-29-f6254e29fdf2@gmail.com/",
+      "summary": "The headline patch of the SCEV series: uses the computed scalar-evolution expressions to widen loop-carried register ranges so the verifier converges on bounded loops. Currently, the verifier forces a loop to terminate by widening all registers to their worst-case range after a small number of iterations, which can cause legitimate programs to be rejected. With SCEV, the verifier derives exact exit conditions from induction variables and widens only as far as the loop's bound allows. The patch also adjusts precision backtracking and checkpoint pruning to interact correctly with the new widening logic.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Introduce bpf_tcp_ops.{enqueue,dequeue}_rcvq()",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-6-kuniyu@google.com/",
+      "summary": "Adds two new `bpf_tcp_ops` hooks, `enqueue_rcvq()` and `dequeue_rcvq()`, enabling BPF programs to intercept TCP receive queue operations for TCP AutoLOWAT support. The hooks let BPF adjust when `sk_rcvlowat` is applied, controlling the minimum receive-buffer threshold used to wake applications. A per-socket flag (patch 4/9) gates the fast-path hook calls so they cost nothing when unused. This v3 addresses review feedback from the previous round and explicitly excludes MPTCP, which does not support the `BPF_TCP_OPS_FLAG_RCVQ` flag.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Let kfunc sets give kfuncs a BPF body",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-2-yunwei356@gmail.com/",
+      "summary": "Proposes a mechanism for kfunc registration sets to carry a BPF program body alongside each kfunc, giving the verifier an inlinable implementation of the function. This RFC is the foundation of a 7-patch series that threads the new body through the verifier (patch 2/7) and x86 JIT (patch 3/7) to inline kfunc calls at the call site rather than dispatching through the kernel function. The goal is to reduce call overhead for small utility kfuncs and to allow a standard library of common BPF operations to be expressed as kfuncs with transparent, verifiable implementations. Documentation and selftests are included at the end of the series.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Fix wq test by changing 50us sleep to polling over 1s",
+      "author": "Jonathan Bastari Thamrin",
+      "url": "https://lore.kernel.org/bpf/20261005-wq-poll-fix-v1-1-99ce4bac59f4@gmail.com/",
+      "summary": "Fixes a flaky BPF workqueue selftest that relied on a hardcoded 50µs sleep to wait for async completion, which was insufficient on slow or loaded CI systems. The fix replaces the sleep with a polling loop that retries for up to one second, making the test timing-independent. Flaky selftests are a persistent source of CI noise that can obscure real regressions, so reliability fixes like this improve the signal-to-noise ratio for the bpf-next tree.",
+      "related_links": []
+    }
+  ]
+}
