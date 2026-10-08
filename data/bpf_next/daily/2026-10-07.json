@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-10-08T00:00:00Z",
+  "period_start": "2026-10-06",
+  "period_end": "2026-10-07",
+  "patch_count": 22,
+  "thread_count": 2,
+  "top_contributors": ["Justin Suess", "Kuniyuki Iwashima"],
+  "key_topics": ["tcp", "kfuncs", "vfs", "iterators", "landlock", "selftests"],
+  "overview": "Two significant patch series dominated the bpf-next list on October 6-7. Kuniyuki Iwashima posted a v4 series adding bpf_tcp_ops hooks for TCP AutoLOWAT, enabling BPF programs to dynamically adjust per-socket receive low-water marks. Justin Suess submitted an RFC series unifying VFS ancestor path walking for both Landlock and BPF, introducing new BPF path iterator kfuncs.",
+  "patches": [
+    {
+      "title": "bpf: tcp: Convert deny-list for bpf_{get,set}sockopt() to allow-list.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261006192601.1875100-2-kuniyu@google.com/",
+      "summary": "This patch converts the existing deny-list approach for filtering bpf_{get,set}sockopt() calls in bpf_tcp_ops to an allow-list, making the permission model more explicit and restrictive by default. It is the first patch in a 10-part v4 series that builds toward TCP AutoLOWAT support. The change improves security posture by requiring BPF programs to opt into specific socket options rather than being blocked from a small enumerated set.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Add a new per-socket flag and kfunc for bpf_tcp_ops.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261006192601.1875100-3-kuniyu@google.com/",
+      "summary": "Introduces a new per-socket flag for bpf_tcp_ops along with a corresponding kfunc to set it, providing BPF programs a mechanism to opt sockets into the AutoLOWAT behavior. This is a prerequisite for guarding the fast-path hook call under a per-socket check rather than a global flag, reducing overhead on sockets that don't use the feature. The kfunc allows BPF programs to selectively enable the enqueue/dequeue_rcvq hooks.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Introduce bpf_tcp_ops.{enqueue,dequeue}_rcvq().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261006192601.1875100-7-kuniyu@google.com/",
+      "summary": "This is the core patch of the AutoLOWAT series, introducing two new bpf_tcp_ops hooks: enqueue_rcvq() called when data is added to the receive queue, and dequeue_rcvq() called when data is consumed. These hooks allow BPF programs to observe receive queue occupancy and dynamically adjust sk_rcvlowat so that applications using SO_RCVLOWAT or poll() wake up at the right time. This enables fine-grained, workload-aware tuning of TCP receive behavior without kernel modifications.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Add kfunc to adjust sk->sk_rcvlowat.",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261006192601.1875100-10-kuniyu@google.com/",
+      "summary": "Adds a new kfunc that lets BPF programs running in the enqueue/dequeue_rcvq hooks directly modify the sk_rcvlowat field on a TCP socket. This is the mechanism by which AutoLOWAT actually works: the BPF program monitors queue depth and calls this kfunc to raise or lower the low-water mark, shaping application wake-up behavior. The patch also ensures proper interaction with MPTCP, which explicitly opts out of this feature.",
+      "related_links": []
+    },
+    {
+      "title": "namei: add vfs_walk_ancestors()",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261006002020.2890858-3-utilityemal77@gmail.com/",
+      "summary": "This RFC patch introduces vfs_walk_ancestors(), a new generic VFS helper that walks the directory ancestor chain from a given path to the filesystem root, callable by both Landlock and BPF. The goal is to unify duplicated ancestor-walk logic that currently exists separately in each subsystem. The function is designed to support both sleepable and RCU (lockless) walk modes, with later patches in the series adapting it for each use case.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add a path ancestor iterator",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261006002020.2890858-7-utilityemal77@gmail.com/",
+      "summary": "Introduces a BPF iterator kfunc that allows BPF programs to walk the VFS ancestor chain of a given struct path, visiting each parent directory up to the filesystem root. This enables BPF-based security or tracing programs to inspect the full directory lineage of a file being accessed. The iterator uses the stepwise vfs_walk_ancestors() infrastructure introduced earlier in the RFC series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add a lockless path ancestor iterator",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261006002020.2890858-12-utilityemal77@gmail.com/",
+      "summary": "Extends the path ancestor iterator with a lockless (RCU-walk) variant suitable for use in non-sleepable BPF contexts such as tracepoints and LSM hooks on the fast path. The lockless version relies on the RCU-walk mode added to vfs_walk_ancestors() and uses mnt_undo_legitimize() to safely drop legitimized mounts during iteration. This significantly broadens the contexts in which BPF can perform ancestor-based path checks without holding locks.",
+      "related_links": []
+    }
+  ]
+}
