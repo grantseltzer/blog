@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-10-09T00:00:00Z",
+  "period_start": "2026-10-07",
+  "period_end": "2026-10-08",
+  "patch_count": 46,
+  "thread_count": 12,
+  "top_contributors": ["Yonghong Song", "Kuniyuki Iwashima", "Qiliang Yuan"],
+  "key_topics": ["exception-handling", "kfuncs", "tcp", "maps", "verifier", "btf", "selftests"],
+  "overview": "October 8th saw bpf-next dominated by Yonghong Song's 23-patch v9 series implementing exception cleanup landing pads triggered by bpf_unwind(), bringing C++-style structured cleanup semantics to BPF programs. Kuniyuki Iwashima posted v5 of a 10-patch series adding bpf_tcp_ops hooks for TCP AutoLOWAT, enabling BPF programs to dynamically adjust sk_rcvlowat based on receive queue events. Smaller but significant improvements arrived as well: hash map memory savings from T.J. Mercier, verifier provenance enforcement from Yiyang Chen, a verifier NULL-check symmetry fix, and a wave of selftest isolation cleanups from Qiliang Yuan.",
+  "patches": [
+    {
+      "title": "bpf: Add the bpf_unwind() and bpf_unwind_resume() kfuncs",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261008075015.2996034-1-yonghong.song@linux.dev/",
+      "summary": "Part of a 23-patch v9 series that introduces bpf_unwind() and bpf_unwind_resume() kfuncs, giving BPF programs C++-style exception cleanup semantics. Programs can define .bpf_cleanup landing pads that execute when unwinding through a call stack, analogous to how C++ destructors run during exception propagation. The mechanism rewrites return addresses in JITed code at load time so that invoking bpf_unwind() dispatches through registered cleanup pads before resuming with bpf_unwind_resume(). This enables safe resource cleanup in complex BPF call chains without explicit cleanup calls at every return site. The series covers verifier changes, JIT support on x86 and arm64, libbpf integration, and extensive selftests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Introduce bpf_tcp_ops.{enqueue,dequeue}_rcvq()",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261008031604.256498-7-kuniyu@google.com/",
+      "summary": "Introduces two new bpf_tcp_ops callbacks, enqueue_rcvq() and dequeue_rcvq(), that fire when data is added to or removed from a TCP socket's receive queue. Part of a 10-patch v5 series implementing TCP AutoLOWAT for BPF, these hooks let programs dynamically observe receive queue changes and adjust sk_rcvlowat — the threshold at which the kernel wakes a reader. This enables applications to tune read behavior adaptively without kernel modification, reducing unnecessary wake-ups on small receives or accelerating response when enough data arrives. MPTCP is explicitly excluded from supporting the new BPF_TCP_OPS_FLAG_RCVQ flag due to its more complex receive path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: htab: Reduce elem_size by 8 bytes for small key sizes",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20261008104108.993791-3-tjmercier@google.com/",
+      "summary": "The second patch in a two-part v9 series that optimizes hash table element memory layout by packing keys up to 8 bytes directly into the pointer-sized slot that previously held only a pointer, eliminating a separate allocation per element. This builds on patch 1/2, which splits LRU and per-CPU element variants into their own structs to make the layout safe to change. The resulting reduction of 8 bytes per element is meaningful at scale for high-density maps used in networking and tracing where millions of entries may be live. Version 9 reflects significant review iteration on the correctness of the struct refactoring.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Enforce trusted BTF ID argument provenance",
+      "author": "Yiyang Chen",
+      "url": "https://lore.kernel.org/bpf/20261007-a3-arg-trusted-v4-v4-1-253ef3a1a69a@mails.tsinghua.edu.cn/",
+      "summary": "Adds verifier enforcement that trusted BTF ID arguments (pointers to kernel types annotated trusted) actually originate from trusted sources rather than being arbitrarily synthesized. Previously the verifier tracked register types but not pointer provenance, allowing potentially unsound assumptions about kernel object lifetimes and access safety. This change closes a class of potential verification bypasses in programs using kfuncs that require trusted pointers by ensuring the verifier can account for where a trusted pointer came from. Version 4 incorporates accumulated review feedback on the provenance-tracking machinery.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: fix symmetric register-form NULL-pointer check in check_cond_jmp_op()",
+      "author": "Rahad Bhuiya",
+      "url": "https://lore.kernel.org/bpf/20261008065738.1093-1-rahadbhuiya2021@gmail.com/",
+      "summary": "Fixes an asymmetry in the verifier's handling of register-form conditional jump NULL checks inside check_cond_jmp_op(). When BPF_JEQ or BPF_JNE compares two registers, the verifier should apply the same NULL-narrowing logic regardless of which register is src_reg versus dst_reg, but the prior code handled only one operand order. The fix makes the check symmetric so both orderings correctly propagate null or non-null type information into the branch's register state. This is version 2, addressing review feedback from the initial submission earlier the same day.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add bpf_proactive_reclaim test",
+      "author": "Hui Zhu",
+      "url": "https://lore.kernel.org/bpf/20261008070928.113530-1-hui.zhu@linux.dev/",
+      "summary": "Adds a new selftest for bpf_proactive_reclaim, exercising the BPF interface that allows programs to trigger proactive memory reclaim from within the kernel. The test invokes the feature under controlled conditions and verifies that kernel reclaim accounting reflects the request, catching regressions as the memory management subsystem evolves. Version 3 incorporates prior review feedback on test structure and coverage depth.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Unmount the bpffs that cgroup_hierarchical_stats mounted",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261008-selftests-bpf-cgroup-stats-bpffs-v1-1-76b9a6d1be34@gmail.com/",
+      "summary": "Fixes a resource leak in the cgroup_hierarchical_stats BPF selftest where a bpffs filesystem mounted during the test was not unmounted on cleanup, potentially interfering with subsequent runs sharing the same mount namespace. Part of a two-patch series from Qiliang Yuan, who submitted several selftest isolation fixes on the same day covering leaked mounts, missing network namespaces, incorrect use of BPF_PROG_TEST_RUN, and flawed session-key error handling. Together they improve test reliability in environments where tests run sequentially in a shared namespace.",
+      "related_links": []
+    }
+  ]
+}

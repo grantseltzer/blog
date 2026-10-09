@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-10-09T00:00:00Z",
+  "period_start": "2026-09-28",
+  "period_end": "2026-10-05",
+  "patch_count": 100,
+  "thread_count": 15,
+  "top_contributors": ["Eduard Zingerman", "Alexei Starovoitov", "Kuniyuki Iwashima"],
+  "key_topics": ["verifier", "scev", "kfuncs", "btf", "arena", "tcp", "xdp", "rust-bpf", "selftests"],
+  "overview": "The week of September 28 to October 5 was one of the most active in recent bpf-next history, anchored by Eduard Zingerman's 43-patch v2 series bringing scalar evolution (SCEV) analysis to the BPF verifier — a fundamental improvement that lets the verifier reason about bounded loops symbolically rather than requiring conservative unrolling. Alexei Starovoitov posted a 15-patch v2 series adding rust-bpf support, covering arena global data, relaxed BTF naming for Rust types, and per-instruction arena access inference, alongside GCC compatibility fixes for data_in_arena tests. Emil Tsalapatis resent v6 of sleepable arena page allocation and per-call-site kfunc specialization, while Alan Maguire posted v3 of inline BTF sysfs exposure and Kuniyuki Iwashima brought v3 of bpf_tcp_ops TCP AutoLOWAT hooks. The week closed with RFC series for inline kfuncs with BPF bodies and PPPoE encap/decap in bpf_skb_adjust_room.",
+  "patches": [
+    {
+      "title": "bpf: use SCEV to widen bounded loops",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261004-scev-minimal-rebase-v2-29-f6254e29fdf2@gmail.com/",
+      "summary": "The core patch in a 43-patch v2 verifier series that applies scalar evolution (SCEV) analysis to widen bounded loops. The verifier now computes how register values change per iteration and derives closed-form bounds, avoiding the rejection of valid programs with finite loops. Extensive groundwork across earlier patches in the series includes dominator computation, loop hierarchy detection, step-interval arithmetic, liveness improvements, and a min-heap worklist. Programs with idiomatic counted loops over arrays, strings, or memory regions can now be verified without workarounds.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow bitwise ops, shifts and mul/div on pointers with CAP_PERFMON",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261002124714.180012-2-alexei.starovoitov@gmail.com/",
+      "summary": "The first patch in a 15-patch v2 series adding support for BPF programs compiled by rust-bpf. Rust's memory model and type system sometimes generate pointer arithmetic that the BPF verifier previously rejected, including bitwise operations and multiply/divide on pointer-derived values. This patch relaxes those restrictions for programs run with CAP_PERFMON, unlocking the rest of the series: arena global data support, handling variables smaller than their declared type, Rust-compatible BTF naming, and libbpf changes to keep global data in arena. Together the series makes rust-bpf programs load and run correctly under libbpf.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add sleepable arena page allocation path",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261002105218.6171-4-emil@etsalapatis.com/",
+      "summary": "Part of a 7-patch v6 series (RESEND) making sleepable BPF programs use sleepable alloc_pages for arena allocations. Non-sleepable allocations inside sleepable programs can cause priority inversions or block progress; this patch adds a sleepable page allocation path to the arena allocator so that programs with the sleepable flag use GFP_KERNEL rather than GFP_ATOMIC. A companion patch introduces per-call-site kfunc specialization, allowing the verifier and JIT to use different kfunc implementations depending on whether the call site is sleepable.",
+      "related_links": []
+    },
+    {
+      "title": "kbuild, btf: Expose vmlinux inline BTF through sysfs",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261003194323.817885-4-alan.maguire@oracle.com/",
+      "summary": "Third patch in a 7-patch v3 series adding inline BTF support throughout the build and runtime toolchain. This patch exposes the vmlinux inline BTF (type information for inlined functions) through a new sysfs interface, making it available to tools like pahole and bpftrace that reconstruct call stacks or variable state from BPF programs attached to inlined kernel functions. Earlier patches in the series extend resolve_btfids to populate BTF link sections and preserve string relocation maps for split BTF, while later patches handle module inline BTF and add test coverage.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Introduce bpf_tcp_ops.{enqueue,dequeue}_rcvq().",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-6-kuniyu@google.com/",
+      "summary": "Core patch in a 9-patch v3 series adding BPF TCP AutoLOWAT hooks. The new enqueue_rcvq() and dequeue_rcvq() callbacks fire when data enters or leaves a TCP socket's receive queue, allowing BPF programs to dynamically adjust sk_rcvlowat — the kernel's threshold for waking a waiting reader — based on observed receive patterns. This enables per-connection adaptive read pacing without kernel modification or application changes, at the cost of a per-socket flag check on the fast path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Let kfunc sets give kfuncs a BPF body",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-2-yunwei356@gmail.com/",
+      "summary": "First patch in a 7-patch RFC series proposing that kfuncs may carry a BPF implementation alongside their kernel C body. When present, the verifier verifies call sites through the BPF body rather than treating them as opaque, and the JIT can inline the BPF instructions at the call site. The series adds x86 native code paths for some inline kfuncs, kfuncs with bodies for common operations, selftest coverage, and documentation. The RFC tag signals the interface is still evolving; the work is presented as a direction for discussion.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add PPPoE encap support to bpf_skb_adjust_room",
+      "author": "ThisSeanZhang",
+      "url": "https://lore.kernel.org/bpf/20261003193347.1137527-2-thisseanzhang@gmail.com/",
+      "summary": "First patch in a 3-patch RFC v2 series extending bpf_skb_adjust_room() to support PPPoE encapsulation and decapsulation. BPF XDP and tc programs handling PPPoE tunnels currently must manipulate the PPPoE header manually; these new flags let programs request that the kernel handle the header adjustment atomically via the existing adjust_room helper. A companion patch adds PPPoE decap support and a selftest exercises both directions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Support per-call-site kfunc specialization",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261002105218.6171-7-emil@etsalapatis.com/",
+      "summary": "Part of the sleepable arena series, this patch enables the verifier and JIT to select a different kfunc implementation depending on whether the call site is sleepable or non-sleepable. The kfunc descriptor index is stored directly in the instruction's off field, and a new kfunc flag marks which variant to use. This is the mechanism that allows the sleepable arena page allocator to be invoked transparently when the calling program holds the sleepable flag, without requiring the caller to choose explicitly.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: add XDP test for per-flow LRU_HASH window updates",
+      "author": "Anil Kaushik",
+      "url": "https://lore.kernel.org/bpf/20261002053837.3494918-1-anilkaushikwireless@gmail.com/",
+      "summary": "Adds a selftest that exercises LRU_HASH map updates from XDP in a per-flow sliding-window pattern, verifying that the LRU eviction policy behaves correctly under concurrent per-CPU updates from an XDP program processing synthetic traffic. The test covers both the correctness of map lookups and the expected eviction behavior when the map is full. This is v3, with v2 having been posted earlier the same day.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: htab: Reduce elem_size by 8 bytes for small key sizes",
+      "author": "T.J. Mercier",
+      "url": "https://lore.kernel.org/bpf/20261002161738.621133-3-tjmercier@google.com/",
+      "summary": "Second patch in a 2-patch v8 series that reduces hash map element memory usage by packing keys up to 8 bytes directly into the pointer-size slot, eliminating a separate allocation per element. This builds on the first patch's struct split that separates LRU and per-CPU element variants, making the layout safe to optimize. The 8-byte savings per element is especially significant at scale for high-density maps. Version 8 reflects sustained review iteration on the correctness of the struct refactoring.",
+      "related_links": []
+    }
+  ]
+}
