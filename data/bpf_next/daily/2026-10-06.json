@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-10-07T00:00:00Z",
+  "period_start": "2026-10-05",
+  "period_end": "2026-10-06",
+  "patch_count": 33,
+  "thread_count": 5,
+  "top_contributors": ["Justin Suess", "Kuniyuki Iwashima", "Yusheng Zheng"],
+  "key_topics": ["kfuncs", "vfs", "landlock", "tcp", "libbpf"],
+  "overview": "October 5-6 activity centered on three notable RFC and v3 series spanning filesystem, TCP, and kfunc subsystems. Justin Suess posted a 12-patch RFC unifying VFS ancestor walking for both Landlock and BPF, while Yusheng Zheng proposed a mechanism to inline kfuncs that carry a BPF body. Kuniyuki Iwashima posted a v3 of TCP AutoLOWAT BPF hooks, and Ihor Solodrai kicked off the libbpf v1.9 development cycle.",
+  "patches": [
+    {
+      "title": "bpf: add a path ancestor iterator",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261006002020.2890858-7-utilityemal77@gmail.com/",
+      "summary": "Adds a BPF kfunc iterator that walks path ancestors in the VFS hierarchy, enabling BPF programs to traverse parent directories during filesystem hooks. This is part of a 12-patch RFC series (\"fs: unified VFS ancestor walk for Landlock and BPF\") that refactors the ancestor-walk logic shared between Landlock and BPF into a common VFS interface. The iterator builds on a new stepwise `vfs_walk_ancestors()` helper and a trusted `struct path` annotation added earlier in the series. A companion patch adds a lockless RCU-walk variant for use in performance-critical paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Let kfunc sets give kfuncs a BPF body",
+      "author": "Yusheng Zheng",
+      "url": "https://lore.kernel.org/bpf/20261005142219.33451-2-yunwei356@gmail.com/",
+      "summary": "Introduces a mechanism allowing kfunc registration sets to associate a BPF program body with a kfunc, providing the verifier with an inlinable implementation of the function. This is the foundation of a 7-patch RFC series proposing BPF-body inlining for kfuncs, which could reduce call overhead for simple utility functions. Later patches in the series verify calls through the body, add x86 JIT support for native code generation, and wire up common BPF operations as inline kfuncs. The RFC also includes documentation and selftests covering the new feature.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: Introduce bpf_tcp_ops.{enqueue,dequeue}_rcvq()",
+      "author": "Kuniyuki Iwashima",
+      "url": "https://lore.kernel.org/bpf/20261005154533.4147685-6-kuniyu@google.com/",
+      "summary": "Introduces two new `bpf_tcp_ops` hooks, `enqueue_rcvq()` and `dequeue_rcvq()`, which allow BPF programs to intercept TCP receive queue operations for AutoLOWAT support. This v3 series enables BPF programs to dynamically adjust `sk_rcvlowat` — the minimum receive buffer threshold — so applications can be woken precisely when enough data is available. A per-socket flag gates the fast-path hook calls to avoid overhead when the feature is unused, and MPTCP is explicitly excluded as it does not support the RCVQ flag. The series also converts `bpf_{get,set}sockopt()` from a deny-list to an allow-list as a prerequisite.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Start v1.9 development cycle",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261005183511.201045-1-ihor.solodrai@linux.dev/",
+      "summary": "Bumps the libbpf version to 1.9.0-dev, officially opening the v1.9 development cycle. This is a routine housekeeping patch that signals contributors to begin targeting the new cycle for feature work and API additions. The v1.9 cycle will develop in parallel with ongoing kernel BPF changes and typically brings improvements to BTF handling, CO-RE relocation, and userspace API ergonomics. Contributors adding new libbpf functionality should now base their work on this development branch.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Fix wq test by changing 50us sleep to polling over 1s",
+      "author": "Jonathan Bastari Thamrin",
+      "url": "https://lore.kernel.org/bpf/20261005-wq-poll-fix-v1-1-99ce4bac59f4@gmail.com/",
+      "summary": "Fixes a flaky BPF workqueue selftest that used a hardcoded 50µs sleep to wait for asynchronous completion. Replacing the sleep with a polling loop that retries for up to one second makes the test resilient to timing variations on slow or heavily loaded CI machines. Flaky selftests generate CI noise that can mask real regressions, making reliability fixes like this valuable for test infrastructure health. The patch is minimal and does not alter the behavior being tested.",
+      "related_links": []
+    }
+  ]
+}
