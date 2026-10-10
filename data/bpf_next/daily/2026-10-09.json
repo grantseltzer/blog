@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-10T00:00:00Z",
+  "period_start": "2026-10-08",
+  "period_end": "2026-10-09",
+  "patch_count": 100,
+  "thread_count": 13,
+  "top_contributors": ["Eduard Zingerman", "Yonghong Song", "Alan Maguire", "Qiliang Yuan", "Kumar Kartikeya Dwivedi"],
+  "key_topics": ["verifier", "scev", "btf", "exceptions", "kfuncs", "libbpf", "trampoline", "selftests"],
+  "overview": "October 9th saw a massive volume of activity on bpf-next, dominated by two landmark series: Eduard Zingerman's 51-patch series introducing Scalar Evolution (SCEV) analysis to the BPF verifier for smarter bounded-loop widening, and Yonghong Song's 24-patch series (v10) wiring up BPF exception cleanup landing pads dispatched when bpf_unwind() unwinds. Alan Maguire also posted v4 of BTF inline info support, and Kumar Kartikeya Dwivedi contributed an x86 JIT optimization to drop the now-redundant PROBE_MEM address range check when SMAP is active.",
+  "patches": [
+    {
+      "title": "bpf: represent stack access effects with arg_access_info",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261009-scev-minimal-rebase-v3-1-bcba9bc53ac9@gmail.com/",
+      "summary": "First patch in the 51-patch v3 series 'bpf: use scalar evolution to widen bounded loops'. The series introduces Scalar Chain Evolution (SCEV) analysis to the BPF verifier so that bounded loops whose induction variables follow a linear recurrence can be proven terminating without the current O(N) state explosion. This patch lays the groundwork by introducing arg_access_info to uniformly describe stack access effects of helpers and kfuncs, a prerequisite for the precise liveness tracking the SCEV engine relies on. The full series also adds immediate dominator computation, loop-hierarchy analysis, and a new register-state pruning strategy, culminating in the actual SCEV-driven loop widening in patch 34.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Pack bpf_insn_aux_data flags into bit fields",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261009041453.17533-1-yonghong.song@linux.dev/",
+      "summary": "First patch in the 24-patch v10 series 'bpf: Run exception cleanup landing pads when bpf_unwind() unwinds'. The series extends the BPF runtime so that C++ style exception cleanup semantics are honored: when a BPF program calls bpf_unwind(), the JIT dispatches the program's compiler-generated .bpf_cleanup landing pads at runtime, mirroring what the C++ unwinder does. This opening patch compacts bpf_insn_aux_data to make room for the new per-call-site landing pad bookkeeping. Later patches add bpf_unwind()/bpf_unwind_resume() kfuncs, verifier support, x86 and arm64 JIT dispatch, and libbpf/light-skeleton handling.",
+      "related_links": []
+    },
+    {
+      "title": "resolve_btfids: Build separate main and inline BTF objects",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261009112324.1442319-2-alan.maguire@oracle.com/",
+      "summary": "First patch in the 7-patch v4 series 'kbuild, bpf: Support inline info in BTF'. The series teaches the kernel build system and BTF tooling to track and expose 'inline BTF' — the finer-grained type information produced when a compiler inlines functions, which is currently discarded. This patch splits the resolve_btfids tool to produce a separate inline BTF object alongside the main vmlinux BTF. Subsequent patches expose the inline BTF through sysfs for both vmlinux and loadable kernel modules, enabling richer BPF introspection and improved stack-unwinding information.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Place trampoline arguments by the x86-64 calling convention",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261009064221.1240081-1-yonghong.song@linux.dev/",
+      "summary": "Core patch in the 5-patch series 'bpf: Follow up by-value struct and __int128 argument support'. BPF trampolines were incorrectly placing by-value struct and __int128 arguments on the stack without obeying the x86-64 System V ABI's alignment and slot rules, causing mis-reads when a trampoline attaches to a function with such arguments. This fix properly lays out trampoline arguments according to the ABI. Companion patches ensure the BPF calling convention is preserved when a trampoline attaches to another BPF function, and selftests verify the corner cases around odd-slot and 16-byte aligned stack arguments.",
+      "related_links": []
+    },
+    {
+      "title": "x86/mm: Resolve BPF exception fixups for user address faults under SMAP",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261009024925.3169077-2-memxor@gmail.com/",
+      "summary": "First patch in the 3-patch series 'bpf, x86: Drop the PROBE_MEM address range check under SMAP'. The BPF JIT currently emits an explicit bounds check before every PROBE_MEM load to guard against faulting on user-space addresses; when SMAP is present the CPU already prevents such accesses in kernel mode, making the check redundant and wasteful. This patch teaches the x86 fault handler to resolve BPF exception fixups for user-address faults triggered under SMAP, so the explicit range check can then be removed in the follow-on patch without losing correctness.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: fix symmetric register-form NULL-pointer check in check_cond_jmp_op()",
+      "author": "Rahad Bhuiya",
+      "url": "https://lore.kernel.org/bpf/20261009043819.1208-1-rahadbhuiya2021@gmail.com/",
+      "summary": "Verifier fix (v4) for an asymmetric handling of register-form NULL-pointer checks in check_cond_jmp_op(). When two registers were compared with JEQ/JNE, the verifier only updated the NULL-or-non-NULL knowledge for the source register but not the destination, leaving the destination's range in an incorrectly wide state. The fix makes both sides of the comparison benefit symmetrically from the conditional jump outcome, improving the accuracy of subsequent NULL-pointer checks in the verified program.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Resolve typeless ksyms in the kernel",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261009130708.1370675-1-wusamuel@google.com/",
+      "summary": "Standalone libbpf patch that moves resolution of typeless kernel symbols (ksyms declared without a BTF type) from userspace libbpf into the kernel loader path. Currently libbpf resolves such symbols via /proc/kallsyms at load time, which requires elevated permissions and races with live kernel state. Resolving them in the kernel avoids the permission requirement and keeps the address consistent with the kernel's own symbol table at the moment of program load.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Claim the per-CPU send_signal irq_work before filling it",
+      "author": "Yuan Chen",
+      "url": "https://lore.kernel.org/bpf/20261009022427.968304-1-chenyuan@kylinos.cn/",
+      "summary": "Bug fix (v2) for a race in bpf_send_signal() on SMP systems. The per-CPU irq_work item for send_signal was being filled in (signal number, task pointer) before being claimed with irq_work_busy(), allowing a concurrent irq_work invocation on another CPU to observe a partially-written item and deliver the wrong signal. The fix claims ownership of the work item before writing the payload, closing the race window.",
+      "related_links": []
+    }
+  ]
+}
