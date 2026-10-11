@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-11T00:00:00Z",
+  "period_start": "2026-10-09",
+  "period_end": "2026-10-10",
+  "patch_count": 100,
+  "thread_count": 11,
+  "top_contributors": ["Eduard Zingerman", "Yonghong Song", "Ihor Solodrai", "Andrey Grodzovsky", "Alan Maguire"],
+  "key_topics": ["verifier", "scev", "libbpf", "btf", "struct_ops", "callbacks", "exceptions", "trampoline"],
+  "overview": "A highly active two-day period dominated by a massive 51-patch series from Eduard Zingerman introducing Scalar Evolution (SCEV) analysis to the BPF verifier for smarter bounded-loop widening. Other notable work includes verifier improvements for callback argument scoping from Ihor Solodrai, BTF inline info support from Alan Maguire, and libbpf gains in both manual program loading and typeless ksym resolution.",
+  "patches": [
+    {
+      "title": "bpf: represent stack access effects with arg_access_info",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261009-scev-minimal-rebase-v3-1-bcba9bc53ac9@gmail.com/",
+      "summary": "First patch in a landmark 51-patch series (v3) that adds Scalar Evolution (SCEV) analysis to the BPF verifier to enable smarter widening of bounded loops. The series introduces a comprehensive set of verifier infrastructure changes including loop hierarchy computation, immediate dominator analysis, and new register range representations. The end goal is to allow programs with bounded loops to pass verification without exhaustive unrolling, improving both verifier performance and the expressiveness of BPF programs. This is one of the most significant verifier infrastructure additions in recent history.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: use SCEV to widen bounded loops",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261009-scev-minimal-rebase-v3-34-bcba9bc53ac9@gmail.com/",
+      "summary": "The core patch in the SCEV series that actually implements the loop widening algorithm using scalar evolution expressions. It leverages the SCEV infrastructure built in earlier patches to compute how loop induction variables evolve across iterations and widens register ranges accordingly. This eliminates the need for the verifier to exhaustively explore every loop iteration path, reducing complexity and verification time for programs with counted loops over arrays or buffers.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Set up callee state outside of setup_func_entry()",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261009202759.50520-2-ihor.solodrai@linux.dev/",
+      "summary": "First patch in an 11-patch series (v2) that scopes callback arguments to their owning call frame in the BPF verifier. The series introduces REF_TYPE_FRAME, a new reference type that ensures callback-supplied pointers (such as map keys in bpf_for_each_map_elem() and dynptrs in bpf_user_ringbuf_drain()) are invalidated when the callback frame exits. This closes a class of potential use-after-frame bugs and tightens the verifier's safety guarantees around callback-based BPF helpers.",
+      "related_links": []
+    },
+    {
+      "title": "resolve_btfids: Build separate main and inline BTF objects",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261009112324.1442319-2-alan.maguire@oracle.com/",
+      "summary": "First patch in a 7-patch series (v4) adding support for inline BTF information in the kernel build system. The series extends resolve_btfids, kbuild, and the BTF subsystem to expose inline function BTF through sysfs and carry it through kernel modules. This enables tools and BPF programs to access richer type information for inlined functions, which has been a long-standing gap in BTF coverage for optimized kernel builds.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Reject gen_loader set after PREPARE step.",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20261010143156.379864-2-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "First patch in a 7-patch series (v6) adding manual BPF program loading support to libbpf. The series introduces BPF_PROG_LOAD_STRATEGY_MANUAL and a SEC(\"!...\") prefix convention to let users control exactly when individual BPF programs within an object are loaded and attached. This is useful for security tools (like those at CrowdStrike) that need fine-grained control over program lifecycle, for example to stage programs before committing to a deployment.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Resolve typeless ksyms in the kernel",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261009130708.1370675-1-wusamuel@google.com/",
+      "summary": "A standalone libbpf patch that resolves typeless kernel symbols (ksyms) by querying the kernel directly rather than relying solely on BTF type information. Typeless ksyms such as raw addresses cannot be matched to a BTF type; this change adds the missing resolution path so that BPF programs referencing these symbols can be loaded without error. This fixes a gap that could cause libbpf to fail when loading programs on kernels that expose typeless ksyms.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: fix symmetric register-form NULL-pointer check in check_cond_jmp_op()",
+      "author": "Rahad Bhuiya",
+      "url": "https://lore.kernel.org/bpf/20261009043819.1208-1-rahadbhuiya2021@gmail.com/",
+      "summary": "A targeted verifier fix (v4) correcting the handling of symmetric conditional jump instructions when checking register-form NULL-pointer comparisons. The bug could cause the verifier to incorrectly infer register nullness in one branch of a conditional, potentially accepting unsafe programs. The fix ensures both operand orderings of a conditional NULL check are treated consistently.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Resolve the compiler's _Unwind_Resume to the kernel's kfunc",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261009041610.34453-1-yonghong.song@linux.dev/",
+      "summary": "Part of a 24-patch series (v10) implementing exception cleanup landing pad support for BPF programs. This patch makes libbpf redirect the C compiler's _Unwind_Resume symbol to a BPF kfunc so that exception unwinding works end-to-end in BPF programs compiled with C++ exception conventions. The broader series enables BPF programs to register .bpf_cleanup sections that run when bpf_unwind() propagates an exception through a stack frame, bringing structured error handling closer to what native C++ programs use.",
+      "related_links": []
+    }
+  ]
+}
