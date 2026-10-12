@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-12T00:00:00Z",
+  "period_start": "2026-10-10",
+  "period_end": "2026-10-11",
+  "patch_count": 24,
+  "thread_count": 4,
+  "top_contributors": ["Eduard Zingerman", "Andrey Grodzovsky", "Yun Lu", "Qiliang Yuan"],
+  "key_topics": ["verifier", "liveness", "libbpf", "struct_ops", "task-work", "selftests"],
+  "overview": "This daily update covers four patch series targeting the BPF verifier, libbpf's program loading API, struct_ops lifecycle management, and task work scheduling correctness. Eduard Zingerman continues polishing the scalar evolution series with improvements to BTF-aware liveness analysis and verifier register bound tracking. Andrey Grodzovsky's libbpf manual loading series reaches version 6, adding declarative opt-out of automatic loading via SEC(\"!...\") prefixes, while Qiliang Yuan and Yun Lu address race conditions in struct_ops map freeing and BPF task work cancellation.",
+  "patches": [
+    {
+      "title": "bpf: static subprogram arguments liveness should use BTF type info",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261010-scev-minimal-v3-followups-v1-1-6000e95ef993@gmail.com/",
+      "summary": "This patch improves the BPF verifier's liveness tracking for static subprogram arguments by using BTF type information to determine which argument slots are actually in use. Previously, the verifier would conservatively mark all argument stack slots as live even when BTF revealed some slots were unused, leading to overly broad liveness sets. Using BTF type info allows the verifier to prune unnecessary state more aggressively, reducing verification overhead for programs with static subprogram calls. This is the first patch in a 9-patch follow-up series to the scalar evolution work.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: more precise stack liveness effects for global func params",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261010-scev-minimal-v3-followups-v1-2-6000e95ef993@gmail.com/",
+      "summary": "This patch refines how the BPF verifier tracks stack liveness for global function parameters, making the analysis more precise by distinguishing between read and written stack slots at call boundaries. More accurate liveness at global function calls reduces redundant state exploration during verification. It pairs with the BTF-based liveness fix for static subprograms to collectively tighten the verifier's memory model for subprogram interactions. The change is part of the broader scalar evolution follow-up series by Eduard Zingerman.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: reg_bounds_sync() comment fixup",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261010-scev-minimal-v3-followups-v1-4-6000e95ef993@gmail.com/",
+      "summary": "A small but important documentation fix to the reg_bounds_sync() function in the BPF verifier, clarifying the semantics of register bound synchronization after scalar evolution analysis. Accurate comments here help future contributors understand the subtle invariants around scalar register bounds after range narrowing. This patch is part of the scalar evolution follow-up series and keeps the codebase maintainable as the verifier's register tracking grows more sophisticated.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: BPF programs manual loading and attaching",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20261010143156.379864-4-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "This patch adds the core API for manually controlling the load and attach lifecycle of BPF programs in libbpf, allowing callers to explicitly drive each step rather than relying on the automatic open-load-attach sequence. Manual control is valuable for use cases like selective loading, staged deployment, and integration with complex orchestration logic. The change introduces new libbpf functions to set a program's load strategy to MANUAL and then explicitly trigger loading or attaching at the caller's discretion. It is a key functional patch in the 7-patch v6 libbpf manual loading series from Andrey Grodzovsky at CrowdStrike.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Support declarative manual load via SEC(\"!...\") prefix",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20261010143156.379864-5-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "This patch adds a declarative way to opt BPF programs out of automatic loading by using the SEC(\"!...\") section name prefix, where the leading exclamation mark signals that the program should not be auto-loaded when the object is opened. This makes manual-load intent visible at the source level without requiring runtime API calls to change the strategy, improving readability and reducing boilerplate for programs that are intentionally loaded on-demand. The feature integrates naturally with the new BPF_PROG_LOAD_STRATEGY_MANUAL enum introduced earlier in the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Defer freeing a struct_ops map until its progs are done",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261010-selftests-bpf-struct-ops-assoc-timer-v2-1-d7a43896dbf1@gmail.com/",
+      "summary": "This patch fixes a use-after-free bug in the BPF struct_ops subsystem where a struct_ops map could be freed while a BPF program associated with it was still executing via a timer callback. The fix defers the map's memory release until all running programs backed by that map have completed, using reference counting to track outstanding program executions. This resolves a flaky failure in the assoc_in_timer selftest that exposed the race. The correction is the first of three patches in the v2 series by Qiliang Yuan.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix NULL task dereference in task work cancellation",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261010042132.137430-2-luyun_611@163.com/",
+      "summary": "This patch addresses a NULL pointer dereference that could occur when the BPF task work cancellation path ran after the associated task had already exited and its task struct was freed. The bug manifested as a kernel crash under concurrent BPF program teardown and task exit races. The fix adds a proper NULL check before dereferencing the task pointer in the cancellation path. This is patch 1 of 4 in the v6 series from Yun Lu that targets BPF task work scheduling races.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Prevent task work context reuse while irq_work is busy",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261010042132.137430-4-luyun_611@163.com/",
+      "summary": "This patch prevents BPF task work context structures from being reused for a new work item while a previous irq_work callback dispatched from that context is still in flight, eliminating a subtle race where fields in the shared context could be overwritten mid-execution. The fix tracks the irq_work busy state and delays context recycling until the pending irq_work has completed. Together with the NULL task dereference fix earlier in the series, this resolves a class of intermittent crashes related to BPF's asynchronous task work scheduling mechanism.",
+      "related_links": []
+    }
+  ]
+}
