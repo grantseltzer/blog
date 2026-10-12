@@ -1,0 +1,909 @@
+{
+  "period": "daily",
+  "period_start": "2026-10-11",
+  "period_end": "2026-10-12",
+  "fetched_at": "2026-10-12T18:45:25Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v2,21/21] selftests/bpf: Benchmark tracing_multi bpf progs attachment",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-22-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:23",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,20/21] selftests/bpf: Test tailcall with fentry.multi",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-21-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:22",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,19/21] selftests/bpf: Add tracing_multi bpf prog link info test",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-20-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:21",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,18/21] selftests/bpf: Add tracing_multi bpf prog rollback test",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-19-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:20",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,17/21] selftests/bpf: Add tracing_multi bpf prog cookie test",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-18-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:19",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,16/21] selftests/bpf: Add tracing_multi bpf prog attach failure tests",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-17-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:18",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,15/21] selftests/bpf: Add tracing_multi bpf prog attach test",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-16-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:17",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,14/21] bpf: Add tracing_multi link info support for bpf progs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-15-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:16",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,13/21] bpf: Add tracing_multi link fdinfo support for bpf progs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-14-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:15",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,12/21] libbpf: Add tracing_multi link support for bpf progs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-13-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:14",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,11/21] bpf: Add tracing_multi link support for bpf progs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-12-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:13",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,10/21] bpf: Shrink CONFIG_HAVE_SINGLE_FTRACE_DIRECT_OPS guard scope for bpf_tracing_multi_attach()",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-11-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:12",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,09/21] bpf: Add bpf_trampoline_multi_prog_attach/detach()",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-10-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:11",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,08/21] bpf: Move helpers out of CONFIG_HAVE_SINGLE_FTRACE_DIRECT_OPS guard in trampoline",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-9-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:10",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,07/21] bpf: Check tgt_prog before is_tracing_multi_id() in verifier",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-8-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:09",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,06/21] bpf: Add bpf_text_poke_batch() helper in trampoline",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-7-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:08",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,05/21] bpf, x86: Introduce bpf_arch_text_poke_batch() on x86_64",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-6-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:07",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,04/21] bpf, x86: Factor out bpf_arch_text_poke_check_ip() helper on x86_64",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-5-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:06",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,03/21] bpf, x86: Factor out bpf_arch_text_poke_prepare_insns() helper on x86_64",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-4-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:05",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,02/21] bpf: Drop unnecessary ftrace_location() in register/unregister/modify_fentry_multi()",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-3-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:04",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,01/21] bpf: Initialize ftrace_managed in bpf_trampoline_get()",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-2-leon.hwang@linux.dev/",
+      "date": "2026-10-12T15:40:03",
+      "series": [
+        {
+          "id": 1184020,
+          "url": "https://patchwork.kernel.org/api/series/1184020/",
+          "web_url": "https://patchwork.kernel.org/series/1184020/",
+          "date": "2026-10-12T15:40:02",
+          "name": "bpf: Add tracing_multi link support for bpf progs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] selftests/bpf: Enable CONFIG_DEBUG_INFO_BTF_INLINE for CI",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261012140640.2932195-4-alan.maguire@oracle.com/",
+      "date": "2026-10-12T14:06:40",
+      "series": [
+        {
+          "id": 1183948,
+          "url": "https://patchwork.kernel.org/api/series/1183948/",
+          "web_url": "https://patchwork.kernel.org/series/1183948/",
+          "date": "2026-10-12T14:06:37",
+          "name": "Inline BTF followups",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] selftests/bpf: Fix btf_inline to use .text section as base",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261012140640.2932195-3-alan.maguire@oracle.com/",
+      "date": "2026-10-12T14:06:39",
+      "series": [
+        {
+          "id": 1183948,
+          "url": "https://patchwork.kernel.org/api/series/1183948/",
+          "web_url": "https://patchwork.kernel.org/series/1183948/",
+          "date": "2026-10-12T14:06:37",
+          "name": "Inline BTF followups",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] btf: Fix size/vlen validation for BTF_KIND_LOC_PARAM",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261012140640.2932195-2-alan.maguire@oracle.com/",
+      "date": "2026-10-12T14:06:38",
+      "series": [
+        {
+          "id": 1183948,
+          "url": "https://patchwork.kernel.org/api/series/1183948/",
+          "web_url": "https://patchwork.kernel.org/series/1183948/",
+          "date": "2026-10-12T14:06:37",
+          "name": "Inline BTF followups",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] selftests/bpf: Skip compare_text subtest when stdout is not saved",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261012140202.2754552-4-kafai.wan@linux.dev/",
+      "date": "2026-10-12T14:02:01",
+      "series": [
+        {
+          "id": 1183945,
+          "url": "https://patchwork.kernel.org/api/series/1183945/",
+          "web_url": "https://patchwork.kernel.org/series/1183945/",
+          "date": "2026-10-12T14:01:58",
+          "name": "selftests/bpf: Fix prog_tests framework self-tests",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183945/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] selftests/bpf: Skip expected_msgs subtests when stdout is not saved",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261012140202.2754552-3-kafai.wan@linux.dev/",
+      "date": "2026-10-12T14:02:00",
+      "series": [
+        {
+          "id": 1183945,
+          "url": "https://patchwork.kernel.org/api/series/1183945/",
+          "web_url": "https://patchwork.kernel.org/series/1183945/",
+          "date": "2026-10-12T14:01:58",
+          "name": "selftests/bpf: Fix prog_tests framework self-tests",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183945/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] selftests/bpf: Fix prog_tests framework subtest count checks",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261012140202.2754552-2-kafai.wan@linux.dev/",
+      "date": "2026-10-12T14:01:59",
+      "series": [
+        {
+          "id": 1183945,
+          "url": "https://patchwork.kernel.org/api/series/1183945/",
+          "web_url": "https://patchwork.kernel.org/series/1183945/",
+          "date": "2026-10-12T14:01:58",
+          "name": "selftests/bpf: Fix prog_tests framework self-tests",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183945/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/1] bpf: Determine freplace staticness from BTF linkage",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261012135624.2749743-1-kafai.wan@linux.dev/",
+      "date": "2026-10-12T13:56:24",
+      "series": [
+        {
+          "id": 1183942,
+          "url": "https://patchwork.kernel.org/api/series/1183942/",
+          "web_url": "https://patchwork.kernel.org/series/1183942/",
+          "date": "2026-10-12T13:56:24",
+          "name": "[bpf-next,1/1] bpf: Determine freplace staticness from BTF linkage",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183942/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,10/10] selftests/bpf: Test the address space rendering of the arena type tag",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261012133711.4030594-11-memxor@gmail.com/",
+      "date": "2026-10-12T13:37:07",
+      "series": [
+        {
+          "id": 1183928,
+          "url": "https://patchwork.kernel.org/api/series/1183928/",
+          "web_url": "https://patchwork.kernel.org/series/1183928/",
+          "date": "2026-10-12T13:36:57",
+          "name": "Fix some arena paper cuts",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183928/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,09/10] libbpf: Render the arena type tag with its address space",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261012133711.4030594-10-memxor@gmail.com/",
+      "date": "2026-10-12T13:37:06",
+      "series": [
+        {
+          "id": 1183928,
+          "url": "https://patchwork.kernel.org/api/series/1183928/",
+          "web_url": "https://patchwork.kernel.org/series/1183928/",
+          "date": "2026-10-12T13:36:57",
+          "name": "Fix some arena paper cuts",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183928/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,08/10] bpf: Set up the arena base only in functions that use it",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261012133711.4030594-9-memxor@gmail.com/",
+      "date": "2026-10-12T13:37:05",
+      "series": [
+        {
+          "id": 1183928,
+          "url": "https://patchwork.kernel.org/api/series/1183928/",
+          "web_url": "https://patchwork.kernel.org/series/1183928/",
+          "date": "2026-10-12T13:36:57",
+          "name": "Fix some arena paper cuts",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183928/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,07/10] selftests/bpf: Test arena binding by libbpf",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261012133711.4030594-8-memxor@gmail.com/",
+      "date": "2026-10-12T13:37:04",
+      "series": [
+        {
+          "id": 1183928,
+          "url": "https://patchwork.kernel.org/api/series/1183928/",
+          "web_url": "https://patchwork.kernel.org/series/1183928/",
+          "date": "2026-10-12T13:36:57",
+          "name": "Fix some arena paper cuts",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183928/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,06/10] libbpf: Bind the arena of an object to every program in it",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261012133711.4030594-7-memxor@gmail.com/",
+      "date": "2026-10-12T13:37:03",
+      "series": [
+        {
+          "id": 1183928,
+          "url": "https://patchwork.kernel.org/api/series/1183928/",
+          "web_url": "https://patchwork.kernel.org/series/1183928/",
+          "date": "2026-10-12T13:36:57",
+          "name": "Fix some arena paper cuts",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183928/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,05/10] selftests/bpf: Test __arena pointer members",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261012133711.4030594-6-memxor@gmail.com/",
+      "date": "2026-10-12T13:37:02",
+      "series": [
+        {
+          "id": 1183928,
+          "url": "https://patchwork.kernel.org/api/series/1183928/",
+          "web_url": "https://patchwork.kernel.org/series/1183928/",
+          "date": "2026-10-12T13:36:57",
+          "name": "Fix some arena paper cuts",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183928/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,04/10] selftests/bpf: Test __nullable pointer members",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261012133711.4030594-5-memxor@gmail.com/",
+      "date": "2026-10-12T13:37:01",
+      "series": [
+        {
+          "id": 1183928,
+          "url": "https://patchwork.kernel.org/api/series/1183928/",
+          "web_url": "https://patchwork.kernel.org/series/1183928/",
+          "date": "2026-10-12T13:36:57",
+          "name": "Fix some arena paper cuts",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183928/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,03/10] bpf: Turn loads of __arena pointer members into arena pointers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261012133711.4030594-4-memxor@gmail.com/",
+      "date": "2026-10-12T13:37:00",
+      "series": [
+        {
+          "id": 1183928,
+          "url": "https://patchwork.kernel.org/api/series/1183928/",
+          "web_url": "https://patchwork.kernel.org/series/1183928/",
+          "date": "2026-10-12T13:36:57",
+          "name": "Fix some arena paper cuts",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183928/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,02/10] bpf: Recognize __nullable on pointer members of kernel structs",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261012133711.4030594-3-memxor@gmail.com/",
+      "date": "2026-10-12T13:36:59",
+      "series": [
+        {
+          "id": 1183928,
+          "url": "https://patchwork.kernel.org/api/series/1183928/",
+          "web_url": "https://patchwork.kernel.org/series/1183928/",
+          "date": "2026-10-12T13:36:57",
+          "name": "Fix some arena paper cuts",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183928/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,01/10] compiler_types: Add __arena and __nullable BTF type tag qualifiers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261012133711.4030594-2-memxor@gmail.com/",
+      "date": "2026-10-12T13:36:58",
+      "series": [
+        {
+          "id": 1183928,
+          "url": "https://patchwork.kernel.org/api/series/1183928/",
+          "web_url": "https://patchwork.kernel.org/series/1183928/",
+          "date": "2026-10-12T13:36:57",
+          "name": "Fix some arena paper cuts",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183928/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,4/4] selftests/bpf: Add task work BUSY window test",
+      "author": "luyun",
+      "url": "https://lore.kernel.org/bpf/20261012061915.231254-5-luyun_611@163.com/",
+      "date": "2026-10-12T06:19:15",
+      "series": [
+        {
+          "id": 1183612,
+          "url": "https://patchwork.kernel.org/api/series/1183612/",
+          "web_url": "https://patchwork.kernel.org/series/1183612/",
+          "date": "2026-10-12T06:19:12",
+          "name": "bpf: Fix task work scheduling races",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1183612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,3/4] bpf: Prevent task work context reuse while irq_work is busy",
+      "author": "luyun",
+      "url": "https://lore.kernel.org/bpf/20261012061915.231254-4-luyun_611@163.com/",
+      "date": "2026-10-12T06:19:14",
+      "series": [
+        {
+          "id": 1183612,
+          "url": "https://patchwork.kernel.org/api/series/1183612/",
+          "web_url": "https://patchwork.kernel.org/series/1183612/",
+          "date": "2026-10-12T06:19:12",
+          "name": "bpf: Fix task work scheduling races",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1183612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,2/4] selftests/bpf: Add task work cancellation race test",
+      "author": "luyun",
+      "url": "https://lore.kernel.org/bpf/20261012061915.231254-3-luyun_611@163.com/",
+      "date": "2026-10-12T06:19:13",
+      "series": [
+        {
+          "id": 1183612,
+          "url": "https://patchwork.kernel.org/api/series/1183612/",
+          "web_url": "https://patchwork.kernel.org/series/1183612/",
+          "date": "2026-10-12T06:19:12",
+          "name": "bpf: Fix task work scheduling races",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1183612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,1/4] bpf: Fix NULL task dereference in task work cancellation",
+      "author": "luyun",
+      "url": "https://lore.kernel.org/bpf/20261012061915.231254-2-luyun_611@163.com/",
+      "date": "2026-10-12T06:19:12",
+      "series": [
+        {
+          "id": 1183612,
+          "url": "https://patchwork.kernel.org/api/series/1183612/",
+          "web_url": "https://patchwork.kernel.org/series/1183612/",
+          "date": "2026-10-12T06:19:12",
+          "name": "bpf: Fix task work scheduling races",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1183612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Test tracing_multi link with BTF ids of the same address",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261011164836.2233874-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-11T16:48:36",
+      "series": [
+        {
+          "id": 1183386,
+          "url": "https://patchwork.kernel.org/api/series/1183386/",
+          "web_url": "https://patchwork.kernel.org/series/1183386/",
+          "date": "2026-10-11T16:48:34",
+          "name": "bpf: Reject BTF ids with the same address in tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183386/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Reject BTF ids with the same address in tracing_multi link",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261011164836.2233874-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-11T16:48:35",
+      "series": [
+        {
+          "id": 1183386,
+          "url": "https://patchwork.kernel.org/api/series/1183386/",
+          "web_url": "https://patchwork.kernel.org/series/1183386/",
+          "date": "2026-10-11T16:48:34",
+          "name": "bpf: Reject BTF ids with the same address in tracing_multi link",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183386/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,9/9] selftests/bpf: BPF_F_ANY_ALIGNMENT for byte_array_size_spanning()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261010-scev-minimal-v3-followups-v1-9-6000e95ef993@gmail.com/",
+      "date": "2026-10-11T06:21:43",
+      "series": [
+        {
+          "id": 1183208,
+          "url": "https://patchwork.kernel.org/api/series/1183208/",
+          "web_url": "https://patchwork.kernel.org/series/1183208/",
+          "date": "2026-10-11T06:21:34",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183208/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,8/9] selftests/bpf: harden __msg patterns for step_movsx_bounds_on_line",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261010-scev-minimal-v3-followups-v1-8-6000e95ef993@gmail.com/",
+      "date": "2026-10-11T06:21:42",
+      "series": [
+        {
+          "id": 1183208,
+          "url": "https://patchwork.kernel.org/api/series/1183208/",
+          "web_url": "https://patchwork.kernel.org/series/1183208/",
+          "date": "2026-10-11T06:21:34",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183208/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,7/9] selftests/bpf: harden __msg pattern for global_callee_btf_arg",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261010-scev-minimal-v3-followups-v1-7-6000e95ef993@gmail.com/",
+      "date": "2026-10-11T06:21:41",
+      "series": [
+        {
+          "id": 1183208,
+          "url": "https://patchwork.kernel.org/api/series/1183208/",
+          "web_url": "https://patchwork.kernel.org/series/1183208/",
+          "date": "2026-10-11T06:21:34",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183208/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,6/9] selftests/bpf: stack effects of scalar/dynptr global subprog params",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261010-scev-minimal-v3-followups-v1-6-6000e95ef993@gmail.com/",
+      "date": "2026-10-11T06:21:40",
+      "series": [
+        {
+          "id": 1183208,
+          "url": "https://patchwork.kernel.org/api/series/1183208/",
+          "web_url": "https://patchwork.kernel.org/series/1183208/",
+          "date": "2026-10-11T06:21:34",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183208/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,5/9] selftests/bpf: static subprogram argument side liveness tests",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261010-scev-minimal-v3-followups-v1-5-6000e95ef993@gmail.com/",
+      "date": "2026-10-11T06:21:39",
+      "series": [
+        {
+          "id": 1183208,
+          "url": "https://patchwork.kernel.org/api/series/1183208/",
+          "web_url": "https://patchwork.kernel.org/series/1183208/",
+          "date": "2026-10-11T06:21:34",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183208/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/9] bpf: reg_bounds_sync() comment fixup",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261010-scev-minimal-v3-followups-v1-4-6000e95ef993@gmail.com/",
+      "date": "2026-10-11T06:21:38",
+      "series": [
+        {
+          "id": 1183208,
+          "url": "https://patchwork.kernel.org/api/series/1183208/",
+          "web_url": "https://patchwork.kernel.org/series/1183208/",
+          "date": "2026-10-11T06:21:34",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183208/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/9] bpf: avoid duplicate declaration for BPF_SCEV_REGS_NUM",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261010-scev-minimal-v3-followups-v1-3-6000e95ef993@gmail.com/",
+      "date": "2026-10-11T06:21:37",
+      "series": [
+        {
+          "id": 1183208,
+          "url": "https://patchwork.kernel.org/api/series/1183208/",
+          "web_url": "https://patchwork.kernel.org/series/1183208/",
+          "date": "2026-10-11T06:21:34",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183208/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/9] bpf: more precise stack liveness effects for global func params",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261010-scev-minimal-v3-followups-v1-2-6000e95ef993@gmail.com/",
+      "date": "2026-10-11T06:21:36",
+      "series": [
+        {
+          "id": 1183208,
+          "url": "https://patchwork.kernel.org/api/series/1183208/",
+          "web_url": "https://patchwork.kernel.org/series/1183208/",
+          "date": "2026-10-11T06:21:34",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183208/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/9] bpf: static subprogram arguments liveness should use BTF type info",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261010-scev-minimal-v3-followups-v1-1-6000e95ef993@gmail.com/",
+      "date": "2026-10-11T06:21:35",
+      "series": [
+        {
+          "id": 1183208,
+          "url": "https://patchwork.kernel.org/api/series/1183208/",
+          "web_url": "https://patchwork.kernel.org/series/1183208/",
+          "date": "2026-10-11T06:21:34",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1183208/mbox/"
+        }
+      ]
+    }
+  ]
+}
