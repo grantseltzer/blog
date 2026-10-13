@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-10-13T00:00:00Z",
+  "period_start": "2026-10-11",
+  "period_end": "2026-10-12",
+  "patch_count": 53,
+  "thread_count": 8,
+  "top_contributors": ["Leon Hwang", "Kumar Kartikeya Dwivedi", "Eduard Zingerman", "KaFai Wan", "Alan Maguire"],
+  "key_topics": ["tracing-multi", "btf", "arena", "verifier", "freplace", "trampoline"],
+  "overview": "The day was dominated by Leon Hwang's 21-patch series (v2) adding tracing_multi link support for BPF programs, enabling a single link to attach fentry/fexit probes to multiple kernel functions simultaneously. Kumar Kartikeya Dwivedi contributed a 10-patch series fixing arena usability issues including proper __arena and __nullable BTF type tag qualifiers and improved libbpf arena binding.",
+  "patches": [
+    {
+      "title": "bpf: Add tracing_multi link support for bpf progs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-12-leon.hwang@linux.dev/",
+      "summary": "This is the core patch in a 21-patch v2 series that introduces a new tracing_multi link type allowing a single BPF link to attach to multiple kernel functions at once. The implementation adds bpf_trampoline_multi_prog_attach/detach() in the trampoline layer, new batch text-poke helpers (bpf_text_poke_batch and bpf_arch_text_poke_batch for x86_64), and full libbpf and fdinfo/link_info support. This is a significant new capability for tracing that reduces overhead when instrumenting many functions in a single program.",
+      "related_links": []
+    },
+    {
+      "title": "compiler_types: Add __arena and __nullable BTF type tag qualifiers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261012133711.4030594-2-memxor@gmail.com/",
+      "summary": "Introduces __arena and __nullable as BTF type tag qualifiers in compiler_types.h, which are part of a 10-patch series fixing several arena paper cuts. The series also makes the verifier properly handle loads of __arena pointer struct members by turning them into arena pointers, recognizes __nullable on pointer members of kernel structs, and has libbpf automatically bind the arena of an object to every program in it.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Determine freplace staticness from BTF linkage",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261012135624.2749743-1-kafai.wan@linux.dev/",
+      "summary": "Fixes a correctness issue in BPF function replacement (freplace) where the static/global nature of the target function was being determined incorrectly. The patch uses BTF linkage information to properly distinguish static versus global functions during freplace verification, which ensures that static function replacements are only allowed to attach to programs in the same object.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject BTF ids with the same address in tracing_multi link",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261011164836.2233874-2-alexei.starovoitov@gmail.com/",
+      "summary": "Adds a verifier-level check to reject tracing_multi link programs that specify multiple BTF IDs resolving to the same kernel address. This is a correctness fix since attaching the same BPF program twice to the same function address via tracing_multi would result in double-execution bugs. A selftest is included that covers this edge case.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix NULL task dereference in task work cancellation",
+      "author": "luyun",
+      "url": "https://lore.kernel.org/bpf/20261012061915.231254-2-luyun_611@163.com/",
+      "summary": "Fixes a NULL pointer dereference in BPF task work cancellation paths (v7 of this series). The companion patch prevents task work context reuse while irq_work is still busy to close a race window. This series has gone through 7 revisions and addresses subtle scheduling races in BPF programs using task-work-based async execution.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: static subprogram arguments liveness should use BTF type info",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261010-scev-minimal-v3-followups-v1-1-6000e95ef993@gmail.com/",
+      "summary": "Part of a 9-patch follow-up series for the scalar evolution verifier work, this patch fixes liveness analysis for static subprogram arguments to use BTF type information rather than a conservative approximation. The series also includes improvements to stack liveness for global function parameters, fixes a duplicate BPF_SCEV_REGS_NUM declaration, and hardens several selftest __msg patterns to be more robust.",
+      "related_links": []
+    },
+    {
+      "title": "btf: Fix size/vlen validation for BTF_KIND_LOC_PARAM",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261012140640.2932195-2-alan.maguire@oracle.com/",
+      "summary": "A follow-up to the inline BTF work, fixing size and vlen validation for the BTF_KIND_LOC_PARAM kind. The series also fixes the btf_inline selftest to use the .text section as its base address and enables CONFIG_DEBUG_INFO_BTF_INLINE in the BPF CI configuration to ensure the inline BTF path gets exercised in testing.",
+      "related_links": []
+    }
+  ]
+}

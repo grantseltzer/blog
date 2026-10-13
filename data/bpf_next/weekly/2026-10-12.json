@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-10-13T00:00:00Z",
+  "period_start": "2026-10-05",
+  "period_end": "2026-10-12",
+  "patch_count": 100,
+  "thread_count": 15,
+  "top_contributors": ["Eduard Zingerman", "Leon Hwang", "Kumar Kartikeya Dwivedi", "Alan Maguire", "Ihor Solodrai"],
+  "key_topics": ["verifier", "tracing-multi", "btf", "arena", "libbpf", "scalar-evolution", "callbacks", "trampoline"],
+  "overview": "A busy week for bpf-next with several landmark series landing. Eduard Zingerman's massive 51-patch scalar evolution series (v3) aims to widen bounded loops in the verifier using SCEV analysis, accompanied by a 9-patch follow-up series with targeted verifier improvements. Leon Hwang's 21-patch series adds tracing_multi link support, enabling BPF programs to attach to multiple kernel functions in a single link. Kumar Kartikeya Dwivedi cleaned up arena usability with 10 patches adding proper BTF type tag qualifiers and improved libbpf arena binding. Alan Maguire's kbuild inline BTF series (v4) enables vmlinux inline BTF to be exposed through sysfs for richer type information.",
+  "patches": [
+    {
+      "title": "bpf: use scalar evolution to widen bounded loops",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261009-scev-minimal-rebase-v3-51-bcba9bc53ac9@gmail.com/",
+      "summary": "A major 51-patch v3 series that introduces Scalar Chain Evolution (SCEV) analysis to the BPF verifier to widen bounded loops. Currently the verifier requires explicit loop bounds, but SCEV analysis can derive bounds automatically by tracking how register values evolve across loop iterations. The series also includes infrastructure for computing immediate dominators and loop hierarchy, more precise stack liveness tracking, and BTF-based liveness for subprogram arguments. This dramatically increases the class of loops the verifier can accept.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add tracing_multi link support for bpf progs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-12-leon.hwang@linux.dev/",
+      "summary": "A 21-patch v2 series introducing the tracing_multi link type, which allows a single BPF fentry/fexit program to be attached to multiple kernel functions simultaneously through one link. The implementation adds batch text-poke helpers on x86_64, bpf_trampoline_multi_prog_attach/detach() in the trampoline layer, and complete libbpf, fdinfo, and link_info support. A benchmark selftest measures the attachment performance of the new link type.",
+      "related_links": []
+    },
+    {
+      "title": "compiler_types: Add __arena and __nullable BTF type tag qualifiers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261012133711.4030594-2-memxor@gmail.com/",
+      "summary": "Part of a 10-patch series fixing arena usability (\"paper cuts\"). New __arena and __nullable qualifiers are added to compiler_types.h as BTF type tags. The verifier is updated to turn loads of __arena pointer struct members into arena pointers, and to recognize __nullable on kernel struct pointer members. libbpf is enhanced to automatically bind an object's arena to every program in it, eliminating a common manual setup step.",
+      "related_links": []
+    },
+    {
+      "title": "kbuild, bpf: Support inline info in BTF",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261009112324.1442319-2-alan.maguire@oracle.com/",
+      "summary": "A 7-patch v4 series that exposes vmlinux inline BTF through sysfs (at /sys/kernel/btf/vmlinux.inline), making inline source location information available to BPF tools without requiring debug symbols. The series extends resolve_btfids to build separate main and inline BTF objects, adds BTF link sections, and handles string relocation maps for split BTF. This enables richer debugging and annotation of BPF programs using location information.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Scope callback arguments to their frame",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261009202759.50520-2-ihor.solodrai@linux.dev/",
+      "summary": "An 11-patch v2 series introducing REF_TYPE_FRAME in the BPF verifier to scope the lifetime of callback arguments to their enclosing call frame. This prevents a class of use-after-return bugs where a dynptr or map key passed to a callback is used after the callback returns. The series applies the new scoping to bpf_user_ringbuf_drain() dynptrs and bpf_for_each_map_elem() array keys.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: BPF programs manual loading and attaching",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20261010143156.379864-4-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "A 7-patch v6 series adding explicit manual loading control to libbpf via a BPF program load strategy enum (BPF_PROG_LOAD_STRATEGY_MANUAL). Programs can now opt out of automatic loading with a SEC(\"!...\") prefix or by setting the strategy programmatically. This gives users more fine-grained control over which programs in a BPF object are loaded, which is useful for large objects where not all programs are needed at runtime.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject BTF ids with the same address in tracing_multi link",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261011164836.2233874-2-alexei.starovoitov@gmail.com/",
+      "summary": "Adds a verifier check to reject tracing_multi link programs that specify multiple BTF IDs resolving to the same kernel function address. Without this guard, two entries in the same tracing_multi link resolving to the same address would cause double-execution, a subtle correctness bug. The companion selftest covers the deduplication logic.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Defer freeing a struct_ops map until its progs are done",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261010-selftests-bpf-struct-ops-assoc-timer-v2-1-d7a43896dbf1@gmail.com/",
+      "summary": "Fixes a use-after-free in struct_ops maps where a running BPF program could access a struct_ops map that had already been freed. The fix defers freeing the struct_ops map until all associated programs have finished running. The series includes a selftest that reproduces the race (assoc_in_timer) and a test that verifies correct behavior when freeing a struct_ops map while a program is still running.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Determine freplace staticness from BTF linkage",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261012135624.2749743-1-kafai.wan@linux.dev/",
+      "summary": "Fixes the BPF function replacement (freplace) verifier to determine whether a target function is static or global by checking its BTF linkage rather than using an imprecise heuristic. This ensures that static function replacements are correctly restricted to programs in the same object, preventing accidental cross-object static function replacement.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Resolve typeless ksyms in the kernel",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261009130708.1370675-1-wusamuel@google.com/",
+      "summary": "Adds support in libbpf for resolving typeless kernel symbols (ksyms) by querying the kernel directly rather than requiring them to be defined in vmlinux BTF. This is useful for symbols that exist in the kernel but lack type information in BTF, such as certain per-CPU variables or symbols in modules that have not been compiled with BTF support.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix NULL task dereference in task work cancellation",
+      "author": "luyun",
+      "url": "https://lore.kernel.org/bpf/20261012061915.231254-2-luyun_611@163.com/",
+      "summary": "The v7 iteration of a series fixing task work scheduling races in BPF. This patch fixes a NULL pointer dereference when cancelling BPF task work, and the companion patch prevents task work context reuse while irq_work is still pending. After 7 rounds of review the series addresses both the NULL deref and the underlying concurrency issue with proper synchronization.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: follow-up for scalar evolution series",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261010-scev-minimal-v3-followups-v1-1-6000e95ef993@gmail.com/",
+      "summary": "A 9-patch follow-up series for the scalar evolution work, including targeted verifier improvements that stand on their own. Key changes include using BTF type info for static subprogram argument liveness, more precise stack liveness for global function parameters, and a fix for a duplicate BPF_SCEV_REGS_NUM declaration. Several selftests are added to lock in the new liveness behaviors.",
+      "related_links": []
+    }
+  ]
+}
