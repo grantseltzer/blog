@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-14T00:00:00Z",
+  "period_start": "2026-10-12",
+  "period_end": "2026-10-13",
+  "patch_count": 60,
+  "thread_count": 12,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Leon Hwang", "Yonghong Song", "luyun", "KaFai Wan"],
+  "key_topics": ["tracing", "arena", "kfuncs", "btf", "trampoline", "task-work", "selftests"],
+  "overview": "A busy two-day window for bpf-next dominated by three large series: Leon Hwang's 21-patch tracing_multi link, Kumar Kartikeya Dwivedi's 13-patch arena paper-cuts v2, and Yonghong Song's 11-patch trampoline calling-convention overhaul. Alongside those, smaller targeted fixes landed for task work scheduling races, BTF inline followups, and ksock kfunc workqueue support.",
+  "patches": [
+    {
+      "title": "bpf: Add tracing_multi link support for bpf progs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261012154024.29423-2-leon.hwang@linux.dev/",
+      "summary": "This 21-patch series (v2) introduces a new BPF_LINK_TYPE_TRACING_MULTI link type that allows a single BPF program to be attached to multiple tracing targets simultaneously. It adds bpf_trampoline_multi_prog_attach/detach() helpers, a batched text-poke mechanism (bpf_arch_text_poke_batch() on x86_64) to reduce overhead when poking many call sites at once, and corresponding libbpf, fdinfo, and link-info support. The series also carries extensive selftests covering attach, rollback, cookie, link-info, and tailcall interactions, plus a benchmark for the new attach path.",
+      "related_links": []
+    },
+    {
+      "title": "Fix some arena paper cuts",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261013082012.1107446-2-memxor@gmail.com/",
+      "summary": "This 13-patch v2 series addresses several usability rough edges in BPF arena maps. It introduces __arena and __nullable as first-class BTF type tag qualifiers in compiler_types.h so the verifier can recognize them on pointer members of kernel structs. The verifier is extended to automatically turn loads of __arena-tagged pointer members into proper arena pointers, and libbpf is updated to bind an object's arena to every program at load time and to render the arena address-space in type display. A companion fix keeps fd_array fill indices out of bpf_program__clone() to avoid double-counting during cloning.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Follow up by-value struct and __int128 argument support",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013003434.1853797-1-yonghong.song@linux.dev/",
+      "summary": "This 11-patch v2 series hardens the x86-64 BPF trampoline's handling of large and oddly-aligned arguments. It fixes the trampoline to pass stack arguments according to the x86-64 System V ABI rather than a custom layout, ensures 16-byte-aligned __int128 values are placed correctly even when preceded by an odd number of register-spilled arguments, and adds a guard that refuses to generate a trampoline for unreliable static functions that pass arguments on the stack. Extensive new selftests validate trampolines on functions with tail-call capability, odd-slot arguments, and __int128 alignment edge cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: allow ksock kfuncs call from wq",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261013163101.205638-1-mahe.tardy@gmail.com/",
+      "summary": "This single-patch series relaxes the context restrictions on ksock kfuncs so they can be invoked from BPF programs running in workqueue context. Previously the allowlist only covered socket-related program types; the change extends it to cover the workqueue execution context, enabling socket-manipulation kfuncs in async BPF workloads. The patch is straightforward but important for anyone building BPF programs that defer socket operations to a work queue.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add tests for memcg kfuncs",
+      "author": "Brahmajit Das",
+      "url": "https://lore.kernel.org/bpf/20261013151621.1526699-1-listout@listout.xyz/",
+      "summary": "This v2 patch adds selftests exercising the memory-control-group kfuncs that allow BPF programs to interact with the kernel's cgroup memory accounting subsystem. The tests verify that the kfuncs can be called from appropriate program types, that memory charge/uncharge operations behave correctly, and that error paths are handled properly. This is an iteration over v1 sent earlier the same day, incorporating review feedback.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix task work scheduling races",
+      "author": "luyun",
+      "url": "https://lore.kernel.org/bpf/20261012061915.231254-2-luyun_611@163.com/",
+      "summary": "This v7 series (4 patches) fixes two related races in BPF task work scheduling. The first patch corrects a NULL task dereference that could occur during task work cancellation when a task exits while an irq_work is still pending. The second prevents a task work context from being reused while the associated irq_work item is still busy, closing a window where a second kthread could acquire the same context. Two new selftests cover the cancellation race and the BUSY-window scenario to prevent regressions.",
+      "related_links": []
+    },
+    {
+      "title": "btf: Fix size/vlen validation for BTF_KIND_LOC_PARAM",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261012140640.2932195-2-alan.maguire@oracle.com/",
+      "summary": "Part of a 3-patch 'Inline BTF followups' series, this patch corrects the BTF validator to properly check size and vlen fields for the BTF_KIND_LOC_PARAM kind introduced with inline BTF support. Without the fix, malformed BTF blobs could pass validation and cause issues downstream. The series also fixes the btf_inline selftest to use the .text section as its base address, and adds CONFIG_DEBUG_INFO_BTF_INLINE to the CI config to catch future regressions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Determine freplace staticness from BTF linkage",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261012135624.2749743-1-kafai.wan@linux.dev/",
+      "summary": "This single patch changes how the verifier decides whether an freplace target is a static function. Previously it relied on a heuristic that could misclassify functions; this patch queries the BTF linkage attribute instead, giving a definitive answer. The fix prevents incorrect freplace attachment decisions and brings the behavior in line with how BTF already encodes function visibility.",
+      "related_links": []
+    }
+  ]
+}
