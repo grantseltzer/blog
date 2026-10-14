@@ -1,0 +1,1572 @@
+{
+  "period": "daily",
+  "period_start": "2026-10-13",
+  "period_end": "2026-10-14",
+  "fetched_at": "2026-10-14T14:23:54Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v4,3/3] sched_ext: Use fetching atomics for cmask instead of a cmpxchg loop",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20261014125017.1426212-4-puranjay@kernel.org/",
+      "date": "2026-10-14T12:50:13",
+      "series": [
+        {
+          "id": 1185569,
+          "url": "https://patchwork.kernel.org/api/series/1185569/",
+          "web_url": "https://patchwork.kernel.org/series/1185569/",
+          "date": "2026-10-14T12:50:11",
+          "name": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1185569/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/3] selftests/bpf: Test fetching AND/OR/XOR atomics in arena",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20261014125017.1426212-3-puranjay@kernel.org/",
+      "date": "2026-10-14T12:50:12",
+      "series": [
+        {
+          "id": 1185569,
+          "url": "https://patchwork.kernel.org/api/series/1185569/",
+          "web_url": "https://patchwork.kernel.org/series/1185569/",
+          "date": "2026-10-14T12:50:11",
+          "name": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1185569/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/3] bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20261014125017.1426212-2-puranjay@kernel.org/",
+      "date": "2026-10-14T12:50:11",
+      "series": [
+        {
+          "id": 1185569,
+          "url": "https://patchwork.kernel.org/api/series/1185569/",
+          "web_url": "https://patchwork.kernel.org/series/1185569/",
+          "date": "2026-10-14T12:50:11",
+          "name": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1185569/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,7/7] selftests/bpf: Skip compare_text subtest when stdout is not saved",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261014113043.640435-8-kafai.wan@linux.dev/",
+      "date": "2026-10-14T11:30:43",
+      "series": [
+        {
+          "id": 1185502,
+          "url": "https://patchwork.kernel.org/api/series/1185502/",
+          "web_url": "https://patchwork.kernel.org/series/1185502/",
+          "date": "2026-10-14T11:30:36",
+          "name": "selftests/bpf: Fix selftests failures with LLVM 23",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,6/7] selftests/bpf: Skip expected_msgs subtests when stdout is not saved",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261014113043.640435-7-kafai.wan@linux.dev/",
+      "date": "2026-10-14T11:30:42",
+      "series": [
+        {
+          "id": 1185502,
+          "url": "https://patchwork.kernel.org/api/series/1185502/",
+          "web_url": "https://patchwork.kernel.org/series/1185502/",
+          "date": "2026-10-14T11:30:36",
+          "name": "selftests/bpf: Fix selftests failures with LLVM 23",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/7] selftests/bpf: Fix prog_tests framework subtest count checks",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261014113043.640435-6-kafai.wan@linux.dev/",
+      "date": "2026-10-14T11:30:41",
+      "series": [
+        {
+          "id": 1185502,
+          "url": "https://patchwork.kernel.org/api/series/1185502/",
+          "web_url": "https://patchwork.kernel.org/series/1185502/",
+          "date": "2026-10-14T11:30:36",
+          "name": "selftests/bpf: Fix selftests failures with LLVM 23",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/7] selftests/bpf: Use _exit() in uprobe_multi_test clone-ed child",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261014113043.640435-5-kafai.wan@linux.dev/",
+      "date": "2026-10-14T11:30:40",
+      "series": [
+        {
+          "id": 1185502,
+          "url": "https://patchwork.kernel.org/api/series/1185502/",
+          "web_url": "https://patchwork.kernel.org/series/1185502/",
+          "date": "2026-10-14T11:30:36",
+          "name": "selftests/bpf: Fix selftests failures with LLVM 23",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/7] selftests/bpf: Fix stack arg pruning test JOIN log expectation",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261014113043.640435-4-kafai.wan@linux.dev/",
+      "date": "2026-10-14T11:30:39",
+      "series": [
+        {
+          "id": 1185502,
+          "url": "https://patchwork.kernel.org/api/series/1185502/",
+          "web_url": "https://patchwork.kernel.org/series/1185502/",
+          "date": "2026-10-14T11:30:36",
+          "name": "selftests/bpf: Fix selftests failures with LLVM 23",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/7] selftests/bpf: Fix stack_arg precision backtracking log expectation",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261014113043.640435-3-kafai.wan@linux.dev/",
+      "date": "2026-10-14T11:30:38",
+      "series": [
+        {
+          "id": 1185502,
+          "url": "https://patchwork.kernel.org/api/series/1185502/",
+          "web_url": "https://patchwork.kernel.org/series/1185502/",
+          "date": "2026-10-14T11:30:36",
+          "name": "selftests/bpf: Fix selftests failures with LLVM 23",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/7] bpf: Determine freplace staticness from BTF linkage",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261014113043.640435-2-kafai.wan@linux.dev/",
+      "date": "2026-10-14T11:30:37",
+      "series": [
+        {
+          "id": 1185502,
+          "url": "https://patchwork.kernel.org/api/series/1185502/",
+          "web_url": "https://patchwork.kernel.org/series/1185502/",
+          "date": "2026-10-14T11:30:36",
+          "name": "selftests/bpf: Fix selftests failures with LLVM 23",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4] bpf: allow ksock connect/send calls from wq",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261014095743.35891-1-mahe.tardy@gmail.com/",
+      "date": "2026-10-14T09:57:43",
+      "series": [
+        {
+          "id": 1185437,
+          "url": "https://patchwork.kernel.org/api/series/1185437/",
+          "web_url": "https://patchwork.kernel.org/series/1185437/",
+          "date": "2026-10-14T09:57:43",
+          "name": "[bpf-next,v4] bpf: allow ksock connect/send calls from wq",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1185437/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3] bpf: allow ksock connect/send calls from wq",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261014091450.19107-1-mahe.tardy@gmail.com/",
+      "date": "2026-10-14T09:14:50",
+      "series": [
+        {
+          "id": 1185413,
+          "url": "https://patchwork.kernel.org/api/series/1185413/",
+          "web_url": "https://patchwork.kernel.org/series/1185413/",
+          "date": "2026-10-14T09:14:50",
+          "name": "[bpf-next,v3] bpf: allow ksock connect/send calls from wq",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1185413/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,7/7] selftests/bpf: BPF_F_ANY_ALIGNMENT for byte_array_size_spanning()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261013-scev-minimal-v3-followups-v2-7-6d9d61965486@gmail.com/",
+      "date": "2026-10-14T06:24:42",
+      "series": [
+        {
+          "id": 1185282,
+          "url": "https://patchwork.kernel.org/api/series/1185282/",
+          "web_url": "https://patchwork.kernel.org/series/1185282/",
+          "date": "2026-10-14T06:24:35",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185282/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,6/7] selftests/bpf: harden __msg patterns for step_movsx_bounds_on_line",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261013-scev-minimal-v3-followups-v2-6-6d9d61965486@gmail.com/",
+      "date": "2026-10-14T06:24:41",
+      "series": [
+        {
+          "id": 1185282,
+          "url": "https://patchwork.kernel.org/api/series/1185282/",
+          "web_url": "https://patchwork.kernel.org/series/1185282/",
+          "date": "2026-10-14T06:24:35",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185282/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/7] selftests/bpf: harden __msg pattern for global_callee_btf_arg",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261013-scev-minimal-v3-followups-v2-5-6d9d61965486@gmail.com/",
+      "date": "2026-10-14T06:24:40",
+      "series": [
+        {
+          "id": 1185282,
+          "url": "https://patchwork.kernel.org/api/series/1185282/",
+          "web_url": "https://patchwork.kernel.org/series/1185282/",
+          "date": "2026-10-14T06:24:35",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185282/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/7] selftests/bpf: stack effects of scalar/dynptr global subprog params",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261013-scev-minimal-v3-followups-v2-4-6d9d61965486@gmail.com/",
+      "date": "2026-10-14T06:24:39",
+      "series": [
+        {
+          "id": 1185282,
+          "url": "https://patchwork.kernel.org/api/series/1185282/",
+          "web_url": "https://patchwork.kernel.org/series/1185282/",
+          "date": "2026-10-14T06:24:35",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185282/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/7] bpf: reg_bounds_sync() comment fixup",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261013-scev-minimal-v3-followups-v2-3-6d9d61965486@gmail.com/",
+      "date": "2026-10-14T06:24:38",
+      "series": [
+        {
+          "id": 1185282,
+          "url": "https://patchwork.kernel.org/api/series/1185282/",
+          "web_url": "https://patchwork.kernel.org/series/1185282/",
+          "date": "2026-10-14T06:24:35",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185282/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/7] bpf: avoid duplicate declaration for BPF_SCEV_REGS_NUM",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261013-scev-minimal-v3-followups-v2-2-6d9d61965486@gmail.com/",
+      "date": "2026-10-14T06:24:37",
+      "series": [
+        {
+          "id": 1185282,
+          "url": "https://patchwork.kernel.org/api/series/1185282/",
+          "web_url": "https://patchwork.kernel.org/series/1185282/",
+          "date": "2026-10-14T06:24:35",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185282/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/7] bpf: more precise stack liveness effects for global func params",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261013-scev-minimal-v3-followups-v2-1-6d9d61965486@gmail.com/",
+      "date": "2026-10-14T06:24:36",
+      "series": [
+        {
+          "id": 1185282,
+          "url": "https://patchwork.kernel.org/api/series/1185282/",
+          "web_url": "https://patchwork.kernel.org/series/1185282/",
+          "date": "2026-10-14T06:24:35",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185282/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Annotate data races on bpf_lru_node type",
+      "author": "Nicholas Velten",
+      "url": "https://lore.kernel.org/bpf/20261013-fix-lru-node-type-kcsan-v1-1-0b743f5af2f3@gmail.com/",
+      "date": "2026-10-14T02:00:08",
+      "series": [
+        {
+          "id": 1185168,
+          "url": "https://patchwork.kernel.org/api/series/1185168/",
+          "web_url": "https://patchwork.kernel.org/series/1185168/",
+          "date": "2026-10-14T02:00:08",
+          "name": "[bpf-next] bpf: Annotate data races on bpf_lru_node type",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1185168/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] bpf: allow ksock connect/send calls from wq",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261013182726.276372-1-mahe.tardy@gmail.com/",
+      "date": "2026-10-13T18:27:26",
+      "series": [
+        {
+          "id": 1185001,
+          "url": "https://patchwork.kernel.org/api/series/1185001/",
+          "web_url": "https://patchwork.kernel.org/series/1185001/",
+          "date": "2026-10-13T18:27:26",
+          "name": "[bpf-next,v2] bpf: allow ksock connect/send calls from wq",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185001/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/2] selftests/bpf: Add tests for memcg kfuncs",
+      "author": "Brahmajit Das",
+      "url": "https://lore.kernel.org/bpf/20261013181932.1739238-3-listout@listout.xyz/",
+      "date": "2026-10-13T18:19:32",
+      "series": [
+        {
+          "id": 1184996,
+          "url": "https://patchwork.kernel.org/api/series/1184996/",
+          "web_url": "https://patchwork.kernel.org/series/1184996/",
+          "date": "2026-10-13T18:19:30",
+          "name": "selftests/bpf: Add tests for memcg kfuncs",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1184996/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/2] selftests/bpf: Move alloc_pagecache() to cgroup_helpers",
+      "author": "Brahmajit Das",
+      "url": "https://lore.kernel.org/bpf/20261013181932.1739238-2-listout@listout.xyz/",
+      "date": "2026-10-13T18:19:31",
+      "series": [
+        {
+          "id": 1184996,
+          "url": "https://patchwork.kernel.org/api/series/1184996/",
+          "web_url": "https://patchwork.kernel.org/series/1184996/",
+          "date": "2026-10-13T18:19:30",
+          "name": "selftests/bpf: Add tests for memcg kfuncs",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1184996/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,18/18] selftests/bpf: Remove the old test_bpf module",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-19-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:30",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,17/18] selftests/bpf: Add JIT instruction tests",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-18-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:29",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,16/18] bpf, x86: Shorten the cast to a user address",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-17-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:28",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,15/18] bpf, x86: Use emit_sub_rsp() for the trampoline stack",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-16-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:27",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,14/18] bpf, x86: Multiply by 3, 5 and 9 with lea",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-15-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:26",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,13/18] bpf, x86: Divide by constants via multiplication with a magic number",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-14-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:25",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,12/18] bpf, x86: Compare the PROBE_MEM address range with a shift",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-13-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:24",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,11/18] bpf, x86: Fold the PROBE_MEM address computation into a lea",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-12-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:23",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,10/18] bpf, x86: Use BMI2 shifts also when the count is in rcx",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-11-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:22",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,09/18] bpf, x86: Swap 16-bit values with bswap and shr, not ror and movzx",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-10-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:21",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,08/18] bpf, x86: Use shorter and faster forms for some ALU immediates",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-9-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:20",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,07/18] bpf, x86: Consolidate the ALU, shift and neg encodings into helpers",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-8-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:19",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,06/18] bpf, x86: Use movzx for byte and word masks and a not for xor with -1",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-7-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:18",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,05/18] bpf, x86: Compare against 0, 127 and -128 with the adjusted condition",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-6-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:17",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,04/18] bpf, x86: Use shorter test and cmp encodings for immediates",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-5-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:16",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,03/18] bpf, x86: Shorten the stack adjusts and the tail call counter loads",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-4-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:15",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,02/18] bpf, x86: Omit the displacement byte for zero offsets",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-3-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:14",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,01/18] bpf, x86: Drop redundant REX prefixes from zero and sign extensions",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-2-daniel@iogearbox.net/",
+      "date": "2026-10-13T17:12:13",
+      "series": [
+        {
+          "id": 1184966,
+          "url": "https://patchwork.kernel.org/api/series/1184966/",
+          "web_url": "https://patchwork.kernel.org/series/1184966/",
+          "date": "2026-10-13T17:12:15",
+          "name": "bpf: Various x86-64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184966/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3] selftests/bpf: Add tests for memcg kfuncs",
+      "author": "Brahmajit Das",
+      "url": "https://lore.kernel.org/bpf/20261013171211.1661726-1-listout@listout.xyz/",
+      "date": "2026-10-13T17:12:11",
+      "series": [
+        {
+          "id": 1184951,
+          "url": "https://patchwork.kernel.org/api/series/1184951/",
+          "web_url": "https://patchwork.kernel.org/series/1184951/",
+          "date": "2026-10-13T17:12:11",
+          "name": "[bpf-next,v3] selftests/bpf: Add tests for memcg kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1184951/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,11/11] selftests/bpf: Test that a kfunc gets its __int128 stack argument aligned",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013171059.2141231-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T17:10:59",
+      "series": [
+        {
+          "id": 1184950,
+          "url": "https://patchwork.kernel.org/api/series/1184950/",
+          "web_url": "https://patchwork.kernel.org/series/1184950/",
+          "date": "2026-10-13T17:09:10",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1184950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,10/11] bpf, x86: Give a kfunc's stack argument the 16-byte alignment it needs",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013171035.2137865-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T17:10:35",
+      "series": [
+        {
+          "id": 1184950,
+          "url": "https://patchwork.kernel.org/api/series/1184950/",
+          "web_url": "https://patchwork.kernel.org/series/1184950/",
+          "date": "2026-10-13T17:09:10",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1184950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,09/11] selftests/bpf: Test trampolines on more BPF functions with stack args",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013171029.2137070-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T17:10:29",
+      "series": [
+        {
+          "id": 1184950,
+          "url": "https://patchwork.kernel.org/api/series/1184950/",
+          "web_url": "https://patchwork.kernel.org/series/1184950/",
+          "date": "2026-10-13T17:09:10",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1184950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,08/11] bpf: Refuse a trampoline on an unreliable static function with stack args",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013171024.2136303-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T17:10:24",
+      "series": [
+        {
+          "id": 1184950,
+          "url": "https://patchwork.kernel.org/api/series/1184950/",
+          "web_url": "https://patchwork.kernel.org/series/1184950/",
+          "date": "2026-10-13T17:09:10",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1184950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,07/11] selftests/bpf: Test trampoline args of a BPF function at an odd slot",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013171016.2134794-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T17:10:16",
+      "series": [
+        {
+          "id": 1184950,
+          "url": "https://patchwork.kernel.org/api/series/1184950/",
+          "web_url": "https://patchwork.kernel.org/series/1184950/",
+          "date": "2026-10-13T17:09:10",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1184950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,06/11] selftests/bpf: Test trampoline args around a 16-byte aligned stack arg",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013171010.2134365-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T17:10:10",
+      "series": [
+        {
+          "id": 1184950,
+          "url": "https://patchwork.kernel.org/api/series/1184950/",
+          "web_url": "https://patchwork.kernel.org/series/1184950/",
+          "date": "2026-10-13T17:09:10",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1184950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,05/11] bpf, x86: Place trampoline arguments by the x86-64 calling convention",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013171002.2133344-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T17:10:02",
+      "series": [
+        {
+          "id": 1184950,
+          "url": "https://patchwork.kernel.org/api/series/1184950/",
+          "web_url": "https://patchwork.kernel.org/series/1184950/",
+          "date": "2026-10-13T17:09:10",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1184950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,04/11] bpf: Describe a BPF function to its trampoline as one u64 per slot",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013170948.2132429-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T17:09:48",
+      "series": [
+        {
+          "id": 1184950,
+          "url": "https://patchwork.kernel.org/api/series/1184950/",
+          "web_url": "https://patchwork.kernel.org/series/1184950/",
+          "date": "2026-10-13T17:09:10",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1184950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,03/11] selftests/bpf: Test by-value __int128 kfunc arguments at an odd slot",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013170941.2131186-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T17:09:41",
+      "series": [
+        {
+          "id": 1184950,
+          "url": "https://patchwork.kernel.org/api/series/1184950/",
+          "web_url": "https://patchwork.kernel.org/series/1184950/",
+          "date": "2026-10-13T17:09:10",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1184950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,02/11] selftests/bpf: Test trampoline stack args in a program that can tail call",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013170922.2129381-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T17:09:22",
+      "series": [
+        {
+          "id": 1184950,
+          "url": "https://patchwork.kernel.org/api/series/1184950/",
+          "web_url": "https://patchwork.kernel.org/series/1184950/",
+          "date": "2026-10-13T17:09:10",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1184950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,01/11] bpf, x86: Pass a trampoline's stack arguments by the calling convention",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013170915.2128212-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T17:09:15",
+      "series": [
+        {
+          "id": 1184950,
+          "url": "https://patchwork.kernel.org/api/series/1184950/",
+          "web_url": "https://patchwork.kernel.org/series/1184950/",
+          "date": "2026-10-13T17:09:10",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1184950/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,11/11] selftests/bpf: exercise the lockless path ancestor iterator",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261013164800.2906577-12-utilityemal77@gmail.com/",
+      "date": "2026-10-13T16:48:00",
+      "series": [
+        {
+          "id": 1184939,
+          "url": "https://patchwork.kernel.org/api/series/1184939/",
+          "web_url": "https://patchwork.kernel.org/series/1184939/",
+          "date": "2026-10-13T16:47:49",
+          "name": "fs: unified VFS ancestor walk for Landlock and BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,10/11] bpf: add a lockless path ancestor iterator",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261013164800.2906577-11-utilityemal77@gmail.com/",
+      "date": "2026-10-13T16:47:59",
+      "series": [
+        {
+          "id": 1184939,
+          "url": "https://patchwork.kernel.org/api/series/1184939/",
+          "web_url": "https://patchwork.kernel.org/series/1184939/",
+          "date": "2026-10-13T16:47:49",
+          "name": "fs: unified VFS ancestor walk for Landlock and BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,09/11] bpf: support \"__uninit\" iterator arguments in generic kfuncs",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261013164800.2906577-10-utilityemal77@gmail.com/",
+      "date": "2026-10-13T16:47:58",
+      "series": [
+        {
+          "id": 1184939,
+          "url": "https://patchwork.kernel.org/api/series/1184939/",
+          "web_url": "https://patchwork.kernel.org/series/1184939/",
+          "date": "2026-10-13T16:47:49",
+          "name": "fs: unified VFS ancestor walk for Landlock and BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,08/11] namei: add an rcu-walk mode to the ancestor walk",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261013164800.2906577-9-utilityemal77@gmail.com/",
+      "date": "2026-10-13T16:47:57",
+      "series": [
+        {
+          "id": 1184939,
+          "url": "https://patchwork.kernel.org/api/series/1184939/",
+          "web_url": "https://patchwork.kernel.org/series/1184939/",
+          "date": "2026-10-13T16:47:49",
+          "name": "fs: unified VFS ancestor walk for Landlock and BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,07/11] fs: add mnt_undo_legitimize()",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261013164800.2906577-8-utilityemal77@gmail.com/",
+      "date": "2026-10-13T16:47:56",
+      "series": [
+        {
+          "id": 1184939,
+          "url": "https://patchwork.kernel.org/api/series/1184939/",
+          "web_url": "https://patchwork.kernel.org/series/1184939/",
+          "date": "2026-10-13T16:47:49",
+          "name": "fs: unified VFS ancestor walk for Landlock and BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,06/11] selftests/bpf: exercise the path ancestor iterator",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261013164800.2906577-7-utilityemal77@gmail.com/",
+      "date": "2026-10-13T16:47:55",
+      "series": [
+        {
+          "id": 1184939,
+          "url": "https://patchwork.kernel.org/api/series/1184939/",
+          "web_url": "https://patchwork.kernel.org/series/1184939/",
+          "date": "2026-10-13T16:47:49",
+          "name": "fs: unified VFS ancestor walk for Landlock and BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,05/11] bpf: add a path ancestor iterator",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261013164800.2906577-6-utilityemal77@gmail.com/",
+      "date": "2026-10-13T16:47:54",
+      "series": [
+        {
+          "id": 1184939,
+          "url": "https://patchwork.kernel.org/api/series/1184939/",
+          "web_url": "https://patchwork.kernel.org/series/1184939/",
+          "date": "2026-10-13T16:47:49",
+          "name": "fs: unified VFS ancestor walk for Landlock and BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,04/11] namei: expose the stepwise ancestor walk to fs/",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261013164800.2906577-5-utilityemal77@gmail.com/",
+      "date": "2026-10-13T16:47:53",
+      "series": [
+        {
+          "id": 1184939,
+          "url": "https://patchwork.kernel.org/api/series/1184939/",
+          "web_url": "https://patchwork.kernel.org/series/1184939/",
+          "date": "2026-10-13T16:47:49",
+          "name": "fs: unified VFS ancestor walk for Landlock and BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,03/11] landlock: convert ancestor walk to vfs_walk_ancestors()",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261013164800.2906577-4-utilityemal77@gmail.com/",
+      "date": "2026-10-13T16:47:52",
+      "series": [
+        {
+          "id": 1184939,
+          "url": "https://patchwork.kernel.org/api/series/1184939/",
+          "web_url": "https://patchwork.kernel.org/series/1184939/",
+          "date": "2026-10-13T16:47:49",
+          "name": "fs: unified VFS ancestor walk for Landlock and BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,02/11] namei: add vfs_walk_ancestors()",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261013164800.2906577-3-utilityemal77@gmail.com/",
+      "date": "2026-10-13T16:47:51",
+      "series": [
+        {
+          "id": 1184939,
+          "url": "https://patchwork.kernel.org/api/series/1184939/",
+          "web_url": "https://patchwork.kernel.org/series/1184939/",
+          "date": "2026-10-13T16:47:49",
+          "name": "fs: unified VFS ancestor walk for Landlock and BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,01/11] namei: introduce __path_walk_parent()",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261013164800.2906577-2-utilityemal77@gmail.com/",
+      "date": "2026-10-13T16:47:50",
+      "series": [
+        {
+          "id": 1184939,
+          "url": "https://patchwork.kernel.org/api/series/1184939/",
+          "web_url": "https://patchwork.kernel.org/series/1184939/",
+          "date": "2026-10-13T16:47:49",
+          "name": "fs: unified VFS ancestor walk for Landlock and BPF",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: allow ksock kfuncs call from wq",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261013163101.205638-1-mahe.tardy@gmail.com/",
+      "date": "2026-10-13T16:31:01",
+      "series": [
+        {
+          "id": 1184932,
+          "url": "https://patchwork.kernel.org/api/series/1184932/",
+          "web_url": "https://patchwork.kernel.org/series/1184932/",
+          "date": "2026-10-13T16:31:01",
+          "name": "[bpf-next] bpf: allow ksock kfuncs call from wq",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184932/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] selftests/bpf: Add tests for memcg kfuncs",
+      "author": "Brahmajit Das",
+      "url": "https://lore.kernel.org/bpf/20261013151621.1526699-1-listout@listout.xyz/",
+      "date": "2026-10-13T15:16:21",
+      "series": [
+        {
+          "id": 1184879,
+          "url": "https://patchwork.kernel.org/api/series/1184879/",
+          "web_url": "https://patchwork.kernel.org/series/1184879/",
+          "date": "2026-10-13T15:16:21",
+          "name": "[bpf-next,v2] selftests/bpf: Add tests for memcg kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184879/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: Add tests for memcg kfuncs",
+      "author": "Brahmajit Das",
+      "url": "https://lore.kernel.org/bpf/20261013143853.1379307-1-listout@listout.xyz/",
+      "date": "2026-10-13T14:38:53",
+      "series": [
+        {
+          "id": 1184834,
+          "url": "https://patchwork.kernel.org/api/series/1184834/",
+          "web_url": "https://patchwork.kernel.org/series/1184834/",
+          "date": "2026-10-13T14:38:53",
+          "name": "[bpf-next] selftests/bpf: Add tests for memcg kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184834/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,13/13] selftests/bpf: Test an arena kfunc argument passed from a subprogram",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261013082012.1107446-14-memxor@gmail.com/",
+      "date": "2026-10-13T08:20:08",
+      "series": [
+        {
+          "id": 1184509,
+          "url": "https://patchwork.kernel.org/api/series/1184509/",
+          "web_url": "https://patchwork.kernel.org/series/1184509/",
+          "date": "2026-10-13T08:19:55",
+          "name": "Fix some arena paper cuts",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184509/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,12/13] selftests/bpf: Test the address space rendering of the arena type tag",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261013082012.1107446-13-memxor@gmail.com/",
+      "date": "2026-10-13T08:20:07",
+      "series": [
+        {
+          "id": 1184509,
+          "url": "https://patchwork.kernel.org/api/series/1184509/",
+          "web_url": "https://patchwork.kernel.org/series/1184509/",
+          "date": "2026-10-13T08:19:55",
+          "name": "Fix some arena paper cuts",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184509/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,11/13] libbpf: Render the arena type tag with its address space",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261013082012.1107446-12-memxor@gmail.com/",
+      "date": "2026-10-13T08:20:06",
+      "series": [
+        {
+          "id": 1184509,
+          "url": "https://patchwork.kernel.org/api/series/1184509/",
+          "web_url": "https://patchwork.kernel.org/series/1184509/",
+          "date": "2026-10-13T08:19:55",
+          "name": "Fix some arena paper cuts",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184509/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,10/13] bpf: Set up the arena base only in functions that use it",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261013082012.1107446-11-memxor@gmail.com/",
+      "date": "2026-10-13T08:20:05",
+      "series": [
+        {
+          "id": 1184509,
+          "url": "https://patchwork.kernel.org/api/series/1184509/",
+          "web_url": "https://patchwork.kernel.org/series/1184509/",
+          "date": "2026-10-13T08:19:55",
+          "name": "Fix some arena paper cuts",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184509/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,09/13] selftests/bpf: Test arena binding by libbpf",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261013082012.1107446-10-memxor@gmail.com/",
+      "date": "2026-10-13T08:20:04",
+      "series": [
+        {
+          "id": 1184509,
+          "url": "https://patchwork.kernel.org/api/series/1184509/",
+          "web_url": "https://patchwork.kernel.org/series/1184509/",
+          "date": "2026-10-13T08:19:55",
+          "name": "Fix some arena paper cuts",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184509/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,08/13] libbpf: Bind the arena of an object to every program in it",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261013082012.1107446-9-memxor@gmail.com/",
+      "date": "2026-10-13T08:20:03",
+      "series": [
+        {
+          "id": 1184509,
+          "url": "https://patchwork.kernel.org/api/series/1184509/",
+          "web_url": "https://patchwork.kernel.org/series/1184509/",
+          "date": "2026-10-13T08:19:55",
+          "name": "Fix some arena paper cuts",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184509/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,07/13] selftests/bpf: Test __arena pointer members",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261013082012.1107446-8-memxor@gmail.com/",
+      "date": "2026-10-13T08:20:02",
+      "series": [
+        {
+          "id": 1184509,
+          "url": "https://patchwork.kernel.org/api/series/1184509/",
+          "web_url": "https://patchwork.kernel.org/series/1184509/",
+          "date": "2026-10-13T08:19:55",
+          "name": "Fix some arena paper cuts",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184509/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,06/13] selftests/bpf: Test __nullable pointer members",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261013082012.1107446-7-memxor@gmail.com/",
+      "date": "2026-10-13T08:20:01",
+      "series": [
+        {
+          "id": 1184509,
+          "url": "https://patchwork.kernel.org/api/series/1184509/",
+          "web_url": "https://patchwork.kernel.org/series/1184509/",
+          "date": "2026-10-13T08:19:55",
+          "name": "Fix some arena paper cuts",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184509/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,05/13] bpf: Turn loads of __arena pointer members into arena pointers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261013082012.1107446-6-memxor@gmail.com/",
+      "date": "2026-10-13T08:20:00",
+      "series": [
+        {
+          "id": 1184509,
+          "url": "https://patchwork.kernel.org/api/series/1184509/",
+          "web_url": "https://patchwork.kernel.org/series/1184509/",
+          "date": "2026-10-13T08:19:55",
+          "name": "Fix some arena paper cuts",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184509/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,04/13] bpf: Recognize __nullable on pointer members of kernel structs",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261013082012.1107446-5-memxor@gmail.com/",
+      "date": "2026-10-13T08:19:59",
+      "series": [
+        {
+          "id": 1184509,
+          "url": "https://patchwork.kernel.org/api/series/1184509/",
+          "web_url": "https://patchwork.kernel.org/series/1184509/",
+          "date": "2026-10-13T08:19:55",
+          "name": "Fix some arena paper cuts",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184509/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,03/13] compiler_types: Add __arena and __nullable BTF type tag qualifiers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261013082012.1107446-4-memxor@gmail.com/",
+      "date": "2026-10-13T08:19:58",
+      "series": [
+        {
+          "id": 1184509,
+          "url": "https://patchwork.kernel.org/api/series/1184509/",
+          "web_url": "https://patchwork.kernel.org/series/1184509/",
+          "date": "2026-10-13T08:19:55",
+          "name": "Fix some arena paper cuts",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184509/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,02/13] selftests/bpf: Clone a program that calls a module kfunc",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261013082012.1107446-3-memxor@gmail.com/",
+      "date": "2026-10-13T08:19:57",
+      "series": [
+        {
+          "id": 1184509,
+          "url": "https://patchwork.kernel.org/api/series/1184509/",
+          "web_url": "https://patchwork.kernel.org/series/1184509/",
+          "date": "2026-10-13T08:19:55",
+          "name": "Fix some arena paper cuts",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184509/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,01/13] libbpf: Keep the fd_array fill index out of bpf_program__clone()",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261013082012.1107446-2-memxor@gmail.com/",
+      "date": "2026-10-13T08:19:56",
+      "series": [
+        {
+          "id": 1184509,
+          "url": "https://patchwork.kernel.org/api/series/1184509/",
+          "web_url": "https://patchwork.kernel.org/series/1184509/",
+          "date": "2026-10-13T08:19:55",
+          "name": "Fix some arena paper cuts",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184509/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: Fix map fd leak in no-BTF wq test",
+      "author": "luyun",
+      "url": "https://lore.kernel.org/bpf/20261013030114.292157-1-luyun_611@163.com/",
+      "date": "2026-10-13T03:01:14",
+      "series": [
+        {
+          "id": 1184319,
+          "url": "https://patchwork.kernel.org/api/series/1184319/",
+          "web_url": "https://patchwork.kernel.org/series/1184319/",
+          "date": "2026-10-13T03:01:14",
+          "name": "[bpf-next] selftests/bpf: Fix map fd leak in no-BTF wq test",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1184319/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,11/11] selftests/bpf: Test that a kfunc gets a 16-byte aligned __int128 aligned",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013003525.1861990-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T00:35:25",
+      "series": [
+        {
+          "id": 1184256,
+          "url": "https://patchwork.kernel.org/api/series/1184256/",
+          "web_url": "https://patchwork.kernel.org/series/1184256/",
+          "date": "2026-10-13T00:34:29",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184256/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,10/11] bpf, x86: Pass a kfunc's 16-byte aligned stack argument 16-byte aligned",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013003520.1860874-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T00:35:20",
+      "series": [
+        {
+          "id": 1184256,
+          "url": "https://patchwork.kernel.org/api/series/1184256/",
+          "web_url": "https://patchwork.kernel.org/series/1184256/",
+          "date": "2026-10-13T00:34:29",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184256/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,09/11] selftests/bpf: Test trampolines on more BPF functions with stack args",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013003515.1860439-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T00:35:15",
+      "series": [
+        {
+          "id": 1184256,
+          "url": "https://patchwork.kernel.org/api/series/1184256/",
+          "web_url": "https://patchwork.kernel.org/series/1184256/",
+          "date": "2026-10-13T00:34:29",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184256/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,08/11] bpf: Refuse a trampoline on an unreliable static function with stack args",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013003510.1860175-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T00:35:10",
+      "series": [
+        {
+          "id": 1184256,
+          "url": "https://patchwork.kernel.org/api/series/1184256/",
+          "web_url": "https://patchwork.kernel.org/series/1184256/",
+          "date": "2026-10-13T00:34:29",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184256/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,07/11] selftests/bpf: Test trampoline args of a BPF function at an odd slot",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013003505.1858906-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T00:35:05",
+      "series": [
+        {
+          "id": 1184256,
+          "url": "https://patchwork.kernel.org/api/series/1184256/",
+          "web_url": "https://patchwork.kernel.org/series/1184256/",
+          "date": "2026-10-13T00:34:29",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184256/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,06/11] selftests/bpf: Test trampoline args around a 16-byte aligned stack arg",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013003459.1857895-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T00:34:59",
+      "series": [
+        {
+          "id": 1184256,
+          "url": "https://patchwork.kernel.org/api/series/1184256/",
+          "web_url": "https://patchwork.kernel.org/series/1184256/",
+          "date": "2026-10-13T00:34:29",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184256/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,05/11] bpf, x86: Place trampoline arguments by the x86-64 calling convention",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013003454.1857445-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T00:34:54",
+      "series": [
+        {
+          "id": 1184256,
+          "url": "https://patchwork.kernel.org/api/series/1184256/",
+          "web_url": "https://patchwork.kernel.org/series/1184256/",
+          "date": "2026-10-13T00:34:29",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184256/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,04/11] bpf: Describe a BPF function to its trampoline as one u64 per slot",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013003449.1857106-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T00:34:49",
+      "series": [
+        {
+          "id": 1184256,
+          "url": "https://patchwork.kernel.org/api/series/1184256/",
+          "web_url": "https://patchwork.kernel.org/series/1184256/",
+          "date": "2026-10-13T00:34:29",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184256/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,03/11] selftests/bpf: Test by-value __int128 kfunc arguments at an odd slot",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013003444.1856509-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T00:34:44",
+      "series": [
+        {
+          "id": 1184256,
+          "url": "https://patchwork.kernel.org/api/series/1184256/",
+          "web_url": "https://patchwork.kernel.org/series/1184256/",
+          "date": "2026-10-13T00:34:29",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184256/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,02/11] selftests/bpf: Test trampoline stack args in a program that can tail call",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013003439.1854637-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T00:34:39",
+      "series": [
+        {
+          "id": 1184256,
+          "url": "https://patchwork.kernel.org/api/series/1184256/",
+          "web_url": "https://patchwork.kernel.org/series/1184256/",
+          "date": "2026-10-13T00:34:29",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184256/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,01/11] bpf, x86: Pass a trampoline's stack arguments by the calling convention",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013003434.1853797-1-yonghong.song@linux.dev/",
+      "date": "2026-10-13T00:34:34",
+      "series": [
+        {
+          "id": 1184256,
+          "url": "https://patchwork.kernel.org/api/series/1184256/",
+          "web_url": "https://patchwork.kernel.org/series/1184256/",
+          "date": "2026-10-13T00:34:29",
+          "name": "bpf: Follow up by-value struct and __int128 argument support",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1184256/mbox/"
+        }
+      ]
+    }
+  ]
+}
