@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-15T00:00:00Z",
+  "period_start": "2026-10-13",
+  "period_end": "2026-10-14",
+  "patch_count": 92,
+  "thread_count": 18,
+  "top_contributors": ["Daniel Borkmann", "Yonghong Song", "Kumar Kartikeya Dwivedi", "Justin Suess"],
+  "key_topics": ["jit", "arena", "kfuncs", "trampoline", "verifier", "selftests", "vfs"],
+  "overview": "October 13-14 saw a heavy day on bpf-next, led by Daniel Borkmann's sweeping 18-patch x86-64 BPF JIT optimization series and Yonghong Song's v3 follow-up on trampoline calling convention fixes for stack arguments and __int128. Notable new functionality includes Justin Suess's unified VFS ancestor walk for BPF path iterators and Kumar Kartikeya Dwivedi's arena usability improvements.",
+  "patches": [
+    {
+      "title": "bpf, x86: Drop redundant REX prefixes from zero and sign extensions",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261013171230.523677-2-daniel@iogearbox.net/",
+      "summary": "First patch of an 18-patch series titled 'bpf: Various x86-64 BPF JIT improvements'. This specific patch removes redundant REX prefixes from zero and sign extension instructions, producing more compact JIT output. The broader series covers ALU encoding consolidation, shorter displacement encodings for zero offsets, BMI2 shift variants, constant-division via magic numbers, lea-based multiply shortcuts, and improved PROBE_MEM address computation. It concludes with removal of the long-deprecated test_bpf kernel module and adds a new JIT instruction test suite.",
+      "related_links": []
+    },
+    {
+      "title": "namei: introduce __path_walk_parent()",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261013164800.2906577-2-utilityemal77@gmail.com/",
+      "summary": "First patch in an 11-patch series introducing a unified VFS ancestor walk for both Landlock and BPF. The series adds vfs_walk_ancestors() to the VFS layer, converts Landlock to use it, then builds BPF path ancestor iterator kfuncs on top. It also adds RCU walk support for lockless path traversal, exposed as a separate BPF lockless path ancestor iterator kfunc. This enables BPF programs to efficiently walk filesystem path hierarchies for security policy enforcement use cases without holding locks.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Keep the fd_array fill index out of bpf_program__clone()",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261013082012.1107446-2-memxor@gmail.com/",
+      "summary": "First patch of a 13-patch series addressing arena usability paper cuts. Key improvements include making libbpf automatically bind arena maps to all programs in an object, adding __arena and __nullable BTF type tag qualifiers to compiler_types.h, teaching the verifier to handle loads of __arena pointer members in structs as arena pointers, and improving libbpf rendering of arena type tags with their address space. The verifier also gains support for setting up the arena base register only in functions that actually use it, reducing unnecessary work.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Pass a trampoline's stack arguments by the calling convention",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261013170915.2128212-1-yonghong.song@linux.dev/",
+      "summary": "First patch of an 11-patch v3 series fixing x86-64 trampoline calling convention for stack arguments. It restructures how BPF describes functions to their trampolines by using one u64 per slot, then ensures trampolines follow the x86-64 calling convention when passing stack arguments, and adds proper 16-byte alignment for __int128 kfunc arguments. A safety check is also added to refuse trampolines on unreliable static functions that have stack arguments. Comprehensive selftests cover tail-call scenarios, odd-slot arguments, and 16-byte aligned types.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Determine freplace staticness from BTF linkage",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261014113043.640435-2-kafai.wan@linux.dev/",
+      "summary": "First patch in a 7-patch v2 series fixing BPF selftests failures introduced by LLVM 23. This semantic fix changes how the kernel determines whether a freplace target function is static, using BTF linkage information for correctness. The remaining patches update test log expectations, fix subtest count checks in the prog_tests framework, use _exit() in uprobe_multi_test cloned children to avoid flushing shared state, and handle stdout-capture-dependent subtests gracefully by skipping them when stdout is not saved.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20261014125017.1426212-2-puranjay@kernel.org/",
+      "summary": "First patch of a 3-patch v4 series extending the x86 BPF JIT to support fetching AND, OR, and XOR atomic operations in the BPF arena. Fetching atomics return the value that was in memory before the operation, analogous to C atomic fetch-and-op semantics. The second patch adds selftests covering the new operations, and the third applies the fetching atomics to sched_ext, replacing a cmpxchg loop with the more efficient single-instruction fetch. This fills a gap in arena's atomic operation support on x86.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: allow ksock connect/send calls from wq",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261014095743.35891-1-mahe.tardy@gmail.com/",
+      "summary": "This single-patch v4 series allows BPF programs to invoke ksock (kernel socket) kfuncs from workqueue contexts. Previously the ksock kfuncs required a task context, blocking their use from async BPF work. The patch relaxes the context check for ksock connect and send kfuncs to also permit workqueue execution while preserving the restriction in other inappropriate contexts. This is the fourth revision, addressing review feedback on the context-check logic from earlier versions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: more precise stack liveness effects for global func params",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261013-scev-minimal-v3-followups-v2-1-6d9d61965486@gmail.com/",
+      "summary": "First patch of a 7-patch v2 series containing follow-up cleanups for the recently merged BPF scalar evolution (SCEV) verifier feature. This patch improves precision of stack liveness tracking for global function parameters, reducing unnecessary re-verification work. Other patches fix a duplicate BPF_SCEV_REGS_NUM declaration, add a reg_bounds_sync() comment clarification, add tests for stack effects of scalar and dynptr global subprog parameters, and harden several verifier log __msg patterns against minor log format differences across kernel versions.",
+      "related_links": []
+    }
+  ]
+}
