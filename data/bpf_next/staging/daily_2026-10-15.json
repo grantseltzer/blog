@@ -1,0 +1,1130 @@
+{
+  "period": "daily",
+  "period_start": "2026-10-14",
+  "period_end": "2026-10-15",
+  "fetched_at": "2026-10-15T14:01:22Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v5] bpf: allow ksock connect/send calls from wq",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261015104553.17509-1-mahe.tardy@gmail.com/",
+      "date": "2026-10-15T10:45:53",
+      "series": [
+        {
+          "id": 1186366,
+          "url": "https://patchwork.kernel.org/api/series/1186366/",
+          "web_url": "https://patchwork.kernel.org/series/1186366/",
+          "date": "2026-10-15T10:45:53",
+          "name": "[bpf-next,v5] bpf: allow ksock connect/send calls from wq",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1186366/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,26/26] selftests/bpf: Load an exception cleanup program from a light skeleton",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040356.867513-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:03:56",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,25/26] selftests/bpf: Cover more accepted .bpf_cleanup exception shapes",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040351.867060-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:03:51",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,24/26] selftests/bpf: Add __set_global() and __ret_global() test tags",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040346.866686-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:03:46",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,23/26] selftests/bpf: Add end-to-end and negative .bpf_cleanup exception tests",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040341.866405-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:03:41",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,22/26] libbpf: Let the static linker carry .bpf_cleanup relocations",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040336.866207-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:03:36",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,21/26] libbpf: Carry the exception cleanup table through the light skeleton",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040331.865700-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:03:31",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,20/26] libbpf: Collect .bpf_cleanup records and pass them to the kernel",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040326.865061-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:03:26",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,19/26] libbpf: Add cleanup_info to bpf_prog_load_opts",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040321.864586-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:03:20",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,18/26] libbpf: Resolve the compiler's _Unwind_Resume to the kernel's kfunc",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040315.864447-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:03:15",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,17/26] bpf, arm64: Dispatch exception cleanup pads at run time",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040310.864133-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:03:10",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,16/26] bpf, x86: Dispatch exception cleanup pads at run time",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040305.862714-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:03:05",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,15/26] bpf: Refuse a trampoline that calls a subprog that can unwind",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040300.862173-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:03:00",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,14/26] bpf: Dispatch cleanup pads by rewriting return addresses",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040255.861626-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:02:55",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,13/26] bpf: Allow a subprog to end with a call that does not return",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040250.860960-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:02:50",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,12/26] bpf: Keep an epilogue for each subprog an unwind can pass through",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040245.860484-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:02:45",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,11/26] bpf: Prepare JITed programs for dispatching cleanup pads",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040240.860227-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:02:40",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,10/26] bpf: Do not use a private stack for a program that can unwind",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040234.859897-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:02:34",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,09/26] bpf: Refuse a landing pad that does not resume",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040229.859168-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:02:29",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,08/26] bpf: Refuse a callback that can unwind",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040224.858955-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:02:24",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,07/26] bpf: Verify an unwind through landing pads and epilogues",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040219.858407-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:02:19",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,06/26] bpf: Make exception landing pads reachable in the CFG",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040214.857736-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:02:14",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,05/26] bpf: Mark covered call sites and check a program can take a table",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040209.856828-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:02:09",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,04/26] bpf: Keep a call site's landing pad in insn_aux_data, add lookups",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040204.856062-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:02:04",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,03/26] bpf: Add the bpf_unwind() and bpf_unwind_resume() kfuncs",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040159.855401-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:01:59",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,02/26] bpf: Accept the compiler's exception cleanup table at program load",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040154.855130-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:01:54",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v11,01/26] bpf: Pack bpf_insn_aux_data flags into bit fields",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040148.854746-1-yonghong.song@linux.dev/",
+      "date": "2026-10-15T04:01:48",
+      "series": [
+        {
+          "id": 1186097,
+          "url": "https://patchwork.kernel.org/api/series/1186097/",
+          "web_url": "https://patchwork.kernel.org/series/1186097/",
+          "date": "2026-10-15T04:01:43",
+          "name": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+          "version": 11,
+          "mbox": "https://patchwork.kernel.org/series/1186097/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] selftests/bpf: Add a runtime test for private stack and stack arguments",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20261015021238.5657-4-cp0613@linux.alibaba.com/",
+      "date": "2026-10-15T02:12:38",
+      "series": [
+        {
+          "id": 1186044,
+          "url": "https://patchwork.kernel.org/api/series/1186044/",
+          "web_url": "https://patchwork.kernel.org/series/1186044/",
+          "date": "2026-10-15T02:12:37",
+          "name": "riscv: bpf: Add BPF private stack support",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1186044/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] selftests/bpf: Enable private stack tests for riscv64",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20261015021238.5657-3-cp0613@linux.alibaba.com/",
+      "date": "2026-10-15T02:12:37",
+      "series": [
+        {
+          "id": 1186044,
+          "url": "https://patchwork.kernel.org/api/series/1186044/",
+          "web_url": "https://patchwork.kernel.org/series/1186044/",
+          "date": "2026-10-15T02:12:37",
+          "name": "riscv: bpf: Add BPF private stack support",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1186044/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] riscv: bpf: Add BPF private stack support",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20261015021238.5657-2-cp0613@linux.alibaba.com/",
+      "date": "2026-10-15T02:12:36",
+      "series": [
+        {
+          "id": 1186044,
+          "url": "https://patchwork.kernel.org/api/series/1186044/",
+          "web_url": "https://patchwork.kernel.org/series/1186044/",
+          "date": "2026-10-15T02:12:37",
+          "name": "riscv: bpf: Add BPF private stack support",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1186044/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/3] selftests/bpf: Wait for the struct_ops map to be freed in assoc_in_timer",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261015-selftests-bpf-struct-ops-assoc-timer-v3-3-efe643d4b2a3@gmail.com/",
+      "date": "2026-10-15T01:35:52",
+      "series": [
+        {
+          "id": 1186021,
+          "url": "https://patchwork.kernel.org/api/series/1186021/",
+          "web_url": "https://patchwork.kernel.org/series/1186021/",
+          "date": "2026-10-15T01:35:49",
+          "name": "bpf: Fix a struct_ops use-after-free behind a flaky assoc_in_timer test",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1186021/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/3] selftests/bpf: Test freeing a struct_ops map under a running prog",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261015-selftests-bpf-struct-ops-assoc-timer-v3-2-efe643d4b2a3@gmail.com/",
+      "date": "2026-10-15T01:35:51",
+      "series": [
+        {
+          "id": 1186021,
+          "url": "https://patchwork.kernel.org/api/series/1186021/",
+          "web_url": "https://patchwork.kernel.org/series/1186021/",
+          "date": "2026-10-15T01:35:49",
+          "name": "bpf: Fix a struct_ops use-after-free behind a flaky assoc_in_timer test",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1186021/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/3] bpf: Defer freeing a struct_ops map until its progs are done",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261015-selftests-bpf-struct-ops-assoc-timer-v3-1-efe643d4b2a3@gmail.com/",
+      "date": "2026-10-15T01:35:50",
+      "series": [
+        {
+          "id": 1186021,
+          "url": "https://patchwork.kernel.org/api/series/1186021/",
+          "web_url": "https://patchwork.kernel.org/series/1186021/",
+          "date": "2026-10-15T01:35:49",
+          "name": "bpf: Fix a struct_ops use-after-free behind a flaky assoc_in_timer test",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1186021/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,8/8] selftests/bpf: Add arena allocation race tests",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261014233442.8392-9-emil@etsalapatis.com/",
+      "date": "2026-10-14T23:34:42",
+      "series": [
+        {
+          "id": 1185976,
+          "url": "https://patchwork.kernel.org/api/series/1185976/",
+          "web_url": "https://patchwork.kernel.org/series/1185976/",
+          "date": "2026-10-14T23:34:34",
+          "name": "bpf: Fix arena memory incoherence",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1185976/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,7/8] bpf: Synchronize arena page faults with page freeing",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261014233442.8392-8-emil@etsalapatis.com/",
+      "date": "2026-10-14T23:34:41",
+      "series": [
+        {
+          "id": 1185976,
+          "url": "https://patchwork.kernel.org/api/series/1185976/",
+          "web_url": "https://patchwork.kernel.org/series/1185976/",
+          "date": "2026-10-14T23:34:34",
+          "name": "bpf: Fix arena memory incoherence",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1185976/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,6/8] bpf: Fix arena race between page free and alloc leading to incoherency",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261014233442.8392-7-emil@etsalapatis.com/",
+      "date": "2026-10-14T23:34:40",
+      "series": [
+        {
+          "id": 1185976,
+          "url": "https://patchwork.kernel.org/api/series/1185976/",
+          "web_url": "https://patchwork.kernel.org/series/1185976/",
+          "date": "2026-10-14T23:34:34",
+          "name": "bpf: Fix arena memory incoherence",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1185976/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,5/8] bpf: Track availability information for ranges in range tree",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261014233442.8392-6-emil@etsalapatis.com/",
+      "date": "2026-10-14T23:34:39",
+      "series": [
+        {
+          "id": 1185976,
+          "url": "https://patchwork.kernel.org/api/series/1185976/",
+          "web_url": "https://patchwork.kernel.org/series/1185976/",
+          "date": "2026-10-14T23:34:34",
+          "name": "bpf: Fix arena memory incoherence",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1185976/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,4/8] bpf: Update is_range_tree_set to work for consecutive ranges",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261014233442.8392-5-emil@etsalapatis.com/",
+      "date": "2026-10-14T23:34:38",
+      "series": [
+        {
+          "id": 1185976,
+          "url": "https://patchwork.kernel.org/api/series/1185976/",
+          "web_url": "https://patchwork.kernel.org/series/1185976/",
+          "date": "2026-10-14T23:34:34",
+          "name": "bpf: Fix arena memory incoherence",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1185976/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,3/8] bpf: arena: Stop deferred frees before map teardown",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261014233442.8392-4-emil@etsalapatis.com/",
+      "date": "2026-10-14T23:34:37",
+      "series": [
+        {
+          "id": 1185976,
+          "url": "https://patchwork.kernel.org/api/series/1185976/",
+          "web_url": "https://patchwork.kernel.org/series/1185976/",
+          "date": "2026-10-14T23:34:34",
+          "name": "bpf: Fix arena memory incoherence",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1185976/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/8] bpf: Associate arena pages with their mapping",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261014233442.8392-3-emil@etsalapatis.com/",
+      "date": "2026-10-14T23:34:36",
+      "series": [
+        {
+          "id": 1185976,
+          "url": "https://patchwork.kernel.org/api/series/1185976/",
+          "web_url": "https://patchwork.kernel.org/series/1185976/",
+          "date": "2026-10-14T23:34:34",
+          "name": "bpf: Fix arena memory incoherence",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1185976/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/8] bpf: Use mapping tree to zap arena VMAs",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261014233442.8392-2-emil@etsalapatis.com/",
+      "date": "2026-10-14T23:34:35",
+      "series": [
+        {
+          "id": 1185976,
+          "url": "https://patchwork.kernel.org/api/series/1185976/",
+          "web_url": "https://patchwork.kernel.org/series/1185976/",
+          "date": "2026-10-14T23:34:34",
+          "name": "bpf: Fix arena memory incoherence",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1185976/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] tools/include: Add Linux-syscall-note to uapi/linux/types.h",
+      "author": "Marco Vedovati",
+      "url": "https://lore.kernel.org/bpf/20261014194516.3030362-1-marco.vedovati@crowdstrike.com/",
+      "date": "2026-10-14T19:45:16",
+      "series": [
+        {
+          "id": 1185836,
+          "url": "https://patchwork.kernel.org/api/series/1185836/",
+          "web_url": "https://patchwork.kernel.org/series/1185836/",
+          "date": "2026-10-14T19:45:16",
+          "name": "[bpf-next] tools/include: Add Linux-syscall-note to uapi/linux/types.h",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1185836/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,4/4] selftests/bpf: Test trusted-field invalidation on parent release",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261014173039.3666415-5-utilityemal77@gmail.com/",
+      "date": "2026-10-14T17:30:39",
+      "series": [
+        {
+          "id": 1185764,
+          "url": "https://patchwork.kernel.org/api/series/1185764/",
+          "web_url": "https://patchwork.kernel.org/series/1185764/",
+          "date": "2026-10-14T17:30:36",
+          "name": "bpf: bound trusted fields to their parent's lifetime",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1185764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,3/4] bpf: Bind trusted fields to their parent's reference",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261014173039.3666415-4-utilityemal77@gmail.com/",
+      "date": "2026-10-14T17:30:38",
+      "series": [
+        {
+          "id": 1185764,
+          "url": "https://patchwork.kernel.org/api/series/1185764/",
+          "web_url": "https://patchwork.kernel.org/series/1185764/",
+          "date": "2026-10-14T17:30:36",
+          "name": "bpf: bound trusted fields to their parent's lifetime",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1185764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,2/4] selftests/bpf: Test MEM_RCU carry-over for trusted fields",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261014173039.3666415-3-utilityemal77@gmail.com/",
+      "date": "2026-10-14T17:30:37",
+      "series": [
+        {
+          "id": 1185764,
+          "url": "https://patchwork.kernel.org/api/series/1185764/",
+          "web_url": "https://patchwork.kernel.org/series/1185764/",
+          "date": "2026-10-14T17:30:36",
+          "name": "bpf: bound trusted fields to their parent's lifetime",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1185764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,1/4] bpf: Carry MEM_RCU for trusted fields with MEM_RCU parents",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261014173039.3666415-2-utilityemal77@gmail.com/",
+      "date": "2026-10-14T17:30:36",
+      "series": [
+        {
+          "id": 1185764,
+          "url": "https://patchwork.kernel.org/api/series/1185764/",
+          "web_url": "https://patchwork.kernel.org/series/1185764/",
+          "date": "2026-10-14T17:30:36",
+          "name": "bpf: bound trusted fields to their parent's lifetime",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1185764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,3/3] sched_ext: Use fetching atomics for cmask instead of a cmpxchg loop",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20261014125017.1426212-4-puranjay@kernel.org/",
+      "date": "2026-10-14T12:50:13",
+      "series": [
+        {
+          "id": 1185569,
+          "url": "https://patchwork.kernel.org/api/series/1185569/",
+          "web_url": "https://patchwork.kernel.org/series/1185569/",
+          "date": "2026-10-14T12:50:11",
+          "name": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1185569/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/3] selftests/bpf: Test fetching AND/OR/XOR atomics in arena",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20261014125017.1426212-3-puranjay@kernel.org/",
+      "date": "2026-10-14T12:50:12",
+      "series": [
+        {
+          "id": 1185569,
+          "url": "https://patchwork.kernel.org/api/series/1185569/",
+          "web_url": "https://patchwork.kernel.org/series/1185569/",
+          "date": "2026-10-14T12:50:11",
+          "name": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1185569/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/3] bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20261014125017.1426212-2-puranjay@kernel.org/",
+      "date": "2026-10-14T12:50:11",
+      "series": [
+        {
+          "id": 1185569,
+          "url": "https://patchwork.kernel.org/api/series/1185569/",
+          "web_url": "https://patchwork.kernel.org/series/1185569/",
+          "date": "2026-10-14T12:50:11",
+          "name": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1185569/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,7/7] selftests/bpf: Skip compare_text subtest when stdout is not saved",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261014113043.640435-8-kafai.wan@linux.dev/",
+      "date": "2026-10-14T11:30:43",
+      "series": [
+        {
+          "id": 1185502,
+          "url": "https://patchwork.kernel.org/api/series/1185502/",
+          "web_url": "https://patchwork.kernel.org/series/1185502/",
+          "date": "2026-10-14T11:30:36",
+          "name": "selftests/bpf: Fix selftests failures with LLVM 23",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,6/7] selftests/bpf: Skip expected_msgs subtests when stdout is not saved",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261014113043.640435-7-kafai.wan@linux.dev/",
+      "date": "2026-10-14T11:30:42",
+      "series": [
+        {
+          "id": 1185502,
+          "url": "https://patchwork.kernel.org/api/series/1185502/",
+          "web_url": "https://patchwork.kernel.org/series/1185502/",
+          "date": "2026-10-14T11:30:36",
+          "name": "selftests/bpf: Fix selftests failures with LLVM 23",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/7] selftests/bpf: Fix prog_tests framework subtest count checks",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261014113043.640435-6-kafai.wan@linux.dev/",
+      "date": "2026-10-14T11:30:41",
+      "series": [
+        {
+          "id": 1185502,
+          "url": "https://patchwork.kernel.org/api/series/1185502/",
+          "web_url": "https://patchwork.kernel.org/series/1185502/",
+          "date": "2026-10-14T11:30:36",
+          "name": "selftests/bpf: Fix selftests failures with LLVM 23",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/7] selftests/bpf: Use _exit() in uprobe_multi_test clone-ed child",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261014113043.640435-5-kafai.wan@linux.dev/",
+      "date": "2026-10-14T11:30:40",
+      "series": [
+        {
+          "id": 1185502,
+          "url": "https://patchwork.kernel.org/api/series/1185502/",
+          "web_url": "https://patchwork.kernel.org/series/1185502/",
+          "date": "2026-10-14T11:30:36",
+          "name": "selftests/bpf: Fix selftests failures with LLVM 23",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/7] selftests/bpf: Fix stack arg pruning test JOIN log expectation",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261014113043.640435-4-kafai.wan@linux.dev/",
+      "date": "2026-10-14T11:30:39",
+      "series": [
+        {
+          "id": 1185502,
+          "url": "https://patchwork.kernel.org/api/series/1185502/",
+          "web_url": "https://patchwork.kernel.org/series/1185502/",
+          "date": "2026-10-14T11:30:36",
+          "name": "selftests/bpf: Fix selftests failures with LLVM 23",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/7] selftests/bpf: Fix stack_arg precision backtracking log expectation",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261014113043.640435-3-kafai.wan@linux.dev/",
+      "date": "2026-10-14T11:30:38",
+      "series": [
+        {
+          "id": 1185502,
+          "url": "https://patchwork.kernel.org/api/series/1185502/",
+          "web_url": "https://patchwork.kernel.org/series/1185502/",
+          "date": "2026-10-14T11:30:36",
+          "name": "selftests/bpf: Fix selftests failures with LLVM 23",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/7] bpf: Determine freplace staticness from BTF linkage",
+      "author": "KaFai Wan",
+      "url": "https://lore.kernel.org/bpf/20261014113043.640435-2-kafai.wan@linux.dev/",
+      "date": "2026-10-14T11:30:37",
+      "series": [
+        {
+          "id": 1185502,
+          "url": "https://patchwork.kernel.org/api/series/1185502/",
+          "web_url": "https://patchwork.kernel.org/series/1185502/",
+          "date": "2026-10-14T11:30:36",
+          "name": "selftests/bpf: Fix selftests failures with LLVM 23",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185502/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4] bpf: allow ksock connect/send calls from wq",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261014095743.35891-1-mahe.tardy@gmail.com/",
+      "date": "2026-10-14T09:57:43",
+      "series": [
+        {
+          "id": 1185437,
+          "url": "https://patchwork.kernel.org/api/series/1185437/",
+          "web_url": "https://patchwork.kernel.org/series/1185437/",
+          "date": "2026-10-14T09:57:43",
+          "name": "[bpf-next,v4] bpf: allow ksock connect/send calls from wq",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1185437/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3] bpf: allow ksock connect/send calls from wq",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261014091450.19107-1-mahe.tardy@gmail.com/",
+      "date": "2026-10-14T09:14:50",
+      "series": [
+        {
+          "id": 1185413,
+          "url": "https://patchwork.kernel.org/api/series/1185413/",
+          "web_url": "https://patchwork.kernel.org/series/1185413/",
+          "date": "2026-10-14T09:14:50",
+          "name": "[bpf-next,v3] bpf: allow ksock connect/send calls from wq",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1185413/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,7/7] selftests/bpf: BPF_F_ANY_ALIGNMENT for byte_array_size_spanning()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261013-scev-minimal-v3-followups-v2-7-6d9d61965486@gmail.com/",
+      "date": "2026-10-14T06:24:42",
+      "series": [
+        {
+          "id": 1185282,
+          "url": "https://patchwork.kernel.org/api/series/1185282/",
+          "web_url": "https://patchwork.kernel.org/series/1185282/",
+          "date": "2026-10-14T06:24:35",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185282/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,6/7] selftests/bpf: harden __msg patterns for step_movsx_bounds_on_line",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261013-scev-minimal-v3-followups-v2-6-6d9d61965486@gmail.com/",
+      "date": "2026-10-14T06:24:41",
+      "series": [
+        {
+          "id": 1185282,
+          "url": "https://patchwork.kernel.org/api/series/1185282/",
+          "web_url": "https://patchwork.kernel.org/series/1185282/",
+          "date": "2026-10-14T06:24:35",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185282/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/7] selftests/bpf: harden __msg pattern for global_callee_btf_arg",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261013-scev-minimal-v3-followups-v2-5-6d9d61965486@gmail.com/",
+      "date": "2026-10-14T06:24:40",
+      "series": [
+        {
+          "id": 1185282,
+          "url": "https://patchwork.kernel.org/api/series/1185282/",
+          "web_url": "https://patchwork.kernel.org/series/1185282/",
+          "date": "2026-10-14T06:24:35",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185282/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/7] selftests/bpf: stack effects of scalar/dynptr global subprog params",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261013-scev-minimal-v3-followups-v2-4-6d9d61965486@gmail.com/",
+      "date": "2026-10-14T06:24:39",
+      "series": [
+        {
+          "id": 1185282,
+          "url": "https://patchwork.kernel.org/api/series/1185282/",
+          "web_url": "https://patchwork.kernel.org/series/1185282/",
+          "date": "2026-10-14T06:24:35",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185282/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/7] bpf: reg_bounds_sync() comment fixup",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261013-scev-minimal-v3-followups-v2-3-6d9d61965486@gmail.com/",
+      "date": "2026-10-14T06:24:38",
+      "series": [
+        {
+          "id": 1185282,
+          "url": "https://patchwork.kernel.org/api/series/1185282/",
+          "web_url": "https://patchwork.kernel.org/series/1185282/",
+          "date": "2026-10-14T06:24:35",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185282/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/7] bpf: avoid duplicate declaration for BPF_SCEV_REGS_NUM",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261013-scev-minimal-v3-followups-v2-2-6d9d61965486@gmail.com/",
+      "date": "2026-10-14T06:24:37",
+      "series": [
+        {
+          "id": 1185282,
+          "url": "https://patchwork.kernel.org/api/series/1185282/",
+          "web_url": "https://patchwork.kernel.org/series/1185282/",
+          "date": "2026-10-14T06:24:35",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185282/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/7] bpf: more precise stack liveness effects for global func params",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261013-scev-minimal-v3-followups-v2-1-6d9d61965486@gmail.com/",
+      "date": "2026-10-14T06:24:36",
+      "series": [
+        {
+          "id": 1185282,
+          "url": "https://patchwork.kernel.org/api/series/1185282/",
+          "web_url": "https://patchwork.kernel.org/series/1185282/",
+          "date": "2026-10-14T06:24:35",
+          "name": "bpf: follow-up for scalar evolution series",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1185282/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Annotate data races on bpf_lru_node type",
+      "author": "Nicholas Velten",
+      "url": "https://lore.kernel.org/bpf/20261013-fix-lru-node-type-kcsan-v1-1-0b743f5af2f3@gmail.com/",
+      "date": "2026-10-14T02:00:08",
+      "series": [
+        {
+          "id": 1185168,
+          "url": "https://patchwork.kernel.org/api/series/1185168/",
+          "web_url": "https://patchwork.kernel.org/series/1185168/",
+          "date": "2026-10-14T02:00:08",
+          "name": "[bpf-next] bpf: Annotate data races on bpf_lru_node type",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1185168/mbox/"
+        }
+      ]
+    }
+  ]
+}
