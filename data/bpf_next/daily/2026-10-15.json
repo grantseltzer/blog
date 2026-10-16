@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-16T00:01:00Z",
+  "period_start": "2026-10-14",
+  "period_end": "2026-10-15",
+  "patch_count": 67,
+  "thread_count": 13,
+  "top_contributors": ["Yonghong Song", "Emil Tsalapatis", "KaFai Wan", "Eduard Zingerman", "Justin Suess"],
+  "key_topics": ["verifier", "kfuncs", "exception-handling", "arena", "struct-ops", "private-stack", "riscv"],
+  "overview": "The Oct 14-15 bpf-next window was dominated by two large series: Yonghong Song's v11 exception cleanup landing pad work, which introduces bpf_unwind() and bpf_unwind_resume() kfuncs to give BPF programs structured exception semantics across x86 and arm64, and Emil Tsalapatis's v4 series fixing arena memory incoherence by synchronizing page faults with freeing and tracking page availability in the range tree. Rounding out the window were RISC-V private stack support, verifier improvements for trusted-field lifetime tracking and scalar evolution, ksock connect/send from workqueues, and x86 fetching atomics in arena.",
+  "patches": [
+    {
+      "title": "bpf: Add the bpf_unwind() and bpf_unwind_resume() kfuncs",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040159.855401-1-yonghong.song@linux.dev/",
+      "summary": "Introduces two new kfuncs, bpf_unwind() and bpf_unwind_resume(), as the kernel-side mechanism for BPF exception handling. bpf_unwind() initiates an unwind through the BPF call stack, invoking .bpf_cleanup landing pads registered by the compiler along the way, while bpf_unwind_resume() allows a landing pad to propagate the unwind further. This is the core of a 26-patch v11 series that wires up C++ style exception semantics into the BPF runtime, coordinating changes across the verifier, JIT backends (x86 and arm64), and libbpf. The series also adds return-address rewriting so cleanup pads are dispatched at JIT time, and prevents the private stack and trampolines from being used with programs that can unwind.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Use mapping tree to zap arena VMAs",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261014233442.8392-2-emil@etsalapatis.com/",
+      "summary": "First patch in an 8-patch v4 series fixing memory incoherence in BPF arenas caused by races between page allocation and freeing. This patch replaces the existing VMA zapping approach with a mapping tree so that all VMAs sharing an arena mapping can be targeted precisely during teardown. Subsequent patches in the series associate arena pages with their mapping, stop deferred frees before map teardown, track range availability in the range tree, and add a synchronization point between page fault handling and page freeing to eliminate the incoherence window.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: allow ksock connect/send calls from wq",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261015104553.17509-1-mahe.tardy@gmail.com/",
+      "summary": "Allows BPF programs to issue ksock connect and send operations from kernel workqueue context, removing a restriction that previously limited these calls to task context only. The change relaxes the in_task() guard by also permitting execution when the caller is a workqueue worker, enabling use cases where networking operations need to be deferred to a WQ. This is v5 of the patch, incorporating review feedback from earlier revisions posted the same day.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Carry MEM_RCU for trusted fields with MEM_RCU parents",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261014173039.3666415-2-utilityemal77@gmail.com/",
+      "summary": "Extends the BPF verifier so that trusted pointer fields inherit the MEM_RCU flag from their parent when the parent is itself RCU-protected, allowing the verifier to correctly track their lifetime without overly restricting access. A follow-on patch then binds trusted fields to their parent's reference so that releasing the parent invalidates derived field pointers. The series adds selftests covering MEM_RCU carry-over and trusted-field invalidation on parent release, closing a class of use-after-free risks in programs that access nested kernel objects.",
+      "related_links": []
+    },
+    {
+      "title": "riscv: bpf: Add BPF private stack support",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20261015021238.5657-2-cp0613@linux.alibaba.com/",
+      "summary": "Implements BPF private stack support for the RISC-V 64-bit JIT, bringing RISC-V into parity with x86 and arm64 for this feature. The private stack separates BPF program stack frames from the kernel stack to reduce stack pressure in deeply nested or frequently invoked programs. The accompanying patches enable the existing private-stack selftests for riscv64 and add a new runtime test covering the interaction between private stack and stack-passed arguments.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Defer freeing a struct_ops map until its progs are done",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261015-selftests-bpf-struct-ops-assoc-timer-v3-1-efe643d4b2a3@gmail.com/",
+      "summary": "Fixes a use-after-free in struct_ops map teardown where the map could be freed while a running BPF program still held a reference through a timer callback. The fix defers the actual map free until all associated programs have finished executing, using a reference count to track in-flight programs. Two selftests accompany the fix: one that exercises freeing a struct_ops map under a running program and one that ensures the assoc_in_timer test waits for the map to be fully freed before proceeding, eliminating the flakiness that exposed the bug.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20261014125017.1426212-2-puranjay@kernel.org/",
+      "summary": "Adds JIT support on x86 for fetching (return-value-yielding) variants of AND, OR, and XOR atomic operations when applied to arena memory, filling a gap where only XCHG and CMPXCHG were previously supported. The core patch emits the appropriate LOCK XADD/XAND/XOR sequences and handles the necessary operand sizing. A sched_ext follow-on replaces a cmpxchg loop in the scheduler's cmask operations with the new fetching atomics, and selftests verify correct behavior for all three operations.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: more precise stack liveness effects for global func params",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261013-scev-minimal-v3-followups-v2-1-6d9d61965486@gmail.com/",
+      "summary": "Improves verifier precision for stack slot liveness when global subprogram parameters are scalars or dynptrs, reducing cases where the verifier marks stack slots as unnecessarily live and producing tighter state equivalence checks. This is the first patch of a 7-patch v2 follow-up series to the earlier scalar evolution work, also including a duplicate declaration fix for BPF_SCEV_REGS_NUM, a reg_bounds_sync() comment correction, and several selftest hardening patches that update expected verifier log messages to be more robust against compiler output differences in LLVM 23.",
+      "related_links": []
+    }
+  ]
+}
