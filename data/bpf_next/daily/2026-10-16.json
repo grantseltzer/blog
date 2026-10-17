@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-17T00:00:00Z",
+  "period_start": "2026-10-15",
+  "period_end": "2026-10-16",
+  "patch_count": 72,
+  "thread_count": 15,
+  "top_contributors": ["Yonghong Song", "Kumar Kartikeya Dwivedi", "Qiliang Yuan", "Ihor Solodrai", "Daniel Borkmann"],
+  "key_topics": ["exception-handling", "arena", "kfuncs", "struct-ops", "btf", "bpftool", "jit", "ksock"],
+  "overview": "Active day on bpf-next with 72 patches across 15 series. The standout work is Yonghong Song's v11 of the BPF exception cleanup mechanism (26 patches), adding bpf_unwind() kfuncs and landing pad dispatch for x86 and arm64, alongside Kumar Kartikeya Dwivedi's v3 arena improvements introducing __arena and __nullable BTF type tags and automatic arena binding in libbpf.",
+  "patches": [
+    {
+      "title": "bpf: Add the bpf_unwind() and bpf_unwind_resume() kfuncs",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261015040159.855401-1-yonghong.song@linux.dev/",
+      "summary": "Introduces two new kfuncs, bpf_unwind() and bpf_unwind_resume(), as the core of v11 of the BPF exception cleanup series. Together they enable RAII-style resource management in BPF programs by allowing programs compiled with exception-handling constructs to trigger and resume through cleanup landing pads. The verifier tracks call sites covered by cleanup pads and enforces safety constraints, while JIT backends for x86 and arm64 gain support for dispatching cleanup pads at runtime. This replaces the simpler bpf_throw() mechanism with a more complete exception-handling model.",
+      "related_links": []
+    },
+    {
+      "title": "compiler_types: Add __arena and __nullable BTF type tag qualifiers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261015234125.3152346-6-memxor@gmail.com/",
+      "summary": "Part of v3 of the arena paper-cuts series, this patch adds __arena and __nullable as BTF type tag qualifiers for pointer members in kernel struct definitions. The verifier is extended to recognize loads of __arena-qualified members as producing arena pointers, enabling correct pointer arithmetic within BPF arenas. The series also teaches libbpf to automatically bind the arena of a BPF object to every program within it, removing the need for manual per-program setup. Companion patches in the series add __bpf_core_pai handling in libbpf for rendering the arena type tag with its address space.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Protect the struct_ops association with a spinlock",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261016-selftests-bpf-struct-ops-assoc-timer-v4-1-9ad31c21220c@gmail.com/",
+      "summary": "This v4 series fixes a use-after-free race in struct_ops map lifecycle where a BPF program could be invoked after its associated map had been freed. A spinlock is introduced to protect the struct_ops program association, and programs are explicitly dissociated before the RCU grace period covering map teardown begins. Follow-up patches add selftests that reproduce the race and validate the fix, addressing the flaky assoc_in_timer test that triggered this investigation.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Dump C from a detached BTF copy",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261016000012.2232059-2-ihor.solodrai@linux.dev/",
+      "summary": "First patch of an 8-patch series adding per-record CO-RE attributes to bpftool's BTF C dump output. The series introduces __bpf_core_pai (pointer address interpretation) and __bpf_core_pso (pointer size override) annotations for verifier-rewritten context and socket types, improving portability of vmlinux.h consumers. Bpftool is refactored to operate on a detached BTF copy so attributes can be applied per record without mutating the original BTF. New selftests cover record attributes in bpftool dumps and context/socket access patterns through vmlinux.h.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow ksock connect/send calls from wq",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261016133318.33999-1-mahe.tardy@gmail.com/",
+      "summary": "This v7 patch relaxes the restriction preventing bpf_sock_ops connect and send operations from workqueue contexts. Previously these calls were blocked in workqueue environments, limiting certain networking BPF use cases. The change permits ksock connect and send helpers to run from kernel workqueues, with a companion selftest validating the wq-initiated connect/send path end-to-end.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, s390: Mask the count of 32-bit shifts by register",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261016101822.632891-1-daniel@iogearbox.net/",
+      "summary": "Correctness fix for the s390 BPF JIT ensuring the shift count register is masked to 5 bits for 32-bit shift operations, aligning s390 with the BPF ISA specification. Without this mask, shift counts exceeding 31 produce incorrect results on s390 targets. The series also fixes a je-to-jmp distance calculation in the selftests convergence check and adds follow-up JIT instruction test coverage.",
+      "related_links": []
+    },
+    {
+      "title": "riscv: bpf: Add BPF private stack support",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20261015021238.5657-2-cp0613@linux.alibaba.com/",
+      "summary": "Extends BPF private stack support to RISC-V, joining x86 and arm64 as architectures with this capability. The private stack gives BPF programs a dedicated per-CPU stack instead of borrowing from the kernel task stack, reducing stack pressure for programs with deep subprogram call chains. Companion patches enable existing private stack selftests for riscv64 and add a new runtime test exercising private stack behavior with stack-argument passing.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Print verified instruction count in prog show",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20261016071700.280539-1-chenyuan_fl@163.com/",
+      "summary": "Adds the verified_insns field to bpftool's prog show output, exposing the BPF verifier's instruction count metric directly in the tool's listing rather than requiring users to parse kernel debug logs. This makes it straightforward to assess verifier complexity for a loaded program. A companion patch extends bpftool map show to also print the map_extra field.",
+      "related_links": []
+    }
+  ]
+}
