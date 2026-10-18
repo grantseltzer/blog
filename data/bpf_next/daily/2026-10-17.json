@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-10-18T00:00:00Z",
+  "period_start": "2026-10-16",
+  "period_end": "2026-10-17",
+  "patch_count": 100,
+  "thread_count": 17,
+  "top_contributors": ["Alexei Starovoitov", "Yonghong Song", "Daniel Borkmann"],
+  "key_topics": ["verifier", "kfuncs", "exception-cleanup", "arena", "trampoline", "memory-safety", "sockmap", "libbpf"],
+  "overview": "October 16-17 saw two major series land on bpf-next: Alexei Starovoitov's 38-patch memory safety, lifetime, and locking fixes series, and Yonghong Song's v12 of exception cleanup landing pads enabling C++-style unwind semantics in BPF programs. Additional work included arena memory coherence fixes, x86 atomic instruction support, and several smaller verifier and tooling cleanups.",
+  "patches": [
+    {
+      "title": "bpf: Accept the compiler's exception cleanup table at program load",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261017025135.1915894-1-yonghong.song@linux.dev/",
+      "summary": "This is patch 1 of 25 in the v12 series adding exception cleanup landing pad support to BPF. It extends the program load path to accept a compiler-generated cleanup table that maps call sites to their corresponding cleanup (landing pad) functions. The series as a whole introduces bpf_unwind() and bpf_unwind_resume() kfuncs so BPF programs compiled with C++ exception-style semantics can safely unwind stack frames and run destructors. This enables RAII-like resource cleanup patterns in BPF programs without kernel panics or resource leaks.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add the bpf_unwind() and bpf_unwind_resume() kfuncs",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261017025140.1916510-1-yonghong.song@linux.dev/",
+      "summary": "Introduces two new kfuncs, bpf_unwind() and bpf_unwind_resume(), which serve as the BPF equivalents of the C++ _Unwind_RaiseException and _Unwind_Resume runtime functions. bpf_unwind() initiates an unwind through the call stack, dispatching cleanup landing pads at each frame that has one, while bpf_unwind_resume() continues unwinding after a cleanup pad has run. Together they allow BPF programs to implement structured exception handling using the compiler's existing LSDA (Language Specific Data Area) tables. This is the core kfunc infrastructure on which the rest of the 25-patch series is built.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: use the frame mem type in devmap egress XDP",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261017012058.355787-2-alexei.starovoitov@gmail.com/",
+      "summary": "Patch 1 of 38 in a large memory-safety series from Alexei Starovoitov. This first patch corrects devmap egress XDP to track the XDP frame using the proper mem type, preventing a use-after-free when the frame is recycled. The broader series addresses dozens of lifetime, locking, and memory-safety issues across the BPF subsystem, including NULL dereferences in sk_storage iterators, stale pointer bugs after JIT realloc, improper RCU usage in sk_lookup test runs, and unsafe packet-slice access patterns in helpers. It represents a significant hardening sweep of BPF's interaction with networking and memory subsystems.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Memory safety, lifetime and locking fixes",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261017012451.364800-1-alexei.starovoitov@gmail.com/",
+      "summary": "The second half (patches 09-38) of Alexei's 38-patch memory-safety series continues addressing lifetime and synchronization issues. Notable individual fixes include refusing packet slices for packet-changing helpers to prevent TOCTOU races, using memmove() for safe skb byte stores, holding device references in cpumap frame queues, and keeping BPF program symbols alive until the program has fully exited. Together with the first half, this series closes a substantial number of safety gaps identified through formal analysis and fuzzing of the BPF runtime.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Stop deferred arena frees before map teardown",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261016193703.9203-2-emil@etsalapatis.com/",
+      "summary": "Patch 1 of 5 in a v5 series fixing arena memory coherence races. A deferred free running concurrently with map teardown could free a page that was simultaneously being faulted in, leaving user mappings pointing at freed physical memory. This patch drains the deferred-free workqueue before the arena map is torn down. Companion patches revalidate faulted pages before installing user mappings, fix a race between page free and alloc leading to incoherence, add lock-timeout retry logic, and add regression tests covering the allocation race window.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Don't echo user-supplied map info fields back to userspace",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261016191635.662690-1-daniel@iogearbox.net/",
+      "summary": "A security hardening patch (v2) that prevents the kernel from echoing user-controlled fields from the map creation uattr back to userspace via BPF_OBJ_GET_INFO_BY_FD. Echoing attacker-controlled data through kernel info ioctls is a classic information-leak and confused-deputy pattern; this patch scrubs those fields in the kernel's map_info response so only kernel-authoritative values are returned. The fix is straightforward but important for preventing privilege escalation gadgets that rely on reading back crafted map metadata.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Support fetching AND/OR/XOR atomics in arena",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20261016171319.1623447-2-puranjay@kernel.org/",
+      "summary": "Extends the x86-64 BPF JIT to emit fetching (return-value-capturing) versions of AND, OR, and XOR atomic operations when targeting arena memory. Previously only XCHG and CMPXCHG had fetching variants in the arena JIT path; this patch adds BPF_FETCH support for the bitwise atomics using the standard x86 LOCK XAND/XORR patterns. The series also uses the new fetching atomics to simplify a cmpxchg loop in sched_ext and includes a selftest covering all three new operations.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: Restrict iter-context sockmap updates to iter/sockmap",
+      "author": "Michal Luczaj",
+      "url": "https://lore.kernel.org/bpf/20261016-sockmap-update-limit-iter-v1-2-23fa946db59e@rbox.co/",
+      "summary": "Fixes a type-confusion bug where a BPF iterator program running over a non-sockmap iterator (e.g., bpf_iter_unix) could call bpf_map_update_elem() on a sockmap, bypassing the expected iterator-type check. The fix adds a guard ensuring that sockmap updates from within an iterator context are only permitted when the iterator type is itself a sockmap iterator. A negative selftest is included to prevent regressions. The change closes a potential escalation path where an unprivileged iterator could corrupt sockmap state.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow ksock connect/send calls from wq",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261016133318.33999-1-mahe.tardy@gmail.com/",
+      "summary": "Allows BPF programs to perform kernel socket connect and send operations from a workqueue context (v7). Previously the BPF ksock helpers enforced a process-context requirement that made them unusable from deferred work, limiting their applicability in networking programs that offload work via bpf_wq. This patch relaxes that restriction by properly distinguishing sleeping-allowed contexts and adjusting the helper's GFP and lock flags accordingly. A selftest exercising connect and send from a workqueue is also included.",
+      "related_links": []
+    }
+  ]
+}
