@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-10-19T00:00:00Z",
+  "period_start": "2026-10-17",
+  "period_end": "2026-10-18",
+  "patch_count": 100,
+  "thread_count": 10,
+  "top_contributors": ["Alexei Starovoitov", "Yonghong Song", "Leon Hwang", "KaFai Wan"],
+  "key_topics": ["memory-safety", "dynptr", "verifier", "exceptions", "x86", "arm64", "xdp", "libbpf", "packet-pointers", "selftests"],
+  "overview": "October 17-18 saw unusually high bpf-next traffic, dominated by a 43-patch v2 series from Alexei Starovoitov addressing a wide range of memory safety, lifetime, and locking issues across BPF maps, programs, extensions, and networking paths. A 16-patch v3 followup refined packet pointer safety and dynptr semantics further, while Yonghong Song's exception cleanup landing pad series reached v12 with full x86 and arm64 JIT support.",
+  "patches": [
+    {
+      "title": "bpf: Memory safety, lifetime and locking fixes",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261017163745.3341787-2-alexei.starovoitov@gmail.com/",
+      "summary": "A sweeping 43-patch v2 series that corrects a broad set of memory safety and lifetime bugs in the BPF subsystem. Highlights include forbidding sleeping in hash-map for_each callbacks and bpf_find_vma(), rejecting sleepable programs for task_vma iterators, fixing a NULL deref in the sk_storage iterator, clearing sk_refcnt before storage is linked, proper RCU handling for sk_lookup test runs, keeping program symbols alive until execution ends, and refusing invalid extensions for sleepable/iterator/writable-tracepoint programs. Networking paths also receive attention: bpf_skb_adjust_room() is prevented from consuming the MSS, a BPF_JSET 64-bit mask bug on 32-bit hosts is fixed, and xdp_buff bytes are stored with memmove() to avoid aliasing. The series collectively hardens BPF against use-after-free, data-race, and safety violations that had accumulated across multiple subsystems.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Memory safety, lifetime and locking fixes (followups)",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261017230950.802052-2-alexei.starovoitov@gmail.com/",
+      "summary": "A 16-patch v3 follow-up to the main memory safety series, tightening packet pointer and dynptr semantics. Key changes include dropping packet pointers after kfuncs that write an skb, uncloning the skb for kfuncs that write through a dynptr, using memmove() for skb and xdp_buff byte stores, refusing packet slices for packet-changing helpers, and preventing the BPF prologue from being emitted for extension programs whose callers still hold packet pointers. These patches close the remaining gaps identified during review of the v2 series and are intended to land together.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Run exception cleanup landing pads when bpf_unwind() unwinds",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261017025156.1919051-1-yonghong.song@linux.dev/",
+      "summary": "Version 12 of a long-running series that brings C++ style exception cleanup semantics to BPF programs. When bpf_unwind() is called, the runtime now dispatches .bpf_cleanup landing pads registered by the compiler, unwinding through subprog epilogues on both x86 and arm64. The verifier is extended to model exception paths through the CFG, enforce that landing pads always resume, and reject callbacks and trampolines that could interfere with unwinding. libbpf gains support for collecting .bpf_cleanup records and passing them to the kernel, carrying them through the static linker and light skeleton, and resolving _Unwind_Resume to the new kernel kfunc.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Unwinding via r3",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261018010246.1643877-2-alexei.starovoitov@gmail.com/",
+      "summary": "A 5-patch series introducing a new BPF unwinding mechanism that uses register r3 to propagate exception state instead of a dedicated extable entry per call site. On x86, the post-call 'if r3 != 0 goto pad' pattern is replaced with a single extable entry, reducing JIT output size. arm64 support for the same unwinding path is added in parallel. Selftests cover the new r3-based unwind paths and a C++ BPF program that exercises exceptions through the updated mechanism.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add syscall common attrs support for xdp link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261017142649.51047-2-leon.hwang@linux.dev/",
+      "summary": "A 6-patch series that extends BPF link_create to accept common syscall attributes, with XDP as the first consumer. The kernel side adds a new common-attrs path for link_create, the previously separate bpf_xdp_link_attach_failed tracepoint is retired in favour of the generic logging infrastructure, and libbpf gains a bpf_link_create_log API and a __bpf_sys_fd helper factored out to reduce duplication. Selftests verify that link_create log output is surfaced correctly through the new API.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject packet dynptr slices in mutating helpers and subprograms",
+      "author": "Ren Wei",
+      "url": "https://lore.kernel.org/bpf/a49e4bcfaa33c4efd7e2f15e0d8fc117ca254780.1792222148.git.rakukuip@gmail.com/",
+      "summary": "A v2 2-patch series that closes a verifier gap: packet dynptr slices must not be passed to helpers or subprograms that mutate packet data, since the underlying packet pointer may be invalidated by the write. The verifier is taught to detect and reject such uses at load time, and a selftest documents the expected rejection behaviour for this class of programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refuse the prologue for an extension if callers keep packet pointers",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261018012753.1724147-1-alexei.starovoitov@gmail.com/",
+      "summary": "A single-patch verifier fix that prevents the BPF JIT from emitting a prologue for an extension (freplace) program when any of its potential callers still holds a live packet pointer at the call site. Without this check, attaching an extension to such a caller could silently allow the extension to observe a stale packet pointer, leading to memory-safety violations. The fix is a prerequisite for the broader packet-pointer safety work landing in the same cycle.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Prefer mounted tracefs over debugfs",
+      "author": "Eduard Zateev",
+      "url": "https://lore.kernel.org/bpf/20261018092629.585046-1-hackerowskiy@gmail.com/",
+      "summary": "A single-patch libbpf fix that changes the filesystem search order so that a separately mounted tracefs is preferred over the legacy tracefs-under-debugfs path. Modern kernels and container environments increasingly mount tracefs at /sys/kernel/tracing directly, so probing for that path first avoids spurious failures on systems where debugfs is not mounted at all. The change is backward-compatible: if dedicated tracefs is absent, libbpf falls back to the debugfs path as before.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Mask the shift counts of the magic number division",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261018113352.730799-1-daniel@iogearbox.net/",
+      "summary": "A single-patch x86 JIT fix that masks the shift counts used in the compiler-generated magic-number division sequence. Without the mask the shift amount can exceed 63 on certain inputs, causing undefined behaviour on x86-64 where SHR/SAR only consume the low 6 bits but the intermediate value is computed in a wider context. The fix aligns the JIT-emitted code with what a hardened C compiler would produce for the same division optimisation.",
+      "related_links": []
+    }
+  ]
+}
