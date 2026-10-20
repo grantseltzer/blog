@@ -1,0 +1,1708 @@
+{
+  "period": "daily",
+  "period_start": "2026-10-19",
+  "period_end": "2026-10-20",
+  "fetched_at": "2026-10-20T14:10:45Z",
+  "patches": [
+    {
+      "title": "[bpf-next,16/16] selftests/bpf: Add test for arena percpu bounds",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/ad35a4e7b9ff044a63d7903ae6509c68ea05d6d5.1792503001.git.xukuohai@huawei.com/",
+      "date": "2026-10-20T13:23:01",
+      "series": [
+        {
+          "id": 1189761,
+          "url": "https://patchwork.kernel.org/api/series/1189761/",
+          "web_url": "https://patchwork.kernel.org/series/1189761/",
+          "date": "2026-10-20T13:22:48",
+          "name": "Add percpu variable support for bpf arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189761/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,15/16] selftests/bpf: Add test for mixed arena percpu object",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/a36e6a008493b367af5d9c338cf707fadfc8a632.1792503001.git.xukuohai@huawei.com/",
+      "date": "2026-10-20T13:23:00",
+      "series": [
+        {
+          "id": 1189761,
+          "url": "https://patchwork.kernel.org/api/series/1189761/",
+          "web_url": "https://patchwork.kernel.org/series/1189761/",
+          "date": "2026-10-20T13:22:48",
+          "name": "Add percpu variable support for bpf arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189761/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,14/16] selftests/bpf: Add test for arena percpu-only object",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/f7f725d0057be520ec5fb417f3f7d3a1e2c765fe.1792503001.git.xukuohai@huawei.com/",
+      "date": "2026-10-20T13:22:59",
+      "series": [
+        {
+          "id": 1189761,
+          "url": "https://patchwork.kernel.org/api/series/1189761/",
+          "web_url": "https://patchwork.kernel.org/series/1189761/",
+          "date": "2026-10-20T13:22:48",
+          "name": "Add percpu variable support for bpf arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189761/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,13/16] bpftool: Emit the arena percpu datasec into skeleton",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/a579251a284c3dd4954c305a04346acef4ec4113.1792503001.git.xukuohai@huawei.com/",
+      "date": "2026-10-20T13:22:58",
+      "series": [
+        {
+          "id": 1189761,
+          "url": "https://patchwork.kernel.org/api/series/1189761/",
+          "web_url": "https://patchwork.kernel.org/series/1189761/",
+          "date": "2026-10-20T13:22:48",
+          "name": "Add percpu variable support for bpf arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189761/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,12/16] libbpf: Introduce arena percpu helpers for user space",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/d56952f063f90acb07c0a37c96a83851bea227d8.1792503001.git.xukuohai@huawei.com/",
+      "date": "2026-10-20T13:22:57",
+      "series": [
+        {
+          "id": 1189761,
+          "url": "https://patchwork.kernel.org/api/series/1189761/",
+          "web_url": "https://patchwork.kernel.org/series/1189761/",
+          "date": "2026-10-20T13:22:48",
+          "name": "Add percpu variable support for bpf arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189761/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,11/16] bpf, arm64: Add support for arena percpu",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/1ada7d01118df6deb0707b1a17ff11e041d6ca80.1792503001.git.xukuohai@huawei.com/",
+      "date": "2026-10-20T13:22:56",
+      "series": [
+        {
+          "id": 1189761,
+          "url": "https://patchwork.kernel.org/api/series/1189761/",
+          "web_url": "https://patchwork.kernel.org/series/1189761/",
+          "date": "2026-10-20T13:22:48",
+          "name": "Add percpu variable support for bpf arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189761/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,10/16] bpf, x86: Add support for arena percpu",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/f7b5dd9137eb77203be0c03841da50f9b020417f.1792503001.git.xukuohai@huawei.com/",
+      "date": "2026-10-20T13:22:55",
+      "series": [
+        {
+          "id": 1189761,
+          "url": "https://patchwork.kernel.org/api/series/1189761/",
+          "web_url": "https://patchwork.kernel.org/series/1189761/",
+          "date": "2026-10-20T13:22:48",
+          "name": "Add percpu variable support for bpf arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189761/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,09/16] bpf: Teach verifier about arena percpu instructions",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/38a798d59fc40d94c555c785a900e57c22cec2bc.1792503001.git.xukuohai@huawei.com/",
+      "date": "2026-10-20T13:22:54",
+      "series": [
+        {
+          "id": 1189761,
+          "url": "https://patchwork.kernel.org/api/series/1189761/",
+          "web_url": "https://patchwork.kernel.org/series/1189761/",
+          "date": "2026-10-20T13:22:48",
+          "name": "Add percpu variable support for bpf arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189761/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,08/16] bpf: Extend syscall to accept arena percpu information",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/2f1a53eb72a6fdb93346cb4e1d04a5d472177b1c.1792503001.git.xukuohai@huawei.com/",
+      "date": "2026-10-20T13:22:53",
+      "series": [
+        {
+          "id": 1189761,
+          "url": "https://patchwork.kernel.org/api/series/1189761/",
+          "web_url": "https://patchwork.kernel.org/series/1189761/",
+          "date": "2026-10-20T13:22:48",
+          "name": "Add percpu variable support for bpf arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189761/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,07/16] libbpf: Add arena percpu feature probe",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/10e58b0ec9fab53a862d5efe45c8de932e0f5a6b.1792503001.git.xukuohai@huawei.com/",
+      "date": "2026-10-20T13:22:52",
+      "series": [
+        {
+          "id": 1189761,
+          "url": "https://patchwork.kernel.org/api/series/1189761/",
+          "web_url": "https://patchwork.kernel.org/series/1189761/",
+          "date": "2026-10-20T13:22:48",
+          "name": "Add percpu variable support for bpf arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189761/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,06/16] libbpf: Relocate arena percpu access instructions",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/bca6974a5064e05d9e62b8038147b26d8ecd8500.1792503001.git.xukuohai@huawei.com/",
+      "date": "2026-10-20T13:22:51",
+      "series": [
+        {
+          "id": 1189761,
+          "url": "https://patchwork.kernel.org/api/series/1189761/",
+          "web_url": "https://patchwork.kernel.org/series/1189761/",
+          "date": "2026-10-20T13:22:48",
+          "name": "Add percpu variable support for bpf arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189761/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,05/16] libbpf: Add the arena percpu chunk attribute to map creation options",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/e596c9878df94ac93c172d93106c8ebd2dac4bb7.1792503001.git.xukuohai@huawei.com/",
+      "date": "2026-10-20T13:22:50",
+      "series": [
+        {
+          "id": 1189761,
+          "url": "https://patchwork.kernel.org/api/series/1189761/",
+          "web_url": "https://patchwork.kernel.org/series/1189761/",
+          "date": "2026-10-20T13:22:48",
+          "name": "Add percpu variable support for bpf arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189761/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,04/16] libbpf: Copy the percpu chunks into the bpf arena",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/114861b89f9ea8789e8572c53b1c88774c311460.1792503001.git.xukuohai@huawei.com/",
+      "date": "2026-10-20T13:22:49",
+      "series": [
+        {
+          "id": 1189761,
+          "url": "https://patchwork.kernel.org/api/series/1189761/",
+          "web_url": "https://patchwork.kernel.org/series/1189761/",
+          "date": "2026-10-20T13:22:48",
+          "name": "Add percpu variable support for bpf arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189761/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,03/16] libbpf: Place the percpu chunks in the bpf arena",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/71de6bedb308d1ad6841c0071944426944a5d0ae.1792503001.git.xukuohai@huawei.com/",
+      "date": "2026-10-20T13:22:48",
+      "series": [
+        {
+          "id": 1189761,
+          "url": "https://patchwork.kernel.org/api/series/1189761/",
+          "web_url": "https://patchwork.kernel.org/series/1189761/",
+          "date": "2026-10-20T13:22:48",
+          "name": "Add percpu variable support for bpf arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189761/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,02/16] libbpf: Create arena percpu chunk from the arena percpu ELF section",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/09a19ff6dfc65af56dca0ec5cee051766470f36a.1792503001.git.xukuohai@huawei.com/",
+      "date": "2026-10-20T13:22:47",
+      "series": [
+        {
+          "id": 1189761,
+          "url": "https://patchwork.kernel.org/api/series/1189761/",
+          "web_url": "https://patchwork.kernel.org/series/1189761/",
+          "date": "2026-10-20T13:22:48",
+          "name": "Add percpu variable support for bpf arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189761/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,01/16] libbpf: Collect arena percpu data section",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/7b248b2be4834322ddaad8ee08d22d083877a932.1792503001.git.xukuohai@huawei.com/",
+      "date": "2026-10-20T13:22:46",
+      "series": [
+        {
+          "id": 1189761,
+          "url": "https://patchwork.kernel.org/api/series/1189761/",
+          "web_url": "https://patchwork.kernel.org/series/1189761/",
+          "date": "2026-10-20T13:22:48",
+          "name": "Add percpu variable support for bpf arena",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189761/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Don't use percpu_counter for the htab element count in NMI",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20261020131524.207415-1-puranjay@kernel.org/",
+      "date": "2026-10-20T13:15:22",
+      "series": [
+        {
+          "id": 1189747,
+          "url": "https://patchwork.kernel.org/api/series/1189747/",
+          "web_url": "https://patchwork.kernel.org/series/1189747/",
+          "date": "2026-10-20T13:15:22",
+          "name": "[bpf-next] bpf: Don't use percpu_counter for the htab element count in NMI",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189747/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: tests for 32-bit scalar evolution bounds computation",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261020-scev-32bit-v1-2-838f34f9f0cd@gmail.com/",
+      "date": "2026-10-20T11:06:27",
+      "series": [
+        {
+          "id": 1189661,
+          "url": "https://patchwork.kernel.org/api/series/1189661/",
+          "web_url": "https://patchwork.kernel.org/series/1189661/",
+          "date": "2026-10-20T11:06:25",
+          "name": "bpf: support 32-bit linear scalar evolution",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189661/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: support 32-bit linear scalar evolution",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261020-scev-32bit-v1-1-838f34f9f0cd@gmail.com/",
+      "date": "2026-10-20T11:06:26",
+      "series": [
+        {
+          "id": 1189661,
+          "url": "https://patchwork.kernel.org/api/series/1189661/",
+          "web_url": "https://patchwork.kernel.org/series/1189661/",
+          "date": "2026-10-20T11:06:25",
+          "name": "bpf: support 32-bit linear scalar evolution",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189661/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: test bpf_path_d_path() on a file released at task exit",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20261020105014.97985-3-matt@bobrowski.net/",
+      "date": "2026-10-20T10:50:14",
+      "series": [
+        {
+          "id": 1189652,
+          "url": "https://patchwork.kernel.org/api/series/1189652/",
+          "web_url": "https://patchwork.kernel.org/series/1189652/",
+          "date": "2026-10-20T10:50:12",
+          "name": "bpf: fix crash in bpf_path_d_path() for exiting tasks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189652/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: fix crash in bpf_path_d_path() for exiting tasks",
+      "author": "Matt Bobrowski",
+      "url": "https://lore.kernel.org/bpf/20261020105014.97985-2-matt@bobrowski.net/",
+      "date": "2026-10-20T10:50:13",
+      "series": [
+        {
+          "id": 1189652,
+          "url": "https://patchwork.kernel.org/api/series/1189652/",
+          "web_url": "https://patchwork.kernel.org/series/1189652/",
+          "date": "2026-10-20T10:50:12",
+          "name": "bpf: fix crash in bpf_path_d_path() for exiting tasks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189652/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,8/8] selftests/bpf: Test ksock sendto()",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261020102512.518479-9-mahe.tardy@gmail.com/",
+      "date": "2026-10-20T10:25:12",
+      "series": [
+        {
+          "id": 1189632,
+          "url": "https://patchwork.kernel.org/api/series/1189632/",
+          "web_url": "https://patchwork.kernel.org/series/1189632/",
+          "date": "2026-10-20T10:25:04",
+          "name": "bpf: Expand ksock send-path support",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189632/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,7/8] selftests/bpf: Test forbidden bpf_ksock_sendto() LSM attach",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261020102512.518479-8-mahe.tardy@gmail.com/",
+      "date": "2026-10-20T10:25:11",
+      "series": [
+        {
+          "id": 1189632,
+          "url": "https://patchwork.kernel.org/api/series/1189632/",
+          "web_url": "https://patchwork.kernel.org/series/1189632/",
+          "date": "2026-10-20T10:25:04",
+          "name": "bpf: Expand ksock send-path support",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189632/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,6/8] bpf: add bpf_ksock_sendto() kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261020102512.518479-7-mahe.tardy@gmail.com/",
+      "date": "2026-10-20T10:25:10",
+      "series": [
+        {
+          "id": 1189632,
+          "url": "https://patchwork.kernel.org/api/series/1189632/",
+          "web_url": "https://patchwork.kernel.org/series/1189632/",
+          "date": "2026-10-20T10:25:04",
+          "name": "bpf: Expand ksock send-path support",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189632/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,5/8] selftests/bpf: Test ksock connect/send combinations",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261020102512.518479-6-mahe.tardy@gmail.com/",
+      "date": "2026-10-20T10:25:09",
+      "series": [
+        {
+          "id": 1189632,
+          "url": "https://patchwork.kernel.org/api/series/1189632/",
+          "web_url": "https://patchwork.kernel.org/series/1189632/",
+          "date": "2026-10-20T10:25:04",
+          "name": "bpf: Expand ksock send-path support",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189632/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/8] selftests/bpf: Test verifier filter for ksock connect on LSM attach",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261020102512.518479-5-mahe.tardy@gmail.com/",
+      "date": "2026-10-20T10:25:08",
+      "series": [
+        {
+          "id": 1189632,
+          "url": "https://patchwork.kernel.org/api/series/1189632/",
+          "web_url": "https://patchwork.kernel.org/series/1189632/",
+          "date": "2026-10-20T10:25:04",
+          "name": "bpf: Expand ksock send-path support",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189632/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/8] bpf: move ksock_connect() out of init kfunc set",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261020102512.518479-4-mahe.tardy@gmail.com/",
+      "date": "2026-10-20T10:25:07",
+      "series": [
+        {
+          "id": 1189632,
+          "url": "https://patchwork.kernel.org/api/series/1189632/",
+          "web_url": "https://patchwork.kernel.org/series/1189632/",
+          "date": "2026-10-20T10:25:04",
+          "name": "bpf: Expand ksock send-path support",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189632/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/8] selftests/bpf: Test allowed bpf_ksock operations at send LSM attach",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261020102512.518479-3-mahe.tardy@gmail.com/",
+      "date": "2026-10-20T10:25:06",
+      "series": [
+        {
+          "id": 1189632,
+          "url": "https://patchwork.kernel.org/api/series/1189632/",
+          "web_url": "https://patchwork.kernel.org/series/1189632/",
+          "date": "2026-10-20T10:25:04",
+          "name": "bpf: Expand ksock send-path support",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189632/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/8] bpf: improve ksock_kfunc_set LSM recursion filter",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261020102512.518479-2-mahe.tardy@gmail.com/",
+      "date": "2026-10-20T10:25:05",
+      "series": [
+        {
+          "id": 1189632,
+          "url": "https://patchwork.kernel.org/api/series/1189632/",
+          "web_url": "https://patchwork.kernel.org/series/1189632/",
+          "date": "2026-10-20T10:25:04",
+          "name": "bpf: Expand ksock send-path support",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189632/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Cast helper IDs to the helper type in bpf_helper_defs.h",
+      "author": "Maxim Skokov",
+      "url": "https://lore.kernel.org/bpf/20261020101229.111074-1-skokovmaksimevg@gmail.com/",
+      "date": "2026-10-20T10:12:15",
+      "series": [
+        {
+          "id": 1189622,
+          "url": "https://patchwork.kernel.org/api/series/1189622/",
+          "web_url": "https://patchwork.kernel.org/series/1189622/",
+          "date": "2026-10-20T10:12:15",
+          "name": "[bpf-next] bpf: Cast helper IDs to the helper type in bpf_helper_defs.h",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189622/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3] tools/bpf: Remove legacy BPF tools",
+      "author": "Xia Yan",
+      "url": "https://lore.kernel.org/bpf/20261020095124.928021-1-yanxia@cmss.chinamobile.com/",
+      "date": "2026-10-20T09:51:24",
+      "series": [
+        {
+          "id": 1189604,
+          "url": "https://patchwork.kernel.org/api/series/1189604/",
+          "web_url": "https://patchwork.kernel.org/series/1189604/",
+          "date": "2026-10-20T09:51:24",
+          "name": "[bpf-next,v3] tools/bpf: Remove legacy BPF tools",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1189604/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] tools/bpf: Remove legacy BPF tools",
+      "author": "Xia Yan",
+      "url": "https://lore.kernel.org/bpf/20261020083713.905006-1-yanxia@cmss.chinamobile.com/",
+      "date": "2026-10-20T08:37:13",
+      "series": [
+        {
+          "id": 1189547,
+          "url": "https://patchwork.kernel.org/api/series/1189547/",
+          "web_url": "https://patchwork.kernel.org/series/1189547/",
+          "date": "2026-10-20T08:37:13",
+          "name": "[bpf-next,v2] tools/bpf: Remove legacy BPF tools",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1189547/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,6/6] selftests/bpf: Test unwinding from R0:R2 subprog",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261020043319.3031996-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-20T04:33:19",
+      "series": [
+        {
+          "id": 1189427,
+          "url": "https://patchwork.kernel.org/api/series/1189427/",
+          "web_url": "https://patchwork.kernel.org/series/1189427/",
+          "date": "2026-10-20T04:33:13",
+          "name": "bpf: Unwinding with unwind_goto and unwind_exit",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1189427/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,5/6] selftests/bpf: Add a C++ prog with exceptions",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261020043319.3031996-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-20T04:33:18",
+      "series": [
+        {
+          "id": 1189427,
+          "url": "https://patchwork.kernel.org/api/series/1189427/",
+          "web_url": "https://patchwork.kernel.org/series/1189427/",
+          "date": "2026-10-20T04:33:13",
+          "name": "bpf: Unwinding with unwind_goto and unwind_exit",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1189427/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,4/6] selftests/bpf: Add tests for unwind_goto and unwind_exit",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261020043319.3031996-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-20T04:33:17",
+      "series": [
+        {
+          "id": 1189427,
+          "url": "https://patchwork.kernel.org/api/series/1189427/",
+          "web_url": "https://patchwork.kernel.org/series/1189427/",
+          "date": "2026-10-20T04:33:13",
+          "name": "bpf: Unwinding with unwind_goto and unwind_exit",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1189427/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,3/6] bpf, arm64: Support unwind_goto and unwind_exit",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261020043319.3031996-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-20T04:33:16",
+      "series": [
+        {
+          "id": 1189427,
+          "url": "https://patchwork.kernel.org/api/series/1189427/",
+          "web_url": "https://patchwork.kernel.org/series/1189427/",
+          "date": "2026-10-20T04:33:13",
+          "name": "bpf: Unwinding with unwind_goto and unwind_exit",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1189427/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,2/6] bpf, x86: Support unwind_goto and unwind_exit",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261020043319.3031996-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-20T04:33:15",
+      "series": [
+        {
+          "id": 1189427,
+          "url": "https://patchwork.kernel.org/api/series/1189427/",
+          "web_url": "https://patchwork.kernel.org/series/1189427/",
+          "date": "2026-10-20T04:33:13",
+          "name": "bpf: Unwinding with unwind_goto and unwind_exit",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1189427/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,1/6] bpf: Add unwind_goto and unwind_exit insns",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261020043319.3031996-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-20T04:33:14",
+      "series": [
+        {
+          "id": 1189427,
+          "url": "https://patchwork.kernel.org/api/series/1189427/",
+          "web_url": "https://patchwork.kernel.org/series/1189427/",
+          "date": "2026-10-20T04:33:13",
+          "name": "bpf: Unwinding with unwind_goto and unwind_exit",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1189427/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] bpf: Fix ksock build with BPF_LSM=y and SECURITY_NETWORK=n",
+      "author": "Sasha Levin",
+      "url": "https://lore.kernel.org/bpf/20261019211006.2574350-4-sashal@kernel.org/",
+      "date": "2026-10-19T21:10:06",
+      "series": [
+        {
+          "id": 1189252,
+          "url": "https://patchwork.kernel.org/api/series/1189252/",
+          "web_url": "https://patchwork.kernel.org/series/1189252/",
+          "date": "2026-10-19T21:10:04",
+          "name": "bpf: Fix builds broken by fatal resolve_btfids warnings",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189252/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] bpf: Don't reference arena kfuncs when arena isn't built",
+      "author": "Sasha Levin",
+      "url": "https://lore.kernel.org/bpf/20261019211006.2574350-3-sashal@kernel.org/",
+      "date": "2026-10-19T21:10:05",
+      "series": [
+        {
+          "id": 1189252,
+          "url": "https://patchwork.kernel.org/api/series/1189252/",
+          "web_url": "https://patchwork.kernel.org/series/1189252/",
+          "date": "2026-10-19T21:10:04",
+          "name": "bpf: Fix builds broken by fatal resolve_btfids warnings",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189252/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] bpf: Drop unused entries from special_kfunc_list again",
+      "author": "Sasha Levin",
+      "url": "https://lore.kernel.org/bpf/20261019211006.2574350-2-sashal@kernel.org/",
+      "date": "2026-10-19T21:10:04",
+      "series": [
+        {
+          "id": 1189252,
+          "url": "https://patchwork.kernel.org/api/series/1189252/",
+          "web_url": "https://patchwork.kernel.org/series/1189252/",
+          "date": "2026-10-19T21:10:04",
+          "name": "bpf: Fix builds broken by fatal resolve_btfids warnings",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189252/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,3/3] selftests/bpf: Add arena allocation race tests",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261019201108.4552-4-emil@etsalapatis.com/",
+      "date": "2026-10-19T20:11:08",
+      "series": [
+        {
+          "id": 1189225,
+          "url": "https://patchwork.kernel.org/api/series/1189225/",
+          "web_url": "https://patchwork.kernel.org/series/1189225/",
+          "date": "2026-10-19T20:11:05",
+          "name": "bpf: Fix arena memory incoherence",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1189225/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,2/3] bpf: Fix arena race between page free and alloc leading to incoherency",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261019201108.4552-3-emil@etsalapatis.com/",
+      "date": "2026-10-19T20:11:07",
+      "series": [
+        {
+          "id": 1189225,
+          "url": "https://patchwork.kernel.org/api/series/1189225/",
+          "web_url": "https://patchwork.kernel.org/series/1189225/",
+          "date": "2026-10-19T20:11:05",
+          "name": "bpf: Fix arena memory incoherence",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1189225/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,1/3] bpf: Revalidate faulted arena pages before installing user mappings",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261019201108.4552-2-emil@etsalapatis.com/",
+      "date": "2026-10-19T20:11:06",
+      "series": [
+        {
+          "id": 1189225,
+          "url": "https://patchwork.kernel.org/api/series/1189225/",
+          "web_url": "https://patchwork.kernel.org/series/1189225/",
+          "date": "2026-10-19T20:11:05",
+          "name": "bpf: Fix arena memory incoherence",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1189225/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Add __printf attribute to bpf_diag_source()",
+      "author": "Adri\u00e1n Garc\u00eda Casado",
+      "url": "https://lore.kernel.org/bpf/20261019195916.186225-1-adriangarciacasado42@gmail.com/",
+      "date": "2026-10-19T19:59:16",
+      "series": [
+        {
+          "id": 1189220,
+          "url": "https://patchwork.kernel.org/api/series/1189220/",
+          "web_url": "https://patchwork.kernel.org/series/1189220/",
+          "date": "2026-10-19T19:59:16",
+          "name": "[bpf-next] bpf: Add __printf attribute to bpf_diag_source()",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189220/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] bpf: Annotate data races on bpf_lru_node type",
+      "author": "Nicholas Velten",
+      "url": "https://lore.kernel.org/bpf/20261019-fix-lru-node-type-kcsan-v2-1-c10a410b3565@gmail.com/",
+      "date": "2026-10-19T17:38:20",
+      "series": [
+        {
+          "id": 1189156,
+          "url": "https://patchwork.kernel.org/api/series/1189156/",
+          "web_url": "https://patchwork.kernel.org/series/1189156/",
+          "date": "2026-10-19T17:38:20",
+          "name": "[bpf-next,v2] bpf: Annotate data races on bpf_lru_node type",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1189156/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "linux-next: manual merge of the bpf-next tree with the vfs-brauner tree",
+      "author": "Mark Brown",
+      "url": "https://lore.kernel.org/bpf/atZBAZTtUd6mr09s@sirena.co.uk/",
+      "date": "2026-10-19T16:10:41",
+      "series": [
+        {
+          "id": 1189100,
+          "url": "https://patchwork.kernel.org/api/series/1189100/",
+          "web_url": "https://patchwork.kernel.org/series/1189100/",
+          "date": "2026-10-19T16:10:41",
+          "name": "linux-next: manual merge of the bpf-next tree with the vfs-brauner tree",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189100/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,6/6] selftests/bpf: Add tests to verify link_create logs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261019153628.15912-7-leon.hwang@linux.dev/",
+      "date": "2026-10-19T15:36:28",
+      "series": [
+        {
+          "id": 1189061,
+          "url": "https://patchwork.kernel.org/api/series/1189061/",
+          "web_url": "https://patchwork.kernel.org/series/1189061/",
+          "date": "2026-10-19T15:36:22",
+          "name": "bpf: Add syscall common attrs support for xdp link_create",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1189061/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/6] libbpf: Add bpf_link_create_log API",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261019153628.15912-6-leon.hwang@linux.dev/",
+      "date": "2026-10-19T15:36:27",
+      "series": [
+        {
+          "id": 1189061,
+          "url": "https://patchwork.kernel.org/api/series/1189061/",
+          "web_url": "https://patchwork.kernel.org/series/1189061/",
+          "date": "2026-10-19T15:36:22",
+          "name": "bpf: Add syscall common attrs support for xdp link_create",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1189061/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/6] libbpf: Factor out __sys_bpf_fd helper",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261019153628.15912-5-leon.hwang@linux.dev/",
+      "date": "2026-10-19T15:36:26",
+      "series": [
+        {
+          "id": 1189061,
+          "url": "https://patchwork.kernel.org/api/series/1189061/",
+          "web_url": "https://patchwork.kernel.org/series/1189061/",
+          "date": "2026-10-19T15:36:22",
+          "name": "bpf: Add syscall common attrs support for xdp link_create",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1189061/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/6] bpf: Retire tracepoint bpf_xdp_link_attach_failed",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261019153628.15912-4-leon.hwang@linux.dev/",
+      "date": "2026-10-19T15:36:25",
+      "series": [
+        {
+          "id": 1189061,
+          "url": "https://patchwork.kernel.org/api/series/1189061/",
+          "web_url": "https://patchwork.kernel.org/series/1189061/",
+          "date": "2026-10-19T15:36:22",
+          "name": "bpf: Add syscall common attrs support for xdp link_create",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1189061/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/6] bpf: Add syscall common attrs support for xdp link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261019153628.15912-3-leon.hwang@linux.dev/",
+      "date": "2026-10-19T15:36:24",
+      "series": [
+        {
+          "id": 1189061,
+          "url": "https://patchwork.kernel.org/api/series/1189061/",
+          "web_url": "https://patchwork.kernel.org/series/1189061/",
+          "date": "2026-10-19T15:36:22",
+          "name": "bpf: Add syscall common attrs support for xdp link_create",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1189061/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/6] bpf: Add syscall common attrs support for link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261019153628.15912-2-leon.hwang@linux.dev/",
+      "date": "2026-10-19T15:36:23",
+      "series": [
+        {
+          "id": 1189061,
+          "url": "https://patchwork.kernel.org/api/series/1189061/",
+          "web_url": "https://patchwork.kernel.org/series/1189061/",
+          "date": "2026-10-19T15:36:22",
+          "name": "bpf: Add syscall common attrs support for xdp link_create",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1189061/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,2/2] selftests/bpf: Test that a signed program with CO-RE relocations is refused",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019144851.4052056-3-memxor@gmail.com/",
+      "date": "2026-10-19T14:48:50",
+      "series": [
+        {
+          "id": 1189020,
+          "url": "https://patchwork.kernel.org/api/series/1189020/",
+          "web_url": "https://patchwork.kernel.org/series/1189020/",
+          "date": "2026-10-19T14:48:48",
+          "name": "Refuse CO-RE relocations for a signed program",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,1/2] bpf: Refuse CO-RE relocations for a signed program",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019144851.4052056-2-memxor@gmail.com/",
+      "date": "2026-10-19T14:48:49",
+      "series": [
+        {
+          "id": 1189020,
+          "url": "https://patchwork.kernel.org/api/series/1189020/",
+          "web_url": "https://patchwork.kernel.org/series/1189020/",
+          "date": "2026-10-19T14:48:48",
+          "name": "Refuse CO-RE relocations for a signed program",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1189020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,16/16] selftests/bpf: Test an arena kfunc argument passed from a subprogram",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-17-memxor@gmail.com/",
+      "date": "2026-10-19T13:21:58",
+      "series": [
+        {
+          "id": 1188939,
+          "url": "https://patchwork.kernel.org/api/series/1188939/",
+          "web_url": "https://patchwork.kernel.org/series/1188939/",
+          "date": "2026-10-19T13:21:42",
+          "name": "Fix some arena paper cuts",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1188939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,15/16] selftests/bpf: Test the address space rendering of the arena type tag",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-16-memxor@gmail.com/",
+      "date": "2026-10-19T13:21:57",
+      "series": [
+        {
+          "id": 1188939,
+          "url": "https://patchwork.kernel.org/api/series/1188939/",
+          "web_url": "https://patchwork.kernel.org/series/1188939/",
+          "date": "2026-10-19T13:21:42",
+          "name": "Fix some arena paper cuts",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1188939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,14/16] libbpf: Render the arena type tag with its address space",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-15-memxor@gmail.com/",
+      "date": "2026-10-19T13:21:56",
+      "series": [
+        {
+          "id": 1188939,
+          "url": "https://patchwork.kernel.org/api/series/1188939/",
+          "web_url": "https://patchwork.kernel.org/series/1188939/",
+          "date": "2026-10-19T13:21:42",
+          "name": "Fix some arena paper cuts",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1188939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,13/16] bpf: Set up the arena base only in functions that use it",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-14-memxor@gmail.com/",
+      "date": "2026-10-19T13:21:55",
+      "series": [
+        {
+          "id": 1188939,
+          "url": "https://patchwork.kernel.org/api/series/1188939/",
+          "web_url": "https://patchwork.kernel.org/series/1188939/",
+          "date": "2026-10-19T13:21:42",
+          "name": "Fix some arena paper cuts",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1188939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,12/16] selftests/bpf: Test arena binding by libbpf",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-13-memxor@gmail.com/",
+      "date": "2026-10-19T13:21:54",
+      "series": [
+        {
+          "id": 1188939,
+          "url": "https://patchwork.kernel.org/api/series/1188939/",
+          "web_url": "https://patchwork.kernel.org/series/1188939/",
+          "date": "2026-10-19T13:21:42",
+          "name": "Fix some arena paper cuts",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1188939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,11/16] libbpf: Bind the arena of an object to every program in it",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-12-memxor@gmail.com/",
+      "date": "2026-10-19T13:21:53",
+      "series": [
+        {
+          "id": 1188939,
+          "url": "https://patchwork.kernel.org/api/series/1188939/",
+          "web_url": "https://patchwork.kernel.org/series/1188939/",
+          "date": "2026-10-19T13:21:42",
+          "name": "Fix some arena paper cuts",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1188939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,10/16] selftests/bpf: Move the no-arena tests out of objects with an arena map",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-11-memxor@gmail.com/",
+      "date": "2026-10-19T13:21:52",
+      "series": [
+        {
+          "id": 1188939,
+          "url": "https://patchwork.kernel.org/api/series/1188939/",
+          "web_url": "https://patchwork.kernel.org/series/1188939/",
+          "date": "2026-10-19T13:21:42",
+          "name": "Fix some arena paper cuts",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1188939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,09/16] selftests/bpf: Test __arena pointer members",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-10-memxor@gmail.com/",
+      "date": "2026-10-19T13:21:51",
+      "series": [
+        {
+          "id": 1188939,
+          "url": "https://patchwork.kernel.org/api/series/1188939/",
+          "web_url": "https://patchwork.kernel.org/series/1188939/",
+          "date": "2026-10-19T13:21:42",
+          "name": "Fix some arena paper cuts",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1188939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,08/16] selftests/bpf: Test __nullable pointer members",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-9-memxor@gmail.com/",
+      "date": "2026-10-19T13:21:50",
+      "series": [
+        {
+          "id": 1188939,
+          "url": "https://patchwork.kernel.org/api/series/1188939/",
+          "web_url": "https://patchwork.kernel.org/series/1188939/",
+          "date": "2026-10-19T13:21:42",
+          "name": "Fix some arena paper cuts",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1188939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,07/16] bpf: Turn loads of __arena pointer members into arena pointers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-8-memxor@gmail.com/",
+      "date": "2026-10-19T13:21:49",
+      "series": [
+        {
+          "id": 1188939,
+          "url": "https://patchwork.kernel.org/api/series/1188939/",
+          "web_url": "https://patchwork.kernel.org/series/1188939/",
+          "date": "2026-10-19T13:21:42",
+          "name": "Fix some arena paper cuts",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1188939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,06/16] bpf: Recognize __nullable on pointer members of kernel structs",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-7-memxor@gmail.com/",
+      "date": "2026-10-19T13:21:48",
+      "series": [
+        {
+          "id": 1188939,
+          "url": "https://patchwork.kernel.org/api/series/1188939/",
+          "web_url": "https://patchwork.kernel.org/series/1188939/",
+          "date": "2026-10-19T13:21:42",
+          "name": "Fix some arena paper cuts",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1188939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,05/16] bpf: Add the __arena and __nullable BTF type tags",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-6-memxor@gmail.com/",
+      "date": "2026-10-19T13:21:47",
+      "series": [
+        {
+          "id": 1188939,
+          "url": "https://patchwork.kernel.org/api/series/1188939/",
+          "web_url": "https://patchwork.kernel.org/series/1188939/",
+          "date": "2026-10-19T13:21:42",
+          "name": "Fix some arena paper cuts",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1188939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,04/16] selftests/bpf: Clone a program that calls a module kfunc",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-5-memxor@gmail.com/",
+      "date": "2026-10-19T13:21:46",
+      "series": [
+        {
+          "id": 1188939,
+          "url": "https://patchwork.kernel.org/api/series/1188939/",
+          "web_url": "https://patchwork.kernel.org/series/1188939/",
+          "date": "2026-10-19T13:21:42",
+          "name": "Fix some arena paper cuts",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1188939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,03/16] libbpf: Keep the fd_array fill index out of bpf_program__clone()",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-4-memxor@gmail.com/",
+      "date": "2026-10-19T13:21:45",
+      "series": [
+        {
+          "id": 1188939,
+          "url": "https://patchwork.kernel.org/api/series/1188939/",
+          "web_url": "https://patchwork.kernel.org/series/1188939/",
+          "date": "2026-10-19T13:21:42",
+          "name": "Fix some arena paper cuts",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1188939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,02/16] selftests/bpf: Bind an exclusive map through a continuous fd_array",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-3-memxor@gmail.com/",
+      "date": "2026-10-19T13:21:44",
+      "series": [
+        {
+          "id": 1188939,
+          "url": "https://patchwork.kernel.org/api/series/1188939/",
+          "web_url": "https://patchwork.kernel.org/series/1188939/",
+          "date": "2026-10-19T13:21:42",
+          "name": "Fix some arena paper cuts",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1188939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,01/16] bpf: Check exclusive maps once the program digest is final",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-2-memxor@gmail.com/",
+      "date": "2026-10-19T13:21:43",
+      "series": [
+        {
+          "id": 1188939,
+          "url": "https://patchwork.kernel.org/api/series/1188939/",
+          "web_url": "https://patchwork.kernel.org/series/1188939/",
+          "date": "2026-10-19T13:21:42",
+          "name": "Fix some arena paper cuts",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1188939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3] selftests/bpf: Drop subtest descriptions in jit_insns_arena.c",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20261019083005.12236-1-yangtiezhu@loongson.cn/",
+      "date": "2026-10-19T08:30:05",
+      "series": [
+        {
+          "id": 1188686,
+          "url": "https://patchwork.kernel.org/api/series/1188686/",
+          "web_url": "https://patchwork.kernel.org/series/1188686/",
+          "date": "2026-10-19T08:30:05",
+          "name": "[bpf-next,v3] selftests/bpf: Drop subtest descriptions in jit_insns_arena.c",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1188686/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,v3,bpf-next,5/5] selftests/bpf: add tests for the numab kfuncs",
+      "author": "Yafang Shao",
+      "url": "https://lore.kernel.org/bpf/20261019064157.29885-6-laoar.shao@gmail.com/",
+      "date": "2026-10-19T06:41:57",
+      "series": [
+        {
+          "id": 1188639,
+          "url": "https://patchwork.kernel.org/api/series/1188639/",
+          "web_url": "https://patchwork.kernel.org/series/1188639/",
+          "date": "2026-10-19T06:41:52",
+          "name": "BPF-based per-cgroup NUMA balancing mode selection",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1188639/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,v3,bpf-next,4/5] sched: add BPF-based per-cgroup NUMA balancing mode selection",
+      "author": "Yafang Shao",
+      "url": "https://lore.kernel.org/bpf/20261019064157.29885-5-laoar.shao@gmail.com/",
+      "date": "2026-10-19T06:41:56",
+      "series": [
+        {
+          "id": 1188639,
+          "url": "https://patchwork.kernel.org/api/series/1188639/",
+          "web_url": "https://patchwork.kernel.org/series/1188639/",
+          "date": "2026-10-19T06:41:52",
+          "name": "BPF-based per-cgroup NUMA balancing mode selection",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1188639/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,v3,bpf-next,3/5] sched: add helpers for numa balancing",
+      "author": "Yafang Shao",
+      "url": "https://lore.kernel.org/bpf/20261019064157.29885-4-laoar.shao@gmail.com/",
+      "date": "2026-10-19T06:41:55",
+      "series": [
+        {
+          "id": 1188639,
+          "url": "https://patchwork.kernel.org/api/series/1188639/",
+          "web_url": "https://patchwork.kernel.org/series/1188639/",
+          "date": "2026-10-19T06:41:52",
+          "name": "BPF-based per-cgroup NUMA balancing mode selection",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1188639/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,v3,bpf-next,2/5] sched: use static_branch_likely() for the NUMA balancing tick check",
+      "author": "Yafang Shao",
+      "url": "https://lore.kernel.org/bpf/20261019064157.29885-3-laoar.shao@gmail.com/",
+      "date": "2026-10-19T06:41:54",
+      "series": [
+        {
+          "id": 1188639,
+          "url": "https://patchwork.kernel.org/api/series/1188639/",
+          "web_url": "https://patchwork.kernel.org/series/1188639/",
+          "date": "2026-10-19T06:41:52",
+          "name": "BPF-based per-cgroup NUMA balancing mode selection",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1188639/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,v3,bpf-next,1/5] sched: fix stale get_pref_llc() stub for !CONFIG_SCHED_CACHE",
+      "author": "Yafang Shao",
+      "url": "https://lore.kernel.org/bpf/20261019064157.29885-2-laoar.shao@gmail.com/",
+      "date": "2026-10-19T06:41:53",
+      "series": [
+        {
+          "id": 1188639,
+          "url": "https://patchwork.kernel.org/api/series/1188639/",
+          "web_url": "https://patchwork.kernel.org/series/1188639/",
+          "date": "2026-10-19T06:41:52",
+          "name": "BPF-based per-cgroup NUMA balancing mode selection",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1188639/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] selftests/bpf: Time tc_edt from its first packet with data",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261019-selftests-bpf-tc-edt-serial-v2-1-41c3813e7916@gmail.com/",
+      "date": "2026-10-19T06:35:55",
+      "series": [
+        {
+          "id": 1188632,
+          "url": "https://patchwork.kernel.org/api/series/1188632/",
+          "web_url": "https://patchwork.kernel.org/series/1188632/",
+          "date": "2026-10-19T06:35:55",
+          "name": "[bpf-next,v2] selftests/bpf: Time tc_edt from its first packet with data",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1188632/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,5/5] selftests/bpf: Add a C++ prog with exceptions",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261019051846.3012089-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-19T05:18:46",
+      "series": [
+        {
+          "id": 1188607,
+          "url": "https://patchwork.kernel.org/api/series/1188607/",
+          "web_url": "https://patchwork.kernel.org/series/1188607/",
+          "date": "2026-10-19T05:18:41",
+          "name": "bpf: Unwinding with unwind_goto and unwind_exit",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1188607/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,4/5] selftests/bpf: Add tests for unwind_goto and unwind_exit",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261019051846.3012089-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-19T05:18:45",
+      "series": [
+        {
+          "id": 1188607,
+          "url": "https://patchwork.kernel.org/api/series/1188607/",
+          "web_url": "https://patchwork.kernel.org/series/1188607/",
+          "date": "2026-10-19T05:18:41",
+          "name": "bpf: Unwinding with unwind_goto and unwind_exit",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1188607/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,3/5] bpf, arm64: Support unwind_goto and unwind_exit",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261019051846.3012089-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-19T05:18:44",
+      "series": [
+        {
+          "id": 1188607,
+          "url": "https://patchwork.kernel.org/api/series/1188607/",
+          "web_url": "https://patchwork.kernel.org/series/1188607/",
+          "date": "2026-10-19T05:18:41",
+          "name": "bpf: Unwinding with unwind_goto and unwind_exit",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1188607/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,2/5] bpf, x86: Support unwind_goto and unwind_exit",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261019051846.3012089-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-19T05:18:43",
+      "series": [
+        {
+          "id": 1188607,
+          "url": "https://patchwork.kernel.org/api/series/1188607/",
+          "web_url": "https://patchwork.kernel.org/series/1188607/",
+          "date": "2026-10-19T05:18:41",
+          "name": "bpf: Unwinding with unwind_goto and unwind_exit",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1188607/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,1/5] bpf: Add unwind_goto and unwind_exit insns",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261019051846.3012089-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-19T05:18:42",
+      "series": [
+        {
+          "id": 1188607,
+          "url": "https://patchwork.kernel.org/api/series/1188607/",
+          "web_url": "https://patchwork.kernel.org/series/1188607/",
+          "date": "2026-10-19T05:18:41",
+          "name": "bpf: Unwinding with unwind_goto and unwind_exit",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1188607/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] selftests/bpf: Use snake_case for subtest descriptions in jit_insns_arena.c",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20261019040106.27309-1-yangtiezhu@loongson.cn/",
+      "date": "2026-10-19T04:01:06",
+      "series": [
+        {
+          "id": 1188584,
+          "url": "https://patchwork.kernel.org/api/series/1188584/",
+          "web_url": "https://patchwork.kernel.org/series/1188584/",
+          "date": "2026-10-19T04:01:06",
+          "name": "[bpf-next,v2] selftests/bpf: Use snake_case for subtest descriptions in jit_insns_arena.c",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1188584/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,16/16] selftests/bpf: Test an arena kfunc argument passed from a subprogram",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019032401.2302823-17-memxor@gmail.com/",
+      "date": "2026-10-19T03:23:56",
+      "series": [
+        {
+          "id": 1188571,
+          "url": "https://patchwork.kernel.org/api/series/1188571/",
+          "web_url": "https://patchwork.kernel.org/series/1188571/",
+          "date": "2026-10-19T03:23:40",
+          "name": "Fix some arena paper cuts",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1188571/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,15/16] selftests/bpf: Test the address space rendering of the arena type tag",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019032401.2302823-16-memxor@gmail.com/",
+      "date": "2026-10-19T03:23:55",
+      "series": [
+        {
+          "id": 1188571,
+          "url": "https://patchwork.kernel.org/api/series/1188571/",
+          "web_url": "https://patchwork.kernel.org/series/1188571/",
+          "date": "2026-10-19T03:23:40",
+          "name": "Fix some arena paper cuts",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1188571/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,14/16] libbpf: Render the arena type tag with its address space",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019032401.2302823-15-memxor@gmail.com/",
+      "date": "2026-10-19T03:23:54",
+      "series": [
+        {
+          "id": 1188571,
+          "url": "https://patchwork.kernel.org/api/series/1188571/",
+          "web_url": "https://patchwork.kernel.org/series/1188571/",
+          "date": "2026-10-19T03:23:40",
+          "name": "Fix some arena paper cuts",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1188571/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,13/16] bpf: Set up the arena base only in functions that use it",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019032401.2302823-14-memxor@gmail.com/",
+      "date": "2026-10-19T03:23:53",
+      "series": [
+        {
+          "id": 1188571,
+          "url": "https://patchwork.kernel.org/api/series/1188571/",
+          "web_url": "https://patchwork.kernel.org/series/1188571/",
+          "date": "2026-10-19T03:23:40",
+          "name": "Fix some arena paper cuts",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1188571/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,12/16] selftests/bpf: Test arena binding by libbpf",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019032401.2302823-13-memxor@gmail.com/",
+      "date": "2026-10-19T03:23:52",
+      "series": [
+        {
+          "id": 1188571,
+          "url": "https://patchwork.kernel.org/api/series/1188571/",
+          "web_url": "https://patchwork.kernel.org/series/1188571/",
+          "date": "2026-10-19T03:23:40",
+          "name": "Fix some arena paper cuts",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1188571/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,11/16] libbpf: Bind the arena of an object to every program in it",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019032401.2302823-12-memxor@gmail.com/",
+      "date": "2026-10-19T03:23:51",
+      "series": [
+        {
+          "id": 1188571,
+          "url": "https://patchwork.kernel.org/api/series/1188571/",
+          "web_url": "https://patchwork.kernel.org/series/1188571/",
+          "date": "2026-10-19T03:23:40",
+          "name": "Fix some arena paper cuts",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1188571/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,10/16] selftests/bpf: Move the no-arena tests out of objects with an arena map",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019032401.2302823-11-memxor@gmail.com/",
+      "date": "2026-10-19T03:23:50",
+      "series": [
+        {
+          "id": 1188571,
+          "url": "https://patchwork.kernel.org/api/series/1188571/",
+          "web_url": "https://patchwork.kernel.org/series/1188571/",
+          "date": "2026-10-19T03:23:40",
+          "name": "Fix some arena paper cuts",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1188571/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,09/16] selftests/bpf: Test __arena pointer members",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019032401.2302823-10-memxor@gmail.com/",
+      "date": "2026-10-19T03:23:49",
+      "series": [
+        {
+          "id": 1188571,
+          "url": "https://patchwork.kernel.org/api/series/1188571/",
+          "web_url": "https://patchwork.kernel.org/series/1188571/",
+          "date": "2026-10-19T03:23:40",
+          "name": "Fix some arena paper cuts",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1188571/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,08/16] selftests/bpf: Test __nullable pointer members",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019032401.2302823-9-memxor@gmail.com/",
+      "date": "2026-10-19T03:23:48",
+      "series": [
+        {
+          "id": 1188571,
+          "url": "https://patchwork.kernel.org/api/series/1188571/",
+          "web_url": "https://patchwork.kernel.org/series/1188571/",
+          "date": "2026-10-19T03:23:40",
+          "name": "Fix some arena paper cuts",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1188571/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,07/16] bpf: Turn loads of __arena pointer members into arena pointers",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019032401.2302823-8-memxor@gmail.com/",
+      "date": "2026-10-19T03:23:47",
+      "series": [
+        {
+          "id": 1188571,
+          "url": "https://patchwork.kernel.org/api/series/1188571/",
+          "web_url": "https://patchwork.kernel.org/series/1188571/",
+          "date": "2026-10-19T03:23:40",
+          "name": "Fix some arena paper cuts",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1188571/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,06/16] bpf: Recognize __nullable on pointer members of kernel structs",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019032401.2302823-7-memxor@gmail.com/",
+      "date": "2026-10-19T03:23:46",
+      "series": [
+        {
+          "id": 1188571,
+          "url": "https://patchwork.kernel.org/api/series/1188571/",
+          "web_url": "https://patchwork.kernel.org/series/1188571/",
+          "date": "2026-10-19T03:23:40",
+          "name": "Fix some arena paper cuts",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1188571/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,05/16] bpf: Add the __arena and __nullable BTF type tags",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019032401.2302823-6-memxor@gmail.com/",
+      "date": "2026-10-19T03:23:45",
+      "series": [
+        {
+          "id": 1188571,
+          "url": "https://patchwork.kernel.org/api/series/1188571/",
+          "web_url": "https://patchwork.kernel.org/series/1188571/",
+          "date": "2026-10-19T03:23:40",
+          "name": "Fix some arena paper cuts",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1188571/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,04/16] selftests/bpf: Clone a program that calls a module kfunc",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019032401.2302823-5-memxor@gmail.com/",
+      "date": "2026-10-19T03:23:44",
+      "series": [
+        {
+          "id": 1188571,
+          "url": "https://patchwork.kernel.org/api/series/1188571/",
+          "web_url": "https://patchwork.kernel.org/series/1188571/",
+          "date": "2026-10-19T03:23:40",
+          "name": "Fix some arena paper cuts",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1188571/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,03/16] libbpf: Keep the fd_array fill index out of bpf_program__clone()",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019032401.2302823-4-memxor@gmail.com/",
+      "date": "2026-10-19T03:23:43",
+      "series": [
+        {
+          "id": 1188571,
+          "url": "https://patchwork.kernel.org/api/series/1188571/",
+          "web_url": "https://patchwork.kernel.org/series/1188571/",
+          "date": "2026-10-19T03:23:40",
+          "name": "Fix some arena paper cuts",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1188571/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,02/16] selftests/bpf: Bind an exclusive map through a continuous fd_array",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019032401.2302823-3-memxor@gmail.com/",
+      "date": "2026-10-19T03:23:42",
+      "series": [
+        {
+          "id": 1188571,
+          "url": "https://patchwork.kernel.org/api/series/1188571/",
+          "web_url": "https://patchwork.kernel.org/series/1188571/",
+          "date": "2026-10-19T03:23:40",
+          "name": "Fix some arena paper cuts",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1188571/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,01/16] bpf: Check exclusive maps once the program digest is final",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019032401.2302823-2-memxor@gmail.com/",
+      "date": "2026-10-19T03:23:41",
+      "series": [
+        {
+          "id": 1188571,
+          "url": "https://patchwork.kernel.org/api/series/1188571/",
+          "web_url": "https://patchwork.kernel.org/series/1188571/",
+          "date": "2026-10-19T03:23:40",
+          "name": "Fix some arena paper cuts",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1188571/mbox/"
+        }
+      ]
+    }
+  ]
+}
