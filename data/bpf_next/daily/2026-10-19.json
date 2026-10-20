@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-20T00:00:00Z",
+  "period_start": "2026-10-18",
+  "period_end": "2026-10-19",
+  "patch_count": 76,
+  "thread_count": 21,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Alexei Starovoitov", "Qiliang Yuan", "Leon Hwang"],
+  "key_topics": ["arena", "btf", "verifier", "xdp", "libbpf", "struct-ops", "dynptr", "kfuncs"],
+  "overview": "October 18-19 saw heavy activity across BPF arena and BTF improvements, with Kumar Kartikeya Dwivedi posting a v5 16-patch series fixing arena paper cuts including new __arena and __nullable BTF type tags and libbpf auto-binding. Alexei Starovoitov continued work on BPF exception handling with a new unwind_goto and unwind_exit instruction set, while also tightening verifier safety rules around packet pointers and program extensions.",
+  "patches": [
+    {
+      "title": "bpf: Add syscall common attrs support for link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261019153628.15912-2-leon.hwang@linux.dev/",
+      "summary": "This 6-patch series (v2) adds common syscall attribute support to the BPF link_create path, specifically targeting XDP links. It introduces a new bpf_link_create_log API in libbpf that surfaces log output when link creation fails, replacing the now-retired bpf_xdp_link_attach_failed tracepoint. The change improves debuggability of XDP link attachment failures by providing structured error information through the standard log mechanism. Companion selftests verify the new log behavior end-to-end.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refuse CO-RE relocations for a signed program",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019144851.4052056-2-memxor@gmail.com/",
+      "summary": "This 2-patch series (v1) adds a verifier check that rejects CO-RE (Compile Once, Run Everywhere) relocations when loading a signed BPF program. Signed programs rely on a stable binary digest for integrity verification, but CO-RE relocations patch the program bytecode at load time, invalidating any pre-computed signature. The fix ensures that the two features remain mutually exclusive, preventing a class of security policy bypass where a signed but CO-RE-relocated program could differ from what was originally signed.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Check exclusive maps once the program digest is final",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-2-memxor@gmail.com/",
+      "summary": "This 16-patch series (v5, \"Fix some arena paper cuts\") addresses several usability issues with BPF arenas. Key changes include new __arena and __nullable BTF type tags recognized by the verifier, correct handling of loads of __arena pointer struct members, and libbpf automatically binding an object's arena map to every program it contains. Additional patches fix arena base register setup to only occur in functions that actually use it, and improve the BTF rendering of the arena type tag with its address space information. The series ships with extensive selftests covering all new behaviors.",
+      "related_links": []
+    },
+    {
+      "title": "sched: add BPF-based per-cgroup NUMA balancing mode selection",
+      "author": "Yafang Shao",
+      "url": "https://lore.kernel.org/bpf/20261019064157.29885-5-laoar.shao@gmail.com/",
+      "summary": "This RFC 5-patch series (v3) introduces BPF kfuncs that allow selecting the NUMA balancing mode on a per-cgroup basis from a BPF program. It adds scheduler helpers for NUMA balancing and exposes them as kfuncs callable from sched BPF programs, enabling workload-aware NUMA policy without kernel recompilation. The series includes a bugfix for a stale get_pref_llc() stub when CONFIG_SCHED_CACHE is disabled, and ships with selftests for the new kfuncs. Still RFC status as the interface is being refined.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add unwind_goto and unwind_exit insns",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261019051846.3012089-2-alexei.starovoitov@gmail.com/",
+      "summary": "This 5-patch series (v2) introduces two new BPF instructions, unwind_goto and unwind_exit, to support structured exception-like unwinding from BPF programs. The instructions allow a program to jump to a cleanup label on error without the overhead of a full C++ exception unwind table, and the JIT backends for both x86 and arm64 are updated to emit the corresponding native sequences. A companion testcase adds a C++ BPF program that uses C++ exceptions, exercising the new mechanism end-to-end.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Protect the struct_ops association with a spinlock",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261019-selftests-bpf-struct-ops-assoc-timer-v5-1-77b2e181e5cc@gmail.com/",
+      "summary": "This 4-patch series (v5) fixes a use-after-free race in struct_ops maps that manifested as a flaky assoc_in_timer selftest. The fix dissociates struct_ops programs before the map enters its RCU grace period and protects the association state with a spinlock, eliminating the window where a running program could access a map that has already begun teardown. A new selftest directly exercises freeing a struct_ops map under a concurrently running program.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refuse the prologue for an extension if callers keep packet pointers",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261019011328.1843764-1-alexei.starovoitov@gmail.com/",
+      "summary": "This single patch (v2) tightens verifier safety for BPF extension programs: if any caller of a freplace target keeps live packet pointers at the call site, the verifier now refuses to insert a prologue for the extension. This prevents the extension from operating on a stale packet pointer that was invalidated by the prologue's helper calls, closing a potential memory safety hole in XDP and tc programs that use function replacement.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject packet dynptr slices in mutating helpers and subprograms",
+      "author": "Ren Wei",
+      "url": "https://lore.kernel.org/bpf/a49e4bcfaa33c4efd7e2f15e0d8fc117ca254780.1792222148.git.rakukuip@gmail.com/",
+      "summary": "This 2-patch series (v2) adds a verifier check that rejects packet dynptr slices when they are passed to helpers or subprograms that could mutate packet data. Mutating helpers may reallocate the underlying packet buffer, invalidating any existing pointers derived from the dynptr slice. The patch prevents a use-after-free class of bugs by teaching the verifier to track when a dynptr refers to packet memory and refusing the unsafe combination at verification time.",
+      "related_links": []
+    }
+  ]
+}
