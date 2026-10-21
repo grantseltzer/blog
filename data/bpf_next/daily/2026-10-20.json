@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-21T00:00:00Z",
+  "period_start": "2026-10-19",
+  "period_end": "2026-10-20",
+  "patch_count": 100,
+  "thread_count": 23,
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Xu Kuohai", "Alexei Starovoitov"],
+  "key_topics": ["arena", "percpu", "verifier", "kfuncs", "libbpf", "xdp", "selftests"],
+  "overview": "Activity on October 19-20, 2026 was dominated by BPF arena improvements: Xu Kuohai posted a sweeping 16-patch series adding percpu variable support to bpf arena across libbpf, the kernel syscall path, the verifier, and JIT backends for x86 and arm64. Simultaneously, Kumar Kartikeya Dwivedi posted a v5 of his arena paper-cuts series and introduced a new restriction refusing CO-RE relocations for signed BPF programs. Alexei Starovoitov advanced unwind_goto/unwind_exit to v3, while other contributors addressed ksock send-path expansion, 32-bit scalar evolution in the verifier, and arena memory-incoherence races.",
+  "patches": [
+    {
+      "title": "libbpf: Collect arena percpu data section",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/7b248b2be4834322ddaad8ee08d22d083877a932.1792503001.git.xukuohai@huawei.com/",
+      "summary": "First patch in a 16-part series adding percpu variable support to bpf arena. libbpf gains the ability to recognize the arena percpu ELF section, create percpu chunks from it, place and copy those chunks into the arena map, and expose user-space helpers for accessing them. The series also extends the BPF syscall to carry percpu metadata, teaches the verifier to understand arena percpu load/store instructions, adds JIT support on both x86 and arm64, updates bpftool to emit the arena percpu datasec into skeletons, and includes comprehensive selftests. This is a major ergonomics improvement for BPF programs that need per-CPU state in a shared address space.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add unwind_goto and unwind_exit insns",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261020043319.3031996-2-alexei.starovoitov@gmail.com/",
+      "summary": "v3 of a 6-patch series introducing two new BPF instructions, unwind_goto and unwind_exit, that enable structured stack unwinding in BPF programs. These primitives are designed to support C++ exception handling semantics from BPF, allowing programs compiled with exception support to unwind their stack frames cleanly rather than aborting. The series adds x86 and arm64 JIT support, selftests exercising both direct use and a C++ program with exceptions, and a test verifying unwinding from an R0:R2 subprog. The feature opens the door to richer language runtimes targeting BPF.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Check exclusive maps once the program digest is final",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019132203.3034698-2-memxor@gmail.com/",
+      "summary": "First patch in the v5 posting of a 16-patch arena paper-cuts series. The series fixes multiple arena-related rough edges: exclusive map checking is deferred until after the program digest is complete, libbpf is taught to bind an object's arena to every program in it automatically, the __arena and __nullable BTF type tags are introduced so that arena pointer members and nullable kernel struct pointers can be expressed and verified correctly, and bpftool and libbpf gain the ability to render the arena type tag with its address space. The changes collectively reduce boilerplate and make arena programs more robust.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: support 32-bit linear scalar evolution",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261020-scev-32bit-v1-1-838f34f9f0cd@gmail.com/",
+      "summary": "Extends the BPF verifier's scalar evolution (SCEV) analysis to handle 32-bit registers, complementing existing 64-bit support. Linear scalar evolution tracks how register values change across loop iterations, allowing the verifier to prove loop termination and tighten bounds without unrolling. Supporting 32-bit scalars allows more programs that operate on 32-bit loop counters or indices to pass verification. A companion selftest patch exercises the new bounds computation paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: improve ksock_kfunc_set LSM recursion filter",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261020102512.518479-2-mahe.tardy@gmail.com/",
+      "summary": "First patch in an 8-part series expanding the BPF kernel socket (ksock) send path. The series adds a new bpf_ksock_sendto() kfunc alongside improvements to the LSM recursion guard that prevents re-entrant kfunc calls from ksock-attached hooks. ksock_connect() is moved out of the init kfunc set to enable proper lifecycle management, and selftests cover allowed ksock operations at send LSM attach points, forbidden sendto LSM attachments, and end-to-end connect/send combinations. This gives BPF LSM programs richer control over the socket send path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Revalidate faulted arena pages before installing user mappings",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261019201108.4552-2-emil@etsalapatis.com/",
+      "summary": "v6 of a 3-patch series fixing a memory incoherence race in BPF arena. When two threads simultaneously fault on the same arena page, the losing thread could install a user mapping pointing to a page that had already been freed and reallocated, leading to memory corruption. The fix revalidates the faulted page under the arena lock before installing the user mapping, and closes a related race between page free and alloc that could produce incoherent state. A new selftest exercises the allocation race under concurrent load.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Refuse CO-RE relocations for a signed program",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261019144851.4052056-2-memxor@gmail.com/",
+      "summary": "Teaches the kernel to reject BPF programs that carry a cryptographic signature but also require CO-RE (Compile Once, Run Everywhere) relocations. CO-RE relocations are applied by libbpf at load time, rewriting instructions to match the running kernel's BTF layout; this post-compilation modification would invalidate any signature over the original bytecode. By refusing such programs early, the kernel prevents a class of integrity bypass where a signed binary is loaded after silent relocation rewriting. A selftest verifies that a signed program with CO-RE relocations is rejected.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add syscall common attrs support for link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261019153628.15912-2-leon.hwang@linux.dev/",
+      "summary": "v2 of a 6-patch series extending BPF link_create to accept a set of common syscall attributes, initially used to pass a log buffer for XDP link attachment errors. A new bpf_link_create_log libbpf API surfaces this to user space. The series retires the now-redundant bpf_xdp_link_attach_failed tracepoint in favour of the structured log, and factors out a __sys_bpf_fd helper to reduce duplication. Selftests verify that link_create log output is populated correctly on failure.",
+      "related_links": []
+    }
+  ]
+}
