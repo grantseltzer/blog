@@ -1,0 +1,926 @@
+{
+  "period": "daily",
+  "period_start": "2026-10-21",
+  "period_end": "2026-10-22",
+  "fetched_at": "2026-10-22T14:24:28Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: Test JIT jumps which change at a repeated image length",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261022-jit_size_fix-v2-2-4bee6921b218@meta.com/",
+      "date": "2026-10-22T12:04:56",
+      "series": [
+        {
+          "id": 1191270,
+          "url": "https://patchwork.kernel.org/api/series/1191270/",
+          "web_url": "https://patchwork.kernel.org/series/1191270/",
+          "date": "2026-10-22T12:04:54",
+          "name": "bpf: Fix x86 JIT stopping before jumps converge",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1191270/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: Size backward jumps by the insns they jump over",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261022-jit_size_fix-v2-1-4bee6921b218@meta.com/",
+      "date": "2026-10-22T12:04:55",
+      "series": [
+        {
+          "id": 1191270,
+          "url": "https://patchwork.kernel.org/api/series/1191270/",
+          "web_url": "https://patchwork.kernel.org/series/1191270/",
+          "date": "2026-10-22T12:04:54",
+          "name": "bpf: Fix x86 JIT stopping before jumps converge",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1191270/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] bpf: Use memmove() to load bytes from an skb and an xdp_buff",
+      "author": "Ayushman Rout",
+      "url": "https://lore.kernel.org/bpf/20261022112312.31563-1-ayushmanrout27@gmail.com/",
+      "date": "2026-10-22T11:23:11",
+      "series": [
+        {
+          "id": 1191249,
+          "url": "https://patchwork.kernel.org/api/series/1191249/",
+          "web_url": "https://patchwork.kernel.org/series/1191249/",
+          "date": "2026-10-22T11:23:11",
+          "name": "[bpf-next,v2] bpf: Use memmove() to load bytes from an skb and an xdp_buff",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1191249/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,4/4] selftests/bpf: Wait for the struct_ops map to be freed in assoc_in_timer",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261022-selftests-bpf-struct-ops-assoc-timer-v6-4-2c0f18e82582@gmail.com/",
+      "date": "2026-10-22T08:48:39",
+      "series": [
+        {
+          "id": 1191123,
+          "url": "https://patchwork.kernel.org/api/series/1191123/",
+          "web_url": "https://patchwork.kernel.org/series/1191123/",
+          "date": "2026-10-22T08:48:35",
+          "name": "bpf: Fix a struct_ops use-after-free behind a flaky assoc_in_timer test",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1191123/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,3/4] selftests/bpf: Test freeing a struct_ops map under a running prog",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261022-selftests-bpf-struct-ops-assoc-timer-v6-3-2c0f18e82582@gmail.com/",
+      "date": "2026-10-22T08:48:38",
+      "series": [
+        {
+          "id": 1191123,
+          "url": "https://patchwork.kernel.org/api/series/1191123/",
+          "web_url": "https://patchwork.kernel.org/series/1191123/",
+          "date": "2026-10-22T08:48:35",
+          "name": "bpf: Fix a struct_ops use-after-free behind a flaky assoc_in_timer test",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1191123/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,2/4] bpf: Dissociate struct_ops progs before the grace period of the map",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261022-selftests-bpf-struct-ops-assoc-timer-v6-2-2c0f18e82582@gmail.com/",
+      "date": "2026-10-22T08:48:37",
+      "series": [
+        {
+          "id": 1191123,
+          "url": "https://patchwork.kernel.org/api/series/1191123/",
+          "web_url": "https://patchwork.kernel.org/series/1191123/",
+          "date": "2026-10-22T08:48:35",
+          "name": "bpf: Fix a struct_ops use-after-free behind a flaky assoc_in_timer test",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1191123/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v6,1/4] bpf: Protect the struct_ops association with a spinlock",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261022-selftests-bpf-struct-ops-assoc-timer-v6-1-2c0f18e82582@gmail.com/",
+      "date": "2026-10-22T08:48:36",
+      "series": [
+        {
+          "id": 1191123,
+          "url": "https://patchwork.kernel.org/api/series/1191123/",
+          "web_url": "https://patchwork.kernel.org/series/1191123/",
+          "date": "2026-10-22T08:48:35",
+          "name": "bpf: Fix a struct_ops use-after-free behind a flaky assoc_in_timer test",
+          "version": 6,
+          "mbox": "https://patchwork.kernel.org/series/1191123/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Propagate btf_add_type() errors in btf_check_all_metas()",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20261022064727.747304-1-yangfeng59949@163.com/",
+      "date": "2026-10-22T06:47:27",
+      "series": [
+        {
+          "id": 1191054,
+          "url": "https://patchwork.kernel.org/api/series/1191054/",
+          "web_url": "https://patchwork.kernel.org/series/1191054/",
+          "date": "2026-10-22T06:47:27",
+          "name": "[bpf-next] bpf: Propagate btf_add_type() errors in btf_check_all_metas()",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1191054/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,9/9] selftests/bpf: Test uprobes and fork() with busy mmap_lock",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261022015712.1297331-10-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-22T01:57:12",
+      "series": [
+        {
+          "id": 1190946,
+          "url": "https://patchwork.kernel.org/api/series/1190946/",
+          "web_url": "https://patchwork.kernel.org/series/1190946/",
+          "date": "2026-10-22T01:57:03",
+          "name": "uprobes: Don't stall fork() when mmap_lock is busy",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190946/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,8/9] uprobes: Don't leak the breakpoints if the unregistering task is killed",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261022015712.1297331-9-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-22T01:57:11",
+      "series": [
+        {
+          "id": 1190946,
+          "url": "https://patchwork.kernel.org/api/series/1190946/",
+          "web_url": "https://patchwork.kernel.org/series/1190946/",
+          "date": "2026-10-22T01:57:03",
+          "name": "uprobes: Don't stall fork() when mmap_lock is busy",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190946/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,7/9] fork: Let the new task point to its mm before uprobes can find it",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261022015712.1297331-8-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-22T01:57:10",
+      "series": [
+        {
+          "id": 1190946,
+          "url": "https://patchwork.kernel.org/api/series/1190946/",
+          "web_url": "https://patchwork.kernel.org/series/1190946/",
+          "date": "2026-10-22T01:57:03",
+          "name": "uprobes: Don't stall fork() when mmap_lock is busy",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190946/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,6/9] uprobes: Don't sleep on mmap_lock with dup_mmap_sem held in dup_mmap()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261022015712.1297331-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-22T01:57:09",
+      "series": [
+        {
+          "id": 1190946,
+          "url": "https://patchwork.kernel.org/api/series/1190946/",
+          "web_url": "https://patchwork.kernel.org/series/1190946/",
+          "date": "2026-10-22T01:57:03",
+          "name": "uprobes: Don't stall fork() when mmap_lock is busy",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190946/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,5/9] uprobes: Don't sleep on mmap_lock under dup_mmap_sem",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261022015712.1297331-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-22T01:57:08",
+      "series": [
+        {
+          "id": 1190946,
+          "url": "https://patchwork.kernel.org/api/series/1190946/",
+          "web_url": "https://patchwork.kernel.org/series/1190946/",
+          "date": "2026-10-22T01:57:03",
+          "name": "uprobes: Don't stall fork() when mmap_lock is busy",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190946/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/9] uprobes/x86: Don't WARN if an optimized probe can't be written",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261022015712.1297331-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-22T01:57:07",
+      "series": [
+        {
+          "id": 1190946,
+          "url": "https://patchwork.kernel.org/api/series/1190946/",
+          "web_url": "https://patchwork.kernel.org/series/1190946/",
+          "date": "2026-10-22T01:57:03",
+          "name": "uprobes: Don't stall fork() when mmap_lock is busy",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190946/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/9] uprobes/x86: Finish an unoptimization which failed half-way",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261022015712.1297331-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-22T01:57:06",
+      "series": [
+        {
+          "id": 1190946,
+          "url": "https://patchwork.kernel.org/api/series/1190946/",
+          "web_url": "https://patchwork.kernel.org/series/1190946/",
+          "date": "2026-10-22T01:57:03",
+          "name": "uprobes: Don't stall fork() when mmap_lock is busy",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190946/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/9] uprobes: Don't run exit_mmap() under dup_mmap_sem",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261022015712.1297331-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-22T01:57:05",
+      "series": [
+        {
+          "id": 1190946,
+          "url": "https://patchwork.kernel.org/api/series/1190946/",
+          "web_url": "https://patchwork.kernel.org/series/1190946/",
+          "date": "2026-10-22T01:57:03",
+          "name": "uprobes: Don't stall fork() when mmap_lock is busy",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190946/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/9] mm: Bring back mmap_write_trylock()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261022015712.1297331-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-22T01:57:04",
+      "series": [
+        {
+          "id": 1190946,
+          "url": "https://patchwork.kernel.org/api/series/1190946/",
+          "web_url": "https://patchwork.kernel.org/series/1190946/",
+          "date": "2026-10-22T01:57:03",
+          "name": "uprobes: Don't stall fork() when mmap_lock is busy",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190946/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] selftests/bpf: say how to fix the missing LLVM skip for jited checks",
+      "author": "Wang Yibo",
+      "url": "https://lore.kernel.org/bpf/20261022080500.100-4-szwyb123@gmail.com/",
+      "date": "2026-10-22T00:07:09",
+      "series": [
+        {
+          "id": 1190930,
+          "url": "https://patchwork.kernel.org/api/series/1190930/",
+          "web_url": "https://patchwork.kernel.org/series/1190930/",
+          "date": "2026-10-22T00:06:54",
+          "name": "Add diagnostics for kfunc registration failures and jit subtest skips",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190930/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] selftests/bpf: name the failing registration in bpf_testmod_init",
+      "author": "Wang Yibo",
+      "url": "https://lore.kernel.org/bpf/20261022080500.100-3-szwyb123@gmail.com/",
+      "date": "2026-10-22T00:07:05",
+      "series": [
+        {
+          "id": 1190930,
+          "url": "https://patchwork.kernel.org/api/series/1190930/",
+          "web_url": "https://patchwork.kernel.org/series/1190930/",
+          "date": "2026-10-22T00:06:54",
+          "name": "Add diagnostics for kfunc registration failures and jit subtest skips",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190930/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] bpf: report kfunc sets that fail BTF sanity check",
+      "author": "Wang Yibo",
+      "url": "https://lore.kernel.org/bpf/20261022080500.100-2-szwyb123@gmail.com/",
+      "date": "2026-10-22T00:07:00",
+      "series": [
+        {
+          "id": 1190930,
+          "url": "https://patchwork.kernel.org/api/series/1190930/",
+          "web_url": "https://patchwork.kernel.org/series/1190930/",
+          "date": "2026-10-22T00:06:54",
+          "name": "Add diagnostics for kfunc registration failures and jit subtest skips",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190930/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,7/7] selftests/bpf: libarena: Cover buddy cache fast paths",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261021232641.10063-8-emil@etsalapatis.com/",
+      "date": "2026-10-21T23:26:41",
+      "series": [
+        {
+          "id": 1190918,
+          "url": "https://patchwork.kernel.org/api/series/1190918/",
+          "web_url": "https://patchwork.kernel.org/series/1190918/",
+          "date": "2026-10-21T23:26:34",
+          "name": "bpf libarena allocator improvements",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190918/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,6/7] selftests/bpf: libarena: Add a transfer cache",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261021232641.10063-7-emil@etsalapatis.com/",
+      "date": "2026-10-21T23:26:40",
+      "series": [
+        {
+          "id": 1190918,
+          "url": "https://patchwork.kernel.org/api/series/1190918/",
+          "web_url": "https://patchwork.kernel.org/series/1190918/",
+          "date": "2026-10-21T23:26:34",
+          "name": "bpf libarena allocator improvements",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190918/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/7] selftests/bpf: libarena: Refill local caches in batches",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261021232641.10063-6-emil@etsalapatis.com/",
+      "date": "2026-10-21T23:26:39",
+      "series": [
+        {
+          "id": 1190918,
+          "url": "https://patchwork.kernel.org/api/series/1190918/",
+          "web_url": "https://patchwork.kernel.org/series/1190918/",
+          "date": "2026-10-21T23:26:34",
+          "name": "bpf libarena allocator improvements",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190918/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/7] selftests/bpf: libarena: Handle NMI reentrancy",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261021232641.10063-5-emil@etsalapatis.com/",
+      "date": "2026-10-21T23:26:38",
+      "series": [
+        {
+          "id": 1190918,
+          "url": "https://patchwork.kernel.org/api/series/1190918/",
+          "web_url": "https://patchwork.kernel.org/series/1190918/",
+          "date": "2026-10-21T23:26:34",
+          "name": "bpf libarena allocator improvements",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190918/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/7] selftests/bpf: libarena: Add buddy per-CPU caches",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261021232641.10063-4-emil@etsalapatis.com/",
+      "date": "2026-10-21T23:26:37",
+      "series": [
+        {
+          "id": 1190918,
+          "url": "https://patchwork.kernel.org/api/series/1190918/",
+          "web_url": "https://patchwork.kernel.org/series/1190918/",
+          "date": "2026-10-21T23:26:34",
+          "name": "bpf libarena allocator improvements",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190918/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/7] selftests/bpf: Add a parallel buddy allocator benchmark",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261021232641.10063-3-emil@etsalapatis.com/",
+      "date": "2026-10-21T23:26:36",
+      "series": [
+        {
+          "id": 1190918,
+          "url": "https://patchwork.kernel.org/api/series/1190918/",
+          "web_url": "https://patchwork.kernel.org/series/1190918/",
+          "date": "2026-10-21T23:26:34",
+          "name": "bpf libarena allocator improvements",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190918/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/7] selftests/bpf: libarena: Add bulk buddy allocation helpers",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261021232641.10063-2-emil@etsalapatis.com/",
+      "date": "2026-10-21T23:26:35",
+      "series": [
+        {
+          "id": 1190918,
+          "url": "https://patchwork.kernel.org/api/series/1190918/",
+          "web_url": "https://patchwork.kernel.org/series/1190918/",
+          "date": "2026-10-21T23:26:34",
+          "name": "bpf libarena allocator improvements",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190918/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf, x86: Use emit_rsb_call() to call bpf_unwind_target()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261021220844.239400-1-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-21T22:08:44",
+      "series": [
+        {
+          "id": 1190881,
+          "url": "https://patchwork.kernel.org/api/series/1190881/",
+          "web_url": "https://patchwork.kernel.org/series/1190881/",
+          "date": "2026-10-21T22:08:44",
+          "name": "[bpf-next] bpf, x86: Use emit_rsb_call() to call bpf_unwind_target()",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190881/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,2/2] selftests/bpf: Test borrowed iterator result lifetimes",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20261021210754.3270023-3-xyx2021@mail.ustc.edu.cn/",
+      "date": "2026-10-21T21:07:54",
+      "series": [
+        {
+          "id": 1190856,
+          "url": "https://patchwork.kernel.org/api/series/1190856/",
+          "web_url": "https://patchwork.kernel.org/series/1190856/",
+          "date": "2026-10-21T21:07:53",
+          "name": "bpf: Track borrowed iterator result lifetimes",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1190856/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,1/2] bpf: Track borrowed iterator results by default",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20261021210754.3270023-2-xyx2021@mail.ustc.edu.cn/",
+      "date": "2026-10-21T21:07:53",
+      "series": [
+        {
+          "id": 1190856,
+          "url": "https://patchwork.kernel.org/api/series/1190856/",
+          "web_url": "https://patchwork.kernel.org/series/1190856/",
+          "date": "2026-10-21T21:07:53",
+          "name": "bpf: Track borrowed iterator result lifetimes",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1190856/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,9/9] selftests/bpf: Add user page failures test",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20261021195759.119421-10-jolsa@kernel.org/",
+      "date": "2026-10-21T19:57:58",
+      "series": [
+        {
+          "id": 1190804,
+          "url": "https://patchwork.kernel.org/api/series/1190804/",
+          "web_url": "https://patchwork.kernel.org/series/1190804/",
+          "date": "2026-10-21T19:57:49",
+          "name": "bpf: Add support to allocate user page",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190804/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,8/9] selftests/bpf: Add faultable user page writes test",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20261021195759.119421-9-jolsa@kernel.org/",
+      "date": "2026-10-21T19:57:57",
+      "series": [
+        {
+          "id": 1190804,
+          "url": "https://patchwork.kernel.org/api/series/1190804/",
+          "web_url": "https://patchwork.kernel.org/series/1190804/",
+          "date": "2026-10-21T19:57:49",
+          "name": "bpf: Add support to allocate user page",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190804/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,7/9] selftests/bpf: Add uprobe user page exec test",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20261021195759.119421-8-jolsa@kernel.org/",
+      "date": "2026-10-21T19:57:56",
+      "series": [
+        {
+          "id": 1190804,
+          "url": "https://patchwork.kernel.org/api/series/1190804/",
+          "web_url": "https://patchwork.kernel.org/series/1190804/",
+          "date": "2026-10-21T19:57:49",
+          "name": "bpf: Add support to allocate user page",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190804/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,6/9] selftests/bpf: Add user page allocation test",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20261021195759.119421-7-jolsa@kernel.org/",
+      "date": "2026-10-21T19:57:55",
+      "series": [
+        {
+          "id": 1190804,
+          "url": "https://patchwork.kernel.org/api/series/1190804/",
+          "web_url": "https://patchwork.kernel.org/series/1190804/",
+          "date": "2026-10-21T19:57:49",
+          "name": "bpf: Add support to allocate user page",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190804/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,5/9] selftests/bpf: Add __srcptr kfunc arguments test",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20261021195759.119421-6-jolsa@kernel.org/",
+      "date": "2026-10-21T19:57:54",
+      "series": [
+        {
+          "id": 1190804,
+          "url": "https://patchwork.kernel.org/api/series/1190804/",
+          "web_url": "https://patchwork.kernel.org/series/1190804/",
+          "date": "2026-10-21T19:57:49",
+          "name": "bpf: Add support to allocate user page",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190804/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,4/9] bpf: Add kfuncs to allocate and seal user pages",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20261021195759.119421-5-jolsa@kernel.org/",
+      "date": "2026-10-21T19:57:53",
+      "series": [
+        {
+          "id": 1190804,
+          "url": "https://patchwork.kernel.org/api/series/1190804/",
+          "web_url": "https://patchwork.kernel.org/series/1190804/",
+          "date": "2026-10-21T19:57:49",
+          "name": "bpf: Add support to allocate user page",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190804/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,3/9] mm: Expose locked mprotect operation",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20261021195759.119421-4-jolsa@kernel.org/",
+      "date": "2026-10-21T19:57:52",
+      "series": [
+        {
+          "id": 1190804,
+          "url": "https://patchwork.kernel.org/api/series/1190804/",
+          "web_url": "https://patchwork.kernel.org/series/1190804/",
+          "date": "2026-10-21T19:57:49",
+          "name": "bpf: Add support to allocate user page",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190804/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,2/9] bpf: Add uprobe faultable user copy kfunc",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20261021195759.119421-3-jolsa@kernel.org/",
+      "date": "2026-10-21T19:57:51",
+      "series": [
+        {
+          "id": 1190804,
+          "url": "https://patchwork.kernel.org/api/series/1190804/",
+          "web_url": "https://patchwork.kernel.org/series/1190804/",
+          "date": "2026-10-21T19:57:49",
+          "name": "bpf: Add support to allocate user page",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190804/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,1/9] bpf: Add __srcptr kfunc argument suffix",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20261021195759.119421-2-jolsa@kernel.org/",
+      "date": "2026-10-21T19:57:50",
+      "series": [
+        {
+          "id": 1190804,
+          "url": "https://patchwork.kernel.org/api/series/1190804/",
+          "web_url": "https://patchwork.kernel.org/series/1190804/",
+          "date": "2026-10-21T19:57:49",
+          "name": "bpf: Add support to allocate user page",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190804/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] selftests/bpf: pointer operands for 32-bit recurrences/latches",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261021185609.607075-2-eddyz87@gmail.com/",
+      "date": "2026-10-21T18:56:09",
+      "series": [
+        {
+          "id": 1190769,
+          "url": "https://patchwork.kernel.org/api/series/1190769/",
+          "web_url": "https://patchwork.kernel.org/series/1190769/",
+          "date": "2026-10-21T18:56:09",
+          "name": "[bpf-next,v2,1/2] bpf: reject pointer operands for 32-bit recurrences/latches",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190769/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: reject pointer operands for 32-bit recurrences/latches",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261021185609.607075-1-eddyz87@gmail.com/",
+      "date": "2026-10-21T18:56:08",
+      "series": [
+        {
+          "id": 1190769,
+          "url": "https://patchwork.kernel.org/api/series/1190769/",
+          "web_url": "https://patchwork.kernel.org/series/1190769/",
+          "date": "2026-10-21T18:56:09",
+          "name": "[bpf-next,v2,1/2] bpf: reject pointer operands for 32-bit recurrences/latches",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190769/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] bpf: Drop percpu_counter from the htab element count",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20261021185117.650403-1-puranjay@kernel.org/",
+      "date": "2026-10-21T18:51:16",
+      "series": [
+        {
+          "id": 1190752,
+          "url": "https://patchwork.kernel.org/api/series/1190752/",
+          "web_url": "https://patchwork.kernel.org/series/1190752/",
+          "date": "2026-10-21T18:51:16",
+          "name": "[bpf-next,v2] bpf: Drop percpu_counter from the htab element count",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190752/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Pass extack to bpf_xdp_link_attach",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261021152455.71524-1-leon.hwang@linux.dev/",
+      "date": "2026-10-21T15:24:55",
+      "series": [
+        {
+          "id": 1190606,
+          "url": "https://patchwork.kernel.org/api/series/1190606/",
+          "web_url": "https://patchwork.kernel.org/series/1190606/",
+          "date": "2026-10-21T15:24:55",
+          "name": "[bpf-next] bpf: Pass extack to bpf_xdp_link_attach",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190606/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Test JIT jumps which change at a repeated image length",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261021-jit_size_fix-v1-2-b89fd32cafd6@meta.com/",
+      "date": "2026-10-21T14:21:33",
+      "series": [
+        {
+          "id": 1190565,
+          "url": "https://patchwork.kernel.org/api/series/1190565/",
+          "web_url": "https://patchwork.kernel.org/series/1190565/",
+          "date": "2026-10-21T14:21:31",
+          "name": "bpf: Fix x86 JIT stopping before jumps converge",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190565/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Stop JIT passes only when no insn moves",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261021-jit_size_fix-v1-1-b89fd32cafd6@meta.com/",
+      "date": "2026-10-21T14:21:32",
+      "series": [
+        {
+          "id": 1190565,
+          "url": "https://patchwork.kernel.org/api/series/1190565/",
+          "web_url": "https://patchwork.kernel.org/series/1190565/",
+          "date": "2026-10-21T14:21:31",
+          "name": "bpf: Fix x86 JIT stopping before jumps converge",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190565/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf: Use memmove() to load bytes from an skb and an xdp_buff",
+      "author": "Ayushman Rout",
+      "url": "https://lore.kernel.org/bpf/20261021103957.17532-1-ayushmanrout27@gmail.com/",
+      "date": "2026-10-21T10:39:57",
+      "series": [
+        {
+          "id": 1190401,
+          "url": "https://patchwork.kernel.org/api/series/1190401/",
+          "web_url": "https://patchwork.kernel.org/series/1190401/",
+          "date": "2026-10-21T10:39:57",
+          "name": "[bpf-next] bpf: Use memmove() to load bytes from an skb and an xdp_buff",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1190401/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,8/8] selftests/bpf: Add bytecode tests for UHMUL and SHMUL",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20261021-bpf-hmul-v2-8-88e260099f7d@outlook.com/",
+      "date": "2026-10-21T08:24:25",
+      "series": [
+        {
+          "id": 1190204,
+          "url": "https://patchwork.kernel.org/api/series/1190204/",
+          "web_url": "https://patchwork.kernel.org/series/1190204/",
+          "date": "2026-10-21T05:40:34",
+          "name": "bpf: Add UHMUL and SHMUL instructions",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190204/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,7/8] bpf: Add verifier support for UHMUL and SHMUL",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20261021-bpf-hmul-v2-7-88e260099f7d@outlook.com/",
+      "date": "2026-10-21T08:24:10",
+      "series": [
+        {
+          "id": 1190204,
+          "url": "https://patchwork.kernel.org/api/series/1190204/",
+          "web_url": "https://patchwork.kernel.org/series/1190204/",
+          "date": "2026-10-21T05:40:34",
+          "name": "bpf: Add UHMUL and SHMUL instructions",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190204/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,6/8] bpf: Refactor ALU instruction variant validation",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20261021-bpf-hmul-v2-6-88e260099f7d@outlook.com/",
+      "date": "2026-10-21T08:23:58",
+      "series": [
+        {
+          "id": 1190204,
+          "url": "https://patchwork.kernel.org/api/series/1190204/",
+          "web_url": "https://patchwork.kernel.org/series/1190204/",
+          "date": "2026-10-21T05:40:34",
+          "name": "bpf: Add UHMUL and SHMUL instructions",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190204/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/8] bpf: Reject UHMUL/SHMUL in unsupported backends",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20261021-bpf-hmul-v2-5-88e260099f7d@outlook.com/",
+      "date": "2026-10-21T08:23:44",
+      "series": [
+        {
+          "id": 1190204,
+          "url": "https://patchwork.kernel.org/api/series/1190204/",
+          "web_url": "https://patchwork.kernel.org/series/1190204/",
+          "date": "2026-10-21T05:40:34",
+          "name": "bpf: Add UHMUL and SHMUL instructions",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190204/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/8] bpf, riscv: JIT UHMUL and SHMUL on RV64",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20261021-bpf-hmul-v2-4-88e260099f7d@outlook.com/",
+      "date": "2026-10-21T08:23:34",
+      "series": [
+        {
+          "id": 1190204,
+          "url": "https://patchwork.kernel.org/api/series/1190204/",
+          "web_url": "https://patchwork.kernel.org/series/1190204/",
+          "date": "2026-10-21T05:40:34",
+          "name": "bpf: Add UHMUL and SHMUL instructions",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190204/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/8] bpf, arm64: JIT UHMUL and SHMUL",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20261021-bpf-hmul-v2-3-88e260099f7d@outlook.com/",
+      "date": "2026-10-21T08:23:23",
+      "series": [
+        {
+          "id": 1190204,
+          "url": "https://patchwork.kernel.org/api/series/1190204/",
+          "web_url": "https://patchwork.kernel.org/series/1190204/",
+          "date": "2026-10-21T05:40:34",
+          "name": "bpf: Add UHMUL and SHMUL instructions",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190204/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/8] bpf, x86: JIT UHMUL and SHMUL on x86-64",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20261021-bpf-hmul-v2-2-88e260099f7d@outlook.com/",
+      "date": "2026-10-21T05:52:30",
+      "series": [
+        {
+          "id": 1190204,
+          "url": "https://patchwork.kernel.org/api/series/1190204/",
+          "web_url": "https://patchwork.kernel.org/series/1190204/",
+          "date": "2026-10-21T05:40:34",
+          "name": "bpf: Add UHMUL and SHMUL instructions",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190204/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/8] bpf: Add UHMUL and SHMUL instructions",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20261021-bpf-hmul-v2-1-88e260099f7d@outlook.com/",
+      "date": "2026-10-21T05:40:35",
+      "series": [
+        {
+          "id": 1190204,
+          "url": "https://patchwork.kernel.org/api/series/1190204/",
+          "web_url": "https://patchwork.kernel.org/series/1190204/",
+          "date": "2026-10-21T05:40:34",
+          "name": "bpf: Add UHMUL and SHMUL instructions",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1190204/mbox/"
+        }
+      ]
+    }
+  ]
+}
