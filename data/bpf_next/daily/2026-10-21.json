@@ -1,0 +1,77 @@
+{
+  "generated_at": "2026-10-22T10:14:47Z",
+  "period_start": "2026-10-20",
+  "period_end": "2026-10-21",
+  "patch_count": 98,
+  "thread_count": 20,
+  "top_contributors": [
+    "Xu Kuohai",
+    "Alexei Starovoitov",
+    "Vineet Gupta",
+    "Mahe Tardy",
+    "Yazhou Tang",
+    "Kumar Kartikeya Dwivedi",
+    "Emil Tsalapatis"
+  ],
+  "key_topics": [
+    "verifier",
+    "jit",
+    "arena",
+    "kfuncs",
+    "instructions",
+    "unwind",
+    "selftests"
+  ],
+  "overview": "A very active day on bpf-next with 98 patches across 20 series. Major highlights include v4 of Alexei Starovoitov's unwind_goto/unwind_exit infrastructure adding structured exception unwinding to BPF, Xu Kuohai's 16-patch series adding percpu variable support to BPF arena, and Yazhou Tang's new UHMUL/SHMUL high-multiply instructions.",
+  "patches": [
+    {
+      "title": "bpf: Add unwind_goto and unwind_exit insns",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261020181320.1284798-2-alexei.starovoitov@gmail.com/",
+      "summary": "Version 4 of the series adding unwind_goto and unwind_exit BPF instructions for structured exception-style unwinding. The series introduces the core instruction definitions, JIT support on both x86-64 and arm64, and a separate fix series (series 1190072) addressing edge cases in offloaded programs and exception callback handling. These instructions enable C++ exception semantics in BPF programs and are backed by comprehensive selftest coverage including a C++ BPF program with exceptions.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Collect arena percpu data section",
+      "author": "Xu Kuohai",
+      "url": "https://lore.kernel.org/bpf/7b248b2be4834322ddaad8ee08d22d083877a932.1792503001.git.xukuohai@huawei.com/",
+      "summary": "A 16-patch series that adds per-CPU variable support to BPF arena maps, a significant extension to the arena memory model. The series spans the full stack: libbpf ELF parsing for the arena percpu section, relocation of percpu access instructions, arena percpu chunk creation and placement, kernel syscall extensions for percpu chunk metadata, verifier support for arena percpu instructions, JIT backends for x86-64 and arm64, bpftool skeleton emission, and end-to-end selftests. This allows BPF programs using arena memory to declare per-CPU variables with reduced contention.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add UHMUL and SHMUL instructions",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20261021-bpf-hmul-v2-1-88e260099f7d@outlook.com/",
+      "summary": "Version 2 of an 8-patch series introducing unsigned (UHMUL) and signed (SHMUL) high-multiply instructions to the BPF ISA. These instructions capture the upper 64 bits of a 128-bit multiplication result, enabling efficient fixed-point arithmetic and hash computations without emulation. JIT support is implemented for x86-64, arm64, and RISC-V 64, and unsupported backends are explicitly rejected by the verifier. Bytecode selftests round out the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Account for the r9 push in exception boundary program",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/20261020180147.1769873-2-memxor@gmail.com/",
+      "summary": "This 6-patch series eliminates the register spill overhead in bpf_throw() by teaching the JIT to record where each subprogram keeps its callee-saved registers and restoring them from those frames during unwinding. A new bpf_throw_unwind() helper and a per-JIT hook for bpf_throw() entry on x86-64 and arm64 enable the JIT to capture R6-R9 at throw time rather than requiring every caller to spill them. The net effect is faster exception paths and less stack traffic in the common case.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: add bpf_ksock_sendto() kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261020155848.75711-2-mahe.tardy@gmail.com/",
+      "summary": "Version 2 of a 3-patch series (factored from v1's larger 8-patch series) adding a new bpf_ksock_sendto() kfunc that allows BPF programs to send data via a kernel socket. The kfunc is intentionally restricted from LSM attach points to prevent recursive send scenarios, and selftests verify both the allowed send paths and the forbidden LSM attach case. This enables in-kernel packet injection and proxying use cases from BPF.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Keep the 32-bit range across a sign extension that cannot change it",
+      "author": "Vineet Gupta",
+      "url": "https://lore.kernel.org/bpf/20261020161907.2115379-2-vineet.gupta@linux.dev/",
+      "summary": "Version 3 of a 12-patch series that teaches the BPF verifier to track scalar equality across the lower 32 bits through zero-extending movs, sign-extending movs, and narrowing stack spills and fills. A new \"linked scalar\" mechanism is extended to carry sub-64-bit relations, allowing the verifier to propagate tighter bounds across common 32-bit patterns and avoid unnecessary range widening. Extensive selftests cover each new propagation path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Use memmove() to load bytes from an skb and an xdp_buff",
+      "author": "Ayushman Rout",
+      "url": "https://lore.kernel.org/bpf/20261021103957.17532-1-ayushmanrout27@gmail.com/",
+      "summary": "A single-patch correctness fix replacing memcpy() with memmove() when loading raw bytes from an skb or an xdp_buff into a BPF stack slot. The source and destination regions can overlap when a program performs back-to-back byte loads near the same stack area, causing silent data corruption with memcpy(). Using memmove() handles the overlapping case safely without a measurable performance impact for the non-overlapping common case.",
+      "related_links": []
+    }
+  ]
+}
