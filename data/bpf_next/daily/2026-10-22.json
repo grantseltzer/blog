@@ -1,0 +1,89 @@
+{
+  "generated_at": "2026-10-23T00:00:00Z",
+  "period_start": "2026-10-21",
+  "period_end": "2026-10-22",
+  "patch_count": 54,
+  "thread_count": 16,
+  "top_contributors": [
+    "Alexei Starovoitov",
+    "Jiri Olsa",
+    "Yazhou Tang",
+    "Emil Tsalapatis"
+  ],
+  "key_topics": [
+    "jit",
+    "uprobes",
+    "kfuncs",
+    "struct-ops",
+    "verifier",
+    "maps",
+    "libarena",
+    "btf"
+  ],
+  "overview": "October 21-22 saw a broad mix of new features, bug fixes, and test improvements across the BPF subsystem. Two significant series stand out: Alexei Starovoitov's nine-patch series fixing a deadlock between uprobes and fork() when mmap_lock is busy, and Yazhou Tang's new UHMUL/SHMUL high-multiply BPF ISA instructions landing for x86-64, arm64, and RISC-V.",
+  "patches": [
+    {
+      "title": "bpf: Add UHMUL and SHMUL instructions",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20261021-bpf-hmul-v2-1-88e260099f7d@outlook.com/",
+      "summary": "Adds two new BPF ISA instructions, UHMUL (unsigned high multiply) and SHMUL (signed high multiply), which return the upper 64 bits of a 128-bit product. The eight-patch v2 series includes JIT backends for x86-64, arm64, and RISC-V (RV64), verifier support for the new opcodes, and bytecode selftests. These instructions are useful for fast division-by-constant optimizations and fixed-point arithmetic, filling a gap that was previously only addressable via inline assembly or helper calls.",
+      "related_links": []
+    },
+    {
+      "title": "mm: Bring back mmap_write_trylock() / uprobes: Don't stall fork() when mmap_lock is busy",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261022015712.1297331-2-alexei.starovoitov@gmail.com/",
+      "summary": "A nine-patch series addressing a deadlock where a process calling fork() could stall indefinitely if uprobes held or waited for mmap_lock. The fix re-introduces mmap_write_trylock() in mm, restructures how uprobes handle dup_mmap_sem, and ensures the new task's mm pointer is visible before uprobes can find it. Additional patches fix a breakpoint leak when the unregistering task is killed and silence a spurious WARN when an optimized probe cannot be written.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add support to allocate user page",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20261021195759.119421-2-jolsa@kernel.org/",
+      "summary": "An RFC series adding kfuncs that allow BPF programs to allocate and seal user-space pages from uprobe context. The approach introduces a new __srcptr kfunc argument suffix to the verifier so that unsafe user-pointer arguments are handled correctly, and exposes a locked mprotect operation from mm to support sealing. This lays groundwork for BPF-driven JIT trampolines and other user-space code-injection use cases from within the kernel.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Size backward jumps by the insns they jump over",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261022-jit_size_fix-v2-1-4bee6921b218@meta.com/",
+      "summary": "Fixes a bug in the x86 BPF JIT where the pass loop would stop before all jump offsets had converged, producing incorrect native code. The root cause was that backward jumps were being sized without accounting for the instructions they span, so their encoded length could oscillate without ever settling. The v2 two-patch series corrects the sizing logic and adds a selftest that constructs a program specifically designed to trigger the oscillation.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Track borrowed iterator results by default",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20261021210754.3270023-2-xyx2021@mail.ustc.edu.cn/",
+      "summary": "Enhances the BPF verifier to track the lifetime of values returned by iterator kfuncs so that references obtained from a borrowed iterator are invalidated when the iterator itself goes out of scope. Without this, a use-after-free was possible at the BPF register level even though the underlying iterator object was safely managed. The v7 two-patch series includes corresponding selftests that verify both valid and invalid lifetime patterns are accepted or rejected as expected.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Protect the struct_ops association with a spinlock / Dissociate struct_ops progs before the grace period of the map",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261022-selftests-bpf-struct-ops-assoc-timer-v6-1-2c0f18e82582@gmail.com/",
+      "summary": "Fixes a use-after-free in struct_ops where a BPF program could be invoked through an ops pointer after the backing struct_ops map had been freed. The v6 four-patch series adds a spinlock to guard the association between a struct_ops prog and its map, introduces a dissociation step before the RCU grace period begins, and adds selftests that explicitly exercise freeing a struct_ops map while a program is running and while it is being called from a timer.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Drop percpu_counter from the htab element count",
+      "author": "Puranjay Mohan",
+      "url": "https://lore.kernel.org/bpf/20261021185117.650403-1-puranjay@kernel.org/",
+      "summary": "Removes the percpu_counter used to track element counts in BPF hash table maps, replacing it with a plain atomic_long_t. The percpu_counter was added for performance but its batch accounting means the reported count can diverge significantly from the true value, causing map-full errors at well below the configured max_entries. A direct atomic is slightly slower under extreme contention but provides accurate counts that callers depend on.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: libarena: Add bulk buddy allocation helpers",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261021232641.10063-2-emil@etsalapatis.com/",
+      "summary": "A seven-patch v2 series improving the BPF libarena buddy allocator used in selftests. Changes include bulk allocation helpers, per-CPU caches to reduce contention, batch cache refills, NMI re-entrancy handling, a transfer cache for cross-CPU frees, and a parallel benchmark to measure scalability. The work brings libarena closer to production-quality for use in BPF programs that need custom memory allocators.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: reject pointer operands for 32-bit recurrences/latches",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261021185609.607075-1-eddyz87@gmail.com/",
+      "summary": "Closes a verifier gap where pointer values could appear as operands in 32-bit width-reduction operations (recurrences and latches), defeating pointer tracking and potentially allowing unsafe memory access. The fix rejects such programs during verification with a clear error. A selftest patch covers both the rejection of invalid programs and the continued acceptance of valid 32-bit arithmetic that does not involve pointers.",
+      "related_links": []
+    }
+  ]
+}
