@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-24T00:00:00Z",
+  "period_start": "2026-10-22",
+  "period_end": "2026-10-23",
+  "patch_count": 50,
+  "thread_count": 12,
+  "top_contributors": ["Alexei Starovoitov", "Emil Tsalapatis", "Andrey Grodzovsky", "Yazhou Tang", "Samuel Wu"],
+  "key_topics": ["uprobes", "jit", "btf", "libbpf", "kfuncs", "kallsyms", "verifier", "arena"],
+  "overview": "A busy day on bpf-next led by Alexei Starovoitov's 9-patch series resolving a long-standing deadlock between uprobes and fork() when mmap_lock is contended. Yazhou Tang added new UHMUL and SHMUL high-multiply BPF ISA instructions with JIT backends for x86-64, arm64, and RISC-V, while Andrey Grodzovsky posted v7 of the libbpf manual program loading feature introducing fine-grained load-strategy control.",
+  "patches": [
+    {
+      "title": "uprobes: Don't stall fork() when mmap_lock is busy",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261022015712.1297331-2-alexei.starovoitov@gmail.com/",
+      "summary": "This 9-patch series from BPF maintainer Alexei Starovoitov fixes a latency problem where fork() can stall indefinitely when uprobes are active and mmap_lock is held by another thread. The fix restores mmap_write_trylock(), makes uprobes avoid sleeping on mmap_lock under the dup_mmap_sem, and cleans up several related hazards including a breakpoint-leak when the unregistering task is killed. An x86 uprobe optimized-probe warning is also tamed, and new selftests cover the fork/uprobe/busy-lock scenario.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add UHMUL and SHMUL instructions",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20261023-bpf-hmul-v3-1-b99e808cb28b@outlook.com/",
+      "summary": "This 7-patch v3 series extends the BPF ISA with two new arithmetic instructions: UHMUL (unsigned high multiply) and SHMUL (signed high multiply), which return the upper 64 bits of a 128-bit product. JIT backends are provided for x86-64, arm64, and RISC-V 64-bit, the ALU instruction-variant validation logic is refactored to accommodate them cleanly, and the verifier is taught to reason about the new opcodes. Selftests cover bytecode-level encoding for both instructions.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: BPF program manual loading",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20261022223212.1217849-2-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "This v7 series adds a formal BPF program load-strategy enum to libbpf, allowing callers to switch programs between auto, manual-prepare, and manual-load phases instead of relying solely on bpf_object__load(). A new SEC(\"!...\") declarative prefix marks programs for manual loading from skeleton annotations, and bpf_prog_load_strategy_set() provides the imperative API. The veristat tool is converted as a real-world example, and a comprehensive test suite covers strategy transitions.",
+      "related_links": []
+    },
+    {
+      "title": "kallsyms: Add KALLSYMS_QUERY ioctl to /proc/kallsyms",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261023001603.560210-9-wusamuel@google.com/",
+      "summary": "This v2 series introduces a new KALLSYMS_QUERY ioctl on /proc/kallsyms that lets user-space look up kernel symbol addresses by name without parsing the entire /proc/kallsyms text file, which is expensive for large kernels. The libbpf side (patch 4/6) switches typeless ksym resolution to use the ioctl when available, reducing the cost of loading BPF objects that reference module symbols. Accompanying changes sync the UAPI definitions into the tools headers and add both BPF and procfs selftests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf libarena allocator improvements",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261023002056.6647-2-emil@etsalapatis.com/",
+      "summary": "This v3 series improves throughput of the BPF arena buddy allocator by adding per-CPU caches, a transfer cache for cross-CPU slab movement, and batch-refill logic so the common path avoids touching the global free list. NMI reentrancy is handled explicitly so the allocator is safe when called from hardware interrupt context. New benchmarks and tests are added to measure parallel allocation performance and validate the fast paths under the buddy cache.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add bpf_ksock_bind() kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261022181620.247201-1-mahe.tardy@gmail.com/",
+      "summary": "This 2-patch series adds a new bpf_ksock_bind() kfunc that allows BPF programs to programmatically bind a kernel socket to a local address. This closes a gap where BPF programs operating on sockets (e.g. in tc or cgroup hooks) could inspect but not initiate a bind. A selftest exercises the new kfunc against a simple UDP socket.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix out-of-bounds btf->types write for split BTF",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20261023063133.563998-1-yangfeng59949@163.com/",
+      "summary": "This single-patch fix addresses an out-of-bounds write into the btf->types array when processing split BTF (BTF modules that extend a base kernel BTF). The bug can be triggered by a malformed or specially crafted module BTF and may cause memory corruption. The same author also posted a companion fix (series 1191054) to propagate btf_add_type() error returns that were previously silently dropped in btf_check_all_metas().",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Size backward jumps by the insns they jump over",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261022-jit_size_fix-v2-1-4bee6921b218@meta.com/",
+      "summary": "This v2 two-patch fix corrects a convergence bug in the x86-64 BPF JIT where backward jumps were sized by their target offset rather than by the span of instructions they jump over, causing the JIT's iterative size-computation loop to stall and never converge for certain programs. The fix ensures backward-jump encoding uses the correct instruction span, and a new selftest constructs a minimal BPF program that triggers the oscillating-image-length condition.",
+      "related_links": []
+    }
+  ]
+}
