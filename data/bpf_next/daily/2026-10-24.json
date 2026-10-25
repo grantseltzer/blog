@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-25T00:00:00Z",
+  "period_start": "2026-10-23",
+  "period_end": "2026-10-24",
+  "patch_count": 48,
+  "thread_count": 9,
+  "top_contributors": ["Eduard Zingerman", "Ihor Solodrai", "Andrey Grodzovsky", "Emil Tsalapatis", "Samuel Wu"],
+  "key_topics": ["verifier", "scev", "libbpf", "bpftool", "btf", "co-re", "kfuncs", "iterator", "kallsyms", "libarena"],
+  "overview": "October 23-24 saw heavy activity on bpf-next, with 48 patches across 9 series touching the verifier, libbpf, and BTF tooling. Highlights include a substantial series of verifier fixes for 32-/64-bit scalar evolution (SCEV) analysis from Eduard Zingerman, a new BPF program manual loading strategy in libbpf from Andrey Grodzovsky, and per-record CO-RE attribute support in the bpftool BTF C dump from Ihor Solodrai.",
+  "patches": [
+    {
+      "title": "bpf: Track borrowed iterator results by default",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20261024100647.2579244-2-xyx2021@mail.ustc.edu.cn/",
+      "summary": "This patch (v8, 1/2) extends the BPF verifier to automatically track the lifetime of values returned by borrowed iterators. Iterator kfuncs can produce references whose validity is tied to the iterator's own lifetime; previously, missing lifetime annotations could allow iterator-derived references to escape their valid scope. By enabling borrowed iterator result tracking by default, the verifier prevents use-after-free scenarios in programs that traverse kernel data structures via iterator helpers. The companion patch adds selftests verifying the new lifetime enforcement.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Reject gen_loader set after PREPARE step.",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20261024014514.2959514-2-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "This is the first patch (v8, 1/7) in a series that introduces a BPF program manual loading strategy to libbpf. The series adds a new load-strategy enum allowing users to defer or explicitly control when BPF programs are loaded and attached, enabling fine-grained orchestration for complex multi-program workflows. Subsequent patches add support for the SEC(\"!...\") prefix as a declarative way to mark programs for manual loading, and update veristat to use the new strategy. This capability is particularly valuable for tools like CrowdStrike's security agent that need precise control over BPF program lifecycle.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: reject pointer operands for 32-bit recurrences/latches",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261023-scev-simpler-clamp-v1-1-d43a07eda7af@gmail.com/",
+      "summary": "This is the first patch (1/11) in a large series of fixes and follow-ups for the BPF verifier's 32-/64-bit scalar evolution (SCEV) analysis. The series addresses several correctness issues including improper range clamping, loop detection in upper frames, infinite loop false positives, and incorrect SCEV simplification rules. Together, these fixes improve the accuracy of loop termination analysis and value-range tracking for programs using 32-bit loop variables. The series also restores and extends selftest coverage for stack pointer subrange pruning affected by earlier SCEV changes.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Look up BTF strings without making BTF modifiable",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261023222652.3927736-2-ihor.solodrai@linux.dev/",
+      "summary": "This is the first patch (v2, 1/8) in a series that adds per-record CO-RE attributes to the bpftool BTF C dump output. The series introduces two new BTF record attributes — __bpf_relocatable and __bpf_static_offset — that appear on a per-struct/union basis in the generated C headers, giving BPF programmers finer control over CO-RE relocation behavior at the type level. The work includes libbpf internals to look up BTF strings without mutating BTF objects, bpftool changes to emit the new attributes, and comprehensive documentation and selftest coverage.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Don't apply the trusted field lists to an RCU-protected parent",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261023212041.884996-2-utilityemal77@gmail.com/",
+      "summary": "This is the first patch (v3, 1/5) in a series that introduces a new __derives_ret kfunc argument annotation and tightens lifetime tracking for trusted fields and derived return values. The series fixes an interaction between trusted field lists and RCU-protected object parents, then adds the __derives_ret annotation so the verifier knows that a kfunc return value's lifetime is bound to a specific argument's lifetime. A concrete user is bpf_real_data_inode(), whose returned inode is tied to the file argument. Selftests cover the new invalidation behavior on argument release.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Don't re-sort subprog_info[] for every new subprogram",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261023150302.4097865-1-alexei.starovoitov@gmail.com/",
+      "summary": "This standalone patch optimizes the BPF verifier's handling of subprogram metadata by avoiding a redundant sort of the subprog_info[] array on every subprogram discovery. Previously the verifier re-sorted the entire array each time a new subprogram was found during function call analysis, which scaled poorly for programs with many subprograms. The fix inserts new entries in sorted order as they are discovered, eliminating the O(n log n) sort overhead per subprogram and improving load-time performance for complex multi-function BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix out-of-bounds btf->types write for split BTF",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20261023063133.563998-1-yangfeng59949@163.com/",
+      "summary": "This standalone bug-fix patch addresses an out-of-bounds write in the BTF subsystem when operating on split BTF objects. Split BTF allows a BTF object to reference types from a base BTF (e.g., vmlinux BTF), and the bug could corrupt memory when the types array was extended without proper bounds checking. The fix ensures the types array is correctly sized before appending new type entries, preventing potential memory corruption in workloads that dynamically build or augment split BTF objects.",
+      "related_links": []
+    },
+    {
+      "title": "kallsyms: Add KALLSYMS_QUERY ioctl to /proc/kallsyms",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261023001603.560210-9-wusamuel@google.com/",
+      "summary": "This is the first patch (v2, 1/6) in a series that adds a new KALLSYMS_QUERY ioctl to /proc/kallsyms, enabling efficient batch symbol lookups from userspace. The primary BPF consumer is libbpf, which uses kallsyms to resolve typeless ksyms (kernel symbols without BTF type information) during program load. By providing an ioctl instead of requiring userspace to read and parse the full /proc/kallsyms text file, the series dramatically improves ksym resolution latency and reduces overhead for BPF programs that reference many typeless kernel symbols, including module symbols.",
+      "related_links": []
+    }
+  ]
+}
