@@ -1,0 +1,144 @@
+{
+  "period": "daily",
+  "period_start": "2026-10-25",
+  "period_end": "2026-10-26",
+  "fetched_at": "2026-10-26T15:57:31Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v5,6/6] selftests/bpf: Add tests to verify link_create logs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261026154948.99408-7-leon.hwang@linux.dev/",
+      "date": "2026-10-26T15:49:47",
+      "series": [
+        {
+          "id": 1193901,
+          "url": "https://patchwork.kernel.org/api/series/1193901/",
+          "web_url": "https://patchwork.kernel.org/series/1193901/",
+          "date": "2026-10-26T15:49:41",
+          "name": "bpf: Add syscall common attrs support for xdp link_create",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1193901/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,5/6] libbpf: Add log_opts support for bpf_link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261026154948.99408-6-leon.hwang@linux.dev/",
+      "date": "2026-10-26T15:49:46",
+      "series": [
+        {
+          "id": 1193901,
+          "url": "https://patchwork.kernel.org/api/series/1193901/",
+          "web_url": "https://patchwork.kernel.org/series/1193901/",
+          "date": "2026-10-26T15:49:41",
+          "name": "bpf: Add syscall common attrs support for xdp link_create",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1193901/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,4/6] libbpf: Factor out __sys_bpf_fd helper",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261026154948.99408-5-leon.hwang@linux.dev/",
+      "date": "2026-10-26T15:49:45",
+      "series": [
+        {
+          "id": 1193901,
+          "url": "https://patchwork.kernel.org/api/series/1193901/",
+          "web_url": "https://patchwork.kernel.org/series/1193901/",
+          "date": "2026-10-26T15:49:41",
+          "name": "bpf: Add syscall common attrs support for xdp link_create",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1193901/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,3/6] bpf: Retire tracepoint bpf_xdp_link_attach_failed",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261026154948.99408-4-leon.hwang@linux.dev/",
+      "date": "2026-10-26T15:49:44",
+      "series": [
+        {
+          "id": 1193901,
+          "url": "https://patchwork.kernel.org/api/series/1193901/",
+          "web_url": "https://patchwork.kernel.org/series/1193901/",
+          "date": "2026-10-26T15:49:41",
+          "name": "bpf: Add syscall common attrs support for xdp link_create",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1193901/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,2/6] bpf: Add syscall common attrs support for xdp link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261026154948.99408-3-leon.hwang@linux.dev/",
+      "date": "2026-10-26T15:49:43",
+      "series": [
+        {
+          "id": 1193901,
+          "url": "https://patchwork.kernel.org/api/series/1193901/",
+          "web_url": "https://patchwork.kernel.org/series/1193901/",
+          "date": "2026-10-26T15:49:41",
+          "name": "bpf: Add syscall common attrs support for xdp link_create",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1193901/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,1/6] bpf: Add syscall common attrs support for link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261026154948.99408-2-leon.hwang@linux.dev/",
+      "date": "2026-10-26T15:49:42",
+      "series": [
+        {
+          "id": 1193901,
+          "url": "https://patchwork.kernel.org/api/series/1193901/",
+          "web_url": "https://patchwork.kernel.org/series/1193901/",
+          "date": "2026-10-26T15:49:41",
+          "name": "bpf: Add syscall common attrs support for xdp link_create",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1193901/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,2/2] selftests/bpf: Add trampoline preemption false-recursion test",
+      "author": "Mike Bazov",
+      "url": "https://lore.kernel.org/bpf/20261025-b4-bpf-trampoline-preempt-v1-2-198dcdc0c6ac@sentinelone.com/",
+      "date": "2026-10-25T11:02:59",
+      "series": [
+        {
+          "id": 1192980,
+          "url": "https://patchwork.kernel.org/api/series/1192980/",
+          "web_url": "https://patchwork.kernel.org/series/1192980/",
+          "date": "2026-10-25T11:02:59",
+          "name": "bpf: Do not let preemption cause false recursion drops in trampoline progs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1192980/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,1/2] bpf: Keep recursion-checked trampoline programs non-preemptible on !PREEMPT_RT",
+      "author": "Mike Bazov",
+      "url": "https://lore.kernel.org/bpf/20261025-b4-bpf-trampoline-preempt-v1-1-198dcdc0c6ac@sentinelone.com/",
+      "date": "2026-10-25T11:02:58",
+      "series": [
+        {
+          "id": 1192980,
+          "url": "https://patchwork.kernel.org/api/series/1192980/",
+          "web_url": "https://patchwork.kernel.org/series/1192980/",
+          "date": "2026-10-25T11:02:59",
+          "name": "bpf: Do not let preemption cause false recursion drops in trampoline progs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1192980/mbox/"
+        }
+      ]
+    }
+  ]
+}
