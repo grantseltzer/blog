@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-10-26T00:00:00Z",
+  "period_start": "2026-10-24",
+  "period_end": "2026-10-25",
+  "patch_count": 28,
+  "thread_count": 5,
+  "top_contributors": ["Eduard Zingerman", "Andrey Grodzovsky", "Leon Hwang"],
+  "key_topics": ["verifier", "scev", "trampoline", "xdp", "libbpf", "iterator"],
+  "overview": "Activity on October 24-25 was dominated by a significant 11-patch verifier series from Eduard Zingerman addressing fixes and follow-ups for 32-/64-bit scalar evolution (SCEV) analysis, including corrections to range clamping logic and loop detection. Also notable are a v8 libbpf series enabling fine-grained manual BPF program loading from Andrey Grodzovsky, and XDP link_create syscall attribute improvements from Leon Hwang.",
+  "patches": [
+    {
+      "title": "bpf: do not intersect with current register range on clamp",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261023-scev-simpler-clamp-v1-2-d43a07eda7af@gmail.com/",
+      "summary": "This patch fixes a correctness issue in the BPF verifier's scalar evolution (SCEV) clamping logic by removing an erroneous intersection with the current register range during loop bound propagation. The old approach could produce empty ranges under certain conditions, causing spurious verification failures. This is part of a broader 11-patch series cleaning up and hardening 32-/64-bit SCEV handling in the verifier. Fixing this enables more programs to pass verification that were previously incorrectly rejected.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: reject pointer operands for 32-bit recurrences/latches",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261023-scev-simpler-clamp-v1-1-d43a07eda7af@gmail.com/",
+      "summary": "This patch adds an explicit rejection of pointer operands when they appear in 32-bit scalar recurrences and loop latches during SCEV analysis in the BPF verifier. Allowing pointers in this context could lead to unsound range inference, so the verifier now bails out safely. This is the first patch in Eduard Zingerman's 11-patch series on 32-/64-bit scalar evolution fixes, establishing a correctness baseline before subsequent improvements.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: look for current loop in upper frames in states_equal()",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261023-scev-simpler-clamp-v1-3-d43a07eda7af@gmail.com/",
+      "summary": "This patch extends the verifier's states_equal() function to search for the current loop context in upper call frames, fixing an issue where loop detection could fail in subprograms called from within a loop. Without this fix, the verifier might miss the loop association and fail to apply SCEV-based loop termination analysis correctly. It is part of the broader SCEV cleanup series by Eduard Zingerman targeting verifier robustness.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: BPF programs manual loading and attaching",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20261024014514.2959514-4-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "This patch (3/7 in the libbpf manual loading series v8) introduces the core API for manually controlling when individual BPF programs are loaded and attached, giving users fine-grained lifecycle control beyond libbpf's default auto-loading behavior. It complements the new BPF_PROG_LOAD_STRATEGY enum (patch 2/7) and SEC(\"!...\") declarative prefix (patch 4/7) to let callers opt programs in or out of loading at runtime. This is a long-requested libbpf feature for tooling that needs selective or deferred program loading, such as security agents that conditionally load programs based on kernel capabilities.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add syscall common attrs support for link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261024153608.58569-2-leon.hwang@linux.dev/",
+      "summary": "This patch (1/6, v4) adds support for passing syscall common attributes to the BPF link_create path, enabling richer error reporting via log buffers when link creation fails. The series extends the existing infrastructure to XDP links specifically, retiring the now-redundant bpf_xdp_link_attach_failed tracepoint. libbpf gains corresponding log_opts support to expose this to userspace.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Track borrowed iterator results by default",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20261024100647.2579244-2-xyx2021@mail.ustc.edu.cn/",
+      "summary": "This patch (1/2, v8) extends the BPF verifier to track the lifetimes of values produced by borrowed iterators, ensuring that results derived from an iterator cannot outlive the iterator itself. Without this tracking, a BPF program could retain a reference to data associated with a now-invalidated iterator, potentially causing use-after-free issues. This improves memory safety guarantees enforced at verification time for programs that use BPF iterators.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Keep recursion-checked trampoline programs non-preemptible on !PREEMPT_RT",
+      "author": "Mike Bazov",
+      "url": "https://lore.kernel.org/bpf/20261025-b4-bpf-trampoline-preempt-v1-1-198dcdc0c6ac@sentinelone.com/",
+      "summary": "This RFC patch (1/2) addresses a subtle race condition where preemption occurring between the recursion-prevention check and the guarded code in BPF trampoline programs can cause false recursion drops on non-PREEMPT_RT kernels. The fix makes recursion-checked trampolines non-preemptible on !PREEMPT_RT to close this window. The companion patch adds a selftest that reproduces the false-recursion scenario to prevent regressions.",
+      "related_links": []
+    }
+  ]
+}
