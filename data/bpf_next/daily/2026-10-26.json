@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-10-27T00:00:00Z",
+  "period_start": "2026-10-25",
+  "period_end": "2026-10-26",
+  "patch_count": 8,
+  "thread_count": 2,
+  "top_contributors": ["Leon Hwang", "Mike Bazov"],
+  "key_topics": ["xdp", "link-create", "libbpf", "trampoline"],
+  "overview": "Activity on October 25-26 was dominated by Leon Hwang's v5 of the XDP link_create syscall common attrs series, which adds support for passing log options through bpf_link_create, refactors a libbpf helper, and retires a now-redundant tracepoint. An RFC series from Mike Bazov at SentinelOne also appeared, proposing to keep recursion-checked BPF trampoline programs non-preemptible on non-RT kernels to prevent false recursion drops caused by preemption.",
+  "patches": [
+    {
+      "title": "bpf: Add syscall common attrs support for link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261026154948.99408-2-leon.hwang@linux.dev/",
+      "summary": "This patch (1/6, v5) extends the bpf_link_create syscall to accept a new 'common' attribute block that can carry log_level and log_size for capturing verifier logs during link creation. It lays the groundwork for the subsequent XDP-specific patch by wiring up the common attrs path in the generic link_create handler. The change enables callers to retrieve diagnostic output from link_create in the same way they already can from BPF_PROG_LOAD. This is the kernel-side foundation for the libbpf API changes in later patches in the series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add syscall common attrs support for xdp link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261026154948.99408-3-leon.hwang@linux.dev/",
+      "summary": "This patch (2/6, v5) wires the new common attrs log support specifically into the XDP link_create path, allowing XDP programs to emit verifier-style log output when a link attachment fails. It also removes the bpf_xdp_link_attach_failed tracepoint (patch 3/6) that previously served as the sole diagnostic when XDP link creation failed. Together these patches replace a coarse tracepoint with a richer structured log facility.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Add log_opts support for bpf_link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261026154948.99408-6-leon.hwang@linux.dev/",
+      "summary": "This patch (5/6, v5) adds a log_opts field to libbpf's bpf_link_create_opts struct, plumbing the new kernel-side log capability through to user space. It depends on the __sys_bpf_fd helper refactored in patch 4/6. Users can now obtain verifier log output directly from bpf_link_create calls without needing separate tracepoint or perf event infrastructure. The companion selftest patch (6/6) validates that logs are populated when link creation encounters an error.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Keep recursion-checked trampoline programs non-preemptible on !PREEMPT_RT",
+      "author": "Mike Bazov",
+      "url": "https://lore.kernel.org/bpf/20261025-b4-bpf-trampoline-preempt-v1-1-198dcdc0c6ac@sentinelone.com/",
+      "summary": "This RFC patch (1/2) addresses a subtle correctness issue where BPF trampoline programs that use the recursion-protection mechanism can be preempted on non-RT kernels, causing the recursion counter to be incremented on one CPU and decremented on another. This leads to false positive recursion drops that silently discard program invocations. The fix makes trampoline programs non-preemptible on !PREEMPT_RT kernels, mirroring the existing behavior on RT kernels. The RFC status indicates the authors are seeking feedback on the approach before finalizing.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add trampoline preemption false-recursion test",
+      "author": "Mike Bazov",
+      "url": "https://lore.kernel.org/bpf/20261025-b4-bpf-trampoline-preempt-v1-2-198dcdc0c6ac@sentinelone.com/",
+      "summary": "This RFC patch (2/2) adds a selftest that reproduces the false-recursion drop bug in BPF trampoline programs triggered by preemption. The test installs a trampoline program and uses a stress loop to trigger preemption mid-execution, then verifies that no invocations are falsely dropped. Without the accompanying kernel fix the test should fail, providing a regression guard for the !PREEMPT_RT trampoline preemption fix.",
+      "related_links": []
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-10-27T00:00:00Z",
+  "period_start": "2026-10-19",
+  "period_end": "2026-10-26",
+  "patch_count": 100,
+  "thread_count": 22,
+  "top_contributors": ["Eduard Zingerman", "Andrey Grodzovsky", "Alexei Starovoitov", "Leon Hwang", "Ihor Solodrai"],
+  "key_topics": ["verifier", "libbpf", "kfuncs", "jit", "uprobes", "btf", "xdp", "trampoline"],
+  "overview": "The week of October 19-26 saw substantial activity across the BPF verifier, libbpf, and JIT subsystems. Eduard Zingerman landed an 11-patch series of fixes and follow-ups to the 32-/64-bit scalar evolution (SCEV) verifier logic, including correctness fixes for clamping and loop detection. Andrey Grodzovsky's libbpf BPF program manual loading series reached v8, adding fine-grained control over when programs are loaded and attached. Alexei Starovoitov contributed a significant uprobe series that eliminates fork() stalls when the mmap_lock is contended, and Yazhou Tang proposed new UHMUL and SHMUL multiply-high instructions for the BPF ISA with JIT support across x86, arm64, and RISC-V.",
+  "patches": [
+    {
+      "title": "bpf: reject pointer operands for 32-bit recurrences/latches",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261023-scev-simpler-clamp-v1-1-d43a07eda7af@gmail.com/",
+      "summary": "First patch in Eduard Zingerman's 11-patch SCEV fixes series. The BPF verifier's scalar evolution engine was incorrectly attempting to track 32-bit recurrences and latches whose operands are pointers, which cannot be treated as bounded integers. This patch rejects such cases early so the verifier falls back to conservative widening rather than producing incorrect bounds. The series as a whole also simplifies the clamping logic, fixes empty-range errors under the old approach, and restores pruning coverage for stack pointer subranges.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: do not intersect with current register range on clamp",
+      "author": "Eduard Zingerman",
+      "url": "https://lore.kernel.org/bpf/20261023-scev-simpler-clamp-v1-2-d43a07eda7af@gmail.com/",
+      "summary": "Second patch in the SCEV series. The old clamping logic intersected the predicted exit value with the register's current range, which could produce an empty intersection and cause the verifier to report a spurious error. This patch changes the clamping to use only the predicted scalar evolution bounds without intersecting, eliminating a class of false verification failures for loops with tight bounds. Several selftests in the series cover the previously broken cases.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: BPF programs manual loading and attaching",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20261024014514.2959514-4-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "Core patch (3/7, v8) in Andrey Grodzovsky's libbpf manual loading series. It introduces an explicit load/attach API that gives callers full control over when individual BPF programs within a skeleton are loaded into the kernel and attached to hooks. Previously libbpf would load and attach all programs as a group. This enables use cases such as deferred loading for programs that require runtime-determined parameters, staged rollout, or selective loading of programs from a shared object. The series also adds a declarative SEC(\"!...\") prefix for static opt-out.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add UHMUL and SHMUL instructions",
+      "author": "Yazhou Tang",
+      "url": "https://lore.kernel.org/bpf/20261023-bpf-hmul-v3-1-b99e808cb28b@outlook.com/",
+      "summary": "First patch in a 7-patch series (v3) introducing unsigned and signed multiply-high instructions (UHMUL, SHMUL) to the BPF ISA. These instructions capture the upper 64 bits of a 128-bit multiply result, which is otherwise expensive to synthesize from existing BPF arithmetic. JIT backends for x86-64, arm64, and RISC-V are provided in subsequent patches, and verifier support is added in patch 6/7. This is a new ISA extension aimed at improving code generation quality for cryptographic and hash operations in BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "mm: Bring back mmap_write_trylock()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261022015712.1297331-2-alexei.starovoitov@gmail.com/",
+      "summary": "First patch in a 9-patch series fixing fork() stalls caused by uprobes. When a task forks while a uprobe is active, the uprobe machinery calls dup_mmap() which acquires dup_mmap_sem while also sleeping on mmap_lock, causing fork() to stall indefinitely if the child process holds mmap_lock. This series restores mmap_write_trylock(), changes uprobe operations to use it to avoid sleeping under dup_mmap_sem, and fixes related issues including breakpoint leaks when the unregistering task is killed.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Don't re-sort subprog_info[] for every new subprogram",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261023150302.4097865-1-alexei.starovoitov@gmail.com/",
+      "summary": "Single-patch optimization from Alexei Starovoitov. The verifier was calling sort() on the subprog_info array each time a new subprogram was registered, making the overall complexity O(n^2 log n) for programs with many subprograms. This patch switches to an insertion sort approach that keeps the array sorted as entries are appended, reducing the cost to O(n log n) overall. The fix benefits programs that compose large numbers of BPF subprograms through static functions or global functions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a __derives_ret kfunc argument annotation",
+      "author": "Justin Suess",
+      "url": "https://lore.kernel.org/bpf/20261023212041.884996-4-utilityemal77@gmail.com/",
+      "summary": "Core patch (3/5, v3) of a series binding kfunc return values to their argument's lifetime. The new __derives_ret annotation on a kfunc parameter tells the verifier that the return value's valid lifetime is bounded by the annotated argument: when that argument is released or goes out of scope, the return value is simultaneously invalidated. This closes a class of potential use-after-free bugs where callers retained references to data derived from a shorter-lived object. The series also applies the annotation to bpf_real_data_inode() to bind returned inodes to their parent file.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Look up BTF strings without making BTF modifiable",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261023222652.3927736-2-ihor.solodrai@linux.dev/",
+      "summary": "First patch (1/8, v2) in Ihor Solodrai's series adding per-record CO-RE attributes to bpftool's C dump. This patch is a prerequisite refactor: btf_str_by_offset() previously forced the BTF object into a modifiable state even for read-only lookups, which had unintended side effects. Making the lookup non-destructive enables subsequent patches to query BTF string offsets during the C dump without altering the BTF object's internal state. The series then adds __bpf_relocatable and __bpf_static_offset annotations to bpftool's BTF C output to improve CO-RE portability.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add syscall common attrs support for link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261026154948.99408-2-leon.hwang@linux.dev/",
+      "summary": "First patch (1/6, v5) in Leon Hwang's series extending bpf_link_create to support log output. The patch adds a common attrs block to the link_create syscall that can carry log_level and log_size, enabling callers to capture verifier diagnostic output when link attachment fails. The series also retires the bpf_xdp_link_attach_failed tracepoint, adds a libbpf __sys_bpf_fd helper refactor, exposes log_opts in libbpf's bpf_link_create API, and includes selftests verifying log population.",
+      "related_links": []
+    },
+    {
+      "title": "kallsyms: Add KALLSYMS_QUERY ioctl to /proc/kallsyms",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261023001603.560210-9-wusamuel@google.com/",
+      "summary": "First patch (1/6, v2) in Samuel Wu's series adding a structured ioctl to /proc/kallsyms. The new KALLSYMS_QUERY ioctl lets user space look up symbol addresses by name more efficiently than parsing the text file. A companion libbpf patch (4/6) updates typeless ksym resolution to use this ioctl, which avoids the cost of reading and parsing the entire kallsyms file when only a few symbols need to be resolved. This is especially beneficial for tools that load BPF programs referencing module symbols.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add bpf_ksock_bind() kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261022181620.247201-1-mahe.tardy@gmail.com/",
+      "summary": "Introduces the bpf_ksock_bind() kfunc, which allows BPF programs to bind a kernel socket to a local address from within the BPF context. Previously there was no first-class way for BPF programs to perform a bind on a kernel-internal socket; callers had to resort to user-space coordination or indirect approaches. This kfunc enables scenarios such as BPF-driven socket steering and testing where programmatic bind control is needed. A companion selftest (2/2) validates the new kfunc under multiple address families.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Track borrowed iterator results by default",
+      "author": "Xu Yunxiang",
+      "url": "https://lore.kernel.org/bpf/20261024100647.2579244-2-xyx2021@mail.ustc.edu.cn/",
+      "summary": "Core patch (1/2, v8) of a series improving the BPF verifier's handling of iterator result lifetimes. When a BPF program calls a kfunc that returns a reference derived from an iterator, the verifier now automatically tracks that the returned value is borrowed from the iterator and must not outlive it. Without this tracking, the verifier could accept programs that retain an iterator-derived pointer past the iterator's destruction, constituting a potential use-after-free. The series adds selftests covering the newly enforced lifetime rules.",
+      "related_links": []
+    }
+  ]
+}
