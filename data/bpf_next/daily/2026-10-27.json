@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-10-28T00:00:00Z",
+  "period_start": "2026-10-26",
+  "period_end": "2026-10-27",
+  "patch_count": 9,
+  "thread_count": 3,
+  "top_contributors": ["Leon Hwang", "Mahe Tardy", "Tiezhu Yang"],
+  "key_topics": ["xdp", "kfuncs", "link_create", "libbpf", "selftests"],
+  "overview": "This period saw activity across XDP link creation, kernel socket kfuncs, and architecture-specific selftest improvements. Leon Hwang's v5 series adds syscall common attrs support for both generic and XDP-specific link_create syscalls, enabling richer error reporting through log_opts in libbpf. Mahe Tardy introduces a new bpf_ksock_bind() kfunc for binding kernel sockets, while Tiezhu Yang extends signed division and modulo overflow tests to the LoongArch architecture.",
+  "patches": [
+    {
+      "title": "bpf: Add syscall common attrs support for link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261026154948.99408-2-leon.hwang@linux.dev/",
+      "summary": "This patch adds support for syscall common attributes in the BPF link_create syscall path, enabling uniform handling of attributes like log_level and log_buf across different link types. It is the foundational patch of a 6-part v5 series that extends this infrastructure to XDP-specific link creation. Providing common attrs support allows error logs to be surfaced back to userspace during link attachment failures, improving debuggability. The series has iterated through five revisions, indicating active review and refinement.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add syscall common attrs support for xdp link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261026154948.99408-3-leon.hwang@linux.dev/",
+      "summary": "Building on the generic link_create common attrs foundation, this patch wires the same infrastructure into the XDP-specific link_create path. XDP programs attached via links now gain the ability to return diagnostic log output when attachment fails. This is particularly useful for understanding why an XDP program could not be attached to a given interface or driver. It also retires the now-superseded bpf_xdp_link_attach_failed tracepoint in a companion patch.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Add log_opts support for bpf_link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261026154948.99408-6-leon.hwang@linux.dev/",
+      "summary": "This libbpf patch exposes the new kernel-side log_opts support for bpf_link_create to userspace, allowing callers to pass a log buffer and log level when creating BPF links. When link creation fails, the kernel will populate the log buffer with diagnostic information, which libbpf can then surface to users. The change also factors out a __sys_bpf_fd helper in a companion patch to reduce code duplication in the libbpf syscall wrappers. This completes the userspace side of the link_create log_opts feature.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add bpf_ksock_bind() kfunc",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261026190342.137069-1-mahe.tardy@gmail.com/",
+      "summary": "This v2 patch introduces a new bpf_ksock_bind() kfunc that allows BPF programs to bind kernel sockets to a local address and port. Kernel socket kfuncs enable BPF programs operating in the networking stack to create and manage sockets directly, and bind is a necessary step before a kernel socket can be used for communication. The companion selftest patch validates the new kfunc's behavior across various address families and binding scenarios. This contributes to the growing set of kernel socket management capabilities available to BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Enable signed division and modulo overflow tests for LoongArch",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20261027041627.20792-1-yangtiezhu@loongson.cn/",
+      "summary": "This patch enables the BPF selftest cases for signed division and modulo overflow on the LoongArch architecture, which previously had these tests skipped. Signed integer division overflow (e.g., INT_MIN divided by -1) has architecture-specific trap behavior, and ensuring BPF's handling is correct on LoongArch expands the coverage of the verifier's arithmetic edge cases. The change reflects continued work on improving BPF's portability and correctness guarantees across non-x86 architectures. LoongArch support in the kernel has been maturing rapidly, and closing these test gaps is an important part of that process.",
+      "related_links": []
+    }
+  ]
+}
