@@ -1,0 +1,1045 @@
+{
+  "period": "daily",
+  "period_start": "2026-10-27",
+  "period_end": "2026-10-28",
+  "fetched_at": "2026-10-28T15:47:57Z",
+  "patches": [
+    {
+      "title": "[bpf-next] bpf: Fix suspicious RCU usage for sleepable bpf_get_stack()",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20261028093548.790977-1-yangfeng59949@163.com/",
+      "date": "2026-10-28T09:35:48",
+      "series": [
+        {
+          "id": 1195280,
+          "url": "https://patchwork.kernel.org/api/series/1195280/",
+          "web_url": "https://patchwork.kernel.org/series/1195280/",
+          "date": "2026-10-28T09:35:48",
+          "name": "[bpf-next] bpf: Fix suspicious RCU usage for sleepable bpf_get_stack()",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195280/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Check task work scheduling on",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261028073525.1035605-3-luyun_611@163.com/",
+      "date": "2026-10-28T07:35:25",
+      "series": [
+        {
+          "id": 1195214,
+          "url": "https://patchwork.kernel.org/api/series/1195214/",
+          "web_url": "https://patchwork.kernel.org/series/1195214/",
+          "date": "2026-10-28T07:35:24",
+          "name": "bpf: Fix task work use-after-free on deletion",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195214/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Retire task work before reclaiming hash elements",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261028073525.1035605-2-luyun_611@163.com/",
+      "date": "2026-10-28T07:35:24",
+      "series": [
+        {
+          "id": 1195214,
+          "url": "https://patchwork.kernel.org/api/series/1195214/",
+          "web_url": "https://patchwork.kernel.org/series/1195214/",
+          "date": "2026-10-28T07:35:24",
+          "name": "bpf: Fix task work use-after-free on deletion",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195214/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] selftests/bpf: libarena: Add rb_next()",
+      "author": "Changwoo Min",
+      "url": "https://lore.kernel.org/bpf/20261028060046.549097-4-changwoo@igalia.com/",
+      "date": "2026-10-28T06:00:46",
+      "series": [
+        {
+          "id": 1195172,
+          "url": "https://patchwork.kernel.org/api/series/1195172/",
+          "web_url": "https://patchwork.kernel.org/series/1195172/",
+          "date": "2026-10-28T06:00:45",
+          "name": "selftests/bpf: libarena: Add ordered-walk and lockless-peek support to the rbtree",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195172/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] selftests/bpf: libarena: Cache the rbtree's leftmost node and count",
+      "author": "Changwoo Min",
+      "url": "https://lore.kernel.org/bpf/20261028060046.549097-3-changwoo@igalia.com/",
+      "date": "2026-10-28T06:00:45",
+      "series": [
+        {
+          "id": 1195172,
+          "url": "https://patchwork.kernel.org/api/series/1195172/",
+          "web_url": "https://patchwork.kernel.org/series/1195172/",
+          "date": "2026-10-28T06:00:45",
+          "name": "selftests/bpf: libarena: Add ordered-walk and lockless-peek support to the rbtree",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195172/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] selftests/bpf: libarena: Order equal rbtree keys FIFO",
+      "author": "Changwoo Min",
+      "url": "https://lore.kernel.org/bpf/20261028060046.549097-2-changwoo@igalia.com/",
+      "date": "2026-10-28T06:00:44",
+      "series": [
+        {
+          "id": 1195172,
+          "url": "https://patchwork.kernel.org/api/series/1195172/",
+          "web_url": "https://patchwork.kernel.org/series/1195172/",
+          "date": "2026-10-28T06:00:45",
+          "name": "selftests/bpf: libarena: Add ordered-walk and lockless-peek support to the rbtree",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195172/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v1,11/11] selftests/bpf: Test what a callback unwinds with",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/b22c7e8b1099de6b60ec5561fcadef26f34527e2.1793147364.git.memxor@gmail.com/",
+      "date": "2026-10-28T00:44:48",
+      "series": [
+        {
+          "id": 1195012,
+          "url": "https://patchwork.kernel.org/api/series/1195012/",
+          "web_url": "https://patchwork.kernel.org/series/1195012/",
+          "date": "2026-10-28T00:44:37",
+          "name": "Unwinding for synchronous callbacks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195012/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v1,10/11] selftests/bpf: Test callbacks that unwind",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/2fb53df72300b10ba5f5aff123c331b80a7c4be5.1793147364.git.memxor@gmail.com/",
+      "date": "2026-10-28T00:44:47",
+      "series": [
+        {
+          "id": 1195012,
+          "url": "https://patchwork.kernel.org/api/series/1195012/",
+          "web_url": "https://patchwork.kernel.org/series/1195012/",
+          "date": "2026-10-28T00:44:37",
+          "name": "Unwinding for synchronous callbacks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195012/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v1,09/11] bpf: Let the comparator of bpf_rbtree_add unwind",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/d81d996f09e0fd0b07816dcd0541f39c0f451a23.1793147364.git.memxor@gmail.com/",
+      "date": "2026-10-28T00:44:46",
+      "series": [
+        {
+          "id": 1195012,
+          "url": "https://patchwork.kernel.org/api/series/1195012/",
+          "web_url": "https://patchwork.kernel.org/series/1195012/",
+          "date": "2026-10-28T00:44:37",
+          "name": "Unwinding for synchronous callbacks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195012/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v1,08/11] bpf: Let the callback of bpf_user_ringbuf_drain unwind",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/98e3a499d89e01ddfb83fcf91e34b2a0e36e1007.1793147364.git.memxor@gmail.com/",
+      "date": "2026-10-28T00:44:45",
+      "series": [
+        {
+          "id": 1195012,
+          "url": "https://patchwork.kernel.org/api/series/1195012/",
+          "web_url": "https://patchwork.kernel.org/series/1195012/",
+          "date": "2026-10-28T00:44:37",
+          "name": "Unwinding for synchronous callbacks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195012/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v1,07/11] bpf: Let the callback of bpf_find_vma unwind",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/9b98417904ec1b27a1b6e2d6a37b897fe2494073.1793147364.git.memxor@gmail.com/",
+      "date": "2026-10-28T00:44:44",
+      "series": [
+        {
+          "id": 1195012,
+          "url": "https://patchwork.kernel.org/api/series/1195012/",
+          "web_url": "https://patchwork.kernel.org/series/1195012/",
+          "date": "2026-10-28T00:44:37",
+          "name": "Unwinding for synchronous callbacks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195012/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v1,06/11] bpf: Let the callback of bpf_for_each_map_elem unwind",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/1b3fb00521b2eda1ffa902ee6e413d30b677bdb0.1793147364.git.memxor@gmail.com/",
+      "date": "2026-10-28T00:44:43",
+      "series": [
+        {
+          "id": 1195012,
+          "url": "https://patchwork.kernel.org/api/series/1195012/",
+          "web_url": "https://patchwork.kernel.org/series/1195012/",
+          "date": "2026-10-28T00:44:37",
+          "name": "Unwinding for synchronous callbacks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195012/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v1,05/11] bpf: Let the callback of bpf_loop unwind",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/25728094090d9bf3e4cd88feecec336f0493a5a9.1793147364.git.memxor@gmail.com/",
+      "date": "2026-10-28T00:44:42",
+      "series": [
+        {
+          "id": 1195012,
+          "url": "https://patchwork.kernel.org/api/series/1195012/",
+          "web_url": "https://patchwork.kernel.org/series/1195012/",
+          "date": "2026-10-28T00:44:37",
+          "name": "Unwinding for synchronous callbacks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195012/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v1,04/11] bpf: Give the inlined bpf_loop a pad",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/a9599f7ed1c7bbb5109d2a9e2c7135af15045738.1793147364.git.memxor@gmail.com/",
+      "date": "2026-10-28T00:44:41",
+      "series": [
+        {
+          "id": 1195012,
+          "url": "https://patchwork.kernel.org/api/series/1195012/",
+          "web_url": "https://patchwork.kernel.org/series/1195012/",
+          "date": "2026-10-28T00:44:37",
+          "name": "Unwinding for synchronous callbacks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195012/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v1,03/11] bpf: Let a callback unwind into the pad of its helper",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/cc848a0c0e4839fe34514b89561884c082650881.1793147364.git.memxor@gmail.com/",
+      "date": "2026-10-28T00:44:40",
+      "series": [
+        {
+          "id": 1195012,
+          "url": "https://patchwork.kernel.org/api/series/1195012/",
+          "web_url": "https://patchwork.kernel.org/series/1195012/",
+          "date": "2026-10-28T00:44:37",
+          "name": "Unwinding for synchronous callbacks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195012/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v1,02/11] bpf, arm64: Let the pad after a helper call have r0",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/f86599ab5644a86943345b2650d1d11a0363bb6f.1793147364.git.memxor@gmail.com/",
+      "date": "2026-10-28T00:44:39",
+      "series": [
+        {
+          "id": 1195012,
+          "url": "https://patchwork.kernel.org/api/series/1195012/",
+          "web_url": "https://patchwork.kernel.org/series/1195012/",
+          "date": "2026-10-28T00:44:37",
+          "name": "Unwinding for synchronous callbacks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195012/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v1,01/11] bpf: Give a helper a way to call its callback with a pad",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/03d6c53ccdf3eb0f5503eae9f9ffa5e6570549c3.1793147364.git.memxor@gmail.com/",
+      "date": "2026-10-28T00:44:38",
+      "series": [
+        {
+          "id": 1195012,
+          "url": "https://patchwork.kernel.org/api/series/1195012/",
+          "web_url": "https://patchwork.kernel.org/series/1195012/",
+          "date": "2026-10-28T00:44:37",
+          "name": "Unwinding for synchronous callbacks",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1195012/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,7/7] selftests/bpf: write the mixed arena/scalar ALU tests in asm",
+      "author": "Vineet Gupta",
+      "url": "https://lore.kernel.org/bpf/20261028000411.4010967-8-vineet.gupta@linux.dev/",
+      "date": "2026-10-28T00:04:11",
+      "series": [
+        {
+          "id": 1194999,
+          "url": "https://patchwork.kernel.org/api/series/1194999/",
+          "web_url": "https://patchwork.kernel.org/series/1194999/",
+          "date": "2026-10-28T00:04:04",
+          "name": "selftests/bpf: cleanup bpf-gcc runs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194999/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,6/7] selftests/bpf: cast explicitly in the arena subprog and callback faults",
+      "author": "Vineet Gupta",
+      "url": "https://lore.kernel.org/bpf/20261028000411.4010967-7-vineet.gupta@linux.dev/",
+      "date": "2026-10-28T00:04:10",
+      "series": [
+        {
+          "id": 1194999,
+          "url": "https://patchwork.kernel.org/api/series/1194999/",
+          "web_url": "https://patchwork.kernel.org/series/1194999/",
+          "date": "2026-10-28T00:04:04",
+          "name": "selftests/bpf: cleanup bpf-gcc runs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194999/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,5/7] selftests/bpf: don't report arena tests as passing with an empty body",
+      "author": "Vineet Gupta",
+      "url": "https://lore.kernel.org/bpf/20261028000411.4010967-6-vineet.gupta@linux.dev/",
+      "date": "2026-10-28T00:04:09",
+      "series": [
+        {
+          "id": 1194999,
+          "url": "https://patchwork.kernel.org/api/series/1194999/",
+          "web_url": "https://patchwork.kernel.org/series/1194999/",
+          "date": "2026-10-28T00:04:04",
+          "name": "selftests/bpf: cleanup bpf-gcc runs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194999/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,4/7] selftests/bpf: make arena_base() opaque to GCC's -Warray-bounds",
+      "author": "Vineet Gupta",
+      "url": "https://lore.kernel.org/bpf/20261028000411.4010967-5-vineet.gupta@linux.dev/",
+      "date": "2026-10-28T00:04:08",
+      "series": [
+        {
+          "id": 1194999,
+          "url": "https://patchwork.kernel.org/api/series/1194999/",
+          "web_url": "https://patchwork.kernel.org/series/1194999/",
+          "date": "2026-10-28T00:04:04",
+          "name": "selftests/bpf: cleanup bpf-gcc runs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194999/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,3/7] selftests/bpf: report SKIP for arena tests a compiler cannot build",
+      "author": "Vineet Gupta",
+      "url": "https://lore.kernel.org/bpf/20261028000411.4010967-4-vineet.gupta@linux.dev/",
+      "date": "2026-10-28T00:04:07",
+      "series": [
+        {
+          "id": 1194999,
+          "url": "https://patchwork.kernel.org/api/series/1194999/",
+          "web_url": "https://patchwork.kernel.org/series/1194999/",
+          "date": "2026-10-28T00:04:04",
+          "name": "selftests/bpf: cleanup bpf-gcc runs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194999/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,2/7] selftests/bpf: don't pass clang-only warning flags to GCC",
+      "author": "Vineet Gupta",
+      "url": "https://lore.kernel.org/bpf/20261028000411.4010967-3-vineet.gupta@linux.dev/",
+      "date": "2026-10-28T00:04:06",
+      "series": [
+        {
+          "id": 1194999,
+          "url": "https://patchwork.kernel.org/api/series/1194999/",
+          "web_url": "https://patchwork.kernel.org/series/1194999/",
+          "date": "2026-10-28T00:04:04",
+          "name": "selftests/bpf: cleanup bpf-gcc runs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194999/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,1/7] selftests/bpf: Build callx tests with GCC that defines __BPF_FEATURE_CALLX",
+      "author": "Vineet Gupta",
+      "url": "https://lore.kernel.org/bpf/20261028000411.4010967-2-vineet.gupta@linux.dev/",
+      "date": "2026-10-28T00:04:05",
+      "series": [
+        {
+          "id": 1194999,
+          "url": "https://patchwork.kernel.org/api/series/1194999/",
+          "web_url": "https://patchwork.kernel.org/series/1194999/",
+          "date": "2026-10-28T00:04:04",
+          "name": "selftests/bpf: cleanup bpf-gcc runs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194999/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/4] selftests/bpf: libarena: Make zero variable type __u32 instead of u32",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261027192413.5038-5-emil@etsalapatis.com/",
+      "date": "2026-10-27T19:24:13",
+      "series": [
+        {
+          "id": 1194884,
+          "url": "https://patchwork.kernel.org/api/series/1194884/",
+          "web_url": "https://patchwork.kernel.org/series/1194884/",
+          "date": "2026-10-27T19:24:09",
+          "name": "selftests/bpf: libarena: compatibility fixups",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1194884/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/4] selftests/bpf: libarena: add explicit buddy_grow() call",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261027192413.5038-4-emil@etsalapatis.com/",
+      "date": "2026-10-27T19:24:12",
+      "series": [
+        {
+          "id": 1194884,
+          "url": "https://patchwork.kernel.org/api/series/1194884/",
+          "web_url": "https://patchwork.kernel.org/series/1194884/",
+          "date": "2026-10-27T19:24:09",
+          "name": "selftests/bpf: libarena: compatibility fixups",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1194884/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/4] selftests/bpf: libarena: make allocator growth on alloc failure optional",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261027192413.5038-3-emil@etsalapatis.com/",
+      "date": "2026-10-27T19:24:11",
+      "series": [
+        {
+          "id": 1194884,
+          "url": "https://patchwork.kernel.org/api/series/1194884/",
+          "web_url": "https://patchwork.kernel.org/series/1194884/",
+          "date": "2026-10-27T19:24:09",
+          "name": "selftests/bpf: libarena: compatibility fixups",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1194884/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/4] libarena: remove in-code licenses",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261027192413.5038-2-emil@etsalapatis.com/",
+      "date": "2026-10-27T19:24:10",
+      "series": [
+        {
+          "id": 1194884,
+          "url": "https://patchwork.kernel.org/api/series/1194884/",
+          "web_url": "https://patchwork.kernel.org/series/1194884/",
+          "date": "2026-10-27T19:24:09",
+          "name": "selftests/bpf: libarena: compatibility fixups",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1194884/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,21/21] selftests/bpf: Extend the JIT instruction tests for arm64 encodings",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-22-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:45",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,20/21] selftests/bpf: Let the arm64 private stack check skip the BTI pad",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-21-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:44",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,19/21] bpf, arm64: Split 24-bit immediates of add, sub and equality compares",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-20-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:43",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,18/21] bpf, arm64: Multiply by constants with shifts, adds and subs",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-19-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:42",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,17/21] bpf, arm64: Use cbz, cbnz, tbz and tbnz for zero, sign and bit tests",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-18-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:41",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,16/21] bpf, arm64: Use a move or mvn for the and and xor with all ones",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-17-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:40",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,15/21] bpf, arm64: Divide by constants via multiplication with a magic number",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-16-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:39",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,14/21] bpf, arm64: Shorten the tail call sequence",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-15-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:38",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,13/21] bpf, arm64: Materialize immediates with fewer instructions",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-14-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:37",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,12/21] bpf, arm64: Adjust compares with unencodable immediates by one",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-13-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:36",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,11/21] bpf, arm64: Zero extend the arena offset in register offset accesses",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-12-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:35",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,10/21] bpf, arm64: Store zero immediates from the zero register",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-11-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:34",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,09/21] bpf, arm64: Use the unscaled forms for negative and unaligned offsets",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-10-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:33",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,08/21] bpf, arm64: Consolidate the load and store emission into a helper",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-9-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:32",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,07/21] bpf: Move the division magic number computation out of the x86 JIT",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-8-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:31",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,06/21] arm64, insn: Add the LDUR/STUR, UMULH/SMULH and TBZ/TBNZ encodings",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-7-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:30",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,05/21] bpf, arm64: Keep the ll/sc atomics address apart from the old value",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-6-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:29",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,04/21] arm64, insn: Reject sign extending loads of 64 bits",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-5-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:28",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,03/21] bpf, arm64: Emit ISB SY in the speculation barriers",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-4-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:27",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,02/21] bpf, arm64: Free the private stack when a pass over the image fails",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-3-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:26",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,01/21] bpf, arm64: Free the offset table of a subprog in bpf_jit_free",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-2-daniel@iogearbox.net/",
+      "date": "2026-10-27T18:24:25",
+      "series": [
+        {
+          "id": 1194859,
+          "url": "https://patchwork.kernel.org/api/series/1194859/",
+          "web_url": "https://patchwork.kernel.org/series/1194859/",
+          "date": "2026-10-27T18:24:25",
+          "name": "bpf: Various arm64 BPF JIT improvements",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194859/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/4] selftests/bpf: libarena: Make zero variable type __u32 instead of u32",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261027162916.10996-5-emil@etsalapatis.com/",
+      "date": "2026-10-27T16:29:16",
+      "series": [
+        {
+          "id": 1194797,
+          "url": "https://patchwork.kernel.org/api/series/1194797/",
+          "web_url": "https://patchwork.kernel.org/series/1194797/",
+          "date": "2026-10-27T16:29:12",
+          "name": "selftests/bpf: libarena: compatibility fixups",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194797/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/4] selftests/bpf: libarena: add explicit buddy_grow() call",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261027162916.10996-4-emil@etsalapatis.com/",
+      "date": "2026-10-27T16:29:15",
+      "series": [
+        {
+          "id": 1194797,
+          "url": "https://patchwork.kernel.org/api/series/1194797/",
+          "web_url": "https://patchwork.kernel.org/series/1194797/",
+          "date": "2026-10-27T16:29:12",
+          "name": "selftests/bpf: libarena: compatibility fixups",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194797/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/4] selftests/bpf: libarena: make allocator growth on alloc failure optional",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261027162916.10996-3-emil@etsalapatis.com/",
+      "date": "2026-10-27T16:29:14",
+      "series": [
+        {
+          "id": 1194797,
+          "url": "https://patchwork.kernel.org/api/series/1194797/",
+          "web_url": "https://patchwork.kernel.org/series/1194797/",
+          "date": "2026-10-27T16:29:12",
+          "name": "selftests/bpf: libarena: compatibility fixups",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194797/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/4] libarena: remove in-code licenses",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261027162916.10996-2-emil@etsalapatis.com/",
+      "date": "2026-10-27T16:29:13",
+      "series": [
+        {
+          "id": 1194797,
+          "url": "https://patchwork.kernel.org/api/series/1194797/",
+          "web_url": "https://patchwork.kernel.org/series/1194797/",
+          "date": "2026-10-27T16:29:12",
+          "name": "selftests/bpf: libarena: compatibility fixups",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194797/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,7/7] selftests/bpf: Verify register preservation for IRQ fastcalls",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261027162820.10887-8-emil@etsalapatis.com/",
+      "date": "2026-10-27T16:28:20",
+      "series": [
+        {
+          "id": 1194796,
+          "url": "https://patchwork.kernel.org/api/series/1194796/",
+          "web_url": "https://patchwork.kernel.org/series/1194796/",
+          "date": "2026-10-27T16:28:13",
+          "name": "bpf: Inline IRQ enter/exit instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194796/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,6/7] bpf: Enable fastcall for inlined local IRQ kfuncs",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261027162820.10887-7-emil@etsalapatis.com/",
+      "date": "2026-10-27T16:28:19",
+      "series": [
+        {
+          "id": 1194796,
+          "url": "https://patchwork.kernel.org/api/series/1194796/",
+          "web_url": "https://patchwork.kernel.org/series/1194796/",
+          "date": "2026-10-27T16:28:13",
+          "name": "bpf: Inline IRQ enter/exit instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194796/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,5/7] selftests/bpf: Test local IRQ kfunc inlining",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261027162820.10887-6-emil@etsalapatis.com/",
+      "date": "2026-10-27T16:28:18",
+      "series": [
+        {
+          "id": 1194796,
+          "url": "https://patchwork.kernel.org/api/series/1194796/",
+          "web_url": "https://patchwork.kernel.org/series/1194796/",
+          "date": "2026-10-27T16:28:13",
+          "name": "bpf: Inline IRQ enter/exit instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194796/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/7] bpf: Inline local IRQ kfunc calls during verifier fixup",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261027162820.10887-5-emil@etsalapatis.com/",
+      "date": "2026-10-27T16:28:17",
+      "series": [
+        {
+          "id": 1194796,
+          "url": "https://patchwork.kernel.org/api/series/1194796/",
+          "web_url": "https://patchwork.kernel.org/series/1194796/",
+          "date": "2026-10-27T16:28:13",
+          "name": "bpf: Inline IRQ enter/exit instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194796/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/7] arm64, bpf: JIT internal IRQ save and restore instructions",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261027162820.10887-4-emil@etsalapatis.com/",
+      "date": "2026-10-27T16:28:16",
+      "series": [
+        {
+          "id": 1194796,
+          "url": "https://patchwork.kernel.org/api/series/1194796/",
+          "web_url": "https://patchwork.kernel.org/series/1194796/",
+          "date": "2026-10-27T16:28:13",
+          "name": "bpf: Inline IRQ enter/exit instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194796/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/7] x86, bpf: JIT internal IRQ save and restore instructions",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261027162820.10887-3-emil@etsalapatis.com/",
+      "date": "2026-10-27T16:28:15",
+      "series": [
+        {
+          "id": 1194796,
+          "url": "https://patchwork.kernel.org/api/series/1194796/",
+          "web_url": "https://patchwork.kernel.org/series/1194796/",
+          "date": "2026-10-27T16:28:13",
+          "name": "bpf: Inline IRQ enter/exit instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194796/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/7] bpf: Add internal IRQ save and restore instructions",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261027162820.10887-2-emil@etsalapatis.com/",
+      "date": "2026-10-27T16:28:14",
+      "series": [
+        {
+          "id": 1194796,
+          "url": "https://patchwork.kernel.org/api/series/1194796/",
+          "web_url": "https://patchwork.kernel.org/series/1194796/",
+          "date": "2026-10-27T16:28:13",
+          "name": "bpf: Inline IRQ enter/exit instructions",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194796/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: Enable signed division and modulo overflow tests for LoongArch",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20261027041627.20792-1-yangtiezhu@loongson.cn/",
+      "date": "2026-10-27T04:16:27",
+      "series": [
+        {
+          "id": 1194240,
+          "url": "https://patchwork.kernel.org/api/series/1194240/",
+          "web_url": "https://patchwork.kernel.org/series/1194240/",
+          "date": "2026-10-27T04:16:27",
+          "name": "[bpf-next] selftests/bpf: Enable signed division and modulo overflow tests for LoongArch",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1194240/mbox/"
+        }
+      ]
+    }
+  ]
+}
