@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-10-29T10:15:17Z",
+  "period_start": "2026-10-27",
+  "period_end": "2026-10-28",
+  "patch_count": 48,
+  "thread_count": 10,
+  "top_contributors": ["Daniel Borkmann", "Emil Tsalapatis", "Kumar Kartikeya Dwivedi"],
+  "key_topics": ["jit", "arm64", "verifier", "callbacks", "kfuncs", "rbtree", "selftests", "irq"],
+  "overview": "October 28th saw substantial BPF activity led by a 21-patch series from Daniel Borkmann bringing comprehensive arm64 JIT optimizations including constant-time division via magic numbers, compact immediate materialization, and better branch patterns (cbz/cbnz/tbz/tbnz). Kumar Kartikeya Dwivedi posted an RFC for unwinding support in synchronous BPF callbacks, a significant verifier enhancement that would allow early exit from helpers like bpf_loop, bpf_for_each_map_elem, and bpf_rbtree_add. Emil Tsalapatis contributed IRQ inlining support for fastcall kfuncs with JIT backends for both x86 and arm64, alongside libarena compatibility fixes.",
+  "patches": [
+    {
+      "title": "bpf: Various arm64 BPF JIT improvements",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261027182445.1156335-2-daniel@iogearbox.net/",
+      "summary": "A wide-ranging 21-patch series modernizing the arm64 BPF JIT compiler with numerous code quality and performance improvements. Highlights include division-by-constant via magic-number multiplication (ported from the x86 JIT), multiply-by-constant using shifts/adds/subs, compact immediate materialization, and use of native arm64 branch instructions (cbz, cbnz, tbz, tbnz) for zero/sign/bit tests. Additional fixes cover unscaled load/store forms for negative offsets, zero-extending arena offsets, storing zero immediates from the zero register, and freeing the private stack and offset table on JIT failure.",
+      "related_links": []
+    },
+    {
+      "title": "Unwinding for synchronous callbacks",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/03d6c53ccdf3eb0f5503eae9f9ffa5e6570549c3.1793147364.git.memxor@gmail.com/",
+      "summary": "An RFC series (11 patches) introducing unwind support for synchronous BPF callbacks, allowing them to perform an early return that propagates up through the calling helper. The mechanism adds a \"pad\" instruction slot after each helper call that the callback can unwind into, preserving the return value (r0) correctly on arm64. Individual helpers covered include bpf_loop, bpf_for_each_map_elem, bpf_find_vma, bpf_user_ringbuf_drain, and bpf_rbtree_add. This feature enables BPF programs to implement early-exit semantics inside iteration helpers without ad-hoc workarounds.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Inline IRQ enter/exit instructions",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261027162820.10887-2-emil@etsalapatis.com/",
+      "summary": "A 7-patch series adding new internal BPF pseudo-instructions for saving and restoring IRQ state, backed by JIT implementations for both x86 and arm64. The verifier is extended to treat local IRQ kfuncs as fastcall-eligible and inline them during fixup, eliminating the overhead of a full helper call for IRQ enter/exit. Selftests verify both the inlining behavior and correct register preservation across the fastcall boundary.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix task work use-after-free on deletion",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261028073525.1035605-2-luyun_611@163.com/",
+      "summary": "A 2-patch fix addressing a use-after-free bug in BPF task work handling during hash map element deletion. When a hash map element is reclaimed, any pending task work associated with that element must be retired before the memory is freed; the fix adds the necessary synchronization point. A selftest verifies that task work scheduling on deletion no longer triggers the use-after-free condition.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix suspicious RCU usage for sleepable bpf_get_stack()",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20261028093548.790977-1-yangfeng59949@163.com/",
+      "summary": "A single-patch fix resolving a suspicious RCU usage warning triggered when bpf_get_stack() is called from a sleepable BPF program. Sleepable programs do not hold an RCU read lock in the conventional sense, so the helper's internal stack-walk code must use the appropriate sleepable-safe RCU variant. The fix aligns the locking with what is valid in a sleepable context.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: libarena: Add ordered-walk and lockless-peek support to the rbtree",
+      "author": "Changwoo Min",
+      "url": "https://lore.kernel.org/bpf/20261028060046.549097-2-changwoo@igalia.com/",
+      "summary": "A 3-patch series enhancing the rbtree implementation in the libarena test library. The first patch enforces FIFO ordering for nodes with equal keys, making the tree deterministic for duplicates. The second caches the leftmost node and the total node count to accelerate common operations. The third exposes rb_next() for in-order traversal, enabling tests that walk the tree in sorted order.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: cleanup bpf-gcc runs",
+      "author": "Vineet Gupta",
+      "url": "https://lore.kernel.org/bpf/20261028000411.4010967-2-vineet.gupta@linux.dev/",
+      "summary": "A 7-patch series cleaning up BPF selftests to build and run correctly with bpf-gcc in addition to clang. Fixes include not passing clang-only warning flags to GCC, reporting SKIP rather than a false PASS when the compiler cannot build arena tests, suppressing a -Warray-bounds false-positive for arena_base(), adding explicit casts in arena subprog/callback fault tests, and rewriting mixed arena/scalar ALU tests in assembly to sidestep compiler dialect issues.",
+      "related_links": []
+    }
+  ]
+}
