@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-10-31T00:00:00Z",
+  "period_start": "2026-10-29",
+  "period_end": "2026-10-30",
+  "patch_count": 51,
+  "thread_count": 10,
+  "top_contributors": ["Qiliang Yuan", "Jiri Olsa", "Andrey Grodzovsky"],
+  "key_topics": ["verifier", "kfuncs", "libbpf", "sockmap", "selftests", "bpftool"],
+  "overview": "October 30 brought two major subsystem-level series to bpf-next. Qiliang Yuan posted a 22-patch v2 series that refactors the BPF verifier's instruction patching mechanism from an eager in-place rewrite to a deferred patch list, unlocking more efficient multi-pass fixups. Jiri Olsa introduced user memory kfuncs giving BPF programs a safe, audited API to read from and mmap userspace memory. Andrey Grodzovsky's v9 of libbpf manual program loading also landed, along with a sockmap data-race fix from Jakub Sitnicki.",
+  "patches": [
+    {
+      "title": "bpf: Add a list of deferred instruction patches",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261030-bpf-verifier-patch-batch-v2-1-55cd43439f7c@gmail.com/",
+      "summary": "This 22-patch v2 series replaces bpf_patch_insn_data() and the verifier's per-instruction eager patching with a deferred patch list that is applied in a single pass at the end of verification. The approach batches all instruction rewrites — nop stripping, dead code removal, context access conversions, bpf_loop inlining, constant blinding, and may_goto counter setup — reducing repeated array reallocations and fixing subtle ordering bugs. The old patching code is removed once all callers are converted, and the may_goto backward-jump range overflow case is also addressed.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add __srcptr kfunc argument suffix",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20261029212551.56964-2-jolsa@kernel.org/",
+      "summary": "This 8-patch series introduces user memory kfuncs that let BPF programs safely interact with userspace memory. A new __srcptr kfunc argument suffix marks pointers originating from user address space, and new kfuncs are added for copying data to user memory (bpf_copy_to_user), mapping user pages, and probing executable page permissions. The series includes comprehensive selftests covering mmap, copy-to-user, page exec checks, and error paths. This fills a gap for BPF-based security and observability tools that need to audit or modify userspace memory.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Reject gen_loader set after PREPARE step.",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20261029223348.3730738-2-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "This v9 7-patch series adds manual BPF program loading to libbpf, giving callers explicit control over when programs are loaded and attached. A new BPF_PROG_LOAD_STRATEGY_MANUAL enum value opts a program out of automatic loading during bpf_object__load(), allowing it to be loaded later via a dedicated API. The SEC(\"!...\") prefix notation provides a declarative way to mark programs as manually-loaded directly in the source. A memory leak in bpf_program__exit() is also fixed. The veristat tool is converted as a real-world example.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Cover concurrent sockmap update and delete",
+      "author": "Jakub Sitnicki",
+      "url": "https://lore.kernel.org/bpf/20261030-bpf-next-v1-1-035eabf8eae7@cloudflare.com/",
+      "summary": "This 2-patch series fixes data races in the sockmap psock update path. Concurrent updates and deletions to the same sockmap entry can race on sk->sk_prot and the attached BPF programs, leading to use-after-free or stale program references. The fix adds proper synchronization on the update side, and the accompanying selftest exercises the concurrent update/delete scenario under multiple threads to catch regressions.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Check the strobemeta variable read instead of its location",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261029-bpf-selftests-branch-order-v1-1-425cc1ef8581@meta.com/",
+      "summary": "This 3-patch series makes the strobemeta and pyperf BPF selftests robust to compiler branch reordering. The tests were fragile because they asserted on specific branch ordering that clang does not guarantee. The strobemeta fix checks the actual variable value read rather than a derived location offset, and the pyperf fix adds a NULL check for frame_ptr to exit the loop cleanly when the frame chain terminates unexpectedly.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: avoid sign extension in unsigned enum JSON dumps",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261030090913.76944-1-dennylin0707@gmail.com/",
+      "summary": "This RFC patch fixes incorrect JSON output in bpftool when dumping unsigned enum values that have their high bit set. The existing code sign-extends the value during the integer conversion, producing large negative numbers in the JSON output instead of the correct large positive unsigned values. The fix casts the value appropriately before formatting to ensure the emitted JSON is correct for enum types like those used in XDP and TC program return codes.",
+      "related_links": []
+    }
+  ]
+}
