@@ -1,0 +1,637 @@
+{
+  "period": "daily",
+  "period_start": "2026-10-31",
+  "period_end": "2026-11-01",
+  "fetched_at": "2026-11-01T15:52:46Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v3,3/3] selftests/bpf: Cover enum signedness and legacy name matching",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261101103221.51534-4-dennylin0707@gmail.com/",
+      "date": "2026-11-01T10:32:21",
+      "series": [
+        {
+          "id": 1198039,
+          "url": "https://patchwork.kernel.org/api/series/1198039/",
+          "web_url": "https://patchwork.kernel.org/series/1198039/",
+          "date": "2026-11-01T10:32:18",
+          "name": "Normalize enum values in libbpf and bpftool",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1198039/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/3] bpftool: Preserve unsigned enum values in data dumps",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261101103221.51534-3-dennylin0707@gmail.com/",
+      "date": "2026-11-01T10:32:20",
+      "series": [
+        {
+          "id": 1198039,
+          "url": "https://patchwork.kernel.org/api/series/1198039/",
+          "web_url": "https://patchwork.kernel.org/series/1198039/",
+          "date": "2026-11-01T10:32:18",
+          "name": "Normalize enum values in libbpf and bpftool",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1198039/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/3] libbpf: Normalize enum values according to signedness",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261101103221.51534-2-dennylin0707@gmail.com/",
+      "date": "2026-11-01T10:32:19",
+      "series": [
+        {
+          "id": 1198039,
+          "url": "https://patchwork.kernel.org/api/series/1198039/",
+          "web_url": "https://patchwork.kernel.org/series/1198039/",
+          "date": "2026-11-01T10:32:18",
+          "name": "Normalize enum values in libbpf and bpftool",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1198039/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,14/14] selftests/bpf: Add tests for BPF_REG_ARENA_SP",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-15-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-01T03:05:10",
+      "series": [
+        {
+          "id": 1197948,
+          "url": "https://patchwork.kernel.org/api/series/1197948/",
+          "web_url": "https://patchwork.kernel.org/series/1197948/",
+          "date": "2026-11-01T03:04:56",
+          "name": "bpf: A stack in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1197948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,13/14] bpf, arm64: Support BPF_REG_ARENA_SP",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-14-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-01T03:05:09",
+      "series": [
+        {
+          "id": 1197948,
+          "url": "https://patchwork.kernel.org/api/series/1197948/",
+          "web_url": "https://patchwork.kernel.org/series/1197948/",
+          "date": "2026-11-01T03:04:56",
+          "name": "bpf: A stack in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1197948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,12/14] bpf, x86: Support BPF_REG_ARENA_SP",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-13-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-01T03:05:08",
+      "series": [
+        {
+          "id": 1197948,
+          "url": "https://patchwork.kernel.org/api/series/1197948/",
+          "web_url": "https://patchwork.kernel.org/series/1197948/",
+          "date": "2026-11-01T03:04:56",
+          "name": "bpf: A stack in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1197948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,11/14] bpf: Support BPF_REG_ARENA_SP in the verifier",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-12-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-01T03:05:07",
+      "series": [
+        {
+          "id": 1197948,
+          "url": "https://patchwork.kernel.org/api/series/1197948/",
+          "web_url": "https://patchwork.kernel.org/series/1197948/",
+          "date": "2026-11-01T03:04:56",
+          "name": "bpf: A stack in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1197948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,10/14] bpf, x86: Add BPF_ATOMIC_LOCAL",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-11-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-01T03:05:06",
+      "series": [
+        {
+          "id": 1197948,
+          "url": "https://patchwork.kernel.org/api/series/1197948/",
+          "web_url": "https://patchwork.kernel.org/series/1197948/",
+          "date": "2026-11-01T03:04:56",
+          "name": "bpf: A stack in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1197948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,09/14] bpf: Add stacks for programs to arena",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-10-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-01T03:05:05",
+      "series": [
+        {
+          "id": 1197948,
+          "url": "https://patchwork.kernel.org/api/series/1197948/",
+          "web_url": "https://patchwork.kernel.org/series/1197948/",
+          "date": "2026-11-01T03:04:56",
+          "name": "bpf: A stack in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1197948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,08/14] bpf: Introduce bpf register BPF_REG_ARENA_SP",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-9-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-01T03:05:04",
+      "series": [
+        {
+          "id": 1197948,
+          "url": "https://patchwork.kernel.org/api/series/1197948/",
+          "web_url": "https://patchwork.kernel.org/series/1197948/",
+          "date": "2026-11-01T03:04:56",
+          "name": "bpf: A stack in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1197948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,07/14] selftests/bpf: Test pointers in arena and .bss.addr_space.1",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-8-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-01T03:05:03",
+      "series": [
+        {
+          "id": 1197948,
+          "url": "https://patchwork.kernel.org/api/series/1197948/",
+          "web_url": "https://patchwork.kernel.org/series/1197948/",
+          "date": "2026-11-01T03:04:56",
+          "name": "bpf: A stack in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1197948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,06/14] libbpf: Relocate pointers that are stored in arena",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-01T03:05:02",
+      "series": [
+        {
+          "id": 1197948,
+          "url": "https://patchwork.kernel.org/api/series/1197948/",
+          "web_url": "https://patchwork.kernel.org/series/1197948/",
+          "date": "2026-11-01T03:04:56",
+          "name": "bpf: A stack in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1197948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,05/14] libbpf: Support .bss.addr_space.1 section",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-01T03:05:01",
+      "series": [
+        {
+          "id": 1197948,
+          "url": "https://patchwork.kernel.org/api/series/1197948/",
+          "web_url": "https://patchwork.kernel.org/series/1197948/",
+          "date": "2026-11-01T03:04:56",
+          "name": "bpf: A stack in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1197948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,04/14] selftests/bpf: Test addr_space_cast of pointers that are not in arena",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-01T03:05:00",
+      "series": [
+        {
+          "id": 1197948,
+          "url": "https://patchwork.kernel.org/api/series/1197948/",
+          "web_url": "https://patchwork.kernel.org/series/1197948/",
+          "date": "2026-11-01T03:04:56",
+          "name": "bpf: A stack in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1197948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,03/14] bpf: Treat addr_space_cast of a pointer that is not in arena as a move",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-01T03:04:59",
+      "series": [
+        {
+          "id": 1197948,
+          "url": "https://patchwork.kernel.org/api/series/1197948/",
+          "web_url": "https://patchwork.kernel.org/series/1197948/",
+          "date": "2026-11-01T03:04:56",
+          "name": "bpf: A stack in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1197948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,02/14] selftests/bpf: Test the default size of arena",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-01T03:04:58",
+      "series": [
+        {
+          "id": 1197948,
+          "url": "https://patchwork.kernel.org/api/series/1197948/",
+          "web_url": "https://patchwork.kernel.org/series/1197948/",
+          "date": "2026-11-01T03:04:56",
+          "name": "bpf: A stack in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1197948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,01/14] libbpf: Make arena 4 Gbyte when max_entries is not set",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-01T03:04:57",
+      "series": [
+        {
+          "id": 1197948,
+          "url": "https://patchwork.kernel.org/api/series/1197948/",
+          "web_url": "https://patchwork.kernel.org/series/1197948/",
+          "date": "2026-11-01T03:04:56",
+          "name": "bpf: A stack in arena",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1197948/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Test a callee that overwrites a spilled pointer of its caller",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101004657.3406576-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-01T00:46:56",
+      "series": [
+        {
+          "id": 1197929,
+          "url": "https://patchwork.kernel.org/api/series/1197929/",
+          "web_url": "https://patchwork.kernel.org/series/1197929/",
+          "date": "2026-11-01T00:46:54",
+          "name": "bpf: Don't trust pointers spilled in slots that a callee can write",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197929/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Don't trust pointers spilled in slots that a callee can write",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101004657.3406576-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-01T00:46:55",
+      "series": [
+        {
+          "id": 1197929,
+          "url": "https://patchwork.kernel.org/api/series/1197929/",
+          "web_url": "https://patchwork.kernel.org/series/1197929/",
+          "date": "2026-11-01T00:46:54",
+          "name": "bpf: Don't trust pointers spilled in slots that a callee can write",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197929/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2] bpftool: Preserve unsigned enum values in data dumps",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261101001024.9994-1-dennylin0707@gmail.com/",
+      "date": "2026-11-01T00:10:24",
+      "series": [
+        {
+          "id": 1197927,
+          "url": "https://patchwork.kernel.org/api/series/1197927/",
+          "web_url": "https://patchwork.kernel.org/series/1197927/",
+          "date": "2026-11-01T00:10:24",
+          "name": "[bpf-next,v2] bpftool: Preserve unsigned enum values in data dumps",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1197927/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] libbpf: Match unsigned enum values when dumping data",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261031233219.9362-1-dennylin0707@gmail.com/",
+      "date": "2026-10-31T23:32:19",
+      "series": [
+        {
+          "id": 1197924,
+          "url": "https://patchwork.kernel.org/api/series/1197924/",
+          "web_url": "https://patchwork.kernel.org/series/1197924/",
+          "date": "2026-10-31T23:32:19",
+          "name": "[bpf-next] libbpf: Match unsigned enum values when dumping data",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197924/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpftool: Preserve unsigned enum64 values in data dumps",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261031223617.367-1-dennylin0707@gmail.com/",
+      "date": "2026-10-31T22:36:16",
+      "series": [
+        {
+          "id": 1197914,
+          "url": "https://patchwork.kernel.org/api/series/1197914/",
+          "web_url": "https://patchwork.kernel.org/series/1197914/",
+          "date": "2026-10-31T22:36:16",
+          "name": "[bpf-next] bpftool: Preserve unsigned enum64 values in data dumps",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197914/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] selftests/bpf: Test the join of fp+0 with a value that is not a pointer to stack",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261031220615.804426-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-31T22:06:15",
+      "series": [
+        {
+          "id": 1197908,
+          "url": "https://patchwork.kernel.org/api/series/1197908/",
+          "web_url": "https://patchwork.kernel.org/series/1197908/",
+          "date": "2026-10-31T22:06:13",
+          "name": "bpf: Fix the join of fp+0 in the analysis of stack arguments",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197908/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf: Fix the join of fp+0 with a value that is not a pointer to stack",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261031220615.804426-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-10-31T22:06:14",
+      "series": [
+        {
+          "id": 1197908,
+          "url": "https://patchwork.kernel.org/api/series/1197908/",
+          "web_url": "https://patchwork.kernel.org/series/1197908/",
+          "date": "2026-10-31T22:06:13",
+          "name": "bpf: Fix the join of fp+0 in the analysis of stack arguments",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197908/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,13/13] Documentation/bpf: describe CONFIG_DEBUG_INFO_BTF_LAZY",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-14-wanjay@amazon.com/",
+      "date": "2026-10-31T13:09:59",
+      "series": [
+        {
+          "id": 1197763,
+          "url": "https://patchwork.kernel.org/api/series/1197763/",
+          "web_url": "https://patchwork.kernel.org/series/1197763/",
+          "date": "2026-10-31T13:09:46",
+          "name": "bpf: keep the vmlinux BTF compressed until first use (CONFIG_DEBUG_INFO_BTF_LAZY) to save ~6 MB memory",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197763/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,12/13] selftests/bpf: keep ksyms and linked_vars working without __start_BTF",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-13-wanjay@amazon.com/",
+      "date": "2026-10-31T13:09:58",
+      "series": [
+        {
+          "id": 1197763,
+          "url": "https://patchwork.kernel.org/api/series/1197763/",
+          "web_url": "https://patchwork.kernel.org/series/1197763/",
+          "date": "2026-10-31T13:09:46",
+          "name": "bpf: keep the vmlinux BTF compressed until first use (CONFIG_DEBUG_INFO_BTF_LAZY) to save ~6 MB memory",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197763/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,11/13] bpf: keep module BTF until the vmlinux BTF is parsed",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-12-wanjay@amazon.com/",
+      "date": "2026-10-31T13:09:57",
+      "series": [
+        {
+          "id": 1197763,
+          "url": "https://patchwork.kernel.org/api/series/1197763/",
+          "web_url": "https://patchwork.kernel.org/series/1197763/",
+          "date": "2026-10-31T13:09:46",
+          "name": "bpf: keep the vmlinux BTF compressed until first use (CONFIG_DEBUG_INFO_BTF_LAZY) to save ~6 MB memory",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197763/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,10/13] bpf: defer kfunc and struct_ops registrations until first BTF use",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-11-wanjay@amazon.com/",
+      "date": "2026-10-31T13:09:56",
+      "series": [
+        {
+          "id": 1197763,
+          "url": "https://patchwork.kernel.org/api/series/1197763/",
+          "web_url": "https://patchwork.kernel.org/series/1197763/",
+          "date": "2026-10-31T13:09:46",
+          "name": "bpf: keep the vmlinux BTF compressed until first use (CONFIG_DEBUG_INFO_BTF_LAZY) to save ~6 MB memory",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197763/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,09/13] bpf: keep the vmlinux BTF zstd-compressed in the kernel image",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-10-wanjay@amazon.com/",
+      "date": "2026-10-31T13:09:55",
+      "series": [
+        {
+          "id": 1197763,
+          "url": "https://patchwork.kernel.org/api/series/1197763/",
+          "web_url": "https://patchwork.kernel.org/series/1197763/",
+          "date": "2026-10-31T13:09:46",
+          "name": "bpf: keep the vmlinux BTF compressed until first use (CONFIG_DEBUG_INFO_BTF_LAZY) to save ~6 MB memory",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197763/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,08/13] tracing: parse the vmlinux BTF when BTF-typed output is enabled",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-9-wanjay@amazon.com/",
+      "date": "2026-10-31T13:09:54",
+      "series": [
+        {
+          "id": 1197763,
+          "url": "https://patchwork.kernel.org/api/series/1197763/",
+          "web_url": "https://patchwork.kernel.org/series/1197763/",
+          "date": "2026-10-31T13:09:46",
+          "name": "bpf: keep the vmlinux BTF compressed until first use (CONFIG_DEBUG_INFO_BTF_LAZY) to save ~6 MB memory",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197763/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,07/13] bpf: parse the vmlinux BTF before taking cand_cache_mutex",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-8-wanjay@amazon.com/",
+      "date": "2026-10-31T13:09:53",
+      "series": [
+        {
+          "id": 1197763,
+          "url": "https://patchwork.kernel.org/api/series/1197763/",
+          "web_url": "https://patchwork.kernel.org/series/1197763/",
+          "date": "2026-10-31T13:09:46",
+          "name": "bpf: keep the vmlinux BTF compressed until first use (CONFIG_DEBUG_INFO_BTF_LAZY) to save ~6 MB memory",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197763/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,06/13] bpf: look up the struct_ops common value type in the given BTF",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-7-wanjay@amazon.com/",
+      "date": "2026-10-31T13:09:52",
+      "series": [
+        {
+          "id": 1197763,
+          "url": "https://patchwork.kernel.org/api/series/1197763/",
+          "web_url": "https://patchwork.kernel.org/series/1197763/",
+          "date": "2026-10-31T13:09:46",
+          "name": "bpf: keep the vmlinux BTF compressed until first use (CONFIG_DEBUG_INFO_BTF_LAZY) to save ~6 MB memory",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197763/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,05/13] bpf: let btf_parse_module() adopt the caller's copy of the module BTF",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-6-wanjay@amazon.com/",
+      "date": "2026-10-31T13:09:51",
+      "series": [
+        {
+          "id": 1197763,
+          "url": "https://patchwork.kernel.org/api/series/1197763/",
+          "web_url": "https://patchwork.kernel.org/series/1197763/",
+          "date": "2026-10-31T13:09:46",
+          "name": "bpf: keep the vmlinux BTF compressed until first use (CONFIG_DEBUG_INFO_BTF_LAZY) to save ~6 MB memory",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197763/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,04/13] bpf: move bpf_get_btf_vmlinux() to btf.c",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-5-wanjay@amazon.com/",
+      "date": "2026-10-31T13:09:50",
+      "series": [
+        {
+          "id": 1197763,
+          "url": "https://patchwork.kernel.org/api/series/1197763/",
+          "web_url": "https://patchwork.kernel.org/series/1197763/",
+          "date": "2026-10-31T13:09:46",
+          "name": "bpf: keep the vmlinux BTF compressed until first use (CONFIG_DEBUG_INFO_BTF_LAZY) to save ~6 MB memory",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197763/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,03/13] bpf: check CAP_SYS_ADMIN before looking up bpffs delegation names",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-4-wanjay@amazon.com/",
+      "date": "2026-10-31T13:09:49",
+      "series": [
+        {
+          "id": 1197763,
+          "url": "https://patchwork.kernel.org/api/series/1197763/",
+          "web_url": "https://patchwork.kernel.org/series/1197763/",
+          "date": "2026-10-31T13:09:46",
+          "name": "bpf: keep the vmlinux BTF compressed until first use (CONFIG_DEBUG_INFO_BTF_LAZY) to save ~6 MB memory",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197763/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,02/13] bpf: fetch the vmlinux BTF where kernel types enter a program",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-3-wanjay@amazon.com/",
+      "date": "2026-10-31T13:09:48",
+      "series": [
+        {
+          "id": 1197763,
+          "url": "https://patchwork.kernel.org/api/series/1197763/",
+          "web_url": "https://patchwork.kernel.org/series/1197763/",
+          "date": "2026-10-31T13:09:46",
+          "name": "bpf: keep the vmlinux BTF compressed until first use (CONFIG_DEBUG_INFO_BTF_LAZY) to save ~6 MB memory",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197763/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,01/13] bpf: match program context types by name without vmlinux BTF",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-2-wanjay@amazon.com/",
+      "date": "2026-10-31T13:09:47",
+      "series": [
+        {
+          "id": 1197763,
+          "url": "https://patchwork.kernel.org/api/series/1197763/",
+          "web_url": "https://patchwork.kernel.org/series/1197763/",
+          "date": "2026-10-31T13:09:46",
+          "name": "bpf: keep the vmlinux BTF compressed until first use (CONFIG_DEBUG_INFO_BTF_LAZY) to save ~6 MB memory",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1197763/mbox/"
+        }
+      ]
+    }
+  ]
+}
