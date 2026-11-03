@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-11-03T00:00:00Z",
+  "period_start": "2026-11-01",
+  "period_end": "2026-11-02",
+  "patch_count": 62,
+  "thread_count": 17,
+  "top_contributors": ["Alexei Starovoitov", "Qiliang Yuan", "Mahe Tardy", "Hungyu Lin", "Andrey Grodzovsky"],
+  "key_topics": ["verifier", "arena", "libbpf", "bpftool", "jit", "selftests"],
+  "overview": "November 1–2 saw heavy bpf-next activity dominated by Alexei Starovoitov, who posted v2 of a 14-patch series introducing BPF_REG_ARENA_SP (an arena-backed stack pointer with x86 and arm64 JIT support) alongside v3 of the 13-patch deferred instruction patching refactor that replaces bpf_patch_insn_data(). Qiliang Yuan followed with nine patches documenting the patch list and fixing three bugs around constant blinding and nop removal, while Mahe Tardy extended the generated loader with program attach support.",
+  "patches": [
+    {
+      "title": "libbpf: Make arena 4 Gbyte when max_entries is not set",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-2-alexei.starovoitov@gmail.com/",
+      "summary": "This is patch 01/14 of the 'bpf: A stack in arena' series (v2), which introduces a dedicated BPF_REG_ARENA_SP register for programs to maintain a per-CPU stack in arena memory. The series expands the arena map to 4 GB by default, adds verifier support for the new register, and implements BPF_ATOMIC_LOCAL and JIT lowering on both x86 and arm64. This enables BPF programs to spill and restore pointers to arena-backed memory, making the arena model much more practical for complex programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a list of deferred instruction patches",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261102012940.1756142-2-alexei.starovoitov@gmail.com/",
+      "summary": "First patch of the 13-patch v3 series replacing bpf_patch_insn_data() with a list-based deferred patching mechanism. Instead of immediately rewriting the instruction array during verification, rewrites are queued and applied atomically at the end, simplifying jump fixup, constant blinding, and context access rewriting. The approach eliminates multiple passes over the instruction stream and fixes subtle ordering bugs that arose when multiple passes mutated the same instruction.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Count entry programs for bpf_gen__init()",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261102174350.472592-2-mahe.tardy@gmail.com/",
+      "summary": "First patch of a 5-patch series ('libbpf: Support gen loader attach') that extends the generated/light skeleton loader to support attaching programs via BPF_LINK_CREATE. The series tracks link file descriptors in the generated loader, emits the necessary syscall sequences, and adds a --attach option to bpftool's light skeleton generation command. A selftest validates the new end-to-end attach workflow through the generated loader path.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Put the line info back when the JIT falls back after blinding",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261102-bpf-blind-nops-fixes-v1-1-844300e42cdb@gmail.com/",
+      "summary": "First patch of a 5-patch series fixing three bugs in the interaction between constant blinding and nop removal. The bugs include line info tables being dropped when the JIT falls back to the interpreter after a blinding error, a speculative-execution barrier being discarded when the surrounding nop is removed, and the verifier log being finalized before the JIT runtime is selected. Each fix is covered by a new selftest.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Don't trust pointers spilled in slots that a callee can write",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101004657.3406576-2-alexei.starovoitov@gmail.com/",
+      "summary": "The verifier previously trusted that a pointer spilled to a stack slot by the caller was still there when the callee returned, even when the callee could write to that slot. This patch marks such spilled slots as unknown after a call to a subprogram that could overwrite them, preventing the verifier from treating potentially-clobbered stack memory as a valid pointer.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: A lookup in an array is not NULL when the largest key is below max_entries",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101174700.4086827-2-alexei.starovoitov@gmail.com/",
+      "summary": "Teaches the verifier that an array map lookup with a key whose maximum tracked value is strictly less than max_entries cannot return NULL, eliminating spurious null checks after such lookups. This is a targeted range-based optimization that avoids propagating a false NULL possibility through subsequent code, improving code generation for programs that use bounded array accesses.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: The register of an implicit kfunc argument is not live",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101174405.4055052-2-alexei.starovoitov@gmail.com/",
+      "summary": "Fixes a verifier liveness tracking bug where the register holding an implicit kfunc argument (e.g. the hidden context pointer injected by the verifier) was incorrectly marked as read-live at the call site. Marking it not-live prevents false register-liveness propagation that could suppress useful optimization or generate spurious verifier errors.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix suspicious RCU usage for sleepable bpf_get_stack()",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20261102073714.1103088-1-yangfeng59949@163.com/",
+      "summary": "Fixes a suspicious RCU dereference warning triggered when bpf_get_stack() is called from a sleepable BPF program. The helper accessed task_struct fields under an rcu_read_lock() that is not held in sleepable contexts; this patch switches to the appropriate sleepable-safe locking mechanism so the helper works correctly from both classic and sleepable programs.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Normalize enum values according to signedness",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261101103221.51534-2-dennylin0707@gmail.com/",
+      "summary": "First patch of a 3-patch v3 series ('Normalize enum values in libbpf and bpftool') that corrects how libbpf and bpftool handle unsigned enum types. Previously, large unsigned enum values were sign-extended to 64 bits when stored or printed, producing incorrect negative numbers. The fix applies signedness-aware normalization in the BTF dump path so unsigned enum64 and regular unsigned enums display correctly in both text and JSON output.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Fix disposal of the LLVM disassembler context",
+      "author": "Mark Korenberg",
+      "url": "https://lore.kernel.org/bpf/20261102-bpftool-plugin-v4-1-5a853e973db9@gmail.com/",
+      "summary": "First patch of a 2-patch v4 series making the LLVM disassembler an optional runtime dependency for bpftool. This patch fixes a resource leak where the LLVM disassembler context was not properly disposed of on error paths; the follow-up patch restructures the disassembler integration so bpftool degrades gracefully when the LLVM plugin is absent rather than requiring it at build or run time.",
+      "related_links": []
+    }
+  ]
+}
