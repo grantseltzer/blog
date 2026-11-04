@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-11-04T00:00:00Z",
+  "period_start": "2026-11-02",
+  "period_end": "2026-11-03",
+  "patch_count": 95,
+  "thread_count": 23,
+  "top_contributors": ["Daniel Borkmann", "Mahe Tardy", "Alexei Starovoitov", "Jiri Olsa", "Qiliang Yuan"],
+  "key_topics": ["verifier", "jit", "arm64", "kfuncs", "uprobe", "bpftool", "libbpf", "btf"],
+  "overview": "The bpf-next mailing list was busy on November 2-3, 2026, with 95 patches across 23 series. The standout work is Alexei Starovoitov's major refactor replacing bpf_patch_insn_data() with a deferred patch list, fundamentally cleaning up how the verifier applies rewrites, and Daniel Borkmann's 20-patch series of arm64 JIT optimizations covering smarter immediate materialization, division-by-constant via magic numbers, and improved load/store encoding.",
+  "patches": [
+    {
+      "title": "bpf: Add a list of deferred instruction patches",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261102012940.1756142-2-alexei.starovoitov@gmail.com/",
+      "summary": "This 13-patch series (v3) replaces the existing bpf_patch_insn_data() mechanism with a list of deferred instruction patches, allowing all verifier rewrites — ctx accesses, misc fixups, constant blinding, and optimization passes — to be queued and applied in a single pass. The old approach required multiple array reallocations and complex jump fixups on each patch; the new patch list amortizes that cost and enables patching an instruction twice or inserting in front of it. This refactor is a significant simplification of the verifier's post-verification rewrite pipeline and sets the stage for further correctness improvements.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Free the offset table of a subprog in bpf_jit_free",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261103122733.1383002-2-daniel@iogearbox.net/",
+      "summary": "This 20-patch series (v2) delivers a wide range of arm64 BPF JIT optimizations. Highlights include using cbz/cbnz/tbz/tbnz for zero, sign, and bit tests to shorten branch sequences; materializing immediates with fewer instructions using movz/movk; division by compile-time constants via multiplication with a magic number (ported from x86 JIT); using unscaled LDUR/STUR for negative and unaligned offsets; and storing zero immediates from the zero register. Bug fixes include freeing the private stack on a failed JIT pass and correcting disposal of the offset table for subprograms.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Honor const on generic kfunc memory arguments",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20261103075916.100050-2-jolsa@kernel.org/",
+      "summary": "This 8-patch series adds user memory kfuncs to BPF, providing bpf_copy_to_user() and related helpers that allow BPF programs to safely write data into userspace memory. The first patch teaches the verifier to honor const annotations on generic kfunc memory arguments, preventing programs from accidentally mutating read-only data passed to kfuncs. Subsequent patches wire up mmap and page-exec kfuncs and add comprehensive selftests covering copy, mmap, page exec, and error paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Disable private stack for uprobe programs",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20261103093400.112178-2-jolsa@kernel.org/",
+      "summary": "This 4-patch series disables the private stack feature for uprobe BPF programs, which cannot safely use it due to the execution context in which uprobes fire. It also adds a new BPF_TRACE_UPROBE attach type to the UAPI, enabling userspace to explicitly request classic uprobe attach semantics, and updates libbpf to detect and advertise kernel support for this new attach type. Selftests verify both the new attach type and that private stack is correctly rejected for uprobe programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Fix disposal of the LLVM disassembler context",
+      "author": "Mark Korenberg",
+      "url": "https://lore.kernel.org/bpf/20261103-bpftool-plugin-v5-1-683e08a25df0@gmail.com/",
+      "summary": "This 3-patch series (v5) makes the LLVM disassembler an optional runtime dependency for bpftool rather than a hard requirement. It first fixes a bug where the LLVM disassembler context was not properly disposed of on the error path, then removes the requirement for a disassembler when dumping a JITed program to a file (as opposed to stdout), and finally marks the LLVM disassembler as a loadable plugin dependency. This allows bpftool to be used for JIT dump file generation even on systems without LLVM installed.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Put the line info back when the JIT falls back after blinding",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261102-bpf-blind-nops-fixes-v1-1-844300e42cdb@gmail.com/",
+      "summary": "This 5-patch series fixes three distinct bugs in the BPF constant blinding and nop-removal pipeline. The first patch restores line info that was incorrectly discarded when the JIT falls back to the interpreter after a blinding failure. The second ensures that the barrier property of a nospec instruction is preserved when that instruction is converted to a nop. The third moves verifier log finalization to after the JIT runtime is selected, fixing a log ordering issue. Two selftests are added to cover the nop/barrier interaction and the log_true_size behavior with blinding errors.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: use FS_USERNS_DELEGATABLE for bpffs",
+      "author": "Alexander Mikhalitsyn",
+      "url": "https://lore.kernel.org/bpf/20261103101405.70180-1-alex@amutable.com/",
+      "summary": "This single-patch submission marks bpffs (the BPF filesystem) with the FS_USERNS_DELEGATABLE flag, allowing it to be mounted inside user namespaces without requiring CAP_SYS_ADMIN in the initial user namespace. This is relevant for container runtimes and sandboxed environments that want to use BPF programs and maps within user namespace contexts. The change aligns bpffs with other delegatable filesystems like tmpfs and simplifies deployment in unprivileged containers.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix stale raw data after btf__relocate()",
+      "author": "Jiayuan Chen",
+      "url": "https://lore.kernel.org/bpf/20261103081836.381430-1-jiayuan.chen@linux.dev/",
+      "summary": "This v2 patch fixes a bug in libbpf where the raw BTF data cached inside a BTF object becomes stale after btf__relocate() modifies the in-memory BTF representation. Without this fix, subsequent calls that read from the raw data (such as btf__raw_data()) return outdated type information. The fix ensures the raw data is regenerated or invalidated after relocation so that all accessors see a consistent view of the BTF object.",
+      "related_links": []
+    }
+  ]
+}
