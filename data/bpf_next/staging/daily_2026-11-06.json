@@ -1,0 +1,1708 @@
+{
+  "period": "daily",
+  "period_start": "2026-11-05",
+  "period_end": "2026-11-06",
+  "fetched_at": "2026-11-06T16:38:31Z",
+  "patches": [
+    {
+      "title": "[bpf-next] sched_ext: Reset task fields on exit of an SCX_TASK_READY task",
+      "author": "Rahad Bhuiya",
+      "url": "https://lore.kernel.org/bpf/20261106142818.1475-1-rahadbhuiya2021@gmail.com/",
+      "date": "2026-11-06T14:28:18",
+      "series": [
+        {
+          "id": 1204247,
+          "url": "https://patchwork.kernel.org/api/series/1204247/",
+          "web_url": "https://patchwork.kernel.org/series/1204247/",
+          "date": "2026-11-06T14:28:18",
+          "name": "[bpf-next] sched_ext: Reset task fields on exit of an SCX_TASK_READY task",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1204247/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,8/8] selftests/bpf: Check bpf_timer value membership",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261106095747.471718-9-luyun_611@163.com/",
+      "date": "2026-11-06T09:57:47",
+      "series": [
+        {
+          "id": 1204020,
+          "url": "https://patchwork.kernel.org/api/series/1204020/",
+          "web_url": "https://patchwork.kernel.org/series/1204020/",
+          "date": "2026-11-06T09:57:39",
+          "name": "bpf: Fix async callback use-after-free on map deletion",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1204020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,7/8] bpf: Check bpf_timer value membership before use",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261106095747.471718-8-luyun_611@163.com/",
+      "date": "2026-11-06T09:57:46",
+      "series": [
+        {
+          "id": 1204020,
+          "url": "https://patchwork.kernel.org/api/series/1204020/",
+          "web_url": "https://patchwork.kernel.org/series/1204020/",
+          "date": "2026-11-06T09:57:39",
+          "name": "bpf: Fix async callback use-after-free on map deletion",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1204020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,6/8] selftests/bpf: Check bpf_wq value membership",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261106095747.471718-7-luyun_611@163.com/",
+      "date": "2026-11-06T09:57:45",
+      "series": [
+        {
+          "id": 1204020,
+          "url": "https://patchwork.kernel.org/api/series/1204020/",
+          "web_url": "https://patchwork.kernel.org/series/1204020/",
+          "date": "2026-11-06T09:57:39",
+          "name": "bpf: Fix async callback use-after-free on map deletion",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1204020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/8] bpf: Check bpf_wq value membership before use",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261106095747.471718-6-luyun_611@163.com/",
+      "date": "2026-11-06T09:57:44",
+      "series": [
+        {
+          "id": 1204020,
+          "url": "https://patchwork.kernel.org/api/series/1204020/",
+          "web_url": "https://patchwork.kernel.org/series/1204020/",
+          "date": "2026-11-06T09:57:39",
+          "name": "bpf: Fix async callback use-after-free on map deletion",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1204020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/8] bpf: Order async callback admission and cancellation",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261106095747.471718-5-luyun_611@163.com/",
+      "date": "2026-11-06T09:57:43",
+      "series": [
+        {
+          "id": 1204020,
+          "url": "https://patchwork.kernel.org/api/series/1204020/",
+          "web_url": "https://patchwork.kernel.org/series/1204020/",
+          "date": "2026-11-06T09:57:39",
+          "name": "bpf: Fix async callback use-after-free on map deletion",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1204020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/8] selftests/bpf: Check task work value membership",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261106095747.471718-4-luyun_611@163.com/",
+      "date": "2026-11-06T09:57:42",
+      "series": [
+        {
+          "id": 1204020,
+          "url": "https://patchwork.kernel.org/api/series/1204020/",
+          "web_url": "https://patchwork.kernel.org/series/1204020/",
+          "date": "2026-11-06T09:57:39",
+          "name": "bpf: Fix async callback use-after-free on map deletion",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1204020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/8] bpf: Check task work value membership before scheduling",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261106095747.471718-3-luyun_611@163.com/",
+      "date": "2026-11-06T09:57:41",
+      "series": [
+        {
+          "id": 1204020,
+          "url": "https://patchwork.kernel.org/api/series/1204020/",
+          "web_url": "https://patchwork.kernel.org/series/1204020/",
+          "date": "2026-11-06T09:57:39",
+          "name": "bpf: Fix async callback use-after-free on map deletion",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1204020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/8] bpf: Mark task work FREED before detaching it",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261106095747.471718-2-luyun_611@163.com/",
+      "date": "2026-11-06T09:57:40",
+      "series": [
+        {
+          "id": 1204020,
+          "url": "https://patchwork.kernel.org/api/series/1204020/",
+          "web_url": "https://patchwork.kernel.org/series/1204020/",
+          "date": "2026-11-06T09:57:39",
+          "name": "bpf: Fix async callback use-after-free on map deletion",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1204020/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,2/2] selftests/bpf: Test faulting build IDs from a sleepable raw tracepoint",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20261106080746.661431-2-yangfeng59949@163.com/",
+      "date": "2026-11-06T08:07:46",
+      "series": [
+        {
+          "id": 1203888,
+          "url": "https://patchwork.kernel.org/api/series/1203888/",
+          "web_url": "https://patchwork.kernel.org/series/1203888/",
+          "date": "2026-11-06T08:07:46",
+          "name": "[bpf-next,v5,1/2] bpf: Add sleepable version of bpf_get_stack in raw_tp_prog_func_proto and tp_prog_func_proto",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1203888/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v5,1/2] bpf: Add sleepable version of bpf_get_stack in raw_tp_prog_func_proto and tp_prog_func_proto",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20261106080746.661431-1-yangfeng59949@163.com/",
+      "date": "2026-11-06T08:07:45",
+      "series": [
+        {
+          "id": 1203888,
+          "url": "https://patchwork.kernel.org/api/series/1203888/",
+          "web_url": "https://patchwork.kernel.org/series/1203888/",
+          "date": "2026-11-06T08:07:46",
+          "name": "[bpf-next,v5,1/2] bpf: Add sleepable version of bpf_get_stack in raw_tp_prog_func_proto and tp_prog_func_proto",
+          "version": 5,
+          "mbox": "https://patchwork.kernel.org/series/1203888/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,45/45] selftests/bpf: Test callx of one of a set of functions",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-46-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:51:09",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,44/45] selftests/bpf: Test progs that run out of budget",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-45-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:51:08",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,43/45] selftests/bpf: Test loops that are counted, walked or widened",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-44-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:51:07",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,42/45] selftests/bpf: Test static subprogs that are verified on their own",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-43-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:51:06",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,41/45] selftests/bpf: Test states that are not joined",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-42-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:51:05",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,40/45] selftests/bpf: Adjust tests to new verdicts, messages and order",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-41-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:51:04",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,39/45] selftests/bpf: Adjust tests to log lines that are gone",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-40-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:51:03",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,38/45] bpf: Find where the jumps of a loop stop a number",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-39-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:51:02",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,37/45] bpf: What a call returns in each iteration is like what the loop loads",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-38-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:51:01",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,36/45] bpf: Keep the first iteration of a counted loop apart",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-37-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:51:00",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,35/45] bpf: Keep the step of a number in the union of two ranges",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-36-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:59",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,34/45] bpf: R0 is live at the exit that an added may_goto goes to",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-35-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:58",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,33/45] bpf: Keep the frames of the caller for ctx of struct_ops with a reference",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-34-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:57",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,32/45] bpf: Keep the frames of the caller for a subprog that loads data_end",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-33-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:56",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,31/45] bpf: A base that nothing is known about can be the context",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-32-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:55",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,30/45] bpf: Don't widen away a register that only the loop sets",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-31-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:54",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,29/45] bpf: Don't take what bpf_core_cast() returns for a number",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-30-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:53",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,28/45] bpf: callx reads what the subprogs whose address is taken read",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-29-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:52",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,27/45] bpf: Track a pointer to one of a set of functions",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-28-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:51",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,26/45] bpf: Update comments about paths, pruning and explored states",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-27-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:50",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,25/45] bpf: Remove prune points, levels of state comparison and pop_stack()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-26-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:49",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,24/45] bpf: Remove precision tracking",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-25-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:48",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,23/45] bpf: Remove is_state_visited(), bpf_compute_scc() and iter.depth",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-24-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:47",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,22/45] bpf: Allow recursive subprogs",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-23-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:46",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,21/45] bpf: Verify static subprogs on their own",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-22-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:45",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,20/45] bpf: Keep the count of a loop when a register has no closed form",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-21-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:44",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,19/45] bpf: Verify programs as a fixpoint over the control flow graph",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-20-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:43",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,18/45] bpf: Tell the passes over the graph where an added may_goto goes",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-19-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:42",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,17/45] bpf: Enter and leave loops in the main pass, build flow.c",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-18-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:41",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,16/45] bpf: Make the state after a call from the caller's state and an exit state",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-17-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:40",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,15/45] bpf: Move states along edges, into loops and subprogs and out of them",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-16-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:39",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,14/45] bpf: Merge the state that arrives into the set at an insn",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-15-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:38",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,13/45] bpf: Decide which states are not joined",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-14-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:37",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,12/45] bpf: Compare states of different iterations of a loop",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-13-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:36",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,11/45] bpf: Add the sets of states at an insn and the entries of functions",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-12-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:35",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,10/45] bpf: Find the registers and stack slots that later checks depend on",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-11-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:34",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,09/45] bpf: Find the registers that hold a number or a pointer to arena",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-10-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:33",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,08/45] bpf: Order the insns, find what stops a loop and where may_goto can go",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-9-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:32",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,07/45] bpf: Add the data structures of the main pass over the control flow graph",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-8-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:31",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,06/45] bpf: Tell which arguments of a call a join must leave alone",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:30",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,05/45] bpf: Add join of verifier states",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:29",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,04/45] bpf: Add join of registers and stack slots",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:28",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,03/45] bpf: Add union and widening of the range of a register",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:27",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,02/45] bpf: Limit depth and time of recursive subprogs at run time",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:26",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,01/45] bpf: Add may_goto to the loops that the verifier marks",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-06T03:50:25",
+      "series": [
+        {
+          "id": 1203732,
+          "url": "https://patchwork.kernel.org/api/series/1203732/",
+          "web_url": "https://patchwork.kernel.org/series/1203732/",
+          "date": "2026-11-06T03:50:24",
+          "name": "bpf: A verifier that joins states",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1203732/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/2] kprobes: mark ftrace-based kprobe ops permanent",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20261106010535.2137162-3-andrey.grodzovsky@crowdstrike.com/",
+      "date": "2026-11-06T01:05:35",
+      "series": [
+        {
+          "id": 1203640,
+          "url": "https://patchwork.kernel.org/api/series/1203640/",
+          "web_url": "https://patchwork.kernel.org/series/1203640/",
+          "date": "2026-11-06T01:05:34",
+          "name": "ftrace, kprobes, bpf: mark trampoline/kprobe ftrace_ops permanent",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203640/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] bpf: mark trampoline ftrace_ops permanent",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20261106010535.2137162-2-andrey.grodzovsky@crowdstrike.com/",
+      "date": "2026-11-06T01:05:34",
+      "series": [
+        {
+          "id": 1203640,
+          "url": "https://patchwork.kernel.org/api/series/1203640/",
+          "web_url": "https://patchwork.kernel.org/series/1203640/",
+          "date": "2026-11-06T01:05:34",
+          "name": "ftrace, kprobes, bpf: mark trampoline/kprobe ftrace_ops permanent",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203640/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,35/35] selftests/bpf: Test callx of one of a set of functions",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-36-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:45:12",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,34/35] selftests/bpf: Test progs that run out of budget",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-35-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:45:11",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,33/35] selftests/bpf: Test loops that are counted, walked or widened",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-34-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:45:10",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,32/35] selftests/bpf: Test static subprogs that are verified on their own",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-33-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:45:09",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,31/35] selftests/bpf: Test states that are not joined",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-32-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:45:08",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,30/35] selftests/bpf: Adjust tests to new verdicts, messages and order",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-31-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:45:07",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,29/35] selftests/bpf: Adjust tests to log lines that are gone",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-30-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:45:06",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,28/35] bpf: callx reads what the subprogs whose address is taken read",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-29-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:45:05",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,27/35] bpf: Track a pointer to one of a set of functions",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-28-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:45:04",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,26/35] bpf: Update comments about paths, pruning and explored states",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-27-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:45:03",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,25/35] bpf: Remove prune points, levels of state comparison and pop_stack()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-26-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:45:02",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,24/35] bpf: Remove precision tracking",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-25-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:45:01",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,23/35] bpf: Remove is_state_visited(), bpf_compute_scc() and iter.depth",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-24-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:45:00",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,22/35] bpf: Allow recursive subprogs",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-23-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:59",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,21/35] bpf: Verify static subprogs on their own",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-22-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:58",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,20/35] bpf: Keep the count of a loop when a register has no closed form",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-21-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:57",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,19/35] bpf: Verify programs as a fixpoint over the control flow graph",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-20-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:56",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,18/35] bpf: Tell the passes over the graph where an added may_goto goes",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-19-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:55",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,17/35] bpf: Enter and leave loops in the main pass, build flow.c",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-18-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:54",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,16/35] bpf: Make the state after a call from the caller's state and an exit state",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-17-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:53",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,15/35] bpf: Move states along edges, into loops and subprogs and out of them",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-16-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:52",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,14/35] bpf: Merge the state that arrives into the set at an insn",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-15-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:51",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,13/35] bpf: Decide which states are not joined",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-14-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:50",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,12/35] bpf: Compare states of different iterations of a loop",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-13-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:49",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,11/35] bpf: Add the sets of states at an insn and the entries of functions",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-12-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:48",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,10/35] bpf: Find the registers and stack slots that later checks depend on",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-11-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:47",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,09/35] bpf: Find the registers that hold a number or a pointer to arena",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-10-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:46",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,08/35] bpf: Order the insns, find what stops a loop and where may_goto can go",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-9-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:45",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,07/35] bpf: Add the data structures of the main pass over the control flow graph",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-8-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:44",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,06/35] bpf: Tell which arguments of a call a join must leave alone",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:43",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,05/35] bpf: Add join of verifier states",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:42",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,04/35] bpf: Add join of registers and stack slots",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:41",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,03/35] bpf: Add union and widening of the range of a register",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:40",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,02/35] bpf: Limit depth and time of recursive subprogs at run time",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:39",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,01/35] bpf: Add may_goto to the loops that the verifier marks",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261105204513.2230344-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-05T20:44:38",
+      "series": [
+        {
+          "id": 1203530,
+          "url": "https://patchwork.kernel.org/api/series/1203530/",
+          "web_url": "https://patchwork.kernel.org/series/1203530/",
+          "date": "2026-11-05T20:44:37",
+          "name": "bpf: A verifier that joins states",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1203530/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,17/17] selftests/bpf: Cover the arena type tag in bpftool C dumps",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261105175845.30357-18-ihor.solodrai@linux.dev/",
+      "date": "2026-11-05T17:58:45",
+      "series": [
+        {
+          "id": 1203422,
+          "url": "https://patchwork.kernel.org/api/series/1203422/",
+          "web_url": "https://patchwork.kernel.org/series/1203422/",
+          "date": "2026-11-05T17:58:28",
+          "name": "bpftool: Per-record CO-RE attributes in the C dump",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1203422/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,16/17] bpftool: Render the arena type tag as __bpf_arena",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261105175845.30357-17-ihor.solodrai@linux.dev/",
+      "date": "2026-11-05T17:58:44",
+      "series": [
+        {
+          "id": 1203422,
+          "url": "https://patchwork.kernel.org/api/series/1203422/",
+          "web_url": "https://patchwork.kernel.org/series/1203422/",
+          "date": "2026-11-05T17:58:28",
+          "name": "bpftool: Per-record CO-RE attributes in the C dump",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1203422/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,15/17] bpftool: Document __bpf_relocatable and __bpf_static_offset",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261105175845.30357-16-ihor.solodrai@linux.dev/",
+      "date": "2026-11-05T17:58:43",
+      "series": [
+        {
+          "id": 1203422,
+          "url": "https://patchwork.kernel.org/api/series/1203422/",
+          "web_url": "https://patchwork.kernel.org/series/1203422/",
+          "date": "2026-11-05T17:58:28",
+          "name": "bpftool: Per-record CO-RE attributes in the C dump",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1203422/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,14/17] selftests/bpf: Cover context and socket accesses through vmlinux.h",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261105175845.30357-15-ihor.solodrai@linux.dev/",
+      "date": "2026-11-05T17:58:42",
+      "series": [
+        {
+          "id": 1203422,
+          "url": "https://patchwork.kernel.org/api/series/1203422/",
+          "web_url": "https://patchwork.kernel.org/series/1203422/",
+          "date": "2026-11-05T17:58:28",
+          "name": "bpftool: Per-record CO-RE attributes in the C dump",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1203422/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,13/17] selftests/bpf: Cover record attributes in bpftool BTF dumps",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261105175845.30357-14-ihor.solodrai@linux.dev/",
+      "date": "2026-11-05T17:58:41",
+      "series": [
+        {
+          "id": 1203422,
+          "url": "https://patchwork.kernel.org/api/series/1203422/",
+          "web_url": "https://patchwork.kernel.org/series/1203422/",
+          "date": "2026-11-05T17:58:28",
+          "name": "bpftool: Per-record CO-RE attributes in the C dump",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1203422/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,12/17] bpftool: Emit __bpf_static_offset on verifier-rewritten context types",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261105175845.30357-13-ihor.solodrai@linux.dev/",
+      "date": "2026-11-05T17:58:40",
+      "series": [
+        {
+          "id": 1203422,
+          "url": "https://patchwork.kernel.org/api/series/1203422/",
+          "web_url": "https://patchwork.kernel.org/series/1203422/",
+          "date": "2026-11-05T17:58:28",
+          "name": "bpftool: Per-record CO-RE attributes in the C dump",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1203422/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,11/17] bpftool: Skip __bpf_relocatable on verifier-rewritten context types",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261105175845.30357-12-ihor.solodrai@linux.dev/",
+      "date": "2026-11-05T17:58:39",
+      "series": [
+        {
+          "id": 1203422,
+          "url": "https://patchwork.kernel.org/api/series/1203422/",
+          "web_url": "https://patchwork.kernel.org/series/1203422/",
+          "date": "2026-11-05T17:58:28",
+          "name": "bpftool: Per-record CO-RE attributes in the C dump",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1203422/mbox/"
+        }
+      ]
+    }
+  ]
+}
