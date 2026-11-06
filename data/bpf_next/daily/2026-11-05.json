@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-11-06T00:00:00Z",
+  "period_start": "2026-11-04",
+  "period_end": "2026-11-05",
+  "patch_count": 44,
+  "thread_count": 16,
+  "top_contributors": ["Alexei Starovoitov", "Jiri Olsa", "Tianyi Chen"],
+  "key_topics": ["arena", "verifier", "kfuncs", "maps", "bpftool", "btf", "helpers"],
+  "overview": "November 4-5 saw heavy activity on bpf-next, dominated by two large series from Alexei Starovoitov: a 14-patch v3 introducing a stack-in-arena memory model with a new BPF_REG_ARENA_SP register, and a 9-patch series that builds a call graph after verification to safely raise MAX_CALL_FRAMES from 8 to 32. Jiri Olsa posted a v3 of the user memory kfuncs series, adding bpf_copy_to_user and related helpers for safely writing data to userspace from BPF programs.",
+  "patches": [
+    {
+      "title": "bpf: Add stacks for programs to arena",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261104012401.1354861-10-alexei.starovoitov@gmail.com/",
+      "summary": "Part of the 14-patch v3 'bpf: A stack in arena' series, this patch adds per-CPU stacks for BPF programs allocated out of arena memory. It introduces the BPF_REG_ARENA_SP register as a dedicated arena-based stack pointer, allowing BPF programs to escape the fixed 512-byte kernel stack limit. Companion patches add verifier support and JIT backends for x86 and arm64, enabling a much larger effective stack backed by the arena allocator.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Build the call graph of a prog after the main verification pass",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261104215523.1852636-2-alexei.starovoitov@gmail.com/",
+      "summary": "First patch in the 9-patch series 'bpf: Check chains of calls over the call graph, allow 32 frames', which constructs an explicit call graph of a BPF program after the main verifier pass completes. Subsequent patches use this graph to reason about tail calls, callbacks, private stack assignment, and overall call depth, culminating in raising MAX_CALL_FRAMES from 8 to 32. This unblocks more complex BPF programs that require deeper subprogram nesting.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add user memory kfuncs",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20261105102343.311331-3-jolsa@kernel.org/",
+      "summary": "Core patch in the 8-patch v3 series 'bpf: Add user memory kfuncs', introducing kfuncs for safely operating on user-space memory from BPF programs, including bpf_copy_to_user for writing data into user buffers. The series also adds support for const kfunc memory arguments and mmap-based user memory access, with a comprehensive selftest suite covering error paths, page exec, and mmap scenarios. This enables new use cases for tracing and security programs that need to modify user memory in a controlled way.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Specialize inlined lookups for more htab types",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261105-b4-hashtab-fast-hashfn-all-types-v1-1-287199376359@meta.com/",
+      "summary": "Extends the existing inlined hash table lookup fast path to cover additional htab map variants beyond the originally supported types. By specializing the generated lookup code per htab type at JIT time, common map lookup operations avoid indirect calls and can be optimized more aggressively by the JIT compiler. This is a performance improvement for workloads that do high-rate hash table lookups in the data plane.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Limit local storage value size to max kmalloc_nolock() allocation",
+      "author": "Jonathan Bastari Thamrin",
+      "url": "https://lore.kernel.org/bpf/20261104-local-storage-max-v1-1-c836731bd184@gmail.com/",
+      "summary": "Adds an explicit upper bound on the value size for BPF local storage maps, capping it at the maximum size that kmalloc_nolock() can satisfy. Without this limit, a user could create a local storage map with a value size that cannot reliably be allocated at runtime, leading to silent failures or unexpected OOM behavior. The companion selftest verifies that oversized values are correctly rejected at map creation time.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add sleepable version of bpf_get_stack in raw_tp_prog_func_proto and tp_prog_func_proto",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20261105093212.826479-1-yangfeng59949@163.com/",
+      "summary": "v4 of a 2-patch series that exposes a sleepable variant of bpf_get_stack to sleepable raw tracepoint and tracepoint programs, allowing stack unwinding that can fault in page-backed build ID data. The existing non-sleepable version is unable to handle page faults during unwinding, so stack frames backed by anonymous mappings lose their build ID annotations. The companion selftest exercises this path by triggering a stack walk from a sleepable raw tracepoint against a faulting build ID.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Add recursive map dumping",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/9d939026aea3c4a2d4d26702de1080c6733ad566.1793818386.git.hi@tychen.cc/",
+      "summary": "v11 of the 3-patch series adding recursive map dump support to bpftool, allowing maps whose values contain map file descriptors to be expanded inline during a dump. This makes it possible to inspect complex nested map structures in a single bpftool command rather than issuing separate lookups per inner map. The series also includes a fix to reset map info between iterations and a selftest covering recursive dump correctness.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix OOB read in BTF dumper zero-scan",
+      "author": "Gu Bin",
+      "url": "https://lore.kernel.org/bpf/20261104025806.1693-2-gubin@cmss.chinamobile.com/",
+      "summary": "v4 fix for an out-of-bounds read in libbpf's BTF dumper during the zero-scan phase, which walks BTF type graphs to identify types that need zero-initialization. A missing bounds check on the type array index could cause a read past the end of the allocated types buffer when processing crafted or corrupt BTF blobs. The companion selftest adds an overflow test case to prevent regressions.",
+      "related_links": []
+    }
+  ]
+}
