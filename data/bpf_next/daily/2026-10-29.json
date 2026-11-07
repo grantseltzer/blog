@@ -1,53 +1,60 @@
 {
-  "generated_at": "2026-10-30T00:00:00Z",
+  "generated_at": "2026-11-07T00:00:00Z",
   "period_start": "2026-10-28",
   "period_end": "2026-10-29",
-  "patch_count": 38,
+  "patch_count": 40,
   "thread_count": 10,
-  "top_contributors": ["Vineet Gupta", "Kumar Kartikeya Dwivedi", "Mark Korenberg"],
-  "key_topics": ["selftests", "bpftool", "helpers", "callbacks", "sleepable", "arena", "rbtree"],
-  "overview": "Activity over Oct 28–29 was led by a large RFC from Kumar Kartikeya Dwivedi introducing synchronous-callback unwinding, allowing BPF callbacks to perform non-local exits back through helper call sites. Alongside that, a new bpf_path_getattr() helper was proposed, and bpftool gained a more flexible LLVM disassembler dependency model.",
+  "top_contributors": ["Kumar Kartikeya Dwivedi", "Vineet Gupta", "Mark Korenberg", "Anastasios Papagiannis", "Yun Lu"],
+  "key_topics": ["callbacks", "helpers", "task-work", "rcu", "bpftool", "arena", "selftests"],
+  "overview": "October 28-29 was headlined by Kumar Kartikeya Dwivedi's RFC series enabling synchronous callback unwinding in BPF, alongside a new bpf_path_getattr() helper, task work use-after-free fixes, and GCC selftest compatibility improvements from Vineet Gupta. An RCU correctness fix for sleepable bpf_get_stack() and bpftool LLVM disassembler improvements round out the period.",
   "patches": [
     {
       "title": "bpf: Give a helper a way to call its callback with a pad",
       "author": "Kumar Kartikeya Dwivedi",
       "url": "https://lore.kernel.org/bpf/03d6c53ccdf3eb0f5503eae9f9ffa5e6570549c3.1793147364.git.memxor@gmail.com/",
-      "summary": "This RFC patch is the foundation of an 11-patch series that enables synchronous BPF callbacks to unwind (perform non-local exits) back into their calling helper. It introduces infrastructure for helpers to invoke their callback through a reserved 'pad' of instructions that the JIT can use as a landing zone when the callback triggers an unwind. The mechanism lets callbacks abort early and propagate a return value to the caller, enabling richer control flow in helpers like bpf_loop, bpf_for_each_map_elem, and bpf_rbtree_add. This is an RFC seeking design feedback before the approach is finalized.",
+      "summary": "Lead patch of an 11-patch RFC series implementing unwinding for synchronous BPF callbacks. The core idea is to give BPF helpers a 'pad' — extra instruction slots after the helper call — into which a callback can unwind rather than returning normally. This enables early exit from helpers like bpf_loop, bpf_for_each_map_elem, bpf_find_vma, bpf_user_ringbuf_drain, and bpf_rbtree_add, allowing callbacks to propagate error-like conditions back to callers.",
       "related_links": []
     },
     {
       "title": "bpf: Add bpf_path_getattr()",
       "author": "Anastasios Papagiannis",
       "url": "https://lore.kernel.org/bpf/20261029095952.44833-2-tasos.papagiannnis@gmail.com/",
-      "summary": "Introduces a new BPF helper bpf_path_getattr() that allows BPF programs to query filesystem path attributes, such as inode number, device, and mode, given a kernel path object. This fills a gap for security and observability programs that need to inspect VFS paths without resorting to raw kernel struct access. The series also includes documentation and selftests covering the new helper's semantics.",
-      "related_links": []
-    },
-    {
-      "title": "bpftool: Make the LLVM disassembler an optional runtime dependency",
-      "author": "Mark Korenberg",
-      "url": "https://lore.kernel.org/bpf/20261029-bpftool-plugin-v3-2-87af799da40a@gmail.com/",
-      "summary": "This v3 patch reworks bpftool so that the LLVM disassembler is loaded dynamically at runtime rather than being a hard link-time dependency. Users who do not have LLVM installed can still use bpftool for all non-disassembly operations, while those who do get the full disassembly experience. The companion patch (1/2) also fixes a pre-existing bug in disposal of the LLVM disassembler context to prevent resource leaks.",
+      "summary": "Introduces a new BPF helper bpf_path_getattr() that allows BPF programs to query file path attributes from a struct path pointer. This enables tracing and security programs to inspect filesystem paths without needing to walk the dentry chain manually. The series includes documentation and selftests covering the new helper.",
       "related_links": []
     },
     {
       "title": "bpf: Retire task work before reclaiming hash elements",
       "author": "Yun Lu",
       "url": "https://lore.kernel.org/bpf/20261028073525.1035605-2-luyun_611@163.com/",
-      "summary": "Fixes a use-after-free bug where BPF task work items referencing hash map elements could still be pending when the map element was freed on deletion. The fix ensures that outstanding task work is retired and completed before the backing memory is reclaimed. A selftest is included to verify correct scheduling behavior around the deletion path.",
+      "summary": "Fixes a use-after-free bug by ensuring that task work is fully retired before BPF hash map elements are reclaimed during deletion. Without this ordering guarantee, an async callback scheduled via task work could fire after the map element it references has been freed. This is the first version of what later became a broader 8-patch series in v2.",
       "related_links": []
     },
     {
       "title": "bpf: Fix suspicious RCU usage for sleepable bpf_get_stack()",
       "author": "Feng Yang",
       "url": "https://lore.kernel.org/bpf/20261028093548.790977-1-yangfeng59949@163.com/",
-      "summary": "Corrects improper RCU read-lock usage in the sleepable variant of the bpf_get_stack() helper. Sleepable BPF programs run in a context that may sleep, so taking a classic RCU read lock there triggers a kernel warning. The patch switches to the appropriate sleepable-safe RCU primitive to silence the warning and ensure memory safety.",
+      "summary": "Fixes a suspicious RCU usage warning triggered when calling the sleepable variant of bpf_get_stack() from contexts where RCU read-side critical sections are not properly managed. The fix ensures correct RCU semantics in the sleepable path, preventing potential data corruption under preemption. This single patch lays groundwork for the more complete sleepable stack-tracing series submitted on Nov 6.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Make the LLVM disassembler an optional runtime dependency",
+      "author": "Mark Korenberg",
+      "url": "https://lore.kernel.org/bpf/20261029-bpftool-plugin-v3-2-87af799da40a@gmail.com/",
+      "summary": "Second patch of a 2-patch series making bpftool's LLVM disassembler support an optional runtime dependency rather than a hard build requirement. The companion patch also fixes a resource leak in the disposal of the LLVM disassembler context. These changes improve bpftool's portability to systems where LLVM is not installed, while still using it when available.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: libarena: Order equal rbtree keys FIFO",
+      "author": "Changwoo Min",
+      "url": "https://lore.kernel.org/bpf/20261028060046.549097-2-changwoo@igalia.com/",
+      "summary": "Lead patch of a 3-patch series improving the arena-based rbtree library used in BPF selftests. The series adds FIFO ordering for equal keys, caches the leftmost node and tree count for O(1) lookups, and adds rb_next() for ordered traversal. These improvements make the arena rbtree suitable for a broader range of benchmark and test scenarios.",
       "related_links": []
     },
     {
       "title": "selftests/bpf: Build callx tests with GCC that defines __BPF_FEATURE_CALLX",
       "author": "Vineet Gupta",
       "url": "https://lore.kernel.org/bpf/20261028204158.1021284-2-vineet.gupta@linux.dev/",
-      "summary": "Lead patch of an 8-patch v2 series cleaning up the BPF selftests build system to work correctly with GCC in addition to Clang. Changes include suppressing Clang-only warning flags when building with GCC, properly gating arena tests that GCC cannot compile, fixing false-positive PASS results from empty test bodies, and rewriting certain ALU tests in assembly to avoid compiler-specific behavior. The series improves overall test reliability when the kernel is built with bpf-gcc.",
+      "summary": "Lead patch of an 8-patch series (v2) improving BPF selftest compatibility with GCC builds. The series fixes clang-only warning flags leaking into GCC compilations, adds proper SKIP reporting for arena tests that GCC cannot build, rewrites mixed arena/scalar ALU tests in BPF assembly to avoid GCC limitations, and fixes incorrect pass reporting for empty test bodies. These changes make the BPF selftest suite more reliable for non-Clang toolchains.",
       "related_links": []
     }
   ]

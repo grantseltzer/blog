@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-11-07T00:00:00Z",
+  "period_start": "2026-10-29",
+  "period_end": "2026-10-30",
+  "patch_count": 51,
+  "thread_count": 10,
+  "top_contributors": ["Qiliang Yuan", "Jiri Olsa", "Andrey Grodzovsky", "Mark Korenberg", "Jakub Sitnicki"],
+  "key_topics": ["kfuncs", "verifier", "libbpf", "sockmap", "bpftool", "helpers", "patching"],
+  "overview": "October 29-30 brought Jiri Olsa's new user memory kfuncs series enabling BPF programs to safely read from and write to user-space memory, alongside Qiliang Yuan's 22-patch infrastructure overhaul replacing bpf_patch_insn_data() with a deferred patch list. Andrey Grodzovsky's libbpf manual loading feature reached v9, Jakub Sitnicki fixed psock data races, and bpftool saw LLVM and JSON enum improvements.",
+  "patches": [
+    {
+      "title": "bpf: Add user memory kfuncs",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20261029212551.56964-3-jolsa@kernel.org/",
+      "summary": "Core patch of an 8-patch series adding kfuncs for direct user memory access from BPF programs. The series introduces bpf_copy_to_user() and related kfuncs, a new __srcptr argument suffix for kfuncs accepting source pointers, and helpers for mmap and page exec operations. This enables powerful new use cases for security and tracing programs that need to inspect or modify user-space memory in a structured way.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a list of deferred instruction patches",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261030-bpf-verifier-patch-batch-v2-1-55cd43439f7c@gmail.com/",
+      "summary": "Foundation patch of a 22-patch series (v2) replacing the BPF verifier's immediate bpf_patch_insn_data() calls with a deferred patch list. Patches are queued during the fixup and optimization passes, then applied in a single batch, eliminating repeated array reallocations and simplifying offset tracking. The series migrates all existing patching operations — dead code removal, NOP stripping, bpf_loop inlining, ctx access rewrites, and constant blinding — to the new mechanism.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: BPF programs manual loading and attaching",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20261029223348.3730738-5-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "Core patch of a 7-patch libbpf series (v9) adding manual BPF program loading support, allowing callers to control exactly when and how programs are loaded rather than having libbpf load them automatically during bpf_object__load(). The series adds a BPF_PROG_LOAD_STRATEGY enum, a SEC(\"!...\") prefix for declarative manual load, and updates veristat to demonstrate the new API. This long-requested feature is particularly useful for tools that need fine-grained control over program lifecycle.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: Fix psock update-side data races on sk->sk_prot and progs",
+      "author": "Jakub Sitnicki",
+      "url": "https://lore.kernel.org/bpf/20261030-bpf-next-v1-2-035eabf8eae7@cloudflare.com/",
+      "summary": "Fixes data races in the sockmap update path where concurrent updates and deletions can race on sk->sk_prot and the program pointer stored in a psock. Without proper synchronization these races can cause use-after-free or incorrect program invocations in BPF sockmap-accelerated networking paths. The companion patch adds a concurrent update+delete selftest to prevent regressions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add bpf_path_getattr()",
+      "author": "Anastasios Papagiannis",
+      "url": "https://lore.kernel.org/bpf/20261029095952.44833-2-tasos.papagiannnis@gmail.com/",
+      "summary": "Introduces the bpf_path_getattr() helper allowing BPF programs to query filesystem path attributes from a struct path. This enables tracing and security programs to inspect file paths without walking the dentry chain manually. The series includes documentation and selftests, and appeared in both the Oct 29 and Oct 30 fetches as it straddles the boundary.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Make the LLVM disassembler an optional runtime dependency",
+      "author": "Mark Korenberg",
+      "url": "https://lore.kernel.org/bpf/20261029-bpftool-plugin-v3-2-87af799da40a@gmail.com/",
+      "summary": "Makes bpftool's LLVM disassembler an optional runtime dependency and fixes a context disposal leak in the LLVM path. This improves portability on systems without LLVM installed while retaining JIT disassembly output when LLVM is available. Version 3 of a series that also appeared in the prior day's fetch.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Expand a backward may_goto to gotol when patches push it out of range",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261030-bpf-verifier-patch-batch-v2-5-55cd43439f7c@gmail.com/",
+      "summary": "Addresses a correctness edge case where the deferred patch list expands a program enough to push a backward may_goto instruction beyond the signed 16-bit offset range of the compact encoding. The fix detects this case and silently expands the may_goto to a wider gotol instruction before final emission, ensuring the program remains valid after patching.",
+      "related_links": []
+    }
+  ]
+}

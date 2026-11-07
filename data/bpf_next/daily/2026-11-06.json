@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-11-07T00:00:00Z",
+  "period_start": "2026-11-05",
+  "period_end": "2026-11-06",
+  "patch_count": 100,
+  "thread_count": 7,
+  "top_contributors": ["Alexei Starovoitov", "Ihor Solodrai", "Yun Lu", "Feng Yang", "Andrey Grodzovsky"],
+  "key_topics": ["verifier", "sched_ext", "async-callback", "bpftool", "btf", "kprobes", "ftrace", "sleepable", "recursive-subprogs"],
+  "overview": "The November 5-6 period was dominated by Alexei Starovoitov's landmark 45-patch verifier overhaul (v3), replacing the existing path-based exploration with a fixpoint algorithm over the control flow graph and enabling recursive subprograms. Supporting work includes a fix for async callback use-after-free on map deletion, sleepable bpf_get_stack support, bpftool CO-RE C dump improvements, and a sched_ext task exit correctness fix.",
+  "patches": [
+    {
+      "title": "bpf: Verify programs as a fixpoint over the control flow graph",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-20-alexei.starovoitov@gmail.com/",
+      "summary": "Core patch from the 45-patch 'bpf: A verifier that joins states' series (v3), replacing the BPF verifier's path-based exploration with a fixpoint algorithm over the control flow graph. Instead of pruning redundant paths, the new approach joins states from multiple execution paths at merge points, iterating until a stable fixpoint is reached. This eliminates the need for prune points, pop_stack(), and precision tracking, resulting in a fundamentally cleaner and more principled verification model.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow recursive subprogs",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-23-alexei.starovoitov@gmail.com/",
+      "summary": "Enables recursive BPF subprograms, a capability that was previously blocked by the verifier's path-based design. The fixpoint-based verifier can now safely handle recursion by verifying static subprogs independently and enforcing runtime depth and time limits. This opens up new programming patterns for BPF programs previously requiring manual loop-based workarounds.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Track a pointer to one of a set of functions",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261106035111.3315285-28-alexei.starovoitov@gmail.com/",
+      "summary": "Adds verifier support for tracking a register that holds a pointer to one of a set of BPF subprograms, enabling indirect calls (callx) where the callee is not statically known. The verifier conservatively models the call as reading whatever any of the candidate subprogs could read. This is a necessary building block for function-pointer dispatch patterns in BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Mark task work FREED before detaching it",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261106095747.471718-2-luyun_611@163.com/",
+      "summary": "Lead patch of an 8-patch series (v2) fixing a use-after-free in BPF's async callback infrastructure triggered by map deletion. The fix marks task work, bpf_timer, and bpf_wq objects as FREED before detaching them, then adds membership checks in the timer and work-queue paths before any dereference. This closes a subtle race where a concurrent map deletion could cause async callbacks to access freed memory.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add sleepable version of bpf_get_stack in raw_tp_prog_func_proto and tp_prog_func_proto",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20261106080746.661431-1-yangfeng59949@163.com/",
+      "summary": "Adds a sleepable variant of bpf_get_stack() to raw tracepoint and tracepoint program types, allowing stack traces to be collected from sleepable BPF programs in those contexts. Previously only the non-sleepable version was exposed, limiting stack introspection in async or sleeping code paths. A companion selftest verifies correct behavior when faulting build IDs from a sleepable raw tracepoint.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: mark trampoline ftrace_ops permanent",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20261106010535.2137162-2-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "Marks BPF trampolines' ftrace_ops as permanent to prevent them from being unregistered during system shutdown or unexpected teardown paths. This is part of a 2-patch series that also marks ftrace-based kprobe ops permanent, closing a potential race condition in the kernel's tracing subsystem. The fix improves stability for security and monitoring tools that rely on persistent BPF-based tracing.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Render the arena type tag as __bpf_arena",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261105175845.30357-17-ihor.solodrai@linux.dev/",
+      "summary": "Part of a 17-patch series (v4) adding per-record CO-RE attributes to bpftool's C dump output. This patch specifically renders BPF arena pointer type tags as `__bpf_arena` in generated headers, with other patches in the series adding `__bpf_relocatable` and `__bpf_static_offset` annotations and improving handling of verifier-rewritten context types. The improvements make bpftool-generated vmlinux.h files more accurate for CO-RE-based BPF development.",
+      "related_links": []
+    },
+    {
+      "title": "sched_ext: Reset task fields on exit of an SCX_TASK_READY task",
+      "author": "Rahad Bhuiya",
+      "url": "https://lore.kernel.org/bpf/20261106142818.1475-1-rahadbhuiya2021@gmail.com/",
+      "summary": "Fixes a bug in sched_ext where task-local fields are not properly reset when a task in the SCX_TASK_READY state exits. Without this fix, stale field values from an exiting task could linger and affect subsequent scheduling decisions in the extensible scheduler framework. This is a targeted correctness patch ensuring clean state transitions on task exit.",
+      "related_links": []
+    }
+  ]
+}
