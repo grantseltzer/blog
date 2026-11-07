@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-11-02T00:00:00Z",
+  "period_start": "2026-10-02",
+  "period_end": "2026-11-01",
+  "patch_count": 100,
+  "thread_count": 20,
+  "top_contributors": ["Qiliang Yuan", "Alexei Starovoitov", "Jay Wang", "Ihor Solodrai", "Jiri Olsa"],
+  "key_topics": ["arena", "verifier", "btf", "libbpf", "bpftool", "kfuncs", "sockmap"],
+  "overview": "October 2026 was a productive month for bpf-next, with several landmark features and infrastructure overhauls landing across the verifier, BTF, libbpf, and bpftool. Alexei Starovoitov's 14-patch 'A stack in arena' series introduces BPF_REG_ARENA_SP, giving programs a JIT-backed stack pointer into arena memory that breaks the classical 512-byte stack ceiling. Jay Wang contributed CONFIG_DEBUG_INFO_BTF_LAZY in a 13-patch series, deferring vmlinux BTF decompression until first use and saving roughly 6 MB of kernel memory. Qiliang Yuan submitted a sweeping 22-patch verifier refactor replacing the incremental bpf_patch_insn_data() mechanism with a list-based deferred patch system that resolves long-standing jump-offset adjustment hazards. Jiri Olsa introduced new user memory kfuncs enabling BPF programs to safely read and write user-space memory, and Andrey Grodzovsky completed nine revisions of libbpf manual BPF program loading, exposing a declarative SEC('!...') prefix for programs that should not be auto-loaded.",
+  "patches": [
+    {
+      "title": "bpf: Introduce bpf register BPF_REG_ARENA_SP",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-9-alexei.starovoitov@gmail.com/",
+      "summary": "Core patch of the 14-patch 'bpf: A stack in arena' series (v2) that introduces BPF_REG_ARENA_SP, a new BPF register whose value is a pointer into arena memory used as a stack. Unlike the classical frame pointer limited to 512 bytes, the arena stack can grow dynamically within the arena's address space. Subsequent patches add x86 and arm64 JIT support, verifier tracking of the new register, libbpf arena pointer relocation, and a new .bss.addr_space.1 ELF section for arena-resident globals.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: keep the vmlinux BTF zstd-compressed in the kernel image",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-10-wanjay@amazon.com/",
+      "summary": "Central patch of the 13-patch CONFIG_DEBUG_INFO_BTF_LAZY series that stores vmlinux BTF in its compressed form until the first consumer needs it. This saves roughly 6 MB of kernel memory on systems that never load BPF programs. The series includes prerequisite patches to defer kfunc and struct_ops registrations, keep pending module BTFs, and trigger parsing from the tracing and BPF syscall paths that first require kernel types.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a list of deferred instruction patches",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261030-bpf-verifier-patch-batch-v2-1-55cd43439f7c@gmail.com/",
+      "summary": "Foundation patch of the 22-patch verifier refactor that replaces the live-patching bpf_patch_insn_data() approach with a deferred patch list. Instead of immediately rewriting the instruction array and adjusting all jump offsets on each patch, changes are queued and applied in a single pass, eliminating the quadratic re-adjustment problem and fixing subtle bugs when backward may_goto jumps are pushed out of 16-bit range by accumulating patches.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add user memory kfuncs",
+      "author": "Jiri Olsa",
+      "url": "https://lore.kernel.org/bpf/20261029212551.56964-3-jolsa@kernel.org/",
+      "summary": "Introduces a set of new kfuncs — including bpf_copy_from_user, bpf_copy_to_user, and mmap/page-exec variants — that let BPF programs safely read and write user-space memory from sleepable contexts. The series adds a new __srcptr kfunc argument suffix to tag source pointers that are validated by the kfunc itself rather than the verifier, and includes comprehensive selftest coverage for error paths, mmap semantics, and page-exec scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: BPF programs manual loading and attaching",
+      "author": "Andrey Grodzovsky",
+      "url": "https://lore.kernel.org/bpf/20261029223348.3730738-5-andrey.grodzovsky@crowdstrike.com/",
+      "summary": "Key patch of the 7-patch libbpf manual loading series (v9) that exposes bpf_program__load and bpf_program__attach APIs for programs that callers want to load and attach independently rather than via bpf_object__load. Companion patches add a BPF_PROG_LOAD_STRATEGY enum, a SEC('!...') declarative prefix for skip-auto-load programs, and proper cleanup of func_info, line_info, and subprogs on program exit. veristat is updated to exercise the new manual strategy.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Look up BTF strings without making BTF modifiable",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261030233355.1836749-2-ihor.solodrai@linux.dev/",
+      "summary": "First patch of the 13-patch 'bpftool: Per-record CO-RE attributes in the C dump' series (v3) that fixes libbpf BTF string lookup to avoid marking the BTF object as modifiable when only reading string table entries. The series builds on this to add __bpf_relocatable and __bpf_static_offset CO-RE attribute annotations on individual records in bpftool's C dump, enabling more precise CO-RE relocation hints per type and improving vmlinux.h usability.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Normalize enum values according to signedness",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261101103221.51534-2-dennylin0707@gmail.com/",
+      "summary": "Fixes libbpf's data dump to respect BTF enum signedness when formatting values, preventing signed-extension of unsigned enum constants that happen to have the high bit set. The three-patch series (v3) also fixes bpftool's corresponding dump path and adds selftest coverage verifying correct handling across legacy name matching and 64-bit unsigned enum values.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Don't trust pointers spilled in slots that a callee can write",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101004657.3406576-2-alexei.starovoitov@gmail.com/",
+      "summary": "Verifier fix that marks caller stack slots as unknown after a BPF-to-BPF call when those slots fall within the range the callee is permitted to overwrite. Trusting spilled pointers in these slots after the callee returns was unsound, as the callee may have legitimately clobbered the value. A selftest demonstrates a callee overwriting a spilled pointer in its caller's frame.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: Fix psock update-side data races on sk->sk_prot and progs",
+      "author": "Jakub Sitnicki",
+      "url": "https://lore.kernel.org/bpf/20261030-bpf-next-v1-2-035eabf8eae7@cloudflare.com/",
+      "summary": "Fixes a pair of data races in the sockmap psock update path where sk->sk_prot and the attached program pointers could be read by the data path while being mutated by a concurrent sockmap update or delete. The fix adds proper RCU and locking discipline to the update side, and a companion selftest exercises concurrent sockmap update and delete to expose the races under KCSAN.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Make the LLVM disassembler an optional runtime dependency",
+      "author": "Mark Korenberg",
+      "url": "https://lore.kernel.org/bpf/20261029-bpftool-plugin-v3-2-87af799da40a@gmail.com/",
+      "summary": "Changes bpftool's LLVM disassembler integration from a hard link-time dependency to an optional runtime plugin loaded via dlopen, so that bpftool binaries built without LLVM can still be distributed and used for all other features. The companion patch fixes a bug in the existing code where the LLVM disassembler context was not properly disposed of after use, causing a memory leak on repeated disassembly calls.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix the join of fp+0 with a value that is not a pointer to stack",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261031220615.804426-2-alexei.starovoitov@gmail.com/",
+      "summary": "Fixes a verifier bug where joining a pointer-to-stack (fp+0) state with a non-stack-pointer value in the abstract state merge produced an incorrect type, potentially allowing later memory accesses to bypass bounds checks. The issue arises in control-flow join points after conditional assignments to a register that holds fp+0 on one branch and an unrelated value on the other.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Cap the CPUs taking part in the rqspinlock stress test",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/7fb2cf7baeb262c7486b8e9b5204e2a159402608.1793394762.git.memxor@gmail.com/",
+      "summary": "Limits the number of CPUs participating in the rqspinlock stress test to avoid excessive contention on high-core-count machines where the test was timing out or producing unreliable results. The cap is set relative to the number of online CPUs and keeps the test tractable on large NUMA systems while still exercising the concurrent lock acquisition paths that the test is designed to validate.",
+      "related_links": []
+    }
+  ]
+}

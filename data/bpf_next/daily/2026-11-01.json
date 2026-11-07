@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-11-02T00:00:00Z",
+  "period_start": "2026-10-31",
+  "period_end": "2026-11-01",
+  "patch_count": 37,
+  "thread_count": 8,
+  "top_contributors": ["Alexei Starovoitov", "Jay Wang", "Hungyu Lin"],
+  "key_topics": ["arena", "verifier", "btf", "libbpf", "bpftool"],
+  "overview": "November 1st saw heavy activity on bpf-next, dominated by Alexei Starovoitov's 14-patch series introducing BPF_REG_ARENA_SP, a new BPF register backed by arena memory that allows programs to use stacks far larger than the traditional 512-byte limit. Jay Wang contributed a 13-patch series adding CONFIG_DEBUG_INFO_BTF_LAZY, which keeps the vmlinux BTF zstd-compressed until first use and saves approximately 6 MB of kernel memory. Additional verifier correctness fixes from Starovoitov and BTF enum signedness normalization from Hungyu Lin round out the day.",
+  "patches": [
+    {
+      "title": "bpf: Introduce bpf register BPF_REG_ARENA_SP",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-9-alexei.starovoitov@gmail.com/",
+      "summary": "Introduces BPF_REG_ARENA_SP, a new dedicated stack-pointer register backed by arena memory, as part of the 'bpf: A stack in arena' series (v2, 14 patches). Unlike the classical frame pointer, this register points into an arena allocation, enabling BPF programs to use dynamically-sized stacks that can grow well beyond the 512-byte limit. The series also adds x86 and arm64 JIT support for the new register along with libbpf changes to handle arena pointer relocation and a new .bss.addr_space.1 section. Selftest coverage is included for the new arena stack semantics.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: keep the vmlinux BTF zstd-compressed in the kernel image",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-10-wanjay@amazon.com/",
+      "summary": "Core patch of the 13-patch CONFIG_DEBUG_INFO_BTF_LAZY series that stores the vmlinux BTF blob in its compressed zstd form in the kernel image rather than decompressing it at boot. Decompression is deferred to the first consumer that actually needs BTF, saving roughly 6 MB of kernel memory on systems that never load BPF programs. Companion patches defer kfunc and struct_ops registration, keep module BTFs in a pending queue, and update the tracing subsystem to trigger parsing when BTF-typed output is requested.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Don't trust pointers spilled in slots that a callee can write",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101004657.3406576-2-alexei.starovoitov@gmail.com/",
+      "summary": "Verifier correctness fix that prevents the verifier from trusting a spilled pointer that lives in a stack slot accessible by a BPF-to-BPF callee. A callee is permitted to overwrite its caller's stack frame up to the spill depth, so treating the value as a valid pointer after the call returns is unsound. The fix teaches the verifier to mark such slots as unknown scalars after a subprog call, and a companion selftest demonstrates the previously-missed case.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix the join of fp+0 with a value that is not a pointer to stack",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261031220615.804426-2-alexei.starovoitov@gmail.com/",
+      "summary": "Fixes a verifier bug in the abstract-state join for fp+0 when one branch holds a pointer-to-stack and the other holds an unrelated value. The incorrect join could produce a phantom pointer type that passes later checks, potentially enabling out-of-bounds stack reads. A selftest covering the erroneous join path is included in the companion patch.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Normalize enum values according to signedness",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261101103221.51534-2-dennylin0707@gmail.com/",
+      "summary": "First patch of the three-patch 'Normalize enum values in libbpf and bpftool' series (v3). libbpf was truncating or sign-extending enum values during data dumps by casting them to signed int regardless of whether the BTF type was signed or unsigned. This fix checks the BTF signedness flag and applies the correct numeric representation, ensuring that unsigned enum64 values near 2^32 are not misrepresented. The series also fixes bpftool's data dump and adds selftest coverage for legacy name matching.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: match program context types by name without vmlinux BTF",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-2-wanjay@amazon.com/",
+      "summary": "First patch of the BTF lazy-loading series that enables the verifier to match BPF program context types by string name before vmlinux BTF has been parsed, removing a mandatory early boot BTF dependency. This is required as a prerequisite for deferring the decompression of the vmlinux BTF blob. The patch refactors context-type lookups to consult a lightweight name table that is always available, falling back to full BTF resolution only when BTF has already been initialised.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Make arena 4 Gbyte when max_entries is not set",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261101030511.1578690-2-alexei.starovoitov@gmail.com/",
+      "summary": "Foundation patch for the 'A stack in arena' series that changes the default arena map size to 4 GB when the user omits max_entries, matching the address-space granularity of a 32-bit address-space cast. The larger default simplifies arena-backed stack allocation and removes the need for callers to manually size the arena. This underpins later patches in the series that relocate arena pointers and add the .bss.addr_space.1 ELF section.",
+      "related_links": []
+    }
+  ]
+}

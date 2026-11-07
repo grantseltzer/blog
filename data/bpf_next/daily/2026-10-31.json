@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-11-01T00:00:00Z",
+  "period_start": "2026-10-30",
+  "period_end": "2026-10-31",
+  "patch_count": 52,
+  "thread_count": 10,
+  "top_contributors": ["Qiliang Yuan", "Jay Wang", "Ihor Solodrai", "Mykyta Yatsenko", "Jakub Sitnicki"],
+  "key_topics": ["btf", "verifier", "bpftool", "core", "selftests", "sockmap", "struct-ops", "kfuncs"],
+  "overview": "The October 30-31 period was dominated by two major series: Jay Wang's 13-patch CONFIG_DEBUG_INFO_BTF_LAZY series to keep vmlinux BTF zstd-compressed until first use (saving ~6MB of kernel memory), and Qiliang Yuan's 22-patch verifier overhaul replacing bpf_patch_insn_data() with a deferred patch list for more efficient instruction rewriting. Ihor Solodrai also posted a v3 of the bpftool CO-RE per-record attributes series, adding __bpf_relocatable and __bpf_static_offset annotations to C BTF dumps.",
+  "patches": [
+    {
+      "title": "bpf: match program context types by name without vmlinux BTF",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-2-wanjay@amazon.com/",
+      "summary": "First patch in a 13-patch series introducing CONFIG_DEBUG_INFO_BTF_LAZY, which defers parsing of the vmlinux BTF until it is actually needed rather than at boot. To enable lazy initialization, BPF program context types are matched by name instead of requiring vmlinux BTF to be present upfront. This reduces kernel memory usage by approximately 6MB on systems that never load BPF programs. The series also keeps module BTF deferred and batches kfunc and struct_ops registrations until first BTF use.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: keep the vmlinux BTF zstd-compressed in the kernel image",
+      "author": "Jay Wang",
+      "url": "https://lore.kernel.org/bpf/20261031130959.23472-10-wanjay@amazon.com/",
+      "summary": "Core patch of the CONFIG_DEBUG_INFO_BTF_LAZY series that stores the vmlinux BTF in zstd-compressed form in the kernel image rather than decompressing it at boot. Decompression is triggered on first access, which for many production workloads either never happens or is deferred well into system lifetime. This approach eliminates ~6MB of always-resident kernel memory without impacting workloads that actually use BTF.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add a list of deferred instruction patches",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261030-bpf-verifier-patch-batch-v2-1-55cd43439f7c@gmail.com/",
+      "summary": "First patch of a 22-patch v2 series that replaces the existing bpf_patch_insn_data() mechanism with a deferred patch list in the BPF verifier. Instead of immediately reallocating and copying the instruction array for each patch during verification fixups, all patches are queued in a list and applied in a single pass at the end. This refactor reduces redundant memory allocations and lays the groundwork for more complex patching operations like inserting in front of existing patches and applying patches without a full verifier environment.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Expand a backward may_goto to gotol when patches push it out of range",
+      "author": "Qiliang Yuan",
+      "url": "https://lore.kernel.org/bpf/20261030-bpf-verifier-patch-batch-v2-5-55cd43439f7c@gmail.com/",
+      "summary": "A key correctness fix within the deferred-patch-list series: when instruction patches inserted by earlier fixup passes cause a backward may_goto branch to exceed the 16-bit offset range of the short jump encoding, this patch automatically expands it to the long-form gotol instruction. This handles an edge case that was previously impossible to trigger with eager patching but becomes reachable when multiple patch batches are applied in sequence.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Look up BTF strings without making BTF modifiable",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261030233355.1836749-2-ihor.solodrai@linux.dev/",
+      "summary": "First patch in the v3 13-patch bpftool CO-RE attributes series, which adds per-record __bpf_relocatable and __bpf_static_offset annotations to bpftool's C BTF dump output. This preparatory patch teaches libbpf to perform BTF string lookups without transitioning the BTF object into a mutable state, which is needed to avoid unintended side effects during dump generation. The full series enables BPF developers to see at a glance which struct fields are CO-RE-relocatable in generated headers.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: Fix psock update-side data races on sk->sk_prot and progs",
+      "author": "Jakub Sitnicki",
+      "url": "https://lore.kernel.org/bpf/20261030-bpf-next-v1-2-035eabf8eae7@cloudflare.com/",
+      "summary": "Fixes data races on the update side of sockmap operations where sk->sk_prot and the attached programs could be read concurrently without adequate synchronization. The companion patch adds selftests that exercise concurrent sockmap updates and deletes to reproduce the races. This addresses a class of use-after-free and torn-read hazards that can manifest under heavy sockmap churn in production proxy workloads.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Cap the CPUs taking part in the rqspinlock stress test",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/7fb2cf7baeb262c7486b8e9b5204e2a159402608.1793394762.git.memxor@gmail.com/",
+      "summary": "Limits the number of CPUs used in the rqspinlock BPF selftest stress test to prevent timeouts on machines with very high CPU counts. Without the cap the test spawns one thread per online CPU, and on large NUMA systems the resulting contention causes the test to exceed its time budget. The fix sets a reasonable upper bound while still providing meaningful stress coverage.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: avoid sign extension in unsigned enum JSON dumps",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261030195343.79712-1-dennylin0707@gmail.com/",
+      "summary": "Fixes a bug in bpftool where values of unsigned enum types were incorrectly sign-extended when serialized to JSON, causing large unsigned values (with the high bit set) to appear as negative numbers. This is a v2 incorporating review feedback from the earlier RFC. The fix ensures the raw bit pattern is treated as unsigned before JSON encoding, producing correct output for enums used in BPF maps and BTF type introspection.",
+      "related_links": []
+    }
+  ]
+}

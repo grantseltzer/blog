@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-11-05T00:00:00Z",
+  "period_start": "2026-11-03",
+  "period_end": "2026-11-04",
+  "patch_count": 100,
+  "thread_count": 17,
+  "top_contributors": ["Alexei Starovoitov", "Daniel Borkmann", "Vineet Gupta", "Tianyi Chen"],
+  "key_topics": ["verifier", "arena", "jit", "arm64", "bpftool", "local-storage", "riscv", "selftests"],
+  "overview": "A heavy day on bpf-next dominated by two large Alexei Starovoitov series: a 14-patch set introducing arena-backed program stacks via a new BPF_REG_ARENA_SP register (with verifier, x86, and arm64 JIT support), and a sweeping 37-patch series improving verifier precision for scalar evolution, counted loops, and program limits. Daniel Borkmann also posted 15 patches of arm64 JIT optimizations.",
+  "patches": [
+    {
+      "title": "bpf: Introduce bpf register BPF_REG_ARENA_SP",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261104012401.1354861-9-alexei.starovoitov@gmail.com/",
+      "summary": "Part of a 14-patch series titled 'bpf: A stack in arena', this patch introduces a new dedicated BPF register BPF_REG_ARENA_SP as a stack pointer into arena memory. Arena-backed stacks allow BPF programs to use a larger, page-faultable stack instead of the fixed 512-byte kernel stack, enabling more complex programs. The series further adds verifier support, x86 and arm64 JIT lowering, libbpf relocation support, and selftests.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Keep the range of a packet pointer when a number >= 0 is added",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261103234104.208239-2-alexei.starovoitov@gmail.com/",
+      "summary": "The first patch in a large 37-patch series ('bpf: More precision, more counted loops, larger limits') that significantly improves the BPF verifier's precision. This opening patch preserves packet pointer range information when non-negative values are added, fixing a source of unnecessary rejections. The series also bumps BPF_MAX_SUBPROGS to 1024, allows 24 arguments for static subprogs, extends scalar evolution to handle more counted loop patterns, and improves range tracking for shifts, divisions, and remainders.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Force BPF_JIT_ALWAYS_ON on x86-64 and arm64",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261103231931.89739-2-alexei.starovoitov@gmail.com/",
+      "summary": "First patch of a 3-patch series ('bpf, arm64: Keep BPF_PROBE_MEM loads away from tagged user addresses') that addresses a safety issue on arm64 systems using memory tagging (MTE). By mandating JIT compilation on x86-64 and arm64, the series ensures the subsequent arm64 JIT fix for filtering tagged user addresses from BPF_PROBE_MEM loads is always in effect, preventing potential misfires when probing user memory with tag bits set.",
+      "related_links": []
+    },
+    {
+      "title": "arm64, insn: Add the LDUR/STUR and TBZ/TBNZ encodings",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/20261103122733.1383002-7-daniel@iogearbox.net/",
+      "summary": "Foundation patch for a 20-patch arm64 BPF JIT optimization series. It adds the unscaled load/store (LDUR/STUR) and bit-test branch (TBZ/TBNZ) instruction encodings to the arm64 instruction library. These new encodings enable subsequent patches to emit more efficient JIT code for negative/unaligned offsets, zero/sign/bit-test comparisons, constant division via magic-number multiplication, and shortened immediate materialization sequences.",
+      "related_links": []
+    },
+    {
+      "title": "riscv: bpf: Add BPF private stack support",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20261104100411.997-2-cp0613@linux.alibaba.com/",
+      "summary": "This patch (v2, 1/3) adds private stack support to the RISC-V BPF JIT, bringing it to parity with x86-64 and arm64. Private stacks allow BPF programs to use a larger per-CPU stack allocated outside the kernel stack frame, reducing stack pressure for deeply nested BPF programs. The series includes enabling the existing private stack selftests for riscv64 and a new runtime test covering stack argument passing with private stacks.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Limit local storage value size to max kmalloc_nolock() allocation",
+      "author": "Jonathan Bastari Thamrin",
+      "url": "https://lore.kernel.org/bpf/20261104-local-storage-max-v1-1-c836731bd184@gmail.com/",
+      "summary": "This patch enforces an upper bound on BPF local storage value sizes at map creation time, capping them at the maximum allocation size that kmalloc_nolock() can satisfy. Without this limit, overly large value sizes could silently fail at runtime when memory is allocated per-task or per-socket. The companion patch adds a selftest exercising the boundary condition at and beyond the new limit.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add sleepable version of bpf_get_stack in tracing_prog_func_proto and tp_prog_func_proto",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20261104083833.971911-1-yangfeng59949@163.com/",
+      "summary": "This patch (v3, 1/2) exposes a sleepable variant of bpf_get_stack to sleepable tracing and raw tracepoint programs. Standard bpf_get_stack cannot walk user stacks from non-sleepable contexts due to page-fault restrictions, but sleepable programs may need to resolve user build IDs from faulted pages. The companion selftest exercises the case where a faulting build-ID lookup is triggered from a sleepable raw tracepoint.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Add recursive map dumping",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/8f2668ed4cd086f5fe3abb7ad0ca35066999ec49.1793732336.git.hi@tychen.cc/",
+      "summary": "Part of a v10 4-patch series, this patch adds a recursive map dump mode to bpftool that follows map-in-map references to dump nested maps. It resets map info state before each query to avoid stale data contamination across iterations. The series also includes selftests covering mixed BTF map scenarios and recursive dump correctness, addressing a long-standing gap in bpftool's introspection capability.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Use batch lookups for hash map dumps",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/a107a124d50c11a6d26363acce98e5e3b8377155.1793732386.git.hi@tychen.cc/",
+      "summary": "This patch (v7, 1/2) switches bpftool's hash map dump path from per-entry lookups to batch BPF_MAP_LOOKUP_BATCH operations with bounded buffers, significantly improving performance for large maps. The bounded buffer approach limits per-call memory usage while amortizing syscall overhead across many entries. A selftest verifies that batch dump output matches expected contents.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix OOB read in BTF dumper zero-scan",
+      "author": "Gu Bin",
+      "url": "https://lore.kernel.org/bpf/20261104025806.1693-2-gubin@cmss.chinamobile.com/",
+      "summary": "This patch (v4, 1/2) fixes an out-of-bounds read in libbpf's BTF dumper when the zero-scan phase encounters a type whose index exceeds the allocated visited-types array. The bug could manifest when dumping BTF descriptions for programs with deeply nested or unusual type graphs. The companion patch adds an overflow-triggering selftest to prevent regressions.",
+      "related_links": []
+    }
+  ]
+}
