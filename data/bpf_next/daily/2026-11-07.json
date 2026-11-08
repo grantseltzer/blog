@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-11-08T00:00:00Z",
+  "period_start": "2026-11-06",
+  "period_end": "2026-11-07",
+  "patch_count": 100,
+  "thread_count": 12,
+  "top_contributors": [
+    "Alexei Starovoitov",
+    "Anton Protopopov",
+    "Yun Lu",
+    "Siddharth Nayyar",
+    "Ihor Solodrai"
+  ],
+  "key_topics": [
+    "verifier",
+    "fmod_ret",
+    "struct_ops",
+    "async-callbacks",
+    "private-stack",
+    "libbpf",
+    "bpftool",
+    "BTF"
+  ],
+  "overview": "The bpf-next mailing list saw heavy activity on November 6-7, dominated by Alexei Starovoitov's fourth version of a sweeping BPF verifier redesign that replaces the prune-and-explore model with fixpoint iteration over a control flow graph. Anton Protopopov also posted a large 18-patch series introducing an LLVM plugin to automatically detect valid fmod_ret attach targets, reducing the burden on kernel developers who currently must maintain those lists by hand.",
+  "patches": [
+    {
+      "title": "bpf: Add may_goto to the loops that the verifier marks",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261107033758.1547725-2-alexei.starovoitov@gmail.com/",
+      "summary": "This is patch 1 of 46 in the v4 series 'bpf: A verifier that joins states', a fundamental redesign of the BPF verifier. Rather than the classic explore-then-prune approach, the new verifier computes a fixpoint over the program's control flow graph by joining (merging) verifier states at join points, similar to classical dataflow analysis. The series removes precision tracking and prune points, adds recursive subprog support, and introduces a new loop-analysis framework that can count, walk, or widen loops. This is one of the most significant verifier reworks in BPF history and enables previously-rejected programs to pass verification while reducing false positives.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BTF ID sets for fmod_ret targets",
+      "author": "Anton Protopopov",
+      "url": "https://lore.kernel.org/bpf/20261106210314.1767267-1-a.s.protopopov@gmail.com/",
+      "summary": "First patch of an 18-patch series 'Auto-detect BPF fmodret targets' that introduces an LLVM plugin (bpf_scan_ir) to statically analyze the kernel's LLVM IR and automatically identify functions that are valid attach targets for fmod_ret BPF programs. Currently, kernel developers must manually maintain BTF ID lists for fmod_ret targets, which is error-prone and incomplete. The plugin follows value flow through PHIs and integer casts to find functions that check the return value of a fmod_ret-eligible callee, then tags them via resolve_btfids at build time. The series also adds bpftool support to list and inspect discovered fmod_ret targets.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add bpf_btf_get_struct_member_info() helper",
+      "author": "Siddharth Nayyar",
+      "url": "https://lore.kernel.org/bpf/20261106-lskel-struct-ops-v1-1-a4486ffc79cb@google.com/",
+      "summary": "RFC patch 1 of 7 in the series 'bpf: Support struct_ops in light skeletons', which extends the light skeleton (lskel) code-generation path to handle struct_ops maps and programs. Light skeletons are a minimal-overhead alternative to the full libbpf skeleton, used in performance-critical or resource-constrained contexts. This patch adds a new kfunc bpf_btf_get_struct_member_info() needed for lskel struct_ops initialization, while subsequent patches wire up bpf_gen__map_create(), bpf_gen__prog_load(), and bpftool codegen for attach/detach. The RFC status invites early feedback on the approach.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Mark task work FREED before detaching it",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261106095747.471718-2-luyun_611@163.com/",
+      "summary": "Patch 1 of 8 in the v2 series 'bpf: Fix async callback use-after-free on map deletion', addressing a class of use-after-free bugs in the BPF async callback infrastructure. When a map element holding a bpf_timer, bpf_wq, or task-work is deleted while a callback is in-flight, the callback can access freed memory. The fix introduces a FREED state marker and membership checks so that the runtime refuses to schedule or execute a callback once its backing map value has been released. The series also adds selftests for each of the three async callback types.",
+      "related_links": []
+    },
+    {
+      "title": "riscv: bpf: Add BPF private stack support",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20261106181558.1564-2-cp0613@linux.alibaba.com/",
+      "summary": "Patch 1 of 3 in v3 of 'riscv: bpf: Add BPF private stack support', porting the BPF private stack feature to the RISC-V 64-bit JIT. The BPF private stack allocates a separate per-CPU stack for BPF programs instead of using the kernel stack, reducing stack pressure during deeply nested BPF invocations. This patch implements the RISC-V JIT backend changes required to switch stack pointers on program entry/exit, while subsequent patches enable the selftests for riscv64 and test interaction with stack-argument passing.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Normalize enum values according to signedness",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261107020725.36675-2-dennylin0707@gmail.com/",
+      "summary": "Patch 1 of 3 in v4 of 'Normalize enum values in libbpf and bpftool', fixing incorrect handling of signed enum values in libbpf and bpftool. When reading enum values from BTF, libbpf was treating all values as unsigned, causing sign-extension errors for negative enum constants. The fix checks the BTF enum signedness flag and applies the correct sign extension; bpftool's data-dump path is updated similarly. The third patch adds selftests covering both signed and unsigned enums in map fields and data dumps.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add sleepable version of bpf_get_stack in raw_tp_prog_func_proto and tp_prog_func_proto",
+      "author": "Feng Yang",
+      "url": "https://lore.kernel.org/bpf/20261106080746.661431-1-yangfeng59949@163.com/",
+      "summary": "Patch 1 of 2 in v5 of a series enabling sleepable BPF programs attached to raw tracepoints to call bpf_get_stack() for user-space stack resolution. Previously, bpf_get_stack with the user-stack flag was unavailable to sleepable raw tracepoint programs because the helper proto was not wired up for the sleepable variant. This patch adds the missing proto registration so that sleepable raw_tp and tp programs gain access to the helper, and the accompanying selftest exercises faulting build IDs from that context.",
+      "related_links": []
+    }
+  ]
+}
