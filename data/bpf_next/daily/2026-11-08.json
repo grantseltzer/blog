@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-11-09T00:00:00Z",
+  "period_start": "2026-11-07",
+  "period_end": "2026-11-08",
+  "patch_count": 74,
+  "thread_count": 8,
+  "top_contributors": ["Alexei Starovoitov", "Michal Luczaj", "Hungyu Lin"],
+  "key_topics": ["verifier", "loops", "subprogs", "sockmap", "libbpf", "bpftool", "log"],
+  "overview": "The Nov 7-8 period was dominated by Alexei Starovoitov's landmark 46-patch v4 series fundamentally reworking the BPF verifier to use state joining over control flow graphs, replacing the existing prune-and-compare approach with a fixpoint-based algorithm that natively handles recursive subprograms and complex loop patterns. This was accompanied by a 9-patch fix series and several smaller verifier improvements covering loop analysis, log quality, and attachment restrictions for recursive subprograms. Michal Luczaj contributed an 8-patch series restricting sockmap updates within BPF iterators to safer contexts, while Hungyu Lin continued refining enum value normalization in libbpf and bpftool.",
+  "patches": [
+    {
+      "title": "bpf: Add may_goto to the loops that the verifier marks",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261107033758.1547725-2-alexei.starovoitov@gmail.com/",
+      "summary": "The first patch in the landmark 46-patch v4 series reworking the BPF verifier to use state joining, adding may_goto instructions to loops identified by the verifier as a prerequisite for the new fixpoint-based verification approach. The new verifier computes a fixpoint over the control flow graph rather than exploring paths and pruning redundant states, allowing it to handle recursive subprograms, complex loop patterns, and function pointers far more accurately. Major infrastructure removed in this series includes precision tracking, prune points, levels of state comparison, pop_stack(), is_state_visited(), and bpf_compute_scc(). The series spans 46 patches and touches nearly every part of the verifier.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Leave a number alone that wraps in front of the jump that counts",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261107170306.2831028-2-alexei.starovoitov@gmail.com/",
+      "summary": "Lead patch of a 9-patch series of fixes for the new state-joining verifier, correcting handling of numeric values that wrap around at a counted loop's exit condition boundary. The series also preserves the cookie set by bpf_throw() across state joins, fixes arena race conditions in selftests, and adjusts GCC-specific test expectations. These fixes consolidate correctness of the new fixpoint-based verifier algorithm introduced in the companion large series.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Verify programs as a fixpoint over the control flow graph",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261107033758.1547725-20-alexei.starovoitov@gmail.com/",
+      "summary": "The core patch in the verifier rework series, replacing the old path-exploration-with-pruning loop with a proper fixpoint iteration over the control flow graph. States are propagated along CFG edges and merged (joined) at join points until a stable fixpoint is reached, enabling accurate verification of programs with loops, recursion, and indirect calls. This patch ties together the join infrastructure, state movement logic, loop handling, and subprogram verification introduced by the surrounding patches.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow recursive subprogs",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261107033758.1547725-23-alexei.starovoitov@gmail.com/",
+      "summary": "Removes the verifier's historical prohibition on recursive BPF subprograms, made possible by the new fixpoint-based verification algorithm that naturally handles recursive call graphs. Runtime depth and time limits on recursive calls are enforced by an earlier patch in the series. This is a significant capability unlock for BPF programs that need recursive data structure traversal or other recursive algorithms.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Don't attach to a subprog that is called in a recursion",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261107175006.3591773-1-alexei.starovoitov@gmail.com/",
+      "summary": "Standalone patch preventing BPF programs from attaching to a subprogram that participates in a recursive call chain, which would create undefined behavior under the new verifier's recursive-subprog support. Since the new verifier with state joining allows recursive subprograms for the first time, attachment restrictions needed updating to prevent incorrect instrumentation of recursive paths. This is a correctness companion to the recursive subprog feature.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, sockmap: Restrict iter-context sockmap updates to iter/sockmap",
+      "author": "Michal Luczaj",
+      "url": "https://lore.kernel.org/bpf/20261107-sockmap-update-limit-iter-v3-2-7c0bad1ad036@rbox.co/",
+      "summary": "Core patch in an 8-patch v3 series that restricts sockmap updates within BPF iterator programs to only iter/sockmap contexts, closing a misuse path where non-sockmap iterators could modify sockmap contents. The series also restricts bpf_sock_destroy() to iter/{tcp,udp}, marks bpf_iter__sockmap::sk as PTR_TRUSTED, documents the BPF_ITER_NOSLEEP flag, and fixes an unresolved tcp_request_sock build error. These restrictions improve safety guarantees around sockmap modification during iteration.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Keep one basic block in the level 1 log and print the way to it",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261108053937.4134138-3-alexei.starovoitov@gmail.com/",
+      "summary": "Improves the BPF verifier's level 1 log output to focus on exactly one basic block and show the control flow path leading to it, making verification error messages substantially more actionable for developers. A companion patch restructures how the tail of the verifier log is buffered and appended. These diagnostic improvements are part of making the new state-joining verifier's error output easier to reason about.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Normalize enum values according to signedness",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261108025632.10799-2-dennylin0707@gmail.com/",
+      "summary": "Lead patch in a v5 3-patch series fixing enum value handling in libbpf and bpftool, ensuring enum values are normalized according to their BTF-declared signedness when converting between internal and external representations. Without this fix, unsigned enums with large values could be incorrectly sign-extended, corrupting data dumps and map field displays. The series also updates bpftool to preserve unsigned enum values and adds selftests covering enum signedness in data dumps and map fields.",
+      "related_links": []
+    }
+  ]
+}
