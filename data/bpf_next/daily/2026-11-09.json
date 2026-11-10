@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-11-10T00:00:00Z",
+  "period_start": "2026-11-08",
+  "period_end": "2026-11-09",
+  "patch_count": 97,
+  "thread_count": 11,
+  "top_contributors": ["Alexei Starovoitov", "Daniel Borkmann", "Anton Protopopov", "Emil Tsalapatis"],
+  "key_topics": ["verifier", "arena", "fmodret", "jit", "selftests", "libbpf", "btf"],
+  "overview": "November 8-9 saw a landmark verifier overhaul from Alexei Starovoitov that replaces scalar ID tracking with scalar evolution analysis, cleaning up significant complexity from the BPF verifier. Daniel Borkmann contributed a sweeping 24-patch arm64 JIT improvement series covering instruction encoding, immediate materialization, and division-by-constant optimizations. BPF arena memory management received focused attention from Emil Tsalapatis with two separate series improving allocator caching and kernel page fault handling.",
+  "patches": [
+    {
+      "title": "bpf: Keep the 32-bit range across a no-op sign extension",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261109064715.2382452-2-alexei.starovoitov@gmail.com/",
+      "summary": "This is the first patch of a 26-patch series replacing the verifier's scalar ID mechanism with scalar evolution analysis to track relationships between registers. The series removes scalar IDs entirely from regsafe(), state joins, and the verifier log, replacing them with a more principled approach that derives register linkage from their arithmetic history. The change eliminates an ad-hoc tracking mechanism that accumulated technical debt and enables better reasoning about loop induction variables, including sign-extended 32-bit cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Remove unused A64_BL, A64_BTI_C and A64_LDR32LIT",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/797791cc4e63fee4c1642c04bb568a69d7dfadc5.1794165614.git.daniel@iogearbox.net/",
+      "summary": "First patch in a comprehensive 24-patch arm64 BPF JIT improvement series (v3) covering correctness fixes, encoding improvements, and performance optimizations. The series adds support for cbz/cbnz/tbz/tbnz branch forms for zero and bit tests, optimizes immediate materialization, implements strength-reduction for multiply-by-constant via shifts, and enables constant-division folding in the verifier with matching arm64 codegen. Several correctness fixes are also included for ll/sc atomics, branch offset computation, and the private stack.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BTF ID sets for fmod_ret targets",
+      "author": "Anton Protopopov",
+      "url": "https://lore.kernel.org/bpf/20261109170550.141443-2-a.s.protopopov@gmail.com/",
+      "summary": "First patch in an 18-patch series (v2) implementing automatic detection of valid fmod_ret attachment targets using BTF and a new LLVM plugin called bpf_scan_ir. Currently fmod_ret programs can attach to any function, but the series introduces BTF_FMODRET annotation sets and an LLVM IR scanner that identifies functions where modifying the return value is semantically safe. The bpftool tool is extended to list and show discovered fmod_ret targets, making the feature self-documenting.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add log support for tracing link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261109140816.5196-2-leon.hwang@linux.dev/",
+      "summary": "First patch in a 9-patch series adding verifier log output support to the link_create path for tracing program types. When a tracing program fails to attach via link_create (e.g., fentry/fexit/fmod_ret/tracing_multi/iter/cgroup), the kernel now returns log messages describing the reason, matching the experience developers already have during program load. The series adds log support for tracing, tracing_multi, iter, and cgroup link types, with matching libbpf and selftest coverage.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: recover page faults across all arenas",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261109181906.7350-2-emil@etsalapatis.com/",
+      "summary": "This patch expands BPF arena kernel page fault recovery to handle faults across all arena instances rather than only the arena that is currently executing. Previously a kernel page fault in BPF arena memory could not be recovered if the faulting arena was not the actively-executing one, leading to a kernel oops. The fix maintains a global list of arenas and checks all of them on fault, enabling recovery across concurrent arena users.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: libarena: Add bulk buddy allocation helpers",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261109182055.7581-2-emil@etsalapatis.com/",
+      "summary": "First patch in a 9-patch series (v4) improving the BPF arena buddy allocator with per-CPU caching for reduced contention. The series adds bulk allocation helpers, per-CPU local caches, batch cache refill, a transfer cache tier between local and global pools, and NMI reentrancy handling for safe use in interrupt context. A parallel buddy allocator benchmark is added to measure the performance improvements from these caching layers.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Take the end of the verifier log out and append it later",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261108053937.4134138-2-alexei.starovoitov@gmail.com/",
+      "summary": "First patch in a 2-patch series improving the BPF verifier's level-1 log output to show a focused basic block and the execution path leading to it, rather than a potentially large dump of all visited states. The change restructures how the verifier log ring buffer is managed so that the most relevant block can be isolated and printed with its call chain context, making rejection messages far more actionable for developers.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Normalize enum values according to signedness",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261108025632.10799-2-dennylin0707@gmail.com/",
+      "summary": "First patch in a 3-patch series (v5) fixing libbpf and bpftool to correctly handle signed enum values in data dumps and map field display. Previously, negative enum values were incorrectly sign-extended or truncated depending on the width, causing incorrect output when introspecting BPF maps with signed enum fields. The series normalizes enum values based on the BTF-indicated signedness, with bpftool updated to preserve unsigned enum values in data dumps and new selftests covering the corrected behavior.",
+      "related_links": []
+    }
+  ]
+}

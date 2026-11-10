@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-11-10T00:00:00Z",
+  "period_start": "2026-11-02",
+  "period_end": "2026-11-09",
+  "patch_count": 100,
+  "thread_count": 12,
+  "top_contributors": ["Alexei Starovoitov", "Daniel Borkmann", "Anton Protopopov", "Emil Tsalapatis", "Leon Hwang"],
+  "key_topics": ["verifier", "arena", "fmodret", "jit", "selftests", "libbpf", "btf", "sockmap"],
+  "overview": "The week of November 2-9 was dominated by deep verifier and JIT work. Alexei Starovoitov submitted a landmark 26-patch series replacing the verifier's scalar ID mechanism with scalar evolution analysis, fundamentally improving how the verifier tracks relationships between registers across loops and conditional branches. Daniel Borkmann contributed a sweeping 24-patch arm64 JIT improvement series covering instruction encoding, immediate materialization, and division-by-constant strength reduction. Anton Protopopov's 18-patch series introduced automatic detection of valid fmod_ret attachment targets using BTF annotations and a new LLVM IR scanner plugin. BPF arena memory management received significant attention from Emil Tsalapatis with improvements to the buddy allocator caching and kernel page fault recovery.",
+  "patches": [
+    {
+      "title": "bpf: Keep the 32-bit range across a no-op sign extension",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261109064715.2382452-2-alexei.starovoitov@gmail.com/",
+      "summary": "This is the first patch of a 26-patch series replacing the verifier's scalar ID mechanism with scalar evolution analysis to track relationships between registers. The series removes scalar IDs entirely from regsafe(), state joins, and the verifier log, replacing them with a more principled approach that derives register linkage from their arithmetic history. The change eliminates an ad-hoc tracking mechanism that accumulated technical debt and enables better reasoning about loop induction variables, including sign-extended 32-bit cases. This is one of the most impactful verifier changes of the year.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm64: Remove unused A64_BL, A64_BTI_C and A64_LDR32LIT",
+      "author": "Daniel Borkmann",
+      "url": "https://lore.kernel.org/bpf/797791cc4e63fee4c1642c04bb568a69d7dfadc5.1794165614.git.daniel@iogearbox.net/",
+      "summary": "First patch in a comprehensive 24-patch arm64 BPF JIT improvement series (v3) covering correctness fixes, encoding improvements, and performance optimizations. The series adds support for cbz/cbnz/tbz/tbnz branch forms for zero and bit tests, optimizes immediate materialization, implements strength-reduction for multiply-by-constant via shifts, and enables constant-division folding in the verifier with matching arm64 codegen. Several correctness fixes are included for ll/sc atomics, branch offset computation, and the private stack.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BTF ID sets for fmod_ret targets",
+      "author": "Anton Protopopov",
+      "url": "https://lore.kernel.org/bpf/20261109170550.141443-2-a.s.protopopov@gmail.com/",
+      "summary": "First patch in an 18-patch series (v2) implementing automatic detection of valid fmod_ret attachment targets using BTF annotations and a new LLVM plugin called bpf_scan_ir. Currently fmod_ret programs can attach to any function, but the series introduces BTF_FMODRET sets and an LLVM IR scanner that identifies functions where modifying the return value is semantically safe. The bpftool tool is extended to list and show discovered fmod_ret targets.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add log support for tracing link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261109140816.5196-2-leon.hwang@linux.dev/",
+      "summary": "First patch in a 9-patch series adding verifier log output to the link_create path for tracing program types including fentry, fexit, fmod_ret, tracing_multi, iter, and cgroup. When a tracing program fails to attach via link_create, the kernel now returns log messages explaining the failure reason. The series also adds log_opts support in libbpf for BPF_TRACE_ITER links.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: recover page faults across all arenas",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261109181906.7350-2-emil@etsalapatis.com/",
+      "summary": "Expands BPF arena kernel page fault recovery to handle faults across all arena instances rather than only the currently-executing arena. Previously a kernel page fault in BPF arena memory could not be recovered if the faulting arena was not the active one, leading to a kernel oops. The fix maintains a global arena list and checks all of them on fault, enabling recovery in concurrent arena scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: libarena: Add bulk buddy allocation helpers",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261109182055.7581-2-emil@etsalapatis.com/",
+      "summary": "First patch in a 9-patch series (v4) improving the BPF arena buddy allocator with per-CPU caching to reduce contention. The series adds bulk allocation, per-CPU local caches, batch refill, a transfer cache tier, and NMI reentrancy handling. A parallel buddy allocator benchmark is included to measure the performance impact of the new caching infrastructure.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Mark bpf_iter__sockmap::sk as PTR_TRUSTED",
+      "author": "Michal Luczaj",
+      "url": "https://lore.kernel.org/bpf/20261107-sockmap-update-limit-iter-v3-6-7c0bad1ad036@rbox.co/",
+      "summary": "Part of an 8-patch series (v3) restricting sockmap update and delete operations within BPF iterator programs to only sockmap iterators, preventing use-after-free races. The series marks the sk pointer in bpf_iter__sockmap as PTR_TRUSTED, adds a build fix for unresolved tcp_request_sock symbols, and includes negative selftests for bpf_sock_destroy() in the iterator context. This tightens the safety contract around sockmap iteration.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Take the end of the verifier log out and append it later",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261108053937.4134138-2-alexei.starovoitov@gmail.com/",
+      "summary": "First patch in a 2-patch series improving BPF verifier level-1 log output to show a focused basic block and the path leading to it. The change restructures the verifier log ring buffer so the most relevant basic block can be isolated and printed with its call chain context, making program rejection messages far more actionable for developers debugging verification failures.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Normalize enum values according to signedness",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261108025632.10799-2-dennylin0707@gmail.com/",
+      "summary": "First patch in a 3-patch series (v5) fixing libbpf and bpftool to correctly handle signed enum values in data dumps and map field display. Previously, negative enum values were incorrectly sign-extended or truncated, causing wrong output when introspecting BPF maps with signed enum fields. The series normalizes enum values based on BTF-indicated signedness and updates bpftool to preserve unsigned enum values in data dumps.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Don't include <linux/ptrace.h> in BPF progs",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261108163710.1881321-1-alexei.starovoitov@gmail.com/",
+      "summary": "A cleanup patch removing direct inclusion of linux/ptrace.h from BPF program source files in the selftests suite. Including kernel headers directly in BPF programs can cause definition conflicts and portability issues; BPF programs should use vmlinux.h or bpf_helpers.h instead for kernel type access. This change is part of an ongoing effort to sanitize selftest header dependencies.",
+      "related_links": []
+    }
+  ]
+}
