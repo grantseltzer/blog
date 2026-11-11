@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-11-11T00:00:00Z",
+  "period_start": "2026-11-09",
+  "period_end": "2026-11-10",
+  "patch_count": 101,
+  "thread_count": 9,
+  "top_contributors": ["Anton Protopopov", "Kumar Kartikeya Dwivedi", "Emil Tsalapatis"],
+  "key_topics": ["kthreads", "fmod-ret", "xdp", "arena", "ringbuf", "btf", "numa"],
+  "overview": "November 10th saw heavy bpf-next activity with four major new feature series. Kumar Kartikeya Dwivedi posted an ambitious 20-patch series introducing BPF kthreads and waitqueue primitives, allowing BPF syscall programs to spawn persistent kernel threads with park/wake semantics. Concurrently, Anton Protopopov posted a v3 of the auto-detect fmod_ret targets series that introduces an LLVM plugin to statically identify valid fmod_ret attachment points, and Tianyi Gao proposed XDP SKB core extensions to preserve RX metadata across the XDP-to-skb handoff.",
+  "patches": [
+    {
+      "title": "bpf: Add bpf_task_park() and bpf_task_wake()",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/1828a732fe7602f8d93fd972b3e3bb6b366a2a45.1794269506.git.memxor@gmail.com/",
+      "summary": "Introduces two new kfuncs, bpf_task_park() and bpf_task_wake(), that allow BPF programs to block the current task on a waitqueue and wake a parked task from any program type. This is the foundational piece of a 20-patch series that also adds full BPF kthread support, enabling BPF syscall programs to create long-running kernel threads. The verifier is extended to track callers of functions that may park, ensuring that per-CPU state and tail calls are forbidden across a park point. This opens up new possibilities for BPF-based background processing patterns that previously required userspace polling loops.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BPF kthreads for syscall programs",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/155da1f809c1821f85d730aad44e67ed77ea8c10.1794269506.git.memxor@gmail.com/",
+      "summary": "Builds on bpf_task_park()/bpf_task_wake() to introduce BPF kthreads: kernel threads whose body is a BPF syscall program. A BPF kthread can be pinned to a CPU with bpf_kthread_bind() or placed in a cgroup with bpf_kthread_attach_cgroup(), giving operators fine-grained resource control. The series enables use cases like BPF-driven background compaction, ring buffer draining, or periodic aggregation without requiring a dedicated userspace daemon.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add BTF ID sets for fmod_ret targets",
+      "author": "Anton Protopopov",
+      "url": "https://lore.kernel.org/bpf/20261110164046.454431-2-a.s.protopopov@gmail.com/",
+      "summary": "First patch in the v3 'Auto-detect BPF fmodret targets' series, which replaces the manual BPF_ALLOW_ERROR_INJECTION annotation with a systematic BTF-based approach. This patch adds BTF ID set infrastructure (BTF_FMODRET sets) that lets kernel subsystems declare their fmod_ret-eligible functions using decl tags. The 18-patch series also includes a new LLVM plugin (bpf_scan_ir) that statically analyzes kernel IR during build to identify functions whose return value is checked in a way that makes them safe fmod_ret targets, and bpftool gains a command to list discovered targets.",
+      "related_links": []
+    },
+    {
+      "title": "xdp: reserve an skb core extension area after the xdp_frame",
+      "author": "Tianyi Gao",
+      "url": "https://lore.kernel.org/bpf/115997f55d63b507ce54fbe9e22900b59016f3c3.1794281983.git.tianyi@cloudflare.com/",
+      "summary": "Introduces an SKB core extension area appended to the xdp_frame structure so that RX metadata set by XDP programs (hash, VLAN tag, checksum status) survives until skb creation. Currently metadata stored in the XDP headroom is lost when the frame is converted to an skb via XDP_PASS or cpumap redirect. The 15-patch series adds kfuncs to store and load per-frame metadata, implements the ice driver as the first consumer, and introduces a new 'skb-ext-pass' XDP feature flag that drivers must advertise before the kernel will honor stored values.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Honor zero consume bounds",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/ad4631a937789da25e988e093c66d40e98b41806.1794253561.git.memxor@gmail.com/",
+      "summary": "First patch in a 6-patch series fixing several correctness issues in libbpf's ring buffer consumer. This patch makes ring_buffer__consume_n() with a zero bound a valid no-op rather than consuming all available records, fixing a subtle API violation. Companion patches prevent a NULL sample callback from causing a crash, reject the use of overwrite callbacks (which were silently mishandled), and add selftests for all three scenarios.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: recover page faults across all arenas",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261109181906.7350-2-emil@etsalapatis.com/",
+      "summary": "Extends BPF arena page fault recovery to handle faults from all active arenas rather than only the first one. Previously, kernel-side fault handling iterated a fixed single-arena slot, so programs using multiple arenas could oops on a recoverable fault in a non-primary arena. This v2 fixes the iteration logic and adds a selftest that exercises fault recovery with multiple concurrent arenas. The companion v5 libarena improvements series adds per-CPU caches, a transfer cache, NMI reentrancy safety, and batch allocation helpers to improve allocator throughput.",
+      "related_links": []
+    },
+    {
+      "title": "sched: add BPF-based per-cgroup NUMA balancing mode selection",
+      "author": "Yafang Shao",
+      "url": "https://lore.kernel.org/bpf/20261110032913.71974-4-laoar.shao@gmail.com/",
+      "summary": "RFC v4 that lets a BPF program override the NUMA balancing mode on a per-cgroup basis using new numab kfuncs. Without this, NUMA balancing is a system-wide knob that cannot be tuned per workload. The series refactors the scheduler to sample the balancing mode once per scheduling path rather than repeatedly, then exposes the per-cgroup override via BPF. This would allow container runtimes or sysadmins to disable NUMA migration for latency-sensitive workloads while keeping it active for throughput workloads in adjacent cgroups.",
+      "related_links": []
+    }
+  ]
+}
