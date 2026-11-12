@@ -1,0 +1,73 @@
+{
+  "generated_at": "2026-11-12T00:00:00Z",
+  "period_start": "2026-11-10",
+  "period_end": "2026-11-11",
+  "patch_count": 100,
+  "thread_count": 10,
+  "top_contributors": [
+    "Alexei Starovoitov",
+    "Kumar Kartikeya Dwivedi",
+    "Changwoo Min",
+    "Tianyi Chen"
+  ],
+  "key_topics": [
+    "verifier",
+    "scalar-evolution",
+    "exceptions",
+    "resource-cleanup",
+    "bpftool",
+    "arm32"
+  ],
+  "overview": "November 11 saw two major verifier patchsets from Alexei Starovoitov land in rapid succession: a v3 of the 29-patch scalar-evolution series that replaces scalar IDs with SCEV-based register linking, and a companion 6-patch series introducing a struct scalar type with backedge-taken count support. Kumar Kartikeya Dwivedi posted a sweeping 29-patch v1 series redesigning BPF exception resource cleanup to automatically free locks and handles on bpf_throw().",
+  "patches": [
+    {
+      "title": "bpf: Find linked registers by scalar evolution, remove scalar ids",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261111164557.2659679-2-alexei.starovoitov@gmail.com/",
+      "summary": "This 29-patch v3 series replaces the existing scalar-ID mechanism in the BPF verifier with scalar evolution (SCEV) expressions, allowing the verifier to track how registers change across loop iterations without needing to assign and propagate opaque IDs. The series adds allocation-free SCEV expression construction, SSA naming for untracked values, support for 32-bit shifts/divisions, sign-extended 32-bit induction variables, irreducible-loop handling, and dead-branch detection when a range and var_off are disjoint. It also removes sync_linked_regs() and cleans scalar IDs out of regsafe(), state joining, and the verifier log. The end result is a simpler, more precise verifier that handles a wider class of loops without the fragility introduced by global scalar IDs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add struct scalar",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261111164950.2674588-3-alexei.starovoitov@gmail.com/",
+      "summary": "This 6-patch series introduces struct scalar as a new concrete type in the BPF verifier to unify the signed and unsigned range/value tracking that is currently spread across multiple fields of bpf_reg_state. The first patch adds const, sub, zext32 and sext32 operations to cnum; subsequent patches add the struct scalar type itself, arithmetic helpers (scalar_add and four more), and a function to compute the backedge-taken count on a struct scalar, with the final patch adding selftests. The new type lays groundwork for further SCEV-based improvements by giving the verifier a first-class representation of loop induction variables.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Record where JITs save callee-saved registers (Exceptions - Resource Cleanup - Redux)",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/113211473688142e3ef1df6780d35a460a0e7b23.1794399387.git.memxor@gmail.com/",
+      "summary": "This sweeping 29-patch v1 series overhauls BPF exception handling to automatically release resources (locks, kptr handles, stack-spilled references) when bpf_throw() unwinds the call stack. The x86 and arm64 JITs are extended to capture callee-saved register state at bpf_throw() entry, the verifier learns to describe held resources at throw sites using hidden stack slots, and a destructor registry is introduced so that kfunc-acquired handles can be torn down on unwind. Callees can now release their caller's resources or leave them behind for the caller to clean up, with full callx support. An extensive selftest suite covers all new cleanup paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm32: build constants inline instead of using a literal pool",
+      "author": "Ramin Moussavi",
+      "url": "https://lore.kernel.org/bpf/20261111121621.665533-1-ramin.moussavi@yacoub.de/",
+      "summary": "The ARM32 BPF JIT currently emits 32-bit and 64-bit constants via a literal pool appended after the generated code, requiring PC-relative loads and limiting the pool's reach. This patch teaches the JIT to materialise constants using inline MOV/MOVT instruction pairs instead, eliminating the pool entirely. The change reduces instruction-cache pressure from pool loads and removes the constraint on pool reach, simplifying future JIT maintenance.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Add recursive map dumping",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/237281e76007092c3cd8debdc8dddce418f7354b.1794380385.git.hi@tychen.cc/",
+      "summary": "This v12 three-patch series adds a --recursive flag to bpftool map dump so that map-in-map structures are automatically expanded in the output rather than showing only the inner map ID. A companion patch resets map info before each query in the show and dump loops to prevent stale data from one iteration affecting the next. Selftests verify the new recursive dump output for hash-of-maps and array-of-maps types.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Use batch lookups for map dumps",
+      "author": "Tianyi Chen",
+      "url": "https://lore.kernel.org/bpf/074a359a044d121b4d85d5b15b7740bc9a9f1073.1794380384.git.hi@tychen.cc/",
+      "summary": "This v10 two-patch series switches bpftool map dump from single-element lookups to BPF_MAP_LOOKUP_BATCH syscall operations, dramatically reducing the number of syscalls required to dump large maps. The implementation falls back to single-element iteration when the map type does not support batching. A selftest checks that batch dump output matches the expected entries.",
+      "related_links": []
+    },
+    {
+      "title": "bpftool: Skip cgroups removed during cgroup tree walk",
+      "author": "Jonathan Bastari Thamrin",
+      "url": "https://lore.kernel.org/bpf/20261111-bpftool-cgroup-tree-enoent-v1-1-f3bfcddb4f3d@gmail.com/",
+      "summary": "When bpftool walks the cgroup hierarchy to list attached BPF programs, a cgroup that is removed concurrently causes an ENOENT error that currently aborts the walk. This patch makes the tree walk tolerant of ENOENT, treating a missing cgroup as simply not present and continuing to the next sibling. The fix avoids spurious failures during cgroup-intensive workloads where cgroups are frequently created and removed.",
+      "related_links": []
+    }
+  ]
+}
