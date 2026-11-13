@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-11-13T00:00:00Z",
+  "period_start": "2026-11-11",
+  "period_end": "2026-11-12",
+  "patch_count": 100,
+  "thread_count": 9,
+  "top_contributors": ["Alexei Starovoitov", "Kumar Kartikeya Dwivedi", "Mike Bazov"],
+  "key_topics": ["verifier", "scalar-evolution", "fmod_ret", "exceptions", "preemption", "jit"],
+  "overview": "A very active two-day window on bpf-next, dominated by Alexei Starovoitov posting three large verifier series: a 29-patch v3 overhaul that replaces scalar IDs with scalar-evolution-based register linking, a 12-patch follow-on evaluating expressions in jump-successor states, and a 10-patch series enabling fmod_ret hooks on any function tagged as returning an error. Kumar Kartikeya Dwivedi posted a 29-patch series implementing exception-time resource cleanup, allowing BPF programs to safely release locks and handles on bpf_throw().",
+  "patches": [
+    {
+      "title": "Find linked registers by scalar evolution, remove scalar ids",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261111164557.2659679-8-alexei.starovoitov@gmail.com/",
+      "summary": "This 29-patch v3 series (patch 07: Compute scalar evolution expressions for whole subprogs) replaces the verifier's scalar-id mechanism with a scalar evolution (SCEV) based approach for tracking linked registers. Rather than assigning numeric IDs to correlated scalars, the verifier now computes symbolic expressions describing how each register's value evolves across instructions and loops, allowing it to reason about register relationships without maintaining a global ID table. Removing scalar IDs simplifies the verifier's state representation and fixes several subtle soundness issues around ID propagation across joins and fills. The series also adds support for irreducible loops and sign-extended 32-bit induction variables.",
+      "related_links": []
+    },
+    {
+      "title": "Evaluate scalar evolution expressions in the state after a jump",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112155337.1040699-12-alexei.starovoitov@gmail.com/",
+      "summary": "This 12-patch series (patch 11: Evaluate the expression of a linked register) builds on the SCEV framework to evaluate scalar expressions in the branch-taken and branch-not-taken states that follow a conditional jump. When a comparison constrains one register, the verifier can now propagate that constraint to any register whose value is linked to it by a known expression, tightening bounds without requiring scalar IDs. It also adds scalar_intersect() to compute the intersection of two range/var_off pairs and fixes arena variable addresses that were incorrectly retaining a map_ptr type.",
+      "related_links": []
+    },
+    {
+      "title": "Allow fmod_ret on tagged functions and check the return value",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112164610.1917256-10-alexei.starovoitov@gmail.com/",
+      "summary": "This 10-patch series (patch 09: Allow fmod_ret on tagged functions and check the return value) extends fmod_ret BPF programs to attach to any kernel function that resolve_btfids identifies as returning an error code. Previously fmod_ret was limited to a fixed allowlist; now resolve_btfids uses LLVM's MC layer to perform a lightweight static analysis of each function's machine code, identifies definitions that reach the return value, and tags functions whose return value is always derived from an error constant or an argument. The verifier then validates that the fmod_ret program only substitutes a value in the same error domain.",
+      "related_links": []
+    },
+    {
+      "title": "struct scalar, and one backedge-taken count on it",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112000836.3138846-4-alexei.starovoitov@gmail.com/",
+      "summary": "This 7-patch v2 series (patch 03: Add struct scalar) introduces a struct scalar type as a first-class representation in the BPF verifier's scalar evolution layer. The struct bundles a cnum (concrete number range) with an SCEV expression so that arithmetic operations can update both simultaneously. A single backedge-taken count is then computed on a struct scalar to bound loop iterations, replacing the ad hoc per-loop counting that existed before. Version 2 also counts '!=' latches when the step evenly divides the distance to the bound.",
+      "related_links": []
+    },
+    {
+      "title": "Check recursion per task for preemptible programs",
+      "author": "Mike Bazov",
+      "url": "https://lore.kernel.org/bpf/20261111-bpf-preempt-v2-r2-v2-2-9d8f6b952ad2@sentinelone.com/",
+      "summary": "This 5-patch v2 series (patch 02: Check program recursion per task via bpf_ctx) fixes a correctness issue where BPF tracing programs running on preemptible kernels could recurse unsafely through the existing per-CPU recursion guard. Because preemption allows the same CPU to run a second BPF program triggered by an interrupt while the first is still executing, the per-CPU counter under-counts nesting. The fix attaches a per-task recursion token inside bpf_ctx and checks it instead, covering both trampolines and raw_tp programs. Syscall tracepoint programs receive the same treatment in patch 03.",
+      "related_links": []
+    },
+    {
+      "title": "Exceptions - Resource Cleanup - Redux",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/0b8d0a69ecb9f74ed3e3645bc7dccbc022a83cc2.1794399387.git.memxor@gmail.com/",
+      "summary": "This 29-patch series (patch 13: Track held resources in hidden stack slots) implements automatic resource cleanup when a BPF program calls bpf_throw(). The key mechanism is a set of hidden stack slots that the verifier allocates to hold references and lock descriptors at every throw site; at throw time the generated unwinder iterates those slots and calls the registered destructor kfuncs before returning to the exception handler. The series also adds JIT support for capturing callee-saved registers on x86 and arm64 at throw entry so that the unwinder can restore them while walking JITed frames, and extends the dtor registry to cover locks and flags-based release kfuncs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm32: build constants inline instead of using a literal pool",
+      "author": "Ramin Moussavi",
+      "url": "https://lore.kernel.org/bpf/20261111121621.665533-1-ramin.moussavi@yacoub.de/",
+      "summary": "This standalone patch changes the ARM32 BPF JIT to emit 32-bit constants using immediate-move instruction sequences rather than loading them from a literal pool appended after the function body. Literal-pool loads require a PC-relative LDR and a data word; inlining the constant with MOV/MOVT pairs removes the pool entirely and reduces icache pressure on constant-heavy programs. The patch audits all call sites where the JIT previously emitted pool references and replaces each with the inline sequence.",
+      "related_links": []
+    }
+  ]
+}
