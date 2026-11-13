@@ -1,0 +1,807 @@
+{
+  "period": "daily",
+  "period_start": "2026-11-12",
+  "period_end": "2026-11-13",
+  "fetched_at": "2026-11-13T17:00:44Z",
+  "patches": [
+    {
+      "title": "[v2,bpf-next,13/13] selftests/bpf: Test untrusted pointers in fmod_ret progs",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-14-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:09:01",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,12/13] bpf: Treat the type of an untrusted pointer as a hint",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-13-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:09:00",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,11/13] bpf: Mark the arguments of fmod_ret progs as PTR_UNTRUSTED",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-12-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:59",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,10/13] selftests/bpf: Test fmod_ret on tagged functions",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-11-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:58",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,09/13] bpf: Allow fmod_ret on tagged functions and check the return value",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-10-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:57",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,08/13] resolve_btfids: Don't list an error that follows work on an argument",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-9-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:56",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,07/13] resolve_btfids: Say which registers an instruction reads",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-8-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:55",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,06/13] resolve_btfids: Fold the constants of a select without a branch",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:54",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,05/13] resolve_btfids: Tag the functions that return errors",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:53",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,04/13] resolve_btfids: Find the definitions that reach the return value",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:52",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,03/13] resolve_btfids: Describe machine instructions with LLVM's MC layer",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:51",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,02/13] resolve_btfids: Read the code of an ELF file by address",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:50",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,01/13] selftests/bpf: Don't depend on the width of a BTF id in verifier_live_stack",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:49",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf, cgroup: Don't lose errors in effective BPF_LSM_CGROUP queries",
+      "author": "Shakeel Butt",
+      "url": "https://lore.kernel.org/bpf/20261112183804.1171535-1-shakeel.butt@linux.dev/",
+      "date": "2026-11-12T18:38:03",
+      "series": [
+        {
+          "id": 1209864,
+          "url": "https://patchwork.kernel.org/api/series/1209864/",
+          "web_url": "https://patchwork.kernel.org/series/1209864/",
+          "date": "2026-11-12T18:38:03",
+          "name": "[bpf-next] bpf, cgroup: Don't lose errors in effective BPF_LSM_CGROUP queries",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209864/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] bpf, cgroup: Protect cgroup_bpf state with its own mutex",
+      "author": "Shakeel Butt",
+      "url": "https://lore.kernel.org/bpf/20261112172721.440275-4-shakeel.butt@linux.dev/",
+      "date": "2026-11-12T17:27:15",
+      "series": [
+        {
+          "id": 1209812,
+          "url": "https://patchwork.kernel.org/api/series/1209812/",
+          "web_url": "https://patchwork.kernel.org/series/1209812/",
+          "date": "2026-11-12T17:27:12",
+          "name": "bpf, cgroup: Don't wait for cgroup_mutex to read or free cgroup bpf state",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209812/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] bpf, cgroup: Don't attach to a removed cgroup",
+      "author": "Shakeel Butt",
+      "url": "https://lore.kernel.org/bpf/20261112172721.440275-3-shakeel.butt@linux.dev/",
+      "date": "2026-11-12T17:27:14",
+      "series": [
+        {
+          "id": 1209812,
+          "url": "https://patchwork.kernel.org/api/series/1209812/",
+          "web_url": "https://patchwork.kernel.org/series/1209812/",
+          "date": "2026-11-12T17:27:12",
+          "name": "bpf, cgroup: Don't wait for cgroup_mutex to read or free cgroup bpf state",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209812/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] bpf, cgroup: Don't read freed effective arrays in BPF_PROG_QUERY",
+      "author": "Shakeel Butt",
+      "url": "https://lore.kernel.org/bpf/20261112172721.440275-2-shakeel.butt@linux.dev/",
+      "date": "2026-11-12T17:27:13",
+      "series": [
+        {
+          "id": 1209812,
+          "url": "https://patchwork.kernel.org/api/series/1209812/",
+          "web_url": "https://patchwork.kernel.org/series/1209812/",
+          "date": "2026-11-12T17:27:12",
+          "name": "bpf, cgroup: Don't wait for cgroup_mutex to read or free cgroup bpf state",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209812/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,10/10] selftests/bpf: Test fmod_ret on tagged functions",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112164610.1917256-11-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T16:46:10",
+      "series": [
+        {
+          "id": 1209783,
+          "url": "https://patchwork.kernel.org/api/series/1209783/",
+          "web_url": "https://patchwork.kernel.org/series/1209783/",
+          "date": "2026-11-12T16:46:01",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209783/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,09/10] bpf: Allow fmod_ret on tagged functions and check the return value",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112164610.1917256-10-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T16:46:09",
+      "series": [
+        {
+          "id": 1209783,
+          "url": "https://patchwork.kernel.org/api/series/1209783/",
+          "web_url": "https://patchwork.kernel.org/series/1209783/",
+          "date": "2026-11-12T16:46:01",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209783/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,08/10] resolve_btfids: Don't list an error that follows work on an argument",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112164610.1917256-9-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T16:46:08",
+      "series": [
+        {
+          "id": 1209783,
+          "url": "https://patchwork.kernel.org/api/series/1209783/",
+          "web_url": "https://patchwork.kernel.org/series/1209783/",
+          "date": "2026-11-12T16:46:01",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209783/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,07/10] resolve_btfids: Say which registers an instruction reads",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112164610.1917256-8-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T16:46:07",
+      "series": [
+        {
+          "id": 1209783,
+          "url": "https://patchwork.kernel.org/api/series/1209783/",
+          "web_url": "https://patchwork.kernel.org/series/1209783/",
+          "date": "2026-11-12T16:46:01",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209783/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,06/10] resolve_btfids: Fold the constants of a select without a branch",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112164610.1917256-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T16:46:06",
+      "series": [
+        {
+          "id": 1209783,
+          "url": "https://patchwork.kernel.org/api/series/1209783/",
+          "web_url": "https://patchwork.kernel.org/series/1209783/",
+          "date": "2026-11-12T16:46:01",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209783/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,05/10] resolve_btfids: Tag the functions that return errors",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112164610.1917256-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T16:46:05",
+      "series": [
+        {
+          "id": 1209783,
+          "url": "https://patchwork.kernel.org/api/series/1209783/",
+          "web_url": "https://patchwork.kernel.org/series/1209783/",
+          "date": "2026-11-12T16:46:01",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209783/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,04/10] resolve_btfids: Find the definitions that reach the return value",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112164610.1917256-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T16:46:04",
+      "series": [
+        {
+          "id": 1209783,
+          "url": "https://patchwork.kernel.org/api/series/1209783/",
+          "web_url": "https://patchwork.kernel.org/series/1209783/",
+          "date": "2026-11-12T16:46:01",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209783/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,03/10] resolve_btfids: Describe machine instructions with LLVM's MC layer",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112164610.1917256-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T16:46:03",
+      "series": [
+        {
+          "id": 1209783,
+          "url": "https://patchwork.kernel.org/api/series/1209783/",
+          "web_url": "https://patchwork.kernel.org/series/1209783/",
+          "date": "2026-11-12T16:46:01",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209783/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,02/10] resolve_btfids: Read the code of an ELF file by address",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112164610.1917256-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T16:46:02",
+      "series": [
+        {
+          "id": 1209783,
+          "url": "https://patchwork.kernel.org/api/series/1209783/",
+          "web_url": "https://patchwork.kernel.org/series/1209783/",
+          "date": "2026-11-12T16:46:01",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209783/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,01/10] selftests/bpf: Don't depend on the width of a BTF id in verifier_live_stack",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112164610.1917256-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T16:46:01",
+      "series": [
+        {
+          "id": 1209783,
+          "url": "https://patchwork.kernel.org/api/series/1209783/",
+          "web_url": "https://patchwork.kernel.org/series/1209783/",
+          "date": "2026-11-12T16:46:01",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209783/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,12/12] selftests/bpf: Test the evaluation of linked expressions",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112155337.1040699-13-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T15:53:37",
+      "series": [
+        {
+          "id": 1209724,
+          "url": "https://patchwork.kernel.org/api/series/1209724/",
+          "web_url": "https://patchwork.kernel.org/series/1209724/",
+          "date": "2026-11-12T15:53:25",
+          "name": "bpf: Evaluate scalar evolution expressions in the state after a jump",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,11/12] bpf: Evaluate the expression of a linked register",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112155337.1040699-12-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T15:53:36",
+      "series": [
+        {
+          "id": 1209724,
+          "url": "https://patchwork.kernel.org/api/series/1209724/",
+          "web_url": "https://patchwork.kernel.org/series/1209724/",
+          "date": "2026-11-12T15:53:25",
+          "name": "bpf: Evaluate scalar evolution expressions in the state after a jump",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,10/12] bpf: Evaluate expressions by the transfer functions of the main pass",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112155337.1040699-11-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T15:53:35",
+      "series": [
+        {
+          "id": 1209724,
+          "url": "https://patchwork.kernel.org/api/series/1209724/",
+          "web_url": "https://patchwork.kernel.org/series/1209724/",
+          "date": "2026-11-12T15:53:25",
+          "name": "bpf: Evaluate scalar evolution expressions in the state after a jump",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,09/12] bpf: Add scalar_intersect()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112155337.1040699-10-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T15:53:34",
+      "series": [
+        {
+          "id": 1209724,
+          "url": "https://patchwork.kernel.org/api/series/1209724/",
+          "web_url": "https://patchwork.kernel.org/series/1209724/",
+          "date": "2026-11-12T15:53:25",
+          "name": "bpf: Evaluate scalar evolution expressions in the state after a jump",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,08/12] bpf: Treat 'r1 &= 0xff' as a zero extension in scalar evolution",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112155337.1040699-9-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T15:53:33",
+      "series": [
+        {
+          "id": 1209724,
+          "url": "https://patchwork.kernel.org/api/series/1209724/",
+          "web_url": "https://patchwork.kernel.org/series/1209724/",
+          "date": "2026-11-12T15:53:25",
+          "name": "bpf: Evaluate scalar evolution expressions in the state after a jump",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,07/12] bpf: Take the outermost common base of two linked expressions",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112155337.1040699-8-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T15:53:32",
+      "series": [
+        {
+          "id": 1209724,
+          "url": "https://patchwork.kernel.org/api/series/1209724/",
+          "web_url": "https://patchwork.kernel.org/series/1209724/",
+          "date": "2026-11-12T15:53:25",
+          "name": "bpf: Evaluate scalar evolution expressions in the state after a jump",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,06/12] selftests/bpf: Test a jump that compares two pointers",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112155337.1040699-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T15:53:31",
+      "series": [
+        {
+          "id": 1209724,
+          "url": "https://patchwork.kernel.org/api/series/1209724/",
+          "web_url": "https://patchwork.kernel.org/series/1209724/",
+          "date": "2026-11-12T15:53:25",
+          "name": "bpf: Evaluate scalar evolution expressions in the state after a jump",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,05/12] bpf: Split scalar_alu() out of adjust_scalar_min_max_vals()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112155337.1040699-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T15:53:30",
+      "series": [
+        {
+          "id": 1209724,
+          "url": "https://patchwork.kernel.org/api/series/1209724/",
+          "web_url": "https://patchwork.kernel.org/series/1209724/",
+          "date": "2026-11-12T15:53:25",
+          "name": "bpf: Evaluate scalar evolution expressions in the state after a jump",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,04/12] bpf: Make the operations on a scalar take struct scalar",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112155337.1040699-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T15:53:29",
+      "series": [
+        {
+          "id": 1209724,
+          "url": "https://patchwork.kernel.org/api/series/1209724/",
+          "web_url": "https://patchwork.kernel.org/series/1209724/",
+          "date": "2026-11-12T15:53:25",
+          "name": "bpf: Evaluate scalar evolution expressions in the state after a jump",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,03/12] bpf: Don't leave map_ptr in the address of an arena variable",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112155337.1040699-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T15:53:28",
+      "series": [
+        {
+          "id": 1209724,
+          "url": "https://patchwork.kernel.org/api/series/1209724/",
+          "web_url": "https://patchwork.kernel.org/series/1209724/",
+          "date": "2026-11-12T15:53:25",
+          "name": "bpf: Evaluate scalar evolution expressions in the state after a jump",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,02/12] selftests/bpf: Test spilled pointers that only bytewise reads can reach",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112155337.1040699-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T15:53:27",
+      "series": [
+        {
+          "id": 1209724,
+          "url": "https://patchwork.kernel.org/api/series/1209724/",
+          "web_url": "https://patchwork.kernel.org/series/1209724/",
+          "date": "2026-11-12T15:53:25",
+          "name": "bpf: Evaluate scalar evolution expressions in the state after a jump",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,01/12] bpf: Don't keep a spilled pointer for a read that sees only bytes",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112155337.1040699-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T15:53:26",
+      "series": [
+        {
+          "id": 1209724,
+          "url": "https://patchwork.kernel.org/api/series/1209724/",
+          "web_url": "https://patchwork.kernel.org/series/1209724/",
+          "date": "2026-11-12T15:53:25",
+          "name": "bpf: Evaluate scalar evolution expressions in the state after a jump",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209724/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "linux-next: manual merge of the bpf-next tree with the origin tree",
+      "author": "Mark Brown",
+      "url": "https://lore.kernel.org/bpf/avXK527T4yDydgya@sirena.org.uk/",
+      "date": "2026-11-12T14:19:19",
+      "series": [
+        {
+          "id": 1209655,
+          "url": "https://patchwork.kernel.org/api/series/1209655/",
+          "web_url": "https://patchwork.kernel.org/series/1209655/",
+          "date": "2026-11-12T14:19:19",
+          "name": "linux-next: manual merge of the bpf-next tree with the origin tree",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1209655/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,7/7] selftests/bpf: Test the backedge-taken count on struct scalar",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112000836.3138846-8-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T00:08:35",
+      "series": [
+        {
+          "id": 1208892,
+          "url": "https://patchwork.kernel.org/api/series/1208892/",
+          "web_url": "https://patchwork.kernel.org/series/1208892/",
+          "date": "2026-11-12T00:08:28",
+          "name": "bpf: struct scalar, and one backedge-taken count on it",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1208892/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,6/7] bpf: Count a '!=' latch if the step divides the distance",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112000836.3138846-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T00:08:34",
+      "series": [
+        {
+          "id": 1208892,
+          "url": "https://patchwork.kernel.org/api/series/1208892/",
+          "web_url": "https://patchwork.kernel.org/series/1208892/",
+          "date": "2026-11-12T00:08:28",
+          "name": "bpf: struct scalar, and one backedge-taken count on it",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1208892/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/7] bpf: Compute the backedge-taken count on cnum, in one function",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112000836.3138846-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T00:08:33",
+      "series": [
+        {
+          "id": 1208892,
+          "url": "https://patchwork.kernel.org/api/series/1208892/",
+          "web_url": "https://patchwork.kernel.org/series/1208892/",
+          "date": "2026-11-12T00:08:28",
+          "name": "bpf: struct scalar, and one backedge-taken count on it",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1208892/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/7] bpf: Add scalar_add() and four more operations on struct scalar",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112000836.3138846-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T00:08:32",
+      "series": [
+        {
+          "id": 1208892,
+          "url": "https://patchwork.kernel.org/api/series/1208892/",
+          "web_url": "https://patchwork.kernel.org/series/1208892/",
+          "date": "2026-11-12T00:08:28",
+          "name": "bpf: struct scalar, and one backedge-taken count on it",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1208892/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/7] bpf: Add struct scalar",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112000836.3138846-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T00:08:31",
+      "series": [
+        {
+          "id": 1208892,
+          "url": "https://patchwork.kernel.org/api/series/1208892/",
+          "web_url": "https://patchwork.kernel.org/series/1208892/",
+          "date": "2026-11-12T00:08:28",
+          "name": "bpf: struct scalar, and one backedge-taken count on it",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1208892/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/7] bpf: Add const, sub, zext32 and sext32 operations to cnum",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112000836.3138846-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T00:08:30",
+      "series": [
+        {
+          "id": 1208892,
+          "url": "https://patchwork.kernel.org/api/series/1208892/",
+          "web_url": "https://patchwork.kernel.org/series/1208892/",
+          "date": "2026-11-12T00:08:28",
+          "name": "bpf: struct scalar, and one backedge-taken count on it",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1208892/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/7] bpf: Don't WARN on a register invariants violation",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112000836.3138846-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-12T00:08:29",
+      "series": [
+        {
+          "id": 1208892,
+          "url": "https://patchwork.kernel.org/api/series/1208892/",
+          "web_url": "https://patchwork.kernel.org/series/1208892/",
+          "date": "2026-11-12T00:08:28",
+          "name": "bpf: struct scalar, and one backedge-taken count on it",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1208892/mbox/"
+        }
+      ]
+    }
+  ]
+}
