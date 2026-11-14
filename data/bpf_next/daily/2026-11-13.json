@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-11-14T00:00:00Z",
+  "period_start": "2026-11-12",
+  "period_end": "2026-11-13",
+  "patch_count": 43,
+  "thread_count": 7,
+  "top_contributors": ["Alexei Starovoitov", "Shakeel Butt"],
+  "key_topics": ["fmod_ret", "verifier", "cgroup", "bpf-lsm", "scalar-evolution", "resolve_btfids", "btf"],
+  "overview": "Activity for Nov 12-13 was dominated by Alexei Starovoitov's major verifier overhaul, with two related series landing: an expansion of fmod_ret to cover any kernel function tagged as returning errors, and a new scalar evolution framework for evaluating register expressions across jumps. Shakeel Butt also submitted two cgroup BPF locking fixes addressing use-after-free hazards and lost error codes in BPF_LSM_CGROUP queries.",
+  "patches": [
+    {
+      "title": "bpf: Allow fmod_ret on tagged functions and check the return value",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-10-alexei.starovoitov@gmail.com/",
+      "summary": "This patch (v2 09/13 of the fmod_ret series) extends BPF's fmod_ret attach type so that programs can intercept any kernel function automatically tagged by resolve_btfids as returning an error. Previously fmod_ret was limited to a hand-curated allowlist; the new tagging infrastructure makes the set data-driven. The verifier is taught to verify the return value at the attach point and reject programs that could install an incorrect non-error code. This greatly broadens the surface available for error injection and security hooks without requiring manual kernel annotations for each new function.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Mark the arguments of fmod_ret progs as PTR_UNTRUSTED",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-12-alexei.starovoitov@gmail.com/",
+      "summary": "Companion to the fmod_ret expansion, this patch teaches the verifier to treat pointer arguments passed to fmod_ret programs as PTR_UNTRUSTED rather than fully trusted kernel pointers. This is necessary because fmod_ret programs run before the callee has validated its arguments, so a pointer may not yet satisfy the callee's invariants. Marking arguments untrusted prevents BPF programs from dereferencing them through helpers that require trusted pointers, closing a potential safety hole opened by the broader fmod_ret attach surface.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Treat the type of an untrusted pointer as a hint",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-13-alexei.starovoitov@gmail.com/",
+      "summary": "This patch refines how the verifier handles PTR_UNTRUSTED values: instead of discarding all type information, it retains the BTF type as a hint that can be used for display and limited introspection while still blocking unsafe dereferences. The change improves the developer experience when writing fmod_ret programs by keeping meaningful type names in verifier error messages and BPF object dumps. It also adds selftests that exercise the new untrusted-pointer semantics end-to-end.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, cgroup: Protect cgroup_bpf state with its own mutex",
+      "author": "Shakeel Butt",
+      "url": "https://lore.kernel.org/bpf/20261112172721.440275-4-shakeel.butt@linux.dev/",
+      "summary": "The final patch in Shakeel Butt's three-part series converts cgroup_bpf's internal state from being guarded by the global cgroup_mutex to a dedicated per-cgroup mutex. The global mutex serialized all BPF program attach/detach operations across the entire cgroup hierarchy, creating unnecessary contention. Earlier patches in the series fixed a use-after-free in BPF_PROG_QUERY caused by reading freed effective arrays, and prevented attachment to cgroups in the process of being removed. Together the series makes cgroup BPF operations faster and safer under concurrent workloads.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, cgroup: Don't lose errors in effective BPF_LSM_CGROUP queries",
+      "author": "Shakeel Butt",
+      "url": "https://lore.kernel.org/bpf/20261112183804.1171535-1-shakeel.butt@linux.dev/",
+      "summary": "A standalone fix for a bug where BPF_PROG_QUERY on a cgroup with BPF_LSM_CGROUP programs could silently swallow error codes from the effective-program walk. The issue meant that query operations could return success with an incomplete program list when an internal error occurred, misleading userspace tools and debugging workflows. The fix propagates errors correctly from the effective-array iteration.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Evaluate the expression of a linked register",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112155337.1040699-12-alexei.starovoitov@gmail.com/",
+      "summary": "Part of the 12-patch scalar evolution series, this patch implements the core evaluation step that takes a register's symbolic scalar-evolution expression and computes a concrete value range after a conditional jump. The verifier can now derive tighter bounds for registers that are linked to loop induction variables or derived from pointer arithmetic, enabling it to prove loop termination and eliminate spurious \"unbounded loop\" rejections. This builds on earlier patches in the series that introduced the expression IR, a scalar_intersect() operator, and transfer functions for the main verification pass.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add struct scalar",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261112000836.3138846-4-alexei.starovoitov@gmail.com/",
+      "summary": "Central patch in the v2 'struct scalar' series, this introduces a new first-class struct scalar type to the BPF verifier that bundles a register's value range (the existing cnum) with a symbolic scalar-evolution expression. Having the expression attached directly to the register state avoids expensive re-derivation during backedge analysis and lays the groundwork for the loop bound counting added in subsequent patches. The companion patches add arithmetic operations (add, sub, zext32, sext32) on cnum and a backedge-taken count that lets the verifier bound loop iterations without conservative fallback assumptions.",
+      "related_links": []
+    }
+  ]
+}
