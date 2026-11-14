@@ -1,0 +1,1198 @@
+{
+  "period": "daily",
+  "period_start": "2026-11-13",
+  "period_end": "2026-11-14",
+  "fetched_at": "2026-11-14T15:38:51Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v2,9/9] selftests/bpf: Verify cgroup prog link_create logs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261114150610.84507-10-leon.hwang@linux.dev/",
+      "date": "2026-11-14T15:06:10",
+      "series": [
+        {
+          "id": 1211414,
+          "url": "https://patchwork.kernel.org/api/series/1211414/",
+          "web_url": "https://patchwork.kernel.org/series/1211414/",
+          "date": "2026-11-14T15:06:01",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1211414/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,8/9] selftests/bpf: Verify iter link_create logs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261114150610.84507-9-leon.hwang@linux.dev/",
+      "date": "2026-11-14T15:06:09",
+      "series": [
+        {
+          "id": 1211414,
+          "url": "https://patchwork.kernel.org/api/series/1211414/",
+          "web_url": "https://patchwork.kernel.org/series/1211414/",
+          "date": "2026-11-14T15:06:01",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1211414/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,7/9] selftests/bpf: Verify tracing_multi link_create logs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261114150610.84507-8-leon.hwang@linux.dev/",
+      "date": "2026-11-14T15:06:08",
+      "series": [
+        {
+          "id": 1211414,
+          "url": "https://patchwork.kernel.org/api/series/1211414/",
+          "web_url": "https://patchwork.kernel.org/series/1211414/",
+          "date": "2026-11-14T15:06:01",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1211414/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,6/9] selftests/bpf: Verify tracing link_create logs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261114150610.84507-7-leon.hwang@linux.dev/",
+      "date": "2026-11-14T15:06:07",
+      "series": [
+        {
+          "id": 1211414,
+          "url": "https://patchwork.kernel.org/api/series/1211414/",
+          "web_url": "https://patchwork.kernel.org/series/1211414/",
+          "date": "2026-11-14T15:06:01",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1211414/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/9] libbpf: Add log_opts support for BPF_TRACE_ITER",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261114150610.84507-6-leon.hwang@linux.dev/",
+      "date": "2026-11-14T15:06:06",
+      "series": [
+        {
+          "id": 1211414,
+          "url": "https://patchwork.kernel.org/api/series/1211414/",
+          "web_url": "https://patchwork.kernel.org/series/1211414/",
+          "date": "2026-11-14T15:06:01",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1211414/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/9] bpf: Add log support for cgroup prog link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261114150610.84507-5-leon.hwang@linux.dev/",
+      "date": "2026-11-14T15:06:05",
+      "series": [
+        {
+          "id": 1211414,
+          "url": "https://patchwork.kernel.org/api/series/1211414/",
+          "web_url": "https://patchwork.kernel.org/series/1211414/",
+          "date": "2026-11-14T15:06:01",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1211414/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/9] bpf: Add log support for iter link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261114150610.84507-4-leon.hwang@linux.dev/",
+      "date": "2026-11-14T15:06:04",
+      "series": [
+        {
+          "id": 1211414,
+          "url": "https://patchwork.kernel.org/api/series/1211414/",
+          "web_url": "https://patchwork.kernel.org/series/1211414/",
+          "date": "2026-11-14T15:06:01",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1211414/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/9] bpf: Add log support for tracing_multi link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261114150610.84507-3-leon.hwang@linux.dev/",
+      "date": "2026-11-14T15:06:03",
+      "series": [
+        {
+          "id": 1211414,
+          "url": "https://patchwork.kernel.org/api/series/1211414/",
+          "web_url": "https://patchwork.kernel.org/series/1211414/",
+          "date": "2026-11-14T15:06:01",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1211414/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/9] bpf: Add log support for tracing link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261114150610.84507-2-leon.hwang@linux.dev/",
+      "date": "2026-11-14T15:06:02",
+      "series": [
+        {
+          "id": 1211414,
+          "url": "https://patchwork.kernel.org/api/series/1211414/",
+          "web_url": "https://patchwork.kernel.org/series/1211414/",
+          "date": "2026-11-14T15:06:01",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1211414/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] bpf, tcx: Skip RCU synchronization when the entry was newly created",
+      "author": "Qi Wu",
+      "url": "https://lore.kernel.org/bpf/20261114124039.111360-1-shijing.wuqi@linux.alibaba.com/",
+      "date": "2026-11-14T12:40:38",
+      "series": [
+        {
+          "id": 1211321,
+          "url": "https://patchwork.kernel.org/api/series/1211321/",
+          "web_url": "https://patchwork.kernel.org/series/1211321/",
+          "date": "2026-11-14T12:40:38",
+          "name": "[bpf-next] bpf, tcx: Skip RCU synchronization when the entry was newly created",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211321/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: Remove accidentally committed default.profraw",
+      "author": "Ahmad Wicaksono",
+      "url": "https://lore.kernel.org/bpf/20261114065759.46263-1-supersonix03@gmail.com/",
+      "date": "2026-11-14T06:57:59",
+      "series": [
+        {
+          "id": 1211211,
+          "url": "https://patchwork.kernel.org/api/series/1211211/",
+          "web_url": "https://patchwork.kernel.org/series/1211211/",
+          "date": "2026-11-14T06:57:59",
+          "name": "[bpf-next] selftests/bpf: Remove accidentally committed default.profraw",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211211/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,11/11] selftests/bpf: Test fmod_ret on tagged functions",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261114051805.683966-12-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-14T05:18:05",
+      "series": [
+        {
+          "id": 1211183,
+          "url": "https://patchwork.kernel.org/api/series/1211183/",
+          "web_url": "https://patchwork.kernel.org/series/1211183/",
+          "date": "2026-11-14T05:17:54",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211183/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,10/11] bpf: Require the JIT for fmod_ret programs on tagged 64-bit targets",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261114051805.683966-11-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-14T05:18:04",
+      "series": [
+        {
+          "id": 1211183,
+          "url": "https://patchwork.kernel.org/api/series/1211183/",
+          "web_url": "https://patchwork.kernel.org/series/1211183/",
+          "date": "2026-11-14T05:17:54",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211183/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,09/11] bpf: Allow fmod_ret on tagged functions and check the return value",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261114051805.683966-10-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-14T05:18:03",
+      "series": [
+        {
+          "id": 1211183,
+          "url": "https://patchwork.kernel.org/api/series/1211183/",
+          "web_url": "https://patchwork.kernel.org/series/1211183/",
+          "date": "2026-11-14T05:17:54",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211183/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,08/11] resolve_btfids: Don't list an error that follows work on an argument",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261114051805.683966-9-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-14T05:18:02",
+      "series": [
+        {
+          "id": 1211183,
+          "url": "https://patchwork.kernel.org/api/series/1211183/",
+          "web_url": "https://patchwork.kernel.org/series/1211183/",
+          "date": "2026-11-14T05:17:54",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211183/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,07/11] resolve_btfids: Say which registers an instruction reads",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261114051805.683966-8-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-14T05:18:01",
+      "series": [
+        {
+          "id": 1211183,
+          "url": "https://patchwork.kernel.org/api/series/1211183/",
+          "web_url": "https://patchwork.kernel.org/series/1211183/",
+          "date": "2026-11-14T05:17:54",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211183/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,06/11] resolve_btfids: Fold the constants of a select without a branch",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261114051805.683966-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-14T05:18:00",
+      "series": [
+        {
+          "id": 1211183,
+          "url": "https://patchwork.kernel.org/api/series/1211183/",
+          "web_url": "https://patchwork.kernel.org/series/1211183/",
+          "date": "2026-11-14T05:17:54",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211183/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,05/11] resolve_btfids: Tag the functions that return errors",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261114051805.683966-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-14T05:17:59",
+      "series": [
+        {
+          "id": 1211183,
+          "url": "https://patchwork.kernel.org/api/series/1211183/",
+          "web_url": "https://patchwork.kernel.org/series/1211183/",
+          "date": "2026-11-14T05:17:54",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211183/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,04/11] resolve_btfids: Find the definitions that reach the return value",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261114051805.683966-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-14T05:17:58",
+      "series": [
+        {
+          "id": 1211183,
+          "url": "https://patchwork.kernel.org/api/series/1211183/",
+          "web_url": "https://patchwork.kernel.org/series/1211183/",
+          "date": "2026-11-14T05:17:54",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211183/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,03/11] resolve_btfids: Describe machine instructions with LLVM's MC layer",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261114051805.683966-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-14T05:17:57",
+      "series": [
+        {
+          "id": 1211183,
+          "url": "https://patchwork.kernel.org/api/series/1211183/",
+          "web_url": "https://patchwork.kernel.org/series/1211183/",
+          "date": "2026-11-14T05:17:54",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211183/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,02/11] resolve_btfids: Read the code of an ELF file by address",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261114051805.683966-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-14T05:17:56",
+      "series": [
+        {
+          "id": 1211183,
+          "url": "https://patchwork.kernel.org/api/series/1211183/",
+          "web_url": "https://patchwork.kernel.org/series/1211183/",
+          "date": "2026-11-14T05:17:54",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211183/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v3,bpf-next,01/11] selftests/bpf: Don't depend on the width of a BTF id in verifier_live_stack",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261114051805.683966-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-14T05:17:55",
+      "series": [
+        {
+          "id": 1211183,
+          "url": "https://patchwork.kernel.org/api/series/1211183/",
+          "web_url": "https://patchwork.kernel.org/series/1211183/",
+          "date": "2026-11-14T05:17:54",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211183/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/3] selftests/bpf: Run stacktrace_ips raw_tp, tp and fentry tests on arm64",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20261114001846.873499-4-andrii@kernel.org/",
+      "date": "2026-11-14T00:18:46",
+      "series": [
+        {
+          "id": 1211078,
+          "url": "https://patchwork.kernel.org/api/series/1211078/",
+          "web_url": "https://patchwork.kernel.org/series/1211078/",
+          "date": "2026-11-14T00:18:43",
+          "name": "Fix duplicate caller frame in arm64 stack traces",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211078/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/3] selftests/bpf: Add stacktrace_ips test for tracepoint",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20261114001846.873499-3-andrii@kernel.org/",
+      "date": "2026-11-14T00:18:45",
+      "series": [
+        {
+          "id": 1211078,
+          "url": "https://patchwork.kernel.org/api/series/1211078/",
+          "web_url": "https://patchwork.kernel.org/series/1211078/",
+          "date": "2026-11-14T00:18:43",
+          "name": "Fix duplicate caller frame in arm64 stack traces",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211078/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/3] arm64: perf: Don't report the caller twice in caller-regs callchains",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20261114001846.873499-2-andrii@kernel.org/",
+      "date": "2026-11-14T00:18:44",
+      "series": [
+        {
+          "id": 1211078,
+          "url": "https://patchwork.kernel.org/api/series/1211078/",
+          "web_url": "https://patchwork.kernel.org/series/1211078/",
+          "date": "2026-11-14T00:18:43",
+          "name": "Fix duplicate caller frame in arm64 stack traces",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211078/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,13/13] bpf, docs: Document BPF_F_INLINE_VALUE for local storage maps",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261113-sls_f1-v1-13-1b9492bd3f97@meta.com/",
+      "date": "2026-11-13T23:08:36",
+      "series": [
+        {
+          "id": 1211045,
+          "url": "https://patchwork.kernel.org/api/series/1211045/",
+          "web_url": "https://patchwork.kernel.org/series/1211045/",
+          "date": "2026-11-13T23:08:23",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211045/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,12/13] selftests/bpf: Test BPF_F_INLINE_VALUE local storage maps",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261113-sls_f1-v1-12-1b9492bd3f97@meta.com/",
+      "date": "2026-11-13T23:08:35",
+      "series": [
+        {
+          "id": 1211045,
+          "url": "https://patchwork.kernel.org/api/series/1211045/",
+          "web_url": "https://patchwork.kernel.org/series/1211045/",
+          "date": "2026-11-13T23:08:23",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211045/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,11/13] libbpf: Do not retry local storage map create without BTF",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261113-sls_f1-v1-11-1b9492bd3f97@meta.com/",
+      "date": "2026-11-13T23:08:34",
+      "series": [
+        {
+          "id": 1211045,
+          "url": "https://patchwork.kernel.org/api/series/1211045/",
+          "web_url": "https://patchwork.kernel.org/series/1211045/",
+          "date": "2026-11-13T23:08:23",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211045/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,10/13] bpf: Allow BPF_F_INLINE_VALUE for local storage maps",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261113-sls_f1-v1-10-1b9492bd3f97@meta.com/",
+      "date": "2026-11-13T23:08:33",
+      "series": [
+        {
+          "id": 1211045,
+          "url": "https://patchwork.kernel.org/api/series/1211045/",
+          "web_url": "https://patchwork.kernel.org/series/1211045/",
+          "date": "2026-11-13T23:08:23",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211045/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,09/13] bpf: Show inline values in sk diag",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261113-sls_f1-v1-9-1b9492bd3f97@meta.com/",
+      "date": "2026-11-13T23:08:32",
+      "series": [
+        {
+          "id": 1211045,
+          "url": "https://patchwork.kernel.org/api/series/1211045/",
+          "web_url": "https://patchwork.kernel.org/series/1211045/",
+          "date": "2026-11-13T23:08:23",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211045/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,08/13] bpf: Refuse the sk storage map iterator for BPF_F_INLINE_VALUE maps",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261113-sls_f1-v1-8-1b9492bd3f97@meta.com/",
+      "date": "2026-11-13T23:08:31",
+      "series": [
+        {
+          "id": 1211045,
+          "url": "https://patchwork.kernel.org/api/series/1211045/",
+          "web_url": "https://patchwork.kernel.org/series/1211045/",
+          "date": "2026-11-13T23:08:23",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211045/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,07/13] bpf: Keep values of BPF_F_INLINE_VALUE maps in the storage object",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261113-sls_f1-v1-7-1b9492bd3f97@meta.com/",
+      "date": "2026-11-13T23:08:30",
+      "series": [
+        {
+          "id": 1211045,
+          "url": "https://patchwork.kernel.org/api/series/1211045/",
+          "web_url": "https://patchwork.kernel.org/series/1211045/",
+          "date": "2026-11-13T23:08:23",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211045/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,06/13] bpf: Keep local storage objects with an inline area until owner death",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261113-sls_f1-v1-6-1b9492bd3f97@meta.com/",
+      "date": "2026-11-13T23:08:29",
+      "series": [
+        {
+          "id": 1211045,
+          "url": "https://patchwork.kernel.org/api/series/1211045/",
+          "web_url": "https://patchwork.kernel.org/series/1211045/",
+          "date": "2026-11-13T23:08:23",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211045/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,05/13] bpf: Size new local storage objects for the inline area",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261113-sls_f1-v1-5-1b9492bd3f97@meta.com/",
+      "date": "2026-11-13T23:08:28",
+      "series": [
+        {
+          "id": 1211045,
+          "url": "https://patchwork.kernel.org/api/series/1211045/",
+          "web_url": "https://patchwork.kernel.org/series/1211045/",
+          "date": "2026-11-13T23:08:23",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211045/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,04/13] bpf: Add an inline slot allocator to local storage caches",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261113-sls_f1-v1-4-1b9492bd3f97@meta.com/",
+      "date": "2026-11-13T23:08:27",
+      "series": [
+        {
+          "id": 1211045,
+          "url": "https://patchwork.kernel.org/api/series/1211045/",
+          "web_url": "https://patchwork.kernel.org/series/1211045/",
+          "date": "2026-11-13T23:08:23",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211045/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,03/13] bpf: Add bpf_local_storage_delete()",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261113-sls_f1-v1-3-1b9492bd3f97@meta.com/",
+      "date": "2026-11-13T23:08:26",
+      "series": [
+        {
+          "id": 1211045,
+          "url": "https://patchwork.kernel.org/api/series/1211045/",
+          "web_url": "https://patchwork.kernel.org/series/1211045/",
+          "date": "2026-11-13T23:08:23",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211045/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,02/13] bpf: Add obj_size to bpf_local_storage",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261113-sls_f1-v1-2-1b9492bd3f97@meta.com/",
+      "date": "2026-11-13T23:08:25",
+      "series": [
+        {
+          "id": 1211045,
+          "url": "https://patchwork.kernel.org/api/series/1211045/",
+          "web_url": "https://patchwork.kernel.org/series/1211045/",
+          "date": "2026-11-13T23:08:23",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211045/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,01/13] bpf: Free unpublished local storage with kfree_nolock()",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261113-sls_f1-v1-1-1b9492bd3f97@meta.com/",
+      "date": "2026-11-13T23:08:24",
+      "series": [
+        {
+          "id": 1211045,
+          "url": "https://patchwork.kernel.org/api/series/1211045/",
+          "web_url": "https://patchwork.kernel.org/series/1211045/",
+          "date": "2026-11-13T23:08:23",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211045/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] libbpf: Fix sign extension of unaligned enums in btf_dump_get_enum_value()",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261113223449.97604-1-dennylin0707@gmail.com/",
+      "date": "2026-11-13T22:34:49",
+      "series": [
+        {
+          "id": 1211037,
+          "url": "https://patchwork.kernel.org/api/series/1211037/",
+          "web_url": "https://patchwork.kernel.org/series/1211037/",
+          "date": "2026-11-13T22:34:49",
+          "name": "[bpf-next] libbpf: Fix sign extension of unaligned enums in btf_dump_get_enum_value()",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1211037/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,9/9] selftests/bpf: Test typeless module ksym resolution",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261113221248.3535369-20-wusamuel@google.com/",
+      "date": "2026-11-13T22:12:54",
+      "series": [
+        {
+          "id": 1211017,
+          "url": "https://patchwork.kernel.org/api/series/1211017/",
+          "web_url": "https://patchwork.kernel.org/series/1211017/",
+          "date": "2026-11-13T22:12:45",
+          "name": "kallsyms: Add KALLSYMS_QUERY_BY_NAME and KALLSYMS_QUERY_BY_ADDR ioctls",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211017/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,8/9] libbpf: Resolve typeless ksyms via KALLSYMS_QUERY_BY_NAME ioctl",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261113221248.3535369-19-wusamuel@google.com/",
+      "date": "2026-11-13T22:12:53",
+      "series": [
+        {
+          "id": 1211017,
+          "url": "https://patchwork.kernel.org/api/series/1211017/",
+          "web_url": "https://patchwork.kernel.org/series/1211017/",
+          "date": "2026-11-13T22:12:45",
+          "name": "kallsyms: Add KALLSYMS_QUERY_BY_NAME and KALLSYMS_QUERY_BY_ADDR ioctls",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211017/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,7/9] selftests/proc: Add KALLSYMS_QUERY_* ioctl tests",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261113221248.3535369-18-wusamuel@google.com/",
+      "date": "2026-11-13T22:12:52",
+      "series": [
+        {
+          "id": 1211017,
+          "url": "https://patchwork.kernel.org/api/series/1211017/",
+          "web_url": "https://patchwork.kernel.org/series/1211017/",
+          "date": "2026-11-13T22:12:45",
+          "name": "kallsyms: Add KALLSYMS_QUERY_BY_NAME and KALLSYMS_QUERY_BY_ADDR ioctls",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211017/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,6/9] tools: Copy KALLSYMS_QUERY_* definitions to linux/fs.h",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261113221248.3535369-17-wusamuel@google.com/",
+      "date": "2026-11-13T22:12:51",
+      "series": [
+        {
+          "id": 1211017,
+          "url": "https://patchwork.kernel.org/api/series/1211017/",
+          "web_url": "https://patchwork.kernel.org/series/1211017/",
+          "date": "2026-11-13T22:12:45",
+          "name": "kallsyms: Add KALLSYMS_QUERY_BY_NAME and KALLSYMS_QUERY_BY_ADDR ioctls",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211017/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,5/9] docs/procfs: Document KALLSYMS_QUERY_* ioctls on /proc/kallsyms",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261113221248.3535369-16-wusamuel@google.com/",
+      "date": "2026-11-13T22:12:50",
+      "series": [
+        {
+          "id": 1211017,
+          "url": "https://patchwork.kernel.org/api/series/1211017/",
+          "web_url": "https://patchwork.kernel.org/series/1211017/",
+          "date": "2026-11-13T22:12:45",
+          "name": "kallsyms: Add KALLSYMS_QUERY_BY_NAME and KALLSYMS_QUERY_BY_ADDR ioctls",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211017/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,4/9] kallsyms: Add KALLSYMS_QUERY_BY_ADDR ioctl to /proc/kallsyms",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261113221248.3535369-15-wusamuel@google.com/",
+      "date": "2026-11-13T22:12:49",
+      "series": [
+        {
+          "id": 1211017,
+          "url": "https://patchwork.kernel.org/api/series/1211017/",
+          "web_url": "https://patchwork.kernel.org/series/1211017/",
+          "date": "2026-11-13T22:12:45",
+          "name": "kallsyms: Add KALLSYMS_QUERY_BY_NAME and KALLSYMS_QUERY_BY_ADDR ioctls",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211017/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/9] kallsyms: Add KALLSYMS_QUERY_BY_NAME ioctl to /proc/kallsyms",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261113221248.3535369-14-wusamuel@google.com/",
+      "date": "2026-11-13T22:12:48",
+      "series": [
+        {
+          "id": 1211017,
+          "url": "https://patchwork.kernel.org/api/series/1211017/",
+          "web_url": "https://patchwork.kernel.org/series/1211017/",
+          "date": "2026-11-13T22:12:45",
+          "name": "kallsyms: Add KALLSYMS_QUERY_BY_NAME and KALLSYMS_QUERY_BY_ADDR ioctls",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211017/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/9] module: Add module_kallsyms_find_name()",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261113221248.3535369-13-wusamuel@google.com/",
+      "date": "2026-11-13T22:12:47",
+      "series": [
+        {
+          "id": 1211017,
+          "url": "https://patchwork.kernel.org/api/series/1211017/",
+          "web_url": "https://patchwork.kernel.org/series/1211017/",
+          "date": "2026-11-13T22:12:45",
+          "name": "kallsyms: Add KALLSYMS_QUERY_BY_NAME and KALLSYMS_QUERY_BY_ADDR ioctls",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211017/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/9] Documentation: ioctl-number: Add PROCFS_IOCTL_MAGIC range 0x10-0x11",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261113221248.3535369-12-wusamuel@google.com/",
+      "date": "2026-11-13T22:12:46",
+      "series": [
+        {
+          "id": 1211017,
+          "url": "https://patchwork.kernel.org/api/series/1211017/",
+          "web_url": "https://patchwork.kernel.org/series/1211017/",
+          "date": "2026-11-13T22:12:45",
+          "name": "kallsyms: Add KALLSYMS_QUERY_BY_NAME and KALLSYMS_QUERY_BY_ADDR ioctls",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1211017/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,6/6] selftests/bpf: Cover callback-frame map key lifetime",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261113213921.1646681-7-ihor.solodrai@linux.dev/",
+      "date": "2026-11-13T21:39:21",
+      "series": [
+        {
+          "id": 1210993,
+          "url": "https://patchwork.kernel.org/api/series/1210993/",
+          "web_url": "https://patchwork.kernel.org/series/1210993/",
+          "date": "2026-11-13T21:39:15",
+          "name": "bpf: Scope callback arguments to their frame",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1210993/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,5/6] bpf: Scope the bpf_for_each_map_elem() array key to the callback frame",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261113213921.1646681-6-ihor.solodrai@linux.dev/",
+      "date": "2026-11-13T21:39:20",
+      "series": [
+        {
+          "id": 1210993,
+          "url": "https://patchwork.kernel.org/api/series/1210993/",
+          "web_url": "https://patchwork.kernel.org/series/1210993/",
+          "date": "2026-11-13T21:39:15",
+          "name": "bpf: Scope callback arguments to their frame",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1210993/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,4/6] selftests/bpf: Cover the user ringbuf callback dynptr lifetime",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261113213921.1646681-5-ihor.solodrai@linux.dev/",
+      "date": "2026-11-13T21:39:19",
+      "series": [
+        {
+          "id": 1210993,
+          "url": "https://patchwork.kernel.org/api/series/1210993/",
+          "web_url": "https://patchwork.kernel.org/series/1210993/",
+          "date": "2026-11-13T21:39:15",
+          "name": "bpf: Scope callback arguments to their frame",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1210993/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,3/6] bpf: Scope the bpf_user_ringbuf_drain() dynptr to its callback frame",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261113213921.1646681-4-ihor.solodrai@linux.dev/",
+      "date": "2026-11-13T21:39:18",
+      "series": [
+        {
+          "id": 1210993,
+          "url": "https://patchwork.kernel.org/api/series/1210993/",
+          "web_url": "https://patchwork.kernel.org/series/1210993/",
+          "date": "2026-11-13T21:39:15",
+          "name": "bpf: Scope callback arguments to their frame",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1210993/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,2/6] bpf: Rely on callback frame initialization defaults",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261113213921.1646681-3-ihor.solodrai@linux.dev/",
+      "date": "2026-11-13T21:39:17",
+      "series": [
+        {
+          "id": 1210993,
+          "url": "https://patchwork.kernel.org/api/series/1210993/",
+          "web_url": "https://patchwork.kernel.org/series/1210993/",
+          "date": "2026-11-13T21:39:15",
+          "name": "bpf: Scope callback arguments to their frame",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1210993/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v4,1/6] bpf: Share map-backed callback register setup",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261113213921.1646681-2-ihor.solodrai@linux.dev/",
+      "date": "2026-11-13T21:39:16",
+      "series": [
+        {
+          "id": 1210993,
+          "url": "https://patchwork.kernel.org/api/series/1210993/",
+          "web_url": "https://patchwork.kernel.org/series/1210993/",
+          "date": "2026-11-13T21:39:15",
+          "name": "bpf: Scope callback arguments to their frame",
+          "version": 4,
+          "mbox": "https://patchwork.kernel.org/series/1210993/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/2] bpf, parisc: Add support for BPF_MOVSX in the parisc32 JIT",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20261113-parisc_bpf_jit_movsx_20261112-v1-2-7ecc33cdf1b2@gmail.com/",
+      "date": "2026-11-13T21:24:11",
+      "series": [
+        {
+          "id": 1210982,
+          "url": "https://patchwork.kernel.org/api/series/1210982/",
+          "web_url": "https://patchwork.kernel.org/series/1210982/",
+          "date": "2026-11-13T21:24:09",
+          "name": "bpf, parisc: Add support for BPF_MOVSX in the JITs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1210982/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/2] bpf, parisc: Add support for BPF_MOVSX in the parisc64 JIT",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20261113-parisc_bpf_jit_movsx_20261112-v1-1-7ecc33cdf1b2@gmail.com/",
+      "date": "2026-11-13T21:24:10",
+      "series": [
+        {
+          "id": 1210982,
+          "url": "https://patchwork.kernel.org/api/series/1210982/",
+          "web_url": "https://patchwork.kernel.org/series/1210982/",
+          "date": "2026-11-13T21:24:09",
+          "name": "bpf, parisc: Add support for BPF_MOVSX in the JITs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1210982/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: Skip memcg_proactive_reclaim when data lands in shmem",
+      "author": "Kurt Lin",
+      "url": "https://lore.kernel.org/bpf/20261113180159.602033-1-lylin1023@gmail.com/",
+      "date": "2026-11-13T18:01:59",
+      "series": [
+        {
+          "id": 1210833,
+          "url": "https://patchwork.kernel.org/api/series/1210833/",
+          "web_url": "https://patchwork.kernel.org/series/1210833/",
+          "date": "2026-11-13T18:01:59",
+          "name": "[bpf-next] selftests/bpf: Skip memcg_proactive_reclaim when data lands in shmem",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1210833/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,13/13] selftests/bpf: Test untrusted pointers in fmod_ret progs",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-14-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:09:01",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,12/13] bpf: Treat the type of an untrusted pointer as a hint",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-13-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:09:00",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,11/13] bpf: Mark the arguments of fmod_ret progs as PTR_UNTRUSTED",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-12-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:59",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,10/13] selftests/bpf: Test fmod_ret on tagged functions",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-11-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:58",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,09/13] bpf: Allow fmod_ret on tagged functions and check the return value",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-10-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:57",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,08/13] resolve_btfids: Don't list an error that follows work on an argument",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-9-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:56",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,07/13] resolve_btfids: Say which registers an instruction reads",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-8-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:55",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,06/13] resolve_btfids: Fold the constants of a select without a branch",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:54",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,05/13] resolve_btfids: Tag the functions that return errors",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:53",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,04/13] resolve_btfids: Find the definitions that reach the return value",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:52",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,03/13] resolve_btfids: Describe machine instructions with LLVM's MC layer",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:51",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,02/13] resolve_btfids: Read the code of an ELF file by address",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:50",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[v2,bpf-next,01/13] selftests/bpf: Don't depend on the width of a BTF id in verifier_live_stack",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261113050901.1399091-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-13T05:08:49",
+      "series": [
+        {
+          "id": 1210164,
+          "url": "https://patchwork.kernel.org/api/series/1210164/",
+          "web_url": "https://patchwork.kernel.org/series/1210164/",
+          "date": "2026-11-13T05:08:48",
+          "name": "bpf: fmod_ret for each function that returns errors",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1210164/mbox/"
+        }
+      ]
+    }
+  ]
+}
