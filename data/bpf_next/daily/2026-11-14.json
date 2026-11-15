@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-11-15T00:00:00Z",
+  "period_start": "2026-11-13",
+  "period_end": "2026-11-14",
+  "patch_count": 70,
+  "thread_count": 12,
+  "top_contributors": ["Alexei Starovoitov", "Mykyta Yatsenko", "Samuel Wu", "Leon Hwang", "Ihor Solodrai"],
+  "key_topics": ["fmod_ret", "local-storage", "kallsyms", "verifier", "tracing", "jit", "libbpf"],
+  "overview": "A very active day on bpf-next with 12 patch series across a wide range of subsystems. The headline work is an RFC from Meta proposing inline embedding of local storage values to eliminate a pointer indirection on the hot path. Alexei Starovoitov posted v3 of the fmod_ret expansion, Samuel Wu's kallsyms ioctl series reached v3 enabling libbpf to resolve typeless ksyms without reading /proc/kallsyms, and Leon Hwang added verifier log support to tracing link_create. Several JIT and verifier scoping fixes round out the day.",
+  "patches": [
+    {
+      "title": "bpf: Allow BPF_F_INLINE_VALUE for local storage maps",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261113-sls_f1-v1-10-1b9492bd3f97@meta.com/",
+      "summary": "Core patch of a 13-patch RFC series from Meta that introduces BPF_F_INLINE_VALUE, a new flag for local storage maps that embeds the value directly within the storage object instead of allocating a separate buffer. This eliminates one pointer dereference on every lookup, which is significant for per-socket or per-task storage accessed on the fast path. The series adds an inline slot allocator to the per-CPU local storage cache, extends the local storage lifecycle to hold inline objects until their owner dies, and includes libbpf and sk diag support. Iterator support is explicitly excluded for inline maps since the value is not independently addressable.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Keep values of BPF_F_INLINE_VALUE maps in the storage object",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261113-sls_f1-v1-7-1b9492bd3f97@meta.com/",
+      "summary": "Implements the runtime path for BPF_F_INLINE_VALUE local storage lookups, redirecting value reads and writes to the inline area embedded in the bpf_local_storage struct rather than a separately-allocated data buffer. When a lookup miss occurs, the storage object itself is sized to include the inline area during allocation. This patch works in conjunction with the slot allocator and lifetime patches to ensure the storage object is kept alive as long as the inline value is accessible.",
+      "related_links": []
+    },
+    {
+      "title": "kallsyms: Add KALLSYMS_QUERY_BY_NAME ioctl to /proc/kallsyms",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261113221248.3535369-14-wusamuel@google.com/",
+      "summary": "Adds a KALLSYMS_QUERY_BY_NAME ioctl on /proc/kallsyms that lets privileged callers look up symbol addresses by name without parsing the full /proc/kallsyms text file. The companion KALLSYMS_QUERY_BY_ADDR ioctl performs reverse lookups. A later patch in the series updates libbpf to use this ioctl for typeless ksym resolution, replacing the current approach of reading and scanning the entire /proc/kallsyms file. This is v3, adding a module_kallsyms_find_name() helper and ioctl tests under selftests/proc.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add log support for tracing link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261114150610.84507-2-leon.hwang@linux.dev/",
+      "summary": "Extends the BPF verifier log to capture diagnostic output during tracing-type link_create operations (kprobe/tracepoint/fentry/fmod_ret), making it easier to debug attachment failures. The 9-patch v2 series also adds log support for iter and cgroup prog link_create, and plumbs log_opts through libbpf's BPF_TRACE_ITER attachment path. Previously, link_create failures produced no verifier log output, leaving users with just an errno to diagnose misconfigured programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow fmod_ret on tagged functions and check the return value",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261114051805.683966-10-alexei.starovoitov@gmail.com/",
+      "summary": "v3 iteration of the fmod_ret expansion, refining the verifier and JIT changes based on review feedback from v2. This version adds an explicit requirement that fmod_ret programs targeting tagged 64-bit functions must use the JIT (patch 10/11), since the interpreter cannot guarantee the calling convention needed to safely intercept and modify return values. The series now spans 11 patches, up from 13 in v2 after collapsing some resolve_btfids cleanup patches.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Scope the bpf_user_ringbuf_drain() dynptr to its callback frame",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261113213921.1646681-4-ihor.solodrai@linux.dev/",
+      "summary": "Part of a 6-patch v4 series that tightens verifier lifetime tracking for arguments passed to BPF callbacks. This patch specifically scopes the dynptr argument of bpf_user_ringbuf_drain() so the verifier knows it cannot escape the callback frame, preventing programs from saving it to a map and accessing it after the callback returns. A companion patch applies the same treatment to the array key argument of bpf_for_each_map_elem(). The series also refactors callback frame initialization to share more code across map-backed callback helpers.",
+      "related_links": []
+    },
+    {
+      "title": "arm64: perf: Don't report the caller twice in caller-regs callchains",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20261114001846.873499-2-andrii@kernel.org/",
+      "summary": "Fixes a bug in the arm64 perf callchain unwinder where the frame that triggered a tracepoint or fentry probe was reported twice when using caller-registers mode. The duplicate frame caused BPF stack trace programs to produce incorrect output on arm64, leading to misleading profiling data. The fix adjusts the callchain starting point to skip the already-recorded PC. The series adds selftests that verify correct stack trace behavior for raw_tp, tracepoint, and fentry attachment types on arm64.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, parisc: Add support for BPF_MOVSX in the parisc64 JIT",
+      "author": "Nicholas Dudar",
+      "url": "https://lore.kernel.org/bpf/20261113-parisc_bpf_jit_movsx_20261112-v1-1-7ecc33cdf1b2@gmail.com/",
+      "summary": "Adds sign-extending move (BPF_MOVSX) instruction support to both the parisc32 and parisc64 BPF JITs, bringing parisc up to feature parity with other architectures for this instruction. BPF_MOVSX is used by the compiler backend when narrowing integer types with sign extension, and its absence required the interpreter fallback on parisc. The parisc64 patch handles 8, 16, and 32-bit source widths with the appropriate EXTR/EXTRW instructions.",
+      "related_links": []
+    }
+  ]
+}
