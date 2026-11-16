@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-11-16T00:00:00Z",
+  "period_start": "2026-11-14",
+  "period_end": "2026-11-15",
+  "patch_count": 33,
+  "thread_count": 11,
+  "top_contributors": ["Alexei Starovoitov", "Leon Hwang", "Ahmad Wicaksono", "Andrii Nakryiko"],
+  "key_topics": ["fmod_ret", "verifier", "btf", "libbpf", "tracing", "mprog", "maps"],
+  "overview": "Activity on November 14-15 was dominated by Alexei Starovoitov's major v3 series enabling fmod_ret on any tagged kernel function that returns errors, significantly expanding BPF's ability to intercept and modify kernel behavior at a fine-grained level. Leon Hwang contributed a 9-patch series adding verifier log support for tracing link_create across multiple attach types. Additional work included libbpf and BTF fixes, RCU optimization for multi-prog attachment, and documentation cleanups.",
+  "patches": [
+    {
+      "title": "bpf: Allow fmod_ret on tagged functions and check the return value",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261114051805.683966-10-alexei.starovoitov@gmail.com/",
+      "summary": "This is the core patch in a major 11-part series (v3) that extends fmod_ret to work on any kernel function tagged as returning an error. The series uses LLVM's MC layer via resolve_btfids to statically analyze which kernel functions can return errors, then tags them in BTF so that fmod_ret BPF programs can be attached. This allows BPF programs to intercept and override error return values across a much wider set of kernel functions than was previously possible, without needing manual annotation. The JIT is required on 64-bit targets to ensure correct behavior when overriding tagged function return values.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add log support for tracing link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261114150610.84507-2-leon.hwang@linux.dev/",
+      "summary": "First patch in a 9-part v2 series that adds BPF verifier log support for the tracing link_create path, allowing users to get diagnostic output when attaching tracing programs via bpf_link_create. Subsequent patches extend this to tracing_multi, iter, and cgroup prog attach types, and libbpf gains log_opts support for BPF_TRACE_ITER. This improves observability and debuggability when tracing link attachment fails. Selftests are added for each attach type.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, mprog: Defer RCU synchronization until peer reuse",
+      "author": "Qi Wu",
+      "url": "https://lore.kernel.org/bpf/20261115144556.41927-1-shijing.wuqi@linux.alibaba.com/",
+      "summary": "This v2 patch optimizes RCU synchronization in the BPF multi-prog (mprog) infrastructure by deferring synchronization until a peer entry is actually reused rather than on every detach. The original approach synchronously called synchronize_rcu() on each program detach, which was unnecessarily expensive when the freed slot would be reused immediately. This reduces latency for workloads that frequently attach and detach BPF programs on the same hook point.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Use a 32-bit compare in the array map gen_lookups",
+      "author": "Yuan Chen",
+      "url": "https://lore.kernel.org/bpf/20261115102559.465375-2-chenyuan@kylinos.cn/",
+      "summary": "Part of a 2-patch series fixing a bounds check bug in the BPF array map inline lookup code generator. The existing gen_lookup implementation emitted a 64-bit index comparison, but array map sizes are bounded by 32-bit values, so using a 32-bit compare is both correct and can avoid unnecessary sign-extension issues. The companion patch adds a selftest verifying the emitted bounds check instruction. This is a correctness fix that also slightly improves the generated code quality.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix sign extension of unaligned enums in btf_dump_get_enum_value()",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261115084923.53182-2-dennylin0707@gmail.com/",
+      "summary": "This v2 patch fixes a sign-extension bug in libbpf's btf_dump when handling enums that are not naturally aligned in memory. The btf_dump_get_enum_value() function was reading enum values without accounting for unaligned access, leading to incorrect sign extension for negative enum values stored at non-standard offsets. The fix ensures correct value extraction regardless of alignment, and a companion selftest exercises unaligned enums and a zeroed fs_context to prevent regressions.",
+      "related_links": []
+    },
+    {
+      "title": "arm64: perf: Don't report the caller twice in caller-regs callchains",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20261114001846.873499-2-andrii@kernel.org/",
+      "summary": "Fixes a bug in the arm64 perf callchain code that caused the immediate caller frame to appear twice when using caller-saved registers for stack unwinding, which affects BPF stack trace helpers on arm64. The duplicate frame confused tools and BPF programs reading stack traces via bpf_get_stack() or similar helpers. The series adds selftests to verify correct stack trace output via raw_tp, tracepoint, and fentry attach points on arm64.",
+      "related_links": []
+    },
+    {
+      "title": "Documentation/bpf: Update sockmap docs for mutation restrictions",
+      "author": "Ahmad Wicaksono",
+      "url": "https://lore.kernel.org/bpf/20261114170117.196552-2-supersonix03@gmail.com/",
+      "summary": "Updates the sockmap BPF documentation to accurately reflect current mutation restrictions — specifically which map operations are permitted from which BPF program types when using sockmap. A companion patch fixes stale selftests file references in the BPF documentation that pointed to files that had been renamed or removed. These are housekeeping documentation fixes that improve the accuracy and usability of the BPF reference docs.",
+      "related_links": []
+    }
+  ]
+}
