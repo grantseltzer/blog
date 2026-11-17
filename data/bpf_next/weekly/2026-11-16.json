@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-11-17T00:00:00Z",
+  "period_start": "2026-11-09",
+  "period_end": "2026-11-16",
+  "patch_count": 100,
+  "thread_count": 21,
+  "top_contributors": ["Alexei Starovoitov", "Mykyta Yatsenko", "Leon Hwang", "Qi Wu", "Hungyu Lin"],
+  "key_topics": ["verifier", "subprogs", "kfuncs", "maps", "btf", "fmod_ret", "tcp", "mprog", "local-storage", "tracing", "libbpf"],
+  "overview": "The week of November 9-16 saw substantial architectural changes to BPF's program loading infrastructure, led by Alexei Starovoitov's 21-patch series removing longstanding limits on maps, kfuncs, subprogs, and special fields. A complementary 11-patch series from Starovoitov introduced fmod_ret support for functions that return errors using an LLVM-based btf_id tagger in resolve_btfids. Mykyta Yatsenko submitted an RFC to embed local storage values directly in the storage object for lower-latency access, while Leon Hwang added structured log output for tracing link_create calls. Additional work addressed TCP per-connection ECN via bpf_tcp_ops, mprog and tcx RCU synchronization optimizations, arm64 stack trace duplications, and a range of selftests and libbpf fixes.",
+  "patches": [
+    {
+      "title": "bpf: Remove the limits on maps, BTFs and fd_array of a program",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261116152626.4032587-8-alexei.starovoitov@gmail.com/",
+      "summary": "Part of a sweeping 21-patch series (v2) that eliminates the hard limits on the number of maps, BTF objects, fd_array entries, kfuncs, subprograms, and special fields a BPF program can reference. The series replaces fixed-size arrays with dynamically allocated structures, refactors the verifier's call graph into an edge-list representation, upgrades the dominator algorithm to O(n log n), and allows the loader to handle programs exceeding 524288 instructions. Together these changes remove the final structural barriers to arbitrarily large and complex BPF programs.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow fmod_ret on tagged functions and check the return value",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261114051805.683966-10-alexei.starovoitov@gmail.com/",
+      "summary": "Part of an 11-patch series (v3) that enables fmod_ret BPF programs to attach to any kernel function that returns an error code, not just a fixed allowlist. The series extends resolve_btfids with LLVM MC-based machine code analysis to automatically identify and tag functions whose return values flow from error-returning callees. This eliminates the need to manually annotate each hookable function and dramatically expands the set of kernel functions that BPF programs can safely intercept and modify the return value of.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Embed local storage values in the storage object",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261113-sls_f1-v1-7-1b9492bd3f97@meta.com/",
+      "summary": "An RFC 13-patch series proposing a new BPF_F_INLINE_VALUE flag for local storage maps that embeds the map value directly inside the storage object rather than allocating it separately. This eliminates an extra pointer dereference on the hot lookup path, improving performance for use cases where storage values are small and frequently accessed. The series also adds bpf_local_storage_delete() and adjusts the sk storage iterator and diag paths to handle the new inline layout.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add log support for tracing link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261114150610.84507-2-leon.hwang@linux.dev/",
+      "summary": "A 9-patch series (v2) that adds structured verifier-style log output to the tracing, tracing_multi, iter, and cgroup prog link_create paths. When link creation fails, the kernel now writes a human-readable diagnostic into the caller-supplied log buffer explaining the reason for rejection. The series also extends libbpf with log_opts support for BPF_TRACE_ITER links, making error messages accessible from userspace tools.",
+      "related_links": []
+    },
+    {
+      "title": "arm64: perf: Don't report the caller twice in caller-regs callchains",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20261114001846.873499-2-andrii@kernel.org/",
+      "summary": "Fixes a long-standing issue on arm64 where BPF stack trace helpers (and perf) would emit the calling frame twice when collecting caller-registers-based callchains. The arm64 unwinder was including both the PC from the saved registers and the return address derived from LR, resulting in a duplicate entry at the top of every stack trace. The fix removes the redundant frame and adds selftests for raw_tp, tracepoint, and fentry stack traces on arm64.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: add ecn_init callback to bpf_tcp_ops for per-connection ECN",
+      "author": "Irlanki Sandeep",
+      "url": "https://lore.kernel.org/bpf/20261116151331.500313-1-irlanki.s@samsung.com/",
+      "summary": "Adds an ecn_init callback to the bpf_tcp_ops struct, allowing BPF congestion control programs to initialize ECN state on a per-connection basis at socket creation time. The callback follows the existing bpf_tcp_ops lifecycle pattern and enables fine-grained ECN policy from BPF without modifying the core TCP stack. This v9 addresses remaining review concerns from earlier iterations.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, mprog: Defer RCU synchronization until peer reuse",
+      "author": "Qi Wu",
+      "url": "https://lore.kernel.org/bpf/20261116145318.34084-1-shijing.wuqi@linux.alibaba.com/",
+      "summary": "Optimizes the multi-program attachment path by deferring the rcu_synchronize() call that fires on program detach until the underlying slot is actually reused. The existing code synchronized immediately on every detach, adding unnecessary latency on the hot path even when the slot was not being recycled. This v3 of the patch defers that cost to the point of actual reuse, reducing detach overhead in the common case.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, tcx: Skip RCU synchronization when the entry was newly created",
+      "author": "Qi Wu",
+      "url": "https://lore.kernel.org/bpf/20261114124039.111360-1-shijing.wuqi@linux.alibaba.com/",
+      "summary": "Avoids a spurious rcu_synchronize() in the tcx (TC BPF) attachment path when an entry has just been created and no readers can hold a reference to it yet. Since a brand-new entry has never been published to the RCU-protected list, waiting for an RCU grace period before proceeding is unnecessary and adds latency to the first-attach case. This patch detects the newly-created state and skips the synchronization.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix sign extension of unaligned enums in btf_dump_get_enum_value()",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261116080151.44860-2-dennylin0707@gmail.com/",
+      "summary": "Fixes a sign-extension bug in libbpf's BTF dump code where enum values at unaligned offsets were misread, producing incorrect output when dumping kernel types with packed or unaligned layouts. The fix corrects the byte-extraction logic to properly respect signedness regardless of alignment, and a selftest adds coverage for unaligned enums and a zeroed fs_context struct.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Use a 32-bit compare in the array map gen_lookups",
+      "author": "Yuan Chen",
+      "url": "https://lore.kernel.org/bpf/20261115102559.465375-2-chenyuan@kylinos.cn/",
+      "summary": "Corrects the bounds check emitted by the BPF array map's inline lookup helper to use a 32-bit comparison instead of 64-bit, preventing potential out-of-bounds accesses when the upper bits of the index register are non-zero. The fix ensures the generated BPF bytecode correctly constrains the index to the valid range of the map, with a selftest to verify the emitted bounds check.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Disable preemption while a raw tracepoint regs slot is in use",
+      "author": "Mike Bazov",
+      "url": "https://lore.kernel.org/bpf/20261116-bpf-raw-tp-regs-preempt-v1-1-d01b6dd8573c@gmail.com/",
+      "summary": "Fixes a race where the per-CPU register slot used by raw tracepoint programs could be overwritten by a preempting task on the same CPU before the original handler finishes. The fix disables preemption for the window the slot is live, ensuring no other task can enter a raw TP program and corrupt the shared state mid-execution.",
+      "related_links": []
+    },
+    {
+      "title": "Documentation/bpf: Update sockmap docs for mutation restrictions",
+      "author": "Ahmad Wicaksono",
+      "url": "https://lore.kernel.org/bpf/20261114170117.196552-2-supersonix03@gmail.com/",
+      "summary": "Updates BPF documentation to accurately describe mutation restrictions on sockmap and fixes stale selftests file references in the map documentation. The sockmap docs previously did not fully explain which operations are forbidden while iterating, leading to user confusion. A companion patch removes an accidentally committed default.profraw file from selftests.",
+      "related_links": []
+    }
+  ]
+}

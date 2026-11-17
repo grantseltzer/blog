@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-11-17T00:00:00Z",
+  "period_start": "2026-11-15",
+  "period_end": "2026-11-16",
+  "patch_count": 48,
+  "thread_count": 11,
+  "top_contributors": ["Alexei Starovoitov", "Hungyu Lin", "Tiezhu Yang", "Qi Wu", "Irlanki Sandeep"],
+  "key_topics": ["verifier", "subprogs", "kfuncs", "maps", "btf", "tcp", "mprog", "selftests"],
+  "overview": "The day's most significant activity was Alexei Starovoitov's major 21-patch series (v2) removing historical limits on maps, kfuncs, subprogs, and special fields in BPF programs, with foundational verifier and libbpf loader changes to support unbounded program complexity. Additional patches addressed raw tracepoint preemption safety, TCP per-connection ECN configuration via bpf_tcp_ops, mprog RCU synchronization improvements, and libbpf fixes for unaligned enum values in btf_dump.",
+  "patches": [
+    {
+      "title": "bpf: Remove the limits on maps, BTFs and fd_array of a program",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261116152626.4032587-8-alexei.starovoitov@gmail.com/",
+      "summary": "Part of a sweeping 21-patch series (v2) that eliminates longstanding hard limits on the number of maps, BTF objects, fd_array entries, kfuncs, subprograms, and special fields a BPF program can reference. Previously these tables were statically sized, capping program complexity and preventing advanced use cases. The series replaces fixed-size arrays with dynamically allocated structures, refactors the verifier's call graph representation, and upgrades the dominator algorithm to O(n log n). Together the patches clear the way for programs well above the former 524288-instruction limit.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Disable preemption while a raw tracepoint regs slot is in use",
+      "author": "Mike Bazov",
+      "url": "https://lore.kernel.org/bpf/20261116-bpf-raw-tp-regs-preempt-v1-1-d01b6dd8573c@gmail.com/",
+      "summary": "Fixes a correctness issue where the per-CPU regs slot used by raw tracepoint programs could be overwritten by a preempting task running on the same CPU. Without disabling preemption for the duration of the raw TP handler, a higher-priority task could enter its own raw TP program and corrupt the slot before the original program finishes reading it. The fix ensures preemption is disabled across the window the slot is live.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: tcp: add ecn_init callback to bpf_tcp_ops for per-connection ECN",
+      "author": "Irlanki Sandeep",
+      "url": "https://lore.kernel.org/bpf/20261116151331.500313-1-irlanki.s@samsung.com/",
+      "summary": "Adds an ecn_init callback to the bpf_tcp_ops struct, allowing BPF programs implementing TCP congestion control to initialize ECN (Explicit Congestion Notification) state on a per-connection basis. This v9 iteration addresses review feedback on earlier versions and enables more flexible ECN policy control from BPF without modifying the core TCP stack. The callback follows the existing pattern of bpf_tcp_ops hooks for congestion control lifecycle events.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, mprog: Defer RCU synchronization until peer reuse",
+      "author": "Qi Wu",
+      "url": "https://lore.kernel.org/bpf/20261116145318.34084-1-shijing.wuqi@linux.alibaba.com/",
+      "summary": "Optimizes the mprog (multi-program) attachment path by deferring the RCU synchronization that occurs when detaching programs until the underlying entry slot is actually reused. Previously an rcu_synchronize() was issued immediately on detach even when the slot might not be recycled for some time, adding unnecessary latency. This v3 of the patch avoids the synchronization cost on the hot detach path in the common case.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix sign extension of unaligned enums in btf_dump_get_enum_value()",
+      "author": "Hungyu Lin",
+      "url": "https://lore.kernel.org/bpf/20261116080151.44860-2-dennylin0707@gmail.com/",
+      "summary": "Corrects a sign-extension bug in libbpf's BTF dump code where enum values stored at unaligned offsets were incorrectly read, producing wrong values when dumping kernel types. The fix adjusts the byte-extraction logic to properly handle both signed and unsigned enums regardless of alignment. A companion selftest patch adds coverage for unaligned enums and a zeroed fs_context to prevent regressions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Use a 32-bit compare in the array map gen_lookups",
+      "author": "Yuan Chen",
+      "url": "https://lore.kernel.org/bpf/20261115102559.465375-2-chenyuan@kylinos.cn/",
+      "summary": "Fixes the index bounds check emitted by the BPF array map's gen_lookup inline helper, which was using a 64-bit comparison when only 32 bits are needed. The incorrect width could permit out-of-bounds accesses on architectures where the upper bits of the index register contain garbage. A selftest is added to verify the generated code emits the correct 32-bit compare.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Add SKIP_TESTS() helper for test_loader",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20261116035907.4215-2-yangtiezhu@loongson.cn/",
+      "summary": "Introduces a SKIP_TESTS() macro for the test_loader framework so that individual test cases can be skipped when hardware features are absent, rather than failing. The series uses this new helper to fix spurious failures on LoongArch and other platforms that do not support JIT arenas or unaligned access, replacing hard failures with proper SKIP results. Additional patches in the series handle fexit_bpf2bpf unaligned access and tail_call arena tests.",
+      "related_links": []
+    }
+  ]
+}
