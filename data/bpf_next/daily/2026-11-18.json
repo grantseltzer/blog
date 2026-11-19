@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-11-19T10:13:32Z",
+  "period_start": "2026-11-17",
+  "period_end": "2026-11-18",
+  "patch_count": 18,
+  "thread_count": 10,
+  "top_contributors": ["Ihor Solodrai", "Mike Bazov", "Shihuang Liu", "Yonghong Song"],
+  "key_topics": ["kfuncs", "verifier", "maps", "co-re", "libbpf", "preemption", "rqspinlock", "selftests"],
+  "overview": "Activity for November 17-18 centered on two substantial feature series: libbpf gaining support for kernel-side kfunc flavors to handle prototype disambiguation, and a rework of recursion detection for preemptible BPF tracing programs. Alongside those, a verifier fix for variable-offset accesses into special fields and a CO-RE correction for unsigned 32-bit enum values round out the day's notable work.",
+  "patches": [
+    {
+      "title": "libbpf: Fall back to kernel ___ flavors when resolving kfuncs",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261117192153.3384031-2-ihor.solodrai@linux.dev/",
+      "summary": "This four-patch series teaches libbpf to resolve kfuncs by falling back to kernel-side flavor suffixes (the triple-underscore convention) when a direct name match fails. This is needed because the kernel may expose multiple prototype variants of the same kfunc, and libbpf previously had no way to pick the right one. The series also adds a resolve_btfids check that rejects kfunc families whose naming would be ambiguous to libbpf, and includes selftests plus documentation covering how to change a kfunc prototype going forward.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Avoid per-CPU private stack in preemptible tracing progs",
+      "author": "Mike Bazov",
+      "url": "https://lore.kernel.org/bpf/20261117-bpf-preempt-v2-r2-v3-1-586376ec3672@sentinelone.com/",
+      "summary": "This four-patch series (v3) addresses a correctness hazard for preemptible BPF tracing programs that share a per-CPU private stack: if a higher-priority task preempts and runs the same program, the two runs can corrupt each other's stack. The fix avoids per-CPU private stacks for such programs and introduces a new mechanism to mark programs whose executions must not overlap on a CPU, tracking recursion via bpf_ctx on a per-task basis rather than per-CPU. Selftests are included to verify the new preemption recursion detection.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Check variable-offset accesses against special fields",
+      "author": "Shihuang Liu",
+      "url": "https://lore.kernel.org/bpf/20261118162108.178069-1-shlomojune6@gmail.com/",
+      "summary": "The BPF verifier previously only checked fixed-offset pointer arithmetic against special struct fields (such as spin locks and timers); a variable-offset access could slip past those guards. This v4 patch extends the verifier to apply the same special-field checks when the access offset is not a compile-time constant, closing a potential safety gap. The change is targeted at the range of offsets the verifier tracks for variable-offset accesses.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Zero-extend unsigned 32-bit enum values in CO-RE relocations",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261118161053.1768878-1-yonghong.song@linux.dev/",
+      "summary": "CO-RE enum value relocations were sign-extending 32-bit enum values into 64-bit storage, which produces incorrect results for unsigned enums with the high bit set. This two-patch fix changes libbpf to zero-extend such values instead, matching the intended unsigned semantics. A selftest is added to exercise CO-RE relocations on unsigned 32-bit enum values and confirm the corrected behavior.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Reject offloaded maps as map-in-map inner maps",
+      "author": "Shihuang Liu",
+      "url": "https://lore.kernel.org/bpf/20261118161632.177820-1-shlomojune6@gmail.com/",
+      "summary": "This v2 two-patch series tightens map-in-map validation by rejecting offloaded maps (e.g. hardware-offloaded maps) when used as inner maps, since the combination is unsupported and can lead to unpredictable behavior. The second patch also rejects maps that lack iter_seq_info from being attached via bpf_iter_attach_map, preventing a class of misconfiguration that would otherwise fail silently at runtime.",
+      "related_links": []
+    },
+    {
+      "title": "rqspinlock: Keep claiming the lock while the queue head is still the tail",
+      "author": "Shashank Mohan Jain",
+      "url": "https://lore.kernel.org/bpf/20261118104758.98620-1-jain.sm@gmail.com/",
+      "summary": "This v2 patch fixes a liveness issue in the rqspinlock implementation where the lock holder could prematurely stop its claim loop when the queue head and tail happen to coincide during contention. The corrected logic keeps the owner actively claiming the lock in this edge case, avoiding a window where no CPU considers itself the rightful holder and the lock appears to stall.",
+      "related_links": []
+    }
+  ]
+}
