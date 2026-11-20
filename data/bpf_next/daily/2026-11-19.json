@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-11-20T00:00:00Z",
+  "period_start": "2026-11-18",
+  "period_end": "2026-11-19",
+  "patch_count": 36,
+  "thread_count": 14,
+  "top_contributors": ["Nikolay Aleksandrov", "Alexei Starovoitov", "Yun Lu"],
+  "key_topics": ["tc", "sk_assign", "trampolines", "tracing", "maps", "co-re", "btf", "arm64"],
+  "overview": "November 18-19 brought a high-impact day headlined by Nikolay Aleksandrov's eight-patch series extending bpf_sk_assign to tc egress, a capability previously limited to ingress. Alexei Starovoitov contributed a trampoline overhaul that sizes the JIT image before emitting it and enforces correct return-value widths for fmod_ret programs. Yun Lu landed a v4 fix for a use-after-free in async BPF callbacks triggered by map deletion, and Andrii Nakryiko fixed a long-standing duplicate-frame bug in arm64 BPF stack traces.",
+  "patches": [
+    {
+      "title": "bpf: add bpf_sk_assign support on egress",
+      "author": "Nikolay Aleksandrov",
+      "url": "https://lore.kernel.org/bpf/20261119142231.2612515-2-razor@blackwall.org/",
+      "summary": "bpf_sk_assign previously worked only on the tc ingress path; this eight-patch series enables it on egress as well by handling refcounted and SOCK_RCU_FREE socket lifetimes correctly when packets travel outbound. The core change tracks socket references owned by prefetched assignments and orphans the prefetched sk on skb_do_redirect() to prevent dangling references. Selftests cover egress assignment with reuseport, netkit proxy scenarios, and lifetime correctness across queue and drop paths.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Trampolines: the size of the image, the type of the return value",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261119012909.3657417-2-alexei.starovoitov@gmail.com/",
+      "summary": "This five-patch series from the BPF maintainer makes two improvements to the BPF trampoline JIT. First, the x86 JIT is taught to count trampoline size without emitting code, enabling accurate image allocation before the first emission pass. Second, the x86 and arm64 JITs are updated to fit the program's return value to its declared return type, fixing cases where fmod_ret programs could return values wider than the kernel expected. BPF_MAX_TRAMP_LINKS is removed as a now-unnecessary constant.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix async callback use-after-free on map deletion",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261119033051.196177-2-luyun_611@163.com/",
+      "summary": "When a BPF map value holding an async callback (e.g., a workqueue or timer) is deleted while a callback is in flight, the callback can fire after the value has been freed, resulting in a use-after-free. This v4 six-patch fix marks task work as FREED before detaching it, checks callback membership and user references before scheduling, and invalidates async callbacks before detaching them. Selftests verify that scheduling on a deleted value and callback setup after deletion are both handled safely.",
+      "related_links": []
+    },
+    {
+      "title": "Fix duplicate caller frame in arm64 stack traces",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20261119000112.2377949-2-andrii@kernel.org/",
+      "summary": "On arm64, perf's caller-regs callchain mode was reporting the innermost frame twice because the saved PC and the LR both pointed at the caller. This v2 series fixes the arm64 perf code to skip the duplicate and adds BPF selftests that run stacktrace_ips tests for raw_tp, tracepoint, and fentry to catch regressions. The fix affects all BPF programs that capture call stacks on arm64 hardware.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Use an on-stack pt_regs in the raw tracepoint helpers",
+      "author": "Mike Bazov",
+      "url": "https://lore.kernel.org/bpf/20261119-bpf-raw-tp-regs-preempt-v2-1-e1e1b90857d6@gmail.com/",
+      "summary": "Raw tracepoint BPF helpers previously accessed a per-CPU pt_regs that could be invalidated if the program was preempted and re-entered. This v2 patch switches to an on-stack pt_regs copy populated from the tracepoint arguments, eliminating the shared-state hazard for preemptible raw tracepoint programs and aligning with the broader effort to make BPF tracing programs safe under preemption.",
+      "related_links": []
+    },
+    {
+      "title": "resolve_btfids: Match the arm64 NOP opcode for LLVM 24 in text_mc",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261118194030.4103149-1-almagui@kernel.org/",
+      "summary": "LLVM 24 changed the encoding of the NOP instruction it emits on arm64, breaking the BTF ID resolution tool's text_mc NOP matching and causing build failures. This patch updates resolve_btfids to also recognize the new LLVM 24 NOP opcode, restoring compatibility with toolchains built on LLVM 24 without breaking older encodings.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix CO-RE relocations of unsigned 32-bit enum values",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261119051448.1902442-1-yonghong.song@linux.dev/",
+      "summary": "This v2 four-patch series expands the CO-RE enum relocation fix from the previous day. In addition to zero-extending unsigned 32-bit enum values, it adds handling for sign-extended 32-bit values that libbpf may encounter from older kernels, and fixes a GCC-specific issue where the selftest needed to treat unsigned enum values as unsigned int to compile correctly. The combined fix ensures CO-RE portability for programs using 32-bit enums across a wide range of kernels and compilers.",
+      "related_links": []
+    }
+  ]
+}
