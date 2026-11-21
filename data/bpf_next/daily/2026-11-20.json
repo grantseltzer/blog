@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-11-21T00:00:00Z",
+  "period_start": "2026-11-19",
+  "period_end": "2026-11-20",
+  "patch_count": 91,
+  "thread_count": 17,
+  "top_contributors": ["Alexei Starovoitov", "Yonghong Song", "Nikolay Aleksandrov", "Yun Lu", "Mike Bazov"],
+  "key_topics": ["verifier", "libbpf", "co-re", "tc", "trampoline", "lsm", "ringbuf", "arm32"],
+  "overview": "A landmark day for the BPF verifier: Alexei Starovoitov posted a sweeping 49-patch series that replaces the verifier's core analysis loop with a passes-based approach using equation-tracking in states, enabling smarter pruning, loop verification, and static function instance analysis. Alongside this, Nikolay Aleksandrov extended bpf_sk_assign to work on tc egress paths, and several libbpf CO-RE correctness fixes for unsigned 32-bit enum values landed from Yonghong Song.",
+  "patches": [
+    {
+      "title": "bpf: Look for bpf_clone_redirect() once in check_recursion()",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261120074430.2704488-2-alexei.starovoitov@gmail.com/",
+      "summary": "This is patch 1 of 49 in a major overhaul of the BPF verifier titled 'Verify in passes, with equations in the state'. The series replaces the existing single-pass verification model with a multi-pass approach where each pass can leave instructions 'unproven', and subsequent passes resolve them using an equation system that tracks linear relationships between registers. The rewrite also introduces per-static-function instance verification, smarter loop handling via trip counts derived from trip indices, and a new join-and-prune algorithm based on join keys. The final patch rewrites verifier.rst documentation to match the new model, and extensive selftests cover the new behaviors including equations, barriers, far pointers, and loop verification.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, x86: Count the size of a trampoline, do not emit it",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261119012909.3657417-2-alexei.starovoitov@gmail.com/",
+      "summary": "Patch 1 of 5 in a series improving BPF trampolines. This patch changes the x86 JIT to count trampoline size in a dry-run pass before emitting, allowing accurate sizing without over-allocation. A follow-on patch removes the BPF_MAX_TRAMP_LINKS limit by computing the actual trampoline image size, and patch 4 makes both x86 and arm64 properly truncate or sign-extend return values to match the declared return type of an fmod_ret or fexit program. The series fixes subtle ABI issues where callee return values could be wider than the kernel expected.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Orphan prefetched sk on skb_do_redirect()",
+      "author": "Nikolay Aleksandrov",
+      "url": "https://lore.kernel.org/bpf/20261119142231.2612515-2-razor@blackwall.org/",
+      "summary": "Patch 1 of 8 in a series adding bpf_sk_assign support on egress. Previously bpf_sk_assign only worked on ingress tc hooks; this series extends it to egress by properly tracking socket reference ownership through skb redirect and queue paths. The series adds SOCK_RCU_FREE socket support, a new reference-tracking mechanism for prefetched socket assignments in the networking stack, and comprehensive selftests covering reuseport, netkit proxy assignments, and socket lifetime across drops and queue transitions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Mark task work FREED before detaching it",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261119033051.196177-2-luyun_611@163.com/",
+      "summary": "Patch 1 of 6 (v4) fixing a use-after-free bug in BPF async callbacks when the underlying map value is deleted. The fix ensures task work entries are marked FREED before being detached from their list, preventing a racing async callback from accessing a freed value. Companion patches add membership checks before scheduling async callbacks, invalidate callbacks before detaching them, and add verifier-level checks for callback membership and user reference counts. Selftests cover task work scheduling on deleted values and wq callback setup after deletion.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix CO-RE relocations of unsigned 32-bit enum values",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261120165545.2074537-1-yonghong.song@linux.dev/",
+      "summary": "Patch 1 of 3 (v4) fixing a correctness bug in libbpf's CO-RE relocation handling of unsigned 32-bit enum values. The issue is that BTF represents enum values as 64-bit signed integers internally, but unsigned 32-bit enum values can appear sign-extended with the high bits set. This patch ensures libbpf zero-extends such values when performing CO-RE relocations so that the relocation result is correctly treated as unsigned. Companion patches add selftests for both unsigned 32-bit and signed enum relocations without the kflag.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix ring buffers for 32-bit userspace on 64-bit kernels",
+      "author": "Samuel Wu",
+      "url": "https://lore.kernel.org/bpf/20261120013642.1093852-2-wusamuel@google.com/",
+      "summary": "Fixes a bug in libbpf's ring buffer consumer page mapping for 32-bit userspace processes running on 64-bit kernels. The ring buffer consumer page uses a 64-bit counter internally, but 32-bit userspace mmap would only map half the page, causing incorrect reads of the consumer position. The fix adjusts the mmap length calculation to account for pointer size differences between kernel and userspace, ensuring 32-bit applications can correctly consume ring buffer events on 64-bit systems.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Use an on-stack pt_regs in the raw tracepoint helpers",
+      "author": "Mike Bazov",
+      "url": "https://lore.kernel.org/bpf/20261120-bpf-raw-tp-regs-preempt-v3-1-ec109009a5d2@gmail.com/",
+      "summary": "Patch 1 of 3 (v3) addressing a preemption nesting issue in BPF raw tracepoint helpers. The series first removes a spurious WARN when bpf_perf_event_output() nests too deeply (replacing it with a graceful error return), then limits nesting of mmap_read_trylock() calls in BPF helpers to prevent excessive lock nesting under preemption. The final patch avoids allocating pt_regs from a per-CPU slot in raw tracepoint helpers, using an on-stack allocation instead to remove the nesting constraint entirely.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm32: build constants inline instead of using a literal pool",
+      "author": "Ramin Moussavi",
+      "url": "https://lore.kernel.org/bpf/20261120140147.166934-1-ramin.moussavi@yacoub.de/",
+      "summary": "Improves the ARM 32-bit BPF JIT by emitting immediate constants inline using MOVW/MOVT instruction pairs rather than loading them from a literal pool at the end of the JIT image. This eliminates the need for a literal pool pass and simplifies the code generation path. Building constants inline also avoids potential instruction cache coherency issues that can arise when the literal pool and instructions share the same cache line on some ARM cores.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, lsm: Make bpf_lsm_get_retval_range() return void",
+      "author": "Jose Fernandez (Anthropic)",
+      "url": "https://lore.kernel.org/bpf/20261120-jf-bpf-lsm-retval-range-v1-1-d712e4090907@linux.dev/",
+      "summary": "Cleans up the bpf_lsm_get_retval_range() kfunc by changing its return type from int to void. The function sets output parameters via pointers and has no meaningful return value; returning int was misleading and could confuse callers into checking a return code that carries no information. This is a pure API cleanup with no behavioral change, and callers are updated to drop the unused return value.",
+      "related_links": []
+    },
+    {
+      "title": "arm64: perf: Don't report the caller twice in caller-regs callchains",
+      "author": "Andrii Nakryiko",
+      "url": "https://lore.kernel.org/bpf/20261119000112.2377949-2-andrii@kernel.org/",
+      "summary": "Patch 1 of 3 (v2) fixing duplicate caller frames in arm64 BPF stack traces captured via raw tracepoints, tracepoints, and fentry hooks. When perf captures a callchain using caller register state, the arm64 unwinder was including the frame that set up the registers twice — once from the register snapshot and once from the actual frame walk. The fix skips the first frame when in caller-regs mode. Companion patches add stacktrace_ips selftests for tracepoints and enable the full test suite on arm64.",
+      "related_links": []
+    }
+  ]
+}
