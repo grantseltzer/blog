@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-11-22T00:00:00Z",
+  "period_start": "2026-11-20",
+  "period_end": "2026-11-21",
+  "patch_count": 100,
+  "thread_count": 9,
+  "top_contributors": ["Alexei Starovoitov", "Tamir Duberstein", "Ihor Solodrai", "Yonghong Song"],
+  "key_topics": ["verifier", "kfuncs", "ringbuf", "btf", "co-re", "libbpf", "arm32", "tracepoint"],
+  "overview": "The two-day period was dominated by Alexei Starovoitov's landmark 49-patch series overhauling the BPF verifier to use a multi-pass approach with equation-based state tracking, a fundamental architectural change that improves precision and scalability of program verification. Additional highlights include Ihor Solodrai's support for kernel-side kfunc variants in libbpf, Tamir Duberstein's ring buffer correctness fixes and new caller-owned iterator API, and Yonghong Song's fifth-revision fix for CO-RE relocations of unsigned 32-bit enum values.",
+  "patches": [
+    {
+      "title": "bpf: Verify in passes",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261120204959.614908-38-alexei.starovoitov@gmail.com/",
+      "summary": "The core patch of a 49-patch series rewriting the BPF verifier to verify programs in multiple passes rather than a single walk. The new approach introduces equation-based state tracking where the verifier maintains symbolic relationships between register values across basic blocks, allowing more precise reasoning about pointer arithmetic and loop bounds. This replaces scalar evolution analysis with a more principled equation system that tracks linear relationships between registers, enabling the verifier to prove safety properties that the old approach would conservatively reject. The series also overhauls how the verifier handles joins, loops, and function instances, verifying static functions once per call-site instance for better precision.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Separate interfaces shared with in-tree tools",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261121003403.2928928-2-ihor.solodrai@linux.dev/",
+      "summary": "First patch of a 6-patch v2 series adding support for kernel-side kfunc variants in libbpf. The series enables a kfunc to have multiple prototype variants (e.g., ___v2 suffixed names) that libbpf can resolve to the correct version based on BTF prototype matching, allowing BPF programs to work across kernels with different kfunc signatures. The resolve_btfids tool is updated to reject ambiguous kfunc variants, and sched_ext's compat.bpf.h is updated to prefer the versioned names. Documentation is added describing how to safely change a kfunc's prototype while maintaining backward compatibility.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: user_ringbuf: Handle position wrap",
+      "author": "Tamir Duberstein",
+      "url": "https://lore.kernel.org/bpf/20261120-bpf-ringbuf-fixes-v3-1-ff7ca15d6c37@kernel.org/",
+      "summary": "First patch of an 8-patch v3 series fixing correctness issues in the BPF ring buffer implementation and adding a new caller-owned iterator API to libbpf. The opening patch fixes a position wrap bug in user_ringbuf where the consumer position could overflow incorrectly. Subsequent patches switch libbpf to use compiler atomics for ring buffer operations, fix missed wakeup races, simplify the iterator implementation, and introduce a new caller-owned ring buffer iterator that gives consumers more control over lifetime. The series includes comprehensive selftests for both the iterator semantics and callback behavior.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix CO-RE relocations of unsigned 32-bit enum values",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261120215002.868773-1-yonghong.song@linux.dev/",
+      "summary": "Fifth revision of a 3-patch series fixing a libbpf bug where CO-RE relocations of unsigned 32-bit enum values were handled incorrectly. The fix ensures that when performing compile-once-run-everywhere enum value relocations, unsigned 32-bit enum values are not incorrectly sign-extended. Companion patches add selftests for unsigned 32-bit enum values and for signed enum values without the kflag set, covering the edge cases that exposed the original bug.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Don't WARN when bpf_perf_event_output() nests too deep",
+      "author": "Mike Bazov",
+      "url": "https://lore.kernel.org/bpf/20261120-bpf-raw-tp-regs-preempt-v3-1-ec109009a5d2@gmail.com/",
+      "summary": "First patch of a 3-patch v3 series fixing unsafe use of pt_regs in BPF raw tracepoint helpers. The opening patch converts a WARN to a graceful error return when bpf_perf_event_output() nests too deep during recursive BPF execution. A second patch limits nesting of mmap_read_trylock() in BPF helpers to prevent lock ordering issues. The series culminates in switching to on-stack pt_regs allocation in the raw tracepoint helpers, eliminating a per-CPU variable that was unsafe when execution could be interrupted mid-access.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm32: build constants inline instead of using a literal pool",
+      "author": "Ramin Moussavi",
+      "url": "https://lore.kernel.org/bpf/20261120140147.166934-1-ramin.moussavi@yacoub.de/",
+      "summary": "Second revision of a patch improving the ARM 32-bit BPF JIT to emit 32-bit constants inline using MOV/MOVT instruction pairs rather than loading them from a literal pool. The literal pool approach requires the pool to reside within a limited PC-relative offset, which can cause JIT failures for larger BPF programs. Building constants inline eliminates this size constraint, can improve instruction cache behavior, and makes the JIT output more predictable in size.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Disable preemption around css_rstat_updated()",
+      "author": "Karl Mehltretter",
+      "url": "https://lore.kernel.org/bpf/20261121082843.44614-1-kmehltretter@gmail.com/",
+      "summary": "Single patch fixing a BPF selftest that calls css_rstat_updated() without disabling preemption, violating the function's calling convention. The fix wraps the call with preempt_disable/preempt_enable guards as required. Without this fix the test could trigger lockdep warnings or incorrect behavior on PREEMPT kernels where the missing preemption guard would be caught at runtime.",
+      "related_links": []
+    }
+  ]
+}
