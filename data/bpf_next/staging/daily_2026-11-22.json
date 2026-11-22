@@ -1,0 +1,467 @@
+{
+  "period": "daily",
+  "period_start": "2026-11-21",
+  "period_end": "2026-11-22",
+  "fetched_at": "2026-11-22T16:57:36Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v3,2/2] selftests/bpf: Add selftests for bpf_memmem and bpf_dynptr_memmem kfuncs",
+      "author": "Abhishek Khade",
+      "url": "https://lore.kernel.org/bpf/20261122143815.330528-3-abhishekkhade69@gmail.com/",
+      "date": "2026-11-22T14:38:15",
+      "series": [
+        {
+          "id": 1218669,
+          "url": "https://patchwork.kernel.org/api/series/1218669/",
+          "web_url": "https://patchwork.kernel.org/series/1218669/",
+          "date": "2026-11-22T14:38:13",
+          "name": "bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1218669/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/2] bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+      "author": "Abhishek Khade",
+      "url": "https://lore.kernel.org/bpf/20261122143815.330528-2-abhishekkhade69@gmail.com/",
+      "date": "2026-11-22T14:38:14",
+      "series": [
+        {
+          "id": 1218669,
+          "url": "https://patchwork.kernel.org/api/series/1218669/",
+          "web_url": "https://patchwork.kernel.org/series/1218669/",
+          "date": "2026-11-22T14:38:13",
+          "name": "bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1218669/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v2,2/2] selftests/bpf: Add selftests for bpf_memmem and bpf_dynptr_memmem kfuncs",
+      "author": "Abhishek Khade",
+      "url": "https://lore.kernel.org/bpf/20261122123427.287521-3-abhishekkhade69@gmail.com/",
+      "date": "2026-11-22T12:34:27",
+      "series": [
+        {
+          "id": 1218612,
+          "url": "https://patchwork.kernel.org/api/series/1218612/",
+          "web_url": "https://patchwork.kernel.org/series/1218612/",
+          "date": "2026-11-22T12:34:25",
+          "name": "bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1218612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v2,1/2] bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+      "author": "Abhishek Khade",
+      "url": "https://lore.kernel.org/bpf/20261122123427.287521-2-abhishekkhade69@gmail.com/",
+      "date": "2026-11-22T12:34:26",
+      "series": [
+        {
+          "id": 1218612,
+          "url": "https://patchwork.kernel.org/api/series/1218612/",
+          "web_url": "https://patchwork.kernel.org/series/1218612/",
+          "date": "2026-11-22T12:34:25",
+          "name": "bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1218612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,2/2] selftests/bpf: Add selftests for bpf_memmem and bpf_dynptr_memmem kfuncs",
+      "author": "Abhishek Khade",
+      "url": "https://lore.kernel.org/bpf/20261122103838.244974-3-abhishekkhade69@gmail.com/",
+      "date": "2026-11-22T10:38:38",
+      "series": [
+        {
+          "id": 1218574,
+          "url": "https://patchwork.kernel.org/api/series/1218574/",
+          "web_url": "https://patchwork.kernel.org/series/1218574/",
+          "date": "2026-11-22T10:38:36",
+          "name": "bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1218574/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,1/2] bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+      "author": "Abhishek Khade",
+      "url": "https://lore.kernel.org/bpf/20261122103838.244974-2-abhishekkhade69@gmail.com/",
+      "date": "2026-11-22T10:38:37",
+      "series": [
+        {
+          "id": 1218574,
+          "url": "https://patchwork.kernel.org/api/series/1218574/",
+          "web_url": "https://patchwork.kernel.org/series/1218574/",
+          "date": "2026-11-22T10:38:36",
+          "name": "bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1218574/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,7/7] bpf: Replay an offloaded program with the precision of the good pass",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121221344.3958866-8-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-21T22:13:44",
+      "series": [
+        {
+          "id": 1218323,
+          "url": "https://patchwork.kernel.org/api/series/1218323/",
+          "web_url": "https://patchwork.kernel.org/series/1218323/",
+          "date": "2026-11-21T22:13:37",
+          "name": "bpf: Fixes for the verifier passes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1218323/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,6/7] bpf: Return -ENOMEM if the next partition has no memory",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121221344.3958866-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-21T22:13:43",
+      "series": [
+        {
+          "id": 1218323,
+          "url": "https://patchwork.kernel.org/api/series/1218323/",
+          "web_url": "https://patchwork.kernel.org/series/1218323/",
+          "date": "2026-11-21T22:13:37",
+          "name": "bpf: Fixes for the verifier passes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1218323/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/7] bpf: Drop a path of a path-sensitive run that is out of frames",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121221344.3958866-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-21T22:13:42",
+      "series": [
+        {
+          "id": 1218323,
+          "url": "https://patchwork.kernel.org/api/series/1218323/",
+          "web_url": "https://patchwork.kernel.org/series/1218323/",
+          "date": "2026-11-21T22:13:37",
+          "name": "bpf: Fixes for the verifier passes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1218323/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/7] bpf: Do not lose the failing path if only an equation differs",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121221344.3958866-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-21T22:13:41",
+      "series": [
+        {
+          "id": 1218323,
+          "url": "https://patchwork.kernel.org/api/series/1218323/",
+          "web_url": "https://patchwork.kernel.org/series/1218323/",
+          "date": "2026-11-21T22:13:37",
+          "name": "bpf: Fixes for the verifier passes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1218323/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/7] bpf: Mark a skip of trips as a guess if a 32-bit value wraps",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121221344.3958866-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-21T22:13:40",
+      "series": [
+        {
+          "id": 1218323,
+          "url": "https://patchwork.kernel.org/api/series/1218323/",
+          "web_url": "https://patchwork.kernel.org/series/1218323/",
+          "date": "2026-11-21T22:13:37",
+          "name": "bpf: Fixes for the verifier passes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1218323/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/7] bpf: Do not skip trips if the bound moves",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121221344.3958866-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-21T22:13:39",
+      "series": [
+        {
+          "id": 1218323,
+          "url": "https://patchwork.kernel.org/api/series/1218323/",
+          "web_url": "https://patchwork.kernel.org/series/1218323/",
+          "date": "2026-11-21T22:13:37",
+          "name": "bpf: Fixes for the verifier passes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1218323/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/7] bpf: Fix the build without CONFIG_NET",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121221344.3958866-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-21T22:13:38",
+      "series": [
+        {
+          "id": 1218323,
+          "url": "https://patchwork.kernel.org/api/series/1218323/",
+          "web_url": "https://patchwork.kernel.org/series/1218323/",
+          "date": "2026-11-21T22:13:37",
+          "name": "bpf: Fixes for the verifier passes",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1218323/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,7/7] bpf: Replay an offloaded program with the precision of the good pass",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121191343.3670609-8-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-21T19:13:42",
+      "series": [
+        {
+          "id": 1218260,
+          "url": "https://patchwork.kernel.org/api/series/1218260/",
+          "web_url": "https://patchwork.kernel.org/series/1218260/",
+          "date": "2026-11-21T19:13:35",
+          "name": "bpf: Fixes for the verifier passes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1218260/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,6/7] bpf: Return -ENOMEM if the next partition has no memory",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121191343.3670609-7-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-21T19:13:41",
+      "series": [
+        {
+          "id": 1218260,
+          "url": "https://patchwork.kernel.org/api/series/1218260/",
+          "web_url": "https://patchwork.kernel.org/series/1218260/",
+          "date": "2026-11-21T19:13:35",
+          "name": "bpf: Fixes for the verifier passes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1218260/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,5/7] bpf: Drop a path of a path-sensitive run that is out of frames",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121191343.3670609-6-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-21T19:13:40",
+      "series": [
+        {
+          "id": 1218260,
+          "url": "https://patchwork.kernel.org/api/series/1218260/",
+          "web_url": "https://patchwork.kernel.org/series/1218260/",
+          "date": "2026-11-21T19:13:35",
+          "name": "bpf: Fixes for the verifier passes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1218260/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,4/7] bpf: Do not lose the failing path if only an equation differs",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121191343.3670609-5-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-21T19:13:39",
+      "series": [
+        {
+          "id": 1218260,
+          "url": "https://patchwork.kernel.org/api/series/1218260/",
+          "web_url": "https://patchwork.kernel.org/series/1218260/",
+          "date": "2026-11-21T19:13:35",
+          "name": "bpf: Fixes for the verifier passes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1218260/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,3/7] bpf: Mark a skip of trips as a guess if a 32-bit value wraps",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121191343.3670609-4-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-21T19:13:38",
+      "series": [
+        {
+          "id": 1218260,
+          "url": "https://patchwork.kernel.org/api/series/1218260/",
+          "web_url": "https://patchwork.kernel.org/series/1218260/",
+          "date": "2026-11-21T19:13:35",
+          "name": "bpf: Fixes for the verifier passes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1218260/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,2/7] bpf: Mark a skip of trips as a guess if the bound moves",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121191343.3670609-3-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-21T19:13:37",
+      "series": [
+        {
+          "id": 1218260,
+          "url": "https://patchwork.kernel.org/api/series/1218260/",
+          "web_url": "https://patchwork.kernel.org/series/1218260/",
+          "date": "2026-11-21T19:13:35",
+          "name": "bpf: Fixes for the verifier passes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1218260/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,1/7] bpf: Fix the build without CONFIG_NET",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121191343.3670609-2-alexei.starovoitov@gmail.com/",
+      "date": "2026-11-21T19:13:36",
+      "series": [
+        {
+          "id": 1218260,
+          "url": "https://patchwork.kernel.org/api/series/1218260/",
+          "web_url": "https://patchwork.kernel.org/series/1218260/",
+          "date": "2026-11-21T19:13:35",
+          "name": "bpf: Fixes for the verifier passes",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1218260/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next] selftests/bpf: Disable preemption around css_rstat_updated()",
+      "author": "Karl Mehltretter",
+      "url": "https://lore.kernel.org/bpf/20261121082843.44614-1-kmehltretter@gmail.com/",
+      "date": "2026-11-21T08:28:43",
+      "series": [
+        {
+          "id": 1217985,
+          "url": "https://patchwork.kernel.org/api/series/1217985/",
+          "web_url": "https://patchwork.kernel.org/series/1217985/",
+          "date": "2026-11-21T08:28:43",
+          "name": "[bpf-next] selftests/bpf: Disable preemption around css_rstat_updated()",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1217985/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,6/6] docs/bpf: Describe how to change a kfunc's prototype",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261121003403.2928928-7-ihor.solodrai@linux.dev/",
+      "date": "2026-11-21T00:34:03",
+      "series": [
+        {
+          "id": 1217873,
+          "url": "https://patchwork.kernel.org/api/series/1217873/",
+          "web_url": "https://patchwork.kernel.org/series/1217873/",
+          "date": "2026-11-21T00:33:57",
+          "name": "libbpf: Support kernel-side kfunc variants",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1217873/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,5/6] resolve_btfids: Reject ambiguous kfunc variants",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261121003403.2928928-6-ihor.solodrai@linux.dev/",
+      "date": "2026-11-21T00:34:02",
+      "series": [
+        {
+          "id": 1217873,
+          "url": "https://patchwork.kernel.org/api/series/1217873/",
+          "web_url": "https://patchwork.kernel.org/series/1217873/",
+          "date": "2026-11-21T00:33:57",
+          "name": "libbpf: Support kernel-side kfunc variants",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1217873/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,4/6] selftests/bpf: Test kfunc variant selection by prototype",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261121003403.2928928-5-ihor.solodrai@linux.dev/",
+      "date": "2026-11-21T00:34:01",
+      "series": [
+        {
+          "id": 1217873,
+          "url": "https://patchwork.kernel.org/api/series/1217873/",
+          "web_url": "https://patchwork.kernel.org/series/1217873/",
+          "date": "2026-11-21T00:33:57",
+          "name": "libbpf: Support kernel-side kfunc variants",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1217873/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,3/6] libbpf: Resolve kfunc variants by prototype",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261121003403.2928928-4-ihor.solodrai@linux.dev/",
+      "date": "2026-11-21T00:34:00",
+      "series": [
+        {
+          "id": 1217873,
+          "url": "https://patchwork.kernel.org/api/series/1217873/",
+          "web_url": "https://patchwork.kernel.org/series/1217873/",
+          "date": "2026-11-21T00:33:57",
+          "name": "libbpf: Support kernel-side kfunc variants",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1217873/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,2/6] sched_ext: Prefer ___v2 kfunc names in compat.bpf.h",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261121003403.2928928-3-ihor.solodrai@linux.dev/",
+      "date": "2026-11-21T00:33:59",
+      "series": [
+        {
+          "id": 1217873,
+          "url": "https://patchwork.kernel.org/api/series/1217873/",
+          "web_url": "https://patchwork.kernel.org/series/1217873/",
+          "date": "2026-11-21T00:33:57",
+          "name": "libbpf: Support kernel-side kfunc variants",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1217873/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/6] libbpf: Separate interfaces shared with in-tree tools",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261121003403.2928928-2-ihor.solodrai@linux.dev/",
+      "date": "2026-11-21T00:33:58",
+      "series": [
+        {
+          "id": 1217873,
+          "url": "https://patchwork.kernel.org/api/series/1217873/",
+          "web_url": "https://patchwork.kernel.org/series/1217873/",
+          "date": "2026-11-21T00:33:57",
+          "name": "libbpf: Support kernel-side kfunc variants",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1217873/mbox/"
+        }
+      ]
+    }
+  ]
+}
