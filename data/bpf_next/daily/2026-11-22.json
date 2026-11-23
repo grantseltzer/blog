@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-11-23T00:00:00Z",
+  "period_start": "2026-11-21",
+  "period_end": "2026-11-22",
+  "patch_count": 27,
+  "thread_count": 7,
+  "top_contributors": ["Alexei Starovoitov", "Ihor Solodrai", "Abhishek Khade", "Karl Mehltretter"],
+  "key_topics": ["verifier", "kfuncs", "dynptr", "libbpf", "selftests"],
+  "overview": "Activity on 2026-11-22 centered on follow-up fixes to the new BPF verifier passes introduced the previous day, with Alexei Starovoitov posting both v1 and a rapid v2 of a 7-patch series addressing correctness issues in the new pass-based verifier. Abhishek Khade iterated quickly through three versions (RFC v1, RFC v2, v3) of a series adding bpf_memmem and bpf_dynptr_memmem kfuncs for in-kernel substring search from BPF programs.",
+  "patches": [
+    {
+      "title": "bpf: Replay an offloaded program with the precision of the good pass",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121221344.3958866-8-alexei.starovoitov@gmail.com/",
+      "summary": "Final patch in a 7-patch v2 series fixing correctness bugs found in the new multi-pass BPF verifier. When an offloaded program needs to be replayed for precision tracking, this patch ensures the replay uses the register state from the successful verification pass rather than a potentially less precise state. Other patches in the series fix a build error without CONFIG_NET, correct trip-skip guessing when a 32-bit loop bound wraps, avoid skipping trips when the bound moves, and plug a memory leak in the partition allocator.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+      "author": "Abhishek Khade",
+      "url": "https://lore.kernel.org/bpf/20261122143815.330528-2-abhishekkhade69@gmail.com/",
+      "summary": "First patch of a 2-patch v3 series adding two new BPF kfuncs for substring search: bpf_memmem() for searching raw memory slices and bpf_dynptr_memmem() for searching within a BPF dynptr. These kfuncs expose functionality equivalent to the C library memmem() to BPF programs, which is useful for packet inspection, log parsing, and other pattern-matching use cases. The series iterates rapidly from RFC to v3 within the same day, incorporating reviewer feedback.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Separate interfaces shared with in-tree tools",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261121003403.2928928-2-ihor.solodrai@linux.dev/",
+      "summary": "Opening patch of the v2 series adding kernel-side kfunc variant support to libbpf, now appearing in the 2026-11-22 period window. The series enables prototype-based kfunc variant resolution so BPF programs can automatically select the correct versioned kfunc (e.g. ___v2 suffixed) depending on the running kernel. It also updates resolve_btfids to reject ambiguous variant registrations and updates sched_ext compatibility headers.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Do not skip trips if the bound moves",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121221344.3958866-3-alexei.starovoitov@gmail.com/",
+      "summary": "One of the targeted fixes for the new pass-based verifier loop handling. When the verifier attempts to skip loop iterations (peeling) for performance, it must not do so if the loop bound is dynamic and can change between iterations. This patch adds a guard preventing trip-count skipping in that case, avoiding unsound verification results for loops whose bounds are computed at runtime.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Disable preemption around css_rstat_updated()",
+      "author": "Karl Mehltretter",
+      "url": "https://lore.kernel.org/bpf/20261121082843.44614-1-kmehltretter@gmail.com/",
+      "summary": "Single-patch fix for a BPF selftest that calls css_rstat_updated() without the required preemption-disabled context. The css subsystem's rstat update path requires preemption to be disabled on certain kernel configurations, and this patch adds the necessary preempt_disable/preempt_enable wrapper in the test to avoid spurious warnings or failures on affected kernels.",
+      "related_links": []
+    }
+  ]
+}
