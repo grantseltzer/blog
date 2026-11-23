@@ -1,0 +1,620 @@
+{
+  "period": "daily",
+  "period_start": "2026-11-22",
+  "period_end": "2026-11-23",
+  "fetched_at": "2026-11-23T20:58:39Z",
+  "patches": [
+    {
+      "title": "[bpf-next,v2,2/2] Documentation/bpf: Fix stale selftests file references",
+      "author": "Ahmad Wicaksono",
+      "url": "https://lore.kernel.org/bpf/20261123155200.16676-3-supersonix03@gmail.com/",
+      "date": "2026-11-23T15:52:00",
+      "series": [
+        {
+          "id": 1219808,
+          "url": "https://patchwork.kernel.org/api/series/1219808/",
+          "web_url": "https://patchwork.kernel.org/series/1219808/",
+          "date": "2026-11-23T15:51:58",
+          "name": "Documentation/bpf: Fix stale references in map docs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1219808/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,1/2] Documentation/bpf: Update sockmap docs for mutation restrictions",
+      "author": "Ahmad Wicaksono",
+      "url": "https://lore.kernel.org/bpf/20261123155200.16676-2-supersonix03@gmail.com/",
+      "date": "2026-11-23T15:51:59",
+      "series": [
+        {
+          "id": 1219808,
+          "url": "https://patchwork.kernel.org/api/series/1219808/",
+          "web_url": "https://patchwork.kernel.org/series/1219808/",
+          "date": "2026-11-23T15:51:58",
+          "name": "Documentation/bpf: Fix stale references in map docs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1219808/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,9/9] selftests/bpf: Verify cgroup prog link_create logs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261123152743.19629-10-leon.hwang@linux.dev/",
+      "date": "2026-11-23T15:27:43",
+      "series": [
+        {
+          "id": 1219781,
+          "url": "https://patchwork.kernel.org/api/series/1219781/",
+          "web_url": "https://patchwork.kernel.org/series/1219781/",
+          "date": "2026-11-23T15:27:34",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1219781/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,8/9] selftests/bpf: Verify iter link_create logs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261123152743.19629-9-leon.hwang@linux.dev/",
+      "date": "2026-11-23T15:27:42",
+      "series": [
+        {
+          "id": 1219781,
+          "url": "https://patchwork.kernel.org/api/series/1219781/",
+          "web_url": "https://patchwork.kernel.org/series/1219781/",
+          "date": "2026-11-23T15:27:34",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1219781/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,7/9] selftests/bpf: Test tracing_multi link_create logs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261123152743.19629-8-leon.hwang@linux.dev/",
+      "date": "2026-11-23T15:27:41",
+      "series": [
+        {
+          "id": 1219781,
+          "url": "https://patchwork.kernel.org/api/series/1219781/",
+          "web_url": "https://patchwork.kernel.org/series/1219781/",
+          "date": "2026-11-23T15:27:34",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1219781/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,6/9] selftests/bpf: Test tracing link_create logs",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261123152743.19629-7-leon.hwang@linux.dev/",
+      "date": "2026-11-23T15:27:40",
+      "series": [
+        {
+          "id": 1219781,
+          "url": "https://patchwork.kernel.org/api/series/1219781/",
+          "web_url": "https://patchwork.kernel.org/series/1219781/",
+          "date": "2026-11-23T15:27:34",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1219781/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,5/9] libbpf: Add log_opts support for BPF_TRACE_ITER",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261123152743.19629-6-leon.hwang@linux.dev/",
+      "date": "2026-11-23T15:27:39",
+      "series": [
+        {
+          "id": 1219781,
+          "url": "https://patchwork.kernel.org/api/series/1219781/",
+          "web_url": "https://patchwork.kernel.org/series/1219781/",
+          "date": "2026-11-23T15:27:34",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1219781/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,4/9] bpf: Add log support for cgroup prog link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261123152743.19629-5-leon.hwang@linux.dev/",
+      "date": "2026-11-23T15:27:38",
+      "series": [
+        {
+          "id": 1219781,
+          "url": "https://patchwork.kernel.org/api/series/1219781/",
+          "web_url": "https://patchwork.kernel.org/series/1219781/",
+          "date": "2026-11-23T15:27:34",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1219781/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,3/9] bpf: Add log support for iter link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261123152743.19629-4-leon.hwang@linux.dev/",
+      "date": "2026-11-23T15:27:37",
+      "series": [
+        {
+          "id": 1219781,
+          "url": "https://patchwork.kernel.org/api/series/1219781/",
+          "web_url": "https://patchwork.kernel.org/series/1219781/",
+          "date": "2026-11-23T15:27:34",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1219781/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/9] bpf: Add log support for tracing_multi link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261123152743.19629-3-leon.hwang@linux.dev/",
+      "date": "2026-11-23T15:27:36",
+      "series": [
+        {
+          "id": 1219781,
+          "url": "https://patchwork.kernel.org/api/series/1219781/",
+          "web_url": "https://patchwork.kernel.org/series/1219781/",
+          "date": "2026-11-23T15:27:34",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1219781/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/9] bpf: Add log support for tracing link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261123152743.19629-2-leon.hwang@linux.dev/",
+      "date": "2026-11-23T15:27:35",
+      "series": [
+        {
+          "id": 1219781,
+          "url": "https://patchwork.kernel.org/api/series/1219781/",
+          "web_url": "https://patchwork.kernel.org/series/1219781/",
+          "date": "2026-11-23T15:27:34",
+          "name": "bpf: Add log support for tracing link_create",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1219781/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,13/13] bpf, docs: Document BPF_F_INLINE_VALUE for local storage maps",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261123-sls_f1-v2-13-76474de9b052@meta.com/",
+      "date": "2026-11-23T15:15:53",
+      "series": [
+        {
+          "id": 1219764,
+          "url": "https://patchwork.kernel.org/api/series/1219764/",
+          "web_url": "https://patchwork.kernel.org/series/1219764/",
+          "date": "2026-11-23T15:15:40",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1219764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,12/13] selftests/bpf: Test BPF_F_INLINE_VALUE local storage maps",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261123-sls_f1-v2-12-76474de9b052@meta.com/",
+      "date": "2026-11-23T15:15:52",
+      "series": [
+        {
+          "id": 1219764,
+          "url": "https://patchwork.kernel.org/api/series/1219764/",
+          "web_url": "https://patchwork.kernel.org/series/1219764/",
+          "date": "2026-11-23T15:15:40",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1219764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,11/13] libbpf: Do not retry local storage map create without BTF",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261123-sls_f1-v2-11-76474de9b052@meta.com/",
+      "date": "2026-11-23T15:15:51",
+      "series": [
+        {
+          "id": 1219764,
+          "url": "https://patchwork.kernel.org/api/series/1219764/",
+          "web_url": "https://patchwork.kernel.org/series/1219764/",
+          "date": "2026-11-23T15:15:40",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1219764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,10/13] bpf: Allow BPF_F_INLINE_VALUE for local storage maps",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261123-sls_f1-v2-10-76474de9b052@meta.com/",
+      "date": "2026-11-23T15:15:50",
+      "series": [
+        {
+          "id": 1219764,
+          "url": "https://patchwork.kernel.org/api/series/1219764/",
+          "web_url": "https://patchwork.kernel.org/series/1219764/",
+          "date": "2026-11-23T15:15:40",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1219764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,09/13] bpf: Show inline values in sk diag",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261123-sls_f1-v2-9-76474de9b052@meta.com/",
+      "date": "2026-11-23T15:15:49",
+      "series": [
+        {
+          "id": 1219764,
+          "url": "https://patchwork.kernel.org/api/series/1219764/",
+          "web_url": "https://patchwork.kernel.org/series/1219764/",
+          "date": "2026-11-23T15:15:40",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1219764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,08/13] bpf: Refuse the sk storage map iterator for BPF_F_INLINE_VALUE maps",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261123-sls_f1-v2-8-76474de9b052@meta.com/",
+      "date": "2026-11-23T15:15:48",
+      "series": [
+        {
+          "id": 1219764,
+          "url": "https://patchwork.kernel.org/api/series/1219764/",
+          "web_url": "https://patchwork.kernel.org/series/1219764/",
+          "date": "2026-11-23T15:15:40",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1219764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,07/13] bpf: Keep values of BPF_F_INLINE_VALUE maps in the storage object",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261123-sls_f1-v2-7-76474de9b052@meta.com/",
+      "date": "2026-11-23T15:15:47",
+      "series": [
+        {
+          "id": 1219764,
+          "url": "https://patchwork.kernel.org/api/series/1219764/",
+          "web_url": "https://patchwork.kernel.org/series/1219764/",
+          "date": "2026-11-23T15:15:40",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1219764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,06/13] bpf: Keep local storage objects with an inline area until owner death",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261123-sls_f1-v2-6-76474de9b052@meta.com/",
+      "date": "2026-11-23T15:15:46",
+      "series": [
+        {
+          "id": 1219764,
+          "url": "https://patchwork.kernel.org/api/series/1219764/",
+          "web_url": "https://patchwork.kernel.org/series/1219764/",
+          "date": "2026-11-23T15:15:40",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1219764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,05/13] bpf: Size new local storage objects for the inline area",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261123-sls_f1-v2-5-76474de9b052@meta.com/",
+      "date": "2026-11-23T15:15:45",
+      "series": [
+        {
+          "id": 1219764,
+          "url": "https://patchwork.kernel.org/api/series/1219764/",
+          "web_url": "https://patchwork.kernel.org/series/1219764/",
+          "date": "2026-11-23T15:15:40",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1219764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,04/13] bpf: Add an inline slot allocator to local storage caches",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261123-sls_f1-v2-4-76474de9b052@meta.com/",
+      "date": "2026-11-23T15:15:44",
+      "series": [
+        {
+          "id": 1219764,
+          "url": "https://patchwork.kernel.org/api/series/1219764/",
+          "web_url": "https://patchwork.kernel.org/series/1219764/",
+          "date": "2026-11-23T15:15:40",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1219764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,03/13] bpf: Add bpf_local_storage_delete()",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261123-sls_f1-v2-3-76474de9b052@meta.com/",
+      "date": "2026-11-23T15:15:43",
+      "series": [
+        {
+          "id": 1219764,
+          "url": "https://patchwork.kernel.org/api/series/1219764/",
+          "web_url": "https://patchwork.kernel.org/series/1219764/",
+          "date": "2026-11-23T15:15:40",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1219764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,02/13] bpf: Add obj_size to bpf_local_storage",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261123-sls_f1-v2-2-76474de9b052@meta.com/",
+      "date": "2026-11-23T15:15:42",
+      "series": [
+        {
+          "id": 1219764,
+          "url": "https://patchwork.kernel.org/api/series/1219764/",
+          "web_url": "https://patchwork.kernel.org/series/1219764/",
+          "date": "2026-11-23T15:15:40",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1219764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v2,01/13] bpf: Free unpublished local storage with kfree_nolock()",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261123-sls_f1-v2-1-76474de9b052@meta.com/",
+      "date": "2026-11-23T15:15:41",
+      "series": [
+        {
+          "id": 1219764,
+          "url": "https://patchwork.kernel.org/api/series/1219764/",
+          "web_url": "https://patchwork.kernel.org/series/1219764/",
+          "date": "2026-11-23T15:15:40",
+          "name": "bpf: Embed local storage values in the storage object",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1219764/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,2/2] selftests/bpf: strengthen bpf_kfunc_implicit_arg to verify aux injection",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20261123055708.684107-3-chenyuan_fl@163.com/",
+      "date": "2026-11-23T05:57:08",
+      "series": [
+        {
+          "id": 1219203,
+          "url": "https://patchwork.kernel.org/api/series/1219203/",
+          "web_url": "https://patchwork.kernel.org/series/1219203/",
+          "date": "2026-11-23T05:57:06",
+          "name": "bpf: Fix kfunc implicit arg injection and add selftest",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1219203/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v7,1/2] bpf: Fix kfunc implicit arg inject type detection to prevent invalid pointer deref",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20261123055708.684107-2-chenyuan_fl@163.com/",
+      "date": "2026-11-23T05:57:07",
+      "series": [
+        {
+          "id": 1219203,
+          "url": "https://patchwork.kernel.org/api/series/1219203/",
+          "web_url": "https://patchwork.kernel.org/series/1219203/",
+          "date": "2026-11-23T05:57:06",
+          "name": "bpf: Fix kfunc implicit arg injection and add selftest",
+          "version": 7,
+          "mbox": "https://patchwork.kernel.org/series/1219203/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,3/3] selftests/bpf: Enable callx related testcases for LoongArch",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20261123045008.23691-4-yangtiezhu@loongson.cn/",
+      "date": "2026-11-23T04:50:08",
+      "series": [
+        {
+          "id": 1219157,
+          "url": "https://patchwork.kernel.org/api/series/1219157/",
+          "web_url": "https://patchwork.kernel.org/series/1219157/",
+          "date": "2026-11-23T04:50:07",
+          "name": "selftests/bpf: Enable instructions array, indirect calls tests for LoongArch",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1219157/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,2/3] selftests/bpf: Allow unaligned access in callx_rodata_misaligned_read",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20261123045008.23691-3-yangtiezhu@loongson.cn/",
+      "date": "2026-11-23T04:50:07",
+      "series": [
+        {
+          "id": 1219157,
+          "url": "https://patchwork.kernel.org/api/series/1219157/",
+          "web_url": "https://patchwork.kernel.org/series/1219157/",
+          "date": "2026-11-23T04:50:07",
+          "name": "selftests/bpf: Enable instructions array, indirect calls tests for LoongArch",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1219157/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v1,1/3] selftests/bpf: Enable instruction array test for LoongArch",
+      "author": "Tiezhu Yang",
+      "url": "https://lore.kernel.org/bpf/20261123045008.23691-2-yangtiezhu@loongson.cn/",
+      "date": "2026-11-23T04:50:06",
+      "series": [
+        {
+          "id": 1219157,
+          "url": "https://patchwork.kernel.org/api/series/1219157/",
+          "web_url": "https://patchwork.kernel.org/series/1219157/",
+          "date": "2026-11-23T04:50:07",
+          "name": "selftests/bpf: Enable instructions array, indirect calls tests for LoongArch",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1219157/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3] bpf, arm32: build constants inline instead of using a literal pool",
+      "author": "Ramin Moussavi",
+      "url": "https://lore.kernel.org/bpf/20261122195600.2573516-1-ramin.moussavi@yacoub.de/",
+      "date": "2026-11-22T19:56:00",
+      "series": [
+        {
+          "id": 1218939,
+          "url": "https://patchwork.kernel.org/api/series/1218939/",
+          "web_url": "https://patchwork.kernel.org/series/1218939/",
+          "date": "2026-11-22T19:56:00",
+          "name": "[bpf-next,v3] bpf, arm32: build constants inline instead of using a literal pool",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1218939/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,2/2] selftests/bpf: Add selftests for bpf_memmem and bpf_dynptr_memmem kfuncs",
+      "author": "Abhishek Khade",
+      "url": "https://lore.kernel.org/bpf/20261122143815.330528-3-abhishekkhade69@gmail.com/",
+      "date": "2026-11-22T14:38:15",
+      "series": [
+        {
+          "id": 1218669,
+          "url": "https://patchwork.kernel.org/api/series/1218669/",
+          "web_url": "https://patchwork.kernel.org/series/1218669/",
+          "date": "2026-11-22T14:38:13",
+          "name": "bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1218669/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[bpf-next,v3,1/2] bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+      "author": "Abhishek Khade",
+      "url": "https://lore.kernel.org/bpf/20261122143815.330528-2-abhishekkhade69@gmail.com/",
+      "date": "2026-11-22T14:38:14",
+      "series": [
+        {
+          "id": 1218669,
+          "url": "https://patchwork.kernel.org/api/series/1218669/",
+          "web_url": "https://patchwork.kernel.org/series/1218669/",
+          "date": "2026-11-22T14:38:13",
+          "name": "bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+          "version": 3,
+          "mbox": "https://patchwork.kernel.org/series/1218669/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v2,2/2] selftests/bpf: Add selftests for bpf_memmem and bpf_dynptr_memmem kfuncs",
+      "author": "Abhishek Khade",
+      "url": "https://lore.kernel.org/bpf/20261122123427.287521-3-abhishekkhade69@gmail.com/",
+      "date": "2026-11-22T12:34:27",
+      "series": [
+        {
+          "id": 1218612,
+          "url": "https://patchwork.kernel.org/api/series/1218612/",
+          "web_url": "https://patchwork.kernel.org/series/1218612/",
+          "date": "2026-11-22T12:34:25",
+          "name": "bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1218612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,v2,1/2] bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+      "author": "Abhishek Khade",
+      "url": "https://lore.kernel.org/bpf/20261122123427.287521-2-abhishekkhade69@gmail.com/",
+      "date": "2026-11-22T12:34:26",
+      "series": [
+        {
+          "id": 1218612,
+          "url": "https://patchwork.kernel.org/api/series/1218612/",
+          "web_url": "https://patchwork.kernel.org/series/1218612/",
+          "date": "2026-11-22T12:34:25",
+          "name": "bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+          "version": 2,
+          "mbox": "https://patchwork.kernel.org/series/1218612/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,2/2] selftests/bpf: Add selftests for bpf_memmem and bpf_dynptr_memmem kfuncs",
+      "author": "Abhishek Khade",
+      "url": "https://lore.kernel.org/bpf/20261122103838.244974-3-abhishekkhade69@gmail.com/",
+      "date": "2026-11-22T10:38:38",
+      "series": [
+        {
+          "id": 1218574,
+          "url": "https://patchwork.kernel.org/api/series/1218574/",
+          "web_url": "https://patchwork.kernel.org/series/1218574/",
+          "date": "2026-11-22T10:38:36",
+          "name": "bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1218574/mbox/"
+        }
+      ]
+    },
+    {
+      "title": "[RFC,bpf-next,1/2] bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+      "author": "Abhishek Khade",
+      "url": "https://lore.kernel.org/bpf/20261122103838.244974-2-abhishekkhade69@gmail.com/",
+      "date": "2026-11-22T10:38:37",
+      "series": [
+        {
+          "id": 1218574,
+          "url": "https://patchwork.kernel.org/api/series/1218574/",
+          "web_url": "https://patchwork.kernel.org/series/1218574/",
+          "date": "2026-11-22T10:38:36",
+          "name": "bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+          "version": 1,
+          "mbox": "https://patchwork.kernel.org/series/1218574/mbox/"
+        }
+      ]
+    }
+  ]
+}
