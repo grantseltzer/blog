@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-11-24T00:00:00Z",
+  "period_start": "2026-11-16",
+  "period_end": "2026-11-23",
+  "patch_count": 100,
+  "thread_count": 15,
+  "top_contributors": ["Alexei Starovoitov", "Mykyta Yatsenko", "Leon Hwang", "Ihor Solodrai"],
+  "key_topics": ["verifier", "local-storage", "kfuncs", "tracing", "libbpf", "jit", "btf", "co-re", "link-create"],
+  "overview": "The week of November 16-23 was dominated by a landmark 49-patch series from Alexei Starovoitov that fundamentally rearchitects the BPF verifier to verify programs in multiple passes while tracking symbolic equations between register values in the verifier state. This is one of the most significant verifier changes in recent memory, enabling more precise reasoning about program correctness and loop bounds. Alongside this, Meta's Mykyta Yatsenko submitted a 13-patch series to inline local storage map values directly into storage objects, Ihor Solodrai added support for kernel-side kfunc prototype variants to libbpf, and Yonghong Song fixed CO-RE enum relocation bugs. The week closed with Leon Hwang's tracing link_create logging and new bpf_memmem kfuncs from Abhishek Khade.",
+  "patches": [
+    {
+      "title": "bpf: Verify in passes",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261120204959.614908-38-alexei.starovoitov@gmail.com/",
+      "summary": "The core patch in a massive 49-patch v2 series ('bpf: Verify in passes, with equations in the state') that redesigns the BPF verifier to process programs in multiple sequential passes. Each pass can handle previously 'unproven' instructions once more context is known, and equations between register values are maintained in the verifier state to allow state joins and pruning to be more precise. The series includes new loop handling (peeling the first trips and joining later ones), per-instance verification of static functions, equation-driven join rules, and a comprehensive rewrite of verifier.rst documentation. This is a foundational change that improves the verifier's ability to accept correct programs while rejecting incorrect ones.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix the build without CONFIG_NET",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261121221344.3958866-2-alexei.starovoitov@gmail.com/",
+      "summary": "First patch in a 7-patch v2 series ('bpf: Fixes for the verifier passes') that addresses bugs found in the larger 49-patch verifier rework. These fixes correct issues such as not skipping loop trips when the bound moves, improper handling of 32-bit value wraps in trip-count guessing, losing a failing verification path when only an equation differs, and missing -ENOMEM returns when partition memory is exhausted. The series also ensures offloaded programs are replayed using the precision established by the successful pass.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Free unpublished local storage with kfree_nolock()",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261123-sls_f1-v2-1-76474de9b052@meta.com/",
+      "summary": "Lead patch of a 13-patch v2 series from Meta that introduces BPF_F_INLINE_VALUE for local storage maps. Rather than allocating a separate slab object for each map value, this flag causes the value to be embedded directly within the bpf_local_storage struct, eliminating a pointer indirection and reducing allocator churn. The series carefully handles lifetime management (storage objects with an inline area persist until owner death), restricts the sk storage iterator for inline maps, and surfaces the inline values in the sk diag interface.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add log support for tracing link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261123152743.19629-2-leon.hwang@linux.dev/",
+      "summary": "First patch in a 9-patch v3 series extending BPF verifier log output to link_create operations across tracing, tracing_multi, iter, and cgroup program types. Users can now pass a log buffer when creating BPF links and receive diagnostic output similar to what is available during program load, which significantly aids debugging of attachment failures. Libbpf gains corresponding log_opts support and selftests verify each path.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Separate interfaces shared with in-tree tools",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261121003403.2928928-2-ihor.solodrai@linux.dev/",
+      "summary": "First patch in a 6-patch v2 series ('libbpf: Support kernel-side kfunc variants') that enables libbpf to resolve kfunc calls to versioned kernel-side variants (e.g. kfunc___v2) by matching the prototype, not just the name. The series also updates resolve_btfids to reject ambiguous kfunc variants, updates sched_ext's compat.bpf.h to prefer ___v2 names, and adds documentation on how to change a kfunc's prototype while maintaining backward compatibility.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix CO-RE relocations of unsigned 32-bit enum values",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261120215002.868773-1-yonghong.song@linux.dev/",
+      "summary": "This v5 fix corrects a bug in libbpf's CO-RE relocation handling where unsigned 32-bit enum values were incorrectly sign-extended during relocation, causing mismatches between kernel and BPF program types at runtime. A companion fix ensures that signed enum values without the kflag are also handled correctly in CO-RE. Selftests cover both unsigned 32-bit and signed enum relocation edge cases.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add bpf_memmem and bpf_dynptr_memmem kfuncs",
+      "author": "Abhishek Khade",
+      "url": "https://lore.kernel.org/bpf/20261122143815.330528-2-abhishekkhade69@gmail.com/",
+      "summary": "A two-patch v3 series adding bpf_memmem and bpf_dynptr_memmem kfuncs that expose memmem()-style byte-pattern search to BPF programs. This allows network and security programs to efficiently locate substrings within raw memory buffers or dynptr-wrapped data without writing manual search loops in BPF bytecode. The series progressed from RFC through v3 during this week, incorporating reviewer feedback on BTF annotation and argument constraints.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Fix kfunc implicit arg inject type detection to prevent invalid pointer deref",
+      "author": "chenyuan",
+      "url": "https://lore.kernel.org/bpf/20261123055708.684107-2-chenyuan_fl@163.com/",
+      "summary": "This v7 two-patch series fixes a verifier bug where incorrect type detection during kfunc implicit argument injection could lead to a null or invalid pointer dereference in the kernel. The bug existed in the path that injects auxiliary state pointers into kfunc calls, where the type check was not strict enough to distinguish safe injection targets. The selftest was also strengthened to directly verify aux injection behavior.",
+      "related_links": []
+    },
+    {
+      "title": "bpf, arm32: build constants inline instead of using a literal pool",
+      "author": "Ramin Moussavi",
+      "url": "https://lore.kernel.org/bpf/20261122195600.2573516-1-ramin.moussavi@yacoub.de/",
+      "summary": "This v3 single-patch JIT improvement for ARM32 replaces literal pool constant loading with inline MOV/MOVT instruction pairs. The change reduces the size of JIT-compiled BPF programs on 32-bit ARM by eliminating the data section used for constant pools, and improves instruction cache efficiency since constants are now colocated with the code that uses them.",
+      "related_links": []
+    },
+    {
+      "title": "selftests/bpf: Disable preemption around css_rstat_updated()",
+      "author": "Karl Mehltretter",
+      "url": "https://lore.kernel.org/bpf/20261121082843.44614-1-kmehltretter@gmail.com/",
+      "summary": "A single-patch fix to the BPF selftests that disables preemption in the test scaffolding around calls to css_rstat_updated(). This function requires a non-preemptible context, and failing to hold that invariant in the test could cause spurious failures or warnings on certain kernel configurations. The fix improves test reliability on RT-preempt and debug kernels.",
+      "related_links": []
+    }
+  ]
+}
