@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-11-25T00:00:00Z",
+  "period_start": "2026-11-23",
+  "period_end": "2026-11-24",
+  "patch_count": 64,
+  "thread_count": 15,
+  "top_contributors": ["Mykyta Yatsenko", "Kumar Kartikeya Dwivedi", "Leon Hwang", "Alan Maguire", "Yonghong Song"],
+  "key_topics": ["ringbuf", "local-storage", "co-re", "libbpf", "netkit", "jit", "tracing", "kfuncs"],
+  "overview": "A productive day on bpf-next with 64 patches across 15 series. Highlights include Kumar Kartikeya Dwivedi's 10-patch Ring Buffer Iterator API introducing new libbpf consumer APIs for both normal and overwritable ring buffers, and Mykyta Yatsenko's 13-patch series to embed local storage values directly in storage objects via a new BPF_F_INLINE_VALUE flag. Alexei Starovoitov also proposed making BPF_JIT mandatory on x86-64 and arm64, reflecting BPF's maturity on those architectures.",
+  "patches": [
+    {
+      "title": "bpf: Order record data after the producer position in overwrite mode",
+      "author": "Kumar Kartikeya Dwivedi",
+      "url": "https://lore.kernel.org/bpf/8a47c80b9a3dfa8ddd4788781b854357a15717b9.1795467315.git.memxor@gmail.com/",
+      "summary": "This is the first patch in a 10-part Ring Buffer Iterator API series. It fixes the ordering of record data relative to the producer position in overwrite mode, a prerequisite for making overwritable ring buffers safely readable while being written. The series goes on to add new libbpf APIs including a record-based consumption interface (ring_buffer__consume_record), ring__new()/ring__free(), and ring_buffer__wait(), as well as overwritable ring buffer support in the record API. These additions give userspace consumers a more ergonomic and safe way to read BPF ring buffers.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Free unpublished local storage with kfree_nolock()",
+      "author": "Mykyta Yatsenko",
+      "url": "https://lore.kernel.org/bpf/20261123-sls_f1-v2-1-76474de9b052@meta.com/",
+      "summary": "First patch in a 13-part v2 series that embeds local storage values directly inside the storage object when a new BPF_F_INLINE_VALUE map flag is set. By co-locating the value with the storage object, this avoids a separate allocation and pointer indirection for small, frequently-accessed values. The series adds an inline slot allocator, extends lifetimes of inline-storage objects until owner death, introduces bpf_local_storage_delete(), and disallows the sk storage map iterator for inline-value maps. libbpf is updated to avoid unnecessary BTF retries on map creation, and documentation and selftests are included.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Force BPF_JIT on x86-64 and arm64",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261123205713.4094553-1-alexei.starovoitov@gmail.com/",
+      "summary": "This single-patch proposal forces BPF_JIT to be always-on for x86-64 and arm64 builds, removing the ability to fall back to the BPF interpreter on those architectures. The motivation is that the interpreter is effectively unmaintained on these platforms, the JIT is mature and always present in production kernels, and keeping interpreter support adds unnecessary complexity and potential security surface. This follows a long-standing trend of treating JIT as the default on tier-1 architectures.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Support CO-RE relocation of tracing program arguments",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261123223227.745345-2-almagui@kernel.org/",
+      "summary": "First patch in a 7-part series that extends CO-RE to handle the presence and ordering of tracing and LSM program arguments. Currently BPF tracing programs must match the kernel's exact function signature; this series lets libbpf detect when an argument is absent or reordered on the target kernel and relocate accordingly. The kernel side adds support for CO-RE relocation of tracing program arguments in the verifier, while libbpf gains the ability to report function argument relocation support via type existence. Documentation and comprehensive selftests covering tracing and LSM scenarios are included.",
+      "related_links": []
+    },
+    {
+      "title": "net: track references owned by prefetched socket assignments",
+      "author": "Nikolay Aleksandrov",
+      "url": "https://lore.kernel.org/bpf/20261124151244.1423343-2-razor@blackwall.org/",
+      "summary": "First patch in an RFC 4-part series that adds bpf_sk_assign() support in the netkit egress (tx) path. The net layer is extended to track socket references owned by prefetched assignments to avoid use-after-free on ingress redirects, and the BPF core is updated to preserve owned socket assignments through ingress redirect paths. A new selftest validates netkit socket assignment in a transparent proxy scenario. This RFC explores enabling socket-level steering for netkit-based virtual network devices.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add call for selecting kmalloc or kmalloc_nolock at call time",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261124060357.11700-2-emil@etsalapatis.com/",
+      "summary": "First patch in a 4-part series that enables BPF local storage to use the standard kmalloc allocator when the calling context permits sleeping. The BPF core gains a helper for choosing between kmalloc and kmalloc_nolock based on context, local storage context is plumbed through the allocation path, and a new 'sleepable local storage' mode is introduced for programs that run in sleepable contexts. A selftest verifies that kmalloc variant selection works correctly for task storage.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add log support for tracing link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261123152743.19629-2-leon.hwang@linux.dev/",
+      "summary": "First patch in a 9-part v3 series that adds verifier log output during BPF tracing link creation. The series extends link_create log support to tracing, tracing_multi, iter, and cgroup prog attach types, and adds log_opts support in libbpf for BPF_TRACE_ITER. This makes it easier to diagnose why a tracing link fails to attach by surfacing verifier messages at link creation time. Selftests verify log output for all newly supported attach types.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Fix CO-RE relocations of unsigned 32-bit enum values",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261124000519.2956216-1-yonghong.song@linux.dev/",
+      "summary": "This v6 2-patch series fixes a libbpf bug where CO-RE relocations for unsigned 32-bit enum values could be incorrectly sign-extended, producing wrong values when relocated. The fix ensures that 32-bit enum values are treated as unsigned during relocation arithmetic. A corresponding selftest exercises CO-RE relocation of unsigned 32-bit enum values to prevent regressions.",
+      "related_links": []
+    }
+  ]
+}
