@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-11-26T00:00:00Z",
+  "period_start": "2026-11-24",
+  "period_end": "2026-11-25",
+  "patch_count": 69,
+  "thread_count": 20,
+  "top_contributors": [
+    "Toke Høiland-Jørgensen",
+    "Anton Protopopov",
+    "Leon Hwang",
+    "Yun Lu",
+    "Ihor Solodrai"
+  ],
+  "key_topics": [
+    "co-re",
+    "bpf_token",
+    "btf",
+    "kfuncs",
+    "tracing",
+    "libbpf",
+    "fmod_ret",
+    "local-storage"
+  ],
+  "overview": "November 25th saw substantial activity on bpf-next spanning CO-RE tracing argument support, bpf_token permission relaxations for BTF iteration, and several correctness fixes for fmod_ret and async callback use-after-free. Notable feature work includes kfunc variant resolution by prototype in libbpf and RISC-V private stack support reaching v4.",
+  "patches": [
+    {
+      "title": "libbpf: Support CO-RE relocation of tracing program arguments",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261125165845.45806-3-almagui@kernel.org/",
+      "summary": "This patch adds libbpf support for CO-RE relocation of function arguments in tracing programs, enabling BPF programs to access function parameters portably across kernel versions regardless of argument ordering or presence. It is part of a 5-patch series (v2) that also adds kernel-side BPF verifier support and documentation for the same feature. The motivation is to allow tracing BPF programs to handle cases where kernel functions add, remove, or reorder parameters between versions without requiring separate BPF program builds per kernel. Big-endian correctness for context slot loads is addressed in patch 1/5 as a prerequisite.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Relax BPF_*_GET_NEXT_ID permission checks to CAP_BPF and bpf_token",
+      "author": "Toke Høiland-Jørgensen",
+      "url": "https://lore.kernel.org/bpf/20261125-bpf-relax-get-next-id-v1-1-49175227c8cf@toke.dk/",
+      "summary": "This is the first patch in a 7-part series improving access to module BTF via bpf_token. It relaxes the permission check for BPF_*_GET_NEXT_ID syscall commands from CAP_SYS_ADMIN to CAP_BPF or a valid bpf_token, enabling unprivileged (but CAP_BPF-capable) processes to iterate over BPF objects. Companion patches in the series add bpf_*_get_next_id_opts() functions to libbpf, propagate token_fd when iterating kernel BTF objects, and add a selftest verifying fentry attachment to a module with a bpf_token. This improves the usability of bpf_token for sandboxed and delegated BPF workflows.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add log support for tracing link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261125143138.47174-2-leon.hwang@linux.dev/",
+      "summary": "Part of a v4 6-patch series, this patch adds verifier log output for tracing program link_create operations, making it easier to diagnose why a tracing attachment fails. The series extends log support to tracing_multi and iter link_create paths, adds log_opts support for BPF_TRACE_ITER in libbpf, and covers cgroup prog link_create. Without this, failures during link_create for tracing programs produced no diagnostic output, making debugging difficult. The addition aligns tracing link_create diagnostics with the log support already present for program loading.",
+      "related_links": []
+    },
+    {
+      "title": "riscv: bpf: Add BPF private stack support",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20261125122126.939-2-cp0613@linux.alibaba.com/",
+      "summary": "This v4 patch ports the BPF private stack mechanism to the RISC-V 64-bit architecture, allowing BPF programs to use a dedicated per-CPU stack rather than the kernel task stack. The private stack reduces stack pressure in deeply nested BPF program calls and helps avoid stack overflows in complex programs. The series also enables the existing private stack selftests for riscv64 and adds a test covering private stack interaction with stack arguments. This brings RISC-V to parity with x86-64 for this feature.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Require the JIT for fmod_ret programs on 64-bit functions",
+      "author": "Anton Protopopov",
+      "url": "https://lore.kernel.org/bpf/20261125102810.699464-2-a.s.protopopov@gmail.com/",
+      "summary": "The first patch in a 7-part v1 series addressing correctness issues with fmod_ret programs targeting functions that return pointers. When a kernel function returns ERR_PTR(), the existing fmod_ret return value check only tests the low 32 bits, allowing invalid pointer returns to escape validation on 64-bit systems. This patch enforces JIT compilation for fmod_ret on 64-bit function targets as a prerequisite for the full fix. Subsequent patches tag affected functions via resolve_btfids, update the verifier to check full 64-bit return values, and restrict fmod_ret returns to NULL or ERR_PTR() for pointer-returning targets.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Resolve kfunc variants by prototype",
+      "author": "Ihor Solodrai",
+      "url": "https://lore.kernel.org/bpf/20261124224811.16134-4-ihor.solodrai@linux.dev/",
+      "summary": "Part of a v3 6-patch series adding libbpf support for kernel-side kfunc variants (the ___v2, ___v3 naming convention used in sched_ext and elsewhere). This patch implements prototype-based variant resolution in libbpf, allowing BPF programs compiled against an older kernel kfunc prototype to automatically select the matching variant when running on a newer kernel. This is crucial for portable BPF programs that use kfuncs whose signatures evolve across kernel versions. resolve_btfids is extended to reject ambiguous variant definitions, and documentation is added describing the protocol for changing a kfunc prototype.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Mark task work FREED before detaching it",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261125053132.444234-2-luyun_611@163.com/",
+      "summary": "The first patch in a v5 6-patch series fixing use-after-free bugs in async BPF callbacks (workqueue and task_work) triggered by map element deletion. Without this fix, a BPF callback could be scheduled on a map value that has already been freed if deletion races with callback execution. The series marks task work entries as FREED before detaching, checks membership before scheduling, invalidates async callbacks before detaching, and validates user references. This addresses a subtle but serious memory safety issue in BPF programs using timers and workqueues backed by map values.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add sleepable local storage",
+      "author": "Emil Tsalapatis",
+      "url": "https://lore.kernel.org/bpf/20261124060357.11700-4-emil@etsalapatis.com/",
+      "summary": "Part of a v1 4-patch series enabling BPF local storage to use kmalloc when the allocation context allows sleeping, improving performance by avoiding the pcpu_freelist contention of the current non-sleepable allocator. This patch introduces the sleepable local storage variant itself, while earlier patches in the series plumb the allocation context through the local storage infrastructure and add a runtime selector between kmalloc and kmalloc_nolock. The feature benefits sleepable BPF programs (e.g., LSM hooks, fentry on syscalls) that frequently allocate and free local storage values.",
+      "related_links": []
+    }
+  ]
+}
