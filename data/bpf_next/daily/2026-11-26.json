@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-11-27T00:00:00Z",
+  "period_start": "2026-11-25",
+  "period_end": "2026-11-26",
+  "patch_count": 65,
+  "thread_count": 23,
+  "top_contributors": ["Toke Høiland-Jørgensen", "Anton Protopopov", "Alexei Starovoitov", "Yun Lu", "Alan Maguire"],
+  "key_topics": ["bpf-token", "fmod-ret", "btf", "libbpf", "co-re", "struct-ops", "async-callback"],
+  "overview": "The bpf-next mailing list was busy on November 25-26 with major activity around bpf_token security improvements, fmod_ret targeting restrictions, and core BPF bug fixes. Toke Høiland-Jørgensen posted the third revision of improvements to access module BTF with bpf_token, relaxing GET_NEXT_ID permission checks and enabling token-based iteration of kernel BTF objects. Anton Protopopov continued iterating on two related series to restrict which functions can be tagged as fmod_ret targets, while Alexei Starovoitov submitted fixes for calls, struct_ops, and bpf_throw().",
+  "patches": [
+    {
+      "title": "bpf: Count outgoing stack arguments in the combined stack size",
+      "author": "Alexei Starovoitov",
+      "url": "https://lore.kernel.org/bpf/20261126030342.4013902-2-alexei.starovoitov@gmail.com/",
+      "summary": "This 4-patch series from BPF maintainer Alexei Starovoitov addresses several correctness issues in the verifier and runtime. It fixes stack argument accounting, requires CAP_PERFMON for recursive program invocation, fixes reference leaks in struct_ops programs, and restricts fentry attachment to subprograms that can throw. These are correctness and safety fixes that close subtle holes in the BPF program execution model.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Relax BPF_*_GET_NEXT_ID permission checks to CAP_BPF and bpf_token",
+      "author": "Toke Høiland-Jørgensen",
+      "url": "https://lore.kernel.org/bpf/20261126-bpf-relax-get-next-id-v3-1-338e1d3077e7@toke.dk/",
+      "summary": "This 7-patch series (v3) improves access to module BTF when using bpf_token, enabling workflows that don't require CAP_SYS_ADMIN. The kernel-side change relaxes BPF_*_GET_NEXT_ID permission checks to accept CAP_BPF or a valid bpf_token, while the libbpf side adds bpf_*_get_next_id_opts() variants, automatically sets BPF_F_TOKEN_FD when iterating kernel BTF objects, and moves token preparation earlier in object creation. A new selftest verifies that fentry can attach to a module when authorized only by a bpf_token.",
+      "related_links": []
+    },
+    {
+      "title": "resolve_btfids: Do not tag functions which work on BPF objects",
+      "author": "Anton Protopopov",
+      "url": "https://lore.kernel.org/bpf/20261126142915.1106330-2-a.s.protopopov@gmail.com/",
+      "summary": "This 7-patch series (v2) prevents resolve_btfids from tagging certain categories of functions as valid fmod_ret targets, which could allow BPF programs to intercept internal BPF infrastructure functions in unsafe ways. The series excludes functions that work on BPF objects, kfuncs, helpers, functions in kernel/bpf and JIT code, and bpf_*()/\\__bpf_*() symbols from the fmodret deny list. A companion series from the same author (1221907) handles tagging ERR_PTR-returning functions as a separate positive allowlist.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Allow loads of the low-order bytes of context slots on big-endian",
+      "author": "Alan Maguire",
+      "url": "https://lore.kernel.org/bpf/20261125165845.45806-2-almagui@kernel.org/",
+      "summary": "This 5-patch series (v2) extends CO-RE (Compile Once, Run Everywhere) to handle relocation of tracing program arguments, enabling BPF programs to adapt to changes in function parameter presence and ordering across kernel versions. The kernel gains support for a new CO-RE relocation type for tracing arguments, libbpf is updated to emit these relocations, and a big-endian fix ensures sub-register loads work correctly on architectures like s390x. This significantly improves portability of BPF tracing programs that hook into functions with varying parameter layouts.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Mark task work FREED before detaching it",
+      "author": "Yun Lu",
+      "url": "https://lore.kernel.org/bpf/20261125053132.444234-2-luyun_611@163.com/",
+      "summary": "This 6-patch series (v5) fixes a use-after-free vulnerability in BPF async callbacks (task work and workqueue callbacks) when the underlying map value is deleted while a callback is pending. The fix introduces a FREED state marker, checks membership before scheduling callbacks, and validates user references before detachment. These changes close a race condition window that could lead to memory corruption or privilege escalation in programs using bpf_wq or task-local storage.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: Add log support for tracing link_create",
+      "author": "Leon Hwang",
+      "url": "https://lore.kernel.org/bpf/20261125143138.47174-2-leon.hwang@linux.dev/",
+      "summary": "This 6-patch series (v4) adds verifier log output during link_create for tracing-type programs, mirroring the log support already available during prog_load. The kernel gains log hooks for tracing, tracing_multi, iter, and cgroup link_create paths, while libbpf is extended with log_opts support for BPF_TRACE_ITER. This makes it much easier to diagnose attachment failures for fentry/fexit/fmod_ret programs by surfacing the verifier's reasoning at link time.",
+      "related_links": []
+    },
+    {
+      "title": "libbpf: Poison an enum value relocation out of the local enumerator range",
+      "author": "Yonghong Song",
+      "url": "https://lore.kernel.org/bpf/20261126175607.1883240-1-yonghong.song@linux.dev/",
+      "summary": "This 3-patch series fixes a correctness issue in libbpf's CO-RE enum value relocation logic: when the relocated value falls outside the range of the local enumerator type, libbpf should poison the instruction rather than silently using an incorrect value. The series adds the poisoning logic and two selftests covering both in-range and out-of-range relocation scenarios. This prevents silent data corruption when BPF programs are loaded on kernels with different enum definitions.",
+      "related_links": []
+    },
+    {
+      "title": "bpf: account for local storage map elements memory",
+      "author": "Mahe Tardy",
+      "url": "https://lore.kernel.org/bpf/20261126131318.470837-1-mahe.tardy@gmail.com/",
+      "summary": "This 2-patch series fixes memory accounting for BPF local storage map elements (task and inode local storage), which were previously not counted against the system's locked memory limits. Without accounting, programs could consume unbounded kernel memory via local storage maps without hitting any quota. The fix hooks local storage allocation into the existing memcg/locked memory accounting infrastructure, with a selftest verifying that task storage respects memory limits.",
+      "related_links": []
+    },
+    {
+      "title": "riscv: bpf: Add BPF private stack support",
+      "author": "Chen Pei",
+      "url": "https://lore.kernel.org/bpf/20261125122126.939-2-cp0613@linux.alibaba.com/",
+      "summary": "This 3-patch series (v4) adds BPF private stack support to the RISC-V 64-bit JIT, allowing deeply nested BPF programs to use a dedicated per-CPU stack rather than the kernel stack. This reduces the risk of kernel stack overflow for complex BPF programs on RISC-V, bringing it to parity with x86-64 and arm64. The series also adds selftests for private stack with stack arguments and enables the existing private stack test suite for riscv64.",
+      "related_links": []
+    }
+  ]
+}
